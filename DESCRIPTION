@@ -1,0 +1,14 @@
+Package: DSSAT
+Type: Package
+Title: Official R interface to DSSAT-CSM
+Version: 0.1.0
+Author: Phillip D. Alderman
+Maintainer: Phillip D. Alderman <phillip.alderman@okstate.edu>
+Description: The purpose of this package is to provide an official
+    R interface to the Decision Support System for Agrotechnology
+    Transfer Cropping Systems Model (DSSAT-CSM). The package 
+    provides cross-platform functions to read and write input files,
+    run DSSAT-CSM, and read output files
+License: TBD
+Encoding: UTF-8
+LazyData: true
