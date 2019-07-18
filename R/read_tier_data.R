@@ -4,13 +4,7 @@
 #'
 #' @keywords internal
 #'
-#' @param raw_lines a character vector that includes the contents
-#' of a single tier of data (including headline, but excluding version
-#'  stamp and other header information) from a DSSAT output file
-#'
-#' @param col_types One of NULL, a cols() specification, or a string.
-#' See \code{\link[readr]{read_fwf}} or \code{vignette("readr")} for
-#' more details.
+#' @inheritParams read_tier
 #'
 #' @return a tibble containing the data from the raw DSSAT output
 #'
@@ -24,34 +18,51 @@
 #'
 #' read_tier_data(sample_tier)
 
-read_tier_data <- function(raw_lines,col_types=NULL){
+read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,
+                           left_justified='EXCODE',guess_max=10){
   # Load required packages
   require(dplyr)
   require(stringr)
+  require(purrr)
 
   # Find header line
   skip <- str_which(raw_lines,'^@')
   headline <- raw_lines[skip]
 
   # Process header into fixed-width format positions
-  fwf_pos <- header_to_fwf_position(headline)
+  fwf_pos <- map(headline,
+                 ~header_to_fwf_position(.,left_justified,col_types,col_names))
+
+  # Calculate end of each section based on beginning of next section
+  end <- c(skip[-1]-1,length(raw_lines))
+
+  # Put check_col_types here
+  if(!is.null(col_types)){
+    col_types <- map(1:length(skip),~check_col_types(col_types,fwf_pos[[.]]$col_names))
+  }
 
   # Read data from tier
-  tier_data <- read_fwf(raw_lines,
-                   fwf_pos,
-                   comment = '!',
-                   skip = skip,
-                   skip_empty_rows = TRUE,
-                   guess_max = 5,
-                   col_types=col_types)
-  if({colnames(tier_data) %>%
-        {c('YEAR','DOY') %in% .} %>%
-         all()}
-     ){
-    tier_data <- tier_data %>%
-      mutate(DATE={paste0(YEAR,DOY) %>% as.POSIXct(format='%Y%j')}) %>%
-      select(-YEAR,-DOY)
-  }
+  tier_data <- map(1:length(skip),~read_fwf(raw_lines[skip[.]:end[.]],
+                                            fwf_pos[[.]],
+                                            comment = '!',
+                                            skip = 1,
+                                            na = c('-99','-99.','-99.0','-99.00','-99.000',
+                                                   '*','**','***','****','*****','******','*******','********'),
+                                            skip_empty_rows = TRUE,
+                                            guess_max = guess_max,
+                                            col_types=col_types[[.]])) %>%
+    map(~{
+      # Add DATE column if YEAR and DOY are in tier_data
+      if({colnames(.) %>%
+          {c('YEAR','DOY') %in% .} %>%
+          all()}
+         ){
+        . <- . %>%
+          mutate(DATE={paste0(YEAR,DOY) %>% as.POSIXct(format='%Y%j')}) %>%
+          select(-YEAR,-DOY)
+        }
+      .}) %>%
+    reduce(combine_tiers)
 
   return(tier_data)
 }

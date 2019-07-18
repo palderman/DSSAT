@@ -4,11 +4,15 @@
 \alias{header_to_fwf_position}
 \title{Converts header line into a vector of column names}
 \usage{
-header_to_fwf_position(header)
+header_to_fwf_position(header, left_justified = "EXCODE", col_types = NULL,
+  col_names = NULL)
 }
 \arguments{
 \item{header}{A length-one character vector of a header line
 from a DSSAT format output file}
+
+\item{left_justified}{A character vector of column names that
+should be left justified}
 }
 \value{
 a tibble containing the begin position, end position,

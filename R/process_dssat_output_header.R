@@ -39,7 +39,8 @@ process_dssat_output_header <- function(raw_lines){
   require(stringr)
 
   # Find header line
-  skip <- str_which(raw_lines,'^@')
+  skip <- str_which(raw_lines,'^@') %>%
+    min()
 
   # Extract model code
   model <- raw_lines[1:skip] %>%

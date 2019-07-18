@@ -7,9 +7,7 @@
 #' of a single tier of data (including headline, but excluding version
 #'  stamp and other header information) from a DSSAT output file
 #'
-#' @param col_types One of NULL, a cols() specification, or a string.
-#' See \code{\link[readr]{read_fwf}} or \code{vignette("readr")} for
-#' more details.
+#' @inheritParams read_dssat
 #'
 #' @return a tibble containing the data from the raw DSSAT output
 #'
@@ -34,24 +32,34 @@
 #'
 #' read_tier(sample_tier)
 
-read_tier <- function(raw_lines,col_types=NULL){
+read_tier <- function(raw_lines,col_types=NULL,col_names=NULL,
+                      left_justified='EXCODE',guess_max=10){
   # Load required packages
   require(dplyr)
   require(stringr)
 
   # Extract header information
-  header_info <- process_dssat_output_header(raw_lines)
+  header_info <- suppressWarnings({
+      process_dssat_output_header(raw_lines)
+    })
 
   # Read data from tier
-  tier_data <- read_tier_data(raw_lines,col_types=col_types)
+  tier_data <- read_tier_data(raw_lines,
+                              col_types=col_types,
+                              col_names=col_names,
+                              left_justified=left_justified)
 
   # Combine header information and data
-  tier <- tier_data %>%
-    mutate(EXPERIMENT=header_info$experiment,
-           MODEL=header_info$model,
-           TRNO = header_info$trtno,
-           RUN = header_info$runno) %>%
-    select(EXPERIMENT,MODEL,RUN,TRNO,DATE,everything())
+  if(length(header_info$runno)>0){
+    tier <- tier_data %>%
+      mutate(EXPERIMENT=header_info$experiment,
+             MODEL=header_info$model,
+             TRNO = header_info$trtno,
+             RUN = header_info$runno) %>%
+      select(EXPERIMENT,MODEL,RUN,TRNO,DATE,everything())
+    return(tier)
+  }else{
+    return(tier_data)
+  }
 
-  return(tier)
 }

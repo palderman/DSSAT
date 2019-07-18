@@ -1,12 +1,25 @@
 The purpose of this package is to provide an official R interface to the Decision Support System for Agrotechnology Transfer Cropping Systems Model (DSSAT-CSM). The package provides cross-platform functions to:
 
 # Implemented
-- Read/Write input files:
+- Read input files:
+    - Crop parameter files (\*.CUL,\*.ECO)
+- Write input files:
 - Run DSSAT-CSM in the following modes:
-- Read output files
+- Read output files:
+    - Daily
+    - Seasonal
 
 # Awaiting implementation
-- Read/Write input files:
+- Read input files:
+    - File X
+    - File T
+    - File A
+    - Soil input files (\*.SOL)
+    - Weather input files (\*.WTH)
+    - Pest input files (\*.PST)
+    - Crop parameter files (\*.SPE)
+    - DSSAT Batch file (DSSBatch.V\*)
+- Write input files:
     - File X
     - File T
     - File A
@@ -19,4 +32,3 @@ The purpose of this package is to provide an official R interface to the Decisio
     - Batch
     - Seasonal
     - Sequence
-- Read output files

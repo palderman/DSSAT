@@ -4,7 +4,8 @@
 \alias{read_tier_data}
 \title{Reads data from a single tier of a DSSAT output file}
 \usage{
-read_tier_data(raw_lines, col_types = NULL)
+read_tier_data(raw_lines, col_types = NULL, col_names = NULL,
+  left_justified = "EXCODE", guess_max = 10)
 }
 \arguments{
 \item{raw_lines}{a character vector that includes the contents
@@ -14,6 +15,16 @@ of a single tier of data (including headline, but excluding version
 \item{col_types}{One of NULL, a cols() specification, or a string.
 See \code{\link[readr]{read_fwf}} or \code{vignette("readr")} for
 more details.}
+
+\item{col_names}{A character vector of column names; primarily
+helpful for cases where there are no white spaces between column
+names within the header line}
+
+\item{left_justified}{A character vector of column names that
+should be left justified}
+
+\item{guess_max}{An integer indicating the maximum number of lines
+that should be used to guess the type of a column}
 }
 \value{
 a tibble containing the data from the raw DSSAT output
