@@ -45,4 +45,7 @@
 #'
 #' read_output('SAMPLE.OUT')
 
-read_output <- read_dssat
+read_output <- function(...){
+  output <- read_dssat(...)
+  return(output)
+}

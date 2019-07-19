@@ -34,9 +34,6 @@
 
 read_tier <- function(raw_lines,col_types=NULL,col_names=NULL,
                       left_justified='EXCODE',guess_max=10){
-  # Load required packages
-  require(dplyr)
-  require(stringr)
 
   # Extract header information
   header_info <- suppressWarnings({

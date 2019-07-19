@@ -1,10 +1,10 @@
-#' Reads parameters from a single DSSAT cultivar parameter file (*.CUL)
+#' Reads parameters from a single DSSAT ecotype parameter file (*.ECO)
 #'
 #' @export
 #'
 #' @inheritParams read_dssat
 #'
-#' @return a tibble containing the data from the raw DSSAT output
+#' @return a tibble containing the data from the raw DSSAT file
 #'
 #' @examples
 #'
@@ -24,7 +24,6 @@
 
 read_eco <- function(file_name,col_types=NULL,col_names=NULL,
                      left_justified=c('ECO#','ECONAME','ECO-NAME')){
-  require(readr)
 
   eco_col_types <- cols(`ECO#`=col_character(),
                         `ECONAME`=col_character(),

@@ -23,7 +23,6 @@
 
 read_cul <- function(file_name,col_types=NULL,col_names=NULL,
                      left_justified=c('VAR#','VARNAME','VAR-NAME')){
-  require(readr)
 
   cul_col_types <- cols(`VAR#`=col_character(),
                         `VARNAME`=col_character(),

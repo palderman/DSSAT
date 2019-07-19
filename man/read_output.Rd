@@ -4,26 +4,7 @@
 \alias{read_output}
 \title{Reads data from a single DSSAT output file}
 \usage{
-read_output(file_name, col_types = NULL, col_names = NULL,
-  left_justified = "EXCODE", guess_max = 10)
-}
-\arguments{
-\item{file_name}{a character vector of length one that contains the name
-of a single DSSAT output file}
-
-\item{col_types}{One of NULL, a cols() specification, or a string.
-See \code{\link[readr]{read_fwf}} or \code{vignette("readr")} for
-more details.}
-
-\item{col_names}{A character vector of column names; primarily
-helpful for cases where there are no white spaces between column
-names within the header line}
-
-\item{left_justified}{A character vector of column names that
-should be left justified}
-
-\item{guess_max}{An integer indicating the maximum number of lines
-that should be used to guess the type of a column}
+read_output(...)
 }
 \value{
 a tibble containing the data from the raw DSSAT output

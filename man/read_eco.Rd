@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_eco.R
 \name{read_eco}
 \alias{read_eco}
-\title{Reads parameters from a single DSSAT cultivar parameter file (*.CUL)}
+\title{Reads parameters from a single DSSAT ecotype parameter file (*.ECO)}
 \usage{
 read_eco(file_name, col_types = NULL, col_names = NULL,
   left_justified = c("ECO#", "ECONAME", "ECO-NAME"))
@@ -23,10 +23,10 @@ names within the header line}
 should be left justified}
 }
 \value{
-a tibble containing the data from the raw DSSAT output
+a tibble containing the data from the raw DSSAT file
 }
 \description{
-Reads parameters from a single DSSAT cultivar parameter file (*.CUL)
+Reads parameters from a single DSSAT ecotype parameter file (*.ECO)
 }
 \examples{
 

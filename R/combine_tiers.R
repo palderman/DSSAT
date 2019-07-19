@@ -27,5 +27,6 @@ combine_tiers <- function(tier1,tier2){
     # merged with a join operation
     new_tier <- full_join(tier1,tier2)
   }
+
   return(new_tier)
 }

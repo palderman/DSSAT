@@ -20,14 +20,13 @@
 
 read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,
                            left_justified='EXCODE',guess_max=10){
-  # Load required packages
-  require(dplyr)
-  require(stringr)
-  require(purrr)
 
   # Find header line
   skip <- str_which(raw_lines,'^@')
   headline <- raw_lines[skip]
+
+  col_types <- cols(DATE=col_character()) %>%
+    {.$cols <- c(.$cols,col_types$cols);.}
 
   # Process header into fixed-width format positions
   fwf_pos <- map(headline,
@@ -51,18 +50,46 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,
                                             skip_empty_rows = TRUE,
                                             guess_max = guess_max,
                                             col_types=col_types[[.]])) %>%
-    map(~{
+    map(function(one_df){
+      colnames(one_df) <- colnames(one_df) %>%
+        str_replace_all(c('^ +'='',
+                          ' +$'=''))
       # Add DATE column if YEAR and DOY are in tier_data
-      if({colnames(.) %>%
+      add_date <- colnames(one_df) %>%
           {c('YEAR','DOY') %in% .} %>%
-          all()}
-         ){
-        . <- . %>%
+          all()
+      if(add_date){
+        one_df <- one_df %>%
           mutate(DATE={paste0(YEAR,DOY) %>% as.POSIXct(format='%Y%j')}) %>%
           select(-YEAR,-DOY)
+      }
+      # Convert DATE column if DATE is not already POSIXct
+      convert_date <- colnames(one_df) %>%
+        {'DATE' %in% .} %>%
+        {. && ! 'POSIXct' %in% class(one_df)}
+      if(convert_date){
+        if(nchar(one_df$DATE[1]) < 7){
+          one_df <- one_df %>%
+            mutate(DATE=as.POSIXct(DATE,format='%y%j'))
+        }else{
+          one_df <- one_df %>%
+            mutate(DATE=as.POSIXct(DATE,format='%Y%j'))
         }
-      .}) %>%
+      }
+      return(one_df)
+    }) %>%
     reduce(combine_tiers)
+
+  for(i in 1:length(fwf_pos)){
+    if(i==1){
+      att_name <- 'tier_fmt'
+    }else{
+      att_name <- paste0('tier_',i,'_fmt')
+    }
+    attr(tier_data,att_name) <-
+      mutate(fwf_pos[[i]],width=end-begin) %>%
+      select(col_names,width)
+  }
 
   return(tier_data)
 }
