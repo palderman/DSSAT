@@ -5,7 +5,7 @@
 \title{Reads data from a single tier of a DSSAT output file}
 \usage{
 read_tier_data(raw_lines, col_types = NULL, col_names = NULL,
-  left_justified = "EXCODE", guess_max = 10)
+  left_justified = "EXCODE", guess_max = 1000, join_tiers = TRUE)
 }
 \arguments{
 \item{raw_lines}{a character vector that includes the contents
@@ -25,9 +25,12 @@ should be left justified}
 
 \item{guess_max}{An integer indicating the maximum number of lines
 that should be used to guess the type of a column}
+
+\item{join_tiers}{A logical indicating whether the multiple tiers should be
+combined into a single tibble}
 }
 \value{
-a tibble containing the data from the raw DSSAT output
+a tibble or list of tibbles containing the data from the raw DSSAT output
 }
 \description{
 Reads data from a single tier of a DSSAT output file

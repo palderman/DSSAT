@@ -22,7 +22,7 @@ name_to_regex <- function(cnames){
                                     '\\)'='\\\\)',
                                     '\\*'='\\\\*',
                                     '\\.'='\\\\.')) %>%
-    str_c('\\.*')
+    str_c('\\.*',.,'\\.*')
   return(regex)
 
 }

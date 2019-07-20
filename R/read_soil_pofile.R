@@ -42,9 +42,24 @@ read_soil_profile <- function(raw_lines){
             c(11,24,30,36,87)) %>%
     str_replace_all(c('^  *'='',
                       '  *$'='')) %>%
-    as.list()
+  as.list() %>%
+    {names(.) <- c("PEDON","SOURCE","TEXTURE","DEPTH","DESCRIPTION")
+    .} %>%
+    as_tibble()
 
-  names(gen_info) <- c("ID_SOIL","COUNT","LAT","LONG","TAXON")
+  # Read first tier
+  # tier_1 <- raw_lines %>%
+  #   str_which('^@') %>%
+  #   first() %>%
+  #   {raw_lines[.+1]} %>%
+  #   str_sub(c( 2,14,26,35,44),
+  #           c(12,24,33,42,93)) %>%
+  #   str_replace_all(c('^  *'='',
+  #                     '  *$'='')) %>%
+  #   as.list() %>%
+  #   {names(.) <- c("SITE","COUNTRY","LAT","LONG","SCS FAMILY")
+  #   .} %>%
+  #   as_tibble()
 
   tier_begin <- str_which(raw_lines,'^@')
 
@@ -56,6 +71,8 @@ read_soil_profile <- function(raw_lines){
                    ~read_tier_data(raw_lines[tier_begin[.]:tier_end[.]],
                                    left_justified = c('SITE',
                                                       'SCS FAMILY')))
+  # %>%
+  #   {c(list(tier_1),.)}
   attr(tier_data,'gen_info') <- gen_info
   return(tier_data)
 }

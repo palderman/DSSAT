@@ -4,7 +4,7 @@
 \alias{read_wth}
 \title{Reads weather input data from a single DSSAT weather file (*.WTH)}
 \usage{
-read_wth(file_name, col_types = NULL, col_names = NULL, id_soil = NULL)
+read_wth(file_name, col_types = NULL, col_names = NULL)
 }
 \arguments{
 \item{file_name}{a character vector of length one that contains the name

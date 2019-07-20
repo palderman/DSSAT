@@ -6,7 +6,7 @@
 output file}
 \usage{
 read_tier(raw_lines, col_types = NULL, col_names = NULL,
-  left_justified = "EXCODE", guess_max = 10)
+  left_justified = "EXCODE", guess_max = 1000)
 }
 \arguments{
 \item{raw_lines}{a character vector that includes the contents

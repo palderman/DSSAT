@@ -15,13 +15,18 @@ combine_tiers <- function(tier1,tier2){
   require(purrr)
 
   # Check if all columns are present in both tiers
-  if(all(colnames(tier1) %in% colnames(tier2))){
-    # Ensure column names match up and then bind tiers together
-    if(any(colnames(tier1) != colnames(tier2))){
-      tier2 <- tier2 %>%
-        select(one_of(colnames(tier1)))
-    }
-    new_tier <- bind_rows(tier1,tier2)
+  # if(all(colnames(tier1) %in% colnames(tier2))){
+  #   # Ensure column names match up and then bind tiers together
+  #   if(any(colnames(tier1) != colnames(tier2))){
+  #     tier2 <- tier2 %>%
+  #       select(one_of(colnames(tier1)))
+  #   }
+  #   new_tier <- bind_rows(tier1,tier2)
+  #   for()
+  # }else
+  if(!any(colnames(tier1) %in% colnames(tier2))){
+    # In this case no column names are in common
+    new_tier <- bind_cols(tier1,tier2)
   }else{
     # In this case the tiers do not have the same column names and must be
     # merged with a join operation

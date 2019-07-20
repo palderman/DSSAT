@@ -1,12 +1,11 @@
 check_col_types <- function(col_types,col_names){
-  require(dplyr)
-  require(stringr)
-  require(purrr)
 
   # Extract cols object
   cols_new <- col_types$cols
 
   cols_new <- names(cols_new) %>%
+    name_to_regex() %>%
+    str_c('((?<=^)|(?<= ))',.,'((?=$)|(?= ))') %>%
     # Check to see which of column types are present in col_names
     map_lgl(~any(str_detect(col_names,.))) %>%
     # Drop column types not in col_names

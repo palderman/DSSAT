@@ -6,7 +6,10 @@
 #'
 #' @inheritParams read_tier
 #'
-#' @return a tibble containing the data from the raw DSSAT output
+#' @param join_tiers A logical indicating whether the multiple tiers should be
+#' combined into a single tibble
+#'
+#' @return a tibble or list of tibbles containing the data from the raw DSSAT output
 #'
 #' @examples
 #'
@@ -19,7 +22,7 @@
 #' read_tier_data(sample_tier)
 
 read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,
-                           left_justified='EXCODE',guess_max=10){
+                           left_justified='EXCODE',guess_max=1000,join_tiers=TRUE){
 
   # Find header line
   skip <- str_which(raw_lines,'^@')
@@ -41,15 +44,27 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,
   }
 
   # Read data from tier
-  tier_data <- map(1:length(skip),~read_fwf(raw_lines[skip[.]:end[.]],
-                                            fwf_pos[[.]],
-                                            comment = '!',
-                                            skip = 1,
-                                            na = c('-99','-99.','-99.0','-99.00','-99.000',
-                                                   '*','**','***','****','*****','******','*******','********'),
-                                            skip_empty_rows = TRUE,
-                                            guess_max = guess_max,
-                                            col_types=col_types[[.]])) %>%
+  tier_data <- map(1:length(skip),function(i){
+        if(skip[i]==end[i]){
+          tdata <- map(fwf_pos[[i]]$col_names,~as.character(NA)) %>%
+            {names(.) <- fwf_pos[[i]]$col_names
+            .} %>%
+            as_tibble()
+          # colnames(tdata) <- fwf_pos[[i]]$col_names
+        }else{
+          tdata <- read_fwf(raw_lines[skip[i]:end[i]],
+                            fwf_pos[[i]],
+                            comment = '!',
+                            skip = 1,
+                              na = c('-99','-99.','-99.0','-99.00','-99.000',
+                                   '*','**','***','****','*****','******','*******','********'),
+                            skip_empty_rows = TRUE,
+                            guess_max = guess_max,
+                            col_types=col_types[[i]])
+        }
+        return(tdata)
+      }) %>%
+    add_col_widths(fwf_pos) %>%
     map(function(one_df){
       colnames(one_df) <- colnames(one_df) %>%
         str_replace_all(c('^ +'='',
@@ -77,18 +92,11 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,
         }
       }
       return(one_df)
-    }) %>%
-    reduce(combine_tiers)
+    })
 
-  for(i in 1:length(fwf_pos)){
-    if(i==1){
-      att_name <- 'tier_fmt'
-    }else{
-      att_name <- paste0('tier_',i,'_fmt')
-    }
-    attr(tier_data,att_name) <-
-      mutate(fwf_pos[[i]],width=end-begin) %>%
-      select(col_names,width)
+  if(join_tiers){
+    tier_data <- tier_data %>%
+      reduce(combine_tiers)
   }
 
   return(tier_data)

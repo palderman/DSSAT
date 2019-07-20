@@ -34,18 +34,13 @@
 
 read_sol <- function(file_name,col_types=NULL,col_names=NULL,id_soil=NULL){
 
-  # Load required packages
-  require(dplyr)
-  require(stringr)
-  require(purrr)
-
   # Read in raw data from file
   raw_lines <- readLines(file_name) %>%
     str_subset('^(?!\032) *([^ ]+)') # exclude lines that are all spaces or lines with EOF in initial position
 
   # Find beginning of each soil profile
   begin <- raw_lines %>%
-    str_which('^\\*(?!SOILS)')
+    str_which('^\\*(?![Ss][Oo][Ii][Ll][Ss])')
   if(length(begin)==0) begin <- 1
 
   if(is.null(id_soil)){

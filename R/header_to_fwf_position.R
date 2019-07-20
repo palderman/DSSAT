@@ -24,8 +24,9 @@ header_to_fwf_position <- function(header,left_justified='EXCODE',
 
   # Replace @ sign and | with space
   header <- header %>%
-    str_replace('@',' ') %>%
-    str_replace_all('\\|',' ')
+    str_replace_all(c('@'=' ',
+                      '\\|'=' ',
+                      '!.*'=''))
 
   # Combine left justified,col_types and col_names for known columns
   col_names <- c(col_names,left_justified,names(col_types$cols)) %>%
@@ -39,7 +40,7 @@ header_to_fwf_position <- function(header,left_justified='EXCODE',
     }
   }
 
-  # Extract unkown column names
+  # Extract unknown column names
   cnames <- map(cnames,function(new_names){
       if(!new_names%in%col_names){
         new_names <- str_split(new_names,'(?<=([^ ])) +(?=([^ ]))')
@@ -71,20 +72,21 @@ header_to_fwf_position <- function(header,left_justified='EXCODE',
   if(!is.null(left_justified)&&
      any(left_justified%in%cnames)){
     for(ljc in left_justified){
-      s <- str_which(cnames,paste0('^',ljc,'$'))
-      if(length(s)>0){
-        start_end[s,] <- name_to_regex(ljc) %>%
+      st <- str_which(cnames,paste0('^',ljc,'$'))
+      if(length(st)>0){
+        start_end[st,] <- name_to_regex(ljc) %>%
+          str_c(' *') %>%
           str_locate(header,.)
-        if(s==1) start_end[s,1] <- 1
-        if(s==length(cnames)) start_end[s,2] <- NA
-        if(s > 1 &&
-           !cnames[s-1]%in%left_justified){
-          start_end[s-1,] <- name_to_regex(cnames[s-1]) %>%
+        if(st==1) start_end[st,1] <- 1
+        if(st==length(cnames)) start_end[st,2] <- NA
+        if(st > 1 &&
+           !cnames[st-1]%in%left_justified){
+          start_end[st-1,] <- name_to_regex(cnames[st-1]) %>%
             str_locate(header,.)
         }
-        if(s<length(col_names) &&
-           !col_names[s+1]%in%left_justified){
-          start_end[s+1,] <- name_to_regex(cnames[s+1]) %>%
+        if(st<length(cnames) &&
+           !cnames[st+1]%in%left_justified){
+          start_end[st+1,] <- name_to_regex(cnames[st+1]) %>%
             str_locate(header,.)
         }
       }
