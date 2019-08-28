@@ -34,9 +34,6 @@
 #' process_dssat_output_header(sample_tier)
 
 process_dssat_output_header <- function(raw_lines){
-  # Load required packages
-  require(dplyr)
-  require(stringr)
 
   # Find header line
   skip <- str_which(raw_lines,'^@') %>%

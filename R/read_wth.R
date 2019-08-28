@@ -26,11 +26,6 @@
 
 read_wth <- function(file_name,col_types=NULL,col_names=NULL){
 
-  # Load required packages
-  require(dplyr)
-  require(stringr)
-  require(purrr)
-
   left_justified <- c('SITE','PEOPLE','ADDRESS','METHODS','INSTRUMENTS',
                       'PROBLEMS','PUBLICATIONS','DISTRIBUTION','NOTES')
 

@@ -15,8 +15,6 @@
 #'
 
 name_to_regex <- function(cnames){
-  require(stringr)
-  require(dplyr)
 
   regex <- str_replace_all(cnames,c('\\('='\\\\(',
                                     '\\)'='\\\\)',

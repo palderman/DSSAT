@@ -1,8 +1,7 @@
 guess_significant_digits <- function(variable,width){
-  require(dplyr)
-  require(purrr)
-  sig_dig <- head(variable,100) %>%
-    map_dbl(function(v){
+
+    sig_dig <- head(variable,100) %>%
+      map_dbl(function(v){
       sig <- round(v,0:width) %>%
         {diff(.) == 0} %>%
         which() %>%

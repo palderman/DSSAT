@@ -25,7 +25,6 @@
 #' splice_in_col_name(cnames,"TB(1)")
 
 splice_in_col_name <- function(col_names,new_name){
-  require(stringr)
 
   # Convert new_name to regex
   new_name_regex <- name_to_regex(new_name) %>%

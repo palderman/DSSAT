@@ -23,11 +23,6 @@
 
 read_filet <- function(file_name,col_types=NULL,col_names=NULL){
 
-  # Load required packages
-  require(dplyr)
-  require(stringr)
-  require(purrr)
-
   raw_lines <- readLines(file_name)
 
   experiment <- raw_lines %>%

@@ -61,10 +61,6 @@
 #' read_dssat('SAMPLE.OUT')
 
 read_dssat <- function(file_name,col_types=NULL,col_names=NULL,left_justified='EXCODE',guess_max=10){
-  # Load required packages
-  require(dplyr)
-  require(stringr)
-  require(purrr)
 
   # Read in raw data from file
   raw_lines <- readLines(file_name) %>%

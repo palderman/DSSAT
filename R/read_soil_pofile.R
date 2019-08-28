@@ -31,9 +31,6 @@
 #'
 
 read_soil_profile <- function(raw_lines){
-  require(dplyr)
-  require(stringr)
-  require(purrr)
 
   # Read general information
   gen_info <- raw_lines %>%

@@ -10,9 +10,6 @@
 #'
 
 combine_tiers <- function(tier1,tier2){
-  # Load required packages
-  require(dplyr)
-  require(purrr)
 
   # Check if all columns are present in both tiers
   # if(all(colnames(tier1) %in% colnames(tier2))){
