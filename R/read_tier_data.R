@@ -94,10 +94,29 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,
       return(one_df)
     })
 
-  if(join_tiers){
+  if(join_tiers&&
+     !is.data.frame(tier_data)&&
+     length(tier_data)>1){
+    tier_info <- tier_data %>%
+      map(colnames)
+
     tier_data <- tier_data %>%
       reduce(combine_tiers)
+
+    attr(tier_data,'tier_info') <- tier_info
+
+  }else if(!is.data.frame(tier_data)&&
+           length(tier_data)==1){
+
+    tier_data <- tier_data[[1]]
+
   }
+
+  v_fmt <- construct_variable_format(tier_data,
+                                     fwf_pos,
+                                     left_justified)
+
+  attr(tier_data,'v_fmt') <- v_fmt
 
   return(tier_data)
 }
