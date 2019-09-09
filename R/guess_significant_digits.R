@@ -4,7 +4,7 @@ guess_significant_digits <- function(variable,width){
        !is.character(width)){
       sig_dig <- head(variable,100) %>%
         map_dbl(function(v){
-          sig <- round(v,0:width) %>%
+          sig <- round(v,0:(width-1)) %>%
             {diff(.) == 0} %>%
             which() %>%
             first()

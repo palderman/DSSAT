@@ -6,8 +6,7 @@ construct_variable_format <- function(tier_data,fwf_pos,left_justified){
     mutate(col_names = str_replace_all(col_names,' ',''),
            width = end - begin,
            just = ifelse(col_names%in%left_justified,'-',''),
-           type = {tier_data %>% summarize_all(~{head(class(.),1)}) %>% t()}) %>%
-    mutate(width = replace_na(width,''))
+           type = {tier_data %>% summarize_all(~{head(class(.),1)}) %>% t()})
 
   # Estimate significant digits
   digits <- tier_data %>%
@@ -36,7 +35,8 @@ construct_variable_format <- function(tier_data,fwf_pos,left_justified){
                                        integer='f',
                                        character='s',
                                        logical='s',
-                                       POSIXct='s'))) %>%
+                                       POSIXct='s')),
+           width = replace_na(width,'')) %>%
     mutate(.,fmt=glue_data(.,'%{width}{just}{digits}{type}')) %>%
     select(col_names,fmt) %>%
     {fmt <- as.character(.$fmt)
