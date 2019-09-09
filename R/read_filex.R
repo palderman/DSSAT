@@ -10,6 +10,12 @@
 
 read_filex <- function(file_name,col_types=NULL,col_names=NULL){
 
+  col_types <- es <- cols(DATE=col_character(),
+                          SNAME=col_character(),
+                          FMOPT=col_character(),
+                          EVAPO=col_character()) %>%
+    {.$cols <- c(.$cols,col_types$cols);.}
+
   left_justified <- c('SITE','PEOPLE','ADDRESS','METHODS','INSTRUMENTS',
                       'PROBLEMS','PUBLICATIONS','DISTRIBUTION','NOTES',
                       'TNAME','FLNAME','ID_SOIL','CNAME','WSTA','SLTX',
@@ -27,6 +33,9 @@ read_filex <- function(file_name,col_types=NULL,col_names=NULL){
     str_remove('^\\*EXP\\.DETAILS: ')
 
   raw_lines <- str_subset(raw_lines,'^(?!\\*EXP\\.DETAILS: )')
+
+  # Remove AUTOMATIC MANAGEMENT header
+  raw_lines <- str_subset(raw_lines,'^(?!@ *AUTOMATIC MANAGEMENT)')
 
   # Find section boundaries
   sec_begin <- str_which(raw_lines,'^\\*')
@@ -46,10 +55,13 @@ read_filex <- function(file_name,col_types=NULL,col_names=NULL){
   all_secs <- map(1:length(sec_begin),
                    ~read_tier_data(raw_lines[sec_begin[.]:sec_end[.]],
                                    left_justified = left_justified,
+                                   col_types = col_types,
                                    join_tiers = FALSE))
 
   names(all_secs) <- sec_names
 
+  all_secs$`SIMULATION CONTROLS` <- all_secs$`SIMULATION CONTROLS` %>%
+    combine_simulation_controls()
   # If new DSSAT format add GENERAL section as attribute and return DAILY DATA
   # if('GENERAL' %in% sec_names){
   #   attr(all_secs$`DAILY DATA`[[1]],'GENERAL') <- all_secs$GENERAL

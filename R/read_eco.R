@@ -33,7 +33,7 @@ read_eco <- function(file_name,col_types=NULL,col_names=NULL,
     eco_col_types$cols <- c(eco_col_types$cols,col_types$cols)
   }
 
-  eco <- read_dssat(file_name,cul_col_types,col_names,
+  eco <- read_dssat(file_name,eco_col_types,col_names,
                      left_justified,guess_max=Inf)
 
   return(eco)

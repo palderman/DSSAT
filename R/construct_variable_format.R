@@ -1,10 +1,12 @@
 construct_variable_format <- function(tier_data,fwf_pos,left_justified){
   # Determine width, justification, and data type for variable format
+  fwf_pos[1,'begin'] <- max(fwf_pos[1,'begin'] - 1, 0)
   w_j_t <- fwf_pos %>%
     bind_rows() %>%
     mutate(width = end - begin,
            just = ifelse(col_names%in%left_justified,'-',''),
-           type = {tier_data %>% summarize_all(class) %>% t()})
+           type = {tier_data %>% summarize_all(class) %>% t()}) %>%
+    mutate(width = replace_na(width,''))
 
   # Estimate significant digits
   digits <- tier_data %>%
@@ -31,7 +33,8 @@ construct_variable_format <- function(tier_data,fwf_pos,left_justified){
     left_join(w_j_t) %>%
     mutate(type=str_replace_all(type,c(numeric='f',
                                        integer='f',
-                                       character='s'))) %>%
+                                       character='s',
+                                       logical='s'))) %>%
     mutate(.,fmt=glue_data(.,'%{width}{just}{digits}{type}')) %>%
     select(col_names,fmt) %>%
     {fmt <- as.character(.$fmt)

@@ -1,5 +1,7 @@
 guess_significant_digits <- function(variable,width){
-    if(is.numeric(variable)){
+    if(is.numeric(variable)&&
+       !all(is.na(variable))&&
+       !is.character(width)){
       sig_dig <- head(variable,100) %>%
         map_dbl(function(v){
           sig <- round(v,0:width) %>%

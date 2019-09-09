@@ -41,4 +41,3 @@ read_filet <- function(file_name,col_types=NULL,col_names=NULL){
 
   return(filet)
 }
-read_filea <- read_filet
