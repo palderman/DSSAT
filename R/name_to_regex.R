@@ -19,7 +19,8 @@ name_to_regex <- function(cnames){
   regex <- str_replace_all(cnames,c('\\('='\\\\(',
                                     '\\)'='\\\\)',
                                     '\\*'='\\\\*',
-                                    '\\.'='\\\\.')) %>%
+                                    '\\.'='\\\\.',
+                                    '\\?'='\\\\?')) %>%
     str_c('\\.*',.,'\\.*')
   return(regex)
 
