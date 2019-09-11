@@ -27,7 +27,13 @@ combine_tiers <- function(tier1,tier2){
   }else{
     # In this case the tiers do not have the same column names and must be
     # merged with a join operation
-    new_tier <- full_join(tier1,tier2)
+    by_col_1 <- tier1 %>%
+      select_if(function(cl)!is.list(cl)) %>%
+      colnames()
+    by_col_2 <- tier2 %>%
+      select_if(function(cl)!is.list(cl)) %>%
+      colnames()
+    new_tier <- full_join(tier1,tier2,by=intersect(by_col_1,by_col_2))
   }
 
   tier1_attr <- attributes(tier1)

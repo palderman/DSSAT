@@ -33,8 +33,12 @@ read_eco <- function(file_name,col_types=NULL,col_names=NULL,
     eco_col_types$cols <- c(eco_col_types$cols,col_types$cols)
   }
 
-  eco <- read_dssat(file_name,eco_col_types,col_names,
+  if(str_detect(file_name,'SCCSP')){
+    eco <- read_casupro_eco(file_name)
+  }else{
+    eco <- read_dssat(file_name,eco_col_types,col_names,
                      left_justified,guess_max=Inf)
+  }
 
   return(eco)
 }
