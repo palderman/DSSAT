@@ -3,10 +3,11 @@ construct_variable_format <- function(tier_data,fwf_pos,left_justified){
   fwf_pos[1,'begin'] <- max(fwf_pos[1,'begin'] - 1, 0)
   w_j_t <- fwf_pos %>%
     bind_rows() %>%
-    mutate(col_names = str_replace_all(col_names,' ',''),
-           width = end - begin,
+    mutate(col_names = str_replace_all(col_names,' ','')) %>%
+    filter(!duplicated(col_names) & !str_detect(col_names,'-99')) %>%
+    mutate(width = end - begin,
            just = ifelse(col_names%in%left_justified,'-',''),
-           type = {tier_data %>% summarize_all(~{head(class(.),1)}) %>% t()})
+           type = {tier_data %>% select(-contains('-99')) %>% summarize_all(~{head(class(.),1)}) %>% t()})
 
   # Estimate significant digits
   digits <- tier_data %>%

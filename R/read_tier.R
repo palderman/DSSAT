@@ -3,6 +3,8 @@
 #'
 #' @export
 #'
+#' @inheritParams read_tier_data
+#'
 #' @param raw_lines a character vector that includes the contents
 #' of a single tier of data (including headline, but excluding version
 #'  stamp and other header information) from a DSSAT output file
@@ -32,7 +34,7 @@
 #'
 #' read_tier(sample_tier)
 
-read_tier <- function(raw_lines,col_types=NULL,col_names=NULL,
+read_tier <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NULL,
                       left_justified='EXCODE',guess_max=1000){
 
   # Extract header information
@@ -44,7 +46,8 @@ read_tier <- function(raw_lines,col_types=NULL,col_names=NULL,
   tier_data <- read_tier_data(raw_lines,
                               col_types=col_types,
                               col_names=col_names,
-                              left_justified=left_justified)
+                              left_justified=left_justified,
+                              na_strings = na_strings)
 
   # Combine header information and data
   if(length(header_info$runno)>0){

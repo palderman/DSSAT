@@ -6,7 +6,7 @@
 output file}
 \usage{
 read_tier(raw_lines, col_types = NULL, col_names = NULL,
-  left_justified = "EXCODE", guess_max = 1000)
+  na_strings = NULL, left_justified = "EXCODE", guess_max = 1000)
 }
 \arguments{
 \item{raw_lines}{a character vector that includes the contents
@@ -20,6 +20,8 @@ more details.}
 \item{col_names}{A character vector of column names; primarily
 helpful for cases where there are no white spaces between column
 names within the header line}
+
+\item{na_strings}{a character vector of string to represent missing values}
 
 \item{left_justified}{A character vector of column names that
 should be left justified}

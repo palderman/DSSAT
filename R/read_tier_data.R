@@ -6,6 +6,8 @@
 #'
 #' @inheritParams read_tier
 #'
+#' @param na_strings a character vector of string to represent missing values
+#'
 #' @param join_tiers A logical indicating whether the multiple tiers should be
 #' combined into a single tibble
 #'
@@ -21,15 +23,20 @@
 #'
 #' read_tier_data(sample_tier)
 
-read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,
+read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NULL,
                            left_justified='EXCODE',guess_max=1000,join_tiers=TRUE){
 
   # Find header line
   skip <- str_which(raw_lines,'^@')
   headline <- raw_lines[skip]
 
+  raw_lines <- raw_lines %>%
+    str_replace_all(c('\\cz'='','^ +$'=''))
+
+#  if(!'DATE'%in%{col_types$cols %>% str_replace_all(c(' '=''))})
   col_types <- cols(DATE=col_character()) %>%
-    {.$cols <- c(.$cols,col_types$cols);.}
+    {.$cols <- c(.$cols,col_types$cols)
+   .}
 
   # Process header into fixed-width format positions
   fwf_pos <- map(headline,
@@ -42,6 +49,17 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,
   if(!is.null(col_types)){
     col_types <- map(1:length(skip),~check_col_types(col_types,fwf_pos[[.]]$col_names))
   }
+
+  col_types <- col_types %>%
+    map(function(ct){
+      new_ct <- cols(.default=col_double()) %>%
+        {.$cols <- c(ct$cols,.$cols)
+        .}
+      return(new_ct)
+    })
+
+  na_strings <- c(na_strings,'-99','-99.','-99.0','-99.00','-99.000',
+                  '*','**','***','****','*****','******','*******','********')
 
   # Read data from tier
   tier_data <- map(1:length(skip),function(i){
@@ -56,8 +74,7 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,
                             fwf_pos[[i]],
                             comment = '!',
                             skip = 1,
-                              na = c('-99','-99.','-99.0','-99.00','-99.000',
-                                   '*','**','***','****','*****','******','*******','********'),
+                              na = na_strings,
                             skip_empty_rows = TRUE,
                             guess_max = guess_max,
                             col_types=col_types[[i]])
@@ -104,7 +121,7 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,
       reduce(combine_tiers)
 
     fwf_pos <- fwf_pos %>%
-      bind_rows()
+      reduce(full_join)
 
     attr(tier_data,'tier_info') <- tier_info
 

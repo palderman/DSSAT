@@ -4,7 +4,8 @@
 \alias{read_filea}
 \title{Reads data from a single DSSAT file A}
 \usage{
-read_filea(file_name, col_types = NULL, col_names = NULL)
+read_filea(file_name, col_types = NULL, col_names = NULL,
+  na_strings = NULL)
 }
 \arguments{
 \item{file_name}{a character vector of length one that contains the name
@@ -17,6 +18,8 @@ more details.}
 \item{col_names}{A character vector of column names; primarily
 helpful for cases where there are no white spaces between column
 names within the header line}
+
+\item{na_strings}{a character vector of string to represent missing values}
 }
 \value{
 a tibble containing the data from the raw DSSAT file

@@ -2,6 +2,8 @@
 #'
 #' @export read_filet
 #'
+#' @inheritParams read_tier_data
+#'
 #' @inheritParams read_dssat
 #'
 #' @return a tibble containing the data from the raw DSSAT file
@@ -21,7 +23,7 @@
 #'
 #' read_filet('SAMPLE.CRT')
 
-read_filet <- function(file_name,col_types=NULL,col_names=NULL){
+read_filet <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
 
   raw_lines <- readLines(file_name)
 
@@ -32,9 +34,14 @@ read_filet <- function(file_name,col_types=NULL,col_names=NULL){
   comments <- raw_lines %>%
     str_subset('^!')
 
+  col_types <- cols(` TRNO `=col_double()) %>%
+  {.$cols <- c(.$cols,col_types$cols);.}
+
+
   filet <- read_tier(raw_lines = raw_lines,
-                      col_types = col_types,
-                      col_names = c(col_names,' TRNO '))
+                     col_types = col_types,
+                     col_names = c(col_names,' TRNO '),
+                     na_strings=na_strings)
 
   attr(filet,'experiment') <- experiment
   attr(filet,'comments') <- comments

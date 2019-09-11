@@ -8,12 +8,12 @@
 #'
 #'
 
-read_filex <- function(file_name,col_types=NULL,col_names=NULL){
+read_filex <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
 
-  col_types <- es <- cols(DATE=col_character(),
-                          SNAME=col_character(),
-                          FMOPT=col_character(),
-                          EVAPO=col_character()) %>%
+  col_types <- cols(DATE=col_character(),
+                    SNAME=col_character(),
+                    FMOPT=col_character(),
+                    EVAPO=col_character()) %>%
     {.$cols <- c(.$cols,col_types$cols);.}
 
   left_justified <- c('SITE','PEOPLE','ADDRESS','METHODS','INSTRUMENTS',
@@ -56,6 +56,7 @@ read_filex <- function(file_name,col_types=NULL,col_names=NULL){
                    ~read_tier_data(raw_lines[sec_begin[.]:sec_end[.]],
                                    left_justified = left_justified,
                                    col_types = col_types,
+                                   na_strings = na_strings,
                                    join_tiers = FALSE))
 
   names(all_secs) <- sec_names
