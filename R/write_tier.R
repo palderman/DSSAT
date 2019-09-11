@@ -55,9 +55,32 @@ write_tier <- function(tier_data){
 
       tier_output <- tier_data %>%
         select(tier_names) %>%
+        filter_at(vars(-TRNO,-DATE),any_vars(!is.na(.))) %>%
         as.list() %>%
         list(v_format,.) %>%
-        pmap(sprintf) %>%
+        pmap(function(fmt,vr_val){
+          width <- fmt %>%
+            str_extract('(?<=%)[0-9]+') %>%
+            as.numeric()
+          if('POSIXt'%in%class(vr_val)){
+            if(width<7){
+              vr_val <- format(vr_val,'%y%j')
+            }else{
+              vr_val <- format(vr_val,'%Y%j')
+            }
+          }
+         # In future, throw error if value is too large to fit within column width?
+         # else if(is.numeric(vr_val)){
+         #  if(any(vr_val >= 10^width-0.5)) stop()
+         # }
+          vr_out <- sprintf(fmt,vr_val)
+          if(any(nchar(vr_out)>width)){
+            vr_out <- vr_out %>%
+              str_sub(end=width)
+            warning('Some columns trimmed to fit specified column width.')
+          }
+          return(vr_out)
+        }) %>%
         do.call(paste0,.) %>%
         str_replace_all(c(' NA'='-99')) %>%
         c(header_output,.)
