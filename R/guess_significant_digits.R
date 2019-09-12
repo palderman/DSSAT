@@ -1,4 +1,5 @@
 guess_significant_digits <- function(variable,width){
+    if(is.list(variable)) variable <- unlist(variable)
     if(is.numeric(variable)&&
        !all(is.na(variable))&&
        !is.character(width)){

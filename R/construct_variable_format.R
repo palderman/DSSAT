@@ -7,7 +7,10 @@ construct_variable_format <- function(tier_data,fwf_pos,left_justified){
     filter(!duplicated(col_names) & !str_detect(col_names,'-99')) %>%
     mutate(width = end - begin,
            just = ifelse(col_names%in%left_justified,'-',''),
-           type = {tier_data %>% select(-contains('-99')) %>% summarize_all(~{head(class(.),1)}) %>% t()})
+           type = {tier_data %>%
+                   select(-contains('-99')) %>%
+                   summarize_all(~{unlist(.) %>% class() %>% head(1)}) %>%
+                   t()})
 
   # Estimate significant digits
   digits <- tier_data %>%
