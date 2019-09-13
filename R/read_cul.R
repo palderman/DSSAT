@@ -22,18 +22,62 @@
 #' read_cul('SAMPLE.CUL')
 
 read_cul <- function(file_name,col_types=NULL,col_names=NULL,
-                     left_justified=c('VAR#','VARNAME','VAR-NAME')){
+                     left_justified=c('VAR#','VARNAME\\.*','VAR-NAME\\.*','VRNAME\\.*')){
 
   cul_col_types <- cols(`VAR#`=col_character(),
-                        `VARNAME`=col_character(),
-                        `VAR-NAME`=col_character())
+                        `VARNAME\\.*`=col_character(),
+                        `VAR-NAME\\.*`=col_character(),
+                        `VRNAME\\.*`=col_character(),
+                        ` *ECO#`=col_character(),
+                        `EXPNO`=col_character(),
+                        `EXP#`=col_character())
 
-  if(!is.null(col_types)){
-    cul_col_types$cols <- c(cul_col_types$cols,col_types$cols)
+  if(str_detect(file_name,'SCCSP')){
+    col_names <- col_names %>%
+      c(.,'Stalk','Sucro','Null1',
+          'TB(1)','TO1(1)','TO2(1)',
+          'TB(2)','TO1(2)','TO2(2)',
+          'StHrv','RTNFAC','Null7',
+          'RES30C','RLF30C') %>%
+      unique()
   }
 
-  cul <- read_dssat(file_name,cul_col_types,col_names,
-                     left_justified,guess_max=Inf)
+  if(!is.null(col_types)){
+    col_types$cols <- c(cul_col_types$cols,col_types$cols)
+  }else{
+    col_types <- cul_col_types
+  }
+
+  # Read in raw data from file
+  raw_lines <- readLines(file_name)
+
+  first_line <- raw_lines %>%
+    head(1)
+
+  comments <- raw_lines %>%
+    str_subset('^!')
+
+  raw_lines <- raw_lines %>%
+    str_subset('^(?!\032) *([^ ]+)') %>%  # exclude lines that are all spaces or lines with EOF in initial position
+    {.[!str_detect(.,'^(!|\\*|$)')]}
+
+  begin <- raw_lines %>%
+    str_which('^@')
+
+  end <- begin %>%
+    tail(-1) %>%
+    {. - 1} %>%
+    c(.,length(raw_lines))
+
+  cul <- map(1:length(begin),
+             ~read_tier_data(raw_lines[begin[.]:end[.]],
+                        col_types = cul_col_types,
+                        col_names = col_names,
+                        left_justified = left_justified)) %>%
+    reduce(combine_tiers)
+
+  attr(cul,'first_line') <- first_line
+  attr(cul,'comments') <- comments
 
   return(cul)
 }

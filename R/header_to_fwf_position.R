@@ -58,43 +58,37 @@ header_to_fwf_position <- function(header,left_justified='EXCODE',
 
   # Infer column positions based on header
   cnames_regex <- name_to_regex(cnames) %>%
-    {str_c(' *',.,'((?= )|(?=$))')}
+    map_chr(function(name){
+      if(any(str_detect(left_justified,name))){
+        regex <- str_c(name,' *')
+      }else if(!any(str_detect(col_names,name))){
+        regex <- str_c(' *',name,'((?= )|(?=$))')
+      }else{
+        regex <- name
+      }
+      return(regex)
+    })
 
-  start_end <- matrix(nrow=length(cnames_regex),ncol=2)
-  tmp_header <- header
-  for(i in 1:length(cnames_regex)){
-    start_end[i,] <- str_locate(tmp_header,cnames_regex[i])
-    if(i>1) start_end[i,] <- start_end[i,] + start_end[i-1,2]
-    tmp_header <- str_remove(tmp_header,cnames_regex[i])
-  }
+  start_end <- str_locate(header,cnames_regex)
+
+  # Reconcile gaps/overlaps in column bounds
+  start_end <- reconcile_gaps(start_end,cnames,left_justified)
 
   # Check column positions for left justified cases
-  if(!is.null(left_justified)&&
-     any(left_justified%in%cnames)){
-    for(ljc in left_justified){
-      st <- str_which(cnames,paste0('^',ljc,'$'))
-      if(length(st)>0){
-        start_end[st,] <- name_to_regex(ljc) %>%
-          str_c(' *') %>%
-          str_locate(header,.)
-        if(st==1) start_end[st,1] <- 1
-        if(st==length(cnames)) start_end[st,2] <- NA
-        if(st > 1 &&
-           !cnames[st-1]%in%left_justified){
-          start_end[st-1,] <- name_to_regex(cnames[st-1]) %>%
-            str_locate(header,.)
-        }
-        if(st<length(cnames) &&
-           !cnames[st+1]%in%left_justified){
-          start_end[st+1,] <- name_to_regex(cnames[st+1]) %>%
-            str_locate(header,.)
-        }
-      }
-    }
+  left_justified <- intersect(left_justified,cnames)
+  for(ljc in left_justified){
+    st <- {cnames == ljc} %>%
+      which()
+    # Set start of first column to 1
+    if(st==1) start_end[st,1] <- 1
+    # Set end of last column to NA (i.e. unbounded)
+    if(st == length(cnames)) start_end[st,2] <- NA
   }
 
   # Convert column positions to fixed widths for use with read_fwf()
-  fwf_pos <- fwf_positions(start=start_end[,1],end=start_end[,2],col_names=cnames)
+  fwf_pos <- cnames %>%
+    str_replace_all(c(' '='','\\.'='','\\*'='','\\\\'='','\\+'='')) %>%
+    fwf_positions(start=start_end[,1],end=start_end[,2],col_names=.)
 
   return(fwf_pos)
 }

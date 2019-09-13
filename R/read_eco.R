@@ -23,11 +23,20 @@
 #' read_eco('SAMPLE.ECO')
 
 read_eco <- function(file_name,col_types=NULL,col_names=NULL,
-                     left_justified=c('ECO#','ECONAME','ECO-NAME')){
+                     left_justified=c('ECO   ','ECO#','ECONAME\\.*','ECO-NAME\\.*')){
 
-  eco_col_types <- cols(`ECO#`=col_character(),
-                        `ECONAME`=col_character(),
-                        `ECO-NAME`=col_character())
+  if(str_detect(basename(file_name),'^((BA)|(WH))CER')){
+    col_names <- col_names %>%
+      c(.,'    P1')
+  }else if(str_detect(basename(file_name),'^((BA)|(WH))CER')){
+    col_names <- col_names %>%
+      c(.,'ECO   ')
+  }
+  eco_col_types <- cols(`ECO   `=col_character(),
+                        `ECO#`=col_character(),
+                        `ECONAME\\.*`=col_character(),
+                        `ECO-NAME\\.*`=col_character())
+
 
   if(!is.null(col_types)){
     eco_col_types$cols <- c(eco_col_types$cols,col_types$cols)
@@ -39,6 +48,11 @@ read_eco <- function(file_name,col_types=NULL,col_names=NULL,
     eco <- read_dssat(file_name,eco_col_types,col_names,
                      left_justified,guess_max=Inf)
   }
+
+  # if(str_detect(basename(file_name),'^BSCER')){
+  #   colnames(eco) <- colnames(eco) %>%
+  #     str_replace('ECO\\(\\?\\!NAME\\)','ECO')
+  # }
 
   return(eco)
 }

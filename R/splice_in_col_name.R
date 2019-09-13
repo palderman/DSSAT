@@ -27,8 +27,7 @@
 splice_in_col_name <- function(col_names,new_name){
 
   # Convert new_name to regex
-  new_name_regex <- name_to_regex(new_name) %>%
-    str_c('((?<=^)|(?<= ))',.,'((?=$)|(?= ))')
+  new_name_regex <- name_to_regex(new_name)
 
   # Check if new_name is in col_names
   if(any(str_detect(col_names,new_name_regex))){
