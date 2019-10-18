@@ -42,4 +42,3 @@ write(sample_filet,'SAMPLE.CRT')
 
 read_filet('SAMPLE.CRT')
 }
-

@@ -22,4 +22,3 @@ name_to_regex("TB(1)")
 
 }
 \keyword{internal}
-

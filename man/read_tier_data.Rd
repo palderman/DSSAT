@@ -49,4 +49,3 @@ sample_data_tier <- c(
 read_tier_data(sample_tier)
 }
 \keyword{internal}
-

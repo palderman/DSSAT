@@ -28,7 +28,7 @@ read_cul <- function(file_name,col_types=NULL,col_names=NULL,
                         `VARNAME\\.*`=col_character(),
                         `VAR-NAME\\.*`=col_character(),
                         `VRNAME\\.*`=col_character(),
-                        ` *ECO#`=col_character(),
+                        `  ECO#`=col_character(),
                         `EXPNO`=col_character(),
                         `EXP#`=col_character())
 
@@ -37,6 +37,7 @@ read_cul <- function(file_name,col_types=NULL,col_names=NULL,
       c(.,'Stalk','Sucro','Null1',
           'TB(1)','TO1(1)','TO2(1)',
           'TB(2)','TO1(2)','TO2(2)',
+          ' *TM(1)',' *TM(2)',
           'StHrv','RTNFAC','Null7',
           'RES30C','RLF30C') %>%
       unique()

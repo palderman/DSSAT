@@ -27,7 +27,7 @@
 #'
 #' write_filea(filea,'SAMPLE2.CRA')
 
-write_filea <- function(filea,file_name){
+write_filea <- function(filea,file_name,drop_duplicate_rows=TRUE){
 
   experiment <- attr(filea,'experiment') %>%
     c('*EXP. DATA (A): ',.) %>%
@@ -35,7 +35,7 @@ write_filea <- function(filea,file_name){
 
   comments <- attr(filea,'comments')
 
-  tier_output <- write_tier(filea) %>%
+  tier_output <- write_tier(filea,drop_duplicate_rows = drop_duplicate_rows) %>%
     c(experiment,'',comments,.)
 
   write(tier_output,file_name)

@@ -22,4 +22,3 @@ write_dssbatch(filex='UFGA0601.BMX',trtno=1:4)
 
 read_dssbatch()
 }
-

@@ -51,4 +51,3 @@ write(sample_output,'SAMPLE.OUT')
 
 read_output('SAMPLE.OUT')
 }
-

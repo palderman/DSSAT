@@ -34,7 +34,7 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
     str_replace_all(c('\\cz'='','^ +$'=''))
 
 #  if(!'DATE'%in%{col_types$cols %>% str_replace_all(c(' '=''))})
-  col_types <- cols(DATE=col_character()) %>%
+  col_types <- cols(` DATE`=col_character()) %>%
     {.$cols <- c(.$cols,col_types$cols)
    .}
 
@@ -50,14 +50,6 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
     col_types <- map(1:length(skip),~check_col_types(col_types,fwf_pos[[.]]$col_names))
   }
 
-  col_types <- col_types %>%
-    map(function(ct){
-      new_ct <- cols(.default=col_double()) %>%
-        {.$cols <- c(ct$cols,.$cols)
-        .}
-      return(new_ct)
-    })
-
   na_strings <- c(na_strings,'-99','-99.','-99.0','-99.00','-99.000',
                   '*','**','***','****','*****','******','*******','********')
 
@@ -70,9 +62,14 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
             as_tibble()
           # colnames(tdata) <- fwf_pos[[i]]$col_names
         }else{
+          if(any(str_detect(fwf_pos[[i]]$col_names,'NOTES'))){
+            cmnt <- ''
+          }else{
+            cmnt <- '!'
+          }
           tdata <- read_fwf(raw_lines[skip[i]:end[i]],
                             fwf_pos[[i]],
-                            comment = '!',
+                            comment = cmnt,
                             skip = 1,
                               na = na_strings,
                             skip_empty_rows = TRUE,
@@ -96,20 +93,16 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
           select(-YEAR,-DOY)
       }
       # Convert DATE column if DATE is not already POSIXct
-      convert_date <- colnames(one_df) %>%
-        {'DATE' %in% .} %>%
-        {. && ! 'POSIXct' %in% class(one_df)}
-      if(convert_date){
-        if(nchar(one_df$DATE[1]) < 7){
-          one_df <- one_df %>%
-            mutate(DATE=as.POSIXct(DATE,format='%y%j'))
-        }else{
-          one_df <- one_df %>%
-            mutate(DATE=as.POSIXct(DATE,format='%Y%j'))
-        }
-      }
+      date_cols <- colnames(one_df) %>%
+        str_subset('(DATE)|(AT$)') %>%
+        { .[! . %in% {map(col_types,~names(.$cols)) %>% unlist()}]}
+      one_df <- one_df %>%
+        mutate_at(.,date_cols,~convert_to_date(.))
       return(one_df)
-    })
+    }) %>%
+    map(~mutate_if(.,
+                   .predicate = ~{all(is.na(.)) && is.logical(.)},
+                   .funs = ~as.numeric(.)))
 
   if(join_tiers&&
      !is.data.frame(tier_data)&&
@@ -121,7 +114,7 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
       reduce(combine_tiers)
 
     fwf_pos <- fwf_pos %>%
-      reduce(full_join)
+      reduce(full_join,by=c('begin','end','col_names'))
 
     attr(tier_data,'tier_info') <- tier_info
 

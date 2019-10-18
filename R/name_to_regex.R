@@ -16,11 +16,10 @@
 
 name_to_regex <- function(cnames){
 
-  regex <- str_replace_all(cnames,c('\\('='\\\\(',
-                                    '\\)'='\\\\)',
+  regex <- str_replace_all(cnames,c('\\(([^\\?]+)\\)'='\\\\(\\1\\\\)',
                                     # '\\*'='\\\\*',
                                     # '\\.'='\\\\.',
-                                    '\\?'='\\\\?'))
+                                    '\\?(?![\\=\\!<])'='\\\\?'))
   return(regex)
 
 }

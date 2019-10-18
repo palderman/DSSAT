@@ -43,4 +43,3 @@ write(sample_filea,'SAMPLE.CRA')
 
 read_filea('SAMPLE.CRA')
 }
-

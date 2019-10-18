@@ -10,9 +10,6 @@
 #'
 #' @param trtno,rp,sq,op,co a numeric vector
 #'
-#' @param version a length-one character vector containing the
-#' three-digit code for the intended DSSAT version (e.g. `V47`)
-#'
 #' @param file_name an optional character vector of the intended
 #' batch file name
 #'
@@ -34,7 +31,12 @@
 #'
 
 write_dssbatch <- function(batch_tbl=NULL,filex='',trtno=1,rp=1,sq=0,op=0,co=0,
-                           version='V47',filename=str_c('DSSBatch.',version)){
+                           file_name=NULL){
+
+  if(is.null(file_name)){
+    version <- get_dssat_version()
+    file_name <- str_c('DSSBatch.V',version)
+  }
 
   header <- c('%-92s',rep('%7s',5)) %>%
     # Write individual column headers

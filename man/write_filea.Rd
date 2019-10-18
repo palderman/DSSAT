@@ -4,7 +4,7 @@
 \alias{write_filea}
 \title{Writes data to a single DSSAT file A}
 \usage{
-write_filea(filea, file_name)
+write_filea(filea, file_name, drop_duplicate_rows = TRUE)
 }
 \arguments{
 \item{filea}{a tibble containing the data to write to a DSSAT file A}
@@ -33,4 +33,3 @@ filea <- read_filea('SAMPLE.CRA')
 
 write_filea(filea,'SAMPLE2.CRA')
 }
-

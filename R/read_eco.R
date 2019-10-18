@@ -42,17 +42,41 @@ read_eco <- function(file_name,col_types=NULL,col_names=NULL,
     eco_col_types$cols <- c(eco_col_types$cols,col_types$cols)
   }
 
+
+  # Read in raw data from file
+  raw_lines <- readLines(file_name)
+
+  first_line <- raw_lines %>%
+    head(1)
+
+  comments <- raw_lines %>%
+    str_subset('^!')
+
+  raw_lines <- raw_lines %>%
+    str_subset('^(?!\032) *([^ ]+)') %>%  # exclude lines that are all spaces or lines with EOF in initial position
+    {.[!str_detect(.,'^(!|\\*|$)')]}
+
+  begin <- raw_lines %>%
+    str_which('^@')
+
+  end <- begin %>%
+    tail(-1) %>%
+    {. - 1} %>%
+    c(.,length(raw_lines))
+
   if(str_detect(file_name,'SCCSP')){
-    eco <- read_casupro_eco(file_name)
+    eco <- read_casupro_eco(raw_lines)
   }else{
-    eco <- read_dssat(file_name,eco_col_types,col_names,
-                     left_justified,guess_max=Inf)
+    eco <- map(1:length(begin),
+               ~read_tier_data(raw_lines[begin[.]:end[.]],
+                               col_types = eco_col_types,
+                               col_names = col_names,
+                               left_justified = left_justified)) %>%
+      reduce(combine_tiers)
   }
 
-  # if(str_detect(basename(file_name),'^BSCER')){
-  #   colnames(eco) <- colnames(eco) %>%
-  #     str_replace('ECO\\(\\?\\!NAME\\)','ECO')
-  # }
+  attr(eco,'first_line') <- first_line
+  attr(eco,'comments') <- comments
 
   return(eco)
 }

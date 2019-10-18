@@ -4,10 +4,16 @@
 \alias{write_tier}
 \title{Writes data from a single DSSAT data tier}
 \usage{
-write_tier(tier_data)
+write_tier(tier_data, pad_name = NULL, drop_duplicate_rows = FALSE,
+  drop_na_rows = TRUE)
 }
 \arguments{
 \item{tier_data}{a tibble containing the data to write out}
+
+\item{pad_name}{a character vector of column names for which to add leading spaces/trailing periods}
+
+\item{drop_duplicate_rows}{a logical value indicating whether duplicate rows
+should be dropped from tier_data}
 }
 \value{
 a character vector
@@ -23,4 +29,3 @@ tier_data <- add_v_fmt(tier_data,v_fmt=c(TRNO='\%6.0f', HWAM='\%6.0f'))
 
 write_tier(tier_data)
 }
-

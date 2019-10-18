@@ -5,8 +5,7 @@
 \title{Constructs and writes a DSSAT simulation batch file}
 \usage{
 write_dssbatch(batch_tbl = NULL, filex = "", trtno = 1, rp = 1,
-  sq = 0, op = 0, co = 0, version = "V47",
-  filename = str_c("DSSBatch.", version))
+  sq = 0, op = 0, co = 0, file_name = NULL)
 }
 \arguments{
 \item{batch_tbl}{a data frame or tibble that contains all
@@ -16,9 +15,6 @@ SQ, OP, CO)}
 \item{filex}{a character vector}
 
 \item{trtno, rp, sq, op, co}{a numeric vector}
-
-\item{version}{a length-one character vector containing the
-three-digit code for the intended DSSAT version (e.g. `V47`)}
 
 \item{file_name}{an optional character vector of the intended
 batch file name}
@@ -44,4 +40,3 @@ batch_tbl <- tibble(FILEX='UFGA0601.BMX',
 write_dssbatch(batch_tbl)
 
 }
-

@@ -70,4 +70,3 @@ write(sample_output,'SAMPLE.OUT')
 
 read_dssat('SAMPLE.OUT')
 }
-

@@ -19,4 +19,3 @@ a tibble containing the data from the raw DSSAT file
 Adds width as a attribute to each column from a list of tibbles
 }
 \keyword{internal}
-

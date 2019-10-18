@@ -44,4 +44,3 @@ write(sample_cul,'SAMPLE.CUL')
 
 read_cul('SAMPLE.CUL')
 }
-

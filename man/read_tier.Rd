@@ -57,4 +57,3 @@ sample_data_tier <- c(
 
 read_tier(sample_tier)
 }
-

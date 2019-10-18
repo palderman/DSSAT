@@ -4,11 +4,7 @@
 \alias{read_casupro_eco}
 \title{Reads parameters from a single DSSAT CASUPRO ecotype parameter file (*.ECO)}
 \usage{
-read_casupro_eco(file_name)
-}
-\arguments{
-\item{file_name}{a character vector of length one that contains the name
-of a single DSSAT output file}
+read_casupro_eco(raw_lines)
 }
 \value{
 a tibble containing the data from the raw DSSAT file
@@ -36,4 +32,3 @@ write(sample_eco,'SAMPLE.ECO')
 read_casupro_eco('SAMPLE.ECO')
 }
 \keyword{internal}
-

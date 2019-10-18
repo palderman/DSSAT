@@ -38,4 +38,3 @@ eco <- read_eco('SAMPLE.ECO')
 eco <- add_v_fmt(eco,v_fmt=c(TSEN='\%6.1f',CDAY='\%6.1f'))
 
 }
-

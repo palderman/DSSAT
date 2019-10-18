@@ -27,9 +27,7 @@
 #'
 #' read_casupro_eco('SAMPLE.ECO')
 
-read_casupro_eco <- function(file_name){
-
-  raw_lines <- readLines(file_name)
+read_casupro_eco <- function(raw_lines){
 
   begin <- raw_lines %>%
     str_which('^[^ *!]')
@@ -55,8 +53,14 @@ read_casupro_eco <- function(file_name){
         select(`ECO#`,ECONAME,everything())
 
       return(prms)
-    }) %>%
-    reduce(combine_tiers)
+    })
+   v_fmt <- map(eco,~attr(.,'v_fmt'))
+   # %>%
+  #   map(~matrix(.,nrow=1,byrow=TRUE)) %>%
+  #   map(~as_tibble(.)) %>%
+  #   bind_rows()
+  eco <- bind_rows(eco)
+  attr(eco,'v_fmt') <- v_fmt
 
   return(eco)
 }

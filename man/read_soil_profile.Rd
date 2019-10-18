@@ -41,4 +41,3 @@ sample_sol <- c(
 read_soil_profile(sample_sol)
 
 }
-

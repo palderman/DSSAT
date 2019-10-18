@@ -4,7 +4,8 @@
 \alias{read_sol}
 \title{Reads soil parameters from a single DSSAT soil parameter file (*.SOL)}
 \usage{
-read_sol(file_name, col_types = NULL, col_names = NULL, id_soil = NULL)
+read_sol(file_name, col_types = NULL, col_names = NULL,
+  id_soil = NULL)
 }
 \arguments{
 \item{file_name}{a character vector of length one that contains the name
@@ -50,4 +51,3 @@ write(sample_sol,'SOIL.SOL')
 
 read_sol('SOIL.SOL')
 }
-

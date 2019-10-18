@@ -42,4 +42,3 @@ write(sample_wth,'EXAMPLE.WTH')
 
 read_wth('EXAMPLE.WTH')
 }
-

@@ -2,17 +2,24 @@ guess_significant_digits <- function(variable,width){
     if(is.list(variable)) variable <- unlist(variable)
     if(is.numeric(variable)&&
        !all(is.na(variable))&&
-       !is.character(width)){
-      sig_dig <- head(variable,100) %>%
+       !is.character(width)&&
+       !all(is.na(width))){
+      sig_dig <- variable %>%
+        {.[!is.na(.)]} %>%
         map_dbl(function(v){
-          sig <- round(v,0:(width-1)) %>%
-            {diff(.) == 0} %>%
-            which() %>%
-            first()
+          ne_0 <- round(v,0:(width-1)) %>%
+            {diff(.) != 0}
+          if(!any(ne_0)){
+            sig <- 0
+          }else{
+            sig <- ne_0 %>%
+              which() %>%
+              max(na.rm=TRUE)
+          }
           return(sig)
         }) %>%
-        {max(.,na.rm=TRUE) - 1} %>%
-        paste0('.',.)
+        max(na.rm=TRUE) %>%
+        str_c('.',.)
     }else{
       sig_dig <- ''
     }

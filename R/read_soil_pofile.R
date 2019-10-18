@@ -67,9 +67,10 @@ read_soil_profile <- function(raw_lines){
   tier_data <- map(1:length(tier_begin),
                    ~read_tier_data(raw_lines[tier_begin[.]:tier_end[.]],
                                    left_justified = c('SITE',
-                                                      'SCS FAMILY')))
-  # %>%
-  #   {c(list(tier_1),.)}
+                                                      'SCS FAMILY'),
+                                   col_types = cols(LAT=col_double(),
+                                                    SSAT=col_double())))
   attr(tier_data,'gen_info') <- gen_info
+
   return(tier_data)
 }

@@ -26,7 +26,7 @@
 #'
 #' write_filet(filet,'SAMPLE2.CRT')
 
-write_filet <- function(filet,file_name){
+write_filet <- function(filet,file_name,drop_duplicate_rows=TRUE){
 
   experiment <- attr(filet,'experiment') %>%
     c('*EXP. DATA (T): ',.) %>%
@@ -34,7 +34,7 @@ write_filet <- function(filet,file_name){
 
   comments <- attr(filet,'comments')
 
-  tier_output <- write_tier(filet) %>%
+  tier_output <- write_tier(filet,drop_duplicate_rows=drop_duplicate_rows) %>%
     c(experiment,'',comments,.)
 
   write(tier_output,file_name)

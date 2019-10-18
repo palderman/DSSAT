@@ -32,4 +32,3 @@ cnames <-
 splice_in_col_name(cnames,"TB(1)")
 }
 \keyword{internal}
-

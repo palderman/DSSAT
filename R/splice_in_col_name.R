@@ -36,10 +36,13 @@ splice_in_col_name <- function(col_names,new_name){
     i <- str_which(col_names,new_name_regex)
 
     # Splice in new_name
+
+    split_name <- new_name_regex %>%
+      str_extract(col_names[i],.)
     col_names <- new_name_regex %>%
       str_split(col_names[i],.) %>%
       {.[[1]]} %>%
-      {c(.[1],new_name,.[2])} %>%
+      {c(.[1],split_name,.[2])} %>%
       {.[.!=""]} %>%
       c(col_names[-i:-length(col_names)],
         .,

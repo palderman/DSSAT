@@ -24,4 +24,3 @@ a tibble containing the data from the raw DSSAT file
 \description{
 Reads input data from a single DSSAT pest file (*.PST)
 }
-

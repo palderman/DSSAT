@@ -28,8 +28,8 @@ read_filet <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
   raw_lines <- readLines(file_name)
 
   experiment <- raw_lines %>%
-    str_subset('\\*EXP\\. DATA \\([AT]\\): *') %>%
-    str_remove('\\*EXP\\. DATA \\([AT]\\): *')
+    str_subset('\\*EXP\\. *DATA *\\([AT]\\): *') %>%
+    str_remove('\\*EXP\\. *DATA *\\([AT]\\): *')
 
   comments <- raw_lines %>%
     str_subset('^!')
@@ -42,6 +42,13 @@ read_filet <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
                      col_types = col_types,
                      col_names = c(col_names,' TRNO '),
                      na_strings=na_strings)
+
+  trno_date_cols <- intersect(c('TRNO','DATE'),colnames(filet))
+
+  if(length(trno_date_cols) > 0 ){
+    filet <- filet %>%
+      arrange_at(trno_date_cols)
+  }
 
   attr(filet,'experiment') <- experiment
   attr(filet,'comments') <- comments

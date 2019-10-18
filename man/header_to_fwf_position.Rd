@@ -4,8 +4,8 @@
 \alias{header_to_fwf_position}
 \title{Converts header line into a vector of column names}
 \usage{
-header_to_fwf_position(header, left_justified = "EXCODE", col_types = NULL,
-  col_names = NULL)
+header_to_fwf_position(header, left_justified = "EXCODE",
+  col_types = NULL, col_names = NULL)
 }
 \arguments{
 \item{header}{A length-one character vector of a header line
@@ -28,4 +28,3 @@ header_line <-
 header_to_fwf_position(header_line)
 }
 \keyword{internal}
-

@@ -4,7 +4,7 @@
 \alias{write_filet}
 \title{Writes data to a single DSSAT file T}
 \usage{
-write_filet(filet, file_name)
+write_filet(filet, file_name, drop_duplicate_rows = TRUE)
 }
 \arguments{
 \item{filet}{a tibble containing the data to write to a DSSAT file T}
@@ -32,4 +32,3 @@ filet <- read_filet('SAMPLE.CRT')
 
 write_filet(filet,'SAMPLE2.CRT')
 }
-

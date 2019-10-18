@@ -4,10 +4,13 @@
 \alias{combine_tiers}
 \title{Efficiently combined data from two data tiers into one}
 \usage{
-combine_tiers(tier1, tier2)
+combine_tiers(tier1, tier2, use_collapse_rows = FALSE)
 }
 \arguments{
 \item{tier1, tier2}{a tibble for each tier of data}
+
+\item{use_collapse_rows}{a length-one logical vector that
+indicates whether rows should be collapsed before join}
 }
 \value{
 a tibble containing the data from the combined tiers
@@ -16,4 +19,3 @@ a tibble containing the data from the combined tiers
 Efficiently combined data from two data tiers into one
 }
 \keyword{internal}
-
