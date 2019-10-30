@@ -9,8 +9,15 @@ The purpose of this package is to provide an official R interface to the Decisio
     - Soil input files (\*.SOL)
     - Weather input files (\*.WTH)
     - Pest input files (\*.PST)
+    - DSSAT Batch file (DSSBatch.V\*)
 - Write input files:
+    - File X
+    - File T
+    - File A
+    - Weather input files (\*.WTH)
+    - DSSAT Batch file (DSSBatch.V\*)
 - Run DSSAT-CSM in the following modes:
+    - Batch
 - Read output files:
     - Daily
     - Seasonal
@@ -18,17 +25,10 @@ The purpose of this package is to provide an official R interface to the Decisio
 # Awaiting implementation
 - Read input files:
     - Crop parameter files (\*.SPE)
-    - DSSAT Batch file (DSSBatch.V\*)
 - Write input files:
-    - File X
-    - File T
-    - File A
     - Soil input files (\*.SOL)
-    - Weather input files (\*.WTH)
     - Pest input files (\*.PST)
     - Crop parameter files (\*.SPE)
-    - DSSAT Batch file (DSSBatch.V\*)
 - Run DSSAT-CSM in the following modes:
-    - Batch
     - Seasonal
     - Sequence
