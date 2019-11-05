@@ -32,11 +32,21 @@
 #'
 #' read_sol('SOIL.SOL')
 
-read_sol <- function(file_name,col_types=NULL,col_names=NULL,id_soil=NULL){
+read_sol <- function(file_name,id_soil=NULL,left_justified=NULL,col_types=NULL,col_names=NULL){
 
   # Read in raw data from file
   raw_lines <- readLines(file_name) %>%
     str_subset('^(?!\032) *([^ ]+)') # exclude lines that are all spaces or lines with EOF in initial position
+
+  # Extract title from file
+  title <- raw_lines %>%
+    str_subset('^\\*[Ss][Oo][Ii][Ll][Ss]') %>%
+    str_replace('^\\*[Ss][Oo][Ii][Ll][Ss]:* *','')
+
+  # Extract comments from file
+  comments <- raw_lines %>%
+    str_subset('!') %>%
+    str_extract('(?=!).*')
 
   # Find beginning of each soil profile
   begin <- raw_lines %>%
@@ -64,9 +74,19 @@ read_sol <- function(file_name,col_types=NULL,col_names=NULL,id_soil=NULL){
     begin <- id_soil_ind
   }
 
-  # Extract all profiles
-  all_tiers <- map(1:length(begin),
-                  ~read_soil_profile(raw_lines[begin[.]:end[.]]))
+  # Extract and combine all profiles
+  all_profiles <- map(1:length(begin),
+                      ~read_soil_profile(raw_lines[begin[.]:end[.]],
+                                     left_justified = left_justified,
+                                     col_types = col_types,
+                                     col_names = col_names)
+    ) %>%
+    reduce(combine_tiers,force_bind_rows=TRUE)
 
-  return(all_tiers)
+  attr(all_profiles,'title') <- title
+  attr(all_profiles,'comments') <- comments
+
+  all_profiles <- as_DSSAT_tbl(all_profiles)
+
+  return(all_profiles)
 }

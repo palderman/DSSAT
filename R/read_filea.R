@@ -29,5 +29,8 @@ read_filea <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
                       col_types=col_types,
                       col_names=col_names,
                       na_strings=na_strings)
+
+  filea <- as_DSSAT_tbl(filea)
+
   return(filea)
 }

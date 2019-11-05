@@ -13,15 +13,15 @@
 
 convert_to_date <- function(d){
   if(all(is.na(d))){
-    d <- as.POSIXct(d,origin='1970-01-01')
+    d <- as.POSIXct(d,origin='1970-01-01',tz='UTC')
   }else if( ! 'POSIXct' %in% class(d) ){
     if(max(nchar(as.character(d)),na.rm=TRUE) < 7){
       d <- as.integer(d) %>%
         sprintf('%5.5d',.) %>%
-        as.POSIXct(format='%y%j')
+        as.POSIXct(format='%y%j',tz='UTC')
     }else{
       d <- as.character(d) %>%
-        as.POSIXct(format='%Y%j')
+        as.POSIXct(format='%Y%j',tz='UTC')
     }
     if(!all(is.na(d))){
       if(any( d[!is.na(d)] > Sys.time() )){

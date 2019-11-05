@@ -14,6 +14,9 @@ write_tier(tier_data, pad_name = NULL, drop_duplicate_rows = FALSE,
 
 \item{drop_duplicate_rows}{a logical value indicating whether duplicate rows
 should be dropped from tier_data}
+
+\item{drop_na_rows}{a logical value indicating whether rows containing all NA values
+should be dropped from tier_data}
 }
 \value{
 a character vector

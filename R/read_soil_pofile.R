@@ -30,7 +30,28 @@
 #' read_soil_profile(sample_sol)
 #'
 
-read_soil_profile <- function(raw_lines){
+read_soil_profile <- function(raw_lines,left_justified=NULL,
+                              col_types=NULL,col_names=NULL){
+
+  left_justified <- left_justified %>%
+    c('SITE','COUNTRY',' SCS FAMILY',
+      ' SCS Family')
+
+  col_types <- cols(`     LAT`=col_double(),
+                    `    LONG`=col_double(),
+                    SSAT=col_double(),
+                    ` SCS FAMILY`=col_character(),
+                    ` SCS Family`=col_character(),
+                    SCOM=col_character(),
+                    COUNTRY=col_character(),
+                    SITE=col_character(),
+                    SMHB=col_character(),
+                    SMPX=col_character(),
+                    SMKE=col_character(),
+                    SLMH=col_character(),
+                    SLB=col_double()) %>%
+    {.$cols <- c(.$cols,col_types$cols);.}
+
 
   # Read general information
   gen_info <- raw_lines %>%
@@ -39,24 +60,15 @@ read_soil_profile <- function(raw_lines){
             c(11,24,30,36,87)) %>%
     str_replace_all(c('^  *'='',
                       '  *$'='')) %>%
-  as.list() %>%
+    as.list() %>%
     {names(.) <- c("PEDON","SOURCE","TEXTURE","DEPTH","DESCRIPTION")
     .} %>%
-    as_tibble()
+    as_tibble() %>%
+    mutate(DEPTH=as.numeric(DEPTH))
 
-  # Read first tier
-  # tier_1 <- raw_lines %>%
-  #   str_which('^@') %>%
-  #   first() %>%
-  #   {raw_lines[.+1]} %>%
-  #   str_sub(c( 2,14,26,35,44),
-  #           c(12,24,33,42,93)) %>%
-  #   str_replace_all(c('^  *'='',
-  #                     '  *$'='')) %>%
-  #   as.list() %>%
-  #   {names(.) <- c("SITE","COUNTRY","LAT","LONG","SCS FAMILY")
-  #   .} %>%
-  #   as_tibble()
+  attr(gen_info,'v_fmt') <- c('*%-10s','  %-11s',' %-5s','%6.0f',' %-s') %>%
+    {names(.) <- colnames(gen_info)
+    .}
 
   tier_begin <- str_which(raw_lines,'^@')
 
@@ -66,11 +78,25 @@ read_soil_profile <- function(raw_lines){
   # Read data from tier
   tier_data <- map(1:length(tier_begin),
                    ~read_tier_data(raw_lines[tier_begin[.]:tier_end[.]],
-                                   left_justified = c('SITE',
-                                                      'SCS FAMILY'),
-                                   col_types = cols(LAT=col_double(),
-                                                    SSAT=col_double())))
-  attr(tier_data,'gen_info') <- gen_info
+                                   left_justified = left_justified,
+                                   col_types = col_types)) %>%
+    c(list(gen_info),.) %>%
+    reduce(combine_tiers) %>%
+    rename_all(toupper) %>%
+    {v_fmt <- attr(.,'v_fmt')
+     names(v_fmt) <- toupper(names(v_fmt))
+     attr(.,'v_fmt') <- v_fmt
+     tier_info <- attr(.,'tier_info')
+     tier_info <- map(tier_info,toupper)
+     attr(.,'tier_info') <- tier_info
+     .} %>%
+    group_by(PEDON,SOURCE,TEXTURE,DEPTH,DESCRIPTION,
+             SITE,COUNTRY,LAT,LONG,`SCS FAMILY`,
+             SCOM,SALB,SLU1,SLDR,SLRO,SLNF,SLPF,SMHB,SMPX,SMKE) %>%
+    collapse_rows() %>%
+    ungroup()
+
+#  attr(tier_data,'gen_info') <- gen_info
 
   return(tier_data)
 }

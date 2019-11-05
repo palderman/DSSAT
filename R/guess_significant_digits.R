@@ -14,10 +14,12 @@ guess_significant_digits <- function(variable,width){
           }else{
             sig <- ne_0 %>%
               which() %>%
+              ifelse(is.na(.),0,.) %>%
               max(na.rm=TRUE)
           }
           return(sig)
         }) %>%
+        ifelse(is.na(.),0,.) %>%
         max(na.rm=TRUE) %>%
         str_c('.',.)
     }else{

@@ -15,7 +15,8 @@
 
 read_dssbatch <- function(file_name='DSSBatch.V47'){
 
-  batch_file <- read_dssat(file_name,left_justified = 'FILEX')
+  batch_file <- read_dssat(file_name,left_justified = 'FILEX') %>%
+    as_DSSAT_tbl()
 
   return(batch_file)
 }

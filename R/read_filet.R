@@ -53,5 +53,7 @@ read_filet <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
   attr(filet,'experiment') <- experiment
   attr(filet,'comments') <- comments
 
+  filet <- as_DSSAT_tbl(filet)
+
   return(filet)
 }

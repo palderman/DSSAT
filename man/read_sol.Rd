@@ -4,12 +4,15 @@
 \alias{read_sol}
 \title{Reads soil parameters from a single DSSAT soil parameter file (*.SOL)}
 \usage{
-read_sol(file_name, col_types = NULL, col_names = NULL,
-  id_soil = NULL)
+read_sol(file_name, id_soil = NULL, left_justified = NULL,
+  col_types = NULL, col_names = NULL)
 }
 \arguments{
 \item{file_name}{a character vector of length one that contains the name
 of a single DSSAT output file}
+
+\item{left_justified}{A character vector of column names that
+should be left justified}
 
 \item{col_types}{One of NULL, a cols() specification, or a string.
 See \code{\link[readr]{read_fwf}} or \code{vignette("readr")} for

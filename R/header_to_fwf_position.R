@@ -51,7 +51,7 @@ header_to_fwf_position <- function(header,left_justified='EXCODE',
   # Extract unknown column names
   cnames <- map(cnames,function(new_names){
       if(!any(str_detect(new_names,col_names))){
-        new_names <- str_split(new_names,'(?<=([^ ])) +(?=([^ ]))')
+        new_names <- str_split(new_names,'(?<=[^ ]) +(?=[^ ])')
       }
       return(new_names)
     }) %>%
@@ -68,11 +68,11 @@ header_to_fwf_position <- function(header,left_justified='EXCODE',
 #  cnames_regex <- name_to_regex(cnames) %>%
     cnames_regex <- cnames %>%
     map_chr(function(name){
-      if(any(str_detect(name,left_justified))){
+      if(any(str_detect(name,name_to_regex(left_justified)))){
         regex <- name %>%
           name_to_regex() %>%
           str_c(' *')
-      }else if(!any(name %in% col_names)){
+      }else if(!any(str_detect(name,name_to_regex(col_names)))){
         regex <- name %>%
           name_to_regex() %>%
           str_c(' *',.,'((?= )|(?=$))')

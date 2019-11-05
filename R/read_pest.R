@@ -62,5 +62,7 @@ read_pest <- function(file_name,col_types=NULL,col_names=NULL){
   attr(pest_coefs,'CROP') <- crop_model['crop']
   attr(pest_coefs,'MODEL') <- crop_model['model']
 
+  pest_coefs <- as_DSSAT_tbl(pest_coefs)
+
   return(pest_coefs)
 }

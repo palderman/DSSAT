@@ -94,13 +94,13 @@ read_filex <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
 
   col_names <- col_names %>%
     c(.,
-      ' +N(?= +)',' +R(?= +)',' +O(?= +)',' +C(?= +)',
-      ' +L(?= +)',' +P(?= +)',' +F(?= +)',' +T(?= +)',
-      ' +H(?= +)',' +I(?= +)',' +A(?= +)',' +E(?= +)',
-      ' CU(?= +)',' FL(?= +)',' SA(?= +)',' IC(?= +)',
-      ' MP(?= +)',' MI(?= +)',' MF(?= +)',' MR(?= +)',
-      ' MC(?= +)',' MT(?= +)',' ME(?= +)',' MH(?= +)',
-      ' SM(?=[ $])',' CHT')
+      ' +N(?= |$)',' +R(?= |$)',' +O(?= |$)',' +C(?= |$)',
+      ' +L(?= |$)',' +P(?= |$)',' +F(?= |$)',' +T(?= |$)',
+      ' +H(?= |$)',' +I(?= |$)',' +A(?= |$)',' +E(?= |$)',
+      ' CU(?= |$)',' FL(?= |$)',' SA(?= |$)',' IC(?= |$)',
+      ' MP(?= |$)',' MI(?= |$)',' MF(?= |$)',' MR(?= |$)',
+      ' MC(?= |$)',' MT(?= |$)',' ME(?= |$)',' MH(?= |$)',
+      ' SM(?= |$)',' CHT')
   # ,
   #     ' P +',' I +',' C +',' N +',' R +',' O +',' F +')
 
@@ -187,6 +187,8 @@ read_filex <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
   # }
 
   attr(all_secs,'experiment') <- experiment
+
+  all_secs <- map(all_secs,as_DSSAT_tbl)
 
   return(all_secs)
 }

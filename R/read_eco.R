@@ -78,5 +78,7 @@ read_eco <- function(file_name,col_types=NULL,col_names=NULL,
   attr(eco,'first_line') <- first_line
   attr(eco,'comments') <- comments
 
+  eco <- as_DSSAT_tbl(eco)
+
   return(eco)
 }

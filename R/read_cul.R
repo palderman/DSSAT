@@ -80,5 +80,7 @@ read_cul <- function(file_name,col_types=NULL,col_names=NULL,
   attr(cul,'first_line') <- first_line
   attr(cul,'comments') <- comments
 
+  cul <- as_DSSAT_tbl(cul)
+
   return(cul)
 }

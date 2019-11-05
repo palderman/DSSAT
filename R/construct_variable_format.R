@@ -8,18 +8,19 @@ construct_variable_format <- function(tier_data,fwf_pos,left_justified){
 #                    name_to_regex() %>%
                     map_lgl(~any(map_lgl(left_justified,str_detect,string=.))) %>%
                     ifelse('-','')},
-           leading_space = if_else(just == '',
+           leading_chars = if_else(just == '',
                                    '',
-                                   {str_extract(col_names,'^ +') %>% replace_na('')}),
-           col_names = str_replace_all(col_names,' ','')) %>%
+                                   {str_extract(col_names,'^[ *$]+') %>% replace_na('')}),
+           col_names = str_replace_all(col_names,c('^ +'='',
+                                                   ' +$'=''))) %>%
     filter(!duplicated(col_names) & !str_detect(col_names,'-99')) %>%
     mutate(width = if_else(just == '',
                            end - begin,
-                           end - begin - nchar(leading_space)),
+                           end - begin - nchar(leading_chars)),
            type = {tier_data %>%
                    select(-contains('-99')) %>%
                    summarize_all(~{unlist(.) %>% class() %>% head(1)}) %>%
-                   t()})
+                   unlist()})
 
   # Estimate significant digits
   digits <- tier_data %>%
@@ -50,7 +51,7 @@ construct_variable_format <- function(tier_data,fwf_pos,left_justified){
                                        logical='s',
                                        POSIXct='s')),
            width = replace_na(width,'')) %>%
-    mutate(.,fmt=glue_data(.,'{leading_space}%{just}{width}{digits}{type}')) %>%
+    mutate(.,fmt=glue_data(.,'{leading_chars}%{just}{width}{digits}{type}')) %>%
     select(col_names,fmt) %>%
     {fmt <- as.character(.$fmt)
     names(fmt) <- .$col_names

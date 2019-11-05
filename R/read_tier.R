@@ -35,7 +35,7 @@
 #' read_tier(sample_tier)
 
 read_tier <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NULL,
-                      left_justified='EXCODE',guess_max=1000){
+                      left_justified='EXCODE',guess_max=1000,store_v_fmt=TRUE){
 
   # Extract header information
   header_info <- suppressWarnings({
@@ -47,7 +47,8 @@ read_tier <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NULL,
                               col_types=col_types,
                               col_names=col_names,
                               left_justified=left_justified,
-                              na_strings = na_strings)
+                              na_strings = na_strings,
+                              store_v_fmt = store_v_fmt)
 
   # Combine header information and data
   if(length(header_info$runno)>0){

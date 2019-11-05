@@ -24,7 +24,8 @@
 #' read_tier_data(sample_tier)
 
 read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NULL,
-                           left_justified='EXCODE',guess_max=1000,join_tiers=TRUE){
+                           left_justified='EXCODE',guess_max=1000,join_tiers=TRUE,
+                           store_v_fmt=TRUE){
 
   # Find header line
   skip <- str_which(raw_lines,'^@')
@@ -78,7 +79,7 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
         }
         return(tdata)
       }) %>%
-    add_col_widths(fwf_pos) %>%
+    # add_col_widths(fwf_pos) %>%
     map(function(one_df){
       colnames(one_df) <- colnames(one_df) %>%
         str_replace_all(c('^ +'='',
@@ -89,13 +90,20 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
           all()
       if(add_date){
         one_df <- one_df %>%
-          mutate(DATE={paste0(YEAR,DOY) %>% as.POSIXct(format='%Y%j')}) %>%
+          mutate(DATE={paste0(YEAR,DOY) %>%
+                       as.POSIXct(format='%Y%j',tz='UTC')}) %>%
           select(-YEAR,-DOY)
       }
       # Convert DATE column if DATE is not already POSIXct
-      date_cols <- colnames(one_df) %>%
-        str_subset('(DATE)|(AT$)') %>%
-        { .[! . %in% {map(col_types,~names(.$cols)) %>% unlist()}]}
+      potential_date_cols <- colnames(one_df) %>%
+        str_subset('(DATE)|(AT$)')
+      date_cols <- col_types %>%
+        {map(.,~names(.$cols)) %>%
+            unlist()} %>%
+        str_replace_all(c('^ +'='',
+                          ' +$'='')) %>%
+        { potential_date_cols[(! potential_date_cols %in% .) |
+                               potential_date_cols == 'DATE' ]}
       one_df <- one_df %>%
         mutate_at(.,date_cols,~convert_to_date(.))
       return(one_df)
@@ -104,47 +112,51 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
                    .predicate = ~{all(is.na(.)) && is.logical(.)},
                    .funs = ~as.numeric(.)))
 
-  if(join_tiers&&
-     !is.data.frame(tier_data)&&
-     length(tier_data)>1){
-    tier_info <- tier_data %>%
-      map(colnames)
+    if(join_tiers&&
+       !is.data.frame(tier_data)&&
+       length(tier_data)>1){
+      tier_info <- tier_data %>%
+        map(colnames)
 
-    tier_data <- tier_data %>%
-      reduce(combine_tiers)
+      tier_data <- tier_data %>%
+        reduce(combine_tiers)
 
-    fwf_pos <- fwf_pos %>%
-      reduce(full_join,by=c('begin','end','col_names'))
+      fwf_pos <- fwf_pos %>%
+        reduce(full_join,by=c('begin','end','col_names'))
 
-    attr(tier_data,'tier_info') <- tier_info
+      attr(tier_data,'tier_info') <- tier_info
 
-  }else if(!is.data.frame(tier_data)&&
-           length(tier_data)==1){
+    }else if(!is.data.frame(tier_data)&&
+             length(tier_data)==1){
 
-    tier_data <- tier_data[[1]]
+      tier_data <- tier_data[[1]]
 
-    if(!is.data.frame(fwf_pos)&&
-       length(fwf_pos)==1){
-      fwf_pos <- fwf_pos[[1]]
+      if(!is.data.frame(fwf_pos)&&
+         length(fwf_pos)==1){
+        fwf_pos <- fwf_pos[[1]]
+      }
+
     }
 
-  }
+  if(store_v_fmt){
+    if(is.data.frame(tier_data)){
+      v_fmt <- construct_variable_format(tier_data,
+                                         fwf_pos,
+                                         left_justified)
+      tier_data <- as_DSSAT_tbl(tier_data,v_fmt = v_fmt)
 
-  if(is.data.frame(tier_data)){
-    v_fmt <- construct_variable_format(tier_data,
-                                     fwf_pos,
-                                     left_justified)
-    attr(tier_data,'v_fmt') <- v_fmt
-  }else{
+    }else{
 
-    tier_data <- list(tier_data,fwf_pos) %>%
-      pmap(function(td,fpos){
-        v_fmt <- construct_variable_format(td,
-                                           fpos,
-                                           left_justified)
-        attr(td,'v_fmt') <- v_fmt
-        return(td)
-      })
+      tier_data <- list(tier_data,fwf_pos) %>%
+        pmap(function(td,fpos){
+          v_fmt <- construct_variable_format(td,
+                                             fpos,
+                                             left_justified)
+          attr(td,'v_fmt') <- v_fmt
+          return(td)
+        }) %>%
+        map(as_DSSAT_tbl)
+    }
   }
 
   return(tier_data)

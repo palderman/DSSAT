@@ -4,7 +4,8 @@
 \alias{combine_tiers}
 \title{Efficiently combined data from two data tiers into one}
 \usage{
-combine_tiers(tier1, tier2, use_collapse_rows = FALSE)
+combine_tiers(tier1, tier2, use_collapse_rows = FALSE,
+  force_bind_rows = FALSE)
 }
 \arguments{
 \item{tier1, tier2}{a tibble for each tier of data}

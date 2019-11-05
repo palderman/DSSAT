@@ -81,7 +81,8 @@ read_dssat <- function(file_name,col_types=NULL,col_names=NULL,left_justified='E
                               col_types = col_types,
                               col_names = col_names,
                               left_justified = left_justified)) %>%
-    reduce(combine_tiers)
+    reduce(combine_tiers) %>%
+    as_DSSAT_tbl()
 
   return(all_tiers)
 }

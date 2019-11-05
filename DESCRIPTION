@@ -13,5 +13,5 @@ License: TBD
 Encoding: UTF-8
 LazyData: true
 Depends:
-    readr,stringr,dplyr,purrr,glue,tidyr,lubridate
+    readr,stringr,dplyr,purrr,glue,tidyr,lubridate,rlang
 RoxygenNote: 6.1.1

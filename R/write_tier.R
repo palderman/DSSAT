@@ -6,6 +6,8 @@
 #' @param pad_name a character vector of column names for which to add leading spaces/trailing periods
 #' @param drop_duplicate_rows a logical value indicating whether duplicate rows
 #'    should be dropped from tier_data
+#' @param drop_na_rows a logical value indicating whether rows containing all NA values
+#'    should be dropped from tier_data
 #'
 #' @return a character vector
 #'
@@ -121,10 +123,11 @@ write_tier <- function(tier_data,pad_name=NULL,drop_duplicate_rows=FALSE,
         list(v_format,.,tier_names) %>%
         pmap(function(fmt,vr_val,cname){
           width <- fmt %>%
-            str_extract('(?<=%)[0-9]+') %>%
+            str_extract('(?<=%)[-0-9]+') %>%
+            str_replace('-','') %>%
             as.numeric()
           spaces <- fmt %>%
-            str_extract('^ +') %>%
+            str_extract('^.*(?=%)') %>%
             nchar() %>%
             replace_na(0)
           width <- width + spaces
@@ -141,7 +144,7 @@ write_tier <- function(tier_data,pad_name=NULL,drop_duplicate_rows=FALSE,
          #  if(any(vr_val >= 10^width-0.5)) stop()
          # }
           vr_out <- sprintf(fmt,vr_val)
-          vr_out <- check_numerical_column_width(vr_out,vr_val,width)
+          if(!is.na(width)) vr_out <- check_numerical_column_width(vr_out,vr_val,width)
           if(any(nchar(vr_out)>width,na.rm=TRUE)){
             cname %>%
               str_c('Column ',.,' values were trimmed to fit specified column width. Please check output for introduced errors.') %>%

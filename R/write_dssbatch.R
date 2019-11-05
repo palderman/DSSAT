@@ -66,7 +66,7 @@ write_dssbatch <- function(batch_tbl=NULL,filex='',trtno=1,rp=1,sq=0,op=0,co=0,
   batch_output <- c(header,column_output)
 
   # Write batch_output to file
-  write(batch_output,file=filename)
+  write(batch_output,file=file_name)
 
   # Invisibly return batch_output
   return(invisible(batch_output))

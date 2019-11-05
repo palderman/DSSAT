@@ -3,3 +3,13 @@
 .RData
 .Ruserdata
 test_data/*
+*.OUT
+*.WTH
+*.*X
+*.pdf
+*.log
+*.spl
+*.tex
+*.V47
+*.LST
+*.SOL
