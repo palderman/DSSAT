@@ -1,5 +1,5 @@
 ---
-title: 'Application Note: A comprehensive R interface for the DSSAT Cropping Systems Model'
+title: 'A comprehensive R interface for the DSSAT Cropping Systems Model'
 author:
   - name: Phillip D. Alderman
     email: phillip.alderman@okstate.edu
@@ -7,11 +7,9 @@ author:
     footnote: Corresponding Author
 address:
   - code: OSUPaSS
-    address: Oklahoma State University, Department of Plant and Soil Sciences, 371 Agricultural Hall, Stillwater, Oklahoma, 74078
+    address: Department of Plant and Soil Sciences, Oklahoma State University,  371 Agricultural Hall, Stillwater, Oklahoma, 74078, USA
 abstract: |
-  This is the abstract.
-
-  It consists of two paragraphs.
+  The Decision Support System for Agrotechnology Transfer Cropping Systems Model (DSSAT-CSM) is a widely used modeling system. This application note demonstrates the use of the new `DSSAT` R package for building reproducible crop modeling workflows using the DSSAT-CSM system. Example workflows are provided for modifying values in input data files (soil, weather, and experimental details), running simulations, reading simulated output, and creating publication-quality visualizations of observed and simulated data. The `DSSAT` R package provides basic tools that when combined with other R packages will facilitate developing robust, reproducible, scientific modeling workflows.
 
 journal: "Computers & Electronics in Agriculture"
 date: "`r Sys.Date()`"
@@ -22,6 +20,7 @@ output:
     base_format: rticles::elsevier_article
     highlight: pygments
 classoption: preprint,12pt
+csl: elsevier-with-titles.csl
 header-includes:
     - \usepackage{setspace}
     - \usepackage{lineno}
@@ -54,74 +53,52 @@ knit_hooks$set(source = function(x, options) {
 
 # Introduction
 
-- Number of DSSAT downloads (Gerrit)
-- DSSAT Listserve numbers (Gerrit)
-- Power users quote from Jeff White (pers. comm. Oct 2019)
+The Decision Support System for Agrotechnology Transfer Cropping Systems Model [DSSAT-CSM; @jones2003] is a widely used crop modeling system with an estimated 2,500 users across 100 countries worldwide [@Koo2016]. The standard user training demonstrates the use of the DSSAT shell, a graphical user interface with various utilities for preparing input files, running simulations, and summarizing output. This interface greatly improves the accessibility of the DSSAT-CSM for beginning users. However, most advanced users of DSSAT-CSM have developed ad hoc scripts in various languages/software environments (e.g. R, Python, SAS) to automate various stages in their analysis (J.W. White, personal communication, October 17, 2019). While an ad hoc approach may be sufficient for many applications, a coherent framework for developing modeling workflows would improve the transparency and reproducibility of crop modeling research. To address this need, a new package (`DSSAT`) has been developed in the R language [@Rproject] that provides functions for reading and writing standard DSSAT file formats for model inputs, observed data, and simulated output. The goal of this R package is to provide end-to-end capabilities for crop modeling analysis using DSSAT-CSM within R. This application note demonstrates the use of the new `DSSAT` R package for building reproducible crop modeling workflows with the DSSAT-CSM system.
 
-# Software Development
-
-- Consistent API
-- Built on tidyverse principles
-- Read/write
-- Focus on functionalities for average DSSAT user
-    - Read/write primary input files (X,CUL,ECO,SOL,WTH)
-    - Read/write observed data files (A,T)
-    - Read daily and seasonal output files
-
-# Example workflows
-
-## Modifying DSSAT files
+# Modifying DSSAT files
 
 ```{r load_DSSAT,echo=FALSE,include=FALSE,message=FALSE,eval=TRUE}
 library(DSSAT)
 library(ggplot2)
 ```
 
-The DSSAT package implements a set of functions for reading and writing standard DSSAT file formats including files for cultivar (\*.CUL), ecotype (\*.ECO), soil (\*.SOL), weather (\*.WTH), experiment details (file X), seasonal observed data (file A), time-series observed data (file T). The goal of these functions is to provide tools to facilitate generating inputs for DSSAT in a way that supports automation and reproducibility in analysis. As an example, the function `read_sol()` reads soil profiles from the standard DSSAT soil file (*.SOL) format. Source Code \ref{modify_sol} shows the use of this function within an example workflow that creates a new soil profile from an existing one and appends it an existing soil file. The first statement reads the entire contents of the soil file `SOIL.SOL`, while the second statement reads only the profile identified by the code `IB00000001`. The output of this function is a single tibble [a new kind of data frame defined in the `tidyverse`; @RforDataScience] with additional attributes used internally to store the original format for each column as well as the tier of data from which the original column came. Some of the original data are converted into list-columns due to the one-to-many relationship between whole-profile and layer-specific data. For example, properties such as albedo (SALB) or runoff curve number (SLRO) have a single value for each profile, but other properties, such as saturation volumetric soil water (SSAT) or bulk density (SBDM), have values for each individual layer within the profile. Storing the layer-specific data as list-columns in the output from `read_sol()` facilitates reading and combining multiple soil profiles in a single combined tibble.  However, care must be taken when modifying values for these parameters. For example, suppose one wanted to calculate a new value for SSAT as 95% of pore space estimated from SBDM using the equation: $$SSAT = 0.95 \left( \frac{2.65 - SBDM}{2.65} \right) $$ where 2.65 is the assumed particle density ($g~cm^{-3}$). One could perform this calculation and replace the former values using the third statement in Source Code \ref{modify_sol}. For those unfamiliar with the `tidyverse` style of R programming, this example uses the `%>%` pipe operator to pass the output from one line to the first argument of the function on the following line. Thus, the `single_profile` tibble is passed to the `rowwise()` function, which groups the tibble by row so that subsequent operations are performed on a row-by-row basis. The output from `rowwise()` is then passed into the `mutate()` function, in which the `PEDON` column is assigned the code `IBNEW00001` and `SSAT` column is assigned the new values calculated from SBDM. An alternative formulation that does not use `tidyverse`-style coding is provided just below (Source Code \ref{modify_sol}). Once these changes have been made, the new profile can be appended to the existing `SOIL.SOL` by calling the function `write_sol()` with the `append` arguement set to `TRUE` (the default value), as shown in the fourth statement in Source Code \ref{modify_sol}). The `write_sol()` can also be used to write a new soil file or overwrite an existing soil file by setting `append` to `FALSE`. Thus, care should be taken to avoid unintentional loss of data.
+The DSSAT package implements a set of functions for reading and writing standard DSSAT file formats including files for cultivar (\*.CUL), ecotype (\*.ECO), soil (\*.SOL), weather (\*.WTH), experiment details (file X), seasonal observed data (file A), and time-series observed data (file T). As an example, the function `read_sol()` reads soil profiles from the standard DSSAT soil file (*.SOL) format. Source Code \ref{modify_sol} shows the use of this function within an example workflow that creates a new soil profile from an existing one and appends it to an existing soil file. The first statement reads the entire contents of the soil file `SOIL.SOL`, while the second statement reads only the profile identified by the code `IB00000001`. The output of this function is a an object of class `DSSAT_tbl`, which is an extension of the `tibble` (a new kind of data frame defined in the `tibble` package) [@RforDataScience; @tibble] with additional attributes used internally to store the original format for each column as well as the tier of data from which the original column came. Some of the original data are converted into list-columns due to the one-to-many relationship between whole-profile and layer-specific data. For example, properties such as albedo (SALB) or runoff curve number (SLRO) have a single value for each profile, but other properties, such as saturation volumetric soil water (SSAT) or bulk density (SBDM), have values for each individual layer within the profile. Storing the layer-specific data as list-columns in the output from `read_sol()` facilitates reading and combining multiple soil profiles into a single combined tibble.
+
+As an example, suppose one wanted to calculate a new value for SSAT as 95% of pore space estimated from SBDM. One could perform this calculation and replace the former values using the third statement in Source Code \ref{modify_sol}. For readers unfamiliar with the `tidyverse` style of R programming, this example uses the `%>%` pipe operator to pass the output from one line to the first argument of the function on the following line. Thus, the `single_profile` tibble is passed to `mutate()`, in which the `PEDON` column is assigned the code `IBNEW00001` and `SSAT` column is assigned the new values calculated from SBDM. An alternative formulation that does not use `tidyverse`-style coding is provided just below (Source Code \ref{modify_sol}). Once these changes have been made, the new profile can be appended to the existing `SOIL.SOL` by calling the function `write_sol()` with the `append` argument set to `TRUE` (the default value), as shown in the fourth statement in Source Code \ref{modify_sol}. The `write_sol()` can also be used to write a new soil file or overwrite an existing soil file by setting `append` to `FALSE`. Thus, care should be taken to avoid unintentional loss of data.
 
 ```{r ref="modify_sol",code.cap="Example code for reading, modifying and writing out DSSAT soil data.",results='asis',message=FALSE}
-
 # Reading all profiles in a file
 all_profiles <- read_sol('SOIL.SOL')
-
 # Reading a single profile
 single_profile <- read_sol('SOIL.SOL',id_soil = 'IB00000001')
-
 # Renaming the profile and replacing SSAT with new values
 #     calculated from SBDM using tidyverse-style coding
 new_profile <- single_profile %>% 
   mutate(PEDON='IBNEW00001',
          SSAT=0.95*(2.65-SBDM)/2.65)
-
 # Renaming the profile and replacing SSAT with new values
 #     calculated from SBDM without using tidyverse-style coding
 new_profile <- single_profile
 new_profile$PEDON[1] <- 'IBNEW00001'
 new_profile$SSAT[[1]] <- 0.95*(2.65-single_profile$SBDM[[1]])/2.65
-
 # Appending new profile to SOIL.SOL
 write_sol(new_profile,'SOIL.SOL',append=TRUE)
-
 ```
 
-Weather data can also be imported into R in a similar way using the `read_wth()` function. The output of this function is a tibble containing the daily weather data from the DSSAT format weather file (*.WTH). The tibble also contains an attribute called `GENERAL` in which the general information about the site is stored including, among other details, the long-term average temperature (TAV) and monthly temperature amplitude (AMP). Supposing one had a directory of weather files from multiple years at the same location that were missing the TAV and AMP values, one could calculate these values from the daily data, assign them to the `GENERAL` attribute for each year, and then re-write the weather data with the new TAV and AMP values. An example workflow for this process is provided in Source Code \ref{modify_wth}. Variations of this workflow could be used to modify values within daily weather data as well to filling missing-data gaps or combine variables from different data sources.
+Weather data can also be imported into R in a similar way using the `read_wth()` function. The output of this function is a tibble containing the daily weather data from the DSSAT format weather file (*.WTH). The tibble also contains an attribute called `GENERAL` in which the general information about the site is stored including, among other details, the long-term average temperature (TAV) and monthly temperature amplitude (AMP). Supposing one had a directory of weather files from multiple years at the same location that were missing the TAV and AMP values, one could calculate these values from the daily data, assign them to the `GENERAL` attribute for each year, and then re-write the weather data with the new TAV and AMP values. An example workflow for this process is provided in Source Code \ref{modify_wth}. Variations of this workflow could be used to modify values within daily weather data as well to fill missing-data gaps or combine variables from different data sources.
 
-```{r ref="modify_wth",code.cap="Example workflow for modifying the values for long-term average temperature (TAV) and monthly temperature amplitude (AMP) within a set of DSSAT weather files (*.WTH).", message=FALSE,results='asis',eval=FALSE}
+```{r ref="modify_wth",code.cap="Example workflow for modifying the values for long-term average temperature (TAV) and monthly temperature amplitude (AMP) within a set of DSSAT weather files (*.WTH).", message=FALSE,results='asis'}
 # Generate a list of the weather files
 wth_file_list <- list.files(pattern='.WTH')
-
 # Read all weather files into a list of tibbles
 all_wth <- wth_file_list %>% 
   map(read_wth)
-
 # Combine all years into a single tibble for summary calculations
 combined_wth <- all_wth %>% 
   bind_rows()
-
 # Calculate long-term average temperature (TAV)
 tav <- combined_wth %>% 
   summarize(TAV=mean((TMAX+TMIN)/2))
-
 # Calculate monthly temperature amplitude (AMP)
 amp <- combined_wth %>% 
   # Extract month from DATE column
@@ -133,7 +110,6 @@ amp <- combined_wth %>%
   # Calculate AMP as half the difference between minimum and
   #     maximum monthly temperature
   summarize(AMP = (max(monthly_avg)-min(monthly_avg))/2)
-
 # Generate new general information table
 general_new <- all_wth[[1]] %>% # use first year as template
   # Extract GENERAL table
@@ -141,13 +117,11 @@ general_new <- all_wth[[1]] %>% # use first year as template
   # Replace TAV and AMP with new values
   mutate(TAV=tav$TAV,
          AMP=amp$AMP)
-
 # Store new general information table within each year
 for(i in 1:length(all_wth)){
   # Replace general information table
   attr(all_wth[[i]],'GENERAL') <- general_new
 }
-
 # Overwrite previous weather files with modified weather data
 for(i in 1:length(all_wth)){
   # Write weather file i
@@ -155,12 +129,11 @@ for(i in 1:length(all_wth)){
 }
 ```
 
-The experiment details file format (file X) is one of the most complex of the DSSAT file formats because it contains multiple tiers of data that are connected by a combination of one-to-one and one-to-many relationships. At present, no attempt has been made within the DSSAT package to construct a unified relational data structure. Thus, the output of the `read_filex()` function is a named list of tibbles each element of which corresponds to a section of the file X. The names of the list correspond to the section names of the file X. An example workflow for adding an additional irrigation event to the `IRRIGATION AND WATER MANAGEMENT` section of a file X is given in source code \ref{modify_filex}. The function `read_filex()` works simiarly to the other `read_*()` functions already discussed. In the second statement, a conditional mutate function `mutate_cond()` (provided by the DSSAT package) is used to modify only rows that meet the conditions provided in the second argument. In this case, only rows where `I` equals 1 will be modified. Due to the one-to-many relationship between irrigation level (`I`) and the application details (`IDATE`, `IROP`, and `IRVAL`), these details are stored as list-columns, hence the data for the new event must be appended using the concatenate function (`c()`). The final statement in Source Code \ref{modify_filex} uses `write_filex()` to write out the modified experiment details using the same file name as the original file. By using the same name the original file will be replaced by the new file. If this behavior is not desired, a different file name for the file X may be provided.
+The experiment details file format (file X) is one of the most complex of the DSSAT file formats because it contains multiple tiers of data that are connected by a combination of one-to-one and one-to-many relationships. At present, no attempt has been made within the DSSAT package to construct a unified relational data structure. Thus, the output of the `read_filex()` function is a named list of tibbles each element of which corresponds to a section of the file X. The names of the list correspond to the section names of the file X. An example workflow for adding an additional irrigation event to the `IRRIGATION AND WATER MANAGEMENT` section of a file X is given in Source Code \ref{modify_filex}. The function `read_filex()` works similarly to the other `read_*()` functions already discussed. In the second statement, a conditional mutate function `mutate_cond()` (provided by the `DSSAT` package) is used to modify only rows that meet the conditions provided in the second argument. In this case, only rows where `I` equals 1 will be modified. Due to the one-to-many relationship between irrigation level (`I`) and the application details (`IDATE`, `IROP`, and `IRVAL`), these details are stored as list-columns, hence the data for the new event must be appended using the concatenate function `c()`. The final statement in Source Code \ref{modify_filex} uses `write_filex()` to write out the modified experiment details using the same file name as the original file. By using the same name the original file will be replaced by the new file. If this behavior is not desired, a different file name for the file X may be provided.
 
-```{r ref="modify_filex",code.cap="Example workflow for adding another irrigation event to an existing DSSAT experiment details file (filex X).", message=FALSE,warning=FALSE,results='hide',eval=TRUE}
+```{r ref="modify_filex",code.cap="Example workflow for adding another irrigation event to an existing DSSAT experiment details file (filex X).", message=FALSE,warning=FALSE,results='hide'}
 # Read in original file X
 file_x <- read_filex('KSAS8101.WHX')
-
 # Add an additional 60 mm irrigation event on 4 May 1982
 file_x$`IRRIGATION AND WATER MANAGEMENT` <- 
   # Extract the original IRRIGATION AND WATER MANAGEMENT section
@@ -170,64 +143,73 @@ file_x$`IRRIGATION AND WATER MANAGEMENT` <-
               IDATE = c(IDATE,as.POSIXct('1982-05-04')),
               IROP  = c(IROP,"IR001"),
               IRVAL = c(IRVAL,60))
-
 # Overwrite original file X with new values
 write_filex(file_x,'KSAS8101.WHX')
 ```
 
 Although space considerations preclude providing examples for all file types, similar workflows could be constructed for other file types using the corresponding functions for reading/writing files for cultivar (`read_cul()` and `write_cul()`), ecotype (`read_eco()` and `write_eco()`), file A (`read_filea()` and `write_filea()`), and file T (`read_filet()` and `write_filet()`).
 
-## Running simulations and summarizing output
+# Running simulations and summarizing output
 
-In addition to modifying input files, the DSSAT package also contains functions for generating simulation batch files, running the model, and reading simulated output. When the DSSAT package is loaded (`library(DSSAT)`), it attempts to locate the DSSAT installation and identify the proper executable name. It then prints a start up message indicating what file path was found (if any) and prompting the user to reset the path if the located file path is incorrect. Source Code \ref{run_dssat} shows two examples for setting the file path to the DSSAT-CSM executable. The first is an example path for a Windows installation. The second example is compatible with a Unix-style operating system (e.g. macOS, Linux, etc). Once the `DSSAT.CSM` option has been set, the user can generate a simulation batch file as illustrated in the third and fourth statements in Source Code \ref{run_dssat}. In the third statement, the user constructs a data frame or tibble with all the necessary columns specified including, among other details, the file X name and treatment levels to be run. In the fourth, the user specifies as many of the columns as are needed to uniquely specify the set of simulations and the remaining columns will be filled with default values. If the `file_name` argument is not specified, the function will attempt to construct a file name based on the current value of the `DSSAT.CSM` option. Once the batch file has been generate, the model can be run using the `run_dssat()` function. Once simulations have completed, the simulated output can be read using the `read_output()` funcion as is demonstrated in Source Code \ref{run_dssat}.
+In addition to modifying input files, the DSSAT package also contains functions for generating simulation batch files, running the model, and reading simulated output. When the DSSAT package is loaded with `library(DSSAT)`, it attempts to locate the local DSSAT installation and identify the proper executable name. It then prints a start up message indicating what file path was found (if any) and prompting the user to reset the path if the located file path is incorrect. Source Code \ref{run_dssat} shows two examples for setting the file path to the DSSAT-CSM executable. The first is an example path for a Windows installation. The second example is compatible with a Unix-style operating system (e.g. macOS, Linux, etc). Once the `DSSAT.CSM` option has been set, the user can generate a simulation batch file as illustrated in the third and fourth statements in Source Code \ref{run_dssat}. In the third statement, the user constructs a data frame or tibble with all the necessary columns specified including, among other details, the file X name and treatment levels to be run. In the fourth statement, the user specifies as many of the columns as are needed to uniquely specify the set of simulations and the remaining columns will be filled with default values. If the `file_name` argument is not specified, the function will attempt to construct a file name based on the current value of the `DSSAT.CSM` option. Once the batch file has been generated, the model can be run using the `run_dssat()` function. Once simulations have completed, the simulated output can be read using the `read_output()` function as is demonstrated in Source Code \ref{run_dssat}.
 
-```{r ref="run_dssat",code.cap="Example workflow for generating a batch file, running the DSSAT-CSM model, and reading seasonal summary output.", message=FALSE,warning=FALSE,results='hide',eval=TRUE}
-
+```{r ref="run_dssat",code.cap="Example workflow for generating a batch file, running the DSSAT-CSM model, and reading seasonal summary output.", message=FALSE,warning=FALSE,results='hide'}
 # Example setting DSSAT-CSM path for Windows installation
 options(DSSAT.CSM = 'C:\\DSSAT47\\DSCSM047.EXE')
-
 # Example setting DSSAT-CSM path for *nix installation
 options(DSSAT.CSM = '/DSSAT47/dscsm047')
-
 # Generate a DSSAT batch file using a tibble
 tibble(FILEX='KSAS8101.WHX', TRTNO=1:6, RP=1, SQ=0, OP=0, CO=0) %>% 
   write_dssbatch()
-
 # Generate a DSSAT batch file with function arguments
 write_dssbatch(filex='KSAS8101.WHX',trtno=1:6)
-
 # Run DSSAT-CSM
 run_dssat()
-
 # Read seasonal output file
-smry <- read_dssat('Summary.OUT')
+smry <- read_output('Summary.OUT')
 ```
 
-The `read_output()` function can also be used to read daily simulated output as shown in Source Code \ref{visualize_output}.
+The `read_output()` function can also be used to read daily simulated output and generate publication-quality graphics when combined with functions from the `ggplot2` package [@ggplot2] as shown in Source Code \ref{visualize_output}. The first statement reads in the simulated output, converts treatment number (TRNO) to a discrete factor, and filters the output to include only treatments 4 to 6. The second statement reads in observed data from file T format and subsets to the corresponding treatments. The final statement builds a publication-quality plot using the simulated and observed datasets, the output of which is shown in Figure \ref{fig:visualization}. Further explanation of the functions used to construct the plot can be found in the `ggplot2` documentation [@ggplot2].
 
-```{r visualization,ref="visualize_output",code.cap="Example workflow for reading daily simulated output and generating graphics using `ggplot`.",fig.cap="Output of code shown in Source Code \\ref{visualize_output} showing observed (points) and simulated (lines) leaf area index (LAID) over time for six treatments.",message=FALSE,warning=FALSE,eval=TRUE}
-
+```{r visualization,ref="visualize_output",code.cap="Example workflow for reading daily simulated output and generating graphics using ggplot2.",fig.cap="Output of code shown in Source Code \\ref{visualize_output} showing observed (points) and simulated (lines) leaf area index over time for 0, 60, and 180 kg N ha^-1^ fertilization rates.",message=FALSE,warning=FALSE,eval=TRUE}
 # Read daily simulated plant growth output
 pgro <- read_output('PlantGro.OUT') %>% 
-  # Convert TRNO to a factor
-  mutate(TRNO=factor(TRNO))
-
+  # Filter to treatments 4 to 6
+  filter(TRNO %in% 4:6) %>% 
+  # Convert TRNO to a factor and rename to Fertilization Rate
+  mutate(`Fertilization Rate`=factor(TRNO,labels=c(0,60,180)))
 # Read time-series observed plant growth data from file T
 filet <- read_filet('KSAS8101.WHT') %>% 
-  # Convert TRNO to a factor
-  mutate(TRNO=factor(TRNO))
-
+  # Filter to treatments 4 to 6
+  filter(TRNO %in% 4:6) %>% 
+  # Convert TRNO to a factor and rename to Fertilization Rate
+  mutate(`Fertilization Rate`=factor(TRNO,labels=c(0,60,180))) %>% 
+  # Add days after planting (DAP) to observed data
+  left_join(select(pgro,DATE,DAP))
 # Construct a combined plot with simulated and observed data
-ggplot(data=pgro,aes(x=DATE,y=LAID,linetype=TRNO))+
+ggplot(data=pgro,aes(x=DAP,y=LAID,linetype=`Fertilization Rate`))+
   # Add a line plot for simulated data
   geom_line()+
   # Add observed data as points
-  geom_point(data=filet,aes(shape=TRNO))
-
+  geom_point(data=filet,aes(shape=`Fertilization Rate`))+
+  # Add a custom y-axis label with units
+  ylab(expression(Leaf~Area~Index~"("*m^2~m^{-2}*")"))+
+  # Add a custom x-axis label
+  xlab("Days After Planting")+
+  # Set color theme to black and white
+  theme_bw()+
+  # Reposition legend
+  theme(legend.position=c(0.15,0.8))
 ```
 
-# Conclusions and Future Directions
+# Summary and Future Directions
+
+In summary, the `DSSAT` R package provides basic functions for reading and writing input files, running simulations, and reading simulated output files for DSSAT-CSM. These functions can be combined with other R packages to develop robust, reproducible, scientific modeling workflows. Future developments for the package would be to improve the speed of read/write operations and extend capabilities to include reading/writing species parameter files, conducting automated sensitivity analysis and parameter estimation, filling gaps in weather data, and estimating soil parameters from pedotransfer functions. 
 
 \clearpage
+
+# Acknowledgements
+
+This work was supported by the USDA National Institute of Food and Agriculture, Hatch project OKL03023.
 
 # References {#references .unnumbered}
