@@ -29,8 +29,11 @@
 #'
 #' write_dssbatch(batch_tbl)
 #'
+write_dssbatch <- function(batch_tbl=NULL,...){
+  UseMethod("write_dssbatch")
+}
 
-write_dssbatch <- function(batch_tbl=NULL,filex='',trtno=1,rp=1,sq=0,op=0,co=0,
+write_dssbatch.default <- function(batch_tbl=NULL,filex='',trtno=1,rp=1,sq=0,op=0,co=0,
                            file_name=NULL){
 
   if(is.null(file_name)){

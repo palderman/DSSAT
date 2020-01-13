@@ -72,7 +72,7 @@ read_cul <- function(file_name,col_types=NULL,col_names=NULL,
 
   cul <- map(1:length(begin),
              ~read_tier_data(raw_lines[begin[.]:end[.]],
-                        col_types = cul_col_types,
+                        col_types = col_types,
                         col_names = col_names,
                         left_justified = left_justified)) %>%
     reduce(combine_tiers)

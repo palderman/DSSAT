@@ -1,4 +1,4 @@
-reconcile_gaps <- function(loc,cnames,left_justified){
+reconcile_gaps <- function(loc,cnames,cnames_regex,left_justified){
   # Calculate separation between columns, should be 1
   separation <- loc %>%
     t() %>%
@@ -21,7 +21,7 @@ reconcile_gaps <- function(loc,cnames,left_justified){
   # Extend columns to fill in gaps
   for(i in has_gaps){
     if(cnames[i] %in% left_justified){
-      if(str_detect(cnames[i+1],'^ \\*')){
+      if(str_detect(cnames_regex[i+1],'^ \\*')){
         # If column i is left justified and start of column i+1
         #   is determined by regex extend end of column i
         loc[i,2] <- loc[i+1,1] - 1
@@ -41,7 +41,7 @@ reconcile_gaps <- function(loc,cnames,left_justified){
   # Shrink columns to eliminate overlaps
   for(i in has_overlaps){
     if(any(map_lgl(left_justified,str_detect,string=cnames[i]))){
-      if(str_detect(cnames[i+1],'^ \\*')){
+      if(str_detect(cnames_regex[i+1],'^ \\*')){
         # If column i is left justified and start of column i+1
         #   is determined by regex shrink start of column i+1
         # Limit shift in start of column i+1 to width of name

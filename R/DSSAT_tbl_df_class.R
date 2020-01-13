@@ -65,6 +65,8 @@ as_DSSAT_tbl.default <- function(tbl_in,v_fmt=NULL,tier_info=NULL){
 
   }else{
     tbl_out <- tbl_in
+    if(!is.null(v_fmt)) attr(tbl_out,'v_fmt') <- v_fmt
+    if(!is.null(tier_info)) attr(tbl_out,'tier_info') <- tier_info
   }
 
   return(tbl_out)
