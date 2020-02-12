@@ -101,15 +101,15 @@ create_dssat_expmt <- function(filex_name,trno=NULL,data_types=NULL){
     str_replace('X$','A')
   if(file.exists(filea_name)){
     filea <- read_filea(filea_name)
+    filea_col_names <- filea %>%
+      colnames() %>%
+      {.[! . %in% c('TRNO','DATE')]}
     if(any(str_detect(colnames(filea),'DAT$'))){
       pdate <- get_pdate(filex)
       filea <- dat_to_dap(pdate,filea)
     }else{
       pdate <- NULL
     }
-    filea_col_names <- filea %>%
-      colnames() %>%
-      {.[! . %in% c('TRNO','DATE')]}
   }else{
     filea <- NULL
     filea_col_names <- NULL
@@ -468,7 +468,6 @@ find_output_variables <- function(.expmt){
   {names(.) <- .; .} %>%
     map(~try(suppressWarnings(read_output(.)), silent = TRUE)) %>%
     {.[map_lgl(.,~{ ! 'try-error' %in% class(.) })]} %>%
-    map(~dat_to_dap(.expmt$sim_template[[1]]$pdate[[1]],.)) %>%
     {.[map_lgl(.,~{ any(colnames(.) %in% unlist(.expmt$data_types)) })]} %>%
     {tibble(file_name = names(.), col_names = map(.,colnames),
             data_types = list(unlist(.expmt$data_types)))} %>%
@@ -528,7 +527,7 @@ read_sim_data <- function(sim_template,out_tbl){
   out <- out_tbl %>%
     group_by(file_name) %>%
     group_map(~{
-      read_output(.y$file_name) %>%
+      read_output(.y$file_name,read_only = c('TRNO','DATE',.x$col_names[[1]])) %>%
         {
           if( ! 'DATE' %in% names(.)){
             . <- tibble::add_column(.,DATE = as.POSIXct('0001001',format='%Y%j',tz='UTC'))
@@ -540,7 +539,6 @@ read_sim_data <- function(sim_template,out_tbl){
             .
           }
         } %>%
-        select(c('TRNO','DATE',unlist(.x$col_names))) %>%
         filter(TRNO %in% sim_template$data_template[[1]]$TRNO &
                  DATE %in% sim_template$data_template[[1]]$DATE)
     }) %>%
