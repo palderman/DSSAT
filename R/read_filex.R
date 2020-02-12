@@ -82,7 +82,7 @@ read_filex <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
 
   left_justified <- c('SITE','PEOPLE','ADDRESS','INSTRUMENTS',
                       'PROBLEMS','PUBLICATIONS','DISTRIBUTION','NOTES','  HARM\\.*',
-                      ' TNAME\\.*','FLNAME','  ID_SOIL',' CNAME','WSTA\\.*',' SLTX',
+                      ' TNAME\\.*','FLNAME','  ID_SOIL',' CNAME',' WSTA\\.*',' SLTX',
                       ' ID_FIELD',' ICNAME',' IRNAME',' FERNAME',' GENERAL',
                       ' SNAME\\.*','SMODEL',' MODEL',' OPTIONS',' METHODS',' MANAGEMENT',
                       ' OUTPUTS',' PLANTING',' IRRIGATION',' NITROGEN',

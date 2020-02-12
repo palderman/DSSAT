@@ -33,6 +33,10 @@ write_dssbatch <- function(batch_tbl=NULL,...){
   UseMethod("write_dssbatch")
 }
 
+write_dssbatch.tbl_df <- function(batch_tbl){
+  write_dssbatch.default(batch_tbl = batch_tbl)
+}
+
 write_dssbatch.default <- function(batch_tbl=NULL,filex='',trtno=1,rp=1,sq=0,op=0,co=0,
                            file_name=NULL){
 

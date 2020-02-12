@@ -36,8 +36,10 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
 
   if(!is.null(read_only)){
     i <- which(read_only == 'DATE')
-    if(length(i) > 1){
-      read_only <- c(read_only[i-1],'YEAR','DOY',read_only[i+1])
+    if(length(i) == 1){
+      read_only <- c(head(read_only,i-1),
+                     'YEAR','DOY',
+                     tail(read_only,length(read_only)-i))
     }
   }
 
