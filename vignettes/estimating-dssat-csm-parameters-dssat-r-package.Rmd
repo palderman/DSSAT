@@ -1,0 +1,109 @@
+---
+title: "Estimating DSSAT-CSM parameters with the DSSAT R Package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Estimating DSSAT-CSM parameters with the DSSAT R Package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(DSSAT)
+```
+
+```{r create-expmt_tbl}
+expmt_tbl <- create_dssat_expmt(filex='/DSSAT47/Wheat/KSAS8101.WHX')
+expmt_tbl
+```
+
+```{r create-obs_tbl}
+
+obs_tbl <- expmt_tbl$obs_data %>%
+  bind_rows()
+obs_tbl
+```
+
+```{r create-prm_tbl}
+
+prm_tbl <- create_dssat_prm('P1V', pmin = 28, pmax = 56, pfile = 'WHCER047.CUL', pkey = 'ASA001') %>%
+  add_dssat_prm('P1D', pmin = 50, pmax = 150, pfile = 'WHCER047.CUL', pkey = 'ASA001')
+prm_tbl
+```
+
+```{r create-input_tbl}
+
+input_tbl <- prm_tbl$pfile %>%
+  unique() %>%
+  map(create_dssat_input,col_types=cols(P1V=col_double())) %>%
+  bind_rows() %>%
+  as_dssat_input_tbl()
+input_tbl
+
+```
+
+```{r modify-prm_tbl}
+
+prm_tbl <- prm_tbl %>%
+  add_pfmt(input_tbl) %>%
+  add_pregex()
+
+prm_tbl
+
+```
+
+```{r add-input_template-to-input_tbl}
+
+input_tbl <- add_input_template(input_tbl,prm_tbl)
+
+input_tbl
+
+```
+
+```{r write-inputs-example}
+
+pvals <- c(P1V=42,P1D=100)
+
+write_inputs(input_tbl,prm_tbl,pvals)
+
+list.files()
+
+```
+
+```{r read-model-outputs}
+
+sim_tbl <- get_model_outputs(expmt_tbl) %>%
+  bind_rows()
+
+sim_tbl
+
+```
+
+```{r calc-sum-sq-err}
+
+sse <- SSE_fun(obs_tbl,sim_tbl)
+
+```
+
+```{r construct-prmest-object}
+
+prmest <- list(expmt_tbl = expmt_tbl,
+               obs_tbl = obs_tbl,
+               input_tbl = input_tbl,
+               prm_tbl = prm_tbl,
+               stat_fun = SSE_fun)
+
+```
+
+```{r optim-estimation-example}
+
+est_out <- run_optim_estimation(prmest,control=list(trace=1,maxit=10))
+
+```
+
