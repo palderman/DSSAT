@@ -20,7 +20,8 @@
 #' header_to_fwf_position(header_line)
 
 header_to_fwf_position <- function(header,left_justified='EXCODE',
-                                   col_types=NULL,col_names=NULL){
+                                   col_types=NULL,col_names=NULL,
+                                   read_only = NULL){
 
   # Replace @ sign and | with space
   header <- header %>%
@@ -28,68 +29,92 @@ header_to_fwf_position <- function(header,left_justified='EXCODE',
                       '\\|'=' ',
                       '!.*'=''))
 
-  # Combine left justified,col_types and col_names for known columns
-  col_names <- c(col_names,left_justified,names(col_types$cols)) %>%
-    unique() %>%
-    map_chr(function(pattern){
-      if(str_detect(header,name_to_regex(pattern))){
-        return(pattern)
-      }else{
-        return(NA)
-      }
-    }) %>%
-    {.[!is.na(.)]}
-
-  # Loop over known col_names
-  cnames <- header
-  if(!is.null(col_names)){
-    for(name in col_names){
-      cnames <- splice_in_col_name(cnames,name)
-    }
+  if(is.null(read_only)){
+    # Combine left justified,col_types and col_names for known columns
+    col_names <- c(col_names,left_justified,names(col_types$cols)) %>%
+      unique()
+    col_names <- col_names %>%
+      str_replace_all(c('^(?! )'='((^)|( ))',
+                        '(?<!( )|( \\+)|(\\(\\?\\= \\|\\$\\)))$'='(( )|($))')) %>%
+      # str_c('((^)|( ))',.) %>%
+      map_lgl(~str_detect(header,.)) %>%
+      {col_names[.]}
+    }else{
+    col_names <- read_only %>%
+      str_c('((^)|( ))',.,'(( )|($))') %>%
+      map_lgl(~str_detect(header,.)) %>%
+      {read_only[.]}
   }
 
-  # Extract unknown column names
-  cnames <- map(cnames,function(new_names){
-      if(!any(str_detect(new_names,col_names))){
-        new_names <- str_split(new_names,'(?<=[^ ]) +(?=[^ ])')
-      }
-      return(new_names)
-    }) %>%
-    unlist() %>%
-    map(function(name){
-      if(!any(str_detect(name,col_names))){
-        name <- str_replace_all(name,c('^ +'='',' +$'=''))
-      }
-      return(name)
-    }) %>%
-    str_subset('(?!^$)')
+  # Loop over known col_names
+  # cnames <- header
+  # if(!is.null(col_names)){
+  #   for(name in col_names){
+  #     cnames <- splice_in_col_name(cnames,name)
+  #   }
+  # }
+  # cnames <- cnames %>%
+  #   str_subset('^ *$',negate=TRUE)
 
-  # Infer column positions based on header
+  if(is.null(read_only)){
+    # Extract unknown column names
+    cnames <- col_names %>%
+      str_c('(',.,')') %>%
+      str_c(collapse='|') %>%
+      str_remove_all(header,.) %>%
+      str_split('(?<=[^ ]) +(?=[^ ])') %>%
+      unlist() %>%
+      # map(function(name){
+      #   if(!any(str_detect(name,col_names))){
+      #     name <- str_replace_all(name,c('^ +'='',' +$'=''))
+      #   }
+      #   return(name)
+      # }) %>%
+      str_subset('^ *$',negate = TRUE) %>%
+      str_remove_all('(^ +)|( +$)') %>%
+      c(col_names,.)
+  }else{
+    cnames <- col_names
+  }
+
+  if(is.null(read_only)){
+    # Infer column positions based on header
 #  cnames_regex <- name_to_regex(cnames) %>%
-    cnames_regex <- cnames %>%
-    map_chr(function(name){
-      if(any(str_detect(name,name_to_regex(left_justified)))){
-        regex <- name %>%
-          name_to_regex() %>%
-          str_c(' *')
-      }else if(!any(str_detect(name,name_to_regex(col_names)))){
-        regex <- name %>%
-          name_to_regex() %>%
-          str_c(' *',.,'((?= )|(?=$))')
-      }else{
-        regex <- name %>%
-          name_to_regex()
-      }
-      return(regex)
-    })
+      cnames_regex <- cnames %>%
+      map_chr(function(name){
+        if(any(str_detect(name,name_to_regex(left_justified)))){
+          regex <- name %>%
+            name_to_regex() %>%
+            str_c(' *')
+        }else if(!any(str_detect(name,name_to_regex(col_names)))){
+          regex <- name %>%
+            name_to_regex() %>%
+            str_c(' *',.,'((?= )|(?=$))')
+        }else{
+          regex <- name %>%
+            name_to_regex()
+        }
+        return(regex)
+      })
+  }else{
+    cnames_regex <- str_c('\\.*',col_names,'\\.*')
+  }
 
-  start_end <- str_locate(header,cnames_regex)
+  start_end <- get_start_end(header,cnames) %>%
+    {tibble(start = as.numeric(.[,1]),
+            end = as.numeric(.[,2]))} %>%
+    mutate(col_names = {cnames %>%
+                        de_regex() %>%
+                        str_remove_all('(^ *)|( *$)')},
+           cnames = cnames,
+           regex = cnames_regex) %>%
+    arrange(start)
 
   # Set start of first column to 1
-  start_end[1,1] <- 1
+  start_end$start[1] <- 1
 
   # Reconcile gaps/overlaps in column bounds
-  start_end <- reconcile_gaps(start_end,cnames,left_justified)
+  start_end <- reconcile_gaps(start_end,left_justified)
 
   # Check column positions for left justified cases
   left_justified <- intersect(left_justified,cnames)
@@ -101,10 +126,14 @@ header_to_fwf_position <- function(header,left_justified='EXCODE',
   }
 
   # Convert column positions to fixed widths for use with read_fwf()
-  fwf_pos <- cnames %>%
-    de_regex() %>%
-    fwf_positions(start=start_end[,1],end=start_end[,2],col_names=.) %>%
+  fwf_pos <- start_end %>%
+    {fwf_positions(start=.$start,end=.$end,col_names=.$col_names)} %>%
     filter(col_names!='-99')
+
+  if(!is.null(read_only)){
+    fwf_pos <- fwf_pos %>%
+      filter(col_names %in% read_only)
+  }
 
   return(fwf_pos)
 }

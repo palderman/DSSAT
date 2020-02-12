@@ -1,7 +1,7 @@
 Package: DSSAT
 Type: Package
 Title: Official R interface to DSSAT-CSM
-Version: 0.1.0
+Version: 0.0.0.9000
 Author: Phillip D. Alderman
 Maintainer: Phillip D. Alderman <phillip.alderman@okstate.edu>
 Description: The purpose of this package is to provide an official
@@ -15,3 +15,7 @@ LazyData: true
 Depends:
     readr,stringr,dplyr,purrr,glue,tidyr,lubridate,rlang
 RoxygenNote: 6.1.1
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

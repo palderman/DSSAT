@@ -25,7 +25,7 @@
 
 read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NULL,
                            left_justified='EXCODE',guess_max=1000,join_tiers=TRUE,
-                           store_v_fmt=TRUE){
+                           store_v_fmt=TRUE, read_only = NULL){
 
   # Find header line
   skip <- str_which(raw_lines,'^@')
@@ -34,6 +34,15 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
   raw_lines <- raw_lines %>%
     str_replace_all(c('\\cz'='','^ +$'=''))
 
+  if(!is.null(read_only)){
+    i <- which(read_only == 'DATE')
+    if(length(i) == 1){
+      read_only <- c(head(read_only,i-1),
+                     'YEAR','DOY',
+                     tail(read_only,length(read_only)-i))
+    }
+  }
+
 #  if(!'DATE'%in%{col_types$cols %>% str_replace_all(c(' '=''))})
   col_types <- cols(` DATE`=col_character()) %>%
     {.$cols <- c(.$cols,col_types$cols)
@@ -41,7 +50,7 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
 
   # Process header into fixed-width format positions
   fwf_pos <- map(headline,
-                 ~header_to_fwf_position(.,left_justified,col_types,col_names))
+                 ~header_to_fwf_position(.,left_justified,col_types,col_names,read_only))
 
   # Calculate end of each section based on beginning of next section
   end <- c(skip[-1]-1,length(raw_lines))

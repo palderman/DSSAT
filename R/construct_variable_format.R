@@ -6,7 +6,8 @@ construct_variable_format <- function(tier_data,fwf_pos,left_justified){
     bind_rows() %>%
     mutate(just = {col_names %>%
 #                    name_to_regex() %>%
-                    map_lgl(~any(map_lgl(left_justified,str_detect,string=.))) %>%
+                    # str_remove_all('(^ +)|( +$)') %>%
+                    map_lgl(~any(map_lgl(left_justified,str_detect,pattern=.))) %>%
                     ifelse('-','')},
            leading_chars = if_else(just == '',
                                    '',

@@ -45,24 +45,26 @@
 #'
 #' read_output('SAMPLE.OUT')
 
-read_output <- function(file_name,col_types=NULL,col_names=NULL,left_justified=NULL){
+read_output <- function(file_name,col_types=NULL,col_names=NULL,left_justified=NULL,
+                        read_only=NULL){
 
   col_types <- cols(` TNAME\\.*`=col_character(),
-                    ` TNAM\\.*`=col_character(),
+                    ` TNAM\\.+`=col_character(),
                     ` EXNAME\\.*`=col_character(),
-                    ` FNAM\\.*`=col_character(),
+                    `EXCODE  `=col_character(),
+                    ` FNAM\\.*(?= |$)`=col_character(),
                     ` WSTA\\.*`=col_character(),
                     ` SOIL_ID\\.*`=col_character(),
                     ` MODEL\\.*`=col_character()) %>%
     {.$cols <- c(.$cols,col_types$cols);.}
 
   left_justified <- left_justified %>%
-    c(.,' TNAME\\.*',' TNAM\\.*',' EXNAME\\.*',' FNAM\\.*',' WSTA\\.*',
-      ' SOIL_ID\\.*',' MODEL\\.*')
+    c(.,' TNAME\\.*',' TNAM\\.+',' EXNAME\\.*',' FNAM\\.*(?= |$)',' WSTA\\.*',
+      ' SOIL_ID\\.*',' MODEL\\.*','EXCODE  ')
 
   col_names <- col_names %>%
     c(.,
-      ' +S(?= |$)',' +O(?= |$)',' +C(?= |$)',' +CR(?= |$)')
+      ' +S(?= |$)',' +O(?= |$)',' +C(?= |$)',' +CR(?= |$)',' TNAM(?= |$)','  TRNO')
 
   # Read in raw data from file
   raw_lines <- readLines(file_name) %>%
@@ -83,7 +85,8 @@ read_output <- function(file_name,col_types=NULL,col_names=NULL,left_justified=N
                               col_types = col_types,
                               col_names = col_names,
                               left_justified = left_justified,
-                              store_v_fmt = FALSE)) %>%
+                              store_v_fmt = FALSE,
+                              read_only = read_only)) %>%
     reduce(combine_tiers) %>%
     as_DSSAT_tbl()
 

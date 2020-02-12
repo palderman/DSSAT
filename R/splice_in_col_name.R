@@ -39,10 +39,19 @@ splice_in_col_name <- function(col_names,new_name){
 
     split_name <- new_name_regex %>%
       str_extract(col_names[i],.)
-    col_names <- new_name_regex %>%
-      str_split(col_names[i],.) %>%
-      {.[[1]]} %>%
-      {c(.[1],split_name,.[2])} %>%
+
+    start_end <- new_name_regex %>%
+      get_start_end(col_names[i],.)
+
+    before_split <- col_names[i] %>%
+      str_sub(end = start_end[,1] - 1) %>%
+      str_replace_all('(^ *)|( *$)','')
+
+    after_split <- col_names[i] %>%
+      str_sub(start = start_end[,2] + 1) %>%
+      str_replace_all('(^ *)|( *$)','')
+
+    col_names <- c(before_split,split_name,after_split) %>%
       {.[.!=""]} %>%
       c(col_names[-i:-length(col_names)],
         .,
