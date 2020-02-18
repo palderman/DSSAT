@@ -1,3 +1,8 @@
+## Resubmission
+This is a resubmission. In this version I have:
+
+* Removed LICENSE file from the source package
+
 ## Test environments
 
 * local Ubuntu 16.04.6, R 3.6.2

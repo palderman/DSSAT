@@ -5,3 +5,5 @@ test_data
 prmest_r3FGoogY
 issues
 cran-comments.md
+^CRAN-RELEASE$
+LICENSE
