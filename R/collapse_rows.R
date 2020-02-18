@@ -1,3 +1,6 @@
+#' @importFrom dplyr "%>%" group_vars summarize summarize_all ungroup mutate_if group_by_at vars one_of
+#' @importFrom purrr map_dbl
+#'
 collapse_rows <- function(tbl){
   prev_grps <- group_vars(tbl)
   n <- tbl %>%

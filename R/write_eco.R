@@ -4,7 +4,12 @@
 #'
 #' @inheritParams read_dssat
 #'
+#' @param eco a DSSAT_tbl containing the contents of a DSSAT ecotype parameter file
+#'
 #' @return a tibble containing the data from the raw DSSAT output
+#'
+#' @importFrom stringr str_detect
+#' @importFrom dplyr "%>%"
 #'
 #' @examples
 #'
@@ -19,12 +24,15 @@
 #' "IB0004 +5% RUE MIDWEST1    8.0 34.0  34.0  12.5   4.0   6.0   170.  4.4   0.85",
 #' "DFAULT DEFAULT             8.0 34.0  34.0  12.5   4.0   6.0   170.  4.2   0.85")
 #'
+#'\dontrun{
+#'
 #' write(sample_eco,'SAMPLE.ECO')
 #'
-#' read_eco('SAMPLE.ECO')
+#' eco <- read_eco('SAMPLE.ECO')
 #'
 #' write_eco(eco,'SAMPLE2.ECO')
 #'
+#' }
 
 write_eco <- function(eco,file_name){
 

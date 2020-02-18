@@ -11,6 +11,9 @@ write_filea(filea, file_name, drop_duplicate_rows = TRUE)
 
 \item{file_name}{a character vector of length one that contains the name
 of a single DSSAT file into which `filea` will be written}
+
+\item{drop_duplicate_rows}{a logical value indicating whether duplicate rows
+should be dropped from tier_data}
 }
 \description{
 Writes data to a single DSSAT file A
@@ -27,9 +30,13 @@ sample_filea <- c(
 "     3 14700 10800   2.8 33400 2.083   9.8  44.0   -99  74.0   -99  5700  14.5",
 "     4 14700 10100   3.7 34700 2.209  10.4  42.2   -99  86.5   -99  7100  13.4")
 
+\dontrun{
+
 write(sample_filea,'SAMPLE.CRA')
 
 filea <- read_filea('SAMPLE.CRA')
 
 write_filea(filea,'SAMPLE2.CRA')
+
+}
 }

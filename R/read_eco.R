@@ -6,6 +6,11 @@
 #'
 #' @return a tibble containing the data from the raw DSSAT file
 #'
+#' @importFrom dplyr "%>%"
+#' @importFrom readr cols col_character
+#' @importFrom stringr str_detect str_subset str_which
+#' @importFrom purrr map reduce
+#'
 #' @examples
 #'
 #' sample_eco <- c(
@@ -18,9 +23,13 @@
 #' "IB0004 +5% RUE MIDWEST1    8.0 34.0  34.0  12.5   4.0   6.0   170.  4.4   0.85",
 #' "DFAULT DEFAULT             8.0 34.0  34.0  12.5   4.0   6.0   170.  4.2   0.85")
 #'
+#'\dontrun{
+#'
 #' write(sample_eco,'SAMPLE.ECO')
 #'
 #' read_eco('SAMPLE.ECO')
+#'
+#' }
 
 read_eco <- function(file_name,col_types=NULL,col_names=NULL,
                      left_justified=c('ECO   ','ECO#','ECONAME\\.*','ECO-NAME\\.*')){

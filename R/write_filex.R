@@ -2,10 +2,16 @@
 #'
 #' @export
 #'
+#' @inheritParams write_tier
+#'
 #' @param filex a list of tibbles containing the data to write to a DSSAT file X
 #'
 #' @param file_name a character vector of length one that contains the name
 #' of a single DSSAT file into which `filet` will be written
+#'
+#' @importFrom dplyr "%>%"
+#' @importFrom stringr str_c str_detect
+#' @importFrom purrr map
 #'
 #' @return NULL
 #'

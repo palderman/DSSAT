@@ -1,3 +1,7 @@
+#' @importFrom stringr str_remove_all str_c str_detect str_subset
+#' @importFrom purrr map_lgl map_chr
+#' @importFrom dplyr "%>%"
+#'
 check_col_types <- function(col_types,col_names){
 
   # Extract cols object

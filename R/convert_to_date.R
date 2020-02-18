@@ -8,7 +8,12 @@
 #'
 #' @return a POSIXct vector
 #'
+#' @importFrom dplyr "%>%"
+#' @importFrom lubridate years
+#'
 #' @examples
+#'
+#' convert_to_date('2018031')
 #'
 
 convert_to_date <- function(d){

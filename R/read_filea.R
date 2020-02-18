@@ -20,9 +20,13 @@
 #' "     3 14700 10800   2.8 33400 2.083   9.8  44.0   -99  74.0   -99  5700  14.5",
 #' "     4 14700 10100   3.7 34700 2.209  10.4  42.2   -99  86.5   -99  7100  13.4")
 #'
+#'\dontrun{
+#'
 #' write(sample_filea,'SAMPLE.CRA')
 #'
 #' read_filea('SAMPLE.CRA')
+#'
+#' }
 
 read_filea <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
   filea <- read_filet(file_name=file_name,

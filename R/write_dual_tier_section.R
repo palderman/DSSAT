@@ -1,3 +1,6 @@
+#' @importFrom dplyr "%>%" ungroup select_if select filter_at matches
+#' @importFrom tidyr unnest
+#' @importFrom purrr map pmap
 write_dual_tier_section <- function(section,pad_name=NULL,drop_duplicate_rows=TRUE){
 
   tier_info <- attr(section,'tier_info')

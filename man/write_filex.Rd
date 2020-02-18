@@ -11,6 +11,9 @@ write_filex(filex, file_name, drop_duplicate_rows = TRUE)
 
 \item{file_name}{a character vector of length one that contains the name
 of a single DSSAT file into which `filet` will be written}
+
+\item{drop_duplicate_rows}{a logical value indicating whether duplicate rows
+should be dropped from tier_data}
 }
 \description{
 Writes data to a single DSSAT file X

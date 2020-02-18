@@ -1,3 +1,6 @@
+#' @importFrom dplyr "%>%"
+#' @importFrom stringr str_detect str_remove str_length
+#' @importFrom purrr map_lgl
 reconcile_gaps <- function(loc,left_justified){
   # Calculate separation between columns, should be 1
   separation <- loc[,c('start','end')] %>%

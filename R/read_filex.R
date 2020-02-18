@@ -6,6 +6,9 @@
 #'
 #' @return a tibble containing the data from the raw DSSAT file
 #'
+#' @importFrom readr cols col_character
+#' @importFrom dplyr "%>%"
+#' @importFrom stringr str_subset str_remove str_which str_detect
 #'
 
 read_filex <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){

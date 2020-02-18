@@ -2,25 +2,18 @@
 #'
 #' @export
 #'
-#' @param batch_tbl a data frame or tibble that contains all
-#' required columns of a DSSAT batch file (FILEX, TRTNO, RP,
-#' SQ, OP, CO)
-#'
-#' @param filex a character vector
-#'
-#' @param trtno,rp,sq,op,co a numeric vector
-#'
-#' @param file_name an optional character vector of the intended
-#' batch file name
+#' @inheritParams write_dssbatch.default
 #'
 #' @return invisibly returns a character vector containing the
 #' content of a DSSAT batch file
 #'
 #' @examples
 #'
-#' write_dssbatch(filex='UFGA0601.BMX',trtno=1:4)
+#'\dontrun{
 #'
-#' batch_tbl <- tibble(FILEX='UFGA0601.BMX',
+#' write_dssbatch(x='UFGA0601.BMX',trtno=1:4)
+#'
+#' batch_tbl <- data.frame(FILEX='UFGA0601.BMX',
 #'                     TRTNO=1:4,
 #'                     RP=1,
 #'                     SQ=0,
@@ -29,21 +22,45 @@
 #'
 #' write_dssbatch(batch_tbl)
 #'
-write_dssbatch <- function(batch_tbl=NULL,...){
+#' }
+write_dssbatch <- function(x, trtno = 1, rp = 1, sq = 0, op = 0, co = 0,
+                           file_name = NULL){
   UseMethod("write_dssbatch")
 }
 
-write_dssbatch.tbl_df <- function(batch_tbl){
-  write_dssbatch.default(batch_tbl = batch_tbl)
+#' tbl_df method for write_dssbatch()
+#'
+#' @export
+#'
+#' @keywords internal
+#'
+#' @inheritParams write_dssbatch.default
+#'
+#' @importFrom dplyr as_tibble "%>%"
+#'
+write_dssbatch.data.frame <- function(x, trtno = 1, rp = 1, sq = 0, op = 0, co = 0,
+                                  file_name = NULL){
+  batch_output <- as_tibble(x) %>%
+    write_dssbatch.tbl_df()
+
+  return(invisible(batch_output))
 }
 
-write_dssbatch.default <- function(batch_tbl=NULL,filex='',trtno=1,rp=1,sq=0,op=0,co=0,
-                           file_name=NULL){
+#' tbl_df method for write_dssbatch()
+#'
+#' @export
+#'
+#' @keywords internal
+#'
+#' @inheritParams write_dssbatch.default
+#'
+write_dssbatch.tbl_df <- function(x, trtno = 1, rp = 1, sq = 0, op = 0, co = 0,
+                                  file_name = NULL){
 
   if(is.null(file_name)){
     version <- get_dssat_version()
     file_name <- str_c('DSSBatch.V',version)
-  }
+   }
 
   header <- c('%-92s',rep('%7s',5)) %>%
     # Write individual column headers
@@ -53,17 +70,13 @@ write_dssbatch.default <- function(batch_tbl=NULL,filex='',trtno=1,rp=1,sq=0,op=
     # Add batch file header label on line previous to column header line
     c('$BATCH',.)
 
-  # Construct batch_tbl if not passed in as argument
-  if(is.null(batch_tbl)) batch_tbl <- tibble(FILEX=filex,
-                                             TRTNO=trtno,
-                                             RP=rp,
-                                             SQ=sq,
-                                             OP=op,
-                                             CO=co)
+  # To prevent "no visible binding for global variable" from R CMD check for group_by()
+  # statement below:
+  FILEX <- NULL
 
-  column_output <- batch_tbl %>%
+  column_output <- x %>%
     # Expand filex name to full width
-    mutate(FILEX=sprintf('%-92s',FILEX)) %>%
+    mutate(FILEX=sprintf('%-92s',.data$FILEX)) %>%
     # Write out all other columns
     mutate_at(vars(-FILEX),~sprintf('%7i',.)) %>%
     # Combine columns into character vector
@@ -74,6 +87,42 @@ write_dssbatch.default <- function(batch_tbl=NULL,filex='',trtno=1,rp=1,sq=0,op=
 
   # Write batch_output to file
   write(batch_output,file=file_name)
+
+  # Invisibly return batch_output
+  return(invisible(batch_output))
+}
+
+#' Default method for write_dssbatch()
+#'
+#' @export
+#'
+#' @keywords internal
+#'
+#' @param x a tibble/data frame or character vector; if a tibble, it should contain all
+#' required columns of a DSSAT batch file (FILEX, TRTNO, RP, SQ, OP, CO);
+#' if a character vector, it should contain FileX file names
+#'
+#' @param file_name an optional character vector of the intended
+#' batch file name
+#'
+#' @param trtno,rp,sq,op,co a numeric vector
+#'
+#' @importFrom stringr str_c
+#' @importFrom dplyr "%>%" tibble mutate mutate_at
+#' @importFrom glue glue_data
+#'
+write_dssbatch.default <- function(x, trtno = 1, rp = 1, sq = 0, op = 0, co = 0,
+                                   file_name = NULL){
+
+  # Construct batch_tbl
+  batch_tbl <- tibble(FILEX=x,
+                      TRTNO=trtno,
+                      RP=rp,
+                      SQ=sq,
+                      OP=op,
+                      CO=co)
+
+  batch_output <- write_dssbatch.tbl_df(x = batch_tbl)
 
   # Invisibly return batch_output
   return(invisible(batch_output))

@@ -1,3 +1,8 @@
+#' @importFrom dplyr "%>%" summarize_all rename
+#' @importFrom purrr map map_dbl reduce
+#' @importFrom stringr str_replace_all str_split str_extract str_remove str_locate_all str_c str_locate
+#' @importFrom readr read_table
+#' @importFrom rlang "!!!" sym
 read_horizontal_array <- function(all_lines){
 
   lines_out <- all_lines %>%

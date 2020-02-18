@@ -1,3 +1,6 @@
+#' @importFrom dplyr "%>%"
+#' @importFrom purrr map_lgl reduce
+#'
 combine_simulation_controls <- function(sim_ctrl_in){
 
   begin <- sim_ctrl_in %>%

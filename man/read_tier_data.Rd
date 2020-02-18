@@ -31,6 +31,12 @@ that should be used to guess the type of a column}
 
 \item{join_tiers}{A logical indicating whether the multiple tiers should be
 combined into a single tibble}
+
+\item{store_v_fmt}{a logical value indicating whether or not to store the
+format for variables being read}
+
+\item{read_only}{NULL or a character vector of column names that should be read in;
+If non-NULL only the columns listed will be read in.}
 }
 \value{
 a tibble or list of tibbles containing the data from the raw DSSAT output
@@ -41,11 +47,11 @@ Reads data from a single tier of a DSSAT output file
 \examples{
 
 sample_data_tier <- c(
-"@YEAR DOY   DAS   SRAA    ES1D    ES2D    ES3D    ES4D    ES5D    ES6D    ES7D    ES8D    ES9D    ES10",
-" 2006 001     1   7.40   0.508   0.175   0.060   0.101   0.083   0.110   0.098   0.035   0.032   0.639",
-" 2006 002     2   8.40   0.849   0.263   0.064   0.104   0.086   0.113   0.101   0.036   0.033   0.662",
-" 2006 003     3  13.10   1.148   0.549   0.091   0.132   0.108   0.144   0.128   0.046   0.042   0.843")
+"@YEAR DOY   DAS   SRAA    ES1D    ES2D    ES3D    ES4D    ES5D    ES6D    ES7D    ES8D",
+" 2006 001     1   7.40   0.508   0.175   0.060   0.101   0.083   0.110   0.098   0.035",
+" 2006 002     2   8.40   0.849   0.263   0.064   0.104   0.086   0.113   0.101   0.036",
+" 2006 003     3  13.10   1.148   0.549   0.091   0.132   0.108   0.144   0.128   0.046")
 
-read_tier_data(sample_tier)
+read_tier_data(sample_data_tier)
 }
 \keyword{internal}

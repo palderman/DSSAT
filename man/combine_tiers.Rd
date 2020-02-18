@@ -2,7 +2,7 @@
 % Please edit documentation in R/combine_tiers.R
 \name{combine_tiers}
 \alias{combine_tiers}
-\title{Efficiently combined data from two data tiers into one}
+\title{Efficiently combine data from two data tiers into one}
 \usage{
 combine_tiers(tier1, tier2, use_collapse_rows = FALSE,
   force_bind_rows = FALSE)
@@ -17,6 +17,6 @@ indicates whether rows should be collapsed before join}
 a tibble containing the data from the combined tiers
 }
 \description{
-Efficiently combined data from two data tiers into one
+Efficiently combine data from two data tiers into one
 }
 \keyword{internal}

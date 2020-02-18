@@ -1,4 +1,7 @@
-.onLoad <- function(libname,pkgname){
+utils::globalVariables(".")
+
+#' @importFrom utils tail
+.onAttach <- function(libname,pkgname){
 
   op <- options()
 
@@ -21,7 +24,7 @@
                      "  ",op$DSSAT.CSM,
                      "\n\nIf this is not the correct executable, please use\n\n",
                      "  options(DSSAT.CSM=\"",root_dir,
-                     "/path/to/executable.exe\")\n\n",
+                     "path/to/executable\")\n\n",
                      " to set the proper location and file name for DSSAT-CSM.\n")
   }else{
 
@@ -52,7 +55,7 @@
         if(length(dscsm) == 0){
           dscsm <- grep('dscsm???\\.exe',dscsm_candidates,value=TRUE)
         }
-        dscsm <- gsub('\\/','\\\\ ',dscsm)
+        dscsm <- gsub('\\/','\\\\',dscsm)
       }else{
         dscsm <- grep('dscsm',dscsm_candidates,value=TRUE)
         if(length(dscsm) > 0){
@@ -66,14 +69,14 @@
       startup_msg <- c("Unable to find DSSAT-CSM executable.\n",
                        "Please use\n\n",
                        " options(DSSAT.CSM=\"",root_dir,
-                       "/path/to/executable.exe\")\n\n to set the location\n",
+                       "/path/to/executable\")\n\n to set the location\n",
                        "and file name for the DSSAT-CSM executable\n")
     }else{
       startup_msg <- c("A DSSAT-CSM executable was found here:\n\n",
                        "  ",dscsm,
                        "\n\nIf this is not the correct executable, please use\n\n",
                        "  options(DSSAT.CSM=\"",root_dir,
-                       "/path/to/executable.exe\")\n\n",
+                       "/path/to/executable\")\n\n",
                        " to set the proper location and file name for DSSAT-CSM.\n")
     }
 
@@ -92,3 +95,4 @@
   return(invisible())
 
 }
+

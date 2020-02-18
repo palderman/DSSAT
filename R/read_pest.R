@@ -4,6 +4,11 @@
 #'
 #' @inheritParams read_dssat
 #'
+#' @importFrom dplyr "%>%"
+#' @importFrom stringr str_subset str_replace_all str_split
+#' @importFrom readr cols col_character col_double read_fwf
+#' @importFrom readr fwf_positions
+#'
 #' @return a tibble containing the data from the raw DSSAT file
 #'
 #'

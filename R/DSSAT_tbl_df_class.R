@@ -1,4 +1,14 @@
+#' Convert tibble to DSSAT_tbl
+#'
 #' @export
+#'
+#' @param tbl_in a tibble
+#' @param v_fmt a character vector specifying the sprintf() format for each column
+#' @param tier_info a list of character vectors storing the history of which original
+#' table that columns came from for tibbles that are comprised of multiple joined tables
+#'
+#' @return a tibble of class DSSAT_tbl
+#'
 as_DSSAT_tbl <- function(tbl_in,v_fmt=NULL,tier_info=NULL){
   UseMethod("as_DSSAT_tbl")
 }
@@ -72,6 +82,12 @@ as_DSSAT_tbl.default <- function(tbl_in,v_fmt=NULL,tier_info=NULL){
 }
 
 #' @export
+#'
+#' @importFrom dplyr "%>%" rowwise mutate
+#' @importFrom purrr map_lgl reduce
+#' @importFrom stringr str_c
+#' @importFrom rlang '!!!' quos get_expr set_expr parse_expr as_label
+#'
 mutate.DSSAT_tbl <- function(.data,...){
 
   v_fmt <- attr(.data,'v_fmt')

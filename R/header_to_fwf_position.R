@@ -13,10 +13,15 @@
 #' @return a tibble containing the begin position, end position,
 #'  and name for each column from the original header line
 #'
+#' @importFrom stringr str_replace_all str_detect str_c str_split str_subset
+#' @importFrom purrr map_lgl map_chr
+#' @importFrom dplyr "%>%" mutate arrange tibble filter
+#' @importFrom readr fwf_positions
+#'
 #' @examples
 #'
 #' header_line <-
-#'   "@YEAR DOY   DAS   SRAA    ES1D    ES2D    ES3D    ES4D    ES5D    ES6D    ES7D    ES8D    ES9D    ES10"
+#'   "@YEAR DOY   DAS   SRAA    ES1D    ES2D    ES3D    ES4D    ES5D    ES6D    ES7D    ES8D"
 #' header_to_fwf_position(header_line)
 
 header_to_fwf_position <- function(header,left_justified='EXCODE',
@@ -108,7 +113,7 @@ header_to_fwf_position <- function(header,left_justified='EXCODE',
                         str_remove_all('(^ *)|( *$)')},
            cnames = cnames,
            regex = cnames_regex) %>%
-    arrange(start)
+    arrange(.data$start)
 
   # Set start of first column to 1
   start_end$start[1] <- 1

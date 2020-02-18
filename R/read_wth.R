@@ -6,6 +6,10 @@
 #'
 #' @return a tibble containing the data from the raw DSSAT file
 #'
+#' @importFrom readr cols col_double col_character
+#' @importFrom stringr str_subset str_extract str_remove str_detect str_replace_all str_which
+#' @importFrom purrr map
+#'
 #' @examples
 #'
 #' sample_wth <- c(
@@ -20,9 +24,13 @@
 #' "06004  12.5  21.8   6.6   0.0                          ",
 #' "06005  12.3  22.3   7.5   0.0                          ")
 #'
+#'\dontrun{
+#'
 #' write(sample_wth,'EXAMPLE.WTH')
 #'
 #' read_wth('EXAMPLE.WTH')
+#'
+#' }
 
 read_wth <- function(file_name,col_types=NULL,col_names=NULL){
 

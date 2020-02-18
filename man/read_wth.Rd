@@ -38,7 +38,11 @@ sample_wth <- c(
 "06004  12.5  21.8   6.6   0.0                          ",
 "06005  12.3  22.3   7.5   0.0                          ")
 
+\dontrun{
+
 write(sample_wth,'EXAMPLE.WTH')
 
 read_wth('EXAMPLE.WTH')
+
+}
 }

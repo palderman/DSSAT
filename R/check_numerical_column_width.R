@@ -1,3 +1,7 @@
+#' @importFrom stringr str_remove str_length str_detect str_sub str_replace_all str_c str_sub<-
+#' @importFrom dplyr "%>%"
+#' @importFrom lubridate is.POSIXct
+#'
 check_numerical_column_width <- function(vr_out,vr_val,width){
   if( is.numeric(vr_val) && !is.POSIXct(vr_val)){
 

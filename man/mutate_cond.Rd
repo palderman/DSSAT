@@ -13,6 +13,8 @@ mutate_cond(.data, condition, ..., envir = parent.frame())
 
 \item{...}{Name-value pairs of expressions to be evaluated by
 `mutate()`}
+
+\item{envir}{environment within which expressions should be evaluated}
 }
 \value{
 a tibble with specified rows modified

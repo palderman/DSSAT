@@ -18,7 +18,11 @@ Reads data from a single DSSAT batch file
 }
 \examples{
 
-write_dssbatch(filex='UFGA0601.BMX',trtno=1:4)
+\dontrun{
+
+write_dssbatch(x='UFGA0601.BMX',trtno=1:4)
 
 read_dssbatch()
+
+}
 }

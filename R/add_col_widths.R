@@ -8,6 +8,9 @@
 #' @param fwf_pos a list of returns from \code{fwf_position()} with
 #' length that matches length of \code{tbl_list}
 #'
+#' @importFrom dplyr mutate_at
+#' @importFrom purrr map
+#'
 #' @return a tibble containing the data from the raw DSSAT file
 #'
 add_col_widths <- function(tbl_list,fwf_pos){
