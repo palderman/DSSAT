@@ -6,7 +6,7 @@ Author: Phillip D. Alderman
 Maintainer: Phillip D. Alderman <phillip.alderman@okstate.edu>
 Description: The purpose of this package is to provide a comprehensive
     R interface to the Decision Support System for Agrotechnology
-    Transfer Cropping Systems Model (DSSAT-CSM; Jones et al, 2003)
+    Transfer Cropping Systems Model (DSSAT-CSM; Jones et al, 2003
     <doi:10.1016/S1161-0301(02)00107-7>). The package
     provides cross-platform functions to read and write input files,
     run DSSAT-CSM, and read output files.
