@@ -76,8 +76,10 @@ write_tier <- function(tier_data,pad_name=NULL,drop_duplicate_rows=FALSE,
         select_if(is.list) %>%
         colnames()
 
-      tier_data_tmp <- tier_data_tmp %>%
-        unnest(cols=list_cols)
+      if(length(list_cols) > 0){
+        tier_data_tmp <- tier_data_tmp %>%
+          unnest(cols=list_cols)
+      }
 
       header_output <- tier_names %>%
         {v_fmt[.]} %>%
