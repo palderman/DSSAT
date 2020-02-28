@@ -1,7 +1,7 @@
 Package: DSSAT
 Type: Package
 Title: A Comprehensive R Interface for the DSSAT Cropping Systems Model
-Version: 0.0.1.9000
+Version: 0.0.1
 Author: Phillip D. Alderman
 Maintainer: Phillip D. Alderman <phillip.alderman@okstate.edu>
 Description: The purpose of this package is to provide a comprehensive
