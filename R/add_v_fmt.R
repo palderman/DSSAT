@@ -2,6 +2,8 @@
 #'
 #' @export
 #'
+#' @importFrom dplyr "%>%"
+#'
 #' @param input_tbl a tibble
 #'
 #' @param v_fmt a named vector containing variable format information to be
@@ -22,12 +24,14 @@
 #' "IB0004 +5% RUE MIDWEST1    8.0 34.0  34.0  12.5   4.0   6.0   170.  4.4   0.85",
 #' "DFAULT DEFAULT             8.0 34.0  34.0  12.5   4.0   6.0   170.  4.2   0.85")
 #'
+#'\dontrun{
+#'
 #' write(sample_eco,'SAMPLE.ECO')
 #'
 #' eco <- read_eco('SAMPLE.ECO')
 #'
 #' eco <- add_v_fmt(eco,v_fmt=c(TSEN='%6.1f',CDAY='%6.1f'))
-#'
+#'}
 
 add_v_fmt <- function(input_tbl,
                       v_fmt=NULL){

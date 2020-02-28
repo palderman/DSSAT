@@ -1,5 +1,6 @@
-#' @export
-write_soil_profile <- function(soil_profile,...){
+#' @importFrom dplyr "%>%" select select_if
+#' @importFrom purrr map
+write_soil_profile <- function(soil_profile){
   tier_info <- attr(soil_profile,'tier_info')
   soil_profile_out <- tier_info %>%
     map(function(tier_names){

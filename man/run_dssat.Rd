@@ -30,6 +30,9 @@ mode that should be used for the DSSAT simulation. One of:
 
 \item{file_name}{a length-one character vector that specifies the file
 name to be used for simulation. Usually the name of a batch file or file X.}
+
+\item{suppress_output}{a logical value indicating whether to suppress DSSAT-CSM
+output from being printed to the console}
 }
 \value{
 Invisibly returns NULL
@@ -38,5 +41,7 @@ Invisibly returns NULL
 Writes data from a single DSSAT data tier
 }
 \examples{
+
+run_dssat()
 
 }

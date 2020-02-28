@@ -4,18 +4,24 @@
 #'
 #' @inheritParams read_dssat
 #'
+#' @param cul a DSSAT_tbl containing the contents of a DSSAT cultivar parameter file
+#'
 #' @return a tibble containing the data from the raw DSSAT output
+#'
+#' @importFrom dplyr "%>%"
 #'
 #' @examples
 #'
 #' sample_cul <- c(
-#' "*MAIZE CULTIVAR COEFFICIENTS: MZCER047 MODEL"
-#' "!"
+#' "*MAIZE CULTIVAR COEFFICIENTS: MZCER047 MODEL",
+#' "!",
 #' "@VAR#  VRNAME.......... EXPNO   ECO#    P1    P2    P5    G2    G3 PHINT",
 #' "!                                        1     2     3     4     5     6",
 #' "PC0001 2500-2600 GDD        . IB0001 160.0 0.750 780.0 750.0  8.50 49.00",
 #' "PC0002 2600-2650 GDD        . IB0001 185.0 0.750 850.0 800.0  8.50 49.00",
 #' "PC0003 2650-2700 GDD        . IB0001 212.0 0.750 850.0 800.0  8.50 49.00")
+#'
+#'\dontrun{
 #'
 #' write(sample_cul,'SAMPLE.CUL')
 #'
@@ -23,6 +29,7 @@
 #'
 #' write_cul(cul,'SAMPLE2.CUL')
 #'
+#' }
 
 write_cul <- function(cul,file_name){
 
@@ -30,7 +37,8 @@ write_cul <- function(cul,file_name){
 
   comments <- attr(cul,'comments')
 
-  tier_output <- write_tier(cul) %>%
+  tier_output <- write_tier(cul,
+                            pad_name = c('VAR-NAME','VRNAME')) %>%
     c(first_line,'',comments,.)
 
   write(tier_output,file_name)

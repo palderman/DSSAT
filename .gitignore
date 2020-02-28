@@ -13,3 +13,5 @@ test_data/*
 *.V47
 *.LST
 *.SOL
+manuscript/*
+CRAN-RELEASE

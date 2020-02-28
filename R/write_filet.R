@@ -2,12 +2,17 @@
 #'
 #' @export
 #'
+#' @inheritParams write_tier
+#'
 #' @param filet a tibble containing the data to write to a DSSAT file T
 #'
 #' @param file_name a character vector of length one that contains the name
 #' of a single DSSAT file into which `filet` will be written
 #'
 #' @return NULL
+#'
+#' @importFrom dplyr "%>%"
+#' @importFrom stringr str_c
 #'
 #' @examples
 #'
@@ -20,11 +25,15 @@
 #' "     1 90155 47.00  3.40 14.10 30.20 11.30  15.0",
 #' "     1 90213 52.10  2.70 17.10 33.80  6.50  15.1")
 #'
+#'\dontrun{
+#'
 #' write(sample_filet,'SAMPLE.CRT')
 #'
 #' filet <- read_filet('SAMPLE.CRT')
 #'
 #' write_filet(filet,'SAMPLE2.CRT')
+#'
+#' }
 
 write_filet <- function(filet,file_name,drop_duplicate_rows=TRUE){
 

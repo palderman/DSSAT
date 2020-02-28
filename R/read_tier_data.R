@@ -6,6 +6,9 @@
 #'
 #' @inheritParams read_tier
 #'
+#' @param read_only NULL or a character vector of column names that should be read in;
+#' If non-NULL only the columns listed will be read in.
+#'
 #' @param na_strings a character vector of string to represent missing values
 #'
 #' @param join_tiers A logical indicating whether the multiple tiers should be
@@ -13,26 +16,39 @@
 #'
 #' @return a tibble or list of tibbles containing the data from the raw DSSAT output
 #'
+#' @importFrom stringr str_which str_replace_all str_detect str_subset
+#' @importFrom readr cols col_character read_fwf
+#' @importFrom purrr map reduce pmap
+#' @importFrom dplyr "%>%" as_tibble mutate select mutate_at mutate_if full_join
+#'
 #' @examples
 #'
 #' sample_data_tier <- c(
-#' "@YEAR DOY   DAS   SRAA    ES1D    ES2D    ES3D    ES4D    ES5D    ES6D    ES7D    ES8D    ES9D    ES10",
-#' " 2006 001     1   7.40   0.508   0.175   0.060   0.101   0.083   0.110   0.098   0.035   0.032   0.639",
-#' " 2006 002     2   8.40   0.849   0.263   0.064   0.104   0.086   0.113   0.101   0.036   0.033   0.662",
-#' " 2006 003     3  13.10   1.148   0.549   0.091   0.132   0.108   0.144   0.128   0.046   0.042   0.843")
+#' "@YEAR DOY   DAS   SRAA    ES1D    ES2D    ES3D    ES4D    ES5D    ES6D    ES7D    ES8D",
+#' " 2006 001     1   7.40   0.508   0.175   0.060   0.101   0.083   0.110   0.098   0.035",
+#' " 2006 002     2   8.40   0.849   0.263   0.064   0.104   0.086   0.113   0.101   0.036",
+#' " 2006 003     3  13.10   1.148   0.549   0.091   0.132   0.108   0.144   0.128   0.046")
 #'
-#' read_tier_data(sample_tier)
+#' read_tier_data(sample_data_tier)
 
 read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NULL,
                            left_justified='EXCODE',guess_max=1000,join_tiers=TRUE,
                            store_v_fmt=TRUE, read_only = NULL){
 
+  raw_lines <- sanitize_raw_lines(raw_lines)
+
   # Find header line
   skip <- str_which(raw_lines,'^@')
   headline <- raw_lines[skip]
 
-  raw_lines <- raw_lines %>%
-    str_replace_all(c('\\cz'='','^ +$'=''))
+  if(!is.null(read_only)){
+    i <- which(read_only == 'DATE')
+    if(length(i) == 1){
+      read_only <- c(head(read_only,i-1),
+                     'YEAR','DOY',
+                     tail(read_only,length(read_only)-i))
+    }
+  }
 
   if(!is.null(read_only)){
     i <- which(read_only == 'DATE')
@@ -98,6 +114,9 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
           {c('YEAR','DOY') %in% .} %>%
           all()
       if(add_date){
+        # To prevent "no visible binding for global variable" from R CMD check for
+        # select() statement below:
+        YEAR <- DOY <- NULL
         one_df <- one_df %>%
           mutate(DATE={paste0(YEAR,DOY) %>%
                        as.POSIXct(format='%Y%j',tz='UTC')}) %>%
@@ -105,7 +124,7 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
       }
       # Convert DATE column if DATE is not already POSIXct
       potential_date_cols <- colnames(one_df) %>%
-        str_subset('(DATE)|(AT$)')
+        str_subset('(DATE)|(AT$)|(PFRST)|(PLAST)|(HFRST)|(HLAST)')
       date_cols <- col_types %>%
         {map(.,~names(.$cols)) %>%
             unlist()} %>%
@@ -120,6 +139,25 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
     map(~mutate_if(.,
                    .predicate = ~{all(is.na(.)) && is.logical(.)},
                    .funs = ~as.numeric(.)))
+
+    fwf_pos <- fwf_pos %>%
+      map(~{
+        .data <- .
+        if(all(c('YEAR','DOY') %in% .data$col_names)){
+          the_rest <- .data %>%
+            filter(! col_names %in% c('YEAR','DOY'))
+          date <- .data %>%
+            filter(col_names %in% c('YEAR','DOY')) %>%
+            summarize(begin = min(begin),
+                      end = max(end),
+                      col_names = 'DATE')
+          new <- bind_rows(date,the_rest) %>%
+            arrange(begin)
+          return(new)
+        }else{
+          return(.data)
+        }
+      })
 
     if(join_tiers&&
        !is.data.frame(tier_data)&&

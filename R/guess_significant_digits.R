@@ -1,3 +1,6 @@
+#' @importFrom dplyr "%>%"
+#' @importFrom purrr map_dbl
+#' @importFrom stringr str_c
 guess_significant_digits <- function(variable,width){
     if(is.list(variable)) variable <- unlist(variable)
     if(is.numeric(variable)&&

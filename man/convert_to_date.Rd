@@ -17,5 +17,7 @@ Converts a column to POSIXct
 }
 \examples{
 
+convert_to_date('2018031')
+
 }
 \keyword{internal}

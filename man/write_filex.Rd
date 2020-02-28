@@ -2,16 +2,23 @@
 % Please edit documentation in R/write_filex.R
 \name{write_filex}
 \alias{write_filex}
-\title{Writes data to a single DSSAT file X}
+\title{Writes data to a single DSSAT FileX}
 \usage{
-write_filex(filex, file_name, drop_duplicate_rows = TRUE)
+write_filex(filex, file_name, drop_duplicate_rows = TRUE,
+  force_std_fmt = TRUE)
 }
 \arguments{
 \item{filex}{a list of tibbles containing the data to write to a DSSAT file X}
 
 \item{file_name}{a character vector of length one that contains the name
 of a single DSSAT file into which `filet` will be written}
+
+\item{drop_duplicate_rows}{a logical value indicating whether duplicate rows
+should be dropped from tier_data}
+
+\item{force_std_fmt}{a logical value indicating whether to override the
+variable format stored within the FileX object with standard DSSAT formatting}
 }
 \description{
-Writes data to a single DSSAT file X
+Writes data to a single DSSAT FileX
 }

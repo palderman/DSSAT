@@ -9,6 +9,8 @@
 #' @return A character vector with escaped special characters (e.g.
 #' parentheses, periods, asterisks)
 #'
+#' @importFrom stringr str_replace_all
+#'
 #' @examples
 #'
 #' name_to_regex("TB(1)")

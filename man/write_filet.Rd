@@ -11,6 +11,9 @@ write_filet(filet, file_name, drop_duplicate_rows = TRUE)
 
 \item{file_name}{a character vector of length one that contains the name
 of a single DSSAT file into which `filet` will be written}
+
+\item{drop_duplicate_rows}{a logical value indicating whether duplicate rows
+should be dropped from tier_data}
 }
 \description{
 Writes data to a single DSSAT file T
@@ -26,9 +29,13 @@ sample_filet <- c(
 "     1 90155 47.00  3.40 14.10 30.20 11.30  15.0",
 "     1 90213 52.10  2.70 17.10 33.80  6.50  15.1")
 
+\dontrun{
+
 write(sample_filet,'SAMPLE.CRT')
 
 filet <- read_filet('SAMPLE.CRT')
 
 write_filet(filet,'SAMPLE2.CRT')
+
+}
 }

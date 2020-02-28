@@ -10,6 +10,10 @@
 #'
 #' @return NULL
 #'
+#' @importFrom dplyr "%>%"
+#' @importFrom stringr str_c
+#' @importFrom purrr map
+#'
 
 write_wth <- function(wth,file_name){
 

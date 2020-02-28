@@ -4,16 +4,23 @@
 \alias{write_dssbatch}
 \title{Constructs and writes a DSSAT simulation batch file}
 \usage{
-write_dssbatch(batch_tbl = NULL, ...)
+write_dssbatch(x, trtno = 1, rp = 1, sq = 0, op = 0, co = 0,
+  file_name = NULL)
 }
 \arguments{
-\item{batch_tbl}{a data frame or tibble that contains all
-required columns of a DSSAT batch file (FILEX, TRTNO, RP,
-SQ, OP, CO)}
+\item{x}{a tibble/data frame or character vector; if a tibble, it should contain all
+required columns of a DSSAT batch file (FILEX, TRTNO, RP, SQ, OP, CO);
+if a character vector, it should contain FileX file names}
 
-\item{filex}{a character vector}
+\item{trtno}{a numeric vector}
 
-\item{trtno, rp, sq, op, co}{a numeric vector}
+\item{rp}{a numeric vector}
+
+\item{sq}{a numeric vector}
+
+\item{op}{a numeric vector}
+
+\item{co}{a numeric vector}
 
 \item{file_name}{an optional character vector of the intended
 batch file name}
@@ -27,9 +34,11 @@ Constructs and writes a DSSAT simulation batch file
 }
 \examples{
 
-write_dssbatch(filex='UFGA0601.BMX',trtno=1:4)
+\dontrun{
 
-batch_tbl <- tibble(FILEX='UFGA0601.BMX',
+write_dssbatch(x='UFGA0601.BMX',trtno=1:4)
+
+batch_tbl <- data.frame(FILEX='UFGA0601.BMX',
                     TRTNO=1:4,
                     RP=1,
                     SQ=0,
@@ -38,4 +47,5 @@ batch_tbl <- tibble(FILEX='UFGA0601.BMX',
 
 write_dssbatch(batch_tbl)
 
+}
 }

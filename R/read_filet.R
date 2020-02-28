@@ -8,6 +8,10 @@
 #'
 #' @return a tibble containing the data from the raw DSSAT file
 #'
+#' @importFrom dplyr "%>%" arrange_at
+#' @importFrom stringr str_subset str_remove
+#' @importFrom readr cols
+#'
 #' @examples
 #'
 #' sample_filet <- c(
@@ -19,9 +23,13 @@
 #' "     1 90155 47.00  3.40 14.10 30.20 11.30  15.0",
 #' "     1 90213 52.10  2.70 17.10 33.80  6.50  15.1")
 #'
+#'\dontrun{
+#'
 #' write(sample_filet,'SAMPLE.CRT')
 #'
 #' read_filet('SAMPLE.CRT')
+#'
+#' }
 
 read_filet <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
 
@@ -31,8 +39,7 @@ read_filet <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
     str_subset('\\*EXP\\. *DATA *\\([AT]\\): *') %>%
     str_remove('\\*EXP\\. *DATA *\\([AT]\\): *')
 
-  comments <- raw_lines %>%
-    str_subset('^!')
+  comments <- extract_comments(raw_lines)
 
   col_types <- cols(` TRNO `=col_double()) %>%
   {.$cols <- c(.$cols,col_types$cols);.}

@@ -6,20 +6,29 @@
 #'
 #' @return a tibble containing the data from the raw DSSAT output
 #'
+#' @importFrom dplyr "%>%"
+#' @importFrom readr cols col_character
+#' @importFrom stringr str_detect str_subset str_which
+#' @importFrom purrr map reduce
+#'
 #' @examples
 #'
 #' sample_cul <- c(
-#' "*MAIZE CULTIVAR COEFFICIENTS: MZCER047 MODEL"
-#' "!"
+#' "*MAIZE CULTIVAR COEFFICIENTS: MZCER047 MODEL",
+#' "!",
 #' "@VAR#  VRNAME.......... EXPNO   ECO#    P1    P2    P5    G2    G3 PHINT",
 #' "!                                        1     2     3     4     5     6",
 #' "PC0001 2500-2600 GDD        . IB0001 160.0 0.750 780.0 750.0  8.50 49.00",
 #' "PC0002 2600-2650 GDD        . IB0001 185.0 0.750 850.0 800.0  8.50 49.00",
 #' "PC0003 2650-2700 GDD        . IB0001 212.0 0.750 850.0 800.0  8.50 49.00")
 #'
+#'\dontrun{
+#'
 #' write(sample_cul,'SAMPLE.CUL')
 #'
 #' read_cul('SAMPLE.CUL')
+#'
+#' }
 
 read_cul <- function(file_name,col_types=NULL,col_names=NULL,
                      left_justified=c('VAR#','VARNAME\\.*','VAR-NAME\\.*','VRNAME\\.*')){
@@ -29,8 +38,8 @@ read_cul <- function(file_name,col_types=NULL,col_names=NULL,
                         `VAR-NAME\\.*`=col_character(),
                         `VRNAME\\.*`=col_character(),
                         `  ECO#`=col_character(),
-                        `EXPNO`=col_character(),
-                        `EXP#`=col_character())
+                        ` EXPNO`=col_character(),
+                        `  EXP#`=col_character())
 
   if(str_detect(file_name,'SCCSP')){
     col_names <- col_names %>%
@@ -55,12 +64,7 @@ read_cul <- function(file_name,col_types=NULL,col_names=NULL,
   first_line <- raw_lines %>%
     head(1)
 
-  comments <- raw_lines %>%
-    str_subset('^!')
-
-  raw_lines <- raw_lines %>%
-    str_subset('^(?!\032) *([^ ]+)') %>%  # exclude lines that are all spaces or lines with EOF in initial position
-    {.[!str_detect(.,'^(!|\\*|$)')]}
+  comments <- extract_comments(raw_lines)
 
   begin <- raw_lines %>%
     str_which('^@')

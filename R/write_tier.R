@@ -11,13 +11,22 @@
 #'
 #' @return a character vector
 #'
+#' @importFrom dplyr "%>%" select group_by_at vars one_of filter_all any_vars arrange_at select_if filter_at do
+#' @importFrom tidyr unnest replace_na
+#' @importFrom stringr str_c str_replace_all str_extract str_remove str_detect str_which str_replace str_subset str_sub
+#' @importFrom purrr pmap
+#'
 #' @examples
 #'
-#' tier_data <- tibble(TRNO=1:4,HWAM=rnorm(4,2000,250))
+#'\dontrun{
+#'
+#' tier_data <- data.frame(TRNO=1:4,HWAM=rnorm(4,2000,250))
 #'
 #' tier_data <- add_v_fmt(tier_data,v_fmt=c(TRNO='%6.0f', HWAM='%6.0f'))
 #'
 #' write_tier(tier_data)
+#'
+#' }
 
 write_tier <- function(tier_data,pad_name=NULL,drop_duplicate_rows=FALSE,
                        drop_na_rows=TRUE){
@@ -67,8 +76,10 @@ write_tier <- function(tier_data,pad_name=NULL,drop_duplicate_rows=FALSE,
         select_if(is.list) %>%
         colnames()
 
-      tier_data_tmp <- tier_data_tmp %>%
-        unnest(cols=list_cols)
+      if(length(list_cols) > 0){
+        tier_data_tmp <- tier_data_tmp %>%
+          unnest(cols=list_cols)
+      }
 
       header_output <- tier_names %>%
         {v_fmt[.]} %>%

@@ -1,3 +1,5 @@
+#' @importFrom dplyr "%>%"
+#' @importFrom purrr map
 write_sim_ctrl_section <- function(section){
   sec_out <- 1:nrow(section) %>%
     map(function(i){

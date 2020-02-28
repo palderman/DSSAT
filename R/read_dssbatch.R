@@ -7,11 +7,17 @@
 #'
 #' @return a tibble containing the data from the DSSAT batch file
 #'
+#' @importFrom dplyr "%>%"
+#'
 #' @examples
 #'
-#' write_dssbatch(filex='UFGA0601.BMX',trtno=1:4)
+#'\dontrun{
+#'
+#' write_dssbatch(x='UFGA0601.BMX',trtno=1:4)
 #'
 #' read_dssbatch()
+#'
+#' }
 
 read_dssbatch <- function(file_name='DSSBatch.V47'){
 

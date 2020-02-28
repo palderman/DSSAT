@@ -24,7 +24,7 @@ Converts header line into a vector of column names
 \examples{
 
 header_line <-
-  "@YEAR DOY   DAS   SRAA    ES1D    ES2D    ES3D    ES4D    ES5D    ES6D    ES7D    ES8D    ES9D    ES10"
+  "@YEAR DOY   DAS   SRAA    ES1D    ES2D    ES3D    ES4D    ES5D    ES6D    ES7D    ES8D"
 header_to_fwf_position(header_line)
 }
 \keyword{internal}

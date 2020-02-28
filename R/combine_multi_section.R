@@ -1,3 +1,7 @@
+#' @importFrom dplyr "%>%"
+#' @importFrom purrr map_lgl reduce
+#' @importFrom stringr str_detect
+#'
 combine_multi_section <- function(tiers_in,info_vars){
 
   if(!is.data.frame(tiers_in)){

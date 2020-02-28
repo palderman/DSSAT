@@ -1,4 +1,4 @@
-#' Efficiently combined data from two data tiers into one
+#' Efficiently combine data from two data tiers into one
 #'
 #' @export
 #'
@@ -10,6 +10,9 @@
 #' indicates whether rows should be collapsed before join
 #'
 #' @return a tibble containing the data from the combined tiers
+#'
+#' @importFrom dplyr "%>%" ungroup select summarize_all summarize_at mutate_at vars group_by_at select_if bind_rows bind_cols full_join
+#' @importFrom tidyr crossing unnest
 #'
 
 combine_tiers <- function(tier1,tier2,use_collapse_rows=FALSE,force_bind_rows=FALSE){

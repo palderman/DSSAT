@@ -17,6 +17,8 @@
 #' that contained the matching substring. Otherwise the original
 #' \code{col_names} will be returned.
 #'
+#' @importFrom stringr str_detect str_which str_extract str_sub str_replace_all
+#'
 #' @examples
 #'
 #' cnames <-

@@ -6,6 +6,9 @@
 #'
 #' @return a tibble containing the data from the raw DSSAT file
 #'
+#' @importFrom readr cols col_character
+#' @importFrom dplyr "%>%"
+#' @importFrom stringr str_subset str_remove str_which str_detect
 #'
 
 read_filex <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
@@ -77,20 +80,23 @@ read_filex <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
                     ` TNAME\\.*`=col_character(),
                     `  HARM\\.*`=col_character(),
                     ` +CO2`=col_character(),
-                    ` IRNAME`=col_character()) %>%
+                    ` IRNAME`=col_character(),
+                    ` CHT\\.*`=col_character(),
+                    ` WSTA\\.*`=col_character()) %>%
     {.$cols <- c(.$cols,col_types$cols);.}
 
   left_justified <- c('SITE','PEOPLE','ADDRESS','INSTRUMENTS',
                       'PROBLEMS','PUBLICATIONS','DISTRIBUTION','NOTES','  HARM\\.*',
-                      ' TNAME\\.*','FLNAME','  ID_SOIL',' CNAME',' WSTA\\.*',' SLTX',
+                      ' TNAME\\.*','FLNAME','  ID_SOIL',' CNAME','  FLSA',
+                      ' WSTA\\.*',' SLTX',
                       ' ID_FIELD',' ICNAME',' IRNAME',' FERNAME',' GENERAL',
                       ' SNAME\\.*','SMODEL',' MODEL',' OPTIONS',' METHODS',' MANAGEMENT',
                       ' OUTPUTS',' PLANTING',' IRRIGATION',' NITROGEN',
                       ' RESIDUES',' HARVEST',
                       ' EDAY','ERAD','EMAX','EMIN','ERAIN','ECO2',
                       'EDEW','EWIND','ENVNAME',
-                      ' HNAME',
-                      ' RENAME',' +PLNAME','  CHNAME')
+                      ' HNAME',' CHT\\.*',
+                      ' RENAME',' +PLNAME','CHNAME')
 
   col_names <- col_names %>%
     c(.,
@@ -100,9 +106,7 @@ read_filex <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
       ' CU(?= |$)',' FL(?= |$)',' SA(?= |$)',' IC(?= |$)',
       ' MP(?= |$)',' MI(?= |$)',' MF(?= |$)',' MR(?= |$)',
       ' MC(?= |$)',' MT(?= |$)',' ME(?= |$)',' MH(?= |$)',
-      ' SM(?= |$)',' CHT')
-  # ,
-  #     ' P +',' I +',' C +',' N +',' R +',' O +',' F +')
+      ' SM(?= |$)')
 
   # Read in raw data from file
   raw_lines <- readLines(file_name) %>%
@@ -113,8 +117,7 @@ read_filex <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
     str_remove('^\\*EXP\\.DETAILS: ')
 
   # Get comments
-  comments <- str_subset(raw_lines,'\\!.*') %>%
-    str_remove('[^!]*!')
+  comments <- extract_comments(raw_lines)
 
   raw_lines <- str_subset(raw_lines,'^(?!\\*EXP\\.DETAILS: )')
 

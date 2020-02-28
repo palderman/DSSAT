@@ -26,9 +26,16 @@
 #' @param file_name a length-one character vector that specifies the file
 #'   name to be used for simulation. Usually the name of a batch file or file X.
 #'
+#' @param suppress_output a logical value indicating whether to suppress DSSAT-CSM
+#' output from being printed to the console
+#'
+#' @importFrom stringr str_c
+#'
 #' @return Invisibly returns NULL
 #'
 #' @examples
+#'
+#' run_dssat()
 #'
 run_dssat <- function(run_mode='B',file_name=NULL,suppress_output=FALSE){
   dssat_csm <- options()$DSSAT.CSM

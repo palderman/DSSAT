@@ -1,3 +1,6 @@
+#' @importFrom stringr str_locate_all str_sub
+#' @importFrom dplyr "%>%"
+#' @importFrom purrr map
 get_start_end <- function(header,regex){
   start_end <- str_locate_all(header,regex) %>%
     map(~{

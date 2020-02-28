@@ -7,6 +7,8 @@
 write_eco(eco, file_name)
 }
 \arguments{
+\item{eco}{a DSSAT_tbl containing the contents of a DSSAT ecotype parameter file}
+
 \item{file_name}{a character vector of length one that contains the name
 of a single DSSAT output file}
 }
@@ -29,10 +31,13 @@ sample_eco <- c(
 "IB0004 +5\% RUE MIDWEST1    8.0 34.0  34.0  12.5   4.0   6.0   170.  4.4   0.85",
 "DFAULT DEFAULT             8.0 34.0  34.0  12.5   4.0   6.0   170.  4.2   0.85")
 
+\dontrun{
+
 write(sample_eco,'SAMPLE.ECO')
 
-read_eco('SAMPLE.ECO')
+eco <- read_eco('SAMPLE.ECO')
 
 write_eco(eco,'SAMPLE2.ECO')
 
+}
 }

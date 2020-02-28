@@ -1,27 +1,44 @@
+#' @importFrom dplyr "%>%" bind_rows mutate if_else select summarize_all as_tibble left_join rowwise summarize ungroup contains
+#' @importFrom purrr map_lgl
+#' @importFrom stringr str_detect str_extract str_replace_all
+#' @importFrom glue glue_data
+#' @importFrom tidyr replace_na
+#' @importFrom rlang .data
+#' @importFrom utils head
+#'
 construct_variable_format <- function(tier_data,fwf_pos,left_justified){
   # Determine width, justification, and data type for variable format
   fwf_pos[1,'begin'] <- max(fwf_pos[1,'begin'] - 1, 0)
 #  left_justified <- left_justified %>% de_regex()
+  if(length(left_justified) > 0){
+    justification <- left_justified %>%
+      str_replace_all('(^ +[+* ]*)|( +[+* ]*$)','') %>%
+      str_c(collapse=')|(') %>%
+      str_c('(',.,')') %>%
+      map_lgl(fwf_pos$col_names,str_detect,.) %>%
+      ifelse('-','')
+  }else{
+    justification <- ''
+  }
   w_j_t <- fwf_pos %>%
-    bind_rows() %>%
-    mutate(just = {col_names %>%
-#                    name_to_regex() %>%
-                    # str_remove_all('(^ +)|( +$)') %>%
-                    map_lgl(~any(map_lgl(left_justified,str_detect,pattern=.))) %>%
-                    ifelse('-','')},
-           leading_chars = if_else(just == '',
+    mutate(just = justification,
+           leading_chars = if_else(.data$just == '',
                                    '',
-                                   {str_extract(col_names,'^[ *$]+') %>% replace_na('')}),
-           col_names = str_replace_all(col_names,c('^ +'='',
-                                                   ' +$'=''))) %>%
-    filter(!duplicated(col_names) & !str_detect(col_names,'-99')) %>%
-    mutate(width = if_else(just == '',
-                           end - begin,
-                           end - begin - nchar(leading_chars)),
+                                   {str_extract(.data$col_names,'^[ *$]+') %>% replace_na('')}),
+           col_names = str_replace_all(.data$col_names,c('^ +'='',
+                                                         ' +$'=''))) %>%
+    filter(!duplicated(.data$col_names) & !str_detect(.data$col_names,'-99')) %>%
+    mutate(width = if_else(.data$just == '',
+                           .data$end - .data$begin,
+                           .data$end - .data$begin - nchar(.data$leading_chars)),
            type = {tier_data %>%
                    select(-contains('-99')) %>%
                    summarize_all(~{unlist(.) %>% class() %>% head(1)}) %>%
                    unlist()})
+
+  # To prevent "no visible binding for global variable" from R CMD check for select()
+  # statement below:
+  col_names <- digits <- NULL
 
   # Estimate significant digits
   digits <- tier_data %>%
@@ -40,19 +57,20 @@ construct_variable_format <- function(tier_data,fwf_pos,left_justified){
     # Group by row
     rowwise() %>%
     # Estimate significant digits for each variable
-    summarize(col_names=col_names,digits = guess_significant_digits(values,width)) %>%
+    summarize(col_names = .data$col_names,
+              digits = guess_significant_digits(.data$values,.data$width)) %>%
     ungroup() %>%
     select(col_names,digits)
 
   v_fmt <- digits %>%
     left_join(w_j_t,by='col_names') %>%
-    mutate(type=str_replace_all(type,c(numeric='f',
-                                       integer='f',
-                                       character='s',
-                                       logical='s',
-                                       POSIXct='s')),
-           width = replace_na(width,'')) %>%
-    mutate(.,fmt=glue_data(.,'{leading_chars}%{just}{width}{digits}{type}')) %>%
+    mutate(type=str_replace_all(.data$type,c(numeric='f',
+                                             integer='f',
+                                             character='s',
+                                             logical='s',
+                                             POSIXct='s')),
+           width = replace_na(.data$width,'')) %>%
+    mutate(fmt=glue_data(.,'{leading_chars}%{just}{width}{digits}{type}')) %>%
     select(col_names,fmt) %>%
     {fmt <- as.character(.$fmt)
     names(fmt) <- .$col_names

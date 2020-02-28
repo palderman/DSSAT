@@ -18,6 +18,9 @@ more details.}
 \item{col_names}{A character vector of column names; primarily
 helpful for cases where there are no white spaces between column
 names within the header line}
+
+\item{na_strings}{A character vector containing strings that should be interpreted as
+missing values}
 }
 \value{
 a tibble containing the data from the raw DSSAT file
