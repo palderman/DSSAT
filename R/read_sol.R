@@ -55,9 +55,7 @@ read_sol <- function(file_name,id_soil=NULL,left_justified=NULL,col_types=NULL,c
     str_replace('^\\*[Ss][Oo][Ii][Ll][Ss]:* *','')
 
   # Extract comments from file
-  comments <- raw_lines %>%
-    str_subset('!') %>%
-    str_extract('(?=!).*')
+  comments <- extract_comments(raw_lines)
 
   # Find beginning of each soil profile
   begin <- raw_lines %>%

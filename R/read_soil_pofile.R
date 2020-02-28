@@ -42,8 +42,8 @@ read_soil_profile <- function(raw_lines,left_justified=NULL,
     c('SITE','COUNTRY',' SCS FAMILY',
       ' SCS Family')
 
-  col_types <- cols(`     LAT`=col_double(),
-                    `    LONG`=col_double(),
+  col_types <- cols(`      LAT`=col_double(),
+                    `     LONG`=col_double(),
                     SSAT=col_double(),
                     ` SCS FAMILY`=col_character(),
                     ` SCS Family`=col_character(),

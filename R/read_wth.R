@@ -77,8 +77,7 @@ read_wth <- function(file_name,col_types=NULL,col_names=NULL){
     str_extract('(?<=:).*') %>%
     str_remove('^ *')
 
-  comments <- str_subset(raw_lines,'!.*') %>%
-    str_extract('!.*')
+  comments <- extract_comments(raw_lines)
 
   raw_lines <- raw_lines %>%
     {.[!str_detect(.,'WEATHER')]} %>%

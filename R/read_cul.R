@@ -38,8 +38,8 @@ read_cul <- function(file_name,col_types=NULL,col_names=NULL,
                         `VAR-NAME\\.*`=col_character(),
                         `VRNAME\\.*`=col_character(),
                         `  ECO#`=col_character(),
-                        `EXPNO`=col_character(),
-                        `EXP#`=col_character())
+                        ` EXPNO`=col_character(),
+                        `  EXP#`=col_character())
 
   if(str_detect(file_name,'SCCSP')){
     col_names <- col_names %>%
@@ -64,12 +64,7 @@ read_cul <- function(file_name,col_types=NULL,col_names=NULL,
   first_line <- raw_lines %>%
     head(1)
 
-  comments <- raw_lines %>%
-    str_subset('^!')
-
-  raw_lines <- raw_lines %>%
-    str_subset('^(?!\032) *([^ ]+)') %>%  # exclude lines that are all spaces or lines with EOF in initial position
-    {.[!str_detect(.,'^(!|\\*|$)')]}
+  comments <- extract_comments(raw_lines)
 
   begin <- raw_lines %>%
     str_which('^@')

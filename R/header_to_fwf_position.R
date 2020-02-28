@@ -15,7 +15,7 @@
 #'
 #' @importFrom stringr str_replace_all str_detect str_c str_split str_subset
 #' @importFrom purrr map_lgl map_chr
-#' @importFrom dplyr "%>%" mutate arrange tibble filter
+#' @importFrom dplyr "%>%" mutate arrange tibble filter last
 #' @importFrom readr fwf_positions
 #'
 #' @examples
@@ -39,42 +39,25 @@ header_to_fwf_position <- function(header,left_justified='EXCODE',
     col_names <- c(col_names,left_justified,names(col_types$cols)) %>%
       unique()
     col_names <- col_names %>%
-      str_replace_all(c('^(?! )'='((^)|( ))',
-                        '(?<!( )|( \\+)|(\\(\\?\\= \\|\\$\\)))$'='(( )|($))')) %>%
-      # str_c('((^)|( ))',.) %>%
+      name_to_regex() %>%
       map_lgl(~str_detect(header,.)) %>%
       {col_names[.]}
-    }else{
+  }else{
     col_names <- read_only %>%
       str_c('((^)|( ))',.,'(( )|($))') %>%
       map_lgl(~str_detect(header,.)) %>%
       {read_only[.]}
   }
 
-  # Loop over known col_names
-  # cnames <- header
-  # if(!is.null(col_names)){
-  #   for(name in col_names){
-  #     cnames <- splice_in_col_name(cnames,name)
-  #   }
-  # }
-  # cnames <- cnames %>%
-  #   str_subset('^ *$',negate=TRUE)
-
   if(is.null(read_only)){
     # Extract unknown column names
     cnames <- col_names %>%
+      name_to_regex() %>%
       str_c('(',.,')') %>%
       str_c(collapse='|') %>%
       str_remove_all(header,.) %>%
       str_split('(?<=[^ ]) +(?=[^ ])') %>%
       unlist() %>%
-      # map(function(name){
-      #   if(!any(str_detect(name,col_names))){
-      #     name <- str_replace_all(name,c('^ +'='',' +$'=''))
-      #   }
-      #   return(name)
-      # }) %>%
       str_subset('^ *$',negate = TRUE) %>%
       str_remove_all('(^ +)|( +$)') %>%
       c(col_names,.)
@@ -84,14 +67,13 @@ header_to_fwf_position <- function(header,left_justified='EXCODE',
 
   if(is.null(read_only)){
     # Infer column positions based on header
-#  cnames_regex <- name_to_regex(cnames) %>%
       cnames_regex <- cnames %>%
       map_chr(function(name){
         if(any(str_detect(name,name_to_regex(left_justified)))){
           regex <- name %>%
             name_to_regex() %>%
             str_c(' *')
-        }else if(!any(str_detect(name,name_to_regex(col_names)))){
+        }else if(!any(str_detect(de_regex(name),name_to_regex(col_names)))){
           regex <- name %>%
             name_to_regex() %>%
             str_c(' *',.,'((?= )|(?=$))')
@@ -105,7 +87,7 @@ header_to_fwf_position <- function(header,left_justified='EXCODE',
     cnames_regex <- str_c('\\.*',col_names,'\\.*')
   }
 
-  start_end <- get_start_end(header,cnames) %>%
+  start_end <- get_start_end(header,cnames_regex) %>%
     {tibble(start = as.numeric(.[,1]),
             end = as.numeric(.[,2]))} %>%
     mutate(col_names = {cnames %>%
@@ -122,13 +104,12 @@ header_to_fwf_position <- function(header,left_justified='EXCODE',
   start_end <- reconcile_gaps(start_end,left_justified)
 
   # Check column positions for left justified cases
-  left_justified <- intersect(left_justified,cnames)
-  for(ljc in left_justified){
-    st <- {cnames == ljc} %>%
-      which()
-    # Set end of last column to NA (i.e. unbounded)
-    if(st == length(cnames)) start_end[st,2] <- NA
-  }
+  last_left_justified <- start_end %>%
+    pull(cnames) %>%
+    last() %>%
+    {. %in% left_justified}
+  # Set end of last column to NA (i.e. unbounded)
+  if(last_left_justified)  start_end$end[nrow(start_end)] <- NA
 
   # Convert column positions to fixed widths for use with read_fwf()
   fwf_pos <- start_end %>%

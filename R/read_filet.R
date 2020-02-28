@@ -39,8 +39,7 @@ read_filet <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
     str_subset('\\*EXP\\. *DATA *\\([AT]\\): *') %>%
     str_remove('\\*EXP\\. *DATA *\\([AT]\\): *')
 
-  comments <- raw_lines %>%
-    str_subset('^!')
+  comments <- extract_comments(raw_lines)
 
   col_types <- cols(` TRNO `=col_double()) %>%
   {.$cols <- c(.$cols,col_types$cols);.}

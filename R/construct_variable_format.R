@@ -6,18 +6,22 @@
 #' @importFrom rlang .data
 #' @importFrom utils head
 #'
-
 construct_variable_format <- function(tier_data,fwf_pos,left_justified){
   # Determine width, justification, and data type for variable format
   fwf_pos[1,'begin'] <- max(fwf_pos[1,'begin'] - 1, 0)
 #  left_justified <- left_justified %>% de_regex()
+  if(length(left_justified) > 0){
+    justification <- left_justified %>%
+      str_replace_all('(^ +[+* ]*)|( +[+* ]*$)','') %>%
+      str_c(collapse=')|(') %>%
+      str_c('(',.,')') %>%
+      map_lgl(fwf_pos$col_names,str_detect,.) %>%
+      ifelse('-','')
+  }else{
+    justification <- ''
+  }
   w_j_t <- fwf_pos %>%
-    bind_rows() %>%
-    mutate(just = {.data$col_names %>%
-#                    name_to_regex() %>%
-                    # str_remove_all('(^ +)|( +$)') %>%
-                    map_lgl(~any(map_lgl(left_justified,str_detect,pattern=.))) %>%
-                    ifelse('-','')},
+    mutate(just = justification,
            leading_chars = if_else(.data$just == '',
                                    '',
                                    {str_extract(.data$col_names,'^[ *$]+') %>% replace_na('')}),

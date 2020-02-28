@@ -31,6 +31,8 @@
 
 read_casupro_eco <- function(raw_lines){
 
+  raw_lines <- sanitize_raw_lines(raw_lines)
+
   begin <- raw_lines %>%
     str_which('^[^ *!]')
 

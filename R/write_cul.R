@@ -37,7 +37,8 @@ write_cul <- function(cul,file_name){
 
   comments <- attr(cul,'comments')
 
-  tier_output <- write_tier(cul) %>%
+  tier_output <- write_tier(cul,
+                            pad_name = c('VAR-NAME','VRNAME')) %>%
     c(first_line,'',comments,.)
 
   write(tier_output,file_name)

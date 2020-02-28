@@ -4,7 +4,8 @@
 \alias{write_sol}
 \title{Writes soil parameters to a single DSSAT soil parameter file (*.SOL)}
 \usage{
-write_sol(sol, file_name, title = NULL, append = TRUE)
+write_sol(sol, file_name, title = NULL, append = TRUE,
+  force_std_fmt = TRUE)
 }
 \arguments{
 \item{sol}{a tibble of soil profiles that have been read in by read_sol()}
@@ -17,6 +18,9 @@ of a single DSSAT output file}
 \item{append}{TRUE or FALSE indicating whether soil profile should
 be appended to file_name. If FALSE, the soil profile will be written
 to a new file and will overwrite file_name (if it exists).}
+
+\item{force_std_fmt}{a logical value indicating whether to override the
+variable format stored within the FileX object with standard DSSAT formatting}
 }
 \value{
 Invisibly returns NULL

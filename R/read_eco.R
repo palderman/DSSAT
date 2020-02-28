@@ -58,12 +58,7 @@ read_eco <- function(file_name,col_types=NULL,col_names=NULL,
   first_line <- raw_lines %>%
     head(1)
 
-  comments <- raw_lines %>%
-    str_subset('^!')
-
-  raw_lines <- raw_lines %>%
-    str_subset('^(?!\032) *([^ ]+)') %>%  # exclude lines that are all spaces or lines with EOF in initial position
-    {.[!str_detect(.,'^(!|\\*|$)')]}
+  comments <- extract_comments(raw_lines)
 
   begin <- raw_lines %>%
     str_which('^@')

@@ -1,4 +1,4 @@
-#' Writes data to a single DSSAT file X
+#' Writes data to a single DSSAT FileX
 #'
 #' @export
 #'
@@ -9,6 +9,9 @@
 #' @param file_name a character vector of length one that contains the name
 #' of a single DSSAT file into which `filet` will be written
 #'
+#' @param force_std_fmt a logical value indicating whether to override the
+#' variable format stored within the FileX object with standard DSSAT formatting
+#'
 #' @importFrom dplyr "%>%"
 #' @importFrom stringr str_c str_detect
 #' @importFrom purrr map
@@ -16,7 +19,7 @@
 #' @return NULL
 #'
 
-write_filex <- function(filex,file_name,drop_duplicate_rows=TRUE){
+write_filex <- function(filex,file_name,drop_duplicate_rows=TRUE,force_std_fmt=TRUE){
 
   experiment <- attr(filex,'experiment') %>%
     c('*EXP.DETAILS: ',.) %>%
@@ -26,6 +29,9 @@ write_filex <- function(filex,file_name,drop_duplicate_rows=TRUE){
 
   tier_output <- names(filex) %>%
     map(function(sec_name){
+      if(force_std_fmt){
+        attr(filex[[sec_name]],'v_fmt') <- v_fmt_filex(sec_name)
+      }
       if(str_detect(sec_name,'(IRRIGATION)|(INITIAL)|(SOIL)')){
         tier_out <- write_dual_tier_section(filex[[sec_name]],
                                drop_duplicate_rows=drop_duplicate_rows)
@@ -38,7 +44,7 @@ write_filex <- function(filex,file_name,drop_duplicate_rows=TRUE){
                                drop_na_rows=FALSE)
       }else{
         tier_out <- write_tier(filex[[sec_name]],
-                               pad_name=c('TNAME','XCRD','YCRD','ELEV','AREA','SLEN','FLWR','SLAS','WSTA'),
+                               pad_name=c('TNAME','XCRD','YCRD','ELEV','AREA','SLEN','FLWR','SLAS','WSTA','CHT'),
                                drop_duplicate_rows=drop_duplicate_rows)
       }
       tier_out <- tier_out %>%

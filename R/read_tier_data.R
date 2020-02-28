@@ -35,12 +35,11 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
                            left_justified='EXCODE',guess_max=1000,join_tiers=TRUE,
                            store_v_fmt=TRUE, read_only = NULL){
 
+  raw_lines <- sanitize_raw_lines(raw_lines)
+
   # Find header line
   skip <- str_which(raw_lines,'^@')
   headline <- raw_lines[skip]
-
-  raw_lines <- raw_lines %>%
-    str_replace_all(c('\\cz'='','^ +$'=''))
 
   if(!is.null(read_only)){
     i <- which(read_only == 'DATE')
@@ -116,7 +115,7 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
       }
       # Convert DATE column if DATE is not already POSIXct
       potential_date_cols <- colnames(one_df) %>%
-        str_subset('(DATE)|(AT$)')
+        str_subset('(DATE)|(AT$)|(PFRST)|(PLAST)|(HFRST)|(HLAST)')
       date_cols <- col_types %>%
         {map(.,~names(.$cols)) %>%
             unlist()} %>%
