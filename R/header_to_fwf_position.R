@@ -15,7 +15,7 @@
 #'
 #' @importFrom stringr str_replace_all str_detect str_c str_split str_subset
 #' @importFrom purrr map_lgl map_chr
-#' @importFrom dplyr "%>%" mutate arrange tibble filter last
+#' @importFrom dplyr "%>%" mutate arrange tibble filter last pull
 #' @importFrom readr fwf_positions
 #'
 #' @examples
