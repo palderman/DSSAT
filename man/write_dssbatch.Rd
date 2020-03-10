@@ -34,10 +34,13 @@ Constructs and writes a DSSAT simulation batch file
 }
 \examples{
 
-\dontrun{
+# Create example batch file path
+batch_file_path <- paste0(tempdir(),'/DSSBatch.V47')
 
-write_dssbatch(x='UFGA0601.BMX',trtno=1:4)
+# Write example batch file
+write_dssbatch(x='UFGA0601.BMX', trtno=1:4, file_name = batch_file_path)
 
+# Construct tibble for DSSAT batch file
 batch_tbl <- data.frame(FILEX='UFGA0601.BMX',
                     TRTNO=1:4,
                     RP=1,
@@ -45,7 +48,7 @@ batch_tbl <- data.frame(FILEX='UFGA0601.BMX',
                     OP=0,
                     CO=0)
 
-write_dssbatch(batch_tbl)
+# Write example batch file
+write_dssbatch(batch_tbl, file_name = batch_file_path)
 
-}
 }

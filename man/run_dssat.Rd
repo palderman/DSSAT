@@ -42,6 +42,8 @@ Writes data from a single DSSAT data tier
 }
 \examples{
 
-run_dssat()
+\dontrun{
+  run_dssat()
+}
 
 }

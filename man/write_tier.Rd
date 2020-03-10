@@ -26,13 +26,10 @@ Writes data from a single DSSAT data tier
 }
 \examples{
 
-\dontrun{
-
 tier_data <- data.frame(TRNO=1:4,HWAM=rnorm(4,2000,250))
 
 tier_data <- add_v_fmt(tier_data,v_fmt=c(TRNO='\%6.0f', HWAM='\%6.0f'))
 
-write_tier(tier_data)
+output <- write_tier(tier_data)
 
-}
 }

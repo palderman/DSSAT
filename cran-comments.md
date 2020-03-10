@@ -2,7 +2,11 @@
 
 This is a resubmission. In this version I have:
 
-* Removed LICENSE file from the source package
+* Fixed the publication reference to DSSAT-CSM in the package Description section
+
+* Removed all but one instance of \dontrun{} in package examples. The remaining \dontrun{} encapsulates a function that requires an installation of the DSSAT-CSM software.
+
+* Resolved several bugs identified while removing \dontrun{} from package examples
 
 ## Test environments
 

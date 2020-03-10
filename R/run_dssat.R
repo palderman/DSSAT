@@ -35,7 +35,9 @@
 #'
 #' @examples
 #'
-#' run_dssat()
+#' \dontrun{
+#'   run_dssat()
+#' }
 #'
 run_dssat <- function(run_mode='B',file_name=NULL,suppress_output=FALSE){
   dssat_csm <- options()$DSSAT.CSM

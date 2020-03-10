@@ -9,10 +9,13 @@
 #'
 #' @examples
 #'
-#'\dontrun{
+#' # Create example batch file path
+#' batch_file_path <- paste0(tempdir(),'/DSSBatch.V47')
 #'
-#' write_dssbatch(x='UFGA0601.BMX',trtno=1:4)
+#' # Write example batch file
+#' write_dssbatch(x='UFGA0601.BMX', trtno=1:4, file_name = batch_file_path)
 #'
+#' # Construct tibble for DSSAT batch file
 #' batch_tbl <- data.frame(FILEX='UFGA0601.BMX',
 #'                     TRTNO=1:4,
 #'                     RP=1,
@@ -20,9 +23,10 @@
 #'                     OP=0,
 #'                     CO=0)
 #'
-#' write_dssbatch(batch_tbl)
+#' # Write example batch file
+#' write_dssbatch(batch_tbl, file_name = batch_file_path)
 #'
-#' }
+
 write_dssbatch <- function(x, trtno = 1, rp = 1, sq = 0, op = 0, co = 0,
                            file_name = NULL){
   UseMethod("write_dssbatch")
@@ -41,7 +45,7 @@ write_dssbatch <- function(x, trtno = 1, rp = 1, sq = 0, op = 0, co = 0,
 write_dssbatch.data.frame <- function(x, trtno = 1, rp = 1, sq = 0, op = 0, co = 0,
                                   file_name = NULL){
   batch_output <- as_tibble(x) %>%
-    write_dssbatch.tbl_df()
+    write_dssbatch.tbl_df(file_name = file_name)
 
   return(invisible(batch_output))
 }
@@ -122,7 +126,7 @@ write_dssbatch.default <- function(x, trtno = 1, rp = 1, sq = 0, op = 0, co = 0,
                       OP=op,
                       CO=co)
 
-  batch_output <- write_dssbatch.tbl_df(x = batch_tbl)
+  batch_output <- write_dssbatch.tbl_df(x = batch_tbl, file_name = file_name)
 
   # Invisibly return batch_output
   return(invisible(batch_output))

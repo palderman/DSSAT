@@ -26,23 +26,9 @@ Reads weather input data from a single DSSAT weather file (*.WTH)
 }
 \examples{
 
-sample_wth <- c(
-"*WEATHER DATA : Gainesville,Florida,USA",
-"",
-"@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT",
-"  UFGA   29.630  -82.370    10  21.3  13.0   2.0   3.0",
-"@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  RHUM",
-"06001   7.6  26.8  14.1   0.5                          ",
-"06002   9.5  27.8  19.4   0.5                          ",
-"06003   6.1  24.9  11.7   0.0                          ",
-"06004  12.5  21.8   6.6   0.0                          ",
-"06005  12.3  22.3   7.5   0.0                          ")
+# Extract file path for sample weather file
+sample_wth <- system.file('extdata','SAMPLE.WTH',package='DSSAT')
 
-\dontrun{
+read_wth(sample_wth)
 
-write(sample_wth,'EXAMPLE.WTH')
-
-read_wth('EXAMPLE.WTH')
-
-}
 }

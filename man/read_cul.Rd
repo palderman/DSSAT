@@ -31,20 +31,11 @@ Reads parameters from a single DSSAT cultivar parameter file (*.CUL)
 }
 \examples{
 
-sample_cul <- c(
-"*MAIZE CULTIVAR COEFFICIENTS: MZCER047 MODEL",
-"!",
-"@VAR#  VRNAME.......... EXPNO   ECO#    P1    P2    P5    G2    G3 PHINT",
-"!                                        1     2     3     4     5     6",
-"PC0001 2500-2600 GDD        . IB0001 160.0 0.750 780.0 750.0  8.50 49.00",
-"PC0002 2600-2650 GDD        . IB0001 185.0 0.750 850.0 800.0  8.50 49.00",
-"PC0003 2650-2700 GDD        . IB0001 212.0 0.750 850.0 800.0  8.50 49.00")
+# Extract file path for sample cultivar file path
+sample_cul_file <- system.file('extdata','SAMPLE.CUL',package='DSSAT')
 
-\dontrun{
+# Read sample cultivar file
+cul <- read_cul(sample_cul_file)
 
-write(sample_cul,'SAMPLE.CUL')
 
-read_cul('SAMPLE.CUL')
-
-}
 }

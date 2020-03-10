@@ -18,11 +18,13 @@ Reads data from a single DSSAT batch file
 }
 \examples{
 
-\dontrun{
+# Create example batch file path
+batch_file_path <- paste0(tempdir(),'/DSSBatch.V47')
 
-write_dssbatch(x='UFGA0601.BMX',trtno=1:4)
+# Write example batch file
+write_dssbatch(x='UFGA0601.BMX',trtno=1:4,file_name = batch_file_path)
 
-read_dssbatch()
+# Read example batch file
+dssbatch <- read_dssbatch(batch_file_path)
 
-}
 }
