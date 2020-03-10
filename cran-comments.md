@@ -15,6 +15,7 @@ This is a resubmission. In this version I have:
 * R-hub Windows Server 2008 R2 SP1, R-release, 32/64 bit
 * R-hub Ubuntu Linux 16.04 LTS, R-devel, GCC
 * R-hub Fedora Linux, R-devel, clang, gfortran
+* win-builder Windows Server 2008, R-devel
 
 ## R CMD check results
 
