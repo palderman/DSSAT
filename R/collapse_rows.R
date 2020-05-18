@@ -1,12 +1,12 @@
-#' @importFrom dplyr "%>%" group_vars summarize summarize_all ungroup mutate_if group_by_at vars one_of
+#' @importFrom dplyr "%>%" group_vars summarize summarize_all ungroup mutate_if group_by_at vars one_of pull
 #' @importFrom purrr map_dbl
 #'
 collapse_rows <- function(tbl){
   prev_grps <- group_vars(tbl)
-  n <- tbl %>%
-    summarize(n=n()) %>%
-    {.$n}
-  if(any(n>1)){
+  n_per_grp <- tbl %>%
+    summarize(n_per_grp=dplyr::n()) %>%
+    pull(n_per_grp)
+  if(any(n_per_grp>1)){
     new_tbl <- tbl %>%
       summarize_all(~list(.)) %>%
       ungroup() %>%

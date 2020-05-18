@@ -4,8 +4,7 @@
 \alias{read_filea}
 \title{Reads data from a single DSSAT file A}
 \usage{
-read_filea(file_name, col_types = NULL, col_names = NULL,
-  na_strings = NULL)
+read_filea(file_name, col_types = NULL, col_names = NULL, na_strings = NULL)
 }
 \arguments{
 \item{file_name}{a character vector of length one that contains the name

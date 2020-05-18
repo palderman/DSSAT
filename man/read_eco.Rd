@@ -4,9 +4,12 @@
 \alias{read_eco}
 \title{Reads parameters from a single DSSAT ecotype parameter file (*.ECO)}
 \usage{
-read_eco(file_name, col_types = NULL, col_names = NULL,
-  left_justified = c("ECO   ", "ECO#", "ECONAME\\\\.*",
-  "ECO-NAME\\\\.*"))
+read_eco(
+  file_name,
+  col_types = NULL,
+  col_names = NULL,
+  left_justified = c("ECO   ", "ECO#", "ECONAME\\\\.*", "ECO-NAME\\\\.*")
+)
 }
 \arguments{
 \item{file_name}{a character vector of length one that contains the name

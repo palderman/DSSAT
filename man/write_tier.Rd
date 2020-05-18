@@ -4,8 +4,12 @@
 \alias{write_tier}
 \title{Writes data from a single DSSAT data tier}
 \usage{
-write_tier(tier_data, pad_name = NULL, drop_duplicate_rows = FALSE,
-  drop_na_rows = TRUE)
+write_tier(
+  tier_data,
+  pad_name = NULL,
+  drop_duplicate_rows = FALSE,
+  drop_na_rows = TRUE
+)
 }
 \arguments{
 \item{tier_data}{a tibble containing the data to write out}

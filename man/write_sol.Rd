@@ -4,8 +4,7 @@
 \alias{write_sol}
 \title{Writes soil parameters to a single DSSAT soil parameter file (*.SOL)}
 \usage{
-write_sol(sol, file_name, title = NULL, append = TRUE,
-  force_std_fmt = TRUE)
+write_sol(sol, file_name, title = NULL, append = TRUE, force_std_fmt = TRUE)
 }
 \arguments{
 \item{sol}{a tibble of soil profiles that have been read in by read_sol()}

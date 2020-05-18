@@ -4,8 +4,7 @@
 \alias{write_dssbatch}
 \title{Constructs and writes a DSSAT simulation batch file}
 \usage{
-write_dssbatch(x, trtno = 1, rp = 1, sq = 0, op = 0, co = 0,
-  file_name = NULL)
+write_dssbatch(x, trtno = 1, rp = 1, sq = 0, op = 0, co = 0, file_name = NULL)
 }
 \arguments{
 \item{x}{a tibble/data frame or character vector; if a tibble, it should contain all

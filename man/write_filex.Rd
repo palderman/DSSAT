@@ -4,8 +4,7 @@
 \alias{write_filex}
 \title{Writes data to a single DSSAT FileX}
 \usage{
-write_filex(filex, file_name, drop_duplicate_rows = TRUE,
-  force_std_fmt = TRUE)
+write_filex(filex, file_name, drop_duplicate_rows = TRUE, force_std_fmt = TRUE)
 }
 \arguments{
 \item{filex}{a list of tibbles containing the data to write to a DSSAT file X}

@@ -4,8 +4,14 @@
 \alias{read_dssat}
 \title{Reads data from a single DSSAT file}
 \usage{
-read_dssat(file_name, col_types = NULL, col_names = NULL,
-  na_strings = NULL, left_justified = "EXCODE", guess_max = 10)
+read_dssat(
+  file_name,
+  col_types = NULL,
+  col_names = NULL,
+  na_strings = NULL,
+  left_justified = "EXCODE",
+  guess_max = 10
+)
 }
 \arguments{
 \item{file_name}{a character vector of length one that contains the name

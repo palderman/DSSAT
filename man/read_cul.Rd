@@ -4,9 +4,12 @@
 \alias{read_cul}
 \title{Reads parameters from a single DSSAT cultivar parameter file (*.CUL)}
 \usage{
-read_cul(file_name, col_types = NULL, col_names = NULL,
-  left_justified = c("VAR#", "VARNAME\\\\.*", "VAR-NAME\\\\.*",
-  "VRNAME\\\\.*"))
+read_cul(
+  file_name,
+  col_types = NULL,
+  col_names = NULL,
+  left_justified = c("VAR#", "VARNAME\\\\.*", "VAR-NAME\\\\.*", "VRNAME\\\\.*")
+)
 }
 \arguments{
 \item{file_name}{a character vector of length one that contains the name

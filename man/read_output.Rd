@@ -4,8 +4,13 @@
 \alias{read_output}
 \title{Reads data from a single DSSAT output file}
 \usage{
-read_output(file_name, col_types = NULL, col_names = NULL,
-  left_justified = NULL, read_only = NULL)
+read_output(
+  file_name,
+  col_types = NULL,
+  col_names = NULL,
+  left_justified = NULL,
+  read_only = NULL
+)
 }
 \arguments{
 \item{file_name}{a character vector of length one that contains the name

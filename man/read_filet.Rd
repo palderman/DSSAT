@@ -4,8 +4,7 @@
 \alias{read_filet}
 \title{Reads time series data from a single DSSAT file T}
 \usage{
-read_filet(file_name, col_types = NULL, col_names = NULL,
-  na_strings = NULL)
+read_filet(file_name, col_types = NULL, col_names = NULL, na_strings = NULL)
 }
 \arguments{
 \item{file_name}{a character vector of length one that contains the name

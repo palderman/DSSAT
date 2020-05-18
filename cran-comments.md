@@ -1,43 +1,16 @@
-## Resubmission
-
-This is a resubmission. In this version I have:
-
-* Fixed the publication reference to DSSAT-CSM in the package Description section
-
-* Removed all but one instance of \dontrun{} in package examples. The remaining \dontrun{} encapsulates a function that requires an installation of the DSSAT-CSM software.
-
-* Resolved several bugs identified while removing \dontrun{} from package examples
-
 ## Test environments
 
-* local Ubuntu 16.04.6, R 3.6.2
+* local Ubuntu 18.04, R 3.6.3
 * R-hub Windows Server 2008 R2 SP1, R-devel, 32/64 bit
 * R-hub Windows Server 2008 R2 SP1, R-release, 32/64 bit
 * R-hub Ubuntu Linux 16.04 LTS, R-devel, GCC
 * R-hub Fedora Linux, R-devel, clang, gfortran
 * win-builder Windows Server 2008, R-devel
+* win-builder Windows Server 2008, R-release
 
 ## R CMD check results
 
-There were no ERRORs or WARNINGs.
-
-There was 1 NOTE:
-
-* checking CRAN incoming feasibility ... NOTE
-
-  Maintainer: 'Phillip D. Alderman <phillip.alderman@okstate.edu>'
-
-  New submission
-
-  Possibly mis-spelled words in DESCRIPTION:
-    Agrotechnology (8:52)
-    DSSAT (3:44, 9:38, 12:9)
-    CSM (9:44, 12:15)
-    al (9:58)
-    et (9:55)
-  
-None of these words is mis-spelled. They are a mixture of acronyms and a citation
-  of the external software for which this new package is an interface.
+There were no ERRORs, WARNINGs or NOTEs.
 
 ## Downstream dependencies
 
