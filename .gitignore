@@ -16,3 +16,6 @@ test_data/*
 manuscript/*
 CRAN-RELEASE
 prmest*
+.Rprofile
+renv.lock
+renv*
