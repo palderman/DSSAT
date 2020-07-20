@@ -15,6 +15,7 @@ The purpose of this package is to provide a comprehensive R interface to the Dec
     - File T
     - File A
     - Weather input files (\*.WTH)
+    - Soil input files (\*.SOL)
     - DSSAT Batch file (DSSBatch.V\*)
 - Run DSSAT-CSM in the following modes:
     - Batch
@@ -26,7 +27,6 @@ The purpose of this package is to provide a comprehensive R interface to the Dec
 - Read input files:
     - Crop parameter files (\*.SPE)
 - Write input files:
-    - Soil input files (\*.SOL)
     - Pest input files (\*.PST)
     - Crop parameter files (\*.SPE)
 - Run DSSAT-CSM in the following modes:

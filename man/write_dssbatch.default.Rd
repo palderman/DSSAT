@@ -4,8 +4,7 @@
 \alias{write_dssbatch.default}
 \title{Default method for write_dssbatch()}
 \usage{
-\method{write_dssbatch}{default}(x, trtno = 1, rp = 1, sq = 0,
-  op = 0, co = 0, file_name = NULL)
+\method{write_dssbatch}{default}(x, trtno = 1, rp = 1, sq = 0, op = 0, co = 0, file_name = NULL)
 }
 \arguments{
 \item{x}{a tibble/data frame or character vector; if a tibble, it should contain all

@@ -4,8 +4,7 @@
 \alias{read_filea}
 \title{Reads data from a single DSSAT file A}
 \usage{
-read_filea(file_name, col_types = NULL, col_names = NULL,
-  na_strings = NULL)
+read_filea(file_name, col_types = NULL, col_names = NULL, na_strings = NULL)
 }
 \arguments{
 \item{file_name}{a character vector of length one that contains the name
@@ -29,21 +28,9 @@ Reads data from a single DSSAT file A
 }
 \examples{
 
-sample_filea <- c(
-"*EXP. DATA (A): SATO8902SC LAMERCY DATA    SUCARCANE VALIDATION EXP.                   ",
-"! File last edited on day 05/22/2007 at 10:27:03 AM",
-"!",
-"@TRNO   HWAH  BWAH  LAID  SWAD  CHTD  L#SD  HIAM  CWAD  LI\%D  LT#D  CWAM  SDAH",
-"     1 16800 10900   2.6 34700 1.792   7.8  48.2   -99  87.5   -99  6900  13.2",
-"     2 13000  8200   2.6 26700 1.685   9.2  48.7   -99  81.5   -99  5700  13.2",
-"     3 14700 10800   2.8 33400 2.083   9.8  44.0   -99  74.0   -99  5700  14.5",
-"     4 14700 10100   3.7 34700 2.209  10.4  42.2   -99  86.5   -99  7100  13.4")
+# Extract FileA path for sample file
+sample_filea <- system.file('extdata','SAMPLE.CRA',package='DSSAT')
 
-\dontrun{
+filea <- read_filea(sample_filea)
 
-write(sample_filea,'SAMPLE.CRA')
-
-read_filea('SAMPLE.CRA')
-
-}
 }

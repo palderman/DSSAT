@@ -1,3 +1,7 @@
+# DSSAT 0.0.2
+
+This version updates calls to dplyr functions to be compatible with dplyr version 1.0.0.
+
 # DSSAT 0.0.1
 
 This version provides cross-platform functions to:

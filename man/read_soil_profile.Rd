@@ -4,8 +4,12 @@
 \alias{read_soil_profile}
 \title{Reads a single DSSAT formatted soil profile from a raw character vector}
 \usage{
-read_soil_profile(raw_lines, left_justified = NULL, col_types = NULL,
-  col_names = NULL)
+read_soil_profile(
+  raw_lines,
+  left_justified = NULL,
+  col_types = NULL,
+  col_names = NULL
+)
 }
 \arguments{
 \item{raw_lines}{a character vector that includes the contents

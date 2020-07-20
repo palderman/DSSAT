@@ -4,8 +4,7 @@
 \alias{read_filex}
 \title{Reads input data from a single DSSAT experiment file (*.*X)}
 \usage{
-read_filex(file_name, col_types = NULL, col_names = NULL,
-  na_strings = NULL)
+read_filex(file_name, col_types = NULL, col_names = NULL, na_strings = NULL)
 }
 \arguments{
 \item{file_name}{a character vector of length one that contains the name
