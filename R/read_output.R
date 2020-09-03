@@ -22,7 +22,7 @@
 #'
 
 read_output <- function(file_name,col_types=NULL,col_names=NULL,left_justified=NULL,
-                        read_only=NULL){
+                        read_only=NULL, dates_only = NULL){
 
   col_types <- cols(` TNAME\\.*`=col_character(),
                     ` TNAM\\.+`=col_character(),
@@ -56,14 +56,22 @@ read_output <- function(file_name,col_types=NULL,col_names=NULL,left_justified=N
   end <- c(begin[-1]-1,length(raw_lines))
 
   # Read each section of output file
-  output <- map(1:length(begin),
-                   ~read_tier(raw_lines[begin[.]:end[.]],
-                              col_types = col_types,
-                              col_names = col_names,
-                              left_justified = left_justified,
-                              store_v_fmt = FALSE,
-                              read_only = read_only)) %>%
-    reduce(combine_tiers) %>%
+  output <- read_tier_data(raw_lines,
+                           col_types = col_types,
+                           col_names = col_names,
+                           left_justified = left_justified,
+                           store_v_fmt = FALSE,
+                           read_only = read_only,
+                           dates_only = dates_only) %>%
+    # map(1:length(begin),
+    #                ~read_tier_data(raw_lines[begin[.]:end[.]],
+    #                           col_types = col_types,
+    #                           col_names = col_names,
+    #                           left_justified = left_justified,
+    #                           store_v_fmt = FALSE,
+    #                           read_only = read_only,
+    #                           dates_only = dates_only)) %>%
+    #reduce(combine_tiers) %>%
     as_DSSAT_tbl()
 
   return(output)

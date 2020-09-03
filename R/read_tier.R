@@ -41,7 +41,7 @@
 
 read_tier <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NULL,
                       left_justified='EXCODE',guess_max=1000,store_v_fmt=TRUE,
-                      read_only = NULL){
+                      read_only = NULL, dates_only = NULL){
 
   # Extract header information
   header_info <- suppressWarnings({
@@ -55,7 +55,8 @@ read_tier <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NULL,
                               left_justified=left_justified,
                               na_strings = na_strings,
                               store_v_fmt = store_v_fmt,
-                              read_only = read_only)
+                              read_only = read_only,
+                              dates_only = dates_only)
 
   # To prevent "no visible binding for global variable" from R CMD check for select()
   # statement below:

@@ -14,6 +14,9 @@
 #' @param join_tiers A logical indicating whether the multiple tiers should be
 #' combined into a single tibble
 #'
+#' @param dates_only NULL or a POSIXt vector of dates that should be read from output file;
+#' If non-NULL only the dates listed will be read in.
+#'
 #' @return a tibble or list of tibbles containing the data from the raw DSSAT output
 #'
 #' @importFrom stringr str_which str_replace_all str_detect str_subset
@@ -33,7 +36,16 @@
 
 read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NULL,
                            left_justified='EXCODE',guess_max=1000,join_tiers=TRUE,
-                           store_v_fmt=TRUE, read_only = NULL){
+                           store_v_fmt=TRUE, read_only = NULL, dates_only = NULL){
+
+  if(any(str_detect(raw_lines,'(^ MODEL)|(^ EXPERIMENT)|(^ TREATMENT)|(^\\*RUN)'))){
+    # Extract header information
+    header_info <- suppressWarnings({
+      process_dssat_output_header(raw_lines)
+    })
+  }else{
+    header_info <- NULL
+  }
 
   raw_lines <- sanitize_raw_lines(raw_lines)
 
@@ -50,13 +62,15 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
     }
   }
 
-  if(!is.null(read_only)){
-    i <- which(read_only == 'DATE')
-    if(length(i) == 1){
-      read_only <- c(head(read_only,i-1),
-                     'YEAR','DOY',
-                     tail(read_only,length(read_only)-i))
-    }
+  if(!is.null(dates_only)){
+    year_doy_regex <- dates_only %>%
+      unique() %>%
+      {sprintf(' %4i %3i',year(.),yday(.))} #%>%
+      # str_c('^',.) %>%
+      # str_c(collapse = ')|(') %>%
+      # str_c('(',.,')')
+  }else{
+    year_doy_regex <- '.*'
   }
 
 #  if(!'DATE'%in%{col_types$cols %>% str_replace_all(c(' '=''))})
@@ -65,15 +79,26 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
    .}
 
   # Process header into fixed-width format positions
-  fwf_pos <- map(headline,
-                 ~header_to_fwf_position(.,left_justified,col_types,col_names,read_only))
+  fwf_pos <- headline %>%
+    unique() %>%
+    {names(.) <- .
+    .} %>%
+    map(~header_to_fwf_position(.,left_justified,col_types,col_names))
+
+  if(!is.null(read_only)){
+    fwf_pos <- fwf_pos %>%
+      map(~filter(.,col_names %in% read_only))
+  }
 
   # Calculate end of each section based on beginning of next section
   end <- c(skip[-1]-1,length(raw_lines))
 
   # Put check_col_types here
   if(!is.null(col_types)){
-    col_types <- map(1:length(skip),~check_col_types(col_types,fwf_pos[[.]]$col_names))
+    col_types <- map(1:length(fwf_pos),
+                     ~check_col_types(col_types,fwf_pos[[.]]$col_names)) %>%
+      {names(.) <- names(fwf_pos)
+      .}
   }
 
   na_strings <- c(na_strings,'-99','-99.','-99.0','-99.00','-99.000',
@@ -82,25 +107,40 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
   # Read data from tier
   tier_data <- map(1:length(skip),function(i){
         if(skip[i]==end[i]){
-          tdata <- map(fwf_pos[[i]]$col_names,~as.character(NA)) %>%
-            {names(.) <- fwf_pos[[i]]$col_names
+          tdata <- map(fwf_pos[[raw_lines[skip[i]]]]$col_names,~as.character(NA)) %>%
+            {names(.) <- fwf_pos[[raw_lines[skip[i]]]]$col_names
             .} %>%
             as_tibble()
           # colnames(tdata) <- fwf_pos[[i]]$col_names
         }else{
-          if(any(str_detect(fwf_pos[[i]]$col_names,'NOTES'))){
+          if(any(str_detect(fwf_pos[[raw_lines[skip[i]]]]$col_names,'NOTES'))){
             cmnt <- ''
           }else{
             cmnt <- '!'
           }
-          tdata <- read_fwf(raw_lines[skip[i]:end[i]],
-                            fwf_pos[[i]],
-                            comment = cmnt,
-                            skip = 1,
-                              na = na_strings,
-                            skip_empty_rows = TRUE,
-                            guess_max = guess_max,
-                            col_types=col_types[[i]])
+          if(!is.null(dates_only)){
+            file_lines <- raw_lines[skip[i]:end[i]] %>%
+              {c(.[1],.[str_sub(.,1,9) %in% year_doy_regex])}
+          }else{
+            file_lines <- raw_lines[skip[i]:end[i]]
+          }
+          tdata <- file_lines %>%
+            read_fwf(fwf_pos[[.[1]]],
+                     comment = cmnt,
+                     skip = 1,
+                     na = na_strings,
+                     skip_empty_rows = TRUE,
+                     guess_max = guess_max,
+                     col_types=col_types[[raw_lines[skip[i]]]])
+
+        }
+        if(!is.null(header_info)){
+          tdata <- tdata %>%
+            mutate(EXPERIMENT=header_info$experiment[i],
+                   MODEL=header_info$model[i],
+                   TRNO = header_info$trtno[i],
+                   RUN = header_info$runno[i]) %>%
+            select(EXPERIMENT,MODEL,RUN,TRNO,everything())
         }
         return(tdata)
       }) %>%
@@ -194,7 +234,7 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
 
     }else{
 
-      tier_data <- list(tier_data,fwf_pos) %>%
+      tier_data <- list(tier_data,fwf_pos[headline]) %>%
         pmap(function(td,fpos){
           v_fmt <- construct_variable_format(td,
                                              fpos,

@@ -9,7 +9,8 @@ read_output(
   col_types = NULL,
   col_names = NULL,
   left_justified = NULL,
-  read_only = NULL
+  read_only = NULL,
+  dates_only = NULL
 )
 }
 \arguments{
@@ -29,6 +30,9 @@ should be left justified}
 
 \item{read_only}{NULL or a character vector of column names that should be read in;
 If non-NULL only the columns listed will be read in.}
+
+\item{dates_only}{NULL or a POSIXt vector of dates that should be read from output file;
+If non-NULL only the dates listed will be read in.}
 }
 \value{
 a tibble containing the data from the raw DSSAT output

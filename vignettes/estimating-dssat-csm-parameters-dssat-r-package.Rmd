@@ -10,7 +10,8 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  eval=FALSE
 )
 ```
 
@@ -41,7 +42,8 @@ prm_tbl
 
 input_tbl <- prm_tbl$pfile %>%
   unique() %>%
-  map(create_dssat_input,col_types=cols(P1V=col_double())) %>%
+  map(create_dssat_input,col_types=cols(P1V=col_double(),
+                                        P1D=col_double())) %>%
   bind_rows() %>%
   as_dssat_input_tbl()
 input_tbl

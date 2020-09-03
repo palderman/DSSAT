@@ -34,7 +34,7 @@ read_filet <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
   {.$cols <- c(.$cols,col_types$cols);.}
 
 
-  filet <- read_tier(raw_lines = raw_lines,
+  filet <- read_tier_data(raw_lines = raw_lines,
                      col_types = col_types,
                      col_names = c(col_names,' TRNO '),
                      na_strings=na_strings)

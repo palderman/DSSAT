@@ -38,30 +38,30 @@
 process_dssat_output_header <- function(raw_lines){
 
   # Find header line
-  skip <- str_which(raw_lines,'^@') %>%
-    min()
+  # skip <- str_which(raw_lines,'^@') %>%
+  #   min()
 
   # Extract model code
-  model <- raw_lines[1:skip] %>%
+  model <- raw_lines %>% #[1:skip]
     str_subset('MODEL') %>%
     str_extract(' : [^ ]+') %>%
     str_remove(' : ')
 
   # Extract experiment code
-  experiment <- raw_lines[1:skip] %>%
+  experiment <- raw_lines %>%
     str_subset('EXPERIMENT') %>%
     str_extract(' : [^ ]+') %>%
     str_remove(' : ')
 
   # Extract treatment number
-  trtno <- raw_lines[1:skip] %>%
+  trtno <- raw_lines %>%
     str_subset('TREATMENT') %>%
     str_extract('TREATMENT *[^ ]+ ') %>%
     str_remove('TREATMENT *') %>%
     as.integer()
 
   # Extract run number
-  runno <- raw_lines[1:skip] %>%
+  runno <- raw_lines %>%
     str_subset('^\\*RUN') %>%
     str_sub(6,8) %>%
     as.integer()

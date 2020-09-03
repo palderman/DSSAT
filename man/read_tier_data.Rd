@@ -13,7 +13,8 @@ read_tier_data(
   guess_max = 1000,
   join_tiers = TRUE,
   store_v_fmt = TRUE,
-  read_only = NULL
+  read_only = NULL,
+  dates_only = NULL
 )
 }
 \arguments{
@@ -45,6 +46,9 @@ format for variables being read}
 
 \item{read_only}{NULL or a character vector of column names that should be read in;
 If non-NULL only the columns listed will be read in.}
+
+\item{dates_only}{NULL or a POSIXt vector of dates that should be read from output file;
+If non-NULL only the dates listed will be read in.}
 }
 \value{
 a tibble or list of tibbles containing the data from the raw DSSAT output

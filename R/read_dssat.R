@@ -53,7 +53,7 @@ read_dssat <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL,
 
   # Read each section of output file
   all_tiers <- map(1:length(begin),
-                   ~read_tier(raw_lines[begin[.]:end[.]],
+                   ~read_tier_data(raw_lines[begin[.]:end[.]],
                               col_types = col_types,
                               col_names = col_names,
                               na_strings = na_strings,

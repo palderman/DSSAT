@@ -87,11 +87,42 @@ dat_to_dap <- function(pdate,.data){
 
 #' @export
 #'
-create_dssat_expmt <- function(filex_name,trno=NULL,data_types=NULL){
+#' @importFrom tibble tibble
+#' @importFrom dplyr "%>%" group_by group_map bind_rows
+#' @importFrom purrr map
+#'
+create_expmt_tbl <- function(filex_name, trno=NULL, data_types=NULL,
+                             rewrite_filex=FALSE){
+  if(is.null(trno)){
+    filex_trno_tbl <- tibble(filex_name = filex_name,
+                             trno = map(filex_name,~{NULL}))
+  }else{
+    filex_trno_tbl <- tibble(filex_name = filex_name,
+                             trno = trno)
+  }
+  expmt_tbl <- filex_trno_tbl %>%
+    group_by(filex_name) %>%
+    group_map(~create_dssat_expmt(filex_name = .y$filex_name,
+                                  trno = .x$trno[[1]],
+                                  data_types = data_types,
+                                  rewrite_filex = rewrite_filex)) %>%
+    bind_rows()
+  return(expmt_tbl)
+}
 
-  filex <- read_filex(filex_name)
+#' @export
+#'
+#'
+#' @importFrom dplyr "%>%" filter mutate select
+#' @importFrom stringr str_replace str_detect
+#' @importFrom tibble tibble
+#' @importFrom tidyr pivot_longer
+#'
+create_dssat_expmt <- function(filex_name, trno=NULL, data_types=NULL,
+                               rewrite_filex = FALSE){
 
   if(is.null(trno)){
+    filex <- read_filex(filex_name)
     trno <- filex %>%
     {.$TREATMENTS} %>%
     {.$N}
@@ -105,10 +136,14 @@ create_dssat_expmt <- function(filex_name,trno=NULL,data_types=NULL){
       colnames() %>%
       {.[! . %in% c('TRNO','DATE')]}
     if(any(str_detect(colnames(filea),'DAT$'))){
+      if(!exists('filex', envir = environment(fun = NULL))){
+        filex <- read_filex(filex_name)
+      }
       pdate <- get_pdate(filex)
       filea <- dat_to_dap(pdate,filea)
     }else{
-      pdate <- NULL
+      pdate <- tibble(TRNO=numeric(),PDATE=numeric()) %>%
+        mutate(PDATE = as.POSIXct(PDATE,origin='1970-01-01',tz='UTC'))
     }
   }else{
     filea <- NULL
@@ -124,6 +159,7 @@ create_dssat_expmt <- function(filex_name,trno=NULL,data_types=NULL){
       {.[! . %in% c('TRNO','DATE')]}
   }else{
       filet <- NULL
+      filet_col_names <- NULL
   }
 
   if(is.null(data_types)){
@@ -131,13 +167,20 @@ create_dssat_expmt <- function(filex_name,trno=NULL,data_types=NULL){
       unique()
   }
 
-  filex_name <- basename(filex_name)
+  if(rewrite_filex){
+    if(!exists('filex', envir = environment(fun = NULL))){
+      filex <- read_filex(filex_name)
+    }
+    write_filex(filex,basename(filex_name))
+  }else{
+    file.copy(filex_name,basename(filex_name))
+  }
 
-  write_filex(filex,filex_name)
+  filex_name <- basename(filex_name)
 
   joined_data <- join_filea_filet(filea,filet) %>%
     filter(TRNO %in% trno) %>%
-    gather(key='variable',value='obs',-TRNO,-DATE) %>%
+    tidyr::pivot_longer(names_to='variable',values_to = 'obs',cols=c(-TRNO,-DATE)) %>%
     mutate(EXPERIMENT=str_sub(filex_name,1,8)) %>%
     select(EXPERIMENT,TRNO,DATE,everything()) %>%
     filter(!is.na(obs))
@@ -147,6 +190,10 @@ create_dssat_expmt <- function(filex_name,trno=NULL,data_types=NULL){
 
   sim_template <- tibble(data_template = list(sim_data_template),
                          pdate = list(pdate))
+
+  if(!exists('filex', envir = environment(fun = NULL))){
+    filex <- NULL
+  }
 
   expmt <- tibble(filex_name = filex_name, filex = list(filex),
                   obs_data = list(joined_data), trno = list(trno),
@@ -165,7 +212,7 @@ write_dssbatch.dssat_expmt_tbl <- function(expmt_tbl){
   expmt_tbl %>%
     select(filex_name,trno) %>%
     unnest(trno) %>%
-    {write_dssbatch.default(filex = .$filex_name, trtno = .$trno)}
+    {write_dssbatch.default(x = .$filex_name, trtno = .$trno)}
 
 }
 
@@ -202,18 +249,18 @@ create_dssat_prm <- function(pname, pfile,
                              plev = as.numeric(NA),
                              pind = as.numeric(NA)){
 
-  if(is.null(pname) | is.na(pname)) warning("pname cannot be NULL or missing")
-  if(is.null(pfile) | is.na(pfile)) warning("pfile cannot be NULL or missing")
+  if(any(is.null(pname) | is.na(pname))) warning("pname cannot be NULL or missing")
+  if(any(is.null(pfile) | is.na(pfile))) warning("pfile cannot be NULL or missing")
 
-  if(is.null(pmin)) pmin = -Inf
-  if(is.null(pmax)) pmax = Inf
-  if(is.null(pmu)) pmu = NA
-  if(is.null(psigma)) psigma = NA
-  if(is.null(pdist)) pdist = "unif"
-  if(is.null(ptier)) ptier = as.character(NA)
-  if(is.null(pkey)) pkey = as.character(NA)
-  if(is.null(plev)) plev = as.numeric(NA)
-  if(is.null(pind)) pind = as.numeric(NA)
+  if(all(is.null(pmin))) pmin = -Inf
+  if(all(is.null(pmax))) pmax = Inf
+  if(all(is.null(pmu))) pmu = NA
+  if(all(is.null(psigma))) psigma = NA
+  if(all(is.null(pdist))) pdist = "unif"
+  if(all(is.null(ptier))) ptier = as.character(NA)
+  if(all(is.null(pkey))) pkey = as.character(NA)
+  if(all(is.null(plev))) plev = as.numeric(NA)
+  if(all(is.null(pind))) pind = as.numeric(NA)
 
   prm <- tibble(pname = pname, pmin = pmin, pmax = pmax, pmu = pmu, psigma = psigma,
                 pdist = pdist, pfile = pfile, ptier = ptier, pkey = pkey, plev = plev,
@@ -221,6 +268,110 @@ create_dssat_prm <- function(pname, pfile,
     as_dssat_prm_tbl()
 
   return(prm)
+
+}
+
+#' @export
+#'
+#' @importFrom readr read_csv
+#' @importFrom dplyr "%>%" pull
+import_prm_tbl_csv <- function(file_name){
+
+  prm_tbl_csv <- read_csv(file_name)
+
+  pname <- prm_tbl_csv %>%
+    pull(pname) %>%
+    as.character()
+
+  pfile <- prm_tbl_csv %>%
+    pull(pfile) %>%
+    as.character()
+
+  if('pmin' %in% colnames(prm_tbl_csv)){
+    pmin <- prm_tbl_csv %>%
+      pull(pmin) %>%
+      as.numeric()
+  }else{
+    pmin <- -Inf
+  }
+
+  if('pmax' %in% colnames(prm_tbl_csv)){
+    pmax <- prm_tbl_csv %>%
+      pull(pmax) %>%
+      as.numeric()
+  }else{
+    pmax <- Inf
+  }
+
+  if('pmu' %in% colnames(prm_tbl_csv)){
+    pmu <- prm_tbl_csv %>%
+      pull(pmu) %>%
+      as.numeric()
+  }else{
+    pmu <- NA
+  }
+
+  if('psigma' %in% colnames(prm_tbl_csv)){
+    psigma <- prm_tbl_csv %>%
+      pull(psigma) %>%
+      as.numeric()
+  }else{
+    psigma <- NA
+  }
+
+  if('pdist' %in% colnames(prm_tbl_csv)){
+    pdist <- prm_tbl_csv %>%
+      pull(pdist) %>%
+      as.character()
+  }else{
+    pdist <- "unif"
+  }
+
+  if('ptier' %in% colnames(prm_tbl_csv)){
+    ptier <- prm_tbl_csv %>%
+      pull(ptier) %>%
+      as.character()
+  }else{
+    ptier <- as.character(NA)
+  }
+
+  if('pkey' %in% colnames(prm_tbl_csv)){
+    pkey <- prm_tbl_csv %>%
+      pull(pkey) %>%
+      as.character()
+  }else{
+    pkey <- as.character(NA)
+  }
+
+  if('plev' %in% colnames(prm_tbl_csv)){
+    plev <- prm_tbl_csv %>%
+      pull(plev) %>%
+      as.numeric()
+  }else{
+    plev <- as.numeric(NA)
+  }
+
+  if('pind' %in% colnames(prm_tbl_csv)){
+    pind <- prm_tbl_csv %>%
+      pull(pind) %>%
+      as.numeric()
+  }else{
+    pind <- as.numeric(NA)
+  }
+
+  prm_tbl <- create_dssat_prm(pname = pname,
+                              pfile = pfile,
+                              pmin = pmin,
+                              pmax = pmax,
+                              pmu = pmu,
+                              psigma = psigma,
+                              pdist = pdist,
+                              ptier = ptier,
+                              pkey = pkey,
+                              plev = plev,
+                              pind = pind)
+
+  return(prm_tbl)
 
 }
 
@@ -391,18 +542,24 @@ generate_file_template <- function(file_name,file_processed){
 
 #' @export
 #'
+#' @importFrom dplyr "%>%" filter group_by group_modify mutate ungroup select
+#' @importFrom stringr str_replace_all
+#'
 add_input_template <- function(.input_tbl,.prm_tbl){
 
   .input_tbl <- .input_tbl %>%
     group_by(file_name) %>%
     group_modify(~{
-      pt <- filter(.prm_tbl, pfile == .y$file_name)
+      pt <- filter(.prm_tbl, pfile == .y$file_name) %>%
+        mutate(pfmt = str_replace_all(pfmt,'(\\..*)|([a-z])','s'))
       if(nrow(pt) > 0){
         fp <- .x$file_processed[[1]]
         for(i in 1:nrow(pt)){
           fp <- mutate(fp,!!pt$pname[i] := sprintf(pt$pfmt[i],!!as.name(pt$pname[i])))
           if(str_detect(.y$file_name,'\\.CUL')){
             fp <- mutate_cond(fp,`VAR#` == pt$pkey[i], !!pt$pname[i] := !!pt$pregex[i])
+          }else if(str_detect(.y$file_name,'\\.ECO')){
+            fp <- mutate_cond(fp,`ECO#` == pt$pkey[i], !!pt$pname[i] := !!pt$pregex[i])
           }
           attr(fp,'v_fmt') <- modify_vfmt(fp,pt$pname[i],pt$pfmt[i])
         }
@@ -506,9 +663,11 @@ find_output_variables <- function(.expmt){
 
 #' @export
 #'
+#' @importFrom dplyr "%>%" group_by mutate group_modify
+#'
 add_output_tbl <- function(.expmt){
 
-  write_dssbatch(filex=.expmt$filex_name,trtno=.expmt$trno[[1]])
+  write_dssbatch(x=.expmt$filex_name,trtno=.expmt$trno[[1]])
 
   run_dssat(suppress_output = TRUE)
 
@@ -522,44 +681,86 @@ add_output_tbl <- function(.expmt){
 
 #' @export
 #'
+#' @importFrom dplyr "%>%" group_by mutate filter full_join left_join group_map
+#' @importFrom purrr reduce
+#' @importFrom tibble add_column
+#' @importFrom stringr str_detect
+#' @importFrom tidyr gather
+#'
 read_sim_data <- function(sim_template,out_tbl){
+
+  if(is.list(out_tbl) & !is.data.frame(out_tbl)){
+    out_tbl <- out_tbl %>%
+      map(~unnest(.,cols=col_names)) %>%
+      reduce(full_join)
+  }else{
+    out_tbl <- out_tbl %>%
+      unnest(.,cols=col_names)
+  }
+
+  if(is.list(sim_template) & !is.data.frame(sim_template)){
+      sim_template <- sim_template %>%
+        map(~full_join(.$data_template[[1]],.$pdate[[1]])) %>%
+        reduce(full_join)
+  }else{
+    sim_template <- full_join(sim_template$data_template[[1]],
+                              sim_template$pdate[[1]])
+  }
+
+  run_expmt <- sim_template %>%
+    group_by(EXPERIMENT,TRNO) %>%
+    summarize() %>%
+    ungroup() %>%
+    mutate(RUN = 1:n(),
+           RUNNO = RUN)
 
   out <- out_tbl %>%
     group_by(file_name) %>%
     group_map(~{
-      read_output(.y$file_name,read_only = c('TRNO','DATE',.x$col_names[[1]])) %>%
+      read_output(.y$file_name,read_only = c('TRNO','DATE','RUN','RUNNO',.x$col_names[[1]])) %>%
         {
           if( ! 'DATE' %in% names(.)){
-            . <- tibble::add_column(.,DATE = as.POSIXct('0001001',format='%Y%j',tz='UTC'))
-              if(any(str_detect(colnames(.),'DAT$'))){
-                . <- dat_to_dap(sim_template$pdate[[1]],.)
-              }
-            .
-          }else{
-            .
+            . <- add_column(.,DATE = as.POSIXct('0001001',format='%Y%j',tz='UTC'))
           }
+          .
         } %>%
-        filter(TRNO %in% sim_template$data_template[[1]]$TRNO &
-                 DATE %in% sim_template$data_template[[1]]$DATE)
+        filter(TRNO %in% sim_template$TRNO &
+               DATE %in% sim_template$DATE)
     }) %>%
     reduce(full_join) %>%
-    gather(key = "variable", value = "sim", -TRNO, -DATE) %>%
-    left_join(sim_template$data_template[[1]],.)
+    full_join(run_expmt) %>%
+    select(-RUN, -RUNNO) %>%
+    pivot_longer(names_to = "variable", values_to = "sim", cols = c(-EXPERIMENT,-TRNO, -DATE)) %>%
+    left_join(sim_template,.) %>%
+    mutate(sim = ifelse(str_detect(variable,'DAT$'),
+                        as.numeric(difftime(as.POSIXct(sim,tz='UTC',origin='1970-01-01'),
+                                            PDATE,
+                                            units="days")),
+                        sim)) %>%
+    select(-PDATE)
 
   return(out)
 }
 
 #' @export
 #'
+#' @importFrom dplyr "%>%" is_grouped_df group_by select group_map
+#' @importFrom tidyr crossing unnest
+#'
 get_model_outputs <- function(expmt_tbl){
 
+  if(!is_grouped_df(expmt_tbl)) expmt_tbl <- expmt_tbl %>% group_by(filex_name)
+
   outputs <- expmt_tbl %>%
-    group_by(filex_name) %>%
     select(filex_name,sim_template,trno,out_tbl) %>%
-    group_map(~{write_dssbatch(filex = .y$filex_name, trtno = .x$trno[[1]])
-                  run_dssat(suppress_output = TRUE)
-                  read_sim_data(.x$sim_template[[1]],.x$out_tbl[[1]])
-                 })
+    group_map(~{crossing(.y,.x) %>%
+                  select(filex_name,trno) %>%
+                  unnest(cols=trno) %>%
+                  {write_dssbatch(x = .$filex_name, trtno = .$trno)}
+                run_dssat(suppress_output = TRUE)
+                read_sim_data(.x$sim_template,.x$out_tbl)
+                }) %>%
+    bind_rows()
 
   return(outputs)
 }
