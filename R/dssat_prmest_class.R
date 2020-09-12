@@ -627,7 +627,9 @@ write_exmpt_filex <- function(.expmt_tbl){
 find_output_variables <- function(.expmt){
 
   out_tbl <- list.files(pattern = '\\.OUT') %>%
-  {names(.) <- .; .} %>%
+    {c('Summary.OUT','PlantGro.OUT',.)} %>%
+    unique() %>%
+    {names(.) <- .; .} %>%
     map(~try(suppressWarnings(read_output(.)), silent = TRUE)) %>%
     {.[map_lgl(.,~{ ! 'try-error' %in% class(.) })]} %>%
     {.[map_lgl(.,~{ any(colnames(.) %in% unlist(.expmt$data_types)) })]} %>%
