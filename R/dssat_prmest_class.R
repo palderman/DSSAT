@@ -188,6 +188,11 @@ create_dssat_expmt <- function(filex_name, trno=NULL, data_types=NULL,
   sim_data_template <- joined_data %>%
     select(EXPERIMENT,TRNO,DATE,variable)
 
+  if(!exists('pdate', envir = environment(fun = NULL))){
+    pdate <- tibble(TRNO=numeric(),PDATE=numeric()) %>%
+      mutate(PDATE = as.POSIXct(PDATE,origin='1970-01-01',tz='UTC'))
+  }
+
   sim_template <- tibble(data_template = list(sim_data_template),
                          pdate = list(pdate))
 
@@ -687,51 +692,42 @@ add_output_tbl <- function(.expmt){
 #' @importFrom stringr str_detect
 #' @importFrom tidyr gather
 #'
-read_sim_data <- function(sim_template,out_tbl){
+read_sim_data <- function(run_tbl){
 
-  if(is.list(out_tbl) & !is.data.frame(out_tbl)){
-    out_tbl <- out_tbl %>%
-      map(~unnest(.,cols=col_names)) %>%
-      reduce(full_join)
-  }else{
-    out_tbl <- out_tbl %>%
-      unnest(.,cols=col_names)
-  }
-
-  if(is.list(sim_template) & !is.data.frame(sim_template)){
-      sim_template <- sim_template %>%
-        map(~full_join(.$data_template[[1]],.$pdate[[1]])) %>%
-        reduce(full_join)
-  }else{
-    sim_template <- full_join(sim_template$data_template[[1]],
-                              sim_template$pdate[[1]])
-  }
-
-  run_expmt <- sim_template %>%
+  run_expmt <- run_tbl %>%
+    select(sim_template) %>%
+    unnest(sim_template) %>%
     group_by(EXPERIMENT,TRNO) %>%
     summarize() %>%
     ungroup() %>%
     mutate(RUN = 1:n(),
            RUNNO = RUN)
 
-  out <- out_tbl %>%
+  all_cols <- run_tbl %>%
+    select(out_tbl) %>%
+    unnest(out_tbl) %>%
+    pull(col_names)
+
+  out <- run_tbl %>%
+    select(out_tbl) %>%
+    unnest(out_tbl) %>%
     group_by(file_name) %>%
     group_map(~{
-      read_output(.y$file_name,read_only = c('TRNO','DATE','RUN','RUNNO',.x$col_names[[1]])) %>%
+      read_output(.y$file_name,read_only = c('TRNO','DATE','RUN','RUNNO',.x$col_names)) %>%
         {
           if( ! 'DATE' %in% names(.)){
             . <- add_column(.,DATE = as.POSIXct('0001001',format='%Y%j',tz='UTC'))
           }
           .
         } %>%
-        filter(TRNO %in% sim_template$TRNO &
-               DATE %in% sim_template$DATE)
+        filter(TRNO %in% run_tbl$sim_template[[1]]$TRNO &
+               DATE %in% run_tbl$sim_template[[1]]$DATE)
     }) %>%
     reduce(full_join) %>%
     full_join(run_expmt) %>%
-    select(-RUN, -RUNNO) %>%
-    pivot_longer(names_to = "variable", values_to = "sim", cols = c(-EXPERIMENT,-TRNO, -DATE)) %>%
-    left_join(sim_template,.) %>%
+    select(-RUN, -RUNNO, -matches("MODEL")) %>%
+    pivot_longer(names_to = "variable", values_to = "sim", cols = one_of(all_cols)) %>%
+    left_join(run_tbl$sim_template[[1]],.) %>%
     mutate(sim = ifelse(str_detect(variable,'DAT$'),
                         as.numeric(difftime(as.POSIXct(sim,tz='UTC',origin='1970-01-01'),
                                             PDATE,
@@ -747,18 +743,17 @@ read_sim_data <- function(sim_template,out_tbl){
 #' @importFrom dplyr "%>%" is_grouped_df group_by select group_map
 #' @importFrom tidyr crossing unnest
 #'
-get_model_outputs <- function(expmt_tbl){
+get_model_outputs <- function(run_tbl){
 
-  if(!is_grouped_df(expmt_tbl)) expmt_tbl <- expmt_tbl %>% group_by(filex_name)
-
-  outputs <- expmt_tbl %>%
-    select(filex_name,sim_template,trno,out_tbl) %>%
+  outputs <- run_tbl %>%
     group_map(~{crossing(.y,.x) %>%
-                  select(filex_name,trno) %>%
-                  unnest(cols=trno) %>%
-                  {write_dssbatch(x = .$filex_name, trtno = .$trno)}
-                run_dssat(suppress_output = TRUE)
-                read_sim_data(.x$sim_template,.x$out_tbl)
+                  select(filex_trno) %>%
+                  unnest(filex_trno) %>%
+                  {write_dssbatch(x = .$filex_name,
+                                  trtno = .$trno)}
+                system(.x$dssat_call,intern = TRUE)
+                # run_dssat(suppress_output = TRUE)
+                suppressMessages(read_sim_data(.x))
                 }) %>%
     bind_rows()
 
@@ -836,10 +831,10 @@ est_obj_fun <- function(pvals,prmest){
 
   write_inputs(prmest$input_tbl,prmest$prm_tbl,pvals)
 
-  sim_tbl <- get_model_outputs(prmest$expmt_tbl) %>%
+  sim_tbl <- suppressMessages(get_model_outputs(prmest$run_tbl)) %>%
     bind_rows()
 
-  stat <- prmest$stat_fun(obs_tbl,sim_tbl)
+  stat <- suppressMessages(prmest$stat_fun(prmest$obs_tbl,sim_tbl))
 
   return(stat)
 
@@ -851,7 +846,7 @@ run_optim_estimation <- function(prmest,method='L-BFGS-B',control=list()){
 
   par_init <- runif(nrow(prmest$prm_tbl),min=prmest$prm_tbl$pmin,max=prmest$prm_tbl$pmax)
 
-  names(par_init) <- prmest$prm_tbl$pname
+  # names(par_init) <- prmest$prm_tbl$pname
 
   est_out <- optim(par=par_init,
                    fn = est_obj_fun,
