@@ -22,7 +22,7 @@ v_fmt_filex <- function(sec_name){
 
     v_fmt <- c(F = "%2.0f", FDATE = "%6s", FMCD = "%6s", FACD = "%6s", FDEP = "%6.0f",
                FAMN = "%6.0f", FAMP = "%6.0f", FAMK = "%6.0f", FAMC = "%6.0f",
-               FAMO = "%6.0f", FOCD = "%6f", FERNAME = " %-s")
+               FAMO = "%6.0f", FOCD = "%6s", FERNAME = " %-s")
 
   }else if(str_detect(sec_name,'FIELDS')){
 
