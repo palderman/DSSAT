@@ -757,8 +757,8 @@ get_model_outputs <- function(run_tbl){
                                   trtno = .$trno)}
                 dssat_out <- tryCatch({
                       system(.x$dssat_call,intern = TRUE)
-                    },error = function(e){NA})
-                if(!is.na(dssat_out)){
+                    },error = function(e){NULL})
+                if(!is.null(dssat_out)){
                   suppressMessages(read_sim_data(.x))
                 }else{
                   .x %>%
@@ -766,7 +766,7 @@ get_model_outputs <- function(run_tbl){
                     unnest(sim_template) %>%
                     group_by(EXPERIMENT,TRNO) %>%
                     summarize() %>%
-                    mutate(sim = NA)
+                    mutate(sim = as.numeric(NA))
                 }
                 }) %>%
     bind_rows()
@@ -782,9 +782,8 @@ check_sim_data <- function(obs_sim){
     warn_out <- obs_sim %>%
       filter(is.na(sim)) %>%
       {capture.output(print(.))} %>%
-      c("Missing values were present in simulated output.",
-        "The objective function value will be set to Inf.",
-        "Missing values included:",
+      c("Missing values were present in simulated output. The objective function value will be set to Inf.",
+        "The following observations were missing:",
         .) %>%
       str_c('\n')
     warning(warn_out)
