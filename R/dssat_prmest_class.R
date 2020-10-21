@@ -753,9 +753,19 @@ get_model_outputs <- function(run_tbl){
                   unnest(filex_trno) %>%
                   {write_dssbatch(x = .$filex_name,
                                   trtno = .$trno)}
-                system(.x$dssat_call,intern = TRUE)
-                # run_dssat(suppress_output = TRUE)
-                suppressMessages(read_sim_data(.x))
+                dssat_out <- tryCatch({
+                      system(.x$dssat_call,intern = TRUE)
+                    },error = function(e){NA})
+                if(!is.na(dssat_out)){
+                  suppressMessages(read_sim_data(.x))
+                }else{
+                  .x %>%
+                    select(sim_template) %>%
+                    unnest(sim_template) %>%
+                    group_by(EXPERIMENT,TRNO) %>%
+                    summarize() %>%
+                    mutate(sim = NA)
+                }
                 }) %>%
     bind_rows()
 
@@ -770,28 +780,35 @@ check_sim_data <- function(obs_sim){
     warn_out <- obs_sim %>%
       filter(is.na(sim)) %>%
       {capture.output(print(.))} %>%
-      c("Missing values present in simulated output.",
-        "The following were excluded from objective function evaluation:",
+      c("Missing values were present in simulated output.",
+        "The objective function value will be set to Inf.",
+        "Missing values included:",
         .) %>%
       str_c('\n')
     warning(warn_out)
+    ok <- FALSE
+  }else{
+    ok <- TRUE
   }
 
-  return(obs_sim)
+  return(ok)
 }
 
 #' @export
 #'
 rSSE_fun <- function(obs_tbl,sim_tbl){
 
-  rSSE <- obs_tbl %>%
-    full_join(sim_tbl) %>%
-    check_sim_data() %>%
-    group_by(variable) %>%
-    mutate(sq_err=(obs-sim)^2) %>%
-    summarize(rSSE=sum(sq_err)/mean(obs)) %>%
-    summarize(rSSE = sum(rSSE)) %>%
-    pull(rSSE)
+  if(check_sim_data(sim_tbl)){
+    rSSE <- obs_tbl %>%
+      full_join(sim_tbl) %>%
+      group_by(variable) %>%
+      mutate(sq_err=(obs-sim)^2) %>%
+      summarize(rSSE=sum(sq_err)/mean(obs)) %>%
+      summarize(rSSE = sum(rSSE)) %>%
+      pull(rSSE)
+  }else{
+    rSSE <- Inf
+  }
 
   return(rSSE)
 }
@@ -800,13 +817,16 @@ rSSE_fun <- function(obs_tbl,sim_tbl){
 #'
 SSE_fun <- function(obs_tbl,sim_tbl){
 
-  SSE <- obs_tbl %>%
-    full_join(sim_tbl) %>%
-    check_sim_data() %>%
-    mutate(sq_err=(obs-sim)^2) %>%
-    filter(!is.na(sq_err)) %>%
-    summarize(sum_sq_err=sum(sq_err)) %>%
-    {.$sum_sq_err}
+  if(check_sim_data(sim_tbl)){
+    SSE <- obs_tbl %>%
+      full_join(sim_tbl) %>%
+      mutate(sq_err=(obs-sim)^2) %>%
+      filter(!is.na(sq_err)) %>%
+      summarize(sum_sq_err=sum(sq_err)) %>%
+      {.$sum_sq_err}
+  }else{
+    SSE <- Inf
+  }
 
   return(SSE)
 }
