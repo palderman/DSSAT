@@ -723,11 +723,13 @@ read_sim_data <- function(run_tbl){
           .
         } %>%
         filter(TRNO %in% run_tbl$sim_template[[1]]$TRNO &
-               DATE %in% run_tbl$sim_template[[1]]$DATE)
+               DATE %in% run_tbl$sim_template[[1]]$DATE) %>%
+        rename_all(~str_replace(.,'RUNNO','RUN'))
     }) %>%
     reduce(full_join) %>%
+    select(-matches("(EXPERIMENT)|(MODEL)")) %>%
     full_join(run_expmt) %>%
-    select(-RUN, -RUNNO, -matches("MODEL")) %>%
+    select(-RUN) %>%
     pivot_longer(names_to = "variable", values_to = "sim", cols = one_of(all_cols)) %>%
     left_join(run_tbl$sim_template[[1]],.) %>%
     mutate(sim = ifelse(str_detect(variable,'DAT$'),
