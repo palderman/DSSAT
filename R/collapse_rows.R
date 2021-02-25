@@ -19,5 +19,7 @@ collapse_rows <- function(tbl){
   }else{
     new_tbl <- tbl
   }
+  attr(new_tbl,"tier_info") <- attr(tbl,"tier_info")
+  attr(new_tbl,"v_fmt") <- attr(tbl,"v_fmt")
   return(new_tbl)
 }
