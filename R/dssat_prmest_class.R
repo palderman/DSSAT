@@ -252,7 +252,9 @@ create_dssat_prm <- function(pname, pfile,
                              ptier = as.character(NA),
                              pkey = as.character(NA),
                              plev = as.numeric(NA),
-                             pind = as.numeric(NA)){
+                             pind = as.numeric(NA),
+                             pnum = NULL,
+                             pwt = NULL){
 
   if(any(is.null(pname) | is.na(pname))) warning("pname cannot be NULL or missing")
   if(any(is.null(pfile) | is.na(pfile))) warning("pfile cannot be NULL or missing")
@@ -266,10 +268,12 @@ create_dssat_prm <- function(pname, pfile,
   if(all(is.null(pkey))) pkey = as.character(NA)
   if(all(is.null(plev))) plev = as.numeric(NA)
   if(all(is.null(pind))) pind = as.numeric(NA)
+  if(all(is.null(pnum))) pnum = 1:length(pname)
+  if(all(is.null(pwt))) pwt = rep(1,length(pname))
 
   prm <- tibble(pname = pname, pmin = pmin, pmax = pmax, pmu = pmu, psigma = psigma,
                 pdist = pdist, pfile = pfile, ptier = ptier, pkey = pkey, plev = plev,
-                pind = pind) %>%
+                pind = pind, pnum = pnum, pwt = pwt) %>%
     as_dssat_prm_tbl()
 
   return(prm)
@@ -364,6 +368,22 @@ import_prm_tbl_csv <- function(file_name){
     pind <- as.numeric(NA)
   }
 
+  if('pnum' %in% colnames(prm_tbl_csv)){
+    pnum <- prm_tbl_csv %>%
+      pull(pnum) %>%
+      as.numeric()
+  }else{
+    pnum <- NULL
+  }
+
+  if('pwt' %in% colnames(prm_tbl_csv)){
+    pwt <- prm_tbl_csv %>%
+      pull(pwt) %>%
+      as.numeric()
+  }else{
+    pwt <- NULL
+  }
+
   prm_tbl <- create_dssat_prm(pname = pname,
                               pfile = pfile,
                               pmin = pmin,
@@ -374,10 +394,45 @@ import_prm_tbl_csv <- function(file_name){
                               ptier = ptier,
                               pkey = pkey,
                               plev = plev,
-                              pind = pind)
+                              pind = pind,
+                              pnum = pnum,
+                              pwt = pwt)
 
   return(prm_tbl)
 
+}
+
+#' @export
+#'
+#' @importFrom dplyr "%>%" group_by summarize arrange pull
+get_pmax <- function(.prm_tbl){
+  .prm_tbl %>%
+    group_by(pnum) %>%
+    summarize(pmax = sum(pmax)) %>%
+    arrange(pnum) %>%
+    pull(pmax)
+}
+
+#' @export
+#'
+#' @importFrom dplyr "%>%" group_by summarize arrange pull
+get_pmin <- function(.prm_tbl){
+  .prm_tbl %>%
+    group_by(pnum) %>%
+    summarize(pmin = sum(pmin)) %>%
+    arrange(pnum) %>%
+    pull(pmin)
+}
+
+#' @export
+#'
+#' @importFrom dplyr "%>%" group_by summarize arrange pull
+get_pmu <- function(.prm_tbl){
+  .prm_tbl %>%
+    group_by(pnum) %>%
+    summarize(pmu = sum(pmu)) %>%
+    arrange(pnum) %>%
+    pull(pmu)
 }
 
 #' @export
@@ -581,7 +636,13 @@ add_input_template <- function(.input_tbl,.prm_tbl){
 
 #' @export
 #'
+#' @importFrom dplyr "%>%" mutate pull
+#'
 generate_prm_replace <- function(pvals,.prm_tbl){
+
+  prm_vals <- .prm_tbl %>%
+    mutate(prm_vals = pvals[pnum]*pwt) %>%
+    pull(prm_vals)
 
   prm_replace <- .prm_tbl$pfmt %>%
     sprintf(pvals)
