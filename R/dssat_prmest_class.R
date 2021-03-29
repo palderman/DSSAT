@@ -645,7 +645,7 @@ generate_prm_replace <- function(pvals,.prm_tbl){
     pull(prm_vals)
 
   prm_replace <- .prm_tbl$pfmt %>%
-    sprintf(pvals)
+    sprintf(prm_vals)
 
   names(prm_replace) <- .prm_tbl$pregex
 
