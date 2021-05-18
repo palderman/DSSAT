@@ -84,7 +84,7 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
           }else{
             cmnt <- '!'
           }
-          tdata <- read_fwf(raw_lines[skip[i]:end[i]],
+          tdata <- read_fwf(I(raw_lines[skip[i]:end[i]]),
                             fwf_pos[[i]],
                             comment = cmnt,
                             skip = 1,
