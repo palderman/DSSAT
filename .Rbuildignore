@@ -7,3 +7,4 @@ issues
 cran-comments.md
 ^CRAN-RELEASE$
 LICENSE
+vignettes

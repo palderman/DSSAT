@@ -55,7 +55,7 @@ read_pest <- function(file_name,col_types=NULL,col_names=NULL){
                     )
 
   # Extract all tiers
-  pest_coefs <- read_fwf(raw_lines[sec_begin[1]:sec_end[1]],
+  pest_coefs <- read_fwf(I(raw_lines[sec_begin[1]:sec_end[1]]),
                     fwf_pos,
                     comment = '!',
                     na = c('-99','-99.','-99.0','-99.00','-99.000',
