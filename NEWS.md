@@ -1,3 +1,7 @@
+# DSSAT 0.0.3
+
+This version updates calls to read_fwf() to be compatible with readr version 2.0.0.
+
 # DSSAT 0.0.2
 
 This version updates calls to dplyr functions to be compatible with dplyr version 1.0.0.

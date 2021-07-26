@@ -19,3 +19,4 @@ prmest*
 .Rprofile
 renv.lock
 renv*
+vignettes
