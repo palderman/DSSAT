@@ -8,6 +8,7 @@
 * R-hub macOS 10.13.6 High Sierra, R-release, CRAN's setup
 * R-hub Oracle Solaris 10, x86, 32 bit, R-release
 * R-hub Windows Server 2008 R2 SP1, R-release, 32/64 bit
+* win-builder (devel and release)
 
 ## R CMD check results
 
