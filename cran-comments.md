@@ -1,12 +1,14 @@
 ## Test environments
 
-* local Ubuntu 18.04, R 3.6.3
-* R-hub Windows Server 2008 R2 SP1, R-devel, 32/64 bit
+* local Ubuntu 18.04.5 LTS, R 4.1.0, GCC
+* R-hub Debian Linux, R-devel, clang, ISO-8859-15 locale
+* R-hub Debian Linux, R-devel, GCC
+* R-hub Debian Linux, R-release, GCC
+* R-hub Fedora Linux, R-devel, GCC
+* R-hub macOS 10.13.6 High Sierra, R-release, CRAN's setup
+* R-hub Oracle Solaris 10, x86, 32 bit, R-release
 * R-hub Windows Server 2008 R2 SP1, R-release, 32/64 bit
-* R-hub Ubuntu Linux 16.04 LTS, R-devel, GCC
-* R-hub Fedora Linux, R-devel, clang, gfortran
-* win-builder Windows Server 2008, R-devel
-* win-builder Windows Server 2008, R-release
+* win-builder (devel and release)
 
 ## R CMD check results
 

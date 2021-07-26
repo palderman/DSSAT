@@ -124,8 +124,8 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
           }else{
             file_lines <- raw_lines[skip[i]:end[i]]
           }
-          tdata <- file_lines %>%
-            read_fwf(fwf_pos[[.[1]]],
+          tdata <- read_fwf(I(file_lines),
+                     fwf_pos[[.[1]]],
                      comment = cmnt,
                      skip = 1,
                      na = na_strings,

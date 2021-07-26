@@ -1,3 +1,6 @@
+# DSSAT
+[![DOI](https://zenodo.org/badge/196852406.svg)](https://zenodo.org/badge/latestdoi/196852406)
+
 The purpose of this package is to provide a comprehensive R interface to the Decision Support System for Agrotechnology Transfer Cropping Systems Model (DSSAT-CSM). The package provides cross-platform functions to:
 
 # Implemented
