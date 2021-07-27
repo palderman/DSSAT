@@ -43,7 +43,13 @@ write_sol <- function(sol,file_name,title=NULL,append=TRUE,force_std_fmt=TRUE){
 
   comments <- attr(sol,'comments')
 
-  if(force_std_fmt) attr(sol,'v_fmt') <- v_fmt_sol()
+  if(force_std_fmt | is.null(attr(sol,'v_fmt'))){
+    attr(sol,'v_fmt') <- v_fmt_sol()
+  }
+  if(is.null(attr(sol,'tier_info'))){
+    attr(sol,'tier_info') <- tier_info_sol() %>%
+      {.[map_lgl(.,~{any(. != "SLB" & . %in% names(sol))})]}
+  }
 
   sol_out <- 1:nrow(sol) %>%
     map(~{sol[.,]}) %>%
