@@ -1,3 +1,7 @@
+# DSSAT 0.0.3.9001
+
+This version fixes a bug related writing soil profiles when the v_fmt and tier_info attributes are missing.
+
 # DSSAT 0.0.3
 
 This version updates calls to read_fwf() to be compatible with readr version 2.0.0.
