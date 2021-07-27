@@ -11,13 +11,19 @@ collapse_rows <- function(tbl){
       summarize_all(~list(.)) %>%
       ungroup() %>%
       mutate_if(~{is.list(.) && max(map_dbl(.,~length(.))) == 1},
-                ~do.call(c,.))
+                ~do.call(c,.)) %>%
+      as_DSSAT_tbl(v_fmt = attr(tbl, "v_fmt"),
+                   tier_info = attr(tbl, "tier_info"))
     if(!is.null(prev_grps)){
       new_tbl <- new_tbl %>%
-        group_by_at(vars(one_of(prev_grps)))
+        group_by_at(vars(one_of(prev_grps))) %>%
+        as_DSSAT_tbl(v_fmt = attr(tbl, "v_fmt"),
+                     tier_info = attr(tbl, "tier_info"))
     }
   }else{
-    new_tbl <- tbl
+    new_tbl <- tbl %>%
+      as_DSSAT_tbl(v_fmt = attr(tbl, "v_fmt"),
+                   tier_info = attr(tbl, "tier_info"))
   }
   return(new_tbl)
 }
