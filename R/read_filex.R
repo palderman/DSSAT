@@ -4,6 +4,8 @@
 #'
 #' @inheritParams read_dssat
 #'
+#' @inheritParams read_tier_data
+#'
 #' @return a tibble containing the data from the raw DSSAT file
 #'
 #' @importFrom readr cols col_character
@@ -11,7 +13,8 @@
 #' @importFrom stringr str_subset str_remove str_which str_detect
 #'
 
-read_filex <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
+read_filex <- function(file_name, col_types=NULL, col_names=NULL, na_strings=NULL,
+                       store_v_fmt = FALSE){
 
   col_types <- cols(` SNAME\\.*`=col_character(),
                     FMOPT=col_character(),
@@ -145,7 +148,8 @@ read_filex <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
                                    col_names = col_names,
                                    col_types = col_types,
                                    na_strings = na_strings,
-                                   join_tiers = FALSE))
+                                   join_tiers = FALSE,
+                                   store_v_fmt = store_v_fmt))
 
   names(all_secs) <- sec_names
 
@@ -178,16 +182,6 @@ read_filex <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
       }
     }
   }
-
-  # If new DSSAT format add GENERAL section as attribute and return DAILY DATA
-  # if('GENERAL' %in% sec_names){
-  #   attr(all_secs$`DAILY DATA`[[1]],'GENERAL') <- all_secs$GENERAL
-  #   all_secs <- all_secs$`DAILY DATA`[[1]]
-  # }else{
-  #   # Assume old DSSAT format
-  #   attr(all_secs[[1]][[2]],'GENERAL') <- all_secs[[1]][[1]]
-  #   all_secs <- all_secs[[1]][[2]]
-  # }
 
   attr(all_secs,'experiment') <- experiment
 

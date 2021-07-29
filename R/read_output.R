@@ -21,8 +21,9 @@
 #' out <- read_output(sample_output)
 #'
 
-read_output <- function(file_name,col_types=NULL,col_names=NULL,left_justified=NULL,
-                        read_only=NULL){
+read_output <- function(file_name, col_types = NULL, col_names = NULL,
+                        left_justified = NULL, read_only = NULL,
+                        store_v_fmt = FALSE){
 
   col_types <- cols(` TNAME\\.*`=col_character(),
                     ` TNAM\\.+`=col_character(),
@@ -61,7 +62,7 @@ read_output <- function(file_name,col_types=NULL,col_names=NULL,left_justified=N
                               col_types = col_types,
                               col_names = col_names,
                               left_justified = left_justified,
-                              store_v_fmt = FALSE,
+                              store_v_fmt = store_v_fmt,
                               read_only = read_only)) %>%
     reduce(combine_tiers) %>%
     as_DSSAT_tbl()
