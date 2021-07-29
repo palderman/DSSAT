@@ -1,8 +1,10 @@
-# DSSAT 0.0.3.9003
+# DSSAT 0.0.3.9004
 
 - This version fixes a bug related writing soil profiles when the v_fmt and tier_info attributes are missing.
 
 - Updates citations in package description, adds CITATION entry, and includes citation notice in startup message
+
+- Adds store_v_fmt argument to read_output() and read_filex() to allow storing of variable format to be controlled by user
 
 # DSSAT 0.0.3
 

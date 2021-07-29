@@ -4,7 +4,13 @@
 \alias{read_filex}
 \title{Reads input data from a single DSSAT experiment file (*.*X)}
 \usage{
-read_filex(file_name, col_types = NULL, col_names = NULL, na_strings = NULL)
+read_filex(
+  file_name,
+  col_types = NULL,
+  col_names = NULL,
+  na_strings = NULL,
+  store_v_fmt = FALSE
+)
 }
 \arguments{
 \item{file_name}{a character vector of length one that contains the name
@@ -20,6 +26,9 @@ names within the header line}
 
 \item{na_strings}{A character vector containing strings that should be interpreted as
 missing values}
+
+\item{store_v_fmt}{a logical value indicating whether or not to store the
+format for variables being read}
 }
 \value{
 a tibble containing the data from the raw DSSAT file
