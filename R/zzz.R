@@ -90,6 +90,22 @@ utils::globalVariables(".")
     }
   }
 
+  cite_out <- head(
+      capture.output(
+        show(
+          citation("DSSAT")
+        )
+      ),
+      -4
+    )
+
+  cite_out <- c(cite_out,
+                "For BibTeX entries use toBibtex(citation(\"DSSAT\"))")
+
+  startup_msg <- c(startup_msg,
+                   paste0(cite_out, "\n")
+                   )
+
   packageStartupMessage(startup_msg)
 
   return(invisible())

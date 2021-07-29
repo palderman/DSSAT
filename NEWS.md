@@ -1,6 +1,8 @@
-# DSSAT 0.0.3.9001
+# DSSAT 0.0.3.9003
 
-This version fixes a bug related writing soil profiles when the v_fmt and tier_info attributes are missing.
+- This version fixes a bug related writing soil profiles when the v_fmt and tier_info attributes are missing.
+
+- Updates citations in package description, adds CITATION entry, and includes citation notice in startup message
 
 # DSSAT 0.0.3
 
