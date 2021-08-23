@@ -25,7 +25,7 @@
 #' output <- write_tier(tier_data)
 #'
 
-write_tier <- function(tier_data,pad_name=NULL,drop_duplicate_rows=FALSE,
+write_tier <- function(tier_data, pad_name=NULL, drop_duplicate_rows=FALSE,
                        drop_na_rows=TRUE){
 
   v_fmt <- attr(tier_data,'v_fmt')

@@ -4,7 +4,7 @@
 \alias{write_wth}
 \title{Writes data to a single DSSAT weather file}
 \usage{
-write_wth(wth, file_name)
+write_wth(wth, file_name, force_std_fmt = TRUE)
 }
 \arguments{
 \item{wth}{a tibble containing the data to write to a DSSAT
@@ -12,6 +12,9 @@ weather file}
 
 \item{file_name}{a character vector of length one that contains the name
 of a single DSSAT file into which `wth` will be written}
+
+\item{force_std_fmt}{a logical value indicating whether to override the
+variable format stored within the `wth` object with standard DSSAT formatting}
 }
 \description{
 Writes data to a single DSSAT weather file
