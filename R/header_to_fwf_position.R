@@ -50,12 +50,18 @@ header_to_fwf_position <- function(header,left_justified='EXCODE',
   }
 
   if(is.null(read_only)){
-    # Extract unknown column names
-    cnames <- col_names %>%
-      name_to_regex() %>%
-      str_c('(',.,')') %>%
-      str_c(collapse='|') %>%
-      str_remove_all(header,.) %>%
+    # reduce to unknown column names
+    if(length(col_names) >= 1){
+      unknown <- col_names %>%
+        name_to_regex() %>%
+        str_c('(',.,')') %>%
+        str_c(collapse='|') %>%
+        str_remove_all(header,.)
+    }else{
+      unknown <- header
+    }
+    # Extract unknown column names and combine with known col_names
+    cnames <- unknown %>%
       str_split('(?<=[^ ]) +(?=[^ ])') %>%
       unlist() %>%
       str_subset('^ *$',negate = TRUE) %>%
