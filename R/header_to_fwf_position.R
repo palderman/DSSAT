@@ -109,23 +109,10 @@ header_to_fwf_position <- function(header,left_justified='EXCODE',
   # Reconcile gaps/overlaps in column bounds
   start_end <- reconcile_gaps(start_end,left_justified)
 
-  # Check column positions for left justified cases
-  last_left_justified <- start_end %>%
-    pull(cnames) %>%
-    last() %>%
-    {. %in% left_justified}
-  # Set end of last column to NA (i.e. unbounded)
-  if(last_left_justified)  start_end$end[nrow(start_end)] <- NA
-
   # Convert column positions to fixed widths for use with read_fwf()
-  fwf_pos <- start_end %>%
-    {fwf_positions(start=.$start,end=.$end,col_names=.$col_names)} %>%
-    filter(col_names!='-99')
-
-  if(!is.null(read_only)){
-    fwf_pos <- fwf_pos %>%
-      filter(col_names %in% read_only)
-  }
+  if(is.null(left_justified)) left_justified <- character()
+  if(is.null(read_only)) read_only <- character()
+  fwf_pos <- header_to_fwf_position_cpp(start_end, left_justified, read_only)
 
   return(fwf_pos)
 }
