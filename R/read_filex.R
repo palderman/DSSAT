@@ -88,28 +88,10 @@ read_filex <- function(file_name, col_types=NULL, col_names=NULL, na_strings=NUL
                     ` WSTA\\.*`=col_character()) %>%
     {.$cols <- c(.$cols,col_types$cols);.}
 
-  left_justified <- c('SITE','PEOPLE','ADDRESS','INSTRUMENTS',
-                      'PROBLEMS','PUBLICATIONS','DISTRIBUTION','NOTES','  HARM\\.*',
-                      ' TNAME\\.*','FLNAME','  ID_SOIL',' CNAME','  FLSA',
-                      ' WSTA\\.*',' SLTX',
-                      ' ID_FIELD',' ICNAME',' IRNAME',' FERNAME',' GENERAL',
-                      ' SNAME\\.*','SMODEL',' MODEL',' OPTIONS',' METHODS',' MANAGEMENT',
-                      ' OUTPUTS',' PLANTING',' IRRIGATION',' NITROGEN',
-                      ' RESIDUES',' HARVEST',
-                      ' EDAY','ERAD','EMAX','EMIN','ERAIN','ECO2',
-                      'EDEW','EWIND','ENVNAME',
-                      ' HNAME',' CHT\\.*',
-                      ' RENAME',' +PLNAME','CHNAME')
+  left_justified <- left_justified_filex()
 
   col_names <- col_names %>%
-    c(.,
-      ' +N(?= |$)',' +R(?= |$)',' +O(?= |$)',' +C(?= |$)',
-      ' +L(?= |$)',' +P(?= |$)',' +F(?= |$)',' +T(?= |$)',
-      ' +H(?= |$)',' +I(?= |$)',' +A(?= |$)',' +E(?= |$)',
-      ' CU(?= |$)',' FL(?= |$)',' SA(?= |$)',' IC(?= |$)',
-      ' MP(?= |$)',' MI(?= |$)',' MF(?= |$)',' MR(?= |$)',
-      ' MC(?= |$)',' MT(?= |$)',' ME(?= |$)',' MH(?= |$)',
-      ' SM(?= |$)')
+    c(col_names_filex())
 
   # Read in raw data from file
   raw_lines <- readLines(file_name) %>%

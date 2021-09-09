@@ -8,7 +8,7 @@ read_cul(
   file_name,
   col_types = NULL,
   col_names = NULL,
-  left_justified = c("VAR#", "VARNAME\\\\.*", "VAR-NAME\\\\.*", "VRNAME\\\\.*")
+  left_justified = left_justified_cul()
 )
 }
 \arguments{

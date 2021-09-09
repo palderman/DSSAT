@@ -39,8 +39,7 @@ read_soil_profile <- function(raw_lines,left_justified=NULL,
                               col_types=NULL,col_names=NULL){
 
   left_justified <- left_justified %>%
-    c('SITE','COUNTRY',' SCS FAMILY',
-      ' SCS Family')
+    c(left_justified_soil())
 
   col_types <- cols(`      LAT`=col_double(),
                     `     LONG`=col_double(),

@@ -22,7 +22,7 @@
 #'
 
 read_cul <- function(file_name,col_types=NULL,col_names=NULL,
-                     left_justified=c('VAR#','VARNAME\\.*','VAR-NAME\\.*','VRNAME\\.*')){
+                     left_justified=left_justified_cul()){
 
   cul_col_types <- cols(`VAR#`=col_character(),
                         `VARNAME\\.*`=col_character(),
@@ -32,16 +32,9 @@ read_cul <- function(file_name,col_types=NULL,col_names=NULL,
                         ` EXPNO`=col_character(),
                         `  EXP#`=col_character())
 
-  if(str_detect(file_name,'SCCSP')){
-    col_names <- col_names %>%
-      c(.,'Stalk','Sucro','Null1',
-          'TB(1)','TO1(1)','TO2(1)',
-          'TB(2)','TO1(2)','TO2(2)',
-          ' *TM(1)',' *TM(2)',
-          'StHrv','RTNFAC','Null7',
-          'RES30C','RLF30C') %>%
-      unique()
-  }
+  col_names <- col_names %>%
+    c(col_names_cul()) %>%
+    unique()
 
   if(!is.null(col_types)){
     col_types$cols <- c(cul_col_types$cols,col_types$cols)

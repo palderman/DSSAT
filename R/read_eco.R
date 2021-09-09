@@ -19,16 +19,12 @@
 #' eco <- read_eco(sample_eco)
 #'
 
-read_eco <- function(file_name,col_types=NULL,col_names=NULL,
-                     left_justified=c('ECO   ','ECO#','ECONAME\\.*','ECO-NAME\\.*')){
+read_eco <- function(file_name, col_types=NULL, col_names=NULL,
+                     left_justified=left_justified_eco()){
 
-  if(str_detect(basename(file_name),'^((BA)|(WH))CER')){
-    col_names <- col_names %>%
-      c(.,'    P1')
-  }else if(str_detect(basename(file_name),'^((BA)|(WH))CER')){
-    col_names <- col_names %>%
-      c(.,'ECO   ')
-  }
+  col_names <- col_names %>%
+    c(col_names_eco())
+
   eco_col_types <- cols(`ECO   `=col_character(),
                         `ECO#`=col_character(),
                         `ECONAME\\.*`=col_character(),

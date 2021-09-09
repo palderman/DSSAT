@@ -36,7 +36,7 @@ read_filet <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
 
   filet <- read_tier(raw_lines = raw_lines,
                      col_types = col_types,
-                     col_names = c(col_names,' TRNO '),
+                     col_names = c(col_names,col_names_filet()),
                      na_strings=na_strings)
 
   trno_date_cols <- intersect(c('TRNO','DATE'),colnames(filet))

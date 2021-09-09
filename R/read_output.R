@@ -40,8 +40,7 @@ read_output <- function(file_name, col_types = NULL, col_names = NULL,
       ' SOIL_ID\\.*',' MODEL\\.*','EXCODE  ')
 
   col_names <- col_names %>%
-    c(.,
-      ' +S(?= |$)',' +O(?= |$)',' +C(?= |$)',' +CR(?= |$)',' TNAM(?= |$)','  TRNO')
+    c(col_names_out())
 
   # Read in raw data from file
   raw_lines <- readLines(file_name) %>%

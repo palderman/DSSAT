@@ -51,8 +51,7 @@ read_wth <- function(file_name,col_types=NULL,col_names=NULL){
                     CCO2=col_double()) %>%
     {.$cols <- c(.$cols,col_types$cols);.}
 
-  left_justified <- c(' SITE','PEOPLE','ADDRESS','METHODS','INSTRUMENTS',
-                      'PROBLEMS','PUBLICATIONS','DISTRIBUTION','NOTES')
+  left_justified <- left_justified_wth()
 
   # Read in raw data from file
   raw_lines <- readLines(file_name) %>%
