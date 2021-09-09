@@ -13,7 +13,8 @@
 #' @return a tibble containing the begin position, end position,
 #'  and name for each column from the original header line
 #'
-#' @importFrom stringr str_replace_all str_detect str_c str_split str_subset
+#' @importFrom stringr str_replace_all str_detect str_c str_split
+#'  str_subset str_extract str_remove_all
 #' @importFrom purrr map_lgl map_chr
 #' @importFrom dplyr "%>%" mutate arrange tibble filter last pull
 #' @importFrom readr fwf_positions
@@ -99,18 +100,23 @@ header_to_fwf_position <- function(header,left_justified='EXCODE',
     mutate(col_names = {cnames %>%
                         de_regex() %>%
                         str_remove_all('(^ *)|( *$)')},
-           cnames = cnames,
+           cnames = cnames_regex %>%
+             str_remove_all("( \\*)|( \\+)") %>%
+             str_extract(header,.),
            regex = cnames_regex) %>%
     arrange(.data$start)
 
   # Set start of first column to 1
   start_end$start[1] <- 1
 
-  # Reconcile gaps/overlaps in column bounds
-  start_end <- reconcile_gaps(start_end,left_justified)
-
   # Convert column positions to fixed widths for use with read_fwf()
-  if(is.null(left_justified)) left_justified <- character()
+  if(is.null(left_justified)){
+    left_justified <- character()
+  }else{
+    left_justified <- left_justified %>%
+      str_remove_all("( \\*)|( \\+)") %>%
+      str_extract(header,.)
+  }
   if(is.null(read_only)) read_only <- character()
   fwf_pos <- header_to_fwf_position_cpp(start_end, left_justified, read_only)
 
