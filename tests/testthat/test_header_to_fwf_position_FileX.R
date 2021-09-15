@@ -28,7 +28,7 @@ test_that("@PEOPLE",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -59,7 +59,7 @@ test_that("@ADDRESS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -90,7 +90,7 @@ test_that("@SITE",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -130,7 +130,7 @@ test_that("@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN  HARM........
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -178,7 +178,7 @@ test_that("@N R O C TNAME.................... CU FL SA IC MP MI MF MR MC MT ME M
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -212,7 +212,7 @@ test_that("@C CR INGENO CNAME",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -255,7 +255,7 @@ test_that("@L ID_FIELD WSTA....  FLSA  FLOB  FLDT  FLDD  FLDS  FLST SLTX  SLDP  
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -295,7 +295,7 @@ test_that("@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN 
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -341,7 +341,7 @@ test_that("@P PDATE EDATE  PPOP  PPOE  PLME  PLDS  PLRS  PLRD  PLDP  PLWT  PAGE 
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -380,7 +380,7 @@ test_that("@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -414,7 +414,7 @@ test_that("@I IDATE  IROP IRVAL",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -456,7 +456,7 @@ test_that("@F FDATE  FMCD  FACD  FDEP  FAMN  FAMP  FAMK  FAMC  FAMO  FOCD FERNAM
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -491,7 +491,7 @@ test_that("@T TDATE TIMPL  TDEP TNAME",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -529,7 +529,7 @@ test_that("@H HDATE  HSTG  HCOM HSIZE   HPC  HBPC HNAME",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -568,7 +568,7 @@ test_that("@N GENERAL     NYERS NREPS START SDATE RSEED SNAME...................
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -609,7 +609,7 @@ test_that("@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL   CO2"
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -652,7 +652,7 @@ test_that("@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM 
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -689,7 +689,7 @@ test_that("@N MANAGEMENT  PLANT IRRIG FERTI RESID HARVS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -735,7 +735,7 @@ test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT 
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -767,7 +767,7 @@ test_that("@  AUTOMATIC MANAGEMENT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -806,7 +806,7 @@ test_that("@N PLANTING    PFRST PLAST PH2OL PH2OU PH2OD PSTMX PSTMN",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -845,7 +845,7 @@ test_that("@N IRRIGATION  IMDEP ITHRL ITHRU IROFF IMETH IRAMT IREFF",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -882,7 +882,7 @@ test_that("@N NITROGEN    NMDEP NMTHR NAMNT NCODE NAOFF",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -917,7 +917,7 @@ test_that("@N RESIDUES    RIPCN RTIME RIDEP",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -953,7 +953,7 @@ test_that("@N HARVEST     HFRST HLAST HPCNP HPCNR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -997,7 +997,7 @@ test_that("@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP 
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1032,7 +1032,7 @@ test_that("@C  ICBL  SH2O  SNH4  SNO3",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1063,7 +1063,7 @@ test_that("@NOTES",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1104,7 +1104,7 @@ test_that("@E ODATE EDAY  ERAD  EMAX  EMIN  ERAIN ECO2  EDEW  EWIND ENVNAME  ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1140,7 +1140,7 @@ test_that("@A SADAT  SMHB  SMPX  SMKE  SANAME",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1180,7 +1180,7 @@ test_that("@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1225,7 +1225,7 @@ test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT 
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1263,7 +1263,7 @@ test_that("@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN 
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1303,7 +1303,7 @@ test_that("@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1344,7 +1344,7 @@ test_that("@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM"
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1389,7 +1389,7 @@ test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT 
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1429,7 +1429,7 @@ test_that("@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN HARM.........
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1468,7 +1468,7 @@ test_that("@N GENERAL     NYERS NREPS START SDATE RSEED SNAME...................
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1509,7 +1509,7 @@ test_that("@R RDATE  RCOD  RAMT  RESN  RESP  RESK  RINP  RDEP  RMET RENAME",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1547,7 +1547,7 @@ test_that("@C CDATE CHCOD CHAMT  CHME CHDEP   CHT..CHNAME",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1586,7 +1586,7 @@ test_that("@N SIMDATES    ENDAT    SDUR   FODAT  FSTRYR  FENDYR FWFILE          
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 

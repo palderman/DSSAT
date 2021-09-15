@@ -39,7 +39,7 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -90,7 +90,7 @@ test_that("@ECO#     P1 P2FR1    P2    P3 P4FR1 P4FR2    P4  VEFF PARUE PARU2  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -142,7 +142,7 @@ test_that("@ECO#  ECONAME.......... PARUE PARU2  PHL2  PHF3  SLAS LSENI LSPHS LS
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -180,7 +180,7 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -218,7 +218,7 @@ test_that("@ECO#  ECONAME.......... MG TM PP-SS PL-EM EM-V1 V1-JU JU-R0  PM06  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -249,7 +249,7 @@ test_that("@ECO   ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  R
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -288,7 +288,7 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -318,7 +318,7 @@ test_that("@ECO#  ECONAME.......... PARUE HTSTD DUSRI SRN%S BR1FX BR2FX BR3FX BR
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -353,7 +353,7 @@ test_that("@ECO#  ECONAME.......... PARUE TBLSZ SRN%S  KCAN PGERM  PPS1  PPS2  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -394,7 +394,7 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -421,7 +421,7 @@ test_that("@ECO#  ECONAME.........  TBASE TOPT  ROPT  DJTI  GDDE   RUE  KCAN",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -452,7 +452,7 @@ test_that("@ECO#  ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  R
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -485,7 +485,7 @@ test_that("@ECO#  ECONAME.........  TBASE TOPT  ROPT  P20   DJTI  GDDE  DSGFT  R
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -507,7 +507,7 @@ test_that("@ECO#  ECONAME..........  RUE1  RUE2",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -576,7 +576,7 @@ test_that("@ECO#  ECO-NAME.........        DELTTMAX       SWDF2AMP         EXTCF
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -638,7 +638,7 @@ test_that("@ECO#  ECO-NAME.........       NS_LF_TIL   N_LF_MAX_ILA         TB0PH
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -668,7 +668,7 @@ test_that("@ECO#  ECONAME.........  TBASE  TOPT  ROPT  GDDE   RUE  KCAN  STPC  R
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -706,7 +706,7 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -737,7 +737,7 @@ test_that("@ECO#  ECONAME.........  TBASE  TOPT  ROPT   P20  DJTI  GDDE DSGFT   
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -809,7 +809,7 @@ test_that("@ECO#  ECONAME.........  TBASE  TOPT  ROPT  TTOP   P20  VREQ  GDDE DS
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -855,7 +855,7 @@ test_that("@ECO#  ECONAME.......... PARUE PARU2  PHL2  PHF3  SLAS LSENI LSPHS LS
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 

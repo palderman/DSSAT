@@ -19,7 +19,7 @@ test_that("@PGERM PEMRG    P0    P6  ! Germination,emrgence/cm,juvenile,post-mat
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -40,7 +40,7 @@ test_that("@PPFPE PPTHR PPEND  ! Photoperiod factor pre-emerge,threshold,end sen
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -63,7 +63,7 @@ test_that("@RLIG%  RLWR  RSEN RRESP RLDGR !Lignin%,length/wt,senescence,resp.",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -89,7 +89,7 @@ test_that("@LLIG%  LAXS LSHFR LSHAW  PHL1  PHF1 SLAMN SLACF",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -110,7 +110,7 @@ test_that("@LLIFE LWLOS LRPHS                  ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -129,7 +129,7 @@ test_that("@ LASF",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -149,7 +149,7 @@ test_that("@ CHT%  CLA%",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -169,7 +169,7 @@ test_that("@ TPAR TSRAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -188,7 +188,7 @@ test_that("@TGR02   ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -207,7 +207,7 @@ test_that("@ RS%X ! Max concentration",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -230,7 +230,7 @@ test_that("@SLIG%  SAWS SGPHE SSPHS SSEN%",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -250,7 +250,7 @@ test_that("@ CHFR CHSTG",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -269,7 +269,7 @@ test_that("@GLIG%",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -289,7 +289,7 @@ test_that("@ SDWT SDAFR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -309,7 +309,7 @@ test_that("@CO2RF  CO2F",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -328,7 +328,7 @@ test_that("@PTFMX",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -349,7 +349,7 @@ test_that("@ PTFS  PTFA  STFR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -370,7 +370,7 @@ test_that("@ TKUH  HDUR  TKLF",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -397,7 +397,7 @@ test_that("@TRGEM TRDV1 TRDV2 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN    ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -416,7 +416,7 @@ test_that("@EORATIO",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -436,7 +436,7 @@ test_that("@RWUPM RWUMX",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -460,7 +460,7 @@ test_that("@ WFPU WFPGF  WFGU  WFTU  WFTL  WFSU",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -480,7 +480,7 @@ test_that("@WFGEU WFRGU",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -499,7 +499,7 @@ test_that("@LLOSW ! Fr/d",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -521,7 +521,7 @@ test_that("@NH4MN NO3MN RTNO3 RTNH4",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -540,7 +540,7 @@ test_that("@ NTUPF  ! Fraction of deficit that can be filled per day",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -560,7 +560,7 @@ test_that("@GN%MX  SDN% ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -584,7 +584,7 @@ test_that("@ LN%S  SN%S  RN%S LN%MN SN%MN RN%MN",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -603,7 +603,7 @@ test_that("@NLAB%",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -629,7 +629,7 @@ test_that("@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,tillering,sene
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -648,7 +648,7 @@ test_that("@ NCRG",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -667,7 +667,7 @@ test_that("@LLOSN ! Fr/d",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -689,7 +689,7 @@ test_that("@ PSNO PSTYP PSABV PSNAME",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -712,7 +712,7 @@ test_that("@ SSNO SSTYP  SSTG SSABV SSNAME",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -734,7 +734,7 @@ test_that("@PGERM PEMRG    P0    P9 ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -761,7 +761,7 @@ test_that("@PPFPE PPTHR PPSEN PPEXP VPEND VEEND VLOSS VLOST VLOSF ! Photoperiod,
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -784,7 +784,7 @@ test_that("@RLIG%  RLWR  RSEN RRESP RDGAF ! Lignin%,length/wt;sen,resp;depth gr 
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -803,7 +803,7 @@ test_that("@RTUFR ! Fraction useable to re-establish tops after winter-kill, etc
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -830,7 +830,7 @@ test_that("@LLIG%  LAXS SLACF SLAFF LSHFR LSHAV LSHAR  PHL1  PHF1",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -852,7 +852,7 @@ test_that("@LLIFA LLIFG LLIFS LWLOS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -871,7 +871,7 @@ test_that("@LAIXX ! LAI maximum    ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -891,7 +891,7 @@ test_that("@ CHT%  CLA% ! Height%, cumulative leaf area %",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -911,7 +911,7 @@ test_that("@ TPAR TSRAD ! Leaf transmission PAR,solar                           
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -933,7 +933,7 @@ test_that("@TGR02 TGR20 TILIP TIL#X ! Size,phase,maximum",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -954,7 +954,7 @@ test_that("@ RS%X RS%LX RSUSE ! Max concentrations,fraction utilizeable/day",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -974,7 +974,7 @@ test_that("@SLIG%  SAWS ! Lignin,area/weight",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -993,7 +993,7 @@ test_that("@ CHFR ! Fraction of stem growth",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1014,7 +1014,7 @@ test_that("@GLIG% GWLAG GWLIN ! Lignin;wt.endlag,endlinear",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1035,7 +1035,7 @@ test_that("@ SDWT SDDUR SDRS% ! Weight,duration,reserves (% whole seed)",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1056,7 +1056,7 @@ test_that("@PARFC CO2CC CO2EX ! CO2 response (only for comparison)",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1076,7 +1076,7 @@ test_that("@RSFPU RSFPL ! Reserves effect thresholds (as set->no reserves effect
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1098,7 +1098,7 @@ test_that("@PTFMN PTFMX  PTFXS  PTFA ! Partition to tops (max,min,max.adjustment
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1123,7 +1123,7 @@ test_that("@ TKUH TKDTI TKDLF TKSPN  HDUR HLOST HLOSF ! Kill temps,span,time->ha
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1142,7 +1142,7 @@ test_that("@ TKGF",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1174,7 +1174,7 @@ test_that("@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR TRGFW xR
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1204,7 +1204,7 @@ test_that("@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR XRGFW TR
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1225,7 +1225,7 @@ test_that("@ RATM RCROP EORATIO ! Atmospheric,canopy resistances;FAO formula fac
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1245,7 +1245,7 @@ test_that("@RWUPM RWUMX ! Min.pore size for max.uptake,Max uptake rate",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1272,7 +1272,7 @@ test_that("@ WFPU  WFPL  WFGU  WFGL  WFTU  WFTL  WFSU  WFSF  WFEU !Gr,phs,till,s
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1291,7 +1291,7 @@ test_that("@LLOSA",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1311,7 +1311,7 @@ test_that("@WFGEU WFRGU  ! Germination/emergence,root growth",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1331,7 +1331,7 @@ test_that("@NH4MN NO3MN",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1350,7 +1350,7 @@ test_that("@NTUPF  ! Fraction of deficit that can be filled per day",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1370,7 +1370,7 @@ test_that("@GN%MX  SDN% ! Grain,seed             ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1394,7 +1394,7 @@ test_that("@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN ! Standard,minima N% for lves,st
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1413,7 +1413,7 @@ test_that("@NLAB% ! %N that labile ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1439,7 +1439,7 @@ test_that("@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,gr,tillering,s
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1458,7 +1458,7 @@ test_that("@ NCRG  ! Root growth ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1478,7 +1478,7 @@ test_that("@ DI_NAME    DI_ABV",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1509,7 +1509,7 @@ test_that("@ DAPX DLDUR DSDUR DDEWN DINMX DITYP TBASE TOPT1 TOPT2  TTOP TKILL DI
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1528,7 +1528,7 @@ test_that("@HPROD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1548,7 +1548,7 @@ test_that("@PGERM PEMRG  ! Germination,gr thru soil(/cm)                        
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1569,7 +1569,7 @@ test_that("@PPFPE PPTHR PPSEN ! Photoperiod threshold,sensitivity type  ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1593,7 +1593,7 @@ test_that("@RLIG%  RLWR  RSEN RRESP RDGS RDGAF  ! Lignin%,length/wt;sen,resp;dpt
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1612,7 +1612,7 @@ test_that("@PHNTF  ! Phint change with growth stage factor",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1632,7 +1632,7 @@ test_that("@LLIG% LPEAW ! Lignin%",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1653,7 +1653,7 @@ test_that("@LLIFG LLIFS LLIFX  ! Growing,senescence durations;max.acceleration i
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1673,7 +1673,7 @@ test_that("@LLOSA LWLOS  ! Loss when accelerated,normal senescence   ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1694,7 +1694,7 @@ test_that("@SLACF SLAFF SLAMN  ! Specific leaf area change,flexibility,minimum  
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1715,7 +1715,7 @@ test_that("@SLATS SLATR SLAWR  ! Specific leaf area temperature and h2o effect p
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1735,7 +1735,7 @@ test_that("@ CHT%  CLA%   ! Canopy height%, leaf area %",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1755,7 +1755,7 @@ test_that("@ TPAR TSRAD  ! Individual leaf transmission PAR, solar radiation  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1774,7 +1774,7 @@ test_that("@ KCAN  ! Canopy extinction coefficient PAR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1793,7 +1793,7 @@ test_that("@PARIX  ! PAR interception beyond which accelerated ageing    ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1812,7 +1812,7 @@ test_that("@SGRO2  ! Relative size of 2nd shoot",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1834,7 +1834,7 @@ test_that("@RSFRS RS%O RS%LX RSUSE  ! Standard concs (overall,leaves), fr utiliz
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1855,7 +1855,7 @@ test_that("@SLIG%  SAWS  SERX  ! Lignin%, area/weight, elongation rate",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1874,7 +1874,7 @@ test_that("@ CRFR ! Fraction of stem growth",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1895,7 +1895,7 @@ test_that("@ SDWT SDDUR SDRS% ! Weight, duration, reserves (% whole seed)",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1915,7 +1915,7 @@ test_that("@ PHTV  PHSV  ! VPD sensitivity aspects",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1935,7 +1935,7 @@ test_that("@CO2RF  CO2F  ! CO2 response",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1956,7 +1956,7 @@ test_that("@PTFMN PTFMX  PTFA  ! Partition to tops (max,min,adjustment)",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1979,7 +1979,7 @@ test_that("@RRATE TRGEM TRDV1 TRLFG TRPHS  ! Germination/emergence,development,l
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1998,7 +1998,7 @@ test_that("@EORATIO  ! FAO formula factor",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2018,7 +2018,7 @@ test_that("@RWUPM RWUMX ! Min pore size,max.uptake rate",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2042,7 +2042,7 @@ test_that("@ WFGU  WFGL  WFPU  WFPL  WFSU  WFEU  ! Growth,phs,senescence,evap",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2062,7 +2062,7 @@ test_that("@WFGEU WFRGU  ! Germination/emergence, root growth",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2084,7 +2084,7 @@ test_that("@RTNO3 RTNH4 NH4MN NO3MN",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2103,7 +2103,7 @@ test_that("@ SDN% ! Seed",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2127,7 +2127,7 @@ test_that("@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN  ! Standard,minima N% leaves,ste
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2146,7 +2146,7 @@ test_that("@NLAB% ! Labile nitrogen",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2169,7 +2169,7 @@ test_that("@ NFPU  NFPL  NFGU  NFGL  NFSU ! Photosynthesis,growth,senescence",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2188,7 +2188,7 @@ test_that("@ NLLG",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2207,7 +2207,7 @@ test_that("@ NCRG   ! Root growth",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2228,7 +2228,7 @@ test_that("@PARFC CO2CC CO2EX  ! CO2 response function parameters ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2248,7 +2248,7 @@ test_that("@ RATM RCROP  ! Atmospheric,canopy resistances ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2267,7 +2267,7 @@ test_that("@RWULF ! Length factor",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2286,7 +2286,7 @@ test_that("@PEMRG  ! gr by cum. soil temperature                              ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2307,7 +2307,7 @@ test_that("@RLIG%  RSEN RRESP   ! Lignin%,sen,resp",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2327,7 +2327,7 @@ test_that("@LLIG% LPEAW ! Lignin%, petiole area/wt",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2347,7 +2347,7 @@ test_that("@LLIFG LLIFS  ! Growing,senescence durations",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2366,7 +2366,7 @@ test_that("@LWLOS  ! Loss when normal senescence   ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2386,7 +2386,7 @@ test_that("@SLATS SLATR   ! Specific leaf area temperature effect parameters",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2406,7 +2406,7 @@ test_that("@SLIG%  SESR ! Lignin%, elongation rate (shoot)",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2427,7 +2427,7 @@ test_that("@ SDSZ SDDUR SDRS% ! Reserves by unit of length (stake), duration, re
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2447,7 +2447,7 @@ test_that("@ PDTV  PDSV  ! VPD sensitivity aspects (daily effect)",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2466,7 +2466,7 @@ test_that("@PTFA  ! Partition to feeder roots",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2492,7 +2492,7 @@ test_that("@RRATE TRGEM TRDV1 TRLFG TRLFL TRPHS TRBRG TRDMC  ! Germination/emerg
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2513,7 +2513,7 @@ test_that("@ DMIC  DMAG  DMRD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2535,7 +2535,7 @@ test_that("@ WFGU  WFGL  WFPU  WFPL  ! Growth,phs",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2555,7 +2555,7 @@ test_that("@WFGEM WFRGU  ! Germination/emergence, root growth",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2575,7 +2575,7 @@ test_that("@ SDN% LN%SC ! Planting stick, N% fallen leaves",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2597,7 +2597,7 @@ test_that("@ NFPU  NFPL  NFGU  NFGL ! Photosynthesis,growth",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2617,7 +2617,7 @@ test_that("@  CONV   FDMC",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2638,7 +2638,7 @@ test_that("@ TBASV  TOPTV  TTOPV",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2659,7 +2659,7 @@ test_that("@ TBASR  TOPTR  TTOPR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2678,7 +2678,7 @@ test_that("@ LIFAC",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2700,7 +2700,7 @@ test_that("@  RWEP   PORM   RWMX   RLWR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2719,7 +2719,7 @@ test_that("@  CMFC",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2739,7 +2739,7 @@ test_that("@  CO2X   CO2Y",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2761,7 +2761,7 @@ test_that("@C X(EN) Y(CH)  YSTD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2781,7 +2781,7 @@ test_that("@ RS%X RSUSE ! Max concentration,fraction utilizeable/day",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2810,7 +2810,7 @@ test_that("@RRATE TRGEM TRDV1 TRDV2 TRDV7 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN  "
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2831,7 +2831,7 @@ test_that("@ RATM RCROP EORAT ! Atmospheric,canopy res.;FAO-PenM formula factor"
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2852,7 +2852,7 @@ test_that("@NH4MN NO3MN RTNUP",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 

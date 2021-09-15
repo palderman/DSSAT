@@ -20,7 +20,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -48,7 +48,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -83,7 +83,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -118,7 +118,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -152,7 +152,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -175,7 +175,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -203,7 +203,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -238,7 +238,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -272,7 +272,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -306,7 +306,7 @@ test_that("@  SLB SLMH   SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -329,7 +329,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -357,7 +357,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -392,7 +392,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -426,7 +426,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -449,7 +449,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -472,7 +472,7 @@ test_that("@  SLB ALFVG   MVG   NVG WCRES",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -495,7 +495,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -523,7 +523,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -557,7 +557,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -580,7 +580,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -608,7 +608,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -631,7 +631,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -659,7 +659,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -694,7 +694,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -717,7 +717,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -745,7 +745,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -780,7 +780,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -809,7 +809,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SGRP",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -844,7 +844,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -867,7 +867,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY    ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -896,7 +896,7 @@ test_that("@ SCOM  SALB  SLUI  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SRGP",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -919,7 +919,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -947,7 +947,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -982,7 +982,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1017,7 +1017,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1040,7 +1040,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1068,7 +1068,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1103,7 +1103,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1138,7 +1138,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1161,7 +1161,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1189,7 +1189,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1224,7 +1224,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1259,7 +1259,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1282,7 +1282,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1310,7 +1310,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1345,7 +1345,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1380,7 +1380,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1403,7 +1403,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1431,7 +1431,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1466,7 +1466,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 

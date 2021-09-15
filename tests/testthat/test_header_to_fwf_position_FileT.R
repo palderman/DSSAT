@@ -26,7 +26,7 @@ test_that("@TRNO   DATE  HERB  VN%D  LAID  CWAD CPROT  CHTD  LWAD  SWAD  FHL%",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -48,7 +48,7 @@ test_that("@TRNO   DATE  HARV  HRVS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -70,7 +70,7 @@ test_that("@TRNO   DATE  HRVL  HRVS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -95,7 +95,7 @@ test_that("@TRNO   DATE   MOW  VN%D  CNAD  CWAD   PRP",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -127,7 +127,7 @@ test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -160,7 +160,7 @@ test_that("@TRNO   DATE  CWAD  LAIX  LI%D  VN%D  LMLN  LWAD  SWAD  SLAD  LAID  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -182,7 +182,7 @@ test_that("@TRNO   DATE   MOW  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -204,7 +204,7 @@ test_that("@TRNO   DATE  CWAD   MOW",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -234,7 +234,7 @@ test_that("@TRNO   DATE  LAID  LWAD  SWAD  RWAD  CWAD  LAWD  L#SD  SLAD  PWAD  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -257,7 +257,7 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -292,7 +292,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  GWAD  CWAD  LAID  CHTD  VN%D  LN%D  SN%D  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -320,7 +320,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  GWAD  LAID  CHTD  VWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -345,7 +345,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  LAID",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -385,7 +385,7 @@ test_that("@TRNO   DATE  GSTD  CHTD  CWAD  LWAD  SWAD  PWAD  WLVG  LWPD  LAID  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -415,7 +415,7 @@ test_that("@TRNO   DATE   DAP  TDWA  TWAD  SWAD  DWAD  LWAD  HWAD  LAID  LALN  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -439,7 +439,7 @@ test_that("@TRNO   DATE  DAP1  S#AD  L#SD  L#IR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -460,7 +460,7 @@ test_that("@TRNO   DATE  GSTD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -489,7 +489,7 @@ test_that("@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  S#AD  L#SD  L#IR  LALD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -518,7 +518,7 @@ test_that("@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  LALD  S#AD  L#SD  L#IR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -551,7 +551,7 @@ test_that("@TRNO   DATE   DAP  SWAD  LWAD  HWAD  RWAD  CWAD  TWAD  CGRD  LAID  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -576,7 +576,7 @@ test_that("@TRNO   DATE  DAP1  S#PD  LALD  L#IR  L#SD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -597,7 +597,7 @@ test_that("@TRNO   DATE  SWTD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -636,7 +636,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -678,7 +678,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -709,7 +709,7 @@ test_that("@TRNO   DATE  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -732,7 +732,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -766,7 +766,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -798,7 +798,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -830,7 +830,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -864,7 +864,7 @@ test_that("@TRNO  DATE   L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -896,7 +896,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -926,7 +926,7 @@ test_that("@TRNO   DATE    R#  CHTD  LAID  P#AD  LWAD  SWAD  RWAD  PWAD  SLAD  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -953,7 +953,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  CWAD  PWAD  GWAD  CHTD  LAID",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -974,7 +974,7 @@ test_that("@TRNO   DATE  LAID",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1003,7 +1003,7 @@ test_that("@TRNO   DATE  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW10",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1030,7 +1030,7 @@ test_that("@TRNO   DATE  RL4D  RL5D  RL6D  RL7D  RL8D  RL9D  RL10",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1066,7 +1066,7 @@ test_that("@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1087,7 +1087,7 @@ test_that("@TRNO   DATE  L#SD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1121,7 +1121,7 @@ test_that("@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1152,7 +1152,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1186,7 +1186,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1220,7 +1220,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  R
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1256,7 +1256,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1283,7 +1283,7 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  HIPD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1311,7 +1311,7 @@ test_that("@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1340,7 +1340,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC   
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1368,7 +1368,7 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  NWAD  HIPD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1394,7 +1394,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  SN%D  LN%D  GN%D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1423,7 +1423,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1453,7 +1453,7 @@ test_that("@TRNO   DATE  NH1D  NH2D  NH3D  NH4D  NH5D  NI1D  NI2D  NI3D  NI4D NI
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1477,7 +1477,7 @@ test_that("@TRNO   DATE  TS1D  TS2D  TS3D  SW1D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1502,7 +1502,7 @@ test_that("@TRNO   DATE  TS1D  TS2D  TS3D  TS5D  TS7D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1523,7 +1523,7 @@ test_that("@TRNO   DATE SCS20D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1562,7 +1562,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  SH%D  GWGD  CWAD  LWAD  SWAD  PWAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1583,7 +1583,7 @@ test_that("@TRNO   DATE  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1606,7 +1606,7 @@ test_that("@TRNO   DATE  SW2D  SW4D  SW6D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1630,7 +1630,7 @@ test_that("@TRNO   DATE  CWAD  CNAD  GWAD  GN%D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1658,7 +1658,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1685,7 +1685,7 @@ test_that("@TRNO   DATE  NI1D  NI2D  NI3D  NI4D  NI5D  NI6D  NIAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1714,7 +1714,7 @@ test_that("@TRNO   DATE  GWAD  GWGD  G#AD  LAID  CWAD  GN%D  CNAD  SNAD  GNAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1738,7 +1738,7 @@ test_that("@TRNO   DATE  L#SD  CHTD  LWAD  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1761,7 +1761,7 @@ test_that("@TRNO   DATE  CWAD  VN%D  GWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1786,7 +1786,7 @@ test_that("@TRNO   DATE  CWAD  LAID  SWAD  GWAD  LWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1811,7 +1811,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1832,7 +1832,7 @@ test_that("@TRNO   DATE  CNAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1869,7 +1869,7 @@ test_that("@TRNO   DATE  LAID  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIAD  G#AD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1895,7 +1895,7 @@ test_that("@TRNO   DATE  PSMD  PLAD  PRTD  PSDD  PASM  PWPD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1916,7 +1916,7 @@ test_that("@TRNO   DATE  PLAD  ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1966,7 +1966,7 @@ test_that("@TRNO   DATE  CWAD  LAID  GWAD  LWAD  SWAD  VN%D  SLAD  FRLF  FRST  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1996,7 +1996,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  GWAD  XCLA  XDLA  PCLA  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2019,7 +2019,7 @@ test_that("@TRNO   DATE  CWID  CHTD  L#SD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2044,7 +2044,7 @@ test_that("@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2073,7 +2073,7 @@ test_that("@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TW90   SWXD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2097,7 +2097,7 @@ test_that("@TRNO   DATE  xCLA  xDLA  PCLA  PDLA",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2125,7 +2125,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  FRLF  FRST  GWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2148,7 +2148,7 @@ test_that("@TRNO  DATE   CWID  CHTD  L#SD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2177,7 +2177,7 @@ test_that("@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TWAT90 SWXD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2209,7 +2209,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD SHPPD SH
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2232,7 +2232,7 @@ test_that("@TRNO   DATE  L#SD  CHTD  CWID",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2264,7 +2264,7 @@ test_that("@TRNO   DATE LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD  SHPPD SH
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2287,7 +2287,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD                             ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2328,7 +2328,7 @@ test_that("@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  F
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2366,7 +2366,7 @@ test_that("@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2397,7 +2397,7 @@ test_that("@TRNO   DATE  RWAD  PWAD  G#AD  GWAD  P#AD  CWAD  GWGD  SHAD  SH%D  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2434,7 +2434,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  F
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2469,7 +2469,7 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  GWAD  GWGD  H#AD  HIAD  HIPD  SH%D  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2513,7 +2513,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2555,7 +2555,7 @@ test_that("@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2593,7 +2593,7 @@ test_that("@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2635,7 +2635,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2667,7 +2667,7 @@ test_that("@TRNO  DATE   L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2710,7 +2710,7 @@ test_that("@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  G#AD  GWAD  P#AD  SHAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2733,7 +2733,7 @@ test_that("@TRNO  DATE   CHTD  CWID  L#SD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2776,7 +2776,7 @@ test_that("@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2811,7 +2811,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  F
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2851,7 +2851,7 @@ test_that("@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G#AD  FRLF  F
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2874,7 +2874,7 @@ test_that("@TRNO   DATE  LAID  CWAD  GWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2906,7 +2906,7 @@ test_that("@TRNO   DATE  CWAD  GWAD  P#AD  G#AD  HIAD  G#PD  GWGD  SW6D  SW7D  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2952,7 +2952,7 @@ test_that("@TRNO   DATE  L#SD  LWAD  LAID  SLAD  SWAD  CWAD  PWAD  SHAD  GWAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -2977,7 +2977,7 @@ test_that("@TRNO  DATE   LAID  LWAD  SWAD  CWAD  L#SD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3002,7 +3002,7 @@ test_that("@TRNO   DATE  L#SD  LAID  LWAD  SWAD  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3024,7 +3024,7 @@ test_that("@TRNO   DATE  UYAD  LAID",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3049,7 +3049,7 @@ test_that("@TRNO   DATE  SWAD  UWAD  CWAD  LWAD  UYAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3078,7 +3078,7 @@ test_that("@TRNO   DATE  VNAD  SNAD  CN%D  UNAD  RN%D  UWAD  RWAD  RNAD  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3104,7 +3104,7 @@ test_that("@TRNO   DATE  TWAD  UYAD  UWAD  SWAD  LWAD  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3131,7 +3131,7 @@ test_that("@TRNO   DATE  TWAD  UYAD  LAID  UWAD  SWAD  LWAD  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3159,7 +3159,7 @@ test_that("@TRNO   DATE  SNAD  UNAD  LAID  UWAD  CWAD  LWAD  LNAD  SWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3187,7 +3187,7 @@ test_that("@TRNO   DATE  LAID  UYAD  UWAD  LWAD  SWAD  CWAD  TWAD  SLAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3226,7 +3226,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  PWAD  GWAD  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3253,7 +3253,7 @@ test_that("@TRNO   DATE  T#AD  LAID  RWAD  SWAD  GWAD  LWAD  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3277,7 +3277,7 @@ test_that("@TRNO   DATE  T#AD  CWAD  SWAD  GWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3300,7 +3300,7 @@ test_that("@TRNO   DATE  CWAD  LAID  GWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3333,7 +3333,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  CWAD  LAID  G#AD  P#AD  GWAD  GWGD  HIAD  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3382,7 +3382,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VNAD  PWAD  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3431,7 +3431,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  VNAD  SWAD  PWAD  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3454,7 +3454,7 @@ test_that("@TRNO   DATE  CWAD  GWAD  G#AD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3476,7 +3476,7 @@ test_that("@TRNO   DATE  CWAD  GWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3500,7 +3500,7 @@ test_that("@TRNO   DATE  CNAD  GN%D  SNAD  GNAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3526,7 +3526,7 @@ test_that("@TRNO    DOY   DAP  LAID  VWAD  L#SD  CHTD SHPPD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3562,7 +3562,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3588,7 +3588,7 @@ test_that("@TRNO   DATE  CHTD  L#SD  LAID  SWAD  LWAD  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3624,7 +3624,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  R
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3661,7 +3661,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3701,7 +3701,7 @@ test_that("@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIPD  HIAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3734,7 +3734,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3764,7 +3764,7 @@ test_that("@TRNO   DATE  SWXD  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3799,7 +3799,7 @@ test_that("@TRNO   DATE  RWAD  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D  R
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3830,7 +3830,7 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3852,7 +3852,7 @@ test_that("@TRNO   DATE  LMLN  WSGD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3883,7 +3883,7 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3910,7 +3910,7 @@ test_that("@TRNO   DATE  W105  W210  W315  W415  W515  W615  W715",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3946,7 +3946,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -3970,7 +3970,7 @@ test_that("@TRNO   DATE  CWAD  LAID  RWAD  GWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4000,7 +4000,7 @@ test_that("@TRNO   DATE  CWAD  LAID  RWAD  GWAD  FNAD  SNAD  STRN  LNAD  PNAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4038,7 +4038,7 @@ test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  SH%D  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4069,7 +4069,7 @@ test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4108,7 +4108,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4142,7 +4142,7 @@ test_that("@TRNO   DATE  CWAD  LWAD  SLAD  LAID  SWAD  PWAD  SH%D  GWAD  SHAD  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4177,7 +4177,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4221,7 +4221,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4247,7 +4247,7 @@ test_that("@TRNO   DATE  SNAD  GNAD  LNAD  SNHD  VNAD  CNAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4283,7 +4283,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  G#AD  SH%D  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4315,7 +4315,7 @@ test_that("@TRNO   DATE  L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4351,7 +4351,7 @@ test_that("@TRNO   DATE  L#SD  SLAD  CWAD  LWAD  SWAD  LAID  P#AD  PWAD  G#AD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4378,7 +4378,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4412,7 +4412,7 @@ test_that("@TRNO   DATE  L#SD  SLAD  SH%D  LAID  LWAD  SWAD  SHAD  GWAD  PWAD  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4442,7 +4442,7 @@ test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4465,7 +4465,7 @@ test_that("@TRNO   DATE  LWAD  LAID  RWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4488,7 +4488,7 @@ test_that("@TRNO   DATE LWAD LAID   RWAD   ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4512,7 +4512,7 @@ test_that("@TRNO   DATE  CWAD  LAID  RWAD  L#SD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4536,7 +4536,7 @@ test_that("@TRNO   DATE  CWAD  RWAD  L#SD  LAID",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4560,7 +4560,7 @@ test_that("@TRNO   DATE  PCLA  LAID  RWAD  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4586,7 +4586,7 @@ test_that("@TRNO  DATE  SMDMD SMFMD  T#AD LAIGD  SHTD SUCMD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4612,7 +4612,7 @@ test_that("@TRNO   DATE LGDMD LAITD SUCMD SMDMD  L#SD  T#AD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4635,7 +4635,7 @@ test_that("@TRNO   DATE SMDMD SMFMD SUCMD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4657,7 +4657,7 @@ test_that("@TRNO   DATE CULTI  T#SD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4679,7 +4679,7 @@ test_that("@TRNO   DATE  T#AD  S#AD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4706,7 +4706,7 @@ test_that("@TRNO   DATE BADMD SMFMD SUCMD LAIGD  T#AD SMDMD L#S1D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4728,7 +4728,7 @@ test_that("@TRNO   DATE  LAID  XO%D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4756,7 +4756,7 @@ test_that("@TRNO   DATE  LAID  CWAD  GWAD  HIAD  GL%D  L#SD  G#AD  GWGD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4777,7 +4777,7 @@ test_that("@TRNO  DATE   CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4810,7 +4810,7 @@ test_that("@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  RWAD  LN%D  CNAD PD
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4848,7 +4848,7 @@ test_that("@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  LN%D  CNAD  RWAD PD
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4879,7 +4879,7 @@ test_that("@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD PDMCD AFPWD ADPWD FPWAD MF
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4911,7 +4911,7 @@ test_that("@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD  GWAD PDMCD AFPWD ADPWD FP
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4940,7 +4940,7 @@ test_that("@TRNO  DATE   L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4970,7 +4970,7 @@ test_that("@TRNO   DATE  T#AD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  SLAD  L#SD  R
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -4999,7 +4999,7 @@ test_that("@TRNO   DATE  L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -5022,7 +5022,7 @@ test_that("@TRNO   MDAT  CWAD  GWAD  HIAM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -5044,7 +5044,7 @@ test_that("@TRNO   DATE  CWAD  GWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -5067,7 +5067,7 @@ test_that("@TRNO   DATE  CWAD  GWAD  HIAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -5100,7 +5100,7 @@ test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  M
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -5132,7 +5132,7 @@ test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -5172,7 +5172,7 @@ test_that("@TRNO   DATE  LAID  CWAD  SLAD  PWAD FPWAD  DIC1  FWC1  DWC1  DFC1  D
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -5213,7 +5213,7 @@ test_that("@TRNO   DATE  LAID  SLAD  CWAD  PWAD FPWAD  HIPD  DIC1  FWC1  DWC1  D
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -5245,7 +5245,7 @@ test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -5268,7 +5268,7 @@ test_that("@TRNO   DATE  LAID  PWAD  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -5298,7 +5298,7 @@ test_that("@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  LDAD  CWID  CHTD  L
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -5329,7 +5329,7 @@ test_that("@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CDAD  CWID  CHTD  L
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -5355,7 +5355,7 @@ test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  T#AD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -5378,7 +5378,7 @@ test_that("@TRNO   DATE  CWAD  T#AD  LAID",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 

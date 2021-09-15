@@ -52,7 +52,7 @@ test_that("@YEAR DOY   DAS   SRAA  TMAXA  TMINA    REFA    EOAA    EOPA    EOSA 
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -118,7 +118,7 @@ test_that("@RUN EXCODE      TRNO RN CR EDAPS EDAPM DRAPS DRAPM TSAPS TSAPM ADAPS
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -151,7 +151,7 @@ test_that("@ LNUM AREAP AREA1 AREAT AREAS  T#PL  T#AL  WFLF  NFLF  AFLF  TFLF DA
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -179,7 +179,7 @@ test_that("@YEAR DOY   DAS    MCFD   MDEPD    MWAD    MWTD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -268,7 +268,7 @@ test_that("@YEAR DOY   DAS   N2OEC    N2EC    NOEC   CO2TC    NDNC    NITC   N2O
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -292,7 +292,7 @@ test_that("@     VARIABLE                             SIMULATED     MEASURED",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -342,7 +342,7 @@ test_that("@YEAR DOY   DAS   DAP TMEAN  GSTD  RSTD LAIPD LAISD  LAID  CHTD SDWAD
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -392,7 +392,7 @@ test_that("@YEAR DOY   DAS   DAP TMEAN  GSTD    DU VRNFD DYLFD TFGEM  WFGE  TFPD
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -462,7 +462,7 @@ test_that("@YEAR DOY   DAS   DAP TMEAN TKILL  GSTD  L#SD PARID PARUD  AWAD  LAID
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -515,7 +515,7 @@ test_that("@YEAR DOY   DAS   DAP TMEAN  GSTD  NUAD  TNAD SDNAD  RNAD  CNAD  LNAD
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -577,7 +577,7 @@ test_that("@  RUN EXCODE    TRNO RN TNAME.................... REP  RUNI S O C   
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -628,7 +628,7 @@ test_that("@Run FILEX               TN CR     SN0Di    S1NTDi    S2NTDi    S3NTD
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -693,7 +693,7 @@ test_that("@YEAR DOY   DAS  NAPC  NI#M    NIAD    NITD    NHTD    NMNC    NITC  
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -727,7 +727,7 @@ test_that("@YEAR DOY   DAS    TS0D    TS1D    TS2D    TS3D    TS4D    TS5D    TS
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -772,7 +772,7 @@ test_that("@YEAR DOY   DAS  SWTD  SWXD   ROFC   DRNC   PREC  IR#C  IRRC  DTWT   
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -813,7 +813,7 @@ test_that("@Run FILEX         TN      SN0D     S1NTD     S2NTD     S3NTD      LN
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -920,7 +920,7 @@ test_that("@   RUNNO   TRNO R# O# P# CR MODEL... EXNAME.. TNAM..................
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -961,7 +961,7 @@ test_that("@YEAR DOY   DAS   PRED  DAYLD   TWLD   SRAD   PARD   CLDD   TMXD   TM
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 

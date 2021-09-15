@@ -24,7 +24,7 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -53,7 +53,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  RHUM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -77,7 +77,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -104,7 +104,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -131,7 +131,7 @@ test_that("@DATE SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -155,7 +155,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -182,7 +182,7 @@ test_that("@  INSI      LAT     LONG    ELEV     TAV     AMP   REFHT   WNDHT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -209,7 +209,7 @@ test_that("@  DATE    SRAD    TMAX    TMIN    RAIN    DEWP    WIND     AVP",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -236,7 +236,7 @@ test_that("@ INSI      LAT     LONG    ELEV   TAV   AMP REFHT WNDHT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -263,7 +263,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  RHUM   WIND  TDEW",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -287,7 +287,7 @@ test_that("@DATE SRAD  TMAX  TMIN  RAIN",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -311,7 +311,7 @@ test_that("@DATE   TMAX  TMIN  RAIN   SUNH",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -337,7 +337,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -365,7 +365,7 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CCO2",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -392,7 +392,7 @@ test_that("@YRDAY SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -420,7 +420,7 @@ test_that("@Latitude Longitud  Elev Zone    TAV  TAMP REFHT WNDHT SITE",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -442,7 +442,7 @@ test_that("@WYR  WFIRST   WLAST",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -462,7 +462,7 @@ test_that("@PEOPLE",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -482,7 +482,7 @@ test_that("@ADDRESS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -502,7 +502,7 @@ test_that("@METHODS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -522,7 +522,7 @@ test_that("@INSTRUMENTS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -542,7 +542,7 @@ test_that("@PROBLEMS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -562,7 +562,7 @@ test_that("@PUBLICATIONS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -582,7 +582,7 @@ test_that("@DISTRIBUTION",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -602,7 +602,7 @@ test_that("@NOTES",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -626,7 +626,7 @@ test_that("@  DATE  RAIN  TMAX  TMIN  SRAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -650,7 +650,7 @@ test_that("@  DATE  SRAD  TMAX  TMIN  RAIN",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -676,7 +676,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -701,7 +701,7 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -727,7 +727,7 @@ test_that("@DATE  SRAD  RAIN  TMAX  TMIN  WIND  RHUM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -756,7 +756,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  VAPR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -783,7 +783,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM  VAPR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -811,7 +811,7 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CO2",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -838,7 +838,7 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -862,7 +862,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -889,7 +889,7 @@ test_that("@ INSI     LAT      LONG  ELEV   TAV  AMP REFHT  WNDHT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -914,7 +914,7 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV  TAMP",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -940,7 +940,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  RHUM  WIND",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -966,7 +966,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP   WIND  ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -992,7 +992,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1020,7 +1020,7 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT   CO2",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1047,7 +1047,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  PAR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1071,7 +1071,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN            ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1095,7 +1095,7 @@ test_that("@DATE    SRAD    RAIN     TMAX     TMIN    ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1120,7 +1120,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN               PAR ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1145,7 +1145,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN               PAR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1169,7 +1169,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN             ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -1196,7 +1196,7 @@ test_that("@  DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  RHUM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 

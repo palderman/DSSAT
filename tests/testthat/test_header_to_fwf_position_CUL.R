@@ -39,7 +39,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -70,7 +70,7 @@ test_that("@VAR#  VAR-NAME........  EXP#   ECO#   P1V   P1D    P5    G1    G2   
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -114,7 +114,7 @@ test_that("@VAR#  VAR-NAME........  EXP#   ECO#    P1    P2    P3    P4    P5   
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -156,7 +156,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -186,7 +186,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#    P1    P2    P5    G2    G3 PH
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -228,7 +228,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -270,7 +270,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -315,7 +315,7 @@ test_that("@VAR#  VAR-NAME........  EXP#   ECO#  PPS1 B01ND B12ND B23ND B34ND B4
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -354,7 +354,7 @@ test_that("@VAR#  VAR-NAME........  EXP#   ECO# B01ND B12ND B23ND B34ND BR1FX BR
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -393,7 +393,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -426,7 +426,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    P1   P2O   P2R    P5    G1   
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -458,7 +458,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#    P1    P2    P5    G2    G3 PH
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -495,7 +495,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    TC    P1    P2    P3    P4   
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -524,7 +524,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    G2    G3    PD    P2    TC",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -559,7 +559,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    P1   P2R    P5   P2O    G1   
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -605,7 +605,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#       MaxPARCE          APFMX   
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -671,7 +671,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO# LFMAX PHTMX Stalk Sucro Null1  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -719,7 +719,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#          MAXGL    N_LF_STK_EM   
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -756,7 +756,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    P1    P2   P2O   P2R PANTH   
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -798,7 +798,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -831,7 +831,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#  VSEN PPSEN    P1    P5 PHINT  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -865,7 +865,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    P1    P3    P4    P5    G2   
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
@@ -899,7 +899,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    P1    P3    P4    P5    G2   
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(true_fwf_pos, check_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos)
 
 })
 
