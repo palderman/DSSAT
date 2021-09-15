@@ -16,7 +16,7 @@
 #' name_to_regex("TB(1)")
 #'
 
-name_to_regex <- function(cnames){
+name_to_regex_orig <- function(cnames){
 
   regex <- str_replace_all(cnames,c('\\(([^\\?]+)\\)'='\\\\(\\1\\\\)',
                                     # '\\*'='\\\\*',

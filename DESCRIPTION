@@ -1,4 +1,4 @@
-Package: DSSAT
+Package: DSSATcpp
 Type: Package
 Title: A Comprehensive R Interface for the DSSAT Cropping Systems Model
 Version: 0.0.4

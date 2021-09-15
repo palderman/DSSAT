@@ -1,7 +1,7 @@
 #' @importFrom stringr str_locate_all str_sub
 #' @importFrom dplyr "%>%"
 #' @importFrom purrr map
-get_start_end <- function(header,regex){
+get_start_end_orig <- function(header,regex){
   start_end <- str_locate_all(header,regex) %>%
     map(~{
       if(nrow(.)>1){

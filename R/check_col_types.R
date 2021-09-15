@@ -8,8 +8,8 @@ check_col_types <- function(col_types,col_names){
   cols_new <- col_types$cols
 
   cols_new <- names(cols_new) %>%
-    de_regex() %>%
-    name_to_regex() %>%
+    de_regex_orig() %>%
+    name_to_regex_orig() %>%
     str_remove_all(c('^ +'='')) %>%
     str_c('((?<=^)|(?<= ))',.,'((?=$)|(?= ))') %>%
     # Check to see which of column types are present in col_names
@@ -20,8 +20,8 @@ check_col_types <- function(col_types,col_names){
   if(length(cols_new) > 0){
   # Set names of cols to matches from col_names
     names(cols_new) <- names(cols_new) %>%
-      de_regex() %>%
-      name_to_regex() %>%
+      de_regex_orig() %>%
+      name_to_regex_orig() %>%
       str_remove_all(c('^ +'='')) %>%
       str_c('((?<=^)|(?<= ))',.,'((?=$)|(?= ))') %>%
       map_chr(~str_subset(col_names,.))

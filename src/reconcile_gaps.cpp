@@ -1,16 +1,15 @@
 #include <cpp11.hpp>
-#include <iostream>
 #include <string>
 #include <regex>
 #include <testthat.h>
 using namespace cpp11;
 
-void reconcile_gaps_cpp(strings &cnames,
-                        strings &regexpr,
+void reconcile_gaps_cpp(writable::strings &cnames,
+                        writable::strings &regexpr,
                         writable::strings &col_names,
                         writable::doubles &start,
                         writable::doubles &end,
-                        strings left_justified){
+                        writable::strings &left_justified){
 
   // Calculate separation between columns, should be 1
   // strings cnames(loc["cnames"]);
@@ -45,7 +44,7 @@ void reconcile_gaps_cpp(strings &cnames,
       // Extend columns to fill in gaps
       if(ljust){
         if(ljust2 ||
-           std::regex_search(std::string(regexpr[i]),std::regex("^ [*+]"))){
+           std::regex_search(std::string(r_string(regexpr[i])),std::regex("^ [*+]"))){
           // If column i-1 is left justified and start of column i
           //   is determined by regex extend end of column i-1
           end[i-1] = start[i] - 1.;
@@ -53,7 +52,7 @@ void reconcile_gaps_cpp(strings &cnames,
           // If column i-1 is left justified and start of column i
           //   is determined by given name then extend start of
           //   column i
-          start[i] = end[i-1] + 1.;\
+          start[i] = end[i-1] + 1.;
         }
       }else{
         // If column i-1 is not left justified then extend start of
@@ -65,12 +64,12 @@ void reconcile_gaps_cpp(strings &cnames,
     if(start[i] - end[i-1] < 1.){
       // Shrink columns to eliminate overlaps
       if(ljust){
-        if(std::regex_search(std::string(regexpr[i]), std::regex("^ [*+][^ ]"))){
+        if(std::regex_search(std::string(r_string(regexpr[i])), std::regex("^ [*+][^ ]"))){
           // If column i-1 is left justified and start of column i
           //   is determined by regex shrink start of column i
           // Limit shift in start of column i to width of name
           // std::string name = std::regex_replace(std::string(cnames[i]), std::regex("^ *"), "");
-          double limit = static_cast<double>(std::string(cnames[i]).length());
+          double limit = static_cast<double>(std::string(r_string(cnames[i])).length());
           if(end[i] - end[i-1] > limit){
             end[i-1] = end[i] - limit;
           }else{
