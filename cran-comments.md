@@ -1,6 +1,6 @@
 ## Test environments
 
-* local Ubuntu 18.04.5 LTS, R 4.1.0, GCC
+* local Ubuntu 18.04.5 LTS, R 4.1.2, GCC
 * R-hub Ubuntu Linux 20.04.1 LTS, R-release, GCC
 * R-hub Debian Linux, R-devel, GCC ASAN/UBSAN
 * R-hub Fedora Linux, R-devel, clang, gfortran
