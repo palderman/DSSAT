@@ -3,6 +3,7 @@
 
 
 #include "cpp11/declarations.hpp"
+#include <R_ext/Visibility.h>
 
 // de_regex.cpp
 cpp11::writable::strings de_regex(strings the_regex);
@@ -41,13 +42,6 @@ extern "C" SEXP _DSSATcpp_name_to_regex(SEXP cnames) {
 }
 
 extern "C" {
-/* .Call calls */
-extern SEXP _DSSATcpp_de_regex(SEXP);
-extern SEXP _DSSATcpp_extract_names(SEXP, SEXP, SEXP, SEXP);
-extern SEXP _DSSATcpp_gen_regex(SEXP, SEXP);
-extern SEXP _DSSATcpp_header_to_fwf_position_cpp(SEXP, SEXP, SEXP, SEXP, SEXP);
-extern SEXP _DSSATcpp_name_to_regex(SEXP);
-
 static const R_CallMethodDef CallEntries[] = {
     {"_DSSATcpp_de_regex",                   (DL_FUNC) &_DSSATcpp_de_regex,                   1},
     {"_DSSATcpp_extract_names",              (DL_FUNC) &_DSSATcpp_extract_names,              4},
@@ -58,7 +52,7 @@ static const R_CallMethodDef CallEntries[] = {
 };
 }
 
-extern "C" void R_init_DSSATcpp(DllInfo* dll){
+extern "C" attribute_visible void R_init_DSSATcpp(DllInfo* dll){
   R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
   R_useDynamicSymbols(dll, FALSE);
   R_forceSymbols(dll, TRUE);
