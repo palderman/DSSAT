@@ -55,9 +55,20 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
     {.$cols <- c(.$cols,col_types$cols)
    .}
 
-  # Process header into fixed-width format positions
-  fwf_pos <- map(headline,
-                 ~header_to_fwf_position(.,left_justified,col_types,col_names,read_only))
+  # Check for duplicate headlines
+  if(any(duplicated(headline))){
+    hd_fac <- factor(headline, levels = unique(headline))
+    # Process header into fixed-width format positions
+    fwf_pos <- map(levels(hd_fac),
+                   ~header_to_fwf_position(.,left_justified,col_types,col_names,read_only)) %>%
+      {.[as.integer(hd_fac)]}
+  }else{
+    # Process header into fixed-width format positions
+    fwf_pos <- map(headline,
+                   ~header_to_fwf_position(.,left_justified,col_types,col_names,read_only))
+  }
+
+
 
   # Calculate end of each section based on beginning of next section
   end <- c(skip[-1]-1,length(raw_lines))

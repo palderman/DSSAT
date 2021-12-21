@@ -31,29 +31,34 @@ header_to_fwf_position <- function(header,
                                    col_names = NULL,
                                    read_only = NULL){
 
-  # Replace @ sign and | with space
-  header <- header %>%
-    str_replace_all(c('@'=' ',
-                      '\\|'=' ',
-                      '!.*'=''))
+  fwf_pos <- fwf_pos_lookup(header)
 
-  if(is.null(left_justified)) left_justified <- character()
+  if(is.null(fwf_pos)){
 
-  if(is.null(col_types)){
-    col_types_names <- character()
-  }else{
-    col_types_names <- names(col_types$cols)
+    # Replace @ sign and | with space
+    header <- header %>%
+      str_replace_all(c('@'=' ',
+                        '\\|'=' ',
+                        '!.*'=''))
+
+    if(is.null(left_justified)) left_justified <- character()
+
+    if(is.null(col_types)){
+      col_types_names <- character()
+    }else{
+      col_types_names <- names(col_types$cols)
+    }
+
+    if(is.null(col_names)) col_names <- character()
+
+    if(is.null(read_only)) read_only <- character()
+
+    # Extract names, infer column positions, and convert to
+    #   fixed widths for use with read_fwf()
+    fwf_pos <- header_to_fwf_position_cpp(header, col_types_names,
+                                          left_justified, col_names,
+                                          read_only)
   }
-
-  if(is.null(col_names)) col_names <- character()
-
-  if(is.null(read_only)) read_only <- character()
-
-  # Extract names, infer column positions, and convert to
-  #   fixed widths for use with read_fwf()
-  fwf_pos <- header_to_fwf_position_cpp(header, col_types_names,
-                                        left_justified, col_names,
-                                        read_only)
 
   return(fwf_pos)
 }

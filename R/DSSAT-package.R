@@ -11,6 +11,6 @@
 #' The mypackage functions ...
 #'
 #' @docType package
-#' @name DSSAT
-#' @useDynLib DSSAT, .registration = TRUE
+#' @name DSSATcpp
+#' @useDynLib DSSATcpp, .registration = TRUE
 NULL

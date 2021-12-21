@@ -31,7 +31,7 @@ v_fmt_filex <- function(sec_name){
                FLST = "%6s", SLTX = "%5s", SLDP = "%6.0f", ID_SOIL = "  %-10s",
                FLNAME = " %-s", XCRD = "%16.6f", YCRD = "%16.6f", ELEV = "%10.1f",
                AREA = "%18.0f", SLEN = "%6.0f", FLWR = "%6.1f", SLAS = "%6.0f",
-               FLHST = "%6s", FHDUR = "%6s")
+               FLHST = "%6s", FHDUR = "%6.0f")
 
   }else if(str_detect(sec_name,'GENERAL')){
 

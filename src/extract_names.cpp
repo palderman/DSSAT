@@ -13,9 +13,11 @@ void copy_into(strings &names,
 
   for(auto it = names.begin(); it != names.end(); ++it){
     if((check_str.length() == 0 ||
-       !std::regex_match(std::string(*it), std::regex(check_str))) &&
+       !std::regex_search(std::string(*it), std::regex(check_str))) &&
        std::regex_search(header,
                          std::regex(name_to_regex(std::string(*it))))){
+      // std::cout << "check_str = '" << check_str << "'" << std::endl;
+      // std::cout << "Adding '" << std::string(*it) << "'" << std::endl;
       if(check_str.length() > 0){
         check_str += "|(" + name_to_regex(std::string(*it)) + ")";
       }else{
@@ -37,8 +39,14 @@ cpp11::writable::strings extract_names(std::string header,
   std::regex name_regex = std::regex("[^ ]+(?= *$)");
   std::smatch m;
 
+  // std::cout << "header = '" << header << "'" << std::endl;
+
   // copy col_names into cnames
   copy_into(col_names, header, check_str, cnames);
+
+  // for(auto it=cnames.begin(); it!=cnames.end(); ++it){
+  //   std::cout << std::string(r_string(*it)) << std::endl;
+  // }
 
   // copy ljust into cnames
   copy_into(ljust, header, check_str, cnames);

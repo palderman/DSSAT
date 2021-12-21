@@ -1,4 +1,4 @@
-library(DSSAT)
+library(DSSATcpp)
 library(tibble)
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  ADAT  MDAT",{

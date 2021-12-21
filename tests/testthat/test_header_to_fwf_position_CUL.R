@@ -1,4 +1,4 @@
-library(DSSAT)
+library(DSSATcpp)
 library(tibble)
 
 test_that("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD-PM FL-LF LFMAX SLAVR SIZLF  XFRT WTPSD SFDUR SDPDV PODUR THRSH SDPRO SDLIP",{

@@ -1,4 +1,4 @@
-library(DSSAT)
+library(DSSATcpp)
 library(tibble)
 
 test_that("@YEAR DOY   DAS   SRAA  TMAXA  TMINA    REFA    EOAA    EOPA    EOSA    KCAA    KCBA    KEAA    ETAA    EPAA    ESAA    EFAA    EMAA    EOAC    ETAC    EPAC    ESAC    EFAC    EMAC    ES1D    ES2D    ES3D    ES4D    ES5D    ES6D    ES7D    ES8D    ES9D   TRWUD",{

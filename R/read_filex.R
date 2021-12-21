@@ -165,6 +165,10 @@ read_filex <- function(file_name, col_types=NULL, col_names=NULL, na_strings=NUL
     }
   }
 
+  for(sec in sec_names){
+    all_secs[[sec]] <- filex_check_col_types(sec,all_secs[[sec]])
+  }
+
   attr(all_secs,'experiment') <- experiment
 
   all_secs <- map(all_secs,as_DSSAT_tbl)

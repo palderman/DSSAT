@@ -1,4 +1,4 @@
-library(DSSAT)
+library(DSSATcpp)
 library(tibble)
 
 test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY",{

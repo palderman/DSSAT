@@ -1,4 +1,4 @@
-library(DSSAT)
+library(DSSATcpp)
 library(tibble)
 
 test_that("@TRNO   DATE  HERB  VN%D  LAID  CWAD CPROT  CHTD  LWAD  SWAD  FHL%",{
