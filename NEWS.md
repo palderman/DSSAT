@@ -1,3 +1,7 @@
+# DSSAT 0.0.5
+
+- Small bugfix to maintain compatibility with replace_na() from tidyr package
+
 # DSSAT 0.0.4
 
 - This version fixes a bug related writing soil profiles when the v_fmt and tier_info attributes are missing.

@@ -1,8 +1,8 @@
 Package: DSSAT
 Type: Package
 Title: A Comprehensive R Interface for the DSSAT Cropping Systems Model
-Version: 0.0.4
-Date: 2021-08-31
+Version: 0.0.5
+Date: 2021-12-21
 Author: Phillip D. Alderman [aut, cre]
 Maintainer: Phillip D. Alderman <phillip.alderman@okstate.edu>
 Description: The purpose of this package is to provide a comprehensive
@@ -24,7 +24,7 @@ Imports:
     tidyr,
     lubridate,
     rlang
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests: 
     knitr,
     rmarkdown

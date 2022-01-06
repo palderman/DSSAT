@@ -1,10 +1,10 @@
 ## Test environments
 
-* local Ubuntu 18.04.5 LTS, R 4.1.0, GCC
-* R-hub Ubuntu Linux 20.04.1 LTS, R-release, GCC
-* R-hub Debian Linux, R-devel, GCC ASAN/UBSAN
-* R-hub Fedora Linux, R-devel, clang, gfortran
-* R-hub Windows Server 2008 R2 SP1, R-devel, 32/64 bit
+* local Ubuntu 18.04.5 LTS, R 4.1.2, GCC
+* R-hub Ubuntu Linux 20.04.1 LTS, R-release, GCC (ubuntu-gcc-release)
+* R-hub Debian Linux, R-devel, GCC (debian-gcc-devel)
+* R-hub Fedora Linux, R-devel, clang, gfortran (fedora-clang-devel)
+* R-hub Windows Server 2022, R-release, 64 bit (windows-x86_64-release)
 * win-builder (devel and release)
 
 ## R CMD check results
