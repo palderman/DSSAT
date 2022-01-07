@@ -69,7 +69,7 @@ construct_variable_format <- function(tier_data,fwf_pos,left_justified){
                                              character='s',
                                              logical='s',
                                              POSIXct='s')),
-           width = replace_na(.data$width,'')) %>%
+           width = replace_na(as.character(.data$width),'')) %>%
     mutate(fmt=glue_data(.,'{leading_chars}%{just}{width}{digits}{type}')) %>%
     select(col_names,fmt) %>%
     {fmt <- as.character(.$fmt)

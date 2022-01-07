@@ -1,6 +1,7 @@
 utils::globalVariables(".")
 
-#' @importFrom utils tail
+#' @importFrom utils head tail capture.output citation
+#' @importFrom methods show
 .onAttach <- function(libname,pkgname){
 
   op <- options()
@@ -89,6 +90,23 @@ utils::globalVariables(".")
       startup_msg <- gsub('\\/','\\\\ ',startup_msg)
     }
   }
+
+  cite_out <- head(
+      capture.output(
+        methods::show(
+          citation("DSSAT")
+        )
+      ),
+      -4
+    )
+
+  cite_out <- c(cite_out,
+                "For BibTeX entries use toBibtex(citation(\"DSSAT\"))")
+
+  startup_msg <- c(paste0(cite_out, "\n"),
+                   "\n",
+                   startup_msg
+                   )
 
   packageStartupMessage(startup_msg)
 

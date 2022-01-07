@@ -25,7 +25,7 @@
 #' output <- write_tier(tier_data)
 #'
 
-write_tier <- function(tier_data,pad_name=NULL,drop_duplicate_rows=FALSE,
+write_tier <- function(tier_data, pad_name=NULL, drop_duplicate_rows=FALSE,
                        drop_na_rows=TRUE){
 
   v_fmt <- attr(tier_data,'v_fmt')
@@ -151,12 +151,18 @@ write_tier <- function(tier_data,pad_name=NULL,drop_duplicate_rows=FALSE,
          # else if(is.numeric(vr_val)){
          #  if(any(vr_val >= 10^width-0.5)) stop()
          # }
+          if(str_detect(fmt, "%.*f") & !is.numeric(vr_val)){
+            msg <- cname %>%
+              str_c('Column ',.,' is not numeric even though the format indicates it should be. It will be treated as character. Please check output for introduced errors.')
+            warning(msg)
+            fmt <- str_replace(fmt, "\\.[0-9]f", "s")
+          }
           vr_out <- sprintf(fmt,vr_val)
           if(!is.na(width)) vr_out <- check_numerical_column_width(vr_out,vr_val,width)
           if(any(nchar(vr_out)>width,na.rm=TRUE)){
-            cname %>%
-              str_c('Column ',.,' values were trimmed to fit specified column width. Please check output for introduced errors.') %>%
-              warning()
+            msg <- cname %>%
+              str_c('Column ',.,' values were trimmed to fit specified column width. Please check output for introduced errors.')
+            warning(msg)
             if(str_detect(fmt,'-')){
               vr_out[nchar(vr_out)>width] <- vr_out[nchar(vr_out)>width] %>%
                 str_sub(start=width)

@@ -1,20 +1,21 @@
 Package: DSSAT
 Type: Package
 Title: A Comprehensive R Interface for the DSSAT Cropping Systems Model
-Version: 0.0.3
+Version: 0.0.5
+Date: 2021-12-21
 Author: Phillip D. Alderman [aut, cre]
 Maintainer: Phillip D. Alderman <phillip.alderman@okstate.edu>
 Description: The purpose of this package is to provide a comprehensive
     R interface to the Decision Support System for Agrotechnology
-    Transfer Cropping Systems Model (DSSAT-CSM) documented by
-    Jones et al (2003) <doi:10.1016/S1161-0301(02)00107-7>. The package
-    provides cross-platform functions to read and write input files,
-    run DSSAT-CSM, and read output files.
+    Transfer Cropping Systems Model (DSSAT-CSM; see <https://dssat.net> for more information).
+    The package provides cross-platform functions to read and
+    write input files, run DSSAT-CSM, and read output files.
 License: GPL (>=3)
 Encoding: UTF-8
 LazyData: true
 Imports: 
     utils,
+    methods,
     readr,
     stringr,
     dplyr (>= 1.0.0),
@@ -23,7 +24,7 @@ Imports:
     tidyr,
     lubridate,
     rlang
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests: 
     knitr,
     rmarkdown

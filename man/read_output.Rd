@@ -10,7 +10,8 @@ read_output(
   col_names = NULL,
   left_justified = NULL,
   read_only = NULL,
-  dates_only = NULL
+  dates_only = NULL,
+  store_v_fmt = FALSE
 )
 }
 \arguments{
@@ -33,6 +34,9 @@ If non-NULL only the columns listed will be read in.}
 
 \item{dates_only}{NULL or a POSIXt vector of dates that should be read from output file;
 If non-NULL only the dates listed will be read in.}
+
+\item{store_v_fmt}{a logical value indicating whether or not to store the
+format for variables being read}
 }
 \value{
 a tibble containing the data from the raw DSSAT output
