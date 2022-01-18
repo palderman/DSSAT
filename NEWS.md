@@ -1,3 +1,7 @@
+# DSSAT 0.0.6
+
+- Bugfix to maintain compatibility with replace_na() from tidyr package. DSSAT version 0.0.5 did not have patch properly applied.
+
 # DSSAT 0.0.5
 
 - Small bugfix to maintain compatibility with replace_na() from tidyr package
