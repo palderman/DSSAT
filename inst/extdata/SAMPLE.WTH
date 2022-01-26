@@ -1,5 +1,6 @@
 *WEATHER: Weather Location
 
+! This is a test dataset
 
 @ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT
   SMPL   00.000  000.000     0   6.0   3.0   -99   -99

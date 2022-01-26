@@ -1,4 +1,6 @@
-# DSSAT 0.0.6.9001
+# DSSAT 0.0.6.9002
+
+- Implementing arguments for write_wth() that allow overriding/adding to values stored in wth argument
 
 - Adding testthat tests for read_filex() and header_to_fwf_position()
 

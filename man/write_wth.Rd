@@ -4,7 +4,22 @@
 \alias{write_wth}
 \title{Writes data to a single DSSAT weather file}
 \usage{
-write_wth(wth, file_name, force_std_fmt = TRUE)
+write_wth(
+  wth,
+  file_name,
+  force_std_fmt = TRUE,
+  location = NULL,
+  comments = NULL,
+  INSI = NULL,
+  LAT = NULL,
+  LONG = NULL,
+  ELEV = NULL,
+  TAV = NULL,
+  AMP = NULL,
+  REFHT = NULL,
+  WNDHT = NULL,
+  CO2 = NULL
+)
 }
 \arguments{
 \item{wth}{a tibble containing the data to write to a DSSAT
@@ -15,6 +30,32 @@ of a single DSSAT file into which `wth` will be written}
 
 \item{force_std_fmt}{a logical value indicating whether to override the
 variable format stored within the `wth` object with standard DSSAT formatting}
+
+\item{location}{a character value that gives the location for the
+weather file header line}
+
+\item{comments}{a character vector containing any comments to be
+included in the weather file}
+
+\item{INSI}{Institute and site code (four-digit character code)}
+
+\item{LAT}{Latitude in decimal degrees}
+
+\item{LONG}{Longitude in decimal degrees}
+
+\item{ELEV}{Elevation in meters}
+
+\item{TAV}{Long-term average air temperature at reference
+height (typically 2 meters)}
+
+\item{AMP}{Long-term monthly air temperature amplitude at
+reference height (typically 2 meters)}
+
+\item{REFHT}{reference height for air temperature measurements}
+
+\item{WNDHT}{reference height for wind speed measurements}
+
+\item{CO2}{carbon dioxide concentration in parts per million}
 }
 \description{
 Writes data to a single DSSAT weather file
