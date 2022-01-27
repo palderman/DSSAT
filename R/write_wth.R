@@ -76,22 +76,22 @@ write_wth <- function(wth, file_name, force_std_fmt = TRUE,
   if(old_format){
     if(force_std_fmt | is.null(g_v_fmt)){
       g_v_fmt <- c(INSI = "%6s", LAT = "%9.3f", LONG = "%9.3f", ELEV = "%6.0f",
-                   TAV = "%6.1f", AMP = "%6.0f", REFHT = "%6.0f",
+                   TAV = "%6.1f", AMP = "%6.1f", REFHT = "%6.0f",
                    WNDHT = "%6.0f", CO2 = "%6f")
     }
 
     # Replace columns in general tibble with non-null function arguments
     # the double exclamation "bang-bang" operator (!!) forces assignment
     # using the function argument of the same name
-    if(is.null(INSI)) general <- mutate(general, INSI = !!INSI)
-    if(is.null(LAT)) general <- mutate(general, LAT = !!LAT)
-    if(is.null(LONG)) general <- mutate(general, LONG = !!LONG)
-    if(is.null(ELEV)) general <- mutate(general, ELEV = !!ELEV)
-    if(is.null(TAV)) general <- mutate(general, TAV = !!TAV)
-    if(is.null(AMP)) general <- mutate(general, AMP = !!AMP)
-    if(is.null(REFHT)) general <- mutate(general, REFHT = !!REFHT)
-    if(is.null(WNDHT)) general <- mutate(general, WNDHT = !!WNDHT)
-    if(is.null(CO2)) general <- mutate(general, CO2 = !!CO2)
+    if(!is.null(INSI)) general <- mutate(general, INSI = !!INSI)
+    if(!is.null(LAT)) general <- mutate(general, LAT = !!LAT)
+    if(!is.null(LONG)) general <- mutate(general, LONG = !!LONG)
+    if(!is.null(ELEV)) general <- mutate(general, ELEV = !!ELEV)
+    if(!is.null(TAV)) general <- mutate(general, TAV = !!TAV)
+    if(!is.null(AMP)) general <- mutate(general, AMP = !!AMP)
+    if(!is.null(REFHT)) general <- mutate(general, REFHT = !!REFHT)
+    if(!is.null(WNDHT)) general <- mutate(general, WNDHT = !!WNDHT)
+    if(!is.null(CO2)) general <- mutate(general, CO2 = !!CO2)
 
     gen_out <- general %>%
       `attr<-`("v_fmt", g_v_fmt) %>%
@@ -135,7 +135,7 @@ write_wth <- function(wth, file_name, force_std_fmt = TRUE,
     write_tier(drop_na_rows = FALSE) %>%
     c(location,'',comments,'',gen_out,.)
 
-  write(tier_output,file_name)
+  write(tier_output, file_name)
 
   return(invisible())
 }
