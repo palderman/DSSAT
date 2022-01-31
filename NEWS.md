@@ -2,6 +2,8 @@
 
 - Implementing arguments for write_wth() that allow overriding/adding to values stored in wth argument
 
+- Bugfix in write_wth() that ensures comments are prefixed with an exclamation mark
+
 - Adding testthat tests for read_filex() and header_to_fwf_position()
 
 # DSSAT 0.0.6
