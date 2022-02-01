@@ -14,7 +14,7 @@ citEntry(entry = "Manual",
          paste0(year, "."),
          "DSSAT: A Comprehensive R Interface for the DSSAT Cropping Systems Model.",
          note,
-         paste0("DOI: ",note,"."),
+         "DOI: 10.5281/zenodo.4091381.",
          "https://CRAN.R-project.org/package=DSSAT.")
 )
 
