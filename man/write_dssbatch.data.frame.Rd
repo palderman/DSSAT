@@ -11,15 +11,7 @@
 required columns of a DSSAT batch file (FILEX, TRTNO, RP, SQ, OP, CO);
 if a character vector, it should contain FileX file names}
 
-\item{trtno}{a numeric vector}
-
-\item{rp}{a numeric vector}
-
-\item{sq}{a numeric vector}
-
-\item{op}{a numeric vector}
-
-\item{co}{a numeric vector}
+\item{trtno, rp, sq, op, co}{a numeric vector}
 
 \item{file_name}{an optional character vector of the intended
 batch file name}

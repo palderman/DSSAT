@@ -39,6 +39,7 @@
 #'
 #' @return NULL
 #'
+#' @importFrom tibble tibble
 #' @importFrom dplyr "%>%"
 #' @importFrom stringr str_c
 #' @importFrom purrr map
@@ -62,6 +63,17 @@ write_wth <- function(wth, file_name, force_std_fmt = TRUE,
 
   # Determine if wth was read from old or new file format
   general <- attr(wth,'GENERAL')
+
+  if(is.null(general)){
+    general <- tibble(INSI = if(is.null(INSI)) NA_character_ else INSI,
+                      LAT = if(is.null(LAT)) NA_real_ else LAT,
+                      LONG = if(is.null(LONG)) NA_real_ else LONG,
+                      ELEV = if(is.null(ELEV)) NA_real_ else ELEV,
+                      TAV = if(is.null(TAV)) NA_real_ else TAV,
+                      AMP = if(is.null(AMP)) NA_real_ else AMP,
+                      REFHT = if(is.null(REFHT)) NA_real_ else REFHT,
+                      WNDHT = if(is.null(WNDHT)) NA_real_ else WNDHT)
+  }
 
   old_format <- is.data.frame(general)
 
@@ -127,8 +139,10 @@ write_wth <- function(wth, file_name, force_std_fmt = TRUE,
     }
   }
 
-  comments <- comments %>%
-    str_c("! ", .)
+  if(!is.null(comments)){
+    comments <- comments %>%
+      str_c("! ", .)
+  }
 
   tier_output <- wth %>%
     `attr<-`("v_fmt", d_v_fmt) %>%
