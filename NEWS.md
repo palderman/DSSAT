@@ -6,6 +6,8 @@
 
 - Adding testthat tests for read_filex() and header_to_fwf_position()
 
+- Adding DOI to CITATION
+
 # DSSAT 0.0.6
 
 - Bugfix to maintain compatibility with replace_na() from tidyr package. DSSAT version 0.0.5 did not have patch properly applied.

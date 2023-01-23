@@ -1,4 +1,4 @@
-library(DSSATcpp)
+library(DSSAT)
 library(withr)
 
 test_that("GENERAL",{
@@ -25,7 +25,7 @@ test_that("GENERAL",{
 
   })
 
-  DSSATcpp:::test_cols_check(
+  DSSAT:::test_cols_check(
     filex$GENERAL,
     char_cols = c("PEOPLE", "ADDRESS", "SITE", "PLAY", "HARM", "NOTES"),
     list_cols = c("NOTES"),
@@ -63,7 +63,7 @@ test_that("TREATMENTS single",{
 
   })
 
-  DSSATcpp:::test_cols_check(
+  DSSAT:::test_cols_check(
     filex$TREATMENTS,
     char_cols = c("TNAME"),
     expected_vals = list(N = 1,
@@ -101,7 +101,7 @@ test_that("TREATMENTS two",{
 
   })
 
-  DSSATcpp:::test_cols_check(
+  DSSAT:::test_cols_check(
     filex$TREATMENTS,
     char_cols = c("TNAME"),
     expected_vals = list(N = 1:2,
@@ -138,7 +138,7 @@ test_that("CULTIVARS single",{
 
   })
 
-  DSSATcpp:::test_cols_check(
+  DSSAT:::test_cols_check(
     filex$CULTIVARS,
     char_cols = c("CR", "INGENO", "CNAME"),
     expected_vals = list(C = 1,
@@ -164,7 +164,7 @@ test_that("CULTIVARS multiple",{
 
   })
 
-  DSSATcpp:::test_cols_check(
+  DSSAT:::test_cols_check(
     filex$CULTIVARS,
     char_cols = c("CR", "INGENO", "CNAME"),
     expected_vals = list(C = 1:4,
@@ -193,7 +193,7 @@ test_that("FIELDS single",{
 
   })
 
-  DSSATcpp:::test_cols_check(
+  DSSAT:::test_cols_check(
     filex$FIELDS,
     char_cols = c("ID_FIELD", "WSTA", "FLSA", "FLDT", "FLST",
                   "SLTX", "ID_SOIL", "FLNAME", "FLHST"),
@@ -234,7 +234,7 @@ test_that("FIELDS multiple",{
 
   })
 
-  DSSATcpp:::test_cols_check(
+  DSSAT:::test_cols_check(
     filex$FIELDS,
     char_cols = c("ID_FIELD", "WSTA", "FLSA", "FLDT", "FLST",
                   "SLTX", "ID_SOIL", "FLNAME", "FLHST"),
@@ -276,7 +276,7 @@ test_that("SOIL ANALYSIS single",{
 
   })
 
-  DSSATcpp:::test_cols_check(
+  DSSAT:::test_cols_check(
     filex$`SOIL ANALYSIS`,
     char_cols = c("SMHB", "SMPX", "SMKE", "SANAME"),
     missing = c("SMHB", "SMKE", "SANAME", "SADM", "SANI",
@@ -310,7 +310,7 @@ test_that("SOIL ANALYSIS single - missing",{
 
   })
 
-  DSSATcpp:::test_cols_check(
+  DSSAT:::test_cols_check(
     filex$`SOIL ANALYSIS`,
     char_cols = c("SMHB", "SMPX", "SMKE", "SANAME"),
     missing = c("SADAT", "SMHB", "SMPX", "SMKE", "SANAME",
@@ -366,7 +366,7 @@ test_that("SOIL ANALYSIS multiple",{
 
   })
 
-  DSSATcpp:::test_cols_check(
+  DSSAT:::test_cols_check(
     filex$`SOIL ANALYSIS`,
     char_cols = c("SMHB", "SMPX", "SMKE", "SANAME"),
     missing = c("SMHB", "SMKE", "SANAME", "SADM", "SANI",
@@ -422,7 +422,7 @@ test_that("INITIAL CONDITIONS one level - no missing",{
 
   })
 
-  DSSATcpp:::test_cols_check(
+  DSSAT:::test_cols_check(
              filex$`INITIAL CONDITIONS`,
              char_cols = c("PCR", "ICNAME"),
              list_cols = c("ICBL","SH2O","SNH4","SNO3"),
@@ -474,7 +474,7 @@ test_that("INITIAL CONDITIONS one level - missing",{
 
   })
 
-  DSSATcpp:::test_cols_check(
+  DSSAT:::test_cols_check(
     filex$`INITIAL CONDITIONS`,
     char_cols = c("PCR", "ICNAME"),
     list_cols = c("ICBL","SH2O","SNH4","SNO3"),
@@ -518,7 +518,7 @@ test_that("Two levels - no missing data",{
 
   })
 
-  DSSATcpp:::test_cols_check(
+  DSSAT:::test_cols_check(
     filex$`INITIAL CONDITIONS`,
     char_cols = c("PCR", "ICNAME"),
     list_cols = c("ICBL","SH2O","SNH4","SNO3"),
@@ -586,7 +586,7 @@ test_that("INITIAL CONDITIONS two levels - missing",{
 
   })
 
-  DSSATcpp:::test_cols_check(
+  DSSAT:::test_cols_check(
     filex$`INITIAL CONDITIONS`,
     char_cols = c("PCR", "ICNAME"),
     list_cols = c("ICBL","SH2O","SNH4","SNO3"),
@@ -616,7 +616,7 @@ test_that("PLANTING DETAILS - single",{
 
   })
 
-  DSSATcpp:::test_cols_check(
+  DSSAT:::test_cols_check(
     filex$`PLANTING DETAILS`,
     char_cols = c(),
     list_cols = c(),

@@ -1,4 +1,4 @@
-library(DSSATcpp)
+library(DSSAT)
 library(tibble)
 
 test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT",{

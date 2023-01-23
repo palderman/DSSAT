@@ -1,4 +1,4 @@
-library(DSSATcpp)
+library(DSSAT)
 library(tibble)
 
 test_that("@PGERM PEMRG    P0    P6  ! Germination,emrgence/cm,juvenile,post-maturity",{

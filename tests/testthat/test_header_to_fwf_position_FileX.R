@@ -1,4 +1,4 @@
-library(DSSATcpp)
+library(DSSAT)
 library(tibble)
 
 test_that("@PEOPLE",{
