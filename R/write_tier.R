@@ -52,16 +52,16 @@ write_tier <- function(tier_data, pad_name=NULL, drop_duplicate_rows=FALSE,
 
   all_tier_output <- tier_info %>%
     map(function(tier_names){
-      group_cols <- intersect(c('TRNO','DATE'),tier_names)
+      group_cols <- intersect(c('TRNO','DATE'), tier_names)
       if(length(group_cols) > 0 && drop_duplicate_rows){
         # Handle case of duplicate rows (e.g. in File A or T)
         tier_data_tmp <- tier_data %>%
-          select(tier_names) %>%
+          select(all_of(tier_names)) %>%
           group_by_at(vars(one_of(group_cols))) %>%
           do({filter_all(.,any_vars(filter_for_all_equal(.)))})
       }else{
         tier_data_tmp <- tier_data %>%
-          select(tier_names)
+          select(all_of(tier_names))
       }
       if(length(group_cols) > 0 ){
         tier_data_tmp <- tier_data_tmp %>%

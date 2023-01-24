@@ -12,9 +12,8 @@
 #' @importFrom dplyr "%>%"
 #' @importFrom stringr str_subset str_remove str_which str_detect
 #'
-
 read_filex <- function(file_name, col_types=NULL, col_names=NULL, na_strings=NULL,
-                       store_v_fmt = FALSE){
+                       store_v_fmt = FALSE, use_std_fmt = FALSE){
 
   col_types <- cols(` SNAME\\.*`=col_character(),
                     FMOPT=col_character(),
@@ -85,7 +84,16 @@ read_filex <- function(file_name, col_types=NULL, col_names=NULL, na_strings=NUL
                     ` +CO2`=col_character(),
                     ` IRNAME`=col_character(),
                     ` CHT\\.*`=col_character(),
-                    ` WSTA\\.*`=col_character()) %>%
+                    ` WSTA\\.*`=col_character(),
+                    PCR = col_character(),
+                    ` ICNAME` = col_character(),
+                    SANAME = col_character(),
+                    SMKE = col_character(),
+                    SMHB = col_character(),
+                    SMPX = col_character(),
+                    FLHST = col_character(),
+                    `  FLSA` = col_character(),
+                    FLNAME = col_character()) %>%
     {.$cols <- c(.$cols,col_types$cols);.}
 
   left_justified <- c('SITE','PEOPLE','ADDRESS','INSTRUMENTS',
@@ -99,7 +107,7 @@ read_filex <- function(file_name, col_types=NULL, col_names=NULL, na_strings=NUL
                       ' EDAY','ERAD','EMAX','EMIN','ERAIN','ECO2',
                       'EDEW','EWIND','ENVNAME',
                       ' HNAME',' CHT\\.*',
-                      ' RENAME',' +PLNAME','CHNAME')
+                      ' RENAME',' +PLNAME','CHNAME', 'SANAME')
 
   col_names <- col_names %>%
     c(.,

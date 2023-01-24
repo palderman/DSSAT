@@ -88,8 +88,8 @@ write_wth <- function(wth, file_name, force_std_fmt = TRUE,
   if(old_format){
     if(force_std_fmt | is.null(g_v_fmt)){
       g_v_fmt <- c(INSI = "%6s", LAT = "%9.3f", LONG = "%9.3f", ELEV = "%6.0f",
-                   TAV = "%6.1f", AMP = "%6.1f", REFHT = "%6.0f",
-                   WNDHT = "%6.0f", CO2 = "%6f")
+                   TAV = "%6.1f", AMP = "%6.1f", REFHT = "%6.1f",
+                   WNDHT = "%6.1f", CO2 = "%6f")
     }
 
     # Replace columns in general tibble with non-null function arguments
@@ -121,7 +121,7 @@ write_wth <- function(wth, file_name, force_std_fmt = TRUE,
     }
     gen_out <- general %>%
       map(~`attr<-`(.,"v_fmt",g_v_fmt)) %>%
-      map(write_tier,drop_na_rows=FALSE) %>%
+      map(write_tier, drop_na_rows=FALSE) %>%
       map(~{c(.,'')}) %>%
       unlist() %>%
       c('*GENERAL',.,'*DAILY DATA')

@@ -1,9 +1,6 @@
-library(DSSAT)
-library(tibble)
-
 test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#             ~check,
         0,      13,      "SITE",#    "@SITE        ",
        13,      30,   "COUNTRY",#"COUNTRY          ",
@@ -16,7 +13,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY",{
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS FAMILY",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS FAMILY",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -26,7 +23,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY",{
 
 test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SCOM",#"@ SCOM",
         6,   12,     "SALB",#"  SALB",
@@ -44,7 +41,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE",{
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -54,7 +51,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE",{
 
 test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,     "SLMH",#"  SLMH",
@@ -79,7 +76,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -89,7 +86,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
 test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,     "SLPX",#"  SLPX",
@@ -114,7 +111,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -124,7 +121,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
 
 test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,     "SLMH",#"  SLMH",
@@ -148,7 +145,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -158,7 +155,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
 test_that("@SITE        COUNTRY          LAT     LONG SCS Family                                                                                                                                                  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                                                                                                                                         ~check,
         0,      13,      "SITE",#                                                                                                                                                "@SITE        ",
        13,      30,   "COUNTRY",#                                                                                                                                            "COUNTRY          ",
@@ -171,7 +168,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS Family                                                                                                                                                  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS Family                                                                                                                                                  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -181,7 +178,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
 
 test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                                                                                                           ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SCOM",#"@ SCOM",
         6,   12,     "SALB",#"  SALB",
@@ -199,7 +196,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                                                                                                           ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                                                                                                           ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -209,7 +206,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
 test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                                                                                                 ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,     "SLMH",#"  SLMH",
@@ -234,7 +231,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                                                                                                 ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                                                                                                 ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -244,7 +241,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
 test_that("@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,     "SLPX",#"  SLPX",
@@ -268,7 +265,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -278,7 +275,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
 
 test_that("@  SLB SLMH   SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    6,      "SLB",# "@  SLB",
         6,   11,     "SLMH",#  " SLMH",
@@ -302,7 +299,7 @@ test_that("@  SLB SLMH   SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB SLMH   SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB SLMH   SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -312,7 +309,7 @@ test_that("@  SLB SLMH   SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
 test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY                                                                                                      ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                                                                                             ~check,
         0,      13,      "SITE",#                                                                                                    "@SITE        ",
        13,      30,   "COUNTRY",#                                                                                                "COUNTRY          ",
@@ -325,7 +322,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY                
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS FAMILY                                                                                                      ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS FAMILY                                                                                                      ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -335,7 +332,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY                
 
 test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                                                               ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SCOM",#"@ SCOM",
         6,   12,     "SALB",#"  SALB",
@@ -353,7 +350,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                                                               ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                                                               ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -363,7 +360,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
 test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                                                     ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,     "SLMH",#"  SLMH",
@@ -388,7 +385,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                                                     ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                                                     ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -398,7 +395,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
 test_that("@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC                                                           ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,     "SLPX",#"  SLPX",
@@ -422,7 +419,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC                                                           ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC                                                           ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -432,7 +429,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
 
 test_that("@SITE        COUNTRY          LAT     LONG SCS Family",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#             ~check,
         0,      13,      "SITE",#    "@SITE        ",
        13,      30,   "COUNTRY",#"COUNTRY          ",
@@ -445,7 +442,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family",{
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS Family",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS Family",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -455,7 +452,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family",{
 
 test_that("@  SLB ALFVG   MVG   NVG WCRES",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,    "ALFVG",#" ALFVG",
@@ -468,7 +465,7 @@ test_that("@  SLB ALFVG   MVG   NVG WCRES",{
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB ALFVG   MVG   NVG WCRES",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB ALFVG   MVG   NVG WCRES",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -478,7 +475,7 @@ test_that("@  SLB ALFVG   MVG   NVG WCRES",{
 
 test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY                           ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                  ~check,
         0,      13,      "SITE",#                         "@SITE        ",
        13,      30,   "COUNTRY",#                     "COUNTRY          ",
@@ -491,7 +488,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY                
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS FAMILY                           ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS FAMILY                           ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -501,7 +498,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY                
 
 test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                    ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SCOM",#"@ SCOM",
         6,   12,     "SALB",#"  SALB",
@@ -519,7 +516,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                    ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                    ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -529,7 +526,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
 test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC    ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,     "SLMH",#"  SLMH",
@@ -553,7 +550,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC    ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC    ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -563,7 +560,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
 test_that("@SITE        COUNTRY          LAT     LONG SCS Family                                                 ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                                        ~check,
         0,      13,      "SITE",#                                               "@SITE        ",
        13,      30,   "COUNTRY",#                                           "COUNTRY          ",
@@ -576,7 +573,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS Family                                                 ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS Family                                                 ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -586,7 +583,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
 
 test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                          ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SCOM",#"@ SCOM",
         6,   12,     "SALB",#"  SALB",
@@ -604,7 +601,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                          ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                          ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -614,7 +611,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
 test_that("@SITE        COUNTRY          LAT     LONG SCS Family                                                                                                                                                   ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                                                                                                                                          ~check,
         0,      13,      "SITE",#                                                                                                                                                 "@SITE        ",
        13,      30,   "COUNTRY",#                                                                                                                                             "COUNTRY          ",
@@ -627,7 +624,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS Family                                                                                                                                                   ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS Family                                                                                                                                                   ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -637,7 +634,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
 
 test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                                                                                                            ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SCOM",#"@ SCOM",
         6,   12,     "SALB",#"  SALB",
@@ -655,7 +652,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                                                                                                            ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                                                                                                            ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -665,7 +662,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
 test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                                                                                                  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,     "SLMH",#"  SLMH",
@@ -690,7 +687,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                                                                                                  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                                                                                                  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -700,7 +697,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
 test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#             ~check,
         0,      13,      "SITE",#    "@SITE        ",
        13,      30,   "COUNTRY",#"COUNTRY          ",
@@ -713,7 +710,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY ",{
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS FAMILY ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS FAMILY ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -723,7 +720,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY ",{
 
 test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SCOM",#"@ SCOM",
         6,   12,     "SALB",#"  SALB",
@@ -741,7 +738,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE ",{
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -751,7 +748,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE ",{
 
 test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,     "SLMH",#"  SLMH",
@@ -776,7 +773,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -786,7 +783,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
 test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SGRP",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SCOM",#"@ SCOM",
         6,   12,     "SALB",#"  SALB",
@@ -805,7 +802,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SGRP",{
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SGRP",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SGRP",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -815,7 +812,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SGRP",{
 
 test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC   SLCA ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    6,      "SLB",# "@  SLB",
         6,   12,     "SLPX",# "  SLPX",
@@ -840,7 +837,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC   SLCA ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC   SLCA ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -850,7 +847,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
 
 test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY    ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#             ~check,
         0,      13,      "SITE",#    "@SITE        ",
        13,      30,   "COUNTRY",#"COUNTRY          ",
@@ -863,7 +860,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY    ",{
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS FAMILY    ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS FAMILY    ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -873,7 +870,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY    ",{
 
 test_that("@ SCOM  SALB  SLUI  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SRGP",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SCOM",#"@ SCOM",
         6,   12,     "SALB",#"  SALB",
@@ -892,7 +889,7 @@ test_that("@ SCOM  SALB  SLUI  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SRGP",{
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@ SCOM  SALB  SLUI  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SRGP",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SCOM  SALB  SLUI  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SRGP",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -902,7 +899,7 @@ test_that("@ SCOM  SALB  SLUI  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SRGP",{
 
 test_that("@SITE        COUNTRY          LAT     LONG SCS Family                                                     ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                                            ~check,
         0,      13,      "SITE",#                                                   "@SITE        ",
        13,      30,   "COUNTRY",#                                               "COUNTRY          ",
@@ -915,7 +912,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS Family                                                     ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS Family                                                     ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -925,7 +922,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
 
 test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                              ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SCOM",#"@ SCOM",
         6,   12,     "SALB",#"  SALB",
@@ -943,7 +940,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                              ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                              ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -953,7 +950,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
 test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC    ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,     "SLMH",#"  SLMH",
@@ -978,7 +975,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC    ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC    ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -988,7 +985,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
 test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA    ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,     "SLPX",#"  SLPX",
@@ -1013,7 +1010,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA    ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA    ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1023,7 +1020,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
 
 test_that("@SITE        COUNTRY          LAT     LONG SCS Family                                                        ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                                               ~check,
         0,      13,      "SITE",#                                                      "@SITE        ",
        13,      30,   "COUNTRY",#                                                  "COUNTRY          ",
@@ -1036,7 +1033,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS Family                                                        ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS Family                                                        ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1046,7 +1043,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
 
 test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                 ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SCOM",#"@ SCOM",
         6,   12,     "SALB",#"  SALB",
@@ -1064,7 +1061,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                 ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                 ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1074,7 +1071,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
 test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC       ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,     "SLMH",#"  SLMH",
@@ -1099,7 +1096,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC       ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC       ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1109,7 +1106,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
 test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA       ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,     "SLPX",#"  SLPX",
@@ -1134,7 +1131,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA       ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA       ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1144,7 +1141,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
 
 test_that("@SITE        COUNTRY          LAT     LONG SCS Family                                                                 ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                                                        ~check,
         0,      13,      "SITE",#                                                               "@SITE        ",
        13,      30,   "COUNTRY",#                                                           "COUNTRY          ",
@@ -1157,7 +1154,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS Family                                                                 ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS Family                                                                 ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1167,7 +1164,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
 
 test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                          ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SCOM",#"@ SCOM",
         6,   12,     "SALB",#"  SALB",
@@ -1185,7 +1182,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                          ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                          ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1195,7 +1192,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
 test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,     "SLMH",#"  SLMH",
@@ -1220,7 +1217,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1230,7 +1227,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
 test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA                ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,     "SLPX",#"  SLPX",
@@ -1255,7 +1252,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA                ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA                ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1265,7 +1262,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
 
 test_that("@SITE        COUNTRY          LAT     LONG SCS Family                                                   ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                                          ~check,
         0,      13,      "SITE",#                                                 "@SITE        ",
        13,      30,   "COUNTRY",#                                             "COUNTRY          ",
@@ -1278,7 +1275,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS Family                                                   ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS Family                                                   ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1288,7 +1285,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
 
 test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                            ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SCOM",#"@ SCOM",
         6,   12,     "SALB",#"  SALB",
@@ -1306,7 +1303,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                            ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                            ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1316,7 +1313,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
 test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,     "SLMH",#"  SLMH",
@@ -1341,7 +1338,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1351,7 +1348,7 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
 
 test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,     "SLPX",#"  SLPX",
@@ -1376,7 +1373,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1386,7 +1383,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
 
 test_that("@SITE        COUNTRY          LAT     LONG SCS Family                                                  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                                         ~check,
         0,      13,      "SITE",#                                                "@SITE        ",
        13,      30,   "COUNTRY",#                                            "COUNTRY          ",
@@ -1399,7 +1396,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS Family                                                  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SITE        COUNTRY          LAT     LONG SCS Family                                                  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1409,7 +1406,7 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
 
 test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                           ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SCOM",#"@ SCOM",
         6,   12,     "SALB",#"  SALB",
@@ -1427,7 +1424,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                           ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                           ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1437,7 +1434,7 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
 
 test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,      "SLB",#"@  SLB",
         6,   12,     "SLPX",#"  SLPX",
@@ -1462,7 +1459,7 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
 
   left_just <-   c("SITE", "COUNTRY", " SCS FAMILY", " SCS Family")
 
-  check_fwf_pos <- header_to_fwf_position("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA ",
                                           col_names = col_names,
                                           left_justified = left_just)
 

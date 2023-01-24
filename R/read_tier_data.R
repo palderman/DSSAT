@@ -31,9 +31,9 @@
 #'
 #' read_tier_data(sample_data_tier)
 
-read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NULL,
-                           left_justified='EXCODE',guess_max=1000,join_tiers=TRUE,
-                           store_v_fmt=TRUE, read_only = NULL){
+read_tier_data <- function(raw_lines, col_types=NULL, col_names=NULL, na_strings=NULL,
+                           left_justified='EXCODE', guess_max=1000, join_tiers=TRUE,
+                           store_v_fmt=TRUE, read_only = NULL, tier_fmt = NULL){
 
   raw_lines <- sanitize_raw_lines(raw_lines)
 
@@ -55,9 +55,15 @@ read_tier_data <- function(raw_lines,col_types=NULL,col_names=NULL,na_strings=NU
     {.$cols <- c(.$cols,col_types$cols)
    .}
 
-  # Process header into fixed-width format positions
-  fwf_pos <- map(headline,
-                 ~header_to_fwf_position(.,left_justified,col_types,col_names,read_only))
+  if(is.null(tier_fmt)){
+    # Process header into fixed-width format positions
+    fwf_pos <- map(headline,
+                   ~header_to_fwf_position(.,left_justified, col_types, col_names, read_only))
+  }else{
+    # Add code here to convert tier_fmt into fwf_pos
+    tier_fmt_regex <- names(tier_fmt) %>%
+      str_c("(^| )", . , "( |$)")
+  }
 
   # Calculate end of each section based on beginning of next section
   end <- c(skip[-1]-1,length(raw_lines))

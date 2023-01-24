@@ -1,9 +1,6 @@
-library(DSSAT)
-library(tibble)
-
 test_that("@PGERM PEMRG    P0    P6  ! Germination,emrgence/cm,juvenile,post-maturity",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "PGERM",#"@PGERM",
         6,   12,    "PEMRG",#" PEMRG",
@@ -15,7 +12,7 @@ test_that("@PGERM PEMRG    P0    P6  ! Germination,emrgence/cm,juvenile,post-mat
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@PGERM PEMRG    P0    P6  ! Germination,emrgence/cm,juvenile,post-maturity",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@PGERM PEMRG    P0    P6  ! Germination,emrgence/cm,juvenile,post-maturity",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -25,7 +22,7 @@ test_that("@PGERM PEMRG    P0    P6  ! Germination,emrgence/cm,juvenile,post-mat
 
 test_that("@PPFPE PPTHR PPEND  ! Photoperiod factor pre-emerge,threshold,end sensitivity",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "PPFPE",#"@PPFPE",
         6,   12,    "PPTHR",#" PPTHR",
@@ -36,7 +33,7 @@ test_that("@PPFPE PPTHR PPEND  ! Photoperiod factor pre-emerge,threshold,end sen
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@PPFPE PPTHR PPEND  ! Photoperiod factor pre-emerge,threshold,end sensitivity",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@PPFPE PPTHR PPEND  ! Photoperiod factor pre-emerge,threshold,end sensitivity",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -46,7 +43,7 @@ test_that("@PPFPE PPTHR PPEND  ! Photoperiod factor pre-emerge,threshold,end sen
 
 test_that("@RLIG%  RLWR  RSEN RRESP RLDGR !Lignin%,length/wt,senescence,resp.",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "RLIG%",#"@RLIG%",
         6,   12,     "RLWR",#"  RLWR",
@@ -59,7 +56,7 @@ test_that("@RLIG%  RLWR  RSEN RRESP RLDGR !Lignin%,length/wt,senescence,resp.",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@RLIG%  RLWR  RSEN RRESP RLDGR !Lignin%,length/wt,senescence,resp.",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@RLIG%  RLWR  RSEN RRESP RLDGR !Lignin%,length/wt,senescence,resp.",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -69,7 +66,7 @@ test_that("@RLIG%  RLWR  RSEN RRESP RLDGR !Lignin%,length/wt,senescence,resp.",{
 
 test_that("@LLIG%  LAXS LSHFR LSHAW  PHL1  PHF1 SLAMN SLACF",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "LLIG%",#"@LLIG%",
         6,   12,     "LAXS",#"  LAXS",
@@ -85,7 +82,7 @@ test_that("@LLIG%  LAXS LSHFR LSHAW  PHL1  PHF1 SLAMN SLACF",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@LLIG%  LAXS LSHFR LSHAW  PHL1  PHF1 SLAMN SLACF",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@LLIG%  LAXS LSHFR LSHAW  PHL1  PHF1 SLAMN SLACF",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -95,7 +92,7 @@ test_that("@LLIG%  LAXS LSHFR LSHAW  PHL1  PHF1 SLAMN SLACF",{
 
 test_that("@LLIFE LWLOS LRPHS                  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "LLIFE",#"@LLIFE",
         6,   12,    "LWLOS",#" LWLOS",
@@ -106,7 +103,7 @@ test_that("@LLIFE LWLOS LRPHS                  ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@LLIFE LWLOS LRPHS                  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@LLIFE LWLOS LRPHS                  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -116,7 +113,7 @@ test_that("@LLIFE LWLOS LRPHS                  ",{
 
 test_that("@ LASF",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "LASF" #"@ LASF"
   )
@@ -125,7 +122,7 @@ test_that("@ LASF",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ LASF",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ LASF",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -135,7 +132,7 @@ test_that("@ LASF",{
 
 test_that("@ CHT%  CLA%",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "CHT%",#"@ CHT%",
         6,   12,     "CLA%" #"  CLA%"
@@ -145,7 +142,7 @@ test_that("@ CHT%  CLA%",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ CHT%  CLA%",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ CHT%  CLA%",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -155,7 +152,7 @@ test_that("@ CHT%  CLA%",{
 
 test_that("@ TPAR TSRAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TPAR",#"@ TPAR",
         6,   12,    "TSRAD" #" TSRAD"
@@ -165,7 +162,7 @@ test_that("@ TPAR TSRAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ TPAR TSRAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ TPAR TSRAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -175,7 +172,7 @@ test_that("@ TPAR TSRAD",{
 
 test_that("@TGR02   ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "TGR02" #"@TGR02"
   )
@@ -184,7 +181,7 @@ test_that("@TGR02   ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TGR02   ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TGR02   ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -194,7 +191,7 @@ test_that("@TGR02   ",{
 
 test_that("@ RS%X ! Max concentration",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "RS%X" #"@ RS%X"
   )
@@ -203,7 +200,7 @@ test_that("@ RS%X ! Max concentration",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ RS%X ! Max concentration",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ RS%X ! Max concentration",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -213,7 +210,7 @@ test_that("@ RS%X ! Max concentration",{
 
 test_that("@SLIG%  SAWS SGPHE SSPHS SSEN%",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "SLIG%",#"@SLIG%",
         6,   12,     "SAWS",#"  SAWS",
@@ -226,7 +223,7 @@ test_that("@SLIG%  SAWS SGPHE SSPHS SSEN%",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@SLIG%  SAWS SGPHE SSPHS SSEN%",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SLIG%  SAWS SGPHE SSPHS SSEN%",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -236,7 +233,7 @@ test_that("@SLIG%  SAWS SGPHE SSPHS SSEN%",{
 
 test_that("@ CHFR CHSTG",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "CHFR",#"@ CHFR",
         6,   12,    "CHSTG" #" CHSTG"
@@ -246,7 +243,7 @@ test_that("@ CHFR CHSTG",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ CHFR CHSTG",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ CHFR CHSTG",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -256,7 +253,7 @@ test_that("@ CHFR CHSTG",{
 
 test_that("@GLIG%",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "GLIG%" #"@GLIG%"
   )
@@ -265,7 +262,7 @@ test_that("@GLIG%",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@GLIG%",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@GLIG%",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -275,7 +272,7 @@ test_that("@GLIG%",{
 
 test_that("@ SDWT SDAFR",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SDWT",#"@ SDWT",
         6,   12,    "SDAFR" #" SDAFR"
@@ -285,7 +282,7 @@ test_that("@ SDWT SDAFR",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ SDWT SDAFR",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SDWT SDAFR",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -295,7 +292,7 @@ test_that("@ SDWT SDAFR",{
 
 test_that("@CO2RF  CO2F",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "CO2RF",#"@CO2RF",
         6,   12,     "CO2F" #"  CO2F"
@@ -305,7 +302,7 @@ test_that("@CO2RF  CO2F",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@CO2RF  CO2F",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@CO2RF  CO2F",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -315,7 +312,7 @@ test_that("@CO2RF  CO2F",{
 
 test_that("@PTFMX",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "PTFMX" #"@PTFMX"
   )
@@ -324,7 +321,7 @@ test_that("@PTFMX",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@PTFMX",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@PTFMX",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -334,7 +331,7 @@ test_that("@PTFMX",{
 
 test_that("@ PTFS  PTFA  STFR",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "PTFS",#"@ PTFS",
         6,   12,     "PTFA",#"  PTFA",
@@ -345,7 +342,7 @@ test_that("@ PTFS  PTFA  STFR",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ PTFS  PTFA  STFR",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ PTFS  PTFA  STFR",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -355,7 +352,7 @@ test_that("@ PTFS  PTFA  STFR",{
 
 test_that("@ TKUH  HDUR  TKLF",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TKUH",#"@ TKUH",
         6,   12,     "HDUR",#"  HDUR",
@@ -366,7 +363,7 @@ test_that("@ TKUH  HDUR  TKLF",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ TKUH  HDUR  TKLF",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ TKUH  HDUR  TKLF",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -376,7 +373,7 @@ test_that("@ TKUH  HDUR  TKLF",{
 
 test_that("@TRGEM TRDV1 TRDV2 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN    ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "TRGEM",#"@TRGEM",
         6,   12,    "TRDV1",#" TRDV1",
@@ -393,7 +390,7 @@ test_that("@TRGEM TRDV1 TRDV2 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN    ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRGEM TRDV1 TRDV2 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN    ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRGEM TRDV1 TRDV2 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN    ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -403,7 +400,7 @@ test_that("@TRGEM TRDV1 TRDV2 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN    ",{
 
 test_that("@EORATIO",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#    ~check,
         0,    8,  "EORATIO" #"@EORATIO"
   )
@@ -412,7 +409,7 @@ test_that("@EORATIO",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@EORATIO",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@EORATIO",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -422,7 +419,7 @@ test_that("@EORATIO",{
 
 test_that("@RWUPM RWUMX",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "RWUPM",#"@RWUPM",
         6,   12,    "RWUMX" #" RWUMX"
@@ -432,7 +429,7 @@ test_that("@RWUPM RWUMX",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@RWUPM RWUMX",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@RWUPM RWUMX",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -442,7 +439,7 @@ test_that("@RWUPM RWUMX",{
 
 test_that("@ WFPU WFPGF  WFGU  WFTU  WFTL  WFSU",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "WFPU",#"@ WFPU",
         6,   12,    "WFPGF",#" WFPGF",
@@ -456,7 +453,7 @@ test_that("@ WFPU WFPGF  WFGU  WFTU  WFTL  WFSU",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ WFPU WFPGF  WFGU  WFTU  WFTL  WFSU",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ WFPU WFPGF  WFGU  WFTU  WFTL  WFSU",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -466,7 +463,7 @@ test_that("@ WFPU WFPGF  WFGU  WFTU  WFTL  WFSU",{
 
 test_that("@WFGEU WFRGU",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "WFGEU",#"@WFGEU",
         6,   12,    "WFRGU" #" WFRGU"
@@ -476,7 +473,7 @@ test_that("@WFGEU WFRGU",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@WFGEU WFRGU",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@WFGEU WFRGU",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -486,7 +483,7 @@ test_that("@WFGEU WFRGU",{
 
 test_that("@LLOSW ! Fr/d",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "LLOSW" #"@LLOSW"
   )
@@ -495,7 +492,7 @@ test_that("@LLOSW ! Fr/d",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@LLOSW ! Fr/d",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@LLOSW ! Fr/d",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -505,7 +502,7 @@ test_that("@LLOSW ! Fr/d",{
 
 test_that("@NH4MN NO3MN RTNO3 RTNH4",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "NH4MN",#"@NH4MN",
         6,   12,    "NO3MN",#" NO3MN",
@@ -517,7 +514,7 @@ test_that("@NH4MN NO3MN RTNO3 RTNH4",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@NH4MN NO3MN RTNO3 RTNH4",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@NH4MN NO3MN RTNO3 RTNH4",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -527,7 +524,7 @@ test_that("@NH4MN NO3MN RTNO3 RTNH4",{
 
 test_that("@ NTUPF  ! Fraction of deficit that can be filled per day",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    7,    "NTUPF" #"@ NTUPF"
   )
@@ -536,7 +533,7 @@ test_that("@ NTUPF  ! Fraction of deficit that can be filled per day",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ NTUPF  ! Fraction of deficit that can be filled per day",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ NTUPF  ! Fraction of deficit that can be filled per day",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -546,7 +543,7 @@ test_that("@ NTUPF  ! Fraction of deficit that can be filled per day",{
 
 test_that("@GN%MX  SDN% ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "GN%MX",#"@GN%MX",
         6,   12,     "SDN%" #"  SDN%"
@@ -556,7 +553,7 @@ test_that("@GN%MX  SDN% ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@GN%MX  SDN% ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@GN%MX  SDN% ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -566,7 +563,7 @@ test_that("@GN%MX  SDN% ",{
 
 test_that("@ LN%S  SN%S  RN%S LN%MN SN%MN RN%MN",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "LN%S",#"@ LN%S",
         6,   12,     "SN%S",#"  SN%S",
@@ -580,7 +577,7 @@ test_that("@ LN%S  SN%S  RN%S LN%MN SN%MN RN%MN",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ LN%S  SN%S  RN%S LN%MN SN%MN RN%MN",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ LN%S  SN%S  RN%S LN%MN SN%MN RN%MN",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -590,7 +587,7 @@ test_that("@ LN%S  SN%S  RN%S LN%MN SN%MN RN%MN",{
 
 test_that("@NLAB%",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "NLAB%" #"@NLAB%"
   )
@@ -599,7 +596,7 @@ test_that("@NLAB%",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@NLAB%",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@NLAB%",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -609,7 +606,7 @@ test_that("@NLAB%",{
 
 test_that("@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,tillering,senecence",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "NFPU",#"@ NFPU",
         6,   12,     "NFPL",#"  NFPL",
@@ -625,7 +622,7 @@ test_that("@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,tillering,sene
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,tillering,senecence",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,tillering,senecence",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -635,7 +632,7 @@ test_that("@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,tillering,sene
 
 test_that("@ NCRG",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "NCRG" #"@ NCRG"
   )
@@ -644,7 +641,7 @@ test_that("@ NCRG",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ NCRG",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ NCRG",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -654,7 +651,7 @@ test_that("@ NCRG",{
 
 test_that("@LLOSN ! Fr/d",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "LLOSN" #"@LLOSN"
   )
@@ -663,7 +660,7 @@ test_that("@LLOSN ! Fr/d",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@LLOSN ! Fr/d",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@LLOSN ! Fr/d",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -673,7 +670,7 @@ test_that("@LLOSN ! Fr/d",{
 
 test_that("@ PSNO PSTYP PSABV PSNAME",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    6,     "PSNO",# "@ PSNO",
         6,   12,    "PSTYP",# " PSTYP",
@@ -685,7 +682,7 @@ test_that("@ PSNO PSTYP PSABV PSNAME",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ PSNO PSTYP PSABV PSNAME",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ PSNO PSTYP PSABV PSNAME",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -695,7 +692,7 @@ test_that("@ PSNO PSTYP PSABV PSNAME",{
 
 test_that("@ SSNO SSTYP  SSTG SSABV SSNAME",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    6,     "SSNO",# "@ SSNO",
         6,   12,    "SSTYP",# " SSTYP",
@@ -708,7 +705,7 @@ test_that("@ SSNO SSTYP  SSTG SSABV SSNAME",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ SSNO SSTYP  SSTG SSABV SSNAME",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SSNO SSTYP  SSTG SSABV SSNAME",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -718,7 +715,7 @@ test_that("@ SSNO SSTYP  SSTG SSABV SSNAME",{
 
 test_that("@PGERM PEMRG    P0    P9 ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "PGERM",#"@PGERM",
         6,   12,    "PEMRG",#" PEMRG",
@@ -730,7 +727,7 @@ test_that("@PGERM PEMRG    P0    P9 ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@PGERM PEMRG    P0    P9 ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@PGERM PEMRG    P0    P9 ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -740,7 +737,7 @@ test_that("@PGERM PEMRG    P0    P9 ",{
 
 test_that("@PPFPE PPTHR PPSEN PPEXP VPEND VEEND VLOSS VLOST VLOSF ! Photoperiod,vern",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "PPFPE",#"@PPFPE",
         6,   12,    "PPTHR",#" PPTHR",
@@ -757,7 +754,7 @@ test_that("@PPFPE PPTHR PPSEN PPEXP VPEND VEEND VLOSS VLOST VLOSF ! Photoperiod,
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@PPFPE PPTHR PPSEN PPEXP VPEND VEEND VLOSS VLOST VLOSF ! Photoperiod,vern",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@PPFPE PPTHR PPSEN PPEXP VPEND VEEND VLOSS VLOST VLOSF ! Photoperiod,vern",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -767,7 +764,7 @@ test_that("@PPFPE PPTHR PPSEN PPEXP VPEND VEEND VLOSS VLOST VLOSF ! Photoperiod,
 
 test_that("@RLIG%  RLWR  RSEN RRESP RDGAF ! Lignin%,length/wt;sen,resp;depth gr adj fac",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "RLIG%",#"@RLIG%",
         6,   12,     "RLWR",#"  RLWR",
@@ -780,7 +777,7 @@ test_that("@RLIG%  RLWR  RSEN RRESP RDGAF ! Lignin%,length/wt;sen,resp;depth gr 
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@RLIG%  RLWR  RSEN RRESP RDGAF ! Lignin%,length/wt;sen,resp;depth gr adj fac",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@RLIG%  RLWR  RSEN RRESP RDGAF ! Lignin%,length/wt;sen,resp;depth gr adj fac",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -790,7 +787,7 @@ test_that("@RLIG%  RLWR  RSEN RRESP RDGAF ! Lignin%,length/wt;sen,resp;depth gr 
 
 test_that("@RTUFR ! Fraction useable to re-establish tops after winter-kill, etc..",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "RTUFR" #"@RTUFR"
   )
@@ -799,7 +796,7 @@ test_that("@RTUFR ! Fraction useable to re-establish tops after winter-kill, etc
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@RTUFR ! Fraction useable to re-establish tops after winter-kill, etc..",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@RTUFR ! Fraction useable to re-establish tops after winter-kill, etc..",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -809,7 +806,7 @@ test_that("@RTUFR ! Fraction useable to re-establish tops after winter-kill, etc
 
 test_that("@LLIG%  LAXS SLACF SLAFF LSHFR LSHAV LSHAR  PHL1  PHF1",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "LLIG%",#"@LLIG%",
         6,   12,     "LAXS",#"  LAXS",
@@ -826,7 +823,7 @@ test_that("@LLIG%  LAXS SLACF SLAFF LSHFR LSHAV LSHAR  PHL1  PHF1",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@LLIG%  LAXS SLACF SLAFF LSHFR LSHAV LSHAR  PHL1  PHF1",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@LLIG%  LAXS SLACF SLAFF LSHFR LSHAV LSHAR  PHL1  PHF1",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -836,7 +833,7 @@ test_that("@LLIG%  LAXS SLACF SLAFF LSHFR LSHAV LSHAR  PHL1  PHF1",{
 
 test_that("@LLIFA LLIFG LLIFS LWLOS",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "LLIFA",#"@LLIFA",
         6,   12,    "LLIFG",#" LLIFG",
@@ -848,7 +845,7 @@ test_that("@LLIFA LLIFG LLIFS LWLOS",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@LLIFA LLIFG LLIFS LWLOS",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@LLIFA LLIFG LLIFS LWLOS",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -858,7 +855,7 @@ test_that("@LLIFA LLIFG LLIFS LWLOS",{
 
 test_that("@LAIXX ! LAI maximum    ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "LAIXX" #"@LAIXX"
   )
@@ -867,7 +864,7 @@ test_that("@LAIXX ! LAI maximum    ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@LAIXX ! LAI maximum    ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@LAIXX ! LAI maximum    ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -877,7 +874,7 @@ test_that("@LAIXX ! LAI maximum    ",{
 
 test_that("@ CHT%  CLA% ! Height%, cumulative leaf area %",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "CHT%",#"@ CHT%",
         6,   12,     "CLA%" #"  CLA%"
@@ -887,7 +884,7 @@ test_that("@ CHT%  CLA% ! Height%, cumulative leaf area %",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ CHT%  CLA% ! Height%, cumulative leaf area %",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ CHT%  CLA% ! Height%, cumulative leaf area %",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -897,7 +894,7 @@ test_that("@ CHT%  CLA% ! Height%, cumulative leaf area %",{
 
 test_that("@ TPAR TSRAD ! Leaf transmission PAR,solar                                     ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TPAR",#"@ TPAR",
         6,   12,    "TSRAD" #" TSRAD"
@@ -907,7 +904,7 @@ test_that("@ TPAR TSRAD ! Leaf transmission PAR,solar                           
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ TPAR TSRAD ! Leaf transmission PAR,solar                                     ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ TPAR TSRAD ! Leaf transmission PAR,solar                                     ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -917,7 +914,7 @@ test_that("@ TPAR TSRAD ! Leaf transmission PAR,solar                           
 
 test_that("@TGR02 TGR20 TILIP TIL#X ! Size,phase,maximum",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "TGR02",#"@TGR02",
         6,   12,    "TGR20",#" TGR20",
@@ -929,7 +926,7 @@ test_that("@TGR02 TGR20 TILIP TIL#X ! Size,phase,maximum",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TGR02 TGR20 TILIP TIL#X ! Size,phase,maximum",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TGR02 TGR20 TILIP TIL#X ! Size,phase,maximum",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -939,7 +936,7 @@ test_that("@TGR02 TGR20 TILIP TIL#X ! Size,phase,maximum",{
 
 test_that("@ RS%X RS%LX RSUSE ! Max concentrations,fraction utilizeable/day",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "RS%X",#"@ RS%X",
         6,   12,    "RS%LX",#" RS%LX",
@@ -950,7 +947,7 @@ test_that("@ RS%X RS%LX RSUSE ! Max concentrations,fraction utilizeable/day",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ RS%X RS%LX RSUSE ! Max concentrations,fraction utilizeable/day",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ RS%X RS%LX RSUSE ! Max concentrations,fraction utilizeable/day",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -960,7 +957,7 @@ test_that("@ RS%X RS%LX RSUSE ! Max concentrations,fraction utilizeable/day",{
 
 test_that("@SLIG%  SAWS ! Lignin,area/weight",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "SLIG%",#"@SLIG%",
         6,   12,     "SAWS" #"  SAWS"
@@ -970,7 +967,7 @@ test_that("@SLIG%  SAWS ! Lignin,area/weight",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@SLIG%  SAWS ! Lignin,area/weight",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SLIG%  SAWS ! Lignin,area/weight",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -980,7 +977,7 @@ test_that("@SLIG%  SAWS ! Lignin,area/weight",{
 
 test_that("@ CHFR ! Fraction of stem growth",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "CHFR" #"@ CHFR"
   )
@@ -989,7 +986,7 @@ test_that("@ CHFR ! Fraction of stem growth",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ CHFR ! Fraction of stem growth",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ CHFR ! Fraction of stem growth",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -999,7 +996,7 @@ test_that("@ CHFR ! Fraction of stem growth",{
 
 test_that("@GLIG% GWLAG GWLIN ! Lignin;wt.endlag,endlinear",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "GLIG%",#"@GLIG%",
         6,   12,    "GWLAG",#" GWLAG",
@@ -1010,7 +1007,7 @@ test_that("@GLIG% GWLAG GWLIN ! Lignin;wt.endlag,endlinear",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@GLIG% GWLAG GWLIN ! Lignin;wt.endlag,endlinear",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@GLIG% GWLAG GWLIN ! Lignin;wt.endlag,endlinear",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1020,7 +1017,7 @@ test_that("@GLIG% GWLAG GWLIN ! Lignin;wt.endlag,endlinear",{
 
 test_that("@ SDWT SDDUR SDRS% ! Weight,duration,reserves (% whole seed)",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SDWT",#"@ SDWT",
         6,   12,    "SDDUR",#" SDDUR",
@@ -1031,7 +1028,7 @@ test_that("@ SDWT SDDUR SDRS% ! Weight,duration,reserves (% whole seed)",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ SDWT SDDUR SDRS% ! Weight,duration,reserves (% whole seed)",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SDWT SDDUR SDRS% ! Weight,duration,reserves (% whole seed)",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1041,7 +1038,7 @@ test_that("@ SDWT SDDUR SDRS% ! Weight,duration,reserves (% whole seed)",{
 
 test_that("@PARFC CO2CC CO2EX ! CO2 response (only for comparison)",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "PARFC",#"@PARFC",
         6,   12,    "CO2CC",#" CO2CC",
@@ -1052,7 +1049,7 @@ test_that("@PARFC CO2CC CO2EX ! CO2 response (only for comparison)",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@PARFC CO2CC CO2EX ! CO2 response (only for comparison)",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@PARFC CO2CC CO2EX ! CO2 response (only for comparison)",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1062,7 +1059,7 @@ test_that("@PARFC CO2CC CO2EX ! CO2 response (only for comparison)",{
 
 test_that("@RSFPU RSFPL ! Reserves effect thresholds (as set->no reserves effect)",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "RSFPU",#"@RSFPU",
         6,   12,    "RSFPL" #" RSFPL"
@@ -1072,7 +1069,7 @@ test_that("@RSFPU RSFPL ! Reserves effect thresholds (as set->no reserves effect
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@RSFPU RSFPL ! Reserves effect thresholds (as set->no reserves effect)",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@RSFPU RSFPL ! Reserves effect thresholds (as set->no reserves effect)",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1082,7 +1079,7 @@ test_that("@RSFPU RSFPL ! Reserves effect thresholds (as set->no reserves effect
 
 test_that("@PTFMN PTFMX  PTFXS  PTFA ! Partition to tops (max,min,max.adjustment)",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    6,    "PTFMN",# "@PTFMN",
         6,   12,    "PTFMX",# " PTFMX",
@@ -1094,7 +1091,7 @@ test_that("@PTFMN PTFMX  PTFXS  PTFA ! Partition to tops (max,min,max.adjustment
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@PTFMN PTFMX  PTFXS  PTFA ! Partition to tops (max,min,max.adjustment)",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@PTFMN PTFMX  PTFXS  PTFA ! Partition to tops (max,min,max.adjustment)",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1104,7 +1101,7 @@ test_that("@PTFMN PTFMX  PTFXS  PTFA ! Partition to tops (max,min,max.adjustment
 
 test_that("@ TKUH TKDTI TKDLF TKSPN  HDUR HLOST HLOSF ! Kill temps,span,time->harden,loss",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TKUH",#"@ TKUH",
         6,   12,    "TKDTI",#" TKDTI",
@@ -1119,7 +1116,7 @@ test_that("@ TKUH TKDTI TKDLF TKSPN  HDUR HLOST HLOSF ! Kill temps,span,time->ha
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ TKUH TKDTI TKDLF TKSPN  HDUR HLOST HLOSF ! Kill temps,span,time->harden,loss",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ TKUH TKDTI TKDLF TKSPN  HDUR HLOST HLOSF ! Kill temps,span,time->harden,loss",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1129,7 +1126,7 @@ test_that("@ TKUH TKDTI TKDLF TKSPN  HDUR HLOST HLOSF ! Kill temps,span,time->ha
 
 test_that("@ TKGF",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TKGF" #"@ TKGF"
   )
@@ -1138,7 +1135,7 @@ test_that("@ TKGF",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ TKGF",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ TKGF",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1148,7 +1145,7 @@ test_that("@ TKGF",{
 
 test_that("@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR TRGFW xRGFW TRGFN xRGFN  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "RRATE",#"@RRATE",
         6,   12,    "TRGEM",#" TRGEM",
@@ -1170,7 +1167,7 @@ test_that("@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR TRGFW xR
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR TRGFW xRGFW TRGFN xRGFN  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR TRGFW xRGFW TRGFN xRGFN  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1180,7 +1177,7 @@ test_that("@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR TRGFW xR
 
 test_that("@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR XRGFW TRGFN  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "RRATE",#"@RRATE",
         6,   12,    "TRGEM",#" TRGEM",
@@ -1200,7 +1197,7 @@ test_that("@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR XRGFW TR
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR XRGFW TRGFN  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR XRGFW TRGFN  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1210,7 +1207,7 @@ test_that("@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR XRGFW TR
 
 test_that("@ RATM RCROP EORATIO ! Atmospheric,canopy resistances;FAO formula factor",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#    ~check,
         0,    6,     "RATM",#  "@ RATM",
         6,   12,    "RCROP",#  " RCROP",
@@ -1221,7 +1218,7 @@ test_that("@ RATM RCROP EORATIO ! Atmospheric,canopy resistances;FAO formula fac
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ RATM RCROP EORATIO ! Atmospheric,canopy resistances;FAO formula factor",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ RATM RCROP EORATIO ! Atmospheric,canopy resistances;FAO formula factor",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1231,7 +1228,7 @@ test_that("@ RATM RCROP EORATIO ! Atmospheric,canopy resistances;FAO formula fac
 
 test_that("@RWUPM RWUMX ! Min.pore size for max.uptake,Max uptake rate",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "RWUPM",#"@RWUPM",
         6,   12,    "RWUMX" #" RWUMX"
@@ -1241,7 +1238,7 @@ test_that("@RWUPM RWUMX ! Min.pore size for max.uptake,Max uptake rate",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@RWUPM RWUMX ! Min.pore size for max.uptake,Max uptake rate",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@RWUPM RWUMX ! Min.pore size for max.uptake,Max uptake rate",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1251,7 +1248,7 @@ test_that("@RWUPM RWUMX ! Min.pore size for max.uptake,Max uptake rate",{
 
 test_that("@ WFPU  WFPL  WFGU  WFGL  WFTU  WFTL  WFSU  WFSF  WFEU !Gr,phs,till,sen,evap",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "WFPU",#"@ WFPU",
         6,   12,     "WFPL",#"  WFPL",
@@ -1268,7 +1265,7 @@ test_that("@ WFPU  WFPL  WFGU  WFGL  WFTU  WFTL  WFSU  WFSF  WFEU !Gr,phs,till,s
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ WFPU  WFPL  WFGU  WFGL  WFTU  WFTL  WFSU  WFSF  WFEU !Gr,phs,till,sen,evap",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ WFPU  WFPL  WFGU  WFGL  WFTU  WFTL  WFSU  WFSF  WFEU !Gr,phs,till,sen,evap",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1278,7 +1275,7 @@ test_that("@ WFPU  WFPL  WFGU  WFGL  WFTU  WFTL  WFSU  WFSF  WFEU !Gr,phs,till,s
 
 test_that("@LLOSA",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "LLOSA" #"@LLOSA"
   )
@@ -1287,7 +1284,7 @@ test_that("@LLOSA",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@LLOSA",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@LLOSA",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1297,7 +1294,7 @@ test_that("@LLOSA",{
 
 test_that("@WFGEU WFRGU  ! Germination/emergence,root growth",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "WFGEU",#"@WFGEU",
         6,   12,    "WFRGU" #" WFRGU"
@@ -1307,7 +1304,7 @@ test_that("@WFGEU WFRGU  ! Germination/emergence,root growth",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@WFGEU WFRGU  ! Germination/emergence,root growth",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@WFGEU WFRGU  ! Germination/emergence,root growth",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1317,7 +1314,7 @@ test_that("@WFGEU WFRGU  ! Germination/emergence,root growth",{
 
 test_that("@NH4MN NO3MN",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "NH4MN",#"@NH4MN",
         6,   12,    "NO3MN" #" NO3MN"
@@ -1327,7 +1324,7 @@ test_that("@NH4MN NO3MN",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@NH4MN NO3MN",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@NH4MN NO3MN",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1337,7 +1334,7 @@ test_that("@NH4MN NO3MN",{
 
 test_that("@NTUPF  ! Fraction of deficit that can be filled per day",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "NTUPF" #"@NTUPF"
   )
@@ -1346,7 +1343,7 @@ test_that("@NTUPF  ! Fraction of deficit that can be filled per day",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@NTUPF  ! Fraction of deficit that can be filled per day",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@NTUPF  ! Fraction of deficit that can be filled per day",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1356,7 +1353,7 @@ test_that("@NTUPF  ! Fraction of deficit that can be filled per day",{
 
 test_that("@GN%MX  SDN% ! Grain,seed             ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "GN%MX",#"@GN%MX",
         6,   12,     "SDN%" #"  SDN%"
@@ -1366,7 +1363,7 @@ test_that("@GN%MX  SDN% ! Grain,seed             ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@GN%MX  SDN% ! Grain,seed             ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@GN%MX  SDN% ! Grain,seed             ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1376,7 +1373,7 @@ test_that("@GN%MX  SDN% ! Grain,seed             ",{
 
 test_that("@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN ! Standard,minima N% for lves,stems,rts  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "LN%S",#"@ LN%S",
         6,   12,    "LN%MN",#" LN%MN",
@@ -1390,7 +1387,7 @@ test_that("@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN ! Standard,minima N% for lves,st
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN ! Standard,minima N% for lves,stems,rts  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN ! Standard,minima N% for lves,stems,rts  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1400,7 +1397,7 @@ test_that("@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN ! Standard,minima N% for lves,st
 
 test_that("@NLAB% ! %N that labile ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "NLAB%" #"@NLAB%"
   )
@@ -1409,7 +1406,7 @@ test_that("@NLAB% ! %N that labile ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@NLAB% ! %N that labile ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@NLAB% ! %N that labile ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1419,7 +1416,7 @@ test_that("@NLAB% ! %N that labile ",{
 
 test_that("@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,gr,tillering,senesnce",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "NFPU",#"@ NFPU",
         6,   12,     "NFPL",#"  NFPL",
@@ -1435,7 +1432,7 @@ test_that("@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,gr,tillering,s
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,gr,tillering,senesnce",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,gr,tillering,senesnce",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1445,7 +1442,7 @@ test_that("@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,gr,tillering,s
 
 test_that("@ NCRG  ! Root growth ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "NCRG" #"@ NCRG"
   )
@@ -1454,7 +1451,7 @@ test_that("@ NCRG  ! Root growth ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ NCRG  ! Root growth ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ NCRG  ! Root growth ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1464,7 +1461,7 @@ test_that("@ NCRG  ! Root growth ",{
 
 test_that("@ DI_NAME    DI_ABV",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#      ~check,
         0,    9,  "DI_NAME",# "@ DI_NAME",
         9,   19,   "DI_ABV" #"    DI_ABV"
@@ -1474,7 +1471,7 @@ test_that("@ DI_NAME    DI_ABV",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ DI_NAME    DI_ABV",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ DI_NAME    DI_ABV",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1484,7 +1481,7 @@ test_that("@ DI_NAME    DI_ABV",{
 
 test_that("@ DAPX DLDUR DSDUR DDEWN DINMX DITYP TBASE TOPT1 TOPT2  TTOP TKILL DINCO DIFFR",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "DAPX",#"@ DAPX",
         6,   12,    "DLDUR",#" DLDUR",
@@ -1505,7 +1502,7 @@ test_that("@ DAPX DLDUR DSDUR DDEWN DINMX DITYP TBASE TOPT1 TOPT2  TTOP TKILL DI
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ DAPX DLDUR DSDUR DDEWN DINMX DITYP TBASE TOPT1 TOPT2  TTOP TKILL DINCO DIFFR",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ DAPX DLDUR DSDUR DDEWN DINMX DITYP TBASE TOPT1 TOPT2  TTOP TKILL DINCO DIFFR",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1515,7 +1512,7 @@ test_that("@ DAPX DLDUR DSDUR DDEWN DINMX DITYP TBASE TOPT1 TOPT2  TTOP TKILL DI
 
 test_that("@HPROD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "HPROD" #"@HPROD"
   )
@@ -1524,7 +1521,7 @@ test_that("@HPROD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@HPROD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@HPROD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1534,7 +1531,7 @@ test_that("@HPROD",{
 
 test_that("@PGERM PEMRG  ! Germination,gr thru soil(/cm)                             ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "PGERM",#"@PGERM",
         6,   12,    "PEMRG" #" PEMRG"
@@ -1544,7 +1541,7 @@ test_that("@PGERM PEMRG  ! Germination,gr thru soil(/cm)                        
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@PGERM PEMRG  ! Germination,gr thru soil(/cm)                             ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@PGERM PEMRG  ! Germination,gr thru soil(/cm)                             ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1554,7 +1551,7 @@ test_that("@PGERM PEMRG  ! Germination,gr thru soil(/cm)                        
 
 test_that("@PPFPE PPTHR PPSEN ! Photoperiod threshold,sensitivity type  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "PPFPE",#"@PPFPE",
         6,   12,    "PPTHR",#" PPTHR",
@@ -1565,7 +1562,7 @@ test_that("@PPFPE PPTHR PPSEN ! Photoperiod threshold,sensitivity type  ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@PPFPE PPTHR PPSEN ! Photoperiod threshold,sensitivity type  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@PPFPE PPTHR PPSEN ! Photoperiod threshold,sensitivity type  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1575,7 +1572,7 @@ test_that("@PPFPE PPTHR PPSEN ! Photoperiod threshold,sensitivity type  ",{
 
 test_that("@RLIG%  RLWR  RSEN RRESP RDGS RDGAF  ! Lignin%,length/wt;sen,resp;dpth growth",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "RLIG%",#"@RLIG%",
         6,   12,     "RLWR",#"  RLWR",
@@ -1589,7 +1586,7 @@ test_that("@RLIG%  RLWR  RSEN RRESP RDGS RDGAF  ! Lignin%,length/wt;sen,resp;dpt
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@RLIG%  RLWR  RSEN RRESP RDGS RDGAF  ! Lignin%,length/wt;sen,resp;dpth growth",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@RLIG%  RLWR  RSEN RRESP RDGS RDGAF  ! Lignin%,length/wt;sen,resp;dpth growth",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1599,7 +1596,7 @@ test_that("@RLIG%  RLWR  RSEN RRESP RDGS RDGAF  ! Lignin%,length/wt;sen,resp;dpt
 
 test_that("@PHNTF  ! Phint change with growth stage factor",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "PHNTF" #"@PHNTF"
   )
@@ -1608,7 +1605,7 @@ test_that("@PHNTF  ! Phint change with growth stage factor",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@PHNTF  ! Phint change with growth stage factor",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@PHNTF  ! Phint change with growth stage factor",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1618,7 +1615,7 @@ test_that("@PHNTF  ! Phint change with growth stage factor",{
 
 test_that("@LLIG% LPEAW ! Lignin%",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "LLIG%",#"@LLIG%",
         6,   12,    "LPEAW" #" LPEAW"
@@ -1628,7 +1625,7 @@ test_that("@LLIG% LPEAW ! Lignin%",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@LLIG% LPEAW ! Lignin%",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@LLIG% LPEAW ! Lignin%",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1638,7 +1635,7 @@ test_that("@LLIG% LPEAW ! Lignin%",{
 
 test_that("@LLIFG LLIFS LLIFX  ! Growing,senescence durations;max.acceleration in shade ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "LLIFG",#"@LLIFG",
         6,   12,    "LLIFS",#" LLIFS",
@@ -1649,7 +1646,7 @@ test_that("@LLIFG LLIFS LLIFX  ! Growing,senescence durations;max.acceleration i
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@LLIFG LLIFS LLIFX  ! Growing,senescence durations;max.acceleration in shade ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@LLIFG LLIFS LLIFX  ! Growing,senescence durations;max.acceleration in shade ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1659,7 +1656,7 @@ test_that("@LLIFG LLIFS LLIFX  ! Growing,senescence durations;max.acceleration i
 
 test_that("@LLOSA LWLOS  ! Loss when accelerated,normal senescence   ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "LLOSA",#"@LLOSA",
         6,   12,    "LWLOS" #" LWLOS"
@@ -1669,7 +1666,7 @@ test_that("@LLOSA LWLOS  ! Loss when accelerated,normal senescence   ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@LLOSA LWLOS  ! Loss when accelerated,normal senescence   ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@LLOSA LWLOS  ! Loss when accelerated,normal senescence   ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1679,7 +1676,7 @@ test_that("@LLOSA LWLOS  ! Loss when accelerated,normal senescence   ",{
 
 test_that("@SLACF SLAFF SLAMN  ! Specific leaf area change,flexibility,minimum  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "SLACF",#"@SLACF",
         6,   12,    "SLAFF",#" SLAFF",
@@ -1690,7 +1687,7 @@ test_that("@SLACF SLAFF SLAMN  ! Specific leaf area change,flexibility,minimum  
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@SLACF SLAFF SLAMN  ! Specific leaf area change,flexibility,minimum  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SLACF SLAFF SLAMN  ! Specific leaf area change,flexibility,minimum  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1700,7 +1697,7 @@ test_that("@SLACF SLAFF SLAMN  ! Specific leaf area change,flexibility,minimum  
 
 test_that("@SLATS SLATR SLAWR  ! Specific leaf area temperature and h2o effect parameters",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "SLATS",#"@SLATS",
         6,   12,    "SLATR",#" SLATR",
@@ -1711,7 +1708,7 @@ test_that("@SLATS SLATR SLAWR  ! Specific leaf area temperature and h2o effect p
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@SLATS SLATR SLAWR  ! Specific leaf area temperature and h2o effect parameters",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SLATS SLATR SLAWR  ! Specific leaf area temperature and h2o effect parameters",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1721,7 +1718,7 @@ test_that("@SLATS SLATR SLAWR  ! Specific leaf area temperature and h2o effect p
 
 test_that("@ CHT%  CLA%   ! Canopy height%, leaf area %",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "CHT%",#"@ CHT%",
         6,   12,     "CLA%" #"  CLA%"
@@ -1731,7 +1728,7 @@ test_that("@ CHT%  CLA%   ! Canopy height%, leaf area %",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ CHT%  CLA%   ! Canopy height%, leaf area %",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ CHT%  CLA%   ! Canopy height%, leaf area %",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1741,7 +1738,7 @@ test_that("@ CHT%  CLA%   ! Canopy height%, leaf area %",{
 
 test_that("@ TPAR TSRAD  ! Individual leaf transmission PAR, solar radiation  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TPAR",#"@ TPAR",
         6,   12,    "TSRAD" #" TSRAD"
@@ -1751,7 +1748,7 @@ test_that("@ TPAR TSRAD  ! Individual leaf transmission PAR, solar radiation  ",
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ TPAR TSRAD  ! Individual leaf transmission PAR, solar radiation  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ TPAR TSRAD  ! Individual leaf transmission PAR, solar radiation  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1761,7 +1758,7 @@ test_that("@ TPAR TSRAD  ! Individual leaf transmission PAR, solar radiation  ",
 
 test_that("@ KCAN  ! Canopy extinction coefficient PAR",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "KCAN" #"@ KCAN"
   )
@@ -1770,7 +1767,7 @@ test_that("@ KCAN  ! Canopy extinction coefficient PAR",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ KCAN  ! Canopy extinction coefficient PAR",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ KCAN  ! Canopy extinction coefficient PAR",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1780,7 +1777,7 @@ test_that("@ KCAN  ! Canopy extinction coefficient PAR",{
 
 test_that("@PARIX  ! PAR interception beyond which accelerated ageing    ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "PARIX" #"@PARIX"
   )
@@ -1789,7 +1786,7 @@ test_that("@PARIX  ! PAR interception beyond which accelerated ageing    ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@PARIX  ! PAR interception beyond which accelerated ageing    ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@PARIX  ! PAR interception beyond which accelerated ageing    ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1799,7 +1796,7 @@ test_that("@PARIX  ! PAR interception beyond which accelerated ageing    ",{
 
 test_that("@SGRO2  ! Relative size of 2nd shoot",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "SGRO2" #"@SGRO2"
   )
@@ -1808,7 +1805,7 @@ test_that("@SGRO2  ! Relative size of 2nd shoot",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@SGRO2  ! Relative size of 2nd shoot",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SGRO2  ! Relative size of 2nd shoot",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1818,7 +1815,7 @@ test_that("@SGRO2  ! Relative size of 2nd shoot",{
 
 test_that("@RSFRS RS%O RS%LX RSUSE  ! Standard concs (overall,leaves), fr utilizeable/day",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "RSFRS",#"@RSFRS",
         6,   11,     "RS%O",# " RS%O",
@@ -1830,7 +1827,7 @@ test_that("@RSFRS RS%O RS%LX RSUSE  ! Standard concs (overall,leaves), fr utiliz
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@RSFRS RS%O RS%LX RSUSE  ! Standard concs (overall,leaves), fr utilizeable/day",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@RSFRS RS%O RS%LX RSUSE  ! Standard concs (overall,leaves), fr utilizeable/day",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1840,7 +1837,7 @@ test_that("@RSFRS RS%O RS%LX RSUSE  ! Standard concs (overall,leaves), fr utiliz
 
 test_that("@SLIG%  SAWS  SERX  ! Lignin%, area/weight, elongation rate",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "SLIG%",#"@SLIG%",
         6,   12,     "SAWS",#"  SAWS",
@@ -1851,7 +1848,7 @@ test_that("@SLIG%  SAWS  SERX  ! Lignin%, area/weight, elongation rate",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@SLIG%  SAWS  SERX  ! Lignin%, area/weight, elongation rate",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SLIG%  SAWS  SERX  ! Lignin%, area/weight, elongation rate",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1861,7 +1858,7 @@ test_that("@SLIG%  SAWS  SERX  ! Lignin%, area/weight, elongation rate",{
 
 test_that("@ CRFR ! Fraction of stem growth",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "CRFR" #"@ CRFR"
   )
@@ -1870,7 +1867,7 @@ test_that("@ CRFR ! Fraction of stem growth",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ CRFR ! Fraction of stem growth",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ CRFR ! Fraction of stem growth",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1880,7 +1877,7 @@ test_that("@ CRFR ! Fraction of stem growth",{
 
 test_that("@ SDWT SDDUR SDRS% ! Weight, duration, reserves (% whole seed)",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SDWT",#"@ SDWT",
         6,   12,    "SDDUR",#" SDDUR",
@@ -1891,7 +1888,7 @@ test_that("@ SDWT SDDUR SDRS% ! Weight, duration, reserves (% whole seed)",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ SDWT SDDUR SDRS% ! Weight, duration, reserves (% whole seed)",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SDWT SDDUR SDRS% ! Weight, duration, reserves (% whole seed)",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1901,7 +1898,7 @@ test_that("@ SDWT SDDUR SDRS% ! Weight, duration, reserves (% whole seed)",{
 
 test_that("@ PHTV  PHSV  ! VPD sensitivity aspects",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "PHTV",#"@ PHTV",
         6,   12,     "PHSV" #"  PHSV"
@@ -1911,7 +1908,7 @@ test_that("@ PHTV  PHSV  ! VPD sensitivity aspects",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ PHTV  PHSV  ! VPD sensitivity aspects",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ PHTV  PHSV  ! VPD sensitivity aspects",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1921,7 +1918,7 @@ test_that("@ PHTV  PHSV  ! VPD sensitivity aspects",{
 
 test_that("@CO2RF  CO2F  ! CO2 response",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "CO2RF",#"@CO2RF",
         6,   12,     "CO2F" #"  CO2F"
@@ -1931,7 +1928,7 @@ test_that("@CO2RF  CO2F  ! CO2 response",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@CO2RF  CO2F  ! CO2 response",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@CO2RF  CO2F  ! CO2 response",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1941,7 +1938,7 @@ test_that("@CO2RF  CO2F  ! CO2 response",{
 
 test_that("@PTFMN PTFMX  PTFA  ! Partition to tops (max,min,adjustment)",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "PTFMN",#"@PTFMN",
         6,   12,    "PTFMX",#" PTFMX",
@@ -1952,7 +1949,7 @@ test_that("@PTFMN PTFMX  PTFA  ! Partition to tops (max,min,adjustment)",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@PTFMN PTFMX  PTFA  ! Partition to tops (max,min,adjustment)",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@PTFMN PTFMX  PTFA  ! Partition to tops (max,min,adjustment)",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1962,7 +1959,7 @@ test_that("@PTFMN PTFMX  PTFA  ! Partition to tops (max,min,adjustment)",{
 
 test_that("@RRATE TRGEM TRDV1 TRLFG TRPHS  ! Germination/emergence,development,leaf growth,phsis",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "RRATE",#"@RRATE",
         6,   12,    "TRGEM",#" TRGEM",
@@ -1975,7 +1972,7 @@ test_that("@RRATE TRGEM TRDV1 TRLFG TRPHS  ! Germination/emergence,development,l
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@RRATE TRGEM TRDV1 TRLFG TRPHS  ! Germination/emergence,development,leaf growth,phsis",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@RRATE TRGEM TRDV1 TRLFG TRPHS  ! Germination/emergence,development,leaf growth,phsis",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1985,7 +1982,7 @@ test_that("@RRATE TRGEM TRDV1 TRLFG TRPHS  ! Germination/emergence,development,l
 
 test_that("@EORATIO  ! FAO formula factor",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#    ~check,
         0,    8,  "EORATIO" #"@EORATIO"
   )
@@ -1994,7 +1991,7 @@ test_that("@EORATIO  ! FAO formula factor",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@EORATIO  ! FAO formula factor",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@EORATIO  ! FAO formula factor",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2004,7 +2001,7 @@ test_that("@EORATIO  ! FAO formula factor",{
 
 test_that("@RWUPM RWUMX ! Min pore size,max.uptake rate",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "RWUPM",#"@RWUPM",
         6,   12,    "RWUMX" #" RWUMX"
@@ -2014,7 +2011,7 @@ test_that("@RWUPM RWUMX ! Min pore size,max.uptake rate",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@RWUPM RWUMX ! Min pore size,max.uptake rate",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@RWUPM RWUMX ! Min pore size,max.uptake rate",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2024,7 +2021,7 @@ test_that("@RWUPM RWUMX ! Min pore size,max.uptake rate",{
 
 test_that("@ WFGU  WFGL  WFPU  WFPL  WFSU  WFEU  ! Growth,phs,senescence,evap",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "WFGU",#"@ WFGU",
         6,   12,     "WFGL",#"  WFGL",
@@ -2038,7 +2035,7 @@ test_that("@ WFGU  WFGL  WFPU  WFPL  WFSU  WFEU  ! Growth,phs,senescence,evap",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ WFGU  WFGL  WFPU  WFPL  WFSU  WFEU  ! Growth,phs,senescence,evap",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ WFGU  WFGL  WFPU  WFPL  WFSU  WFEU  ! Growth,phs,senescence,evap",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2048,7 +2045,7 @@ test_that("@ WFGU  WFGL  WFPU  WFPL  WFSU  WFEU  ! Growth,phs,senescence,evap",{
 
 test_that("@WFGEU WFRGU  ! Germination/emergence, root growth",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "WFGEU",#"@WFGEU",
         6,   12,    "WFRGU" #" WFRGU"
@@ -2058,7 +2055,7 @@ test_that("@WFGEU WFRGU  ! Germination/emergence, root growth",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@WFGEU WFRGU  ! Germination/emergence, root growth",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@WFGEU WFRGU  ! Germination/emergence, root growth",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2068,7 +2065,7 @@ test_that("@WFGEU WFRGU  ! Germination/emergence, root growth",{
 
 test_that("@RTNO3 RTNH4 NH4MN NO3MN",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "RTNO3",#"@RTNO3",
         6,   12,    "RTNH4",#" RTNH4",
@@ -2080,7 +2077,7 @@ test_that("@RTNO3 RTNH4 NH4MN NO3MN",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@RTNO3 RTNH4 NH4MN NO3MN",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@RTNO3 RTNH4 NH4MN NO3MN",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2090,7 +2087,7 @@ test_that("@RTNO3 RTNH4 NH4MN NO3MN",{
 
 test_that("@ SDN% ! Seed",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SDN%" #"@ SDN%"
   )
@@ -2099,7 +2096,7 @@ test_that("@ SDN% ! Seed",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ SDN% ! Seed",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SDN% ! Seed",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2109,7 +2106,7 @@ test_that("@ SDN% ! Seed",{
 
 test_that("@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN  ! Standard,minima N% leaves,stems,roots",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "LN%S",#"@ LN%S",
         6,   12,    "LN%MN",#" LN%MN",
@@ -2123,7 +2120,7 @@ test_that("@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN  ! Standard,minima N% leaves,ste
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN  ! Standard,minima N% leaves,stems,roots",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN  ! Standard,minima N% leaves,stems,roots",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2133,7 +2130,7 @@ test_that("@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN  ! Standard,minima N% leaves,ste
 
 test_that("@NLAB% ! Labile nitrogen",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "NLAB%" #"@NLAB%"
   )
@@ -2142,7 +2139,7 @@ test_that("@NLAB% ! Labile nitrogen",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@NLAB% ! Labile nitrogen",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@NLAB% ! Labile nitrogen",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2152,7 +2149,7 @@ test_that("@NLAB% ! Labile nitrogen",{
 
 test_that("@ NFPU  NFPL  NFGU  NFGL  NFSU ! Photosynthesis,growth,senescence",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "NFPU",#"@ NFPU",
         6,   12,     "NFPL",#"  NFPL",
@@ -2165,7 +2162,7 @@ test_that("@ NFPU  NFPL  NFGU  NFGL  NFSU ! Photosynthesis,growth,senescence",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ NFPU  NFPL  NFGU  NFGL  NFSU ! Photosynthesis,growth,senescence",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ NFPU  NFPL  NFGU  NFGL  NFSU ! Photosynthesis,growth,senescence",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2175,7 +2172,7 @@ test_that("@ NFPU  NFPL  NFGU  NFGL  NFSU ! Photosynthesis,growth,senescence",{
 
 test_that("@ NLLG",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "NLLG" #"@ NLLG"
   )
@@ -2184,7 +2181,7 @@ test_that("@ NLLG",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ NLLG",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ NLLG",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2194,7 +2191,7 @@ test_that("@ NLLG",{
 
 test_that("@ NCRG   ! Root growth",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "NCRG" #"@ NCRG"
   )
@@ -2203,7 +2200,7 @@ test_that("@ NCRG   ! Root growth",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ NCRG   ! Root growth",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ NCRG   ! Root growth",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2213,7 +2210,7 @@ test_that("@ NCRG   ! Root growth",{
 
 test_that("@PARFC CO2CC CO2EX  ! CO2 response function parameters ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "PARFC",#"@PARFC",
         6,   12,    "CO2CC",#" CO2CC",
@@ -2224,7 +2221,7 @@ test_that("@PARFC CO2CC CO2EX  ! CO2 response function parameters ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@PARFC CO2CC CO2EX  ! CO2 response function parameters ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@PARFC CO2CC CO2EX  ! CO2 response function parameters ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2234,7 +2231,7 @@ test_that("@PARFC CO2CC CO2EX  ! CO2 response function parameters ",{
 
 test_that("@ RATM RCROP  ! Atmospheric,canopy resistances ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "RATM",#"@ RATM",
         6,   12,    "RCROP" #" RCROP"
@@ -2244,7 +2241,7 @@ test_that("@ RATM RCROP  ! Atmospheric,canopy resistances ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ RATM RCROP  ! Atmospheric,canopy resistances ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ RATM RCROP  ! Atmospheric,canopy resistances ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2254,7 +2251,7 @@ test_that("@ RATM RCROP  ! Atmospheric,canopy resistances ",{
 
 test_that("@RWULF ! Length factor",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "RWULF" #"@RWULF"
   )
@@ -2263,7 +2260,7 @@ test_that("@RWULF ! Length factor",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@RWULF ! Length factor",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@RWULF ! Length factor",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2273,7 +2270,7 @@ test_that("@RWULF ! Length factor",{
 
 test_that("@PEMRG  ! gr by cum. soil temperature                              ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "PEMRG" #"@PEMRG"
   )
@@ -2282,7 +2279,7 @@ test_that("@PEMRG  ! gr by cum. soil temperature                              ",
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@PEMRG  ! gr by cum. soil temperature                              ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@PEMRG  ! gr by cum. soil temperature                              ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2292,7 +2289,7 @@ test_that("@PEMRG  ! gr by cum. soil temperature                              ",
 
 test_that("@RLIG%  RSEN RRESP   ! Lignin%,sen,resp",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "RLIG%",#"@RLIG%",
         6,   12,     "RSEN",#"  RSEN",
@@ -2303,7 +2300,7 @@ test_that("@RLIG%  RSEN RRESP   ! Lignin%,sen,resp",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@RLIG%  RSEN RRESP   ! Lignin%,sen,resp",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@RLIG%  RSEN RRESP   ! Lignin%,sen,resp",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2313,7 +2310,7 @@ test_that("@RLIG%  RSEN RRESP   ! Lignin%,sen,resp",{
 
 test_that("@LLIG% LPEAW ! Lignin%, petiole area/wt",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "LLIG%",#"@LLIG%",
         6,   12,    "LPEAW" #" LPEAW"
@@ -2323,7 +2320,7 @@ test_that("@LLIG% LPEAW ! Lignin%, petiole area/wt",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@LLIG% LPEAW ! Lignin%, petiole area/wt",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@LLIG% LPEAW ! Lignin%, petiole area/wt",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2333,7 +2330,7 @@ test_that("@LLIG% LPEAW ! Lignin%, petiole area/wt",{
 
 test_that("@LLIFG LLIFS  ! Growing,senescence durations",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "LLIFG",#"@LLIFG",
         6,   12,    "LLIFS" #" LLIFS"
@@ -2343,7 +2340,7 @@ test_that("@LLIFG LLIFS  ! Growing,senescence durations",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@LLIFG LLIFS  ! Growing,senescence durations",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@LLIFG LLIFS  ! Growing,senescence durations",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2353,7 +2350,7 @@ test_that("@LLIFG LLIFS  ! Growing,senescence durations",{
 
 test_that("@LWLOS  ! Loss when normal senescence   ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "LWLOS" #"@LWLOS"
   )
@@ -2362,7 +2359,7 @@ test_that("@LWLOS  ! Loss when normal senescence   ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@LWLOS  ! Loss when normal senescence   ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@LWLOS  ! Loss when normal senescence   ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2372,7 +2369,7 @@ test_that("@LWLOS  ! Loss when normal senescence   ",{
 
 test_that("@SLATS SLATR   ! Specific leaf area temperature effect parameters",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "SLATS",#"@SLATS",
         6,   12,    "SLATR" #" SLATR"
@@ -2382,7 +2379,7 @@ test_that("@SLATS SLATR   ! Specific leaf area temperature effect parameters",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@SLATS SLATR   ! Specific leaf area temperature effect parameters",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SLATS SLATR   ! Specific leaf area temperature effect parameters",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2392,7 +2389,7 @@ test_that("@SLATS SLATR   ! Specific leaf area temperature effect parameters",{
 
 test_that("@SLIG%  SESR ! Lignin%, elongation rate (shoot)",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "SLIG%",#"@SLIG%",
         6,   12,     "SESR" #"  SESR"
@@ -2402,7 +2399,7 @@ test_that("@SLIG%  SESR ! Lignin%, elongation rate (shoot)",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@SLIG%  SESR ! Lignin%, elongation rate (shoot)",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SLIG%  SESR ! Lignin%, elongation rate (shoot)",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2412,7 +2409,7 @@ test_that("@SLIG%  SESR ! Lignin%, elongation rate (shoot)",{
 
 test_that("@ SDSZ SDDUR SDRS% ! Reserves by unit of length (stake), duration, reserves (% whole stake)",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SDSZ",#"@ SDSZ",
         6,   12,    "SDDUR",#" SDDUR",
@@ -2423,7 +2420,7 @@ test_that("@ SDSZ SDDUR SDRS% ! Reserves by unit of length (stake), duration, re
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ SDSZ SDDUR SDRS% ! Reserves by unit of length (stake), duration, reserves (% whole stake)",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SDSZ SDDUR SDRS% ! Reserves by unit of length (stake), duration, reserves (% whole stake)",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2433,7 +2430,7 @@ test_that("@ SDSZ SDDUR SDRS% ! Reserves by unit of length (stake), duration, re
 
 test_that("@ PDTV  PDSV  ! VPD sensitivity aspects (daily effect)",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "PDTV",#"@ PDTV",
         6,   12,     "PDSV" #"  PDSV"
@@ -2443,7 +2440,7 @@ test_that("@ PDTV  PDSV  ! VPD sensitivity aspects (daily effect)",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ PDTV  PDSV  ! VPD sensitivity aspects (daily effect)",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ PDTV  PDSV  ! VPD sensitivity aspects (daily effect)",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2453,7 +2450,7 @@ test_that("@ PDTV  PDSV  ! VPD sensitivity aspects (daily effect)",{
 
 test_that("@PTFA  ! Partition to feeder roots",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,# ~check,
         0,    5,     "PTFA" #"@PTFA"
   )
@@ -2462,7 +2459,7 @@ test_that("@PTFA  ! Partition to feeder roots",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@PTFA  ! Partition to feeder roots",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@PTFA  ! Partition to feeder roots",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2472,7 +2469,7 @@ test_that("@PTFA  ! Partition to feeder roots",{
 
 test_that("@RRATE TRGEM TRDV1 TRLFG TRLFL TRPHS TRBRG TRDMC  ! Germination/emergence,development,leaf growth,leaf life,phsis, branching, dry matter",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "RRATE",#"@RRATE",
         6,   12,    "TRGEM",#" TRGEM",
@@ -2488,7 +2485,7 @@ test_that("@RRATE TRGEM TRDV1 TRLFG TRLFL TRPHS TRBRG TRDMC  ! Germination/emerg
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@RRATE TRGEM TRDV1 TRLFG TRLFL TRPHS TRBRG TRDMC  ! Germination/emergence,development,leaf growth,leaf life,phsis, branching, dry matter",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@RRATE TRGEM TRDV1 TRLFG TRLFL TRPHS TRBRG TRDMC  ! Germination/emergence,development,leaf growth,leaf life,phsis, branching, dry matter",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2498,7 +2495,7 @@ test_that("@RRATE TRGEM TRDV1 TRLFG TRLFL TRPHS TRBRG TRDMC  ! Germination/emerg
 
 test_that("@ DMIC  DMAG  DMRD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "DMIC",#"@ DMIC",
         6,   12,     "DMAG",#"  DMAG",
@@ -2509,7 +2506,7 @@ test_that("@ DMIC  DMAG  DMRD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ DMIC  DMAG  DMRD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ DMIC  DMAG  DMRD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2519,7 +2516,7 @@ test_that("@ DMIC  DMAG  DMRD",{
 
 test_that("@ WFGU  WFGL  WFPU  WFPL  ! Growth,phs",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "WFGU",#"@ WFGU",
         6,   12,     "WFGL",#"  WFGL",
@@ -2531,7 +2528,7 @@ test_that("@ WFGU  WFGL  WFPU  WFPL  ! Growth,phs",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ WFGU  WFGL  WFPU  WFPL  ! Growth,phs",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ WFGU  WFGL  WFPU  WFPL  ! Growth,phs",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2541,7 +2538,7 @@ test_that("@ WFGU  WFGL  WFPU  WFPL  ! Growth,phs",{
 
 test_that("@WFGEM WFRGU  ! Germination/emergence, root growth",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "WFGEM",#"@WFGEM",
         6,   12,    "WFRGU" #" WFRGU"
@@ -2551,7 +2548,7 @@ test_that("@WFGEM WFRGU  ! Germination/emergence, root growth",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@WFGEM WFRGU  ! Germination/emergence, root growth",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@WFGEM WFRGU  ! Germination/emergence, root growth",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2561,7 +2558,7 @@ test_that("@WFGEM WFRGU  ! Germination/emergence, root growth",{
 
 test_that("@ SDN% LN%SC ! Planting stick, N% fallen leaves",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "SDN%",#"@ SDN%",
         6,   12,    "LN%SC" #" LN%SC"
@@ -2571,7 +2568,7 @@ test_that("@ SDN% LN%SC ! Planting stick, N% fallen leaves",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ SDN% LN%SC ! Planting stick, N% fallen leaves",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ SDN% LN%SC ! Planting stick, N% fallen leaves",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2581,7 +2578,7 @@ test_that("@ SDN% LN%SC ! Planting stick, N% fallen leaves",{
 
 test_that("@ NFPU  NFPL  NFGU  NFGL ! Photosynthesis,growth",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "NFPU",#"@ NFPU",
         6,   12,     "NFPL",#"  NFPL",
@@ -2593,7 +2590,7 @@ test_that("@ NFPU  NFPL  NFGU  NFGL ! Photosynthesis,growth",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ NFPU  NFPL  NFGU  NFGL ! Photosynthesis,growth",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ NFPU  NFPL  NFGU  NFGL ! Photosynthesis,growth",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2603,7 +2600,7 @@ test_that("@ NFPU  NFPL  NFGU  NFGL ! Photosynthesis,growth",{
 
 test_that("@  CONV   FDMC",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    7,     "CONV",#"@  CONV",
         7,   14,     "FDMC" #"   FDMC"
@@ -2613,7 +2610,7 @@ test_that("@  CONV   FDMC",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@  CONV   FDMC",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  CONV   FDMC",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2623,7 +2620,7 @@ test_that("@  CONV   FDMC",{
 
 test_that("@ TBASV  TOPTV  TTOPV",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    7,    "TBASV",#"@ TBASV",
         7,   14,    "TOPTV",#"  TOPTV",
@@ -2634,7 +2631,7 @@ test_that("@ TBASV  TOPTV  TTOPV",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ TBASV  TOPTV  TTOPV",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ TBASV  TOPTV  TTOPV",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2644,7 +2641,7 @@ test_that("@ TBASV  TOPTV  TTOPV",{
 
 test_that("@ TBASR  TOPTR  TTOPR",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    7,    "TBASR",#"@ TBASR",
         7,   14,    "TOPTR",#"  TOPTR",
@@ -2655,7 +2652,7 @@ test_that("@ TBASR  TOPTR  TTOPR",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ TBASR  TOPTR  TTOPR",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ TBASR  TOPTR  TTOPR",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2665,7 +2662,7 @@ test_that("@ TBASR  TOPTR  TTOPR",{
 
 test_that("@ LIFAC",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    7,    "LIFAC" #"@ LIFAC"
   )
@@ -2674,7 +2671,7 @@ test_that("@ LIFAC",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ LIFAC",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ LIFAC",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2684,7 +2681,7 @@ test_that("@ LIFAC",{
 
 test_that("@  RWEP   PORM   RWMX   RLWR",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    7,     "RWEP",#"@  RWEP",
         7,   14,     "PORM",#"   PORM",
@@ -2696,7 +2693,7 @@ test_that("@  RWEP   PORM   RWMX   RLWR",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@  RWEP   PORM   RWMX   RLWR",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  RWEP   PORM   RWMX   RLWR",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2706,7 +2703,7 @@ test_that("@  RWEP   PORM   RWMX   RLWR",{
 
 test_that("@  CMFC",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    7,     "CMFC" #"@  CMFC"
   )
@@ -2715,7 +2712,7 @@ test_that("@  CMFC",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@  CMFC",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  CMFC",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2725,7 +2722,7 @@ test_that("@  CMFC",{
 
 test_that("@  CO2X   CO2Y",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    7,     "CO2X",#"@  CO2X",
         7,   14,     "CO2Y" #"   CO2Y"
@@ -2735,7 +2732,7 @@ test_that("@  CO2X   CO2Y",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@  CO2X   CO2Y",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  CO2X   CO2Y",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2745,7 +2742,7 @@ test_that("@  CO2X   CO2Y",{
 
 test_that("@C X(EN) Y(CH)  YSTD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    2,        "C",#    "@C",
         2,    8,    "X(EN)",#" X(EN)",
@@ -2757,7 +2754,7 @@ test_that("@C X(EN) Y(CH)  YSTD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@C X(EN) Y(CH)  YSTD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@C X(EN) Y(CH)  YSTD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2767,7 +2764,7 @@ test_that("@C X(EN) Y(CH)  YSTD",{
 
 test_that("@ RS%X RSUSE ! Max concentration,fraction utilizeable/day",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "RS%X",#"@ RS%X",
         6,   12,    "RSUSE" #" RSUSE"
@@ -2777,7 +2774,7 @@ test_that("@ RS%X RSUSE ! Max concentration,fraction utilizeable/day",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ RS%X RSUSE ! Max concentration,fraction utilizeable/day",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ RS%X RSUSE ! Max concentration,fraction utilizeable/day",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2787,7 +2784,7 @@ test_that("@ RS%X RSUSE ! Max concentration,fraction utilizeable/day",{
 
 test_that("@RRATE TRGEM TRDV1 TRDV2 TRDV7 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "RRATE",#"@RRATE",
         6,   12,    "TRGEM",#" TRGEM",
@@ -2806,7 +2803,7 @@ test_that("@RRATE TRGEM TRDV1 TRDV2 TRDV7 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN  "
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@RRATE TRGEM TRDV1 TRDV2 TRDV7 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@RRATE TRGEM TRDV1 TRDV2 TRDV7 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2816,7 +2813,7 @@ test_that("@RRATE TRGEM TRDV1 TRDV2 TRDV7 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN  "
 
 test_that("@ RATM RCROP EORAT ! Atmospheric,canopy res.;FAO-PenM formula factor",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "RATM",#"@ RATM",
         6,   12,    "RCROP",#" RCROP",
@@ -2827,7 +2824,7 @@ test_that("@ RATM RCROP EORAT ! Atmospheric,canopy res.;FAO-PenM formula factor"
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@ RATM RCROP EORAT ! Atmospheric,canopy res.;FAO-PenM formula factor",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ RATM RCROP EORAT ! Atmospheric,canopy res.;FAO-PenM formula factor",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2837,7 +2834,7 @@ test_that("@ RATM RCROP EORAT ! Atmospheric,canopy res.;FAO-PenM formula factor"
 
 test_that("@NH4MN NO3MN RTNUP",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "NH4MN",#"@NH4MN",
         6,   12,    "NO3MN",#" NO3MN",
@@ -2848,7 +2845,7 @@ test_that("@NH4MN NO3MN RTNUP",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@NH4MN NO3MN RTNUP",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@NH4MN NO3MN RTNUP",
                                           col_names = col_names,
                                           left_justified = left_just)
 

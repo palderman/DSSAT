@@ -1,8 +1,6 @@
 #' Extracts run number, model code, experiment code, treatment number and data
 #' headline from DSSAT output header
 #'
-#' @export
-#'
 #' @keywords internal
 #'
 #' @param raw_lines a character vector that includes the contents

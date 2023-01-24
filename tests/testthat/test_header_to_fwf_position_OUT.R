@@ -1,9 +1,6 @@
-library(DSSAT)
-library(tibble)
-
 test_that("@YEAR DOY   DAS   SRAA  TMAXA  TMINA    REFA    EOAA    EOPA    EOSA    KCAA    KCBA    KEAA    ETAA    EPAA    ESAA    EFAA    EMAA    EOAC    ETAC    EPAC    ESAC    EFAC    EMAC    ES1D    ES2D    ES3D    ES4D    ES5D    ES6D    ES7D    ES8D    ES9D   TRWUD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#    ~check,
         0,    5,     "YEAR",#   "@YEAR",
         5,    9,      "DOY",#    " DOY",
@@ -48,7 +45,7 @@ test_that("@YEAR DOY   DAS   SRAA  TMAXA  TMINA    REFA    EOAA    EOPA    EOSA 
   " WSTA\\.*", " SOIL_ID\\.*", " MODEL\\.*", "EXCODE  ", "FILEX       "
   )
 
-  check_fwf_pos <- header_to_fwf_position("@YEAR DOY   DAS   SRAA  TMAXA  TMINA    REFA    EOAA    EOPA    EOSA    KCAA    KCBA    KEAA    ETAA    EPAA    ESAA    EFAA    EMAA    EOAC    ETAC    EPAC    ESAC    EFAC    EMAC    ES1D    ES2D    ES3D    ES4D    ES5D    ES6D    ES7D    ES8D    ES9D   TRWUD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@YEAR DOY   DAS   SRAA  TMAXA  TMINA    REFA    EOAA    EOPA    EOSA    KCAA    KCBA    KEAA    ETAA    EPAA    ESAA    EFAA    EMAA    EOAC    ETAC    EPAC    ESAC    EFAC    EMAC    ES1D    ES2D    ES3D    ES4D    ES5D    ES6D    ES7D    ES8D    ES9D   TRWUD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -58,7 +55,7 @@ test_that("@YEAR DOY   DAS   SRAA  TMAXA  TMINA    REFA    EOAA    EOPA    EOSA 
 
 test_that("@RUN EXCODE      TRNO RN CR EDAPS EDAPM DRAPS DRAPM TSAPS TSAPM ADAPS ADAPM MDAPS MDAPM HWAMS HWAMM HWUMS HWUMM H#AMS H#AMM H#GMS H#GMM LAIXS LAIXM L#SMS L#SMM T#AMS T#AMM CWAMS CWAMM VWAMS VWAMM HIAMS HIAMM HN%MS HN%MM VN%MS VN%MM CNAMS CNAMM HNAMS HNAMM HINMS HINMM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#       ~check,
         0,    4,      "RUN",#       "@RUN",
         4,   15,   "EXCODE",#" EXCODE    ",
@@ -114,7 +111,7 @@ test_that("@RUN EXCODE      TRNO RN CR EDAPS EDAPM DRAPS DRAPM TSAPS TSAPM ADAPS
   " WSTA\\.*", " SOIL_ID\\.*", " MODEL\\.*", "EXCODE  ", "FILEX       "
   )
 
-  check_fwf_pos <- header_to_fwf_position("@RUN EXCODE      TRNO RN CR EDAPS EDAPM DRAPS DRAPM TSAPS TSAPM ADAPS ADAPM MDAPS MDAPM HWAMS HWAMM HWUMS HWUMM H#AMS H#AMM H#GMS H#GMM LAIXS LAIXM L#SMS L#SMM T#AMS T#AMM CWAMS CWAMM VWAMS VWAMM HIAMS HIAMM HN%MS HN%MM VN%MS VN%MM CNAMS CNAMM HNAMS HNAMM HINMS HINMM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@RUN EXCODE      TRNO RN CR EDAPS EDAPM DRAPS DRAPM TSAPS TSAPM ADAPS ADAPM MDAPS MDAPM HWAMS HWAMM HWUMS HWUMM H#AMS H#AMM H#GMS H#GMM LAIXS LAIXM L#SMS L#SMM T#AMS T#AMM CWAMS CWAMM VWAMS VWAMM HIAMS HIAMM HN%MS HN%MM VN%MS VN%MM CNAMS CNAMM HNAMS HNAMM HINMS HINMM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -124,7 +121,7 @@ test_that("@RUN EXCODE      TRNO RN CR EDAPS EDAPM DRAPS DRAPM TSAPS TSAPM ADAPS
 
 test_that("@ LNUM AREAP AREA1 AREAT AREAS  T#PL  T#AL  WFLF  NFLF  AFLF  TFLF DAYSG",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "LNUM",#"@ LNUM",
         6,   12,    "AREAP",#" AREAP",
@@ -147,7 +144,7 @@ test_that("@ LNUM AREAP AREA1 AREAT AREAS  T#PL  T#AL  WFLF  NFLF  AFLF  TFLF DA
   " WSTA\\.*", " SOIL_ID\\.*", " MODEL\\.*", "EXCODE  ", "FILEX       "
   )
 
-  check_fwf_pos <- header_to_fwf_position("@ LNUM AREAP AREA1 AREAT AREAS  T#PL  T#AL  WFLF  NFLF  AFLF  TFLF DAYSG",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ LNUM AREAP AREA1 AREAT AREAS  T#PL  T#AL  WFLF  NFLF  AFLF  TFLF DAYSG",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -157,7 +154,7 @@ test_that("@ LNUM AREAP AREA1 AREAT AREAS  T#PL  T#AL  WFLF  NFLF  AFLF  TFLF DA
 
 test_that("@YEAR DOY   DAS    MCFD   MDEPD    MWAD    MWTD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#    ~check,
         0,    5,     "YEAR",#   "@YEAR",
         5,    9,      "DOY",#    " DOY",
@@ -175,7 +172,7 @@ test_that("@YEAR DOY   DAS    MCFD   MDEPD    MWAD    MWTD",{
   " WSTA\\.*", " SOIL_ID\\.*", " MODEL\\.*", "EXCODE  ", "FILEX       "
   )
 
-  check_fwf_pos <- header_to_fwf_position("@YEAR DOY   DAS    MCFD   MDEPD    MWAD    MWTD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@YEAR DOY   DAS    MCFD   MDEPD    MWAD    MWTD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -185,7 +182,7 @@ test_that("@YEAR DOY   DAS    MCFD   MDEPD    MWAD    MWTD",{
 
 test_that("@YEAR DOY   DAS   N2OEC    N2EC    NOEC   CO2TC    NDNC    NITC   N2ODC   N2ONC   N2FLC   NOFLC   N2OED    N2ED    NOED   CO2TD    NDND   NITRD   N2ODD   N2OND   N2FLD   NOFLD   NDN1D   NDN2D   NDN3D   NDN4D   NDN5D   NDN6D   NDN7D   NDN8D   NDN9D   NIT1D   NIT2D   NIT3D   NIT4D   NIT5D   NIT6D   NIT7D   NIT8D   NIT9D   N2O1D   N2O2D   N2O3D   N2O4D   N2O5D   N2O6D   N2O7D   N2O8D   N2O9D   N2F1D   N2F2D   N2F3D   N2F4D   N2F5D   N2F6D   N2F7D   N2F8D   N2F9D   NOF1D   NOF2D   NOF3D   NOF4D   NOF5D   NOF6D   NOF7D   NOF8D   NOF9D   ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#    ~check,
         0,    5,     "YEAR",#   "@YEAR",
         5,    9,      "DOY",#    " DOY",
@@ -264,7 +261,7 @@ test_that("@YEAR DOY   DAS   N2OEC    N2EC    NOEC   CO2TC    NDNC    NITC   N2O
   " WSTA\\.*", " SOIL_ID\\.*", " MODEL\\.*", "EXCODE  ", "FILEX       "
   )
 
-  check_fwf_pos <- header_to_fwf_position("@YEAR DOY   DAS   N2OEC    N2EC    NOEC   CO2TC    NDNC    NITC   N2ODC   N2ONC   N2FLC   NOFLC   N2OED    N2ED    NOED   CO2TD    NDND   NITRD   N2ODD   N2OND   N2FLD   NOFLD   NDN1D   NDN2D   NDN3D   NDN4D   NDN5D   NDN6D   NDN7D   NDN8D   NDN9D   NIT1D   NIT2D   NIT3D   NIT4D   NIT5D   NIT6D   NIT7D   NIT8D   NIT9D   N2O1D   N2O2D   N2O3D   N2O4D   N2O5D   N2O6D   N2O7D   N2O8D   N2O9D   N2F1D   N2F2D   N2F3D   N2F4D   N2F5D   N2F6D   N2F7D   N2F8D   N2F9D   NOF1D   NOF2D   NOF3D   NOF4D   NOF5D   NOF6D   NOF7D   NOF8D   NOF9D   ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@YEAR DOY   DAS   N2OEC    N2EC    NOEC   CO2TC    NDNC    NITC   N2ODC   N2ONC   N2FLC   NOFLC   N2OED    N2ED    NOED   CO2TD    NDND   NITRD   N2ODD   N2OND   N2FLD   NOFLD   NDN1D   NDN2D   NDN3D   NDN4D   NDN5D   NDN6D   NDN7D   NDN8D   NDN9D   NIT1D   NIT2D   NIT3D   NIT4D   NIT5D   NIT6D   NIT7D   NIT8D   NIT9D   N2O1D   N2O2D   N2O3D   N2O4D   N2O5D   N2O6D   N2O7D   N2O8D   N2O9D   N2F1D   N2F2D   N2F3D   N2F4D   N2F5D   N2F6D   N2F7D   N2F8D   N2F9D   NOF1D   NOF2D   NOF3D   NOF4D   NOF5D   NOF6D   NOF7D   NOF8D   NOF9D   ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -274,7 +271,7 @@ test_that("@YEAR DOY   DAS   N2OEC    N2EC    NOEC   CO2TC    NDNC    NITC   N2O
 
 test_that("@     VARIABLE                             SIMULATED     MEASURED",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#                                  ~check,
         0,   14, "VARIABLE",#                        "@     VARIABLE",
        14,   52,"SIMULATED",#"                             SIMULATED",
@@ -288,7 +285,7 @@ test_that("@     VARIABLE                             SIMULATED     MEASURED",{
   " WSTA\\.*", " SOIL_ID\\.*", " MODEL\\.*", "EXCODE  ", "FILEX       "
   )
 
-  check_fwf_pos <- header_to_fwf_position("@     VARIABLE                             SIMULATED     MEASURED",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@     VARIABLE                             SIMULATED     MEASURED",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -298,7 +295,7 @@ test_that("@     VARIABLE                             SIMULATED     MEASURED",{
 
 test_that("@YEAR DOY   DAS   DAP TMEAN  GSTD  RSTD LAIPD LAISD  LAID  CHTD SDWAD SNWLD SNWSD  H#AD  HWUD SHRTD  PTFD  RDPD  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D  RL9D RL10D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "YEAR",# "@YEAR",
         5,    9,      "DOY",#  " DOY",
@@ -338,7 +335,7 @@ test_that("@YEAR DOY   DAS   DAP TMEAN  GSTD  RSTD LAIPD LAISD  LAID  CHTD SDWAD
   " WSTA\\.*", " SOIL_ID\\.*", " MODEL\\.*", "EXCODE  ", "FILEX       "
   )
 
-  check_fwf_pos <- header_to_fwf_position("@YEAR DOY   DAS   DAP TMEAN  GSTD  RSTD LAIPD LAISD  LAID  CHTD SDWAD SNWLD SNWSD  H#AD  HWUD SHRTD  PTFD  RDPD  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D  RL9D RL10D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@YEAR DOY   DAS   DAP TMEAN  GSTD  RSTD LAIPD LAISD  LAID  CHTD SDWAD SNWLD SNWSD  H#AD  HWUD SHRTD  PTFD  RDPD  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D  RL9D RL10D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -348,7 +345,7 @@ test_that("@YEAR DOY   DAS   DAP TMEAN  GSTD  RSTD LAIPD LAISD  LAID  CHTD SDWAD
 
 test_that("@YEAR DOY   DAS   DAP TMEAN  GSTD    DU VRNFD DYLFD TFGEM  WFGE  TFPD  WFPD  NFPD CO2FD RSFPD  TFGD  WFGD  NFGD  WFTD  NFTD WAVRD WUPRD  SWXD  EOPD  SNXD LN%RD SN%RD RN%RD      ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "YEAR",# "@YEAR",
         5,    9,      "DOY",#  " DOY",
@@ -388,7 +385,7 @@ test_that("@YEAR DOY   DAS   DAP TMEAN  GSTD    DU VRNFD DYLFD TFGEM  WFGE  TFPD
   " WSTA\\.*", " SOIL_ID\\.*", " MODEL\\.*", "EXCODE  ", "FILEX       "
   )
 
-  check_fwf_pos <- header_to_fwf_position("@YEAR DOY   DAS   DAP TMEAN  GSTD    DU VRNFD DYLFD TFGEM  WFGE  TFPD  WFPD  NFPD CO2FD RSFPD  TFGD  WFGD  NFGD  WFTD  NFTD WAVRD WUPRD  SWXD  EOPD  SNXD LN%RD SN%RD RN%RD      ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@YEAR DOY   DAS   DAP TMEAN  GSTD    DU VRNFD DYLFD TFGEM  WFGE  TFPD  WFPD  NFPD CO2FD RSFPD  TFGD  WFGD  NFGD  WFTD  NFTD WAVRD WUPRD  SWXD  EOPD  SNXD LN%RD SN%RD RN%RD      ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -398,7 +395,7 @@ test_that("@YEAR DOY   DAS   DAP TMEAN  GSTD    DU VRNFD DYLFD TFGEM  WFGE  TFPD
 
 test_that("@YEAR DOY   DAS   DAP TMEAN TKILL  GSTD  L#SD PARID PARUD  AWAD  LAID  SAID  CAID  TWAD SDWAD  RWAD  CWAD  LWAD  SWAD  HWAD  HIAD CHWAD  EWAD RSWAD SNWPD SNWLD SNWSD  RS%D  H#AD  HWUD  T#AD  SLAD  RDPD  PTFD  SWXD WAVRD WUPRD  WFTD  WFPD  WFGD  NFTD  NFPD  NFGD NUPRD  TFPD  TFGD VRNFD DYLFD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "YEAR",# "@YEAR",
         5,    9,      "DOY",#  " DOY",
@@ -458,7 +455,7 @@ test_that("@YEAR DOY   DAS   DAP TMEAN TKILL  GSTD  L#SD PARID PARUD  AWAD  LAID
   " WSTA\\.*", " SOIL_ID\\.*", " MODEL\\.*", "EXCODE  ", "FILEX       "
   )
 
-  check_fwf_pos <- header_to_fwf_position("@YEAR DOY   DAS   DAP TMEAN TKILL  GSTD  L#SD PARID PARUD  AWAD  LAID  SAID  CAID  TWAD SDWAD  RWAD  CWAD  LWAD  SWAD  HWAD  HIAD CHWAD  EWAD RSWAD SNWPD SNWLD SNWSD  RS%D  H#AD  HWUD  T#AD  SLAD  RDPD  PTFD  SWXD WAVRD WUPRD  WFTD  WFPD  WFGD  NFTD  NFPD  NFGD NUPRD  TFPD  TFGD VRNFD DYLFD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@YEAR DOY   DAS   DAP TMEAN TKILL  GSTD  L#SD PARID PARUD  AWAD  LAID  SAID  CAID  TWAD SDWAD  RWAD  CWAD  LWAD  SWAD  HWAD  HIAD CHWAD  EWAD RSWAD SNWPD SNWLD SNWSD  RS%D  H#AD  HWUD  T#AD  SLAD  RDPD  PTFD  SWXD WAVRD WUPRD  WFTD  WFPD  WFGD  NFTD  NFPD  NFGD NUPRD  TFPD  TFGD VRNFD DYLFD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -468,7 +465,7 @@ test_that("@YEAR DOY   DAS   DAP TMEAN TKILL  GSTD  L#SD PARID PARUD  AWAD  LAID
 
 test_that("@YEAR DOY   DAS   DAP TMEAN  GSTD  NUAD  TNAD SDNAD  RNAD  CNAD  LNAD  SNAD  HNAD  HIND RSNAD SNNPD SNN0D SNN1D  RN%D  LN%D  SN%D  HN%D SDN%D  VN%D LN%RD SN%RD RN%RD  VCN%  VMN% NUPRD NDEMD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "YEAR",# "@YEAR",
         5,    9,      "DOY",#  " DOY",
@@ -511,7 +508,7 @@ test_that("@YEAR DOY   DAS   DAP TMEAN  GSTD  NUAD  TNAD SDNAD  RNAD  CNAD  LNAD
   " WSTA\\.*", " SOIL_ID\\.*", " MODEL\\.*", "EXCODE  ", "FILEX       "
   )
 
-  check_fwf_pos <- header_to_fwf_position("@YEAR DOY   DAS   DAP TMEAN  GSTD  NUAD  TNAD SDNAD  RNAD  CNAD  LNAD  SNAD  HNAD  HIND RSNAD SNNPD SNN0D SNN1D  RN%D  LN%D  SN%D  HN%D SDN%D  VN%D LN%RD SN%RD RN%RD  VCN%  VMN% NUPRD NDEMD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@YEAR DOY   DAS   DAP TMEAN  GSTD  NUAD  TNAD SDNAD  RNAD  CNAD  LNAD  SNAD  HNAD  HIND RSNAD SNNPD SNN0D SNN1D  RN%D  LN%D  SN%D  HN%D SDN%D  VN%D LN%RD SN%RD RN%RD  VCN%  VMN% NUPRD NDEMD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -521,7 +518,7 @@ test_that("@YEAR DOY   DAS   DAP TMEAN  GSTD  NUAD  TNAD SDNAD  RNAD  CNAD  LNAD
 
 test_that("@  RUN EXCODE    TRNO RN TNAME.................... REP  RUNI S O C    CR PYEAR  PDOY  TSAP  ADAP  MDAP   FLN FLDAP HYEAR  HDAY SDWAP CWAHC  CWAM PARUE  HWAM  HWAH  BWAH  HWUM  H#AM  H#UM SDNAP  CNAM  HNAM  RNAM  TNAM  NUAM  HN%M  VN%M D1INI D2INI D3INI ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#                       ~check,
         0,    6,      "RUN",#                     "@  RUN",
         6,   15,   "EXCODE",#                  " EXCODE  ",
@@ -573,7 +570,7 @@ test_that("@  RUN EXCODE    TRNO RN TNAME.................... REP  RUNI S O C   
   " WSTA\\.*", " SOIL_ID\\.*", " MODEL\\.*", "EXCODE  ", "FILEX       "
   )
 
-  check_fwf_pos <- header_to_fwf_position("@  RUN EXCODE    TRNO RN TNAME.................... REP  RUNI S O C    CR PYEAR  PDOY  TSAP  ADAP  MDAP   FLN FLDAP HYEAR  HDAY SDWAP CWAHC  CWAM PARUE  HWAM  HWAH  BWAH  HWUM  H#AM  H#UM SDNAP  CNAM  HNAM  RNAM  TNAM  NUAM  HN%M  VN%M D1INI D2INI D3INI ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  RUN EXCODE    TRNO RN TNAME.................... REP  RUNI S O C    CR PYEAR  PDOY  TSAP  ADAP  MDAP   FLN FLDAP HYEAR  HDAY SDWAP CWAHC  CWAM PARUE  HWAM  HWAH  BWAH  HWUM  H#AM  H#UM SDNAP  CNAM  HNAM  RNAM  TNAM  NUAM  HN%M  VN%M D1INI D2INI D3INI ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -583,7 +580,7 @@ test_that("@  RUN EXCODE    TRNO RN TNAME.................... REP  RUNI S O C   
 
 test_that("@Run FILEX               TN CR     SN0Di    S1NTDi    S2NTDi    S3NTDi     LNTDi     NIADi      SN0D     S1NTD     S2NTD     S3NTD      LNTD      NIAD      HRNH     RESNC      NICM     SNNTC      NLCM      TDFC      NUCM     NGasC      RNRO      NMNC      NIMC    InNBal   OrgNBal     SNBAL",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#                 ~check,
         0,    4,      "Run",#                 "@Run",
         4,   25,    "FILEX",#" FILEX               ",
@@ -624,7 +621,7 @@ test_that("@Run FILEX               TN CR     SN0Di    S1NTDi    S2NTDi    S3NTD
   " WSTA\\.*", " SOIL_ID\\.*", " MODEL\\.*", "EXCODE  ", "FILEX       "
   )
 
-  check_fwf_pos <- header_to_fwf_position("@Run FILEX               TN CR     SN0Di    S1NTDi    S2NTDi    S3NTDi     LNTDi     NIADi      SN0D     S1NTD     S2NTD     S3NTD      LNTD      NIAD      HRNH     RESNC      NICM     SNNTC      NLCM      TDFC      NUCM     NGasC      RNRO      NMNC      NIMC    InNBal   OrgNBal     SNBAL",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@Run FILEX               TN CR     SN0Di    S1NTDi    S2NTDi    S3NTDi     LNTDi     NIADi      SN0D     S1NTD     S2NTD     S3NTD      LNTD      NIAD      HRNH     RESNC      NICM     SNNTC      NLCM      TDFC      NUCM     NGasC      RNRO      NMNC      NIMC    InNBal   OrgNBal     SNBAL",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -634,7 +631,7 @@ test_that("@Run FILEX               TN CR     SN0Di    S1NTDi    S2NTDi    S3NTD
 
 test_that("@YEAR DOY   DAS  NAPC  NI#M    NIAD    NITD    NHTD    NMNC    NITC    NDNC    NIMC    AMLC   NNMNC    NUCM    NLCC    TDNC    NI1D    NI2D    NI3D    NI4D    NI5D    NI6D    NI7D    NI8D    NI9D    NH1D    NH2D    NH3D    NH4D    NH5D    NH6D    NH7D    NH8D    NH9D    NT1D    NT2D    NT3D    NT4D    NT5D    NT6D    NT7D    NT8D    NT9D    ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#    ~check,
         0,    5,     "YEAR",#   "@YEAR",
         5,    9,      "DOY",#    " DOY",
@@ -689,7 +686,7 @@ test_that("@YEAR DOY   DAS  NAPC  NI#M    NIAD    NITD    NHTD    NMNC    NITC  
   " WSTA\\.*", " SOIL_ID\\.*", " MODEL\\.*", "EXCODE  ", "FILEX       "
   )
 
-  check_fwf_pos <- header_to_fwf_position("@YEAR DOY   DAS  NAPC  NI#M    NIAD    NITD    NHTD    NMNC    NITC    NDNC    NIMC    AMLC   NNMNC    NUCM    NLCC    TDNC    NI1D    NI2D    NI3D    NI4D    NI5D    NI6D    NI7D    NI8D    NI9D    NH1D    NH2D    NH3D    NH4D    NH5D    NH6D    NH7D    NH8D    NH9D    NT1D    NT2D    NT3D    NT4D    NT5D    NT6D    NT7D    NT8D    NT9D    ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@YEAR DOY   DAS  NAPC  NI#M    NIAD    NITD    NHTD    NMNC    NITC    NDNC    NIMC    AMLC   NNMNC    NUCM    NLCC    TDNC    NI1D    NI2D    NI3D    NI4D    NI5D    NI6D    NI7D    NI8D    NI9D    NH1D    NH2D    NH3D    NH4D    NH5D    NH6D    NH7D    NH8D    NH9D    NT1D    NT2D    NT3D    NT4D    NT5D    NT6D    NT7D    NT8D    NT9D    ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -699,7 +696,7 @@ test_that("@YEAR DOY   DAS  NAPC  NI#M    NIAD    NITD    NHTD    NMNC    NITC  
 
 test_that("@YEAR DOY   DAS    TS0D    TS1D    TS2D    TS3D    TS4D    TS5D    TS6D    TS7D    TS8D    TS9D    ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#    ~check,
         0,    5,     "YEAR",#   "@YEAR",
         5,    9,      "DOY",#    " DOY",
@@ -723,7 +720,7 @@ test_that("@YEAR DOY   DAS    TS0D    TS1D    TS2D    TS3D    TS4D    TS5D    TS
   " WSTA\\.*", " SOIL_ID\\.*", " MODEL\\.*", "EXCODE  ", "FILEX       "
   )
 
-  check_fwf_pos <- header_to_fwf_position("@YEAR DOY   DAS    TS0D    TS1D    TS2D    TS3D    TS4D    TS5D    TS6D    TS7D    TS8D    TS9D    ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@YEAR DOY   DAS    TS0D    TS1D    TS2D    TS3D    TS4D    TS5D    TS6D    TS7D    TS8D    TS9D    ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -733,7 +730,7 @@ test_that("@YEAR DOY   DAS    TS0D    TS1D    TS2D    TS3D    TS4D    TS5D    TS
 
 test_that("@YEAR DOY   DAS  SWTD  SWXD   ROFC   DRNC   PREC  IR#C  IRRC  DTWT    MWTD  TDFD  TDFC   ROFD    SW1D    SW2D    SW3D    SW4D    SW5D    SW6D    SW7D    SW8D    SW9D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#    ~check,
         0,    5,     "YEAR",#   "@YEAR",
         5,    9,      "DOY",#    " DOY",
@@ -768,7 +765,7 @@ test_that("@YEAR DOY   DAS  SWTD  SWXD   ROFC   DRNC   PREC  IR#C  IRRC  DTWT   
   " WSTA\\.*", " SOIL_ID\\.*", " MODEL\\.*", "EXCODE  ", "FILEX       "
   )
 
-  check_fwf_pos <- header_to_fwf_position("@YEAR DOY   DAS  SWTD  SWXD   ROFC   DRNC   PREC  IR#C  IRRC  DTWT    MWTD  TDFD  TDFC   ROFD    SW1D    SW2D    SW3D    SW4D    SW5D    SW6D    SW7D    SW8D    SW9D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@YEAR DOY   DAS  SWTD  SWXD   ROFC   DRNC   PREC  IR#C  IRRC  DTWT    MWTD  TDFD  TDFC   ROFD    SW1D    SW2D    SW3D    SW4D    SW5D    SW6D    SW7D    SW8D    SW9D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -778,7 +775,7 @@ test_that("@YEAR DOY   DAS  SWTD  SWXD   ROFC   DRNC   PREC  IR#C  IRRC  DTWT   
 
 test_that("@Run FILEX         TN      SN0D     S1NTD     S2NTD     S3NTD      LNTD      NIAD      HRNH     RESNC      NICM     SNNTC      NLCM      NUCM     NGasC      RNRO      NMNC      NIMC   SEASBAL",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#           ~check,
         0,    4,      "Run",#           "@Run",
         4,   19,    "FILEX",#" FILEX         ",
@@ -809,7 +806,7 @@ test_that("@Run FILEX         TN      SN0D     S1NTD     S2NTD     S3NTD      LN
   " WSTA\\.*", " SOIL_ID\\.*", " MODEL\\.*", "EXCODE  ", "FILEX       "
   )
 
-  check_fwf_pos <- header_to_fwf_position("@Run FILEX         TN      SN0D     S1NTD     S2NTD     S3NTD      LNTD      NIAD      HRNH     RESNC      NICM     SNNTC      NLCM      NUCM     NGasC      RNRO      NMNC      NIMC   SEASBAL",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@Run FILEX         TN      SN0D     S1NTD     S2NTD     S3NTD      LNTD      NIAD      HRNH     RESNC      NICM     SNNTC      NLCM      NUCM     NGasC      RNRO      NMNC      NIMC   SEASBAL",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -819,7 +816,7 @@ test_that("@Run FILEX         TN      SN0D     S1NTD     S2NTD     S3NTD      LN
 
 test_that("@   RUNNO   TRNO R# O# P# CR MODEL... EXNAME.. TNAM..................... FNAM.... WSTA.... SOIL_ID...    SDAT    PDAT    EDAT    ADAT    MDAT    HDAT  DWAP    CWAM    HWAM    HWAH    BWAH  PWAM    HWUM    H#AM    H#UM  HIAM  LAIX  IR#M  IRCM  PRCM  ETCM  EPCM  ESCM  ROCM  DRCM  SWXM  NI#M  NICM  NFXM  NUCM  NLCM  NIAM NMINC  CNAM  GNAM N2OEC  PI#M  PICM  PUPC  SPAM  KI#M  KICM  KUPC  SKAM  RECM  ONTAM   ONAM  OPTAM   OPAM   OCTAM    OCAM   CO2EC    DMPPM    DMPEM    DMPTM    DMPIM     YPPM     YPEM     YPTM     YPIM    DPNAM    DPNUM    YPNAM    YPNUM  NDCH TMAXA TMINA SRADA DAYLA   CO2A   PRCP   ETCP   ESCP   EPCP",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#                      ~check,
         0,    9,    "RUNNO",#                 "@   RUNNO",
         9,   16,     "TRNO",#                   "   TRNO",
@@ -916,7 +913,7 @@ test_that("@   RUNNO   TRNO R# O# P# CR MODEL... EXNAME.. TNAM..................
   " WSTA\\.*", " SOIL_ID\\.*", " MODEL\\.*", "EXCODE  ", "FILEX       "
   )
 
-  check_fwf_pos <- header_to_fwf_position("@   RUNNO   TRNO R# O# P# CR MODEL... EXNAME.. TNAM..................... FNAM.... WSTA.... SOIL_ID...    SDAT    PDAT    EDAT    ADAT    MDAT    HDAT  DWAP    CWAM    HWAM    HWAH    BWAH  PWAM    HWUM    H#AM    H#UM  HIAM  LAIX  IR#M  IRCM  PRCM  ETCM  EPCM  ESCM  ROCM  DRCM  SWXM  NI#M  NICM  NFXM  NUCM  NLCM  NIAM NMINC  CNAM  GNAM N2OEC  PI#M  PICM  PUPC  SPAM  KI#M  KICM  KUPC  SKAM  RECM  ONTAM   ONAM  OPTAM   OPAM   OCTAM    OCAM   CO2EC    DMPPM    DMPEM    DMPTM    DMPIM     YPPM     YPEM     YPTM     YPIM    DPNAM    DPNUM    YPNAM    YPNUM  NDCH TMAXA TMINA SRADA DAYLA   CO2A   PRCP   ETCP   ESCP   EPCP",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@   RUNNO   TRNO R# O# P# CR MODEL... EXNAME.. TNAM..................... FNAM.... WSTA.... SOIL_ID...    SDAT    PDAT    EDAT    ADAT    MDAT    HDAT  DWAP    CWAM    HWAM    HWAH    BWAH  PWAM    HWUM    H#AM    H#UM  HIAM  LAIX  IR#M  IRCM  PRCM  ETCM  EPCM  ESCM  ROCM  DRCM  SWXM  NI#M  NICM  NFXM  NUCM  NLCM  NIAM NMINC  CNAM  GNAM N2OEC  PI#M  PICM  PUPC  SPAM  KI#M  KICM  KUPC  SKAM  RECM  ONTAM   ONAM  OPTAM   OPAM   OCTAM    OCAM   CO2EC    DMPPM    DMPEM    DMPTM    DMPIM     YPPM     YPEM     YPTM     YPIM    DPNAM    DPNUM    YPNAM    YPNUM  NDCH TMAXA TMINA SRADA DAYLA   CO2A   PRCP   ETCP   ESCP   EPCP",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -926,7 +923,7 @@ test_that("@   RUNNO   TRNO R# O# P# CR MODEL... EXNAME.. TNAM..................
 
 test_that("@YEAR DOY   DAS   PRED  DAYLD   TWLD   SRAD   PARD   CLDD   TMXD   TMND   TAVD   TDYD   TDWD   TGAD   TGRD   WDSD   CO2D   VPDF   VPD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "YEAR",#  "@YEAR",
         5,    9,      "DOY",#   " DOY",
@@ -957,7 +954,7 @@ test_that("@YEAR DOY   DAS   PRED  DAYLD   TWLD   SRAD   PARD   CLDD   TMXD   TM
   " WSTA\\.*", " SOIL_ID\\.*", " MODEL\\.*", "EXCODE  ", "FILEX       "
   )
 
-  check_fwf_pos <- header_to_fwf_position("@YEAR DOY   DAS   PRED  DAYLD   TWLD   SRAD   PARD   CLDD   TMXD   TMND   TAVD   TDYD   TDWD   TGAD   TGRD   WDSD   CO2D   VPDF   VPD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@YEAR DOY   DAS   PRED  DAYLD   TWLD   SRAD   PARD   CLDD   TMXD   TMND   TAVD   TDYD   TDWD   TGAD   TGRD   WDSD   CO2D   VPDF   VPD",
                                           col_names = col_names,
                                           left_justified = left_just)
 

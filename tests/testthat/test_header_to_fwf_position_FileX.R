@@ -1,30 +1,27 @@
-library(DSSAT)
-library(tibble)
-
 test_that("@PEOPLE",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#   ~check,
         0,NA_real_,   "PEOPLE" #"@PEOPLE"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@PEOPLE",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@PEOPLE",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -34,28 +31,28 @@ test_that("@PEOPLE",{
 
 test_that("@ADDRESS",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#    ~check,
         0,NA_real_,  "ADDRESS" #"@ADDRESS"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@ADDRESS",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ADDRESS",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -65,28 +62,28 @@ test_that("@ADDRESS",{
 
 test_that("@SITE",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,# ~check,
         0,NA_real_,     "SITE" #"@SITE"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@SITE",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@SITE",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -96,7 +93,7 @@ test_that("@SITE",{
 
 test_that("@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN  HARM.........",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#           ~check,
         0,       7,    "PAREA",#        "@ PAREA",
         7,      13,     "PRNO",#         "  PRNO",
@@ -110,23 +107,23 @@ test_that("@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN  HARM........
        55,NA_real_,     "HARM" #"  HARM........."
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN  HARM.........",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN  HARM.........",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -136,7 +133,7 @@ test_that("@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN  HARM........
 
 test_that("@N R O C TNAME.................... CU FL SA IC MP MI MF MR MC MT ME MH SM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#                      ~check,
         0,    2,        "N",#                        "@N",
         2,    4,        "R",#                        " R",
@@ -158,23 +155,23 @@ test_that("@N R O C TNAME.................... CU FL SA IC MP MI MF MR MC MT ME M
        70,   73,       "SM" #                       " SM"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@N R O C TNAME.................... CU FL SA IC MP MI MF MR MC MT ME MH SM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@N R O C TNAME.................... CU FL SA IC MP MI MF MR MC MT ME MH SM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -184,7 +181,7 @@ test_that("@N R O C TNAME.................... CU FL SA IC MP MI MF MR MC MT ME M
 
 test_that("@C CR INGENO CNAME",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#   ~check,
         0,       2,        "C",#     "@C",
         2,       5,       "CR",#    " CR",
@@ -192,23 +189,23 @@ test_that("@C CR INGENO CNAME",{
        12,NA_real_,    "CNAME" # " CNAME"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@C CR INGENO CNAME",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@C CR INGENO CNAME",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -218,7 +215,7 @@ test_that("@C CR INGENO CNAME",{
 
 test_that("@L ID_FIELD WSTA....  FLSA  FLOB  FLDT  FLDD  FLDS  FLST SLTX  SLDP  ID_SOIL    FLNAME",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#         ~check,
         0,       2,        "L",#           "@L",
         2,      11, "ID_FIELD",#    " ID_FIELD",
@@ -235,23 +232,23 @@ test_that("@L ID_FIELD WSTA....  FLSA  FLOB  FLDT  FLDD  FLDS  FLST SLTX  SLDP  
        80,NA_real_,   "FLNAME" #       "FLNAME"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@L ID_FIELD WSTA....  FLSA  FLOB  FLDT  FLDD  FLDS  FLST SLTX  SLDP  ID_SOIL    FLNAME",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@L ID_FIELD WSTA....  FLSA  FLOB  FLDT  FLDD  FLDS  FLST SLTX  SLDP  ID_SOIL    FLNAME",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -261,7 +258,7 @@ test_that("@L ID_FIELD WSTA....  FLSA  FLOB  FLDT  FLDD  FLDS  FLST SLTX  SLDP  
 
 test_that("@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN .FLWR .SLAS FLHST FHDUR",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    2,        "L",#                "@L",
         2,   18,     "XCRD",#  " ...........XCRD",
@@ -275,23 +272,23 @@ test_that("@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN 
        86,   92,    "FHDUR" #            " FHDUR"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN .FLWR .SLAS FLHST FHDUR",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN .FLWR .SLAS FLHST FHDUR",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -301,7 +298,7 @@ test_that("@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN 
 
 test_that("@P PDATE EDATE  PPOP  PPOE  PLME  PLDS  PLRS  PLRD  PLDP  PLWT  PAGE  PENV  PLPH  SPRL                        PLNAME",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#                          ~check,
         0,       2,        "P",#                            "@P",
         2,       8,    "PDATE",#                        " PDATE",
@@ -321,23 +318,23 @@ test_that("@P PDATE EDATE  PPOP  PPOE  PLME  PLDS  PLRS  PLRD  PLDP  PLWT  PAGE 
        86,NA_real_,   "PLNAME" #"                        PLNAME"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@P PDATE EDATE  PPOP  PPOE  PLME  PLDS  PLRS  PLRD  PLDP  PLWT  PAGE  PENV  PLPH  SPRL                        PLNAME",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@P PDATE EDATE  PPOP  PPOE  PLME  PLDS  PLRS  PLRD  PLDP  PLWT  PAGE  PENV  PLPH  SPRL                        PLNAME",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -347,7 +344,7 @@ test_that("@P PDATE EDATE  PPOP  PPOE  PLME  PLDS  PLRS  PLRD  PLDP  PLWT  PAGE 
 
 test_that("@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#   ~check,
         0,       2,        "I",#     "@I",
         2,       8,     "EFIR",# "  EFIR",
@@ -360,23 +357,23 @@ test_that("@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",{
        44,NA_real_,   "IRNAME" #" IRNAME"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -386,7 +383,7 @@ test_that("@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",{
 
 test_that("@I IDATE  IROP IRVAL",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    2,        "I",#    "@I",
         2,    8,    "IDATE",#" IDATE",
@@ -394,23 +391,23 @@ test_that("@I IDATE  IROP IRVAL",{
        14,   20,    "IRVAL" #" IRVAL"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@I IDATE  IROP IRVAL",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@I IDATE  IROP IRVAL",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -420,7 +417,7 @@ test_that("@I IDATE  IROP IRVAL",{
 
 test_that("@F FDATE  FMCD  FACD  FDEP  FAMN  FAMP  FAMK  FAMC  FAMO  FOCD FERNAME",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#    ~check,
         0,       2,        "F",#      "@F",
         2,       8,    "FDATE",#  " FDATE",
@@ -436,23 +433,23 @@ test_that("@F FDATE  FMCD  FACD  FDEP  FAMN  FAMP  FAMK  FAMC  FAMO  FOCD FERNAM
        62,NA_real_,  "FERNAME" #" FERNAME"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@F FDATE  FMCD  FACD  FDEP  FAMN  FAMP  FAMK  FAMC  FAMO  FOCD FERNAME",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@F FDATE  FMCD  FACD  FDEP  FAMN  FAMP  FAMK  FAMC  FAMO  FOCD FERNAME",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -462,7 +459,7 @@ test_that("@F FDATE  FMCD  FACD  FDEP  FAMN  FAMP  FAMK  FAMC  FAMO  FOCD FERNAM
 
 test_that("@T TDATE TIMPL  TDEP TNAME",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#  ~check,
         0,       2,        "T",#    "@T",
         2,       8,    "TDATE",#" TDATE",
@@ -471,23 +468,23 @@ test_that("@T TDATE TIMPL  TDEP TNAME",{
        20,NA_real_,    "TNAME" #" TNAME"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@T TDATE TIMPL  TDEP TNAME",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@T TDATE TIMPL  TDEP TNAME",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -497,7 +494,7 @@ test_that("@T TDATE TIMPL  TDEP TNAME",{
 
 test_that("@H HDATE  HSTG  HCOM HSIZE   HPC  HBPC HNAME",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#  ~check,
         0,       2,        "H",#    "@H",
         2,       8,    "HDATE",#" HDATE",
@@ -509,23 +506,23 @@ test_that("@H HDATE  HSTG  HCOM HSIZE   HPC  HBPC HNAME",{
        38,NA_real_,    "HNAME" #" HNAME"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@H HDATE  HSTG  HCOM HSIZE   HPC  HBPC HNAME",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@H HDATE  HSTG  HCOM HSIZE   HPC  HBPC HNAME",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -535,7 +532,7 @@ test_that("@H HDATE  HSTG  HCOM HSIZE   HPC  HBPC HNAME",{
 
 test_that("@N GENERAL     NYERS NREPS START SDATE RSEED SNAME.................... SMODEL",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#                       ~check,
         0,       2,        "N",#                         "@N",
         2,      15,  "GENERAL",#              " GENERAL     ",
@@ -548,23 +545,23 @@ test_that("@N GENERAL     NYERS NREPS START SDATE RSEED SNAME...................
        71,NA_real_,   "SMODEL" #                     "SMODEL"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@N GENERAL     NYERS NREPS START SDATE RSEED SNAME.................... SMODEL",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@N GENERAL     NYERS NREPS START SDATE RSEED SNAME.................... SMODEL",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -574,7 +571,7 @@ test_that("@N GENERAL     NYERS NREPS START SDATE RSEED SNAME...................
 
 test_that("@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL   CO2",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
         0,    2,        "N",#           "@N",
         2,   15,  "OPTIONS",#" OPTIONS     ",
@@ -589,23 +586,23 @@ test_that("@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL   CO2"
        62,   68,      "CO2" #       "   CO2"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL   CO2",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL   CO2",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -615,7 +612,7 @@ test_that("@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL   CO2"
 
 test_that("@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM MESEV MESOL",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
         0,    2,        "N",#           "@N",
         2,   15,  "METHODS",#" METHODS     ",
@@ -632,23 +629,23 @@ test_that("@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM 
        74,   80,    "MESOL" #       " MESOL"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM MESEV MESOL",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM MESEV MESOL",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -658,7 +655,7 @@ test_that("@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM 
 
 test_that("@N MANAGEMENT  PLANT IRRIG FERTI RESID HARVS",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end,  ~col_names,#         ~check,
         0,    2,         "N",#           "@N",
         2,   15,"MANAGEMENT",#" MANAGEMENT  ",
@@ -669,23 +666,23 @@ test_that("@N MANAGEMENT  PLANT IRRIG FERTI RESID HARVS",{
        38,   44,     "HARVS" #       " HARVS"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@N MANAGEMENT  PLANT IRRIG FERTI RESID HARVS",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@N MANAGEMENT  PLANT IRRIG FERTI RESID HARVS",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -695,7 +692,7 @@ test_that("@N MANAGEMENT  PLANT IRRIG FERTI RESID HARVS",{
 
 test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT VBOSE CHOUT OPOUT FMOPT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
         0,    2,        "N",#           "@N",
         2,   15,  "OUTPUTS",#" OUTPUTS     ",
@@ -715,23 +712,23 @@ test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT 
        92,   98,    "FMOPT" #       " FMOPT"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT VBOSE CHOUT OPOUT FMOPT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT VBOSE CHOUT OPOUT FMOPT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -741,29 +738,29 @@ test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT 
 
 test_that("@  AUTOMATIC MANAGEMENT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#        ~check,
         0,      12, "AUTOMATIC",#"@  AUTOMATIC",
        12,NA_real_,"MANAGEMENT" # " MANAGEMENT"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@  AUTOMATIC MANAGEMENT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  AUTOMATIC MANAGEMENT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -773,7 +770,7 @@ test_that("@  AUTOMATIC MANAGEMENT",{
 
 test_that("@N PLANTING    PFRST PLAST PH2OL PH2OU PH2OD PSTMX PSTMN",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
         0,    2,        "N",#           "@N",
         2,   15, "PLANTING",#" PLANTING    ",
@@ -786,23 +783,23 @@ test_that("@N PLANTING    PFRST PLAST PH2OL PH2OU PH2OD PSTMX PSTMN",{
        50,   56,    "PSTMN" #       " PSTMN"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@N PLANTING    PFRST PLAST PH2OL PH2OU PH2OD PSTMX PSTMN",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@N PLANTING    PFRST PLAST PH2OL PH2OU PH2OD PSTMX PSTMN",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -812,7 +809,7 @@ test_that("@N PLANTING    PFRST PLAST PH2OL PH2OU PH2OD PSTMX PSTMN",{
 
 test_that("@N IRRIGATION  IMDEP ITHRL ITHRU IROFF IMETH IRAMT IREFF",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end,  ~col_names,#         ~check,
         0,    2,         "N",#           "@N",
         2,   15,"IRRIGATION",#" IRRIGATION  ",
@@ -825,23 +822,23 @@ test_that("@N IRRIGATION  IMDEP ITHRL ITHRU IROFF IMETH IRAMT IREFF",{
        50,   56,     "IREFF" #       " IREFF"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@N IRRIGATION  IMDEP ITHRL ITHRU IROFF IMETH IRAMT IREFF",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@N IRRIGATION  IMDEP ITHRL ITHRU IROFF IMETH IRAMT IREFF",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -851,7 +848,7 @@ test_that("@N IRRIGATION  IMDEP ITHRL ITHRU IROFF IMETH IRAMT IREFF",{
 
 test_that("@N NITROGEN    NMDEP NMTHR NAMNT NCODE NAOFF",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
         0,    2,        "N",#           "@N",
         2,   15, "NITROGEN",#" NITROGEN    ",
@@ -862,23 +859,23 @@ test_that("@N NITROGEN    NMDEP NMTHR NAMNT NCODE NAOFF",{
        38,   44,    "NAOFF" #       " NAOFF"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@N NITROGEN    NMDEP NMTHR NAMNT NCODE NAOFF",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@N NITROGEN    NMDEP NMTHR NAMNT NCODE NAOFF",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -888,7 +885,7 @@ test_that("@N NITROGEN    NMDEP NMTHR NAMNT NCODE NAOFF",{
 
 test_that("@N RESIDUES    RIPCN RTIME RIDEP",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
         0,    2,        "N",#           "@N",
         2,   15, "RESIDUES",#" RESIDUES    ",
@@ -897,23 +894,23 @@ test_that("@N RESIDUES    RIPCN RTIME RIDEP",{
        26,   32,    "RIDEP" #       " RIDEP"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@N RESIDUES    RIPCN RTIME RIDEP",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@N RESIDUES    RIPCN RTIME RIDEP",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -923,7 +920,7 @@ test_that("@N RESIDUES    RIPCN RTIME RIDEP",{
 
 test_that("@N HARVEST     HFRST HLAST HPCNP HPCNR",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
         0,    2,        "N",#           "@N",
         2,   15,  "HARVEST",#" HARVEST     ",
@@ -933,23 +930,23 @@ test_that("@N HARVEST     HFRST HLAST HPCNP HPCNR",{
        32,   38,    "HPCNR" #       " HPCNR"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@N HARVEST     HFRST HLAST HPCNP HPCNR",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@N HARVEST     HFRST HLAST HPCNP HPCNR",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -959,7 +956,7 @@ test_that("@N HARVEST     HFRST HLAST HPCNP HPCNR",{
 
 test_that("@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#   ~check,
         0,       2,        "C",#     "@C",
         2,       8,      "PCR",# "   PCR",
@@ -977,23 +974,23 @@ test_that("@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP 
        74,NA_real_,   "ICNAME" #" ICNAME"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1003,7 +1000,7 @@ test_that("@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP 
 
 test_that("@C  ICBL  SH2O  SNH4  SNO3",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    2,        "C",#    "@C",
         2,    8,     "ICBL",#"  ICBL",
@@ -1012,23 +1009,23 @@ test_that("@C  ICBL  SH2O  SNH4  SNO3",{
        20,   26,     "SNO3" #"  SNO3"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@C  ICBL  SH2O  SNH4  SNO3",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@C  ICBL  SH2O  SNH4  SNO3",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1038,28 +1035,28 @@ test_that("@C  ICBL  SH2O  SNH4  SNO3",{
 
 test_that("@NOTES",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#  ~check,
         0,NA_real_,    "NOTES" #"@NOTES"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@NOTES",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@NOTES",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1069,7 +1066,7 @@ test_that("@NOTES",{
 
 test_that("@E ODATE EDAY  ERAD  EMAX  EMIN  ERAIN ECO2  EDEW  EWIND ENVNAME  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#     ~check,
         0,       2,        "E",#       "@E",
         2,       8,    "ODATE",#   " ODATE",
@@ -1084,23 +1081,23 @@ test_that("@E ODATE EDAY  ERAD  EMAX  EMIN  ERAIN ECO2  EDEW  EWIND ENVNAME  ",{
        57,NA_real_,  "ENVNAME" #"ENVNAME  "
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@E ODATE EDAY  ERAD  EMAX  EMIN  ERAIN ECO2  EDEW  EWIND ENVNAME  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@E ODATE EDAY  ERAD  EMAX  EMIN  ERAIN ECO2  EDEW  EWIND ENVNAME  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1110,7 +1107,7 @@ test_that("@E ODATE EDAY  ERAD  EMAX  EMIN  ERAIN ECO2  EDEW  EWIND ENVNAME  ",{
 
 test_that("@A SADAT  SMHB  SMPX  SMKE  SANAME",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#    ~check,
         0,    2,        "A",#      "@A",
         2,    8,    "SADAT",#  " SADAT",
@@ -1120,23 +1117,23 @@ test_that("@A SADAT  SMHB  SMPX  SMKE  SANAME",{
        26,   34,   "SANAME" #"  SANAME"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@A SADAT  SMHB  SMPX  SMKE  SANAME",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@A SADAT  SMHB  SMPX  SMKE  SANAME",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1146,7 +1143,7 @@ test_that("@A SADAT  SMHB  SMPX  SMKE  SANAME",{
 
 test_that("@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    2,        "A",#    "@A",
         2,    8,     "SABL",#"  SABL",
@@ -1160,23 +1157,23 @@ test_that("@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC",{
        50,   56,     "SASC" #"  SASC"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1186,7 +1183,7 @@ test_that("@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC",{
 
 test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT VBOSE CHOUT OPOUT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
         0,    2,        "N",#           "@N",
         2,   15,  "OUTPUTS",#" OUTPUTS     ",
@@ -1205,23 +1202,23 @@ test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT 
        86,   92,    "OPOUT" #       " OPOUT"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT VBOSE CHOUT OPOUT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT VBOSE CHOUT OPOUT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1231,7 +1228,7 @@ test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT 
 
 test_that("@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN .FLWR .SLAS",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    2,        "L",#                "@L",
         2,   18,     "XCRD",#  " ...........XCRD",
@@ -1243,23 +1240,23 @@ test_that("@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN 
        74,   80,     "SLAS" #            " .SLAS"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN .FLWR .SLAS",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN .FLWR .SLAS",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1269,7 +1266,7 @@ test_that("@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN 
 
 test_that("@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
         0,    2,        "N",#           "@N",
         2,   15,  "OPTIONS",#" OPTIONS     ",
@@ -1283,23 +1280,23 @@ test_that("@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL",{
        56,   62,     "TILL" #       "  TILL"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1309,7 +1306,7 @@ test_that("@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL",{
 
 test_that("@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
         0,    2,        "N",#           "@N",
         2,   15,  "METHODS",#" METHODS     ",
@@ -1324,23 +1321,23 @@ test_that("@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM"
        62,   68,    "MESOM" #       " MESOM"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1350,7 +1347,7 @@ test_that("@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM"
 
 test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT  LONG CHOUT OPOUT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
         0,    2,        "N",#           "@N",
         2,   15,  "OUTPUTS",#" OUTPUTS     ",
@@ -1369,23 +1366,23 @@ test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT 
        86,   92,    "OPOUT" #       " OPOUT"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT  LONG CHOUT OPOUT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT  LONG CHOUT OPOUT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1395,7 +1392,7 @@ test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT 
 
 test_that("@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN HARM.........",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#          ~check,
         0,    7,    "PAREA",#       "@ PAREA",
         7,   13,     "PRNO",#        "  PRNO",
@@ -1409,23 +1406,23 @@ test_that("@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN HARM.........
        55,   69,     "HARM" #" HARM........."
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN HARM.........",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN HARM.........",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1435,7 +1432,7 @@ test_that("@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN HARM.........
 
 test_that("@N GENERAL     NYERS NREPS START SDATE RSEED SNAME.................... MODEL",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#                      ~check,
         0,       2,        "N",#                        "@N",
         2,      15,  "GENERAL",#             " GENERAL     ",
@@ -1448,23 +1445,23 @@ test_that("@N GENERAL     NYERS NREPS START SDATE RSEED SNAME...................
        70,NA_real_,    "MODEL" #                    " MODEL"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@N GENERAL     NYERS NREPS START SDATE RSEED SNAME.................... MODEL",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@N GENERAL     NYERS NREPS START SDATE RSEED SNAME.................... MODEL",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1474,7 +1471,7 @@ test_that("@N GENERAL     NYERS NREPS START SDATE RSEED SNAME...................
 
 test_that("@R RDATE  RCOD  RAMT  RESN  RESP  RESK  RINP  RDEP  RMET RENAME",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#   ~check,
         0,       2,        "R",#     "@R",
         2,       8,    "RDATE",# " RDATE",
@@ -1489,23 +1486,23 @@ test_that("@R RDATE  RCOD  RAMT  RESN  RESP  RESK  RINP  RDEP  RMET RENAME",{
        56,NA_real_,   "RENAME" #" RENAME"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@R RDATE  RCOD  RAMT  RESN  RESP  RESK  RINP  RDEP  RMET RENAME",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@R RDATE  RCOD  RAMT  RESN  RESP  RESK  RINP  RDEP  RMET RENAME",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1515,7 +1512,7 @@ test_that("@R RDATE  RCOD  RAMT  RESN  RESP  RESK  RINP  RDEP  RMET RENAME",{
 
 test_that("@C CDATE CHCOD CHAMT  CHME CHDEP   CHT..CHNAME",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#    ~check,
         0,       2,        "C",#      "@C",
         2,       8,    "CDATE",#  " CDATE",
@@ -1527,23 +1524,23 @@ test_that("@C CDATE CHCOD CHAMT  CHME CHDEP   CHT..CHNAME",{
        40,NA_real_,   "CHNAME" #  "CHNAME"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@C CDATE CHCOD CHAMT  CHME CHDEP   CHT..CHNAME",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@C CDATE CHCOD CHAMT  CHME CHDEP   CHT..CHNAME",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1553,7 +1550,7 @@ test_that("@C CDATE CHCOD CHAMT  CHME CHDEP   CHT..CHNAME",{
 
 test_that("@N SIMDATES    ENDAT    SDUR   FODAT  FSTRYR  FENDYR FWFILE           FONAME",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#             ~check,
         0,    2,        "N",#               "@N",
         2,   11, "SIMDATES",#        " SIMDATES",
@@ -1566,23 +1563,23 @@ test_that("@N SIMDATES    ENDAT    SDUR   FODAT  FSTRYR  FENDYR FWFILE          
        59,   76,   "FONAME" #"           FONAME"
   )
 
-  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)", 
-  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)", 
-  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)", 
-  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)", 
-  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)", 
+  col_names <-   c(" +N(?= |$)", " +R(?= |$)", " +O(?= |$)", " +C(?= |$)", " +L(?= |$)",
+  " +P(?= |$)", " +F(?= |$)", " +T(?= |$)", " +H(?= |$)", " +I(?= |$)",
+  " +A(?= |$)", " +E(?= |$)", " CU(?= |$)", " FL(?= |$)", " SA(?= |$)",
+  " IC(?= |$)", " MP(?= |$)", " MI(?= |$)", " MF(?= |$)", " MR(?= |$)",
+  " MC(?= |$)", " MT(?= |$)", " ME(?= |$)", " MH(?= |$)", " SM(?= |$)",
   "  FLSA")
 
-  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS", 
-  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME", 
-  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME", 
-  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL", 
-  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING", 
-  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY", 
-  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME", 
+  left_just <-   c("SITE", "PEOPLE", "ADDRESS", "INSTRUMENTS", "PROBLEMS", "PUBLICATIONS",
+  "DISTRIBUTION", "NOTES", "  HARM\\.*", " TNAME\\.*", "FLNAME",
+  "  ID_SOIL", " CNAME", " WSTA\\.*", " SLTX", " ID_FIELD", " ICNAME",
+  " IRNAME", " FERNAME", " GENERAL", " SNAME\\.*", "SMODEL", " MODEL",
+  " OPTIONS", " METHODS", " MANAGEMENT", " OUTPUTS", " PLANTING",
+  " IRRIGATION", " NITROGEN", " RESIDUES", " HARVEST", " EDAY",
+  "ERAD", "EMAX", "EMIN", "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME",
   " HNAME", " CHT\\.*", " RENAME", " +PLNAME", "CHNAME")
 
-  check_fwf_pos <- header_to_fwf_position("@N SIMDATES    ENDAT    SDUR   FODAT  FSTRYR  FENDYR FWFILE           FONAME",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@N SIMDATES    ENDAT    SDUR   FODAT  FSTRYR  FENDYR FWFILE           FONAME",
                                           col_names = col_names,
                                           left_justified = left_just)
 

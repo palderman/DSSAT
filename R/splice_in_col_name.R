@@ -1,7 +1,5 @@
 #' Splice column name into vector of column names
 #'
-#' @export
-#'
 #' @keywords internal
 #'
 #' @param col_names A length-one character vector of a header line

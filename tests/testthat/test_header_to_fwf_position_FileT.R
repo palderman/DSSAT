@@ -1,9 +1,6 @@
-library(DSSAT)
-library(tibble)
-
 test_that("@TRNO   DATE  HERB  VN%D  LAID  CWAD CPROT  CHTD  LWAD  SWAD  FHL%",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -22,7 +19,7 @@ test_that("@TRNO   DATE  HERB  VN%D  LAID  CWAD CPROT  CHTD  LWAD  SWAD  FHL%",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  HERB  VN%D  LAID  CWAD CPROT  CHTD  LWAD  SWAD  FHL%",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  HERB  VN%D  LAID  CWAD CPROT  CHTD  LWAD  SWAD  FHL%",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -32,7 +29,7 @@ test_that("@TRNO   DATE  HERB  VN%D  LAID  CWAD CPROT  CHTD  LWAD  SWAD  FHL%",{
 
 test_that("@TRNO   DATE  HARV  HRVS",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -44,7 +41,7 @@ test_that("@TRNO   DATE  HARV  HRVS",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  HARV  HRVS",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  HARV  HRVS",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -54,7 +51,7 @@ test_that("@TRNO   DATE  HARV  HRVS",{
 
 test_that("@TRNO   DATE  HRVL  HRVS",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -66,7 +63,7 @@ test_that("@TRNO   DATE  HRVL  HRVS",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  HRVL  HRVS",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  HRVL  HRVS",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -76,7 +73,7 @@ test_that("@TRNO   DATE  HRVL  HRVS",{
 
 test_that("@TRNO   DATE   MOW  VN%D  CNAD  CWAD   PRP",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -91,7 +88,7 @@ test_that("@TRNO   DATE   MOW  VN%D  CNAD  CWAD   PRP",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE   MOW  VN%D  CNAD  CWAD   PRP",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE   MOW  VN%D  CNAD  CWAD   PRP",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -101,7 +98,7 @@ test_that("@TRNO   DATE   MOW  VN%D  CNAD  CWAD   PRP",{
 
 test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  SLAD  CHTD  LN%D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -123,7 +120,7 @@ test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  SLAD  CHTD  LN%D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  SLAD  CHTD  LN%D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -133,7 +130,7 @@ test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  S
 
 test_that("@TRNO   DATE  CWAD  LAIX  LI%D  VN%D  LMLN  LWAD  SWAD  SLAD  LAID  HERB CPROT   NDF IVOMD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -156,7 +153,7 @@ test_that("@TRNO   DATE  CWAD  LAIX  LI%D  VN%D  LMLN  LWAD  SWAD  SLAD  LAID  H
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  LAIX  LI%D  VN%D  LMLN  LWAD  SWAD  SLAD  LAID  HERB CPROT   NDF IVOMD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  LAIX  LI%D  VN%D  LMLN  LWAD  SWAD  SLAD  LAID  HERB CPROT   NDF IVOMD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -166,7 +163,7 @@ test_that("@TRNO   DATE  CWAD  LAIX  LI%D  VN%D  LMLN  LWAD  SWAD  SLAD  LAID  H
 
 test_that("@TRNO   DATE   MOW  CWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -178,7 +175,7 @@ test_that("@TRNO   DATE   MOW  CWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE   MOW  CWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE   MOW  CWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -188,7 +185,7 @@ test_that("@TRNO   DATE   MOW  CWAD",{
 
 test_that("@TRNO   DATE  CWAD   MOW",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -200,7 +197,7 @@ test_that("@TRNO   DATE  CWAD   MOW",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD   MOW",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD   MOW",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -210,7 +207,7 @@ test_that("@TRNO   DATE  CWAD   MOW",{
 
 test_that("@TRNO   DATE  LAID  LWAD  SWAD  RWAD  CWAD  LAWD  L#SD  SLAD  PWAD  HIPD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -230,7 +227,7 @@ test_that("@TRNO   DATE  LAID  LWAD  SWAD  RWAD  CWAD  LAWD  L#SD  SLAD  PWAD  H
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  LWAD  SWAD  RWAD  CWAD  LAWD  L#SD  SLAD  PWAD  HIPD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  LWAD  SWAD  RWAD  CWAD  LAWD  L#SD  SLAD  PWAD  HIPD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -240,7 +237,7 @@ test_that("@TRNO   DATE  LAID  LWAD  SWAD  RWAD  CWAD  LAWD  L#SD  SLAD  PWAD  H
 
 test_that("@TRNO   DATE  LAID  CWAD  PWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -253,7 +250,7 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  CWAD  PWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  CWAD  PWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -263,7 +260,7 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD",{
 
 test_that("@TRNO   DATE  LWAD  SWAD  GWAD  CWAD  LAID  CHTD  VN%D  LN%D  SN%D  GN%D  CNAD  LNAD  SNAD  VNAD  GNAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -288,7 +285,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  GWAD  CWAD  LAID  CHTD  VN%D  LN%D  SN%D  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LWAD  SWAD  GWAD  CWAD  LAID  CHTD  VN%D  LN%D  SN%D  GN%D  CNAD  LNAD  SNAD  VNAD  GNAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LWAD  SWAD  GWAD  CWAD  LAID  CHTD  VN%D  LN%D  SN%D  GN%D  CNAD  LNAD  SNAD  VNAD  GNAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -298,7 +295,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  GWAD  CWAD  LAID  CHTD  VN%D  LN%D  SN%D  G
 
 test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  GWAD  LAID  CHTD  VWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -316,7 +313,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  GWAD  LAID  CHTD  VWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  GWAD  LAID  CHTD  VWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  GWAD  LAID  CHTD  VWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -326,7 +323,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  GWAD  LAID  CHTD  VWAD",{
 
 test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  LAID",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -341,7 +338,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  LAID",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  LAID",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  LAID",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -351,7 +348,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  LAID",{
 
 test_that("@TRNO   DATE  GSTD  CHTD  CWAD  LWAD  SWAD  PWAD  WLVG  LWPD  LAID  SLAD  LAPD  G#AD  G#PD  GWGD  P#AD  GW%M  HIAD  GWAD  GL%D  GN%D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -381,7 +378,7 @@ test_that("@TRNO   DATE  GSTD  CHTD  CWAD  LWAD  SWAD  PWAD  WLVG  LWPD  LAID  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  GSTD  CHTD  CWAD  LWAD  SWAD  PWAD  WLVG  LWPD  LAID  SLAD  LAPD  G#AD  G#PD  GWGD  P#AD  GW%M  HIAD  GWAD  GL%D  GN%D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  GSTD  CHTD  CWAD  LWAD  SWAD  PWAD  WLVG  LWPD  LAID  SLAD  LAPD  G#AD  G#PD  GWGD  P#AD  GW%M  HIAD  GWAD  GL%D  GN%D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -391,7 +388,7 @@ test_that("@TRNO   DATE  GSTD  CHTD  CWAD  LWAD  SWAD  PWAD  WLVG  LWPD  LAID  S
 
 test_that("@TRNO   DATE   DAP  TDWA  TWAD  SWAD  DWAD  LWAD  HWAD  LAID  LALN  CDWA",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -411,7 +408,7 @@ test_that("@TRNO   DATE   DAP  TDWA  TWAD  SWAD  DWAD  LWAD  HWAD  LAID  LALN  C
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE   DAP  TDWA  TWAD  SWAD  DWAD  LWAD  HWAD  LAID  LALN  CDWA",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE   DAP  TDWA  TWAD  SWAD  DWAD  LWAD  HWAD  LAID  LALN  CDWA",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -421,7 +418,7 @@ test_that("@TRNO   DATE   DAP  TDWA  TWAD  SWAD  DWAD  LWAD  HWAD  LAID  LALN  C
 
 test_that("@TRNO   DATE  DAP1  S#AD  L#SD  L#IR",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -435,7 +432,7 @@ test_that("@TRNO   DATE  DAP1  S#AD  L#SD  L#IR",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  DAP1  S#AD  L#SD  L#IR",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  DAP1  S#AD  L#SD  L#IR",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -445,7 +442,7 @@ test_that("@TRNO   DATE  DAP1  S#AD  L#SD  L#IR",{
 
 test_that("@TRNO   DATE  GSTD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -456,7 +453,7 @@ test_that("@TRNO   DATE  GSTD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  GSTD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  GSTD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -466,7 +463,7 @@ test_that("@TRNO   DATE  GSTD",{
 
 test_that("@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  S#AD  L#SD  L#IR  LALD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -485,7 +482,7 @@ test_that("@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  S#AD  L#SD  L#IR  LALD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  S#AD  L#SD  L#IR  LALD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  S#AD  L#SD  L#IR  LALD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -495,7 +492,7 @@ test_that("@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  S#AD  L#SD  L#IR  LALD",{
 
 test_that("@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  LALD  S#AD  L#SD  L#IR",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -514,7 +511,7 @@ test_that("@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  LALD  S#AD  L#SD  L#IR",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  LALD  S#AD  L#SD  L#IR",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  LALD  S#AD  L#SD  L#IR",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -524,7 +521,7 @@ test_that("@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  LALD  S#AD  L#SD  L#IR",{
 
 test_that("@TRNO   DATE   DAP  SWAD  LWAD  HWAD  RWAD  CWAD  TWAD  CGRD  LAID  H#AD  RLAD  RLWD  LAWD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -547,7 +544,7 @@ test_that("@TRNO   DATE   DAP  SWAD  LWAD  HWAD  RWAD  CWAD  TWAD  CGRD  LAID  H
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE   DAP  SWAD  LWAD  HWAD  RWAD  CWAD  TWAD  CGRD  LAID  H#AD  RLAD  RLWD  LAWD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE   DAP  SWAD  LWAD  HWAD  RWAD  CWAD  TWAD  CGRD  LAID  H#AD  RLAD  RLWD  LAWD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -557,7 +554,7 @@ test_that("@TRNO   DATE   DAP  SWAD  LWAD  HWAD  RWAD  CWAD  TWAD  CGRD  LAID  H
 
 test_that("@TRNO   DATE  DAP1  S#PD  LALD  L#IR  L#SD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -572,7 +569,7 @@ test_that("@TRNO   DATE  DAP1  S#PD  LALD  L#IR  L#SD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  DAP1  S#PD  LALD  L#IR  L#SD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  DAP1  S#PD  LALD  L#IR  L#SD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -582,7 +579,7 @@ test_that("@TRNO   DATE  DAP1  S#PD  LALD  L#IR  L#SD",{
 
 test_that("@TRNO   DATE  SWTD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -593,7 +590,7 @@ test_that("@TRNO   DATE  SWTD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  SWTD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  SWTD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -603,7 +600,7 @@ test_that("@TRNO   DATE  SWTD",{
 
 test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  HIPD  LN%D  SN%D  GN%D  PN%D  GWGD  SH%D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -632,7 +629,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  HIPD  LN%D  SN%D  GN%D  PN%D  GWGD  SH%D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  HIPD  LN%D  SN%D  GN%D  PN%D  GWGD  SH%D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -642,7 +639,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  G
 
 test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  HIPD  SH%D  LN%D  SN%D  GN%D  PN%D  G#PD  GWGD Spike  LALD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -674,7 +671,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  HIPD  SH%D  LN%D  SN%D  GN%D  PN%D  G#PD  GWGD Spike  LALD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  HIPD  SH%D  LN%D  SN%D  GN%D  PN%D  G#PD  GWGD Spike  LALD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -684,7 +681,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  G
 
 test_that("@TRNO   DATE  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  HIPD  SH%D ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -705,7 +702,7 @@ test_that("@TRNO   DATE  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  H
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  HIPD  SH%D ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  HIPD  SH%D ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -715,7 +712,7 @@ test_that("@TRNO   DATE  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  H
 
 test_that("@TRNO   DATE  CHTD  CWID  L#SD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -728,7 +725,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CHTD  CWID  L#SD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CHTD  CWID  L#SD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -738,7 +735,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD",{
 
 test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIPD  SH%D  SLAD  GWGD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -762,7 +759,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIPD  SH%D  SLAD  GWGD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIPD  SH%D  SLAD  GWGD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -772,7 +769,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
 test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW0D  SWTD  SWXD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -794,7 +791,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW0D  SWTD  SWXD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW0D  SWTD  SWXD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -804,7 +801,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  S
 
 test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW0D  SWTD SWXD  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -826,7 +823,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW0D  SWTD SWXD  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW0D  SWTD SWXD  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -836,7 +833,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  S
 
 test_that("@TRNO  DATE   L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIPD  SH%D  SLAD  GWGD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    6,     "TRNO",# "@TRNO ",
         6,   11,     "DATE",#  " DATE",
@@ -860,7 +857,7 @@ test_that("@TRNO  DATE   L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO  DATE   L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIPD  SH%D  SLAD  GWGD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO  DATE   L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIPD  SH%D  SLAD  GWGD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -870,7 +867,7 @@ test_that("@TRNO  DATE   L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
 test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW0D SWTD  SWXD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -892,7 +889,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW0D SWTD  SWXD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW0D SWTD  SWXD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -902,7 +899,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  S
 
 test_that("@TRNO   DATE    R#  CHTD  LAID  P#AD  LWAD  SWAD  RWAD  PWAD  SLAD  CWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -922,7 +919,7 @@ test_that("@TRNO   DATE    R#  CHTD  LAID  P#AD  LWAD  SWAD  RWAD  PWAD  SLAD  C
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE    R#  CHTD  LAID  P#AD  LWAD  SWAD  RWAD  PWAD  SLAD  CWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE    R#  CHTD  LAID  P#AD  LWAD  SWAD  RWAD  PWAD  SLAD  CWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -932,7 +929,7 @@ test_that("@TRNO   DATE    R#  CHTD  LAID  P#AD  LWAD  SWAD  RWAD  PWAD  SLAD  C
 
 test_that("@TRNO   DATE  LWAD  SWAD  CWAD  PWAD  GWAD  CHTD  LAID",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -949,7 +946,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  CWAD  PWAD  GWAD  CHTD  LAID",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LWAD  SWAD  CWAD  PWAD  GWAD  CHTD  LAID",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LWAD  SWAD  CWAD  PWAD  GWAD  CHTD  LAID",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -959,7 +956,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  CWAD  PWAD  GWAD  CHTD  LAID",{
 
 test_that("@TRNO   DATE  LAID",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -970,7 +967,7 @@ test_that("@TRNO   DATE  LAID",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -980,7 +977,7 @@ test_that("@TRNO   DATE  LAID",{
 
 test_that("@TRNO   DATE  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW10",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -999,7 +996,7 @@ test_that("@TRNO   DATE  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW10",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW10",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW10",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1009,7 +1006,7 @@ test_that("@TRNO   DATE  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW10",{
 
 test_that("@TRNO   DATE  RL4D  RL5D  RL6D  RL7D  RL8D  RL9D  RL10",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1026,7 +1023,7 @@ test_that("@TRNO   DATE  RL4D  RL5D  RL6D  RL7D  RL8D  RL9D  RL10",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  RL4D  RL5D  RL6D  RL7D  RL8D  RL9D  RL10",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  RL4D  RL5D  RL6D  RL7D  RL8D  RL9D  RL10",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1036,7 +1033,7 @@ test_that("@TRNO   DATE  RL4D  RL5D  RL6D  RL7D  RL8D  RL9D  RL10",{
 
 test_that("@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G#AD  GWGD  SH%D  SLAD  SHAD  L#SD  CHTD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1062,7 +1059,7 @@ test_that("@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G#AD  GWGD  SH%D  SLAD  SHAD  L#SD  CHTD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G#AD  GWGD  SH%D  SLAD  SHAD  L#SD  CHTD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1072,7 +1069,7 @@ test_that("@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G
 
 test_that("@TRNO   DATE  L#SD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1083,7 +1080,7 @@ test_that("@TRNO   DATE  L#SD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1093,7 +1090,7 @@ test_that("@TRNO   DATE  L#SD",{
 
 test_that("@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G#AD  GWGD  SH%D  SLAD  L#SD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1117,7 +1114,7 @@ test_that("@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G#AD  GWGD  SH%D  SLAD  L#SD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G#AD  GWGD  SH%D  SLAD  L#SD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1127,7 +1124,7 @@ test_that("@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G
 
 test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1148,7 +1145,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1158,7 +1155,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  S
 
 test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  SH%D  SLAD  GWGD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1182,7 +1179,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  SH%D  SLAD  GWGD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  SH%D  SLAD  GWGD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1192,7 +1189,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
 test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  G#AD  SH%D  SLAD  GWGD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1216,7 +1213,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  R
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  G#AD  SH%D  SLAD  GWGD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  G#AD  SH%D  SLAD  GWGD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1226,7 +1223,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  R
 
 test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  SH%D  SLAD  GWGD  CHTD  CWID",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1252,7 +1249,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  SH%D  SLAD  GWGD  CHTD  CWID",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  SH%D  SLAD  GWGD  CHTD  CWID",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1262,7 +1259,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
 test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  HIPD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1279,7 +1276,7 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  HIPD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  HIPD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  HIPD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1289,7 +1286,7 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  HIPD",{
 
 test_that("@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D                    ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1307,7 +1304,7 @@ test_that("@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D         
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D                    ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D                    ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1317,7 +1314,7 @@ test_that("@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D         
 
 test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC              ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1336,7 +1333,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC   
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC              ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC              ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1346,7 +1343,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC   
 
 test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  NWAD  HIPD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1364,7 +1361,7 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  NWAD  HIPD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  NWAD  HIPD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  NWAD  HIPD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1374,7 +1371,7 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  NWAD  HIPD",{
 
 test_that("@TRNO   DATE  CHTD  CWID  L#SD  SN%D  LN%D  GN%D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1390,7 +1387,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  SN%D  LN%D  GN%D",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CHTD  CWID  L#SD  SN%D  LN%D  GN%D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CHTD  CWID  L#SD  SN%D  LN%D  GN%D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1400,7 +1397,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  SN%D  LN%D  GN%D",{
 
 test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1419,7 +1416,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1429,7 +1426,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC",{
 
 test_that("@TRNO   DATE  NH1D  NH2D  NH3D  NH4D  NH5D  NI1D  NI2D  NI3D  NI4D NI5DD        ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1449,7 +1446,7 @@ test_that("@TRNO   DATE  NH1D  NH2D  NH3D  NH4D  NH5D  NI1D  NI2D  NI3D  NI4D NI
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  NH1D  NH2D  NH3D  NH4D  NH5D  NI1D  NI2D  NI3D  NI4D NI5DD        ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  NH1D  NH2D  NH3D  NH4D  NH5D  NI1D  NI2D  NI3D  NI4D NI5DD        ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1459,7 +1456,7 @@ test_that("@TRNO   DATE  NH1D  NH2D  NH3D  NH4D  NH5D  NI1D  NI2D  NI3D  NI4D NI
 
 test_that("@TRNO   DATE  TS1D  TS2D  TS3D  SW1D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1473,7 +1470,7 @@ test_that("@TRNO   DATE  TS1D  TS2D  TS3D  SW1D",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  TS1D  TS2D  TS3D  SW1D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  TS1D  TS2D  TS3D  SW1D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1483,7 +1480,7 @@ test_that("@TRNO   DATE  TS1D  TS2D  TS3D  SW1D",{
 
 test_that("@TRNO   DATE  TS1D  TS2D  TS3D  TS5D  TS7D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1498,7 +1495,7 @@ test_that("@TRNO   DATE  TS1D  TS2D  TS3D  TS5D  TS7D",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  TS1D  TS2D  TS3D  TS5D  TS7D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  TS1D  TS2D  TS3D  TS5D  TS7D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1508,7 +1505,7 @@ test_that("@TRNO   DATE  TS1D  TS2D  TS3D  TS5D  TS7D",{
 
 test_that("@TRNO   DATE SCS20D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    6,     "TRNO",# "@TRNO ",
         6,   12,     "DATE",# "  DATE",
@@ -1519,7 +1516,7 @@ test_that("@TRNO   DATE SCS20D",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE SCS20D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE SCS20D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1529,7 +1526,7 @@ test_that("@TRNO   DATE SCS20D",{
 
 test_that("@TRNO   DATE  CHTD  CWID  L#SD  SH%D  GWGD  CWAD  LWAD  SWAD  PWAD  GWAD  SLAD  LAID  P#AD  G#AD  HIAD  HIPD  NUPC  NIAD  NLCC ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1558,7 +1555,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  SH%D  GWGD  CWAD  LWAD  SWAD  PWAD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CHTD  CWID  L#SD  SH%D  GWGD  CWAD  LWAD  SWAD  PWAD  GWAD  SLAD  LAID  P#AD  G#AD  HIAD  HIPD  NUPC  NIAD  NLCC ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CHTD  CWID  L#SD  SH%D  GWGD  CWAD  LWAD  SWAD  PWAD  GWAD  SLAD  LAID  P#AD  G#AD  HIAD  HIPD  NUPC  NIAD  NLCC ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1568,7 +1565,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  SH%D  GWGD  CWAD  LWAD  SWAD  PWAD  G
 
 test_that("@TRNO   DATE  CWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1579,7 +1576,7 @@ test_that("@TRNO   DATE  CWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1589,7 +1586,7 @@ test_that("@TRNO   DATE  CWAD",{
 
 test_that("@TRNO   DATE  SW2D  SW4D  SW6D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1602,7 +1599,7 @@ test_that("@TRNO   DATE  SW2D  SW4D  SW6D",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  SW2D  SW4D  SW6D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  SW2D  SW4D  SW6D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1612,7 +1609,7 @@ test_that("@TRNO   DATE  SW2D  SW4D  SW6D",{
 
 test_that("@TRNO   DATE  CWAD  CNAD  GWAD  GN%D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1626,7 +1623,7 @@ test_that("@TRNO   DATE  CWAD  CNAD  GWAD  GN%D",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  CNAD  GWAD  GN%D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  CNAD  GWAD  GN%D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1636,7 +1633,7 @@ test_that("@TRNO   DATE  CWAD  CNAD  GWAD  GN%D",{
 
 test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1654,7 +1651,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1664,7 +1661,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D",{
 
 test_that("@TRNO   DATE  NI1D  NI2D  NI3D  NI4D  NI5D  NI6D  NIAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1681,7 +1678,7 @@ test_that("@TRNO   DATE  NI1D  NI2D  NI3D  NI4D  NI5D  NI6D  NIAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  NI1D  NI2D  NI3D  NI4D  NI5D  NI6D  NIAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  NI1D  NI2D  NI3D  NI4D  NI5D  NI6D  NIAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1691,7 +1688,7 @@ test_that("@TRNO   DATE  NI1D  NI2D  NI3D  NI4D  NI5D  NI6D  NIAD",{
 
 test_that("@TRNO   DATE  GWAD  GWGD  G#AD  LAID  CWAD  GN%D  CNAD  SNAD  GNAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1710,7 +1707,7 @@ test_that("@TRNO   DATE  GWAD  GWGD  G#AD  LAID  CWAD  GN%D  CNAD  SNAD  GNAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  GWAD  GWGD  G#AD  LAID  CWAD  GN%D  CNAD  SNAD  GNAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  GWAD  GWGD  G#AD  LAID  CWAD  GN%D  CNAD  SNAD  GNAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1720,7 +1717,7 @@ test_that("@TRNO   DATE  GWAD  GWGD  G#AD  LAID  CWAD  GN%D  CNAD  SNAD  GNAD",{
 
 test_that("@TRNO   DATE  L#SD  CHTD  LWAD  CWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1734,7 +1731,7 @@ test_that("@TRNO   DATE  L#SD  CHTD  LWAD  CWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  CHTD  LWAD  CWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  CHTD  LWAD  CWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1744,7 +1741,7 @@ test_that("@TRNO   DATE  L#SD  CHTD  LWAD  CWAD",{
 
 test_that("@TRNO   DATE  CWAD  VN%D  GWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1757,7 +1754,7 @@ test_that("@TRNO   DATE  CWAD  VN%D  GWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  VN%D  GWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  VN%D  GWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1767,7 +1764,7 @@ test_that("@TRNO   DATE  CWAD  VN%D  GWAD",{
 
 test_that("@TRNO   DATE  CWAD  LAID  SWAD  GWAD  LWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1782,7 +1779,7 @@ test_that("@TRNO   DATE  CWAD  LAID  SWAD  GWAD  LWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  LAID  SWAD  GWAD  LWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  LAID  SWAD  GWAD  LWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1792,7 +1789,7 @@ test_that("@TRNO   DATE  CWAD  LAID  SWAD  GWAD  LWAD",{
 
 test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1807,7 +1804,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1817,7 +1814,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D",{
 
 test_that("@TRNO   DATE  CNAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1828,7 +1825,7 @@ test_that("@TRNO   DATE  CNAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CNAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CNAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1838,7 +1835,7 @@ test_that("@TRNO   DATE  CNAD",{
 
 test_that("@TRNO   DATE  LAID  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIAD  G#AD  GWGD  CNAD  GNAD  LNAD  SNAD  GN%D  LN%D  SN%D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1865,7 +1862,7 @@ test_that("@TRNO   DATE  LAID  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIAD  G#AD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIAD  G#AD  GWGD  CNAD  GNAD  LNAD  SNAD  GN%D  LN%D  SN%D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIAD  G#AD  GWGD  CNAD  GNAD  LNAD  SNAD  GN%D  LN%D  SN%D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1875,7 +1872,7 @@ test_that("@TRNO   DATE  LAID  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIAD  G#AD  G
 
 test_that("@TRNO   DATE  PSMD  PLAD  PRTD  PSDD  PASM  PWPD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1891,7 +1888,7 @@ test_that("@TRNO   DATE  PSMD  PLAD  PRTD  PSDD  PASM  PWPD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  PSMD  PLAD  PRTD  PSDD  PASM  PWPD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  PSMD  PLAD  PRTD  PSDD  PASM  PWPD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1901,7 +1898,7 @@ test_that("@TRNO   DATE  PSMD  PLAD  PRTD  PSDD  PASM  PWPD",{
 
 test_that("@TRNO   DATE  PLAD  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1912,7 +1909,7 @@ test_that("@TRNO   DATE  PLAD  ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  PLAD  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  PLAD  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1922,7 +1919,7 @@ test_that("@TRNO   DATE  PLAD  ",{
 
 test_that("@TRNO   DATE  CWAD  LAID  GWAD  LWAD  SWAD  VN%D  SLAD  FRLF  FRST  HIAD  CNAD  NUPC  LN%D  SN%D  GN%D  LP%D  SP%D  GP%D  LK%D  SK%D  GK%D  LNAD  SNAD  GNAD  LPAD  SPAD  GPAD  LKAD  SKAD  GKAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1962,7 +1959,7 @@ test_that("@TRNO   DATE  CWAD  LAID  GWAD  LWAD  SWAD  VN%D  SLAD  FRLF  FRST  H
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  LAID  GWAD  LWAD  SWAD  VN%D  SLAD  FRLF  FRST  HIAD  CNAD  NUPC  LN%D  SN%D  GN%D  LP%D  SP%D  GP%D  LK%D  SK%D  GK%D  LNAD  SNAD  GNAD  LPAD  SPAD  GPAD  LKAD  SKAD  GKAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  LAID  GWAD  LWAD  SWAD  VN%D  SLAD  FRLF  FRST  HIAD  CNAD  NUPC  LN%D  SN%D  GN%D  LP%D  SP%D  GP%D  LK%D  SK%D  GK%D  LNAD  SNAD  GNAD  LPAD  SPAD  GPAD  LKAD  SKAD  GKAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1972,7 +1969,7 @@ test_that("@TRNO   DATE  CWAD  LAID  GWAD  LWAD  SWAD  VN%D  SLAD  FRLF  FRST  H
 
 test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  GWAD  XCLA  XDLA  PCLA  PDLA",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -1992,7 +1989,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  GWAD  XCLA  XDLA  PCLA  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  GWAD  XCLA  XDLA  PCLA  PDLA",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  GWAD  XCLA  XDLA  PCLA  PDLA",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2002,7 +1999,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  GWAD  XCLA  XDLA  PCLA  P
 
 test_that("@TRNO   DATE  CWID  CHTD  L#SD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2015,7 +2012,7 @@ test_that("@TRNO   DATE  CWID  CHTD  L#SD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWID  CHTD  L#SD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWID  CHTD  L#SD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2025,7 +2022,7 @@ test_that("@TRNO   DATE  CWID  CHTD  L#SD",{
 
 test_that("@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2040,7 +2037,7 @@ test_that("@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2050,7 +2047,7 @@ test_that("@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D",{
 
 test_that("@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TW90   SWXD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    6,     "TRNO",# "@TRNO ",
         6,   12,     "DATE",# "  DATE",
@@ -2069,7 +2066,7 @@ test_that("@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TW90   SWXD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TW90   SWXD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TW90   SWXD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2079,7 +2076,7 @@ test_that("@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TW90   SWXD",{
 
 test_that("@TRNO   DATE  xCLA  xDLA  PCLA  PDLA",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2093,7 +2090,7 @@ test_that("@TRNO   DATE  xCLA  xDLA  PCLA  PDLA",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  xCLA  xDLA  PCLA  PDLA",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  xCLA  xDLA  PCLA  PDLA",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2103,7 +2100,7 @@ test_that("@TRNO   DATE  xCLA  xDLA  PCLA  PDLA",{
 
 test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  FRLF  FRST  GWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2121,7 +2118,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  FRLF  FRST  GWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  FRLF  FRST  GWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  FRLF  FRST  GWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2131,7 +2128,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  FRLF  FRST  GWAD",{
 
 test_that("@TRNO  DATE   CWID  CHTD  L#SD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    6,     "TRNO",# "@TRNO ",
         6,   11,     "DATE",#  " DATE",
@@ -2144,7 +2141,7 @@ test_that("@TRNO  DATE   CWID  CHTD  L#SD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO  DATE   CWID  CHTD  L#SD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO  DATE   CWID  CHTD  L#SD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2154,7 +2151,7 @@ test_that("@TRNO  DATE   CWID  CHTD  L#SD",{
 
 test_that("@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TWAT90 SWXD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    6,     "TRNO",# "@TRNO ",
         6,   12,     "DATE",# "  DATE",
@@ -2173,7 +2170,7 @@ test_that("@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TWAT90 SWXD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TWAT90 SWXD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TWAT90 SWXD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2183,7 +2180,7 @@ test_that("@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TWAT90 SWXD",{
 
 test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD SHPPD SHPAD  PCLA  PDLA",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2205,7 +2202,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD SHPPD SH
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD SHPPD SHPAD  PCLA  PDLA",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD SHPPD SHPAD  PCLA  PDLA",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2215,7 +2212,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD SHPPD SH
 
 test_that("@TRNO   DATE  L#SD  CHTD  CWID",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2228,7 +2225,7 @@ test_that("@TRNO   DATE  L#SD  CHTD  CWID",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  CHTD  CWID",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  CHTD  CWID",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2238,7 +2235,7 @@ test_that("@TRNO   DATE  L#SD  CHTD  CWID",{
 
 test_that("@TRNO   DATE LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD  SHPPD SHPAD PCLA  PDLA",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    6,     "TRNO",# "@TRNO ",
         6,   12,     "DATE",# "  DATE",
@@ -2260,7 +2257,7 @@ test_that("@TRNO   DATE LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD  SHPPD SH
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD  SHPPD SHPAD PCLA  PDLA",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD  SHPPD SHPAD PCLA  PDLA",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2270,7 +2267,7 @@ test_that("@TRNO   DATE LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD  SHPPD SH
 
 test_that("@TRNO   DATE  CHTD  CWID  L#SD                             ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2283,7 +2280,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD                             ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CHTD  CWID  L#SD                             ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CHTD  CWID  L#SD                             ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2293,7 +2290,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD                             ",{
 
 test_that("@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  PCLA  PSTM  LN%D  CL%D  SN%D  CS%D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2324,7 +2321,7 @@ test_that("@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  F
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  PCLA  PSTM  LN%D  CL%D  SN%D  CS%D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  PCLA  PSTM  LN%D  CL%D  SN%D  CS%D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2334,7 +2331,7 @@ test_that("@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  F
 
 test_that("@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  HIPD  SH%D  SLAD  GWGD  LN%D  CL%D  SN%D  CS%D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2362,7 +2359,7 @@ test_that("@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  HIPD  SH%D  SLAD  GWGD  LN%D  CL%D  SN%D  CS%D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  HIPD  SH%D  SLAD  GWGD  LN%D  CL%D  SN%D  CS%D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2372,7 +2369,7 @@ test_that("@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  S
 
 test_that("@TRNO   DATE  RWAD  PWAD  G#AD  GWAD  P#AD  CWAD  GWGD  SHAD  SH%D  HIAD  HIPD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2393,7 +2390,7 @@ test_that("@TRNO   DATE  RWAD  PWAD  G#AD  GWAD  P#AD  CWAD  GWGD  SHAD  SH%D  H
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  RWAD  PWAD  G#AD  GWAD  P#AD  CWAD  GWGD  SHAD  SH%D  HIAD  HIPD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  RWAD  PWAD  G#AD  GWAD  P#AD  CWAD  GWGD  SHAD  SH%D  HIAD  HIPD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2403,7 +2400,7 @@ test_that("@TRNO   DATE  RWAD  PWAD  G#AD  GWAD  P#AD  CWAD  GWGD  SHAD  SH%D  H
 
 test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  PHAN",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2430,7 +2427,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  F
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  PHAN",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  PHAN",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2440,7 +2437,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  F
 
 test_that("@TRNO   DATE  LAID  CWAD  PWAD  GWAD  GWGD  H#AD  HIAD  HIPD  SH%D  CNAD  LNAD  GNAD  GN%D  LN%D  SN%D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2465,7 +2462,7 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  GWAD  GWGD  H#AD  HIAD  HIPD  SH%D  C
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  CWAD  PWAD  GWAD  GWGD  H#AD  HIAD  HIPD  SH%D  CNAD  LNAD  GNAD  GN%D  LN%D  SN%D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  CWAD  PWAD  GWAD  GWGD  H#AD  HIAD  HIPD  SH%D  CNAD  LNAD  GNAD  GN%D  LN%D  SN%D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2475,7 +2472,7 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  GWAD  GWGD  H#AD  HIAD  HIPD  SH%D  C
 
 test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  RL1D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2509,7 +2506,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  RL1D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  RL1D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2519,7 +2516,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
 test_that("@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  LN%D  PHAN  LMLN",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2551,7 +2548,7 @@ test_that("@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  LN%D  PHAN  LMLN",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  LN%D  PHAN  LMLN",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2561,7 +2558,7 @@ test_that("@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  P
 
 test_that("@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  ATPW  DTPW  SHAD  G#AD  HIPD  SH%D  SLAD  GWGD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2589,7 +2586,7 @@ test_that("@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  ATPW  DTPW  SHAD  G#AD  HIPD  SH%D  SLAD  GWGD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  ATPW  DTPW  SHAD  G#AD  HIPD  SH%D  SLAD  GWGD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2599,7 +2596,7 @@ test_that("@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  P
 
 test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  PDLA  PCLA  VNAD  PHAN  LMLN",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2631,7 +2628,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  PDLA  PCLA  VNAD  PHAN  LMLN",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  PDLA  PCLA  VNAD  PHAN  LMLN",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2641,7 +2638,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
 test_that("@TRNO  DATE   L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  PHAN  LI%D  LMLN",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    6,     "TRNO",# "@TRNO ",
         6,   11,     "DATE",#  " DATE",
@@ -2663,7 +2660,7 @@ test_that("@TRNO  DATE   L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO  DATE   L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  PHAN  LI%D  LMLN",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO  DATE   L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  PHAN  LI%D  LMLN",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2673,7 +2670,7 @@ test_that("@TRNO  DATE   L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  P
 
 test_that("@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  G#AD  GWAD  P#AD  SHAD  SLAD  LAID  FRLF  FRST  HIAD  HIPD  SH%D  GWGD  VNAD  XSPD  RL1D  RL2D  RL3D  RL4D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2706,7 +2703,7 @@ test_that("@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  G#AD  GWAD  P#AD  SHAD  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  G#AD  GWAD  P#AD  SHAD  SLAD  LAID  FRLF  FRST  HIAD  HIPD  SH%D  GWGD  VNAD  XSPD  RL1D  RL2D  RL3D  RL4D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  G#AD  GWAD  P#AD  SHAD  SLAD  LAID  FRLF  FRST  HIAD  HIPD  SH%D  GWGD  VNAD  XSPD  RL1D  RL2D  RL3D  RL4D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2716,7 +2713,7 @@ test_that("@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  G#AD  GWAD  P#AD  SHAD  S
 
 test_that("@TRNO  DATE   CHTD  CWID  L#SD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    6,     "TRNO",# "@TRNO ",
         6,   11,     "DATE",#  " DATE",
@@ -2729,7 +2726,7 @@ test_that("@TRNO  DATE   CHTD  CWID  L#SD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO  DATE   CHTD  CWID  L#SD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO  DATE   CHTD  CWID  L#SD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2739,7 +2736,7 @@ test_that("@TRNO  DATE   CHTD  CWID  L#SD",{
 
 test_that("@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  SHAD  L#SD  CHTD  CWID  LI%D  LMLN",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2772,7 +2769,7 @@ test_that("@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  SHAD  L#SD  CHTD  CWID  LI%D  LMLN",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  SHAD  L#SD  CHTD  CWID  LI%D  LMLN",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2782,7 +2779,7 @@ test_that("@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G
 
 test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2807,7 +2804,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  F
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2817,7 +2814,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  F
 
 test_that("@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  SHAD  CHTD  CWID  LI%D  LMLN",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2847,7 +2844,7 @@ test_that("@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G#AD  FRLF  F
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  SHAD  CHTD  CWID  LI%D  LMLN",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  SHAD  CHTD  CWID  LI%D  LMLN",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2857,7 +2854,7 @@ test_that("@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G#AD  FRLF  F
 
 test_that("@TRNO   DATE  LAID  CWAD  GWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2870,7 +2867,7 @@ test_that("@TRNO   DATE  LAID  CWAD  GWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  CWAD  GWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  CWAD  GWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2880,7 +2877,7 @@ test_that("@TRNO   DATE  LAID  CWAD  GWAD",{
 
 test_that("@TRNO   DATE  CWAD  GWAD  P#AD  G#AD  HIAD  G#PD  GWGD  SW6D  SW7D  SW8D  SW9D  GSTD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2902,7 +2899,7 @@ test_that("@TRNO   DATE  CWAD  GWAD  P#AD  G#AD  HIAD  G#PD  GWGD  SW6D  SW7D  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  GWAD  P#AD  G#AD  HIAD  G#PD  GWGD  SW6D  SW7D  SW8D  SW9D  GSTD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  GWAD  P#AD  G#AD  HIAD  G#PD  GWGD  SW6D  SW7D  SW8D  SW9D  GSTD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2912,7 +2909,7 @@ test_that("@TRNO   DATE  CWAD  GWAD  P#AD  G#AD  HIAD  G#PD  GWGD  SW6D  SW7D  S
 
 test_that("@TRNO   DATE  L#SD  LWAD  LAID  SLAD  SWAD  CWAD  PWAD  SHAD  GWAD  SH%D  P#AD  G#AD  GWGD  HIAD  HIPD  LN%D  SN%D  SHND  LNAD  SNAD  GNAD  GN%D  G#PD  LFFD  STFD  RTFD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2948,7 +2945,7 @@ test_that("@TRNO   DATE  L#SD  LWAD  LAID  SLAD  SWAD  CWAD  PWAD  SHAD  GWAD  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LWAD  LAID  SLAD  SWAD  CWAD  PWAD  SHAD  GWAD  SH%D  P#AD  G#AD  GWGD  HIAD  HIPD  LN%D  SN%D  SHND  LNAD  SNAD  GNAD  GN%D  G#PD  LFFD  STFD  RTFD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LWAD  LAID  SLAD  SWAD  CWAD  PWAD  SHAD  GWAD  SH%D  P#AD  G#AD  GWGD  HIAD  HIPD  LN%D  SN%D  SHND  LNAD  SNAD  GNAD  GN%D  G#PD  LFFD  STFD  RTFD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2958,7 +2955,7 @@ test_that("@TRNO   DATE  L#SD  LWAD  LAID  SLAD  SWAD  CWAD  PWAD  SHAD  GWAD  S
 
 test_that("@TRNO  DATE   LAID  LWAD  SWAD  CWAD  L#SD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    6,     "TRNO",# "@TRNO ",
         6,   11,     "DATE",#  " DATE",
@@ -2973,7 +2970,7 @@ test_that("@TRNO  DATE   LAID  LWAD  SWAD  CWAD  L#SD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO  DATE   LAID  LWAD  SWAD  CWAD  L#SD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO  DATE   LAID  LWAD  SWAD  CWAD  L#SD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2983,7 +2980,7 @@ test_that("@TRNO  DATE   LAID  LWAD  SWAD  CWAD  L#SD",{
 
 test_that("@TRNO   DATE  L#SD  LAID  LWAD  SWAD  CWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -2998,7 +2995,7 @@ test_that("@TRNO   DATE  L#SD  LAID  LWAD  SWAD  CWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  LWAD  SWAD  CWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  LWAD  SWAD  CWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3008,7 +3005,7 @@ test_that("@TRNO   DATE  L#SD  LAID  LWAD  SWAD  CWAD",{
 
 test_that("@TRNO   DATE  UYAD  LAID",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3020,7 +3017,7 @@ test_that("@TRNO   DATE  UYAD  LAID",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  UYAD  LAID",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  UYAD  LAID",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3030,7 +3027,7 @@ test_that("@TRNO   DATE  UYAD  LAID",{
 
 test_that("@TRNO   DATE  SWAD  UWAD  CWAD  LWAD  UYAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3045,7 +3042,7 @@ test_that("@TRNO   DATE  SWAD  UWAD  CWAD  LWAD  UYAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  SWAD  UWAD  CWAD  LWAD  UYAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  SWAD  UWAD  CWAD  LWAD  UYAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3055,7 +3052,7 @@ test_that("@TRNO   DATE  SWAD  UWAD  CWAD  LWAD  UYAD",{
 
 test_that("@TRNO   DATE  VNAD  SNAD  CN%D  UNAD  RN%D  UWAD  RWAD  RNAD  CWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3074,7 +3071,7 @@ test_that("@TRNO   DATE  VNAD  SNAD  CN%D  UNAD  RN%D  UWAD  RWAD  RNAD  CWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  VNAD  SNAD  CN%D  UNAD  RN%D  UWAD  RWAD  RNAD  CWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  VNAD  SNAD  CN%D  UNAD  RN%D  UWAD  RWAD  RNAD  CWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3084,7 +3081,7 @@ test_that("@TRNO   DATE  VNAD  SNAD  CN%D  UNAD  RN%D  UWAD  RWAD  RNAD  CWAD",{
 
 test_that("@TRNO   DATE  TWAD  UYAD  UWAD  SWAD  LWAD  CWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3100,7 +3097,7 @@ test_that("@TRNO   DATE  TWAD  UYAD  UWAD  SWAD  LWAD  CWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  TWAD  UYAD  UWAD  SWAD  LWAD  CWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  TWAD  UYAD  UWAD  SWAD  LWAD  CWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3110,7 +3107,7 @@ test_that("@TRNO   DATE  TWAD  UYAD  UWAD  SWAD  LWAD  CWAD",{
 
 test_that("@TRNO   DATE  TWAD  UYAD  LAID  UWAD  SWAD  LWAD  CWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3127,7 +3124,7 @@ test_that("@TRNO   DATE  TWAD  UYAD  LAID  UWAD  SWAD  LWAD  CWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  TWAD  UYAD  LAID  UWAD  SWAD  LWAD  CWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  TWAD  UYAD  LAID  UWAD  SWAD  LWAD  CWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3137,7 +3134,7 @@ test_that("@TRNO   DATE  TWAD  UYAD  LAID  UWAD  SWAD  LWAD  CWAD",{
 
 test_that("@TRNO   DATE  SNAD  UNAD  LAID  UWAD  CWAD  LWAD  LNAD  SWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3155,7 +3152,7 @@ test_that("@TRNO   DATE  SNAD  UNAD  LAID  UWAD  CWAD  LWAD  LNAD  SWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  SNAD  UNAD  LAID  UWAD  CWAD  LWAD  LNAD  SWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  SNAD  UNAD  LAID  UWAD  CWAD  LWAD  LNAD  SWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3165,7 +3162,7 @@ test_that("@TRNO   DATE  SNAD  UNAD  LAID  UWAD  CWAD  LWAD  LNAD  SWAD",{
 
 test_that("@TRNO   DATE  LAID  UYAD  UWAD  LWAD  SWAD  CWAD  TWAD  SLAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3183,7 +3180,7 @@ test_that("@TRNO   DATE  LAID  UYAD  UWAD  LWAD  SWAD  CWAD  TWAD  SLAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  UYAD  UWAD  LWAD  SWAD  CWAD  TWAD  SLAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  UYAD  UWAD  LWAD  SWAD  CWAD  TWAD  SLAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3193,7 +3190,7 @@ test_that("@TRNO   DATE  LAID  UYAD  UWAD  LWAD  SWAD  CWAD  TWAD  SLAD",{
 
 test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  PWAD  GWAD  CWAD  GWGD  LDAD  HIAD  HIPD  SH%D  LN%D  SN%D  GN%D  SHND",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3222,7 +3219,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  PWAD  GWAD  C
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  PWAD  GWAD  CWAD  GWGD  LDAD  HIAD  HIPD  SH%D  LN%D  SN%D  GN%D  SHND",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  PWAD  GWAD  CWAD  GWGD  LDAD  HIAD  HIPD  SH%D  LN%D  SN%D  GN%D  SHND",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3232,7 +3229,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  PWAD  GWAD  C
 
 test_that("@TRNO   DATE  T#AD  LAID  RWAD  SWAD  GWAD  LWAD  CWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3249,7 +3246,7 @@ test_that("@TRNO   DATE  T#AD  LAID  RWAD  SWAD  GWAD  LWAD  CWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  T#AD  LAID  RWAD  SWAD  GWAD  LWAD  CWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  T#AD  LAID  RWAD  SWAD  GWAD  LWAD  CWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3259,7 +3256,7 @@ test_that("@TRNO   DATE  T#AD  LAID  RWAD  SWAD  GWAD  LWAD  CWAD",{
 
 test_that("@TRNO   DATE  T#AD  CWAD  SWAD  GWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3273,7 +3270,7 @@ test_that("@TRNO   DATE  T#AD  CWAD  SWAD  GWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  T#AD  CWAD  SWAD  GWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  T#AD  CWAD  SWAD  GWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3283,7 +3280,7 @@ test_that("@TRNO   DATE  T#AD  CWAD  SWAD  GWAD",{
 
 test_that("@TRNO   DATE  CWAD  LAID  GWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3296,7 +3293,7 @@ test_that("@TRNO   DATE  CWAD  LAID  GWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  LAID  GWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  LAID  GWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3306,7 +3303,7 @@ test_that("@TRNO   DATE  CWAD  LAID  GWAD",{
 
 test_that("@TRNO   DATE  LWAD  SWAD  CWAD  LAID  G#AD  P#AD  GWAD  GWGD  HIAD  CHTD  SLAD  PWAD  HIPD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3329,7 +3326,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  CWAD  LAID  G#AD  P#AD  GWAD  GWGD  HIAD  C
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LWAD  SWAD  CWAD  LAID  G#AD  P#AD  GWAD  GWGD  HIAD  CHTD  SLAD  PWAD  HIPD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LWAD  SWAD  CWAD  LAID  G#AD  P#AD  GWAD  GWGD  HIAD  CHTD  SLAD  PWAD  HIPD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3339,7 +3336,7 @@ test_that("@TRNO   DATE  LWAD  SWAD  CWAD  LAID  G#AD  P#AD  GWAD  GWGD  HIAD  C
 
 test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VNAD  PWAD  HIPD  GWAD  SH%D  CWAD  CNAD  LI%N  G#AD  LDAD SNW0C  HIAD  P#AD  GWGD  VN%D  GN%D  SHND XFN%D PTAL1 PTAL2 FPTL1 FPTL2",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3378,7 +3375,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VNAD  PWAD  H
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VNAD  PWAD  HIPD  GWAD  SH%D  CWAD  CNAD  LI%N  G#AD  LDAD SNW0C  HIAD  P#AD  GWGD  VN%D  GN%D  SHND XFN%D PTAL1 PTAL2 FPTL1 FPTL2",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VNAD  PWAD  HIPD  GWAD  SH%D  CWAD  CNAD  LI%N  G#AD  LDAD SNW0C  HIAD  P#AD  GWGD  VN%D  GN%D  SHND XFN%D PTAL1 PTAL2 FPTL1 FPTL2",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3388,7 +3385,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VNAD  PWAD  H
 
 test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  VNAD  SWAD  PWAD  HIPD  GWAD  SH%D  CWAD  CNAD  LI%N  G#AD  LDAD SNW0C  HIAD  P#AD  GWGD  VN%D  GN%D  SHND XFN%D PTAL1 PTAL2 FPTL1 FPTL2",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3427,7 +3424,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  VNAD  SWAD  PWAD  H
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  VNAD  SWAD  PWAD  HIPD  GWAD  SH%D  CWAD  CNAD  LI%N  G#AD  LDAD SNW0C  HIAD  P#AD  GWGD  VN%D  GN%D  SHND XFN%D PTAL1 PTAL2 FPTL1 FPTL2",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  VNAD  SWAD  PWAD  HIPD  GWAD  SH%D  CWAD  CNAD  LI%N  G#AD  LDAD SNW0C  HIAD  P#AD  GWGD  VN%D  GN%D  SHND XFN%D PTAL1 PTAL2 FPTL1 FPTL2",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3437,7 +3434,7 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  VNAD  SWAD  PWAD  H
 
 test_that("@TRNO   DATE  CWAD  GWAD  G#AD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3450,7 +3447,7 @@ test_that("@TRNO   DATE  CWAD  GWAD  G#AD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  GWAD  G#AD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  GWAD  G#AD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3460,7 +3457,7 @@ test_that("@TRNO   DATE  CWAD  GWAD  G#AD",{
 
 test_that("@TRNO   DATE  CWAD  GWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3472,7 +3469,7 @@ test_that("@TRNO   DATE  CWAD  GWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  GWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  GWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3482,7 +3479,7 @@ test_that("@TRNO   DATE  CWAD  GWAD",{
 
 test_that("@TRNO   DATE  CNAD  GN%D  SNAD  GNAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3496,7 +3493,7 @@ test_that("@TRNO   DATE  CNAD  GN%D  SNAD  GNAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CNAD  GN%D  SNAD  GNAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CNAD  GN%D  SNAD  GNAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3506,7 +3503,7 @@ test_that("@TRNO   DATE  CNAD  GN%D  SNAD  GNAD",{
 
 test_that("@TRNO    DOY   DAP  LAID  VWAD  L#SD  CHTD SHPPD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,      "DOY",#"   DOY",
@@ -3522,7 +3519,7 @@ test_that("@TRNO    DOY   DAP  LAID  VWAD  L#SD  CHTD SHPPD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO    DOY   DAP  LAID  VWAD  L#SD  CHTD SHPPD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO    DOY   DAP  LAID  VWAD  L#SD  CHTD SHPPD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3532,7 +3529,7 @@ test_that("@TRNO    DOY   DAP  LAID  VWAD  L#SD  CHTD SHPPD",{
 
 test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  CHTD  CWID  LI%N  HIAD  HIPD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3558,7 +3555,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  CHTD  CWID  LI%N  HIAD  HIPD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  CHTD  CWID  LI%N  HIAD  HIPD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3568,7 +3565,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  S
 
 test_that("@TRNO   DATE  CHTD  L#SD  LAID  SWAD  LWAD  CWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3584,7 +3581,7 @@ test_that("@TRNO   DATE  CHTD  L#SD  LAID  SWAD  LWAD  CWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CHTD  L#SD  LAID  SWAD  LWAD  CWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CHTD  L#SD  LAID  SWAD  LWAD  CWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3594,7 +3591,7 @@ test_that("@TRNO   DATE  CHTD  L#SD  LAID  SWAD  LWAD  CWAD",{
 
 test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  G#AD  SH%D  SLAD  GWGD  HIAD  HIPD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3620,7 +3617,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  R
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  G#AD  SH%D  SLAD  GWGD  HIAD  HIPD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  G#AD  SH%D  SLAD  GWGD  HIAD  HIPD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3630,7 +3627,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  R
 
 test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  SH%D  SLAD  HIAD  HIPD  GWGD  GN%D  GL%D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3657,7 +3654,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  SH%D  SLAD  HIAD  HIPD  GWGD  GN%D  GL%D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  SH%D  SLAD  HIAD  HIPD  GWGD  GN%D  GL%D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3667,7 +3664,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
 test_that("@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIPD  HIAD  SH%D  GWGD  G#AD  SHAD  LAID  SWID  SW2D  SW3D  SW4D  SW5D  SW6D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3697,7 +3694,7 @@ test_that("@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIPD  HIAD  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIPD  HIAD  SH%D  GWGD  G#AD  SHAD  LAID  SWID  SW2D  SW3D  SW4D  SW5D  SW6D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIPD  HIAD  SH%D  GWGD  G#AD  SHAD  LAID  SWID  SW2D  SW3D  SW4D  SW5D  SW6D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3707,7 +3704,7 @@ test_that("@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIPD  HIAD  S
 
 test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  HIAD  HIPD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3730,7 +3727,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  HIAD  HIPD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  HIAD  HIPD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3740,7 +3737,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  S
 
 test_that("@TRNO   DATE  SWXD  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3760,7 +3757,7 @@ test_that("@TRNO   DATE  SWXD  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  SWXD  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  SWXD  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3770,7 +3767,7 @@ test_that("@TRNO   DATE  SWXD  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  S
 
 test_that("@TRNO   DATE  RWAD  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D  RL9D  RL10  RL11  RL12  RL13  RDPD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3795,7 +3792,7 @@ test_that("@TRNO   DATE  RWAD  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D  R
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  RWAD  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D  RL9D  RL10  RL11  RL12  RL13  RDPD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  RWAD  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D  RL9D  RL10  RL11  RL12  RL13  RDPD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3805,7 +3802,7 @@ test_that("@TRNO   DATE  RWAD  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D  R
 
 test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  SHAD  L#SD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3826,7 +3823,7 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  SHAD  L#SD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  SHAD  L#SD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3836,7 +3833,7 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  S
 
 test_that("@TRNO   DATE  LMLN  WSGD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3848,7 +3845,7 @@ test_that("@TRNO   DATE  LMLN  WSGD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LMLN  WSGD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LMLN  WSGD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3858,7 +3855,7 @@ test_that("@TRNO   DATE  LMLN  WSGD",{
 
 test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  SHAD  L#AD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3879,7 +3876,7 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  SHAD  L#AD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  SHAD  L#AD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3889,7 +3886,7 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  S
 
 test_that("@TRNO   DATE  W105  W210  W315  W415  W515  W615  W715",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3906,7 +3903,7 @@ test_that("@TRNO   DATE  W105  W210  W315  W415  W515  W615  W715",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  W105  W210  W315  W415  W515  W615  W715",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  W105  W210  W315  W415  W515  W615  W715",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3916,7 +3913,7 @@ test_that("@TRNO   DATE  W105  W210  W315  W415  W515  W615  W715",{
 
 test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  HIPD  SH%D  SLAD  GWGD  CHTD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3942,7 +3939,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  HIPD  SH%D  SLAD  GWGD  CHTD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  HIPD  SH%D  SLAD  GWGD  CHTD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3952,7 +3949,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
 test_that("@TRNO   DATE  CWAD  LAID  RWAD  GWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3966,7 +3963,7 @@ test_that("@TRNO   DATE  CWAD  LAID  RWAD  GWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  LAID  RWAD  GWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  LAID  RWAD  GWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -3976,7 +3973,7 @@ test_that("@TRNO   DATE  CWAD  LAID  RWAD  GWAD",{
 
 test_that("@TRNO   DATE  CWAD  LAID  RWAD  GWAD  FNAD  SNAD  STRN  LNAD  PNAD  GNAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -3996,7 +3993,7 @@ test_that("@TRNO   DATE  CWAD  LAID  RWAD  GWAD  FNAD  SNAD  STRN  LNAD  PNAD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  LAID  RWAD  GWAD  FNAD  SNAD  STRN  LNAD  PNAD  GNAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  LAID  RWAD  GWAD  FNAD  SNAD  STRN  LNAD  PNAD  GNAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4006,7 +4003,7 @@ test_that("@TRNO   DATE  CWAD  LAID  RWAD  GWAD  FNAD  SNAD  STRN  LNAD  PNAD  G
 
 test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  SH%D  SLAD  LN%D  CL%D  SN%D  CS%D  HIAD  HIPD  FRST  FRLF",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4034,7 +4031,7 @@ test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  SH%D  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  SH%D  SLAD  LN%D  CL%D  SN%D  CS%D  HIAD  HIPD  FRST  FRLF",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  SH%D  SLAD  LN%D  CL%D  SN%D  CS%D  HIAD  HIPD  FRST  FRLF",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4044,7 +4041,7 @@ test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  SH%D  S
 
 test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  HIAD  CEW6",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4065,7 +4062,7 @@ test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  H
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  HIAD  CEW6",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  HIAD  CEW6",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4075,7 +4072,7 @@ test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  H
 
 test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  SH%D  SLAD  GWGD  HIAD  LN%D  SN%D  SHND  GN%D  CHTD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4104,7 +4101,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  SH%D  SLAD  GWGD  HIAD  LN%D  SN%D  SHND  GN%D  CHTD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  SH%D  SLAD  GWGD  HIAD  LN%D  SN%D  SHND  GN%D  CHTD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4114,7 +4111,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
 test_that("@TRNO   DATE  CWAD  LWAD  SLAD  LAID  SWAD  PWAD  SH%D  GWAD  SHAD  P#AD  G#AD  HIAD  HIPD  GWGD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4138,7 +4135,7 @@ test_that("@TRNO   DATE  CWAD  LWAD  SLAD  LAID  SWAD  PWAD  SH%D  GWAD  SHAD  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  LWAD  SLAD  LAID  SWAD  PWAD  SH%D  GWAD  SHAD  P#AD  G#AD  HIAD  HIPD  GWGD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  LWAD  SLAD  LAID  SWAD  PWAD  SH%D  GWAD  SHAD  P#AD  G#AD  HIAD  HIPD  GWGD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4148,7 +4145,7 @@ test_that("@TRNO   DATE  CWAD  LWAD  SLAD  LAID  SWAD  PWAD  SH%D  GWAD  SHAD  P
 
 test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  HIPD  GWGD  SH%D  SLAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4173,7 +4170,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  HIPD  GWGD  SH%D  SLAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  HIPD  GWGD  SH%D  SLAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4183,7 +4180,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
 test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  SH%D  SLAD  GWGD  HIAD  HIPD  LN%D  SN%D  SHND  GN%D  NWAD  NFXD  CHTD  CWID  LI%N",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4217,7 +4214,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  SH%D  SLAD  GWGD  HIAD  HIPD  LN%D  SN%D  SHND  GN%D  NWAD  NFXD  CHTD  CWID  LI%N",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  SH%D  SLAD  GWGD  HIAD  HIPD  LN%D  SN%D  SHND  GN%D  NWAD  NFXD  CHTD  CWID  LI%N",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4227,7 +4224,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
 
 test_that("@TRNO   DATE  SNAD  GNAD  LNAD  SNHD  VNAD  CNAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4243,7 +4240,7 @@ test_that("@TRNO   DATE  SNAD  GNAD  LNAD  SNHD  VNAD  CNAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  SNAD  GNAD  LNAD  SNHD  VNAD  CNAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  SNAD  GNAD  LNAD  SNHD  VNAD  CNAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4253,7 +4250,7 @@ test_that("@TRNO   DATE  SNAD  GNAD  LNAD  SNHD  VNAD  CNAD",{
 
 test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  G#AD  SH%D  SLAD  HIAD  GWGD  RL3D  RL4D  RL5D  RL6D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4279,7 +4276,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  G#AD  SH%D  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  G#AD  SH%D  SLAD  HIAD  GWGD  RL3D  RL4D  RL5D  RL6D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  G#AD  SH%D  SLAD  HIAD  GWGD  RL3D  RL4D  RL5D  RL6D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4289,7 +4286,7 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  G#AD  SH%D  S
 
 test_that("@TRNO   DATE  L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  PHAN  LI%N  LMLN",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4311,7 +4308,7 @@ test_that("@TRNO   DATE  L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  PHAN  LI%N  LMLN",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  PHAN  LI%N  LMLN",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4321,7 +4318,7 @@ test_that("@TRNO   DATE  L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  P
 
 test_that("@TRNO   DATE  L#SD  SLAD  CWAD  LWAD  SWAD  LAID  P#AD  PWAD  G#AD  GWAD  SHAD  SH%D  HIAD  GWGD  CHTD  CWID",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4347,7 +4344,7 @@ test_that("@TRNO   DATE  L#SD  SLAD  CWAD  LWAD  SWAD  LAID  P#AD  PWAD  G#AD  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  SLAD  CWAD  LWAD  SWAD  LAID  P#AD  PWAD  G#AD  GWAD  SHAD  SH%D  HIAD  GWGD  CHTD  CWID",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  SLAD  CWAD  LWAD  SWAD  LAID  P#AD  PWAD  G#AD  GWAD  SHAD  SH%D  HIAD  GWGD  CHTD  CWID",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4357,7 +4354,7 @@ test_that("@TRNO   DATE  L#SD  SLAD  CWAD  LWAD  SWAD  LAID  P#AD  PWAD  G#AD  G
 
 test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4374,7 +4371,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4384,7 +4381,7 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D",{
 
 test_that("@TRNO   DATE  L#SD  SLAD  SH%D  LAID  LWAD  SWAD  SHAD  GWAD  PWAD  CWAD  P#AD  G#AD  HIAD  GWGD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4408,7 +4405,7 @@ test_that("@TRNO   DATE  L#SD  SLAD  SH%D  LAID  LWAD  SWAD  SHAD  GWAD  PWAD  C
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  SLAD  SH%D  LAID  LWAD  SWAD  SHAD  GWAD  PWAD  CWAD  P#AD  G#AD  HIAD  GWGD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  SLAD  SH%D  LAID  LWAD  SWAD  SHAD  GWAD  PWAD  CWAD  P#AD  G#AD  HIAD  GWGD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4418,7 +4415,7 @@ test_that("@TRNO   DATE  L#SD  SLAD  SH%D  LAID  LWAD  SWAD  SHAD  GWAD  PWAD  C
 
 test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  PCLA",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4438,7 +4435,7 @@ test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  PCLA",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  PCLA",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4448,7 +4445,7 @@ test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  P
 
 test_that("@TRNO   DATE  LWAD  LAID  RWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4461,7 +4458,7 @@ test_that("@TRNO   DATE  LWAD  LAID  RWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LWAD  LAID  RWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LWAD  LAID  RWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4471,7 +4468,7 @@ test_that("@TRNO   DATE  LWAD  LAID  RWAD",{
 
 test_that("@TRNO   DATE LWAD LAID   RWAD   ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    6,     "TRNO",# "@TRNO ",
         6,   12,     "DATE",# "  DATE",
@@ -4484,7 +4481,7 @@ test_that("@TRNO   DATE LWAD LAID   RWAD   ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE LWAD LAID   RWAD   ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE LWAD LAID   RWAD   ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4494,7 +4491,7 @@ test_that("@TRNO   DATE LWAD LAID   RWAD   ",{
 
 test_that("@TRNO   DATE  CWAD  LAID  RWAD  L#SD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4508,7 +4505,7 @@ test_that("@TRNO   DATE  CWAD  LAID  RWAD  L#SD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  LAID  RWAD  L#SD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  LAID  RWAD  L#SD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4518,7 +4515,7 @@ test_that("@TRNO   DATE  CWAD  LAID  RWAD  L#SD",{
 
 test_that("@TRNO   DATE  CWAD  RWAD  L#SD  LAID",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4532,7 +4529,7 @@ test_that("@TRNO   DATE  CWAD  RWAD  L#SD  LAID",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  RWAD  L#SD  LAID",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  RWAD  L#SD  LAID",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4542,7 +4539,7 @@ test_that("@TRNO   DATE  CWAD  RWAD  L#SD  LAID",{
 
 test_that("@TRNO   DATE  PCLA  LAID  RWAD  CWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4556,7 +4553,7 @@ test_that("@TRNO   DATE  PCLA  LAID  RWAD  CWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  PCLA  LAID  RWAD  CWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  PCLA  LAID  RWAD  CWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4566,7 +4563,7 @@ test_that("@TRNO   DATE  PCLA  LAID  RWAD  CWAD",{
 
 test_that("@TRNO  DATE  SMDMD SMFMD  T#AD LAIGD  SHTD SUCMD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    6,     "TRNO",# "@TRNO ",
         6,   11,     "DATE",#  " DATE",
@@ -4582,7 +4579,7 @@ test_that("@TRNO  DATE  SMDMD SMFMD  T#AD LAIGD  SHTD SUCMD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO  DATE  SMDMD SMFMD  T#AD LAIGD  SHTD SUCMD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO  DATE  SMDMD SMFMD  T#AD LAIGD  SHTD SUCMD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4592,7 +4589,7 @@ test_that("@TRNO  DATE  SMDMD SMFMD  T#AD LAIGD  SHTD SUCMD",{
 
 test_that("@TRNO   DATE LGDMD LAITD SUCMD SMDMD  L#SD  T#AD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4608,7 +4605,7 @@ test_that("@TRNO   DATE LGDMD LAITD SUCMD SMDMD  L#SD  T#AD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE LGDMD LAITD SUCMD SMDMD  L#SD  T#AD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE LGDMD LAITD SUCMD SMDMD  L#SD  T#AD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4618,7 +4615,7 @@ test_that("@TRNO   DATE LGDMD LAITD SUCMD SMDMD  L#SD  T#AD",{
 
 test_that("@TRNO   DATE SMDMD SMFMD SUCMD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4631,7 +4628,7 @@ test_that("@TRNO   DATE SMDMD SMFMD SUCMD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE SMDMD SMFMD SUCMD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE SMDMD SMFMD SUCMD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4641,7 +4638,7 @@ test_that("@TRNO   DATE SMDMD SMFMD SUCMD",{
 
 test_that("@TRNO   DATE CULTI  T#SD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4653,7 +4650,7 @@ test_that("@TRNO   DATE CULTI  T#SD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE CULTI  T#SD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE CULTI  T#SD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4663,7 +4660,7 @@ test_that("@TRNO   DATE CULTI  T#SD",{
 
 test_that("@TRNO   DATE  T#AD  S#AD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4675,7 +4672,7 @@ test_that("@TRNO   DATE  T#AD  S#AD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  T#AD  S#AD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  T#AD  S#AD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4685,7 +4682,7 @@ test_that("@TRNO   DATE  T#AD  S#AD",{
 
 test_that("@TRNO   DATE BADMD SMFMD SUCMD LAIGD  T#AD SMDMD L#S1D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4702,7 +4699,7 @@ test_that("@TRNO   DATE BADMD SMFMD SUCMD LAIGD  T#AD SMDMD L#S1D",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE BADMD SMFMD SUCMD LAIGD  T#AD SMDMD L#S1D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE BADMD SMFMD SUCMD LAIGD  T#AD SMDMD L#S1D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4712,7 +4709,7 @@ test_that("@TRNO   DATE BADMD SMFMD SUCMD LAIGD  T#AD SMDMD L#S1D",{
 
 test_that("@TRNO   DATE  LAID  XO%D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4724,7 +4721,7 @@ test_that("@TRNO   DATE  LAID  XO%D",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  XO%D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  XO%D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4734,7 +4731,7 @@ test_that("@TRNO   DATE  LAID  XO%D",{
 
 test_that("@TRNO   DATE  LAID  CWAD  GWAD  HIAD  GL%D  L#SD  G#AD  GWGD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4752,7 +4749,7 @@ test_that("@TRNO   DATE  LAID  CWAD  GWAD  HIAD  GL%D  L#SD  G#AD  GWGD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  CWAD  GWAD  HIAD  GL%D  L#SD  G#AD  GWGD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  CWAD  GWAD  HIAD  GL%D  L#SD  G#AD  GWGD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4762,7 +4759,7 @@ test_that("@TRNO   DATE  LAID  CWAD  GWAD  HIAD  GL%D  L#SD  G#AD  GWGD",{
 
 test_that("@TRNO  DATE   CWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    6,     "TRNO",# "@TRNO ",
         6,   11,     "DATE",#  " DATE",
@@ -4773,7 +4770,7 @@ test_that("@TRNO  DATE   CWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO  DATE   CWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO  DATE   CWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4783,7 +4780,7 @@ test_that("@TRNO  DATE   CWAD",{
 
 test_that("@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  RWAD  LN%D  CNAD PDMCD AFPWD ADPWD FPWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4806,7 +4803,7 @@ test_that("@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  RWAD  LN%D  CNAD PD
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  RWAD  LN%D  CNAD PDMCD AFPWD ADPWD FPWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  RWAD  LN%D  CNAD PDMCD AFPWD ADPWD FPWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4816,7 +4813,7 @@ test_that("@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  RWAD  LN%D  CNAD PD
 
 test_that("@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  LN%D  CNAD  RWAD PDMCD AFPWD ADPWD FPWAD  RL1D  RL2D  RL3D  RL4D  RL5D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4844,7 +4841,7 @@ test_that("@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  LN%D  CNAD  RWAD PD
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  LN%D  CNAD  RWAD PDMCD AFPWD ADPWD FPWAD  RL1D  RL2D  RL3D  RL4D  RL5D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  LN%D  CNAD  RWAD PDMCD AFPWD ADPWD FPWAD  RL1D  RL2D  RL3D  RL4D  RL5D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4854,7 +4851,7 @@ test_that("@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  LN%D  CNAD  RWAD PD
 
 test_that("@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD PDMCD AFPWD ADPWD FPWAD MFWAD NFWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4875,7 +4872,7 @@ test_that("@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD PDMCD AFPWD ADPWD FPWAD MF
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD PDMCD AFPWD ADPWD FPWAD MFWAD NFWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD PDMCD AFPWD ADPWD FPWAD MFWAD NFWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4885,7 +4882,7 @@ test_that("@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD PDMCD AFPWD ADPWD FPWAD MF
 
 test_that("@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD  GWAD PDMCD AFPWD ADPWD FPWAD MFWAD NFWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4907,7 +4904,7 @@ test_that("@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD  GWAD PDMCD AFPWD ADPWD FP
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD  GWAD PDMCD AFPWD ADPWD FPWAD MFWAD NFWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD  GWAD PDMCD AFPWD ADPWD FPWAD MFWAD NFWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4917,7 +4914,7 @@ test_that("@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD  GWAD PDMCD AFPWD ADPWD FP
 
 test_that("@TRNO  DATE   L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    6,     "TRNO",# "@TRNO ",
         6,   11,     "DATE",#  " DATE",
@@ -4936,7 +4933,7 @@ test_that("@TRNO  DATE   L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO  DATE   L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO  DATE   L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4946,7 +4943,7 @@ test_that("@TRNO  DATE   L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD",{
 
 test_that("@TRNO   DATE  T#AD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  SLAD  L#SD  RLWD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4966,7 +4963,7 @@ test_that("@TRNO   DATE  T#AD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  SLAD  L#SD  R
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  T#AD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  SLAD  L#SD  RLWD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  T#AD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  SLAD  L#SD  RLWD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -4976,7 +4973,7 @@ test_that("@TRNO   DATE  T#AD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  SLAD  L#SD  R
 
 test_that("@TRNO   DATE  L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -4995,7 +4992,7 @@ test_that("@TRNO   DATE  L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -5005,7 +5002,7 @@ test_that("@TRNO   DATE  L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD",{
 
 test_that("@TRNO   MDAT  CWAD  GWAD  HIAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "MDAT",#"  MDAT",
@@ -5018,7 +5015,7 @@ test_that("@TRNO   MDAT  CWAD  GWAD  HIAM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   MDAT  CWAD  GWAD  HIAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   MDAT  CWAD  GWAD  HIAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -5028,7 +5025,7 @@ test_that("@TRNO   MDAT  CWAD  GWAD  HIAM",{
 
 test_that("@TRNO   DATE  CWAD  GWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -5040,7 +5037,7 @@ test_that("@TRNO   DATE  CWAD  GWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  GWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  GWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -5050,7 +5047,7 @@ test_that("@TRNO   DATE  CWAD  GWAD",{
 
 test_that("@TRNO   DATE  CWAD  GWAD  HIAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -5063,7 +5060,7 @@ test_that("@TRNO   DATE  CWAD  GWAD  HIAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  GWAD  HIAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  GWAD  HIAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -5073,7 +5070,7 @@ test_that("@TRNO   DATE  CWAD  GWAD  HIAD",{
 
 test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  M#AD  SLAD  CHTD  CWID",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -5096,7 +5093,7 @@ test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  M
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  M#AD  SLAD  CHTD  CWID",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  M#AD  SLAD  CHTD  CWID",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -5106,7 +5103,7 @@ test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  M
 
 test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  SLAD  CHTD  CWID",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -5128,7 +5125,7 @@ test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  SLAD  CHTD  CWID",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  SLAD  CHTD  CWID",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -5138,7 +5135,7 @@ test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  S
 
 test_that("@TRNO   DATE  LAID  CWAD  SLAD  PWAD FPWAD  DIC1  FWC1  DWC1  DFC1  DIC2  FWC2  DWC2  DFC2  DIC3  FWC3  DWC3  DFC3  LN%D  SHND  SN%D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -5168,7 +5165,7 @@ test_that("@TRNO   DATE  LAID  CWAD  SLAD  PWAD FPWAD  DIC1  FWC1  DWC1  DFC1  D
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  CWAD  SLAD  PWAD FPWAD  DIC1  FWC1  DWC1  DFC1  DIC2  FWC2  DWC2  DFC2  DIC3  FWC3  DWC3  DFC3  LN%D  SHND  SN%D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  CWAD  SLAD  PWAD FPWAD  DIC1  FWC1  DWC1  DFC1  DIC2  FWC2  DWC2  DFC2  DIC3  FWC3  DWC3  DFC3  LN%D  SHND  SN%D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -5178,7 +5175,7 @@ test_that("@TRNO   DATE  LAID  CWAD  SLAD  PWAD FPWAD  DIC1  FWC1  DWC1  DFC1  D
 
 test_that("@TRNO   DATE  LAID  SLAD  CWAD  PWAD FPWAD  HIPD  DIC1  FWC1  DWC1  DFC1  DIC2  FWC2  DWC2  DFC2  DIC3  FWC3  DWC3  DFC3  LN%D  SHND  SN%D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -5209,7 +5206,7 @@ test_that("@TRNO   DATE  LAID  SLAD  CWAD  PWAD FPWAD  HIPD  DIC1  FWC1  DWC1  D
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  SLAD  CWAD  PWAD FPWAD  HIPD  DIC1  FWC1  DWC1  DFC1  DIC2  FWC2  DWC2  DFC2  DIC3  FWC3  DWC3  DFC3  LN%D  SHND  SN%D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  SLAD  CWAD  PWAD FPWAD  HIPD  DIC1  FWC1  DWC1  DFC1  DIC2  FWC2  DWC2  DFC2  DIC3  FWC3  DWC3  DFC3  LN%D  SHND  SN%D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -5219,7 +5216,7 @@ test_that("@TRNO   DATE  LAID  SLAD  CWAD  PWAD FPWAD  HIPD  DIC1  FWC1  DWC1  D
 
 test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  SLAD  CHTD  CWTD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -5241,7 +5238,7 @@ test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  SLAD  CHTD  CWTD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  SLAD  CHTD  CWTD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -5251,7 +5248,7 @@ test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  S
 
 test_that("@TRNO   DATE  LAID  PWAD  CWAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -5264,7 +5261,7 @@ test_that("@TRNO   DATE  LAID  PWAD  CWAD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  PWAD  CWAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  PWAD  CWAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -5274,7 +5271,7 @@ test_that("@TRNO   DATE  LAID  PWAD  CWAD",{
 
 test_that("@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  LDAD  CWID  CHTD  L#SD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -5294,7 +5291,7 @@ test_that("@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  LDAD  CWID  CHTD  L
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  LDAD  CWID  CHTD  L#SD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  LDAD  CWID  CHTD  L#SD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -5304,7 +5301,7 @@ test_that("@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  LDAD  CWID  CHTD  L
 
 test_that("@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CDAD  CWID  CHTD  L#SD  LOSS",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -5325,7 +5322,7 @@ test_that("@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CDAD  CWID  CHTD  L
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CDAD  CWID  CHTD  L#SD  LOSS",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CDAD  CWID  CHTD  L#SD  LOSS",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -5335,7 +5332,7 @@ test_that("@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CDAD  CWID  CHTD  L
 
 test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  T#AD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -5351,7 +5348,7 @@ test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  T#AD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  T#AD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  T#AD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -5361,7 +5358,7 @@ test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  T#AD",{
 
 test_that("@TRNO   DATE  CWAD  T#AD  LAID",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "TRNO",#"@TRNO ",
         6,   12,     "DATE",#"  DATE",
@@ -5374,7 +5371,7 @@ test_that("@TRNO   DATE  CWAD  T#AD  LAID",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  CWAD  T#AD  LAID",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  CWAD  T#AD  LAID",
                                           col_names = col_names,
                                           left_justified = left_just)
 

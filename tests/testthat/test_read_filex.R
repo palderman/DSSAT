@@ -1,9 +1,6 @@
-library(DSSAT)
-library(withr)
-
 test_that("GENERAL",{
 
-  with_file("TEST0000.CRX",{
+  withr::with_file("TEST0000.CRX",{
     write(
       c("*GENERAL",
         "@PEOPLE",
@@ -21,7 +18,7 @@ test_that("GENERAL",{
       "TEST0000.CRX"
     )
 
-    filex <- read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX")
 
   })
 
@@ -52,14 +49,14 @@ test_that("GENERAL",{
 
 test_that("TREATMENTS single",{
 
-  with_file("TEST0000.CRX",{
+  withr::with_file("TEST0000.CRX",{
     write(
       c("*TREATMENTS                        -------------FACTOR LEVELS------------",
         "@N R O C TNAME.................... CU FL SA IC MP MI MF MR MC MT ME MH SM",
         " 1 0 0 0 Control - 350 ppm          1  1  0  1  1  1  1  0  1  0  1  0  1"),
       "TEST0000.CRX")
 
-    filex <- read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX")
 
   })
 
@@ -89,7 +86,7 @@ test_that("TREATMENTS single",{
 
 test_that("TREATMENTS two",{
 
-  with_file("TEST0000.CRX",{
+  withr::with_file("TEST0000.CRX",{
     write(
       c("*TREATMENTS                        -------------FACTOR LEVELS------------",
         "@N R O C TNAME.................... CU FL SA IC MP MI MF MR MC MT ME MH SM",
@@ -97,7 +94,7 @@ test_that("TREATMENTS two",{
         " 2 0 0 0 CO2 Enrichment - 550 ppm   1  1  0  1  1  1  1  0  1  0  2  0  1"),
       "TEST0000.CRX")
 
-    filex <- read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX")
 
   })
 
@@ -127,14 +124,14 @@ test_that("TREATMENTS two",{
 })
 
 test_that("CULTIVARS single",{
-  with_file("TEST0000.CRX",{
+  withr::with_file("TEST0000.CRX",{
     write(
       c("*CULTIVARS",
         "@C CR INGENO CNAME",
         " 1 CO IB0001 Deltapine 77"),
       "TEST0000.CRX")
 
-    filex <- read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX")
 
   })
 
@@ -150,7 +147,7 @@ test_that("CULTIVARS single",{
 })
 
 test_that("CULTIVARS multiple",{
-  with_file("TEST0000.CRX",{
+  withr::with_file("TEST0000.CRX",{
     write(
       c("*CULTIVARS",
         "@C CR INGENO CNAME",
@@ -160,7 +157,7 @@ test_that("CULTIVARS multiple",{
         " 4 PN IB0032 MA72x94-12,LS-RE"),
       "TEST0000.CRX")
 
-    filex <- read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX")
 
   })
 
@@ -180,7 +177,7 @@ test_that("CULTIVARS multiple",{
 })
 
 test_that("FIELDS single",{
-  with_file("TEST0000.CRX",{
+  withr::with_file("TEST0000.CRX",{
     write(
       c("*FIELDS",
         "@L ID_FIELD WSTA....  FLSA  FLOB  FLDT  FLDD  FLDS  FLST SLTX  SLDP  ID_SOIL    FLNAME",
@@ -189,7 +186,7 @@ test_that("FIELDS single",{
         " 1             -99             -99       -99               -99   -99   -99   -99   -99   -99"),
       "TEST0000.CRX")
 
-    filex <- read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX")
 
   })
 
@@ -215,7 +212,7 @@ test_that("FIELDS single",{
 })
 
 test_that("FIELDS multiple",{
-  with_file("TEST0000.CRX",{
+  withr::with_file("TEST0000.CRX",{
     write(
       c("*FIELDS",
         "@L ID_FIELD WSTA....  FLSA  FLOB  FLDT  FLDD  FLDS  FLST SLTX  SLDP  ID_SOIL    FLNAME",
@@ -230,7 +227,7 @@ test_that("FIELDS multiple",{
         " 4             -99             -99       -99               -99   -99   -99   -99   -99   -99"),
       "TEST0000.CRX")
 
-    filex <- read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX")
 
   })
 
@@ -262,7 +259,7 @@ test_that("FIELDS multiple",{
 
 test_that("SOIL ANALYSIS single",{
 
-  with_file("TEST0000.CRX",{
+  withr::with_file("TEST0000.CRX",{
     write(
       c("*SOIL ANALYSIS",
         "@A SADAT  SMHB  SMPX  SMKE  SANAME",
@@ -272,7 +269,7 @@ test_that("SOIL ANALYSIS single",{
       ),
       "TEST0000.CRX")
 
-    filex <- read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX")
 
   })
 
@@ -296,7 +293,7 @@ test_that("SOIL ANALYSIS single",{
 
 test_that("SOIL ANALYSIS single - missing",{
 
-  with_file("TEST0000.CRX",{
+  withr::with_file("TEST0000.CRX",{
     write(
       c("*SOIL ANALYSIS",
         "@A SADAT  SMHB  SMPX  SMKE  SANAME",
@@ -306,7 +303,7 @@ test_that("SOIL ANALYSIS single - missing",{
       ),
     "TEST0000.CRX")
 
-    filex <- read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX")
 
   })
 
@@ -324,7 +321,7 @@ test_that("SOIL ANALYSIS single - missing",{
 
 test_that("SOIL ANALYSIS multiple",{
 
-  with_file("TEST0000.CRX",{
+  withr::with_file("TEST0000.CRX",{
     write(
       c("*SOIL ANALYSIS",
         "@A SADAT  SMHB  SMPX  SMKE  SANAME",
@@ -362,7 +359,7 @@ test_that("SOIL ANALYSIS multiple",{
       ),
       "TEST0000.CRX")
 
-    filex <- read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX")
 
   })
 
@@ -404,7 +401,7 @@ test_that("SOIL ANALYSIS multiple",{
 
 test_that("INITIAL CONDITIONS one level - no missing",{
 
-  with_file("TEST0000.CRX",{
+  withr::with_file("TEST0000.CRX",{
     write(
       c("*INITIAL CONDITIONS",
         "@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME",
@@ -418,7 +415,7 @@ test_that("INITIAL CONDITIONS one level - no missing",{
         " 1   180  .406   .24   2.4"),
       "TEST0000.CRX")
 
-    filex <- read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX")
 
   })
 
@@ -456,7 +453,7 @@ test_that("INITIAL CONDITIONS one level - no missing",{
 
 test_that("INITIAL CONDITIONS one level - missing",{
 
-  with_file("TEST0000.CRX",{
+  withr::with_file("TEST0000.CRX",{
     write(
       c("*INITIAL CONDITIONS",
         "@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME",
@@ -470,7 +467,7 @@ test_that("INITIAL CONDITIONS one level - missing",{
         " 1   180   -99   -99   -99"),
       "TEST0000.CRX")
 
-    filex <- read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX")
 
   })
 
@@ -492,7 +489,7 @@ test_that("INITIAL CONDITIONS one level - missing",{
 
 test_that("Two levels - no missing data",{
 
-  with_file("TEST0000.CRX",{
+  withr::with_file("TEST0000.CRX",{
     write(
       c("*INITIAL CONDITIONS",
         "@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME",
@@ -514,7 +511,7 @@ test_that("Two levels - no missing data",{
         " 2   150  .406   .24   2.4"),
       "TEST0000.CRX")
 
-    filex <- read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX")
 
   })
 
@@ -560,7 +557,7 @@ test_that("Two levels - no missing data",{
 
 test_that("INITIAL CONDITIONS two levels - missing",{
 
-  with_file("TEST0000.CRX",{
+  withr::with_file("TEST0000.CRX",{
     write(
       c("*INITIAL CONDITIONS",
         "@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME",
@@ -582,7 +579,7 @@ test_that("INITIAL CONDITIONS two levels - missing",{
         " 2   150   -99   -99   -99"),
       "TEST0000.CRX")
 
-    filex <- read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX")
 
   })
 
@@ -605,25 +602,25 @@ test_that("INITIAL CONDITIONS two levels - missing",{
 })
 
 
-test_that("PLANTING DETAILS - single",{
-
-  with_file("TEST0000.CRX",{
-    write(
-      ,
-      "TEST0000.CRX")
-
-    filex <- read_filex("TEST0000.CRX")
-
-  })
-
-  DSSAT:::test_cols_check(
-    filex$`PLANTING DETAILS`,
-    char_cols = c(),
-    list_cols = c(),
-    date_cols = "",
-    missing = c(),
-    list_col_length = c(6, 5),
-    list_col_groups = list(c()),
-    expected_vals = list(P = ,))
-})
+# test_that("PLANTING DETAILS - single",{
+#
+#   withr::with_file("TEST0000.CRX",{
+#     write(
+#       ,
+#       "TEST0000.CRX")
+#
+#     filex <- DSSAT::read_filex("TEST0000.CRX")
+#
+#   })
+#
+#   DSSAT:::test_cols_check(
+#     filex$`PLANTING DETAILS`,
+#     char_cols = c(),
+#     list_cols = c(),
+#     date_cols = "",
+#     missing = c(),
+#     list_col_length = c(6, 5),
+#     list_col_groups = list(c()),
+#     expected_vals = list(P = ,))
+# })
 

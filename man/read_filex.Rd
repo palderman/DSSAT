@@ -9,7 +9,8 @@ read_filex(
   col_types = NULL,
   col_names = NULL,
   na_strings = NULL,
-  store_v_fmt = FALSE
+  store_v_fmt = FALSE,
+  use_std_fmt = FALSE
 )
 }
 \arguments{
