@@ -1,7 +1,7 @@
 #' @importFrom dplyr "%>%"
 #' @importFrom stringr str_detect str_remove str_length
 #' @importFrom purrr map_lgl
-reconcile_gaps <- function(loc,left_justified){
+reconcile_gaps <- function(loc, left_justified){
   # Calculate separation between columns, should be 1
   separation <- loc[,c('start','end')] %>%
     t() %>%
@@ -24,7 +24,7 @@ reconcile_gaps <- function(loc,left_justified){
   # Extend columns to fill in gaps
   for(i in has_gaps){
     if(loc[i,'cnames'] %in% left_justified){
-      if(str_detect(loc[i+1,'regex'],'^ \\*')|
+      if(str_detect(loc[i+1,'regex'],'^ \\*(?! )')|
          loc[i+1,'cnames'] %in% left_justified){
         # If column i is left justified and start of column i+1
         #   is determined by regex extend end of column i
@@ -45,7 +45,7 @@ reconcile_gaps <- function(loc,left_justified){
   # Shrink columns to eliminate overlaps
   for(i in has_overlaps){
     if(any(map_lgl(left_justified,str_detect,string=loc[i,'cnames']))){
-      if(str_detect(loc[i+1,'regex'],'^ \\*')){
+      if(str_detect(loc[i+1,'regex'],'^ \\*(?! )')){
         # If column i is left justified and start of column i+1
         #   is determined by regex shrink start of column i+1
         # Limit shift in start of column i+1 to width of name
