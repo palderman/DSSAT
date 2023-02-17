@@ -145,7 +145,7 @@ combine_tiers <- function(tier1, tier2, use_collapse_rows=FALSE, force_bind_rows
         tier2 <- unnest(tier2, all_of(tier2_list_cols))
       }
 
-      new_tier <- full_join(tier1, tier2, by=col_inter)
+      new_tier <- full_join(tier1, tier2, by=col_inter, multiple = "all")
 
       if(length(tier1_list_cols) > 0 |
          length(tier2_list_cols) > 0){
