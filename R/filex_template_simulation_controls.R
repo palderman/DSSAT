@@ -1,0 +1,137 @@
+#'
+#' @param expand a logical value indicating whether or not to use [tidyr::expand_grid()]
+#' to generate combinations of any input values supplied as a vector
+#'
+#' @importFrom magrittr "%>%"
+#' @importFrom tidyr expand_grid
+#' @importFrom tibble tibble
+#' @importFrom dplyr mutate select n
+#'
+filex_template_simulation_controls <-
+  function(GENERAL = "GE",
+           NYERS = 1, NREPS = 1, START = "S",
+           SDATE = NA_character_, RSEED = 2150,
+           SNAME = NA_character_, SMODEL = NA_character_,
+           OPTIONS = "OP",
+           WATER = "Y", NITRO = "Y", SYMBI = "N", PHOSP = "N",
+           POTAS = "Y", DISES = "N", CHEM = "N", TILL = "N",
+           CO2 = "M",
+           METHODS = "ME",
+           WTHER = "M", INCON = "M", LIGHT = "E", EVAPO = "R",
+           INFIL = "S", PHOTO = "L", HYDRO = "R", NSWIT = 1,
+           MESOM = "G", MESEV = "R", MESOL = 2,
+           MANAGEMENT = "MA",
+           PLANT = "R", IRRIG = "N", FERTI = "N", RESID = "N",
+           HARVS = "M",
+           OUTPUTS = "OU",
+           FNAME = "N", OVVEW = "Y", SUMRY = "Y", FROPT = 1,
+           GROUT = "N", CAOUT = "N", WAOUT = "N", NIOUT = "N",
+           MIOUT = "N", DIOUT = "N", VBOSE = "N", CHOUT = "N",
+           OPOUT = "N", FMOPT = "A",
+           PLANTING = "PL",
+           PFRST = NA_character_, PLAST = NA_character_,
+           PH2OL = NA_real_, PH2OU = NA_real_,
+           PH2OD = NA_real_, PSTMX = NA_real_, PSTMN = NA_real_,
+           IRRIGATION = "IR",
+           IMDEP = NA_real_, ITHRL = NA_real_,
+           ITHRU = NA_real_, IROFF = NA_character_,
+           IMETH = NA_character_,
+           IRAMT = NA_real_, IREFF = NA_real_,
+           NITROGEN = "NI",
+           NMDEP = NA_real_, NMTHR = NA_real_, NAMNT = NA_real_,
+           NCODE = NA_character_, NAOFF = NA_character_,
+           RESIDUES = "RE",
+           RIPCN = NA_real_, RTIME = NA_real_,
+           RIDEP = NA_real_,
+           HARVEST = "HA",
+           HFRST = NA_character_, HLAST = NA_character_,
+           HPCNP = NA_real_, HPCNR = NA_real_,
+           SIMDATES = "SI",
+           ENDAT = NA_character_, SDUR = NA_real_,
+           FODAT = NA_character_, FSTRYR = NA_real_,
+           FENDYR = NA_real_, FWFILE = NA_character_,
+           FONAME = NA_character_, expand = FALSE){
+  if(expand){
+    sim_controls <- expand_grid(
+      GENERAL = GENERAL,
+      NYERS = NYERS, NREPS = NREPS, START = START, SDATE = SDATE,
+      RSEED = RSEED, SNAME = SNAME, SMODEL = SMODEL,
+      OPTIONS = OPTIONS,
+      WATER = WATER, NITRO = NITRO, SYMBI = SYMBI, PHOSP = PHOSP,
+      POTAS = POTAS, DISES = DISES, CHEM = CHEM, TILL = TILL,
+      CO2 = CO2,
+      METHODS = METHODS,
+      WTHER = WTHER, INCON = INCON, LIGHT = LIGHT, EVAPO = EVAPO,
+      INFIL = INFIL, PHOTO = PHOTO, HYDRO = HYDRO, NSWIT = NSWIT,
+      MESOM = MESOM, MESEV = MESEV, MESOL = MESOL,
+      MANAGEMENT = MANAGEMENT,
+      PLANT = PLANT, IRRIG = IRRIG, FERTI = FERTI, RESID = RESID,
+      HARVS = HARVS,
+      OUTPUTS = OUTPUTS,
+      FNAME = FNAME, OVVEW = OVVEW, SUMRY = SUMRY, FROPT = FROPT,
+      GROUT = GROUT, CAOUT = CAOUT, WAOUT = WAOUT, NIOUT = NIOUT,
+      MIOUT = MIOUT, DIOUT = DIOUT, VBOSE = VBOSE, CHOUT = CHOUT,
+      OPOUT = OPOUT, FMOPT = FMOPT,
+      PLANTING = PLANTING,
+      PFRST = PFRST, PLAST = PLAST, PH2OL = PH2OL, PH2OU = PH2OU,
+      PH2OD = PH2OD, PSTMX = PSTMX, PSTMN = PSTMN,
+      IRRIGATION = IRRIGATION,
+      IMDEP = IMDEP, ITHRL = ITHRL, ITHRU = ITHRU, IROFF = IROFF,
+      IMETH = IMETH, IRAMT = IRAMT, IREFF = IREFF,
+      NITROGEN = NITROGEN,
+      NMDEP = NMDEP, NMTHR = NMTHR, NAMNT = NAMNT, NCODE = NCODE,
+      NAOFF = NAOFF,
+      RESIDUES = RESIDUES,
+      RIPCN = RIPCN, RTIME = RTIME, RIDEP = RIDEP,
+      HARVEST = HARVEST,
+      HFRST = HFRST, HLAST = HLAST, HPCNP = HPCNP, HPCNR = HPCNR,
+      SIMDATES = SIMDATES,
+      ENDAT = ENDAT, SDUR = SDUR, FODAT = FODAT, FSTRYR = FSTRYR,
+      FENDYR = FENDYR, FWFILE = FWFILE, FONAME = FONAME
+    )
+  }else{
+    sim_controls <- tibble(
+      GENERAL = GENERAL,
+      NYERS = NYERS, NREPS = NREPS, START = START, SDATE = SDATE,
+      RSEED = RSEED, SNAME = SNAME, SMODEL = SMODEL,
+      OPTIONS = OPTIONS,
+      WATER = WATER, NITRO = NITRO, SYMBI = SYMBI, PHOSP = PHOSP,
+      POTAS = POTAS, DISES = DISES, CHEM = CHEM, TILL = TILL,
+      CO2 = CO2,
+      METHODS = METHODS,
+      WTHER = WTHER, INCON = INCON, LIGHT = LIGHT, EVAPO = EVAPO,
+      INFIL = INFIL, PHOTO = PHOTO, HYDRO = HYDRO, NSWIT = NSWIT,
+      MESOM = MESOM, MESEV = MESEV, MESOL = MESOL,
+      MANAGEMENT = MANAGEMENT,
+      PLANT = PLANT, IRRIG = IRRIG, FERTI = FERTI, RESID = RESID,
+      HARVS = HARVS,
+      OUTPUTS = OUTPUTS,
+      FNAME = FNAME, OVVEW = OVVEW, SUMRY = SUMRY, FROPT = FROPT,
+      GROUT = GROUT, CAOUT = CAOUT, WAOUT = WAOUT, NIOUT = NIOUT,
+      MIOUT = MIOUT, DIOUT = DIOUT, VBOSE = VBOSE, CHOUT = CHOUT,
+      OPOUT = OPOUT, FMOPT = FMOPT,
+      PLANTING = PLANTING,
+      PFRST = PFRST, PLAST = PLAST, PH2OL = PH2OL, PH2OU = PH2OU,
+      PH2OD = PH2OD, PSTMX = PSTMX, PSTMN = PSTMN,
+      IRRIGATION = IRRIGATION,
+      IMDEP = IMDEP, ITHRL = ITHRL, ITHRU = ITHRU, IROFF = IROFF,
+      IMETH = IMETH, IRAMT = IRAMT, IREFF = IREFF,
+      NITROGEN = NITROGEN,
+      NMDEP = NMDEP, NMTHR = NMTHR, NAMNT = NAMNT, NCODE = NCODE,
+      NAOFF = NAOFF,
+      RESIDUES = RESIDUES,
+      RIPCN = RIPCN, RTIME = RTIME, RIDEP = RIDEP,
+      HARVEST = HARVEST,
+      HFRST = HFRST, HLAST = HLAST, HPCNP = HPCNP, HPCNR = HPCNR,
+      SIMDATES = SIMDATES,
+      ENDAT = ENDAT, SDUR = SDUR, FODAT = FODAT, FSTRYR = FSTRYR,
+      FENDYR = FENDYR, FWFILE = FWFILE, FONAME = FONAME
+    )
+  }
+
+  sim_controls <- sim_controls %>%
+    mutate(N = as.numeric(1:n())) %>%
+    select(N, everything())
+
+  return(sim_controls)
+}
