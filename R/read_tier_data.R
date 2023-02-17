@@ -50,26 +50,30 @@ read_tier_data <- function(raw_lines, col_types=NULL, col_names=NULL, na_strings
     }
   }
 
-#  if(!'DATE'%in%{col_types$cols %>% str_replace_all(c(' '=''))})
-  col_types <- cols(` DATE`=col_character()) %>%
-    {.$cols <- c(.$cols,col_types$cols)
-   .}
-
   if(is.null(tier_fmt)){
+
+    col_types <- cols(` DATE`=col_character()) %>%
+      {.$cols <- c(.$cols,col_types$cols)
+      .}
+
     # Process header into fixed-width format positions
     fwf_pos <- map(headline,
                    ~header_to_fwf_position(.,left_justified, col_types, col_names, read_only))
+
   }else{
     # Add code here to convert tier_fmt into fwf_pos
-    tier_fmt_regex <- names(tier_fmt) %>%
-      str_c("(^| )", . , "( |$)")
+    fwf_pos <- map(headline,
+                   ~v_fmt_to_fwf_pos(tier_fmt, header = .))
+
+    col_types <- map(fwf_pos,
+                     ~v_fmt_to_col_types(tier_fmt[.$col_names]))
   }
 
   # Calculate end of each section based on beginning of next section
   end <- c(skip[-1]-1,length(raw_lines))
 
   # Put check_col_types here
-  if(!is.null(col_types)){
+  if(is.null(tier_fmt) & !is.null(col_types)){
     col_types <- map(1:length(skip),~check_col_types(col_types,fwf_pos[[.]]$col_names))
   }
 
@@ -97,7 +101,7 @@ read_tier_data <- function(raw_lines, col_types=NULL, col_names=NULL, na_strings
                               na = na_strings,
                             skip_empty_rows = TRUE,
                             guess_max = guess_max,
-                            col_types=col_types[[i]])
+                            col_types = col_types[[i]])
         }
         return(tdata)
       }) %>%
@@ -128,7 +132,8 @@ read_tier_data <- function(raw_lines, col_types=NULL, col_names=NULL, na_strings
         str_replace_all(c('^ +'='',
                           ' +$'='')) %>%
         { potential_date_cols[(! potential_date_cols %in% .) |
-                               potential_date_cols == 'DATE' ]}
+                               potential_date_cols == 'DATE' |
+                                !is.null(tier_fmt)]}
       one_df <- one_df %>%
         mutate_at(.,date_cols,~convert_to_date(.))
       return(one_df)

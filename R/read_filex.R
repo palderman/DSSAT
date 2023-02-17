@@ -150,14 +150,26 @@ read_filex <- function(file_name, col_types=NULL, col_names=NULL, na_strings=NUL
   sec_names <- str_remove(raw_lines[sec_begin],'^\\*')
 
   # Extract all tiers
-  all_secs <- map(1:length(sec_begin),
-                   ~read_tier_data(raw_lines[sec_begin[.]:sec_end[.]],
-                                   left_justified = left_justified,
-                                   col_names = col_names,
-                                   col_types = col_types,
-                                   na_strings = na_strings,
-                                   join_tiers = FALSE,
-                                   store_v_fmt = store_v_fmt))
+  if(use_std_fmt){
+    all_secs <- map(1:length(sec_begin),
+                    ~read_tier_data(raw_lines[sec_begin[.]:sec_end[.]],
+                                    left_justified = left_justified,
+                                    col_names = col_names,
+                                    col_types = col_types,
+                                    na_strings = na_strings,
+                                    join_tiers = FALSE,
+                                    store_v_fmt = store_v_fmt,
+                                    tier_fmt = v_fmt_filex(sec_names[.])))
+  }else{
+    all_secs <- map(1:length(sec_begin),
+                    ~read_tier_data(raw_lines[sec_begin[.]:sec_end[.]],
+                                    left_justified = left_justified,
+                                    col_names = col_names,
+                                    col_types = col_types,
+                                    na_strings = na_strings,
+                                    join_tiers = FALSE,
+                                    store_v_fmt = store_v_fmt))
+  }
 
   names(all_secs) <- sec_names
 
