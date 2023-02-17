@@ -13,7 +13,8 @@ read_tier_data(
   guess_max = 1000,
   join_tiers = TRUE,
   store_v_fmt = TRUE,
-  read_only = NULL
+  read_only = NULL,
+  tier_fmt = NULL
 )
 }
 \arguments{

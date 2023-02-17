@@ -1,7 +1,5 @@
 #' Efficiently combine data from two data tiers into one
 #'
-#' @export
-#'
 #' @keywords internal
 #'
 #' @param tier1,tier2 a tibble for each tier of data
@@ -15,7 +13,7 @@
 #' @importFrom tidyr crossing unnest
 #'
 
-combine_tiers <- function(tier1,tier2,use_collapse_rows=FALSE,force_bind_rows=FALSE){
+combine_tiers <- function(tier1, tier2, use_collapse_rows=FALSE, force_bind_rows=FALSE){
 
   # Check if all columns are present in both tiers
   # if(all(colnames(tier1) %in% colnames(tier2))){
@@ -43,12 +41,12 @@ combine_tiers <- function(tier1,tier2,use_collapse_rows=FALSE,force_bind_rows=FA
 
     ctypes_1 <- tier1 %>%
       ungroup() %>%
-      select(col_inter) %>%
+      select(all_of(col_inter)) %>%
       summarize_all(~head(class(.),1)) %>%
       unlist()
     ctypes_2 <- tier2 %>%
       ungroup() %>%
-      select(col_inter) %>%
+      select(all_of(col_inter)) %>%
       summarize_all(~head(class(.),1)) %>%
       unlist()
 
@@ -56,20 +54,20 @@ combine_tiers <- function(tier1,tier2,use_collapse_rows=FALSE,force_bind_rows=FA
       for(cname in names(ctypes_1)){
         all_na_1 <- tier1 %>%
           ungroup() %>%
-          summarize_at(vars(cname),~all(is.na(.))) %>%
+          summarize_at(vars(cname), ~all(is.na(.))) %>%
           unlist()
         all_na_2 <- tier2 %>%
           ungroup() %>%
-          summarize_at(vars(cname),~all(is.na(.))) %>%
+          summarize_at(vars(cname), ~all(is.na(.))) %>%
           unlist()
         if(all_na_1 && ! all_na_2){
          tier1 <- tier1 %>%
            ungroup(cname) %>%
-           mutate_at(vars(cname),~as(.,ctypes_2[cname]))
+           mutate_at(vars(cname), ~as(.,ctypes_2[cname]))
         }else if(all_na_2 && ! all_na_1){
           tier2 <- tier2 %>%
             ungroup(cname) %>%
-            mutate_at(vars(cname),~as(.,ctypes_1[cname]))
+            mutate_at(vars(cname), ~as(.,ctypes_1[cname]))
         }
       }
     }
@@ -114,9 +112,9 @@ combine_tiers <- function(tier1,tier2,use_collapse_rows=FALSE,force_bind_rows=FA
           mutate_at(tier1,.,list)
       }
 
-      tier2 <- select(tier2,colnames(tier1))
+      tier2 <- select(tier2, colnames(tier1))
 
-      new_tier <- bind_rows(tier1,tier2)
+      new_tier <- bind_rows(tier1, tier2)
 
     }else if(length(col_inter) == 0){
       # In this case no column names are in common
@@ -132,7 +130,7 @@ combine_tiers <- function(tier1,tier2,use_collapse_rows=FALSE,force_bind_rows=FA
         #     summarize_all(~list(.)) %>%
         #     bind_cols(tier2)
         # }else{
-            new_tier <- crossing(tier1,tier2)
+            new_tier <- crossing(tier1, tier2)
         # }
       }
     }else{
@@ -140,18 +138,18 @@ combine_tiers <- function(tier1,tier2,use_collapse_rows=FALSE,force_bind_rows=FA
       # merged with a join operation
 
       if(length(tier1_list_cols) > 0){
-        tier1 <- unnest(tier1,tier1_list_cols)
+        tier1 <- unnest(tier1, all_of(tier1_list_cols))
       }
 
       if(length(tier2_list_cols) > 0){
-        tier2 <- unnest(tier2,tier2_list_cols)
+        tier2 <- unnest(tier2, all_of(tier2_list_cols))
       }
 
-      new_tier <- full_join(tier1,tier2,by=col_inter)
+      new_tier <- full_join(tier1, tier2, by=col_inter, multiple = "all")
 
       if(length(tier1_list_cols) > 0 |
          length(tier2_list_cols) > 0){
-        all_list_cols <- c(tier1_list_cols,tier2_list_cols) %>%
+        all_list_cols <- c(tier1_list_cols, tier2_list_cols) %>%
           unique()
         tmp_groups <- colnames(new_tier) %>%
           {.[ ! . %in% all_list_cols ]}
@@ -182,7 +180,7 @@ combine_tiers <- function(tier1,tier2,use_collapse_rows=FALSE,force_bind_rows=FA
     if(identical(colnames(tier1),colnames(tier2))){
       tier_info <- list(colnames(tier1))
     }else{
-      tier_info <- list(colnames(tier1),colnames(tier2))
+      tier_info <- list(colnames(tier1), colnames(tier2))
     }
   }
   if('v_fmt' %in% names(tier1_attr) &&

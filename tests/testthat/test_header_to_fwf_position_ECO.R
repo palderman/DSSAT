@@ -1,9 +1,6 @@
-library(DSSATcpp)
-library(tibble)
-
 test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI RDRMT RDRMG RDRMM RCHDP",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "ECO#",#           "@ECO#  ",
         7,   25,  "ECONAME",#"ECONAME.......... ",
@@ -35,7 +32,7 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI RDRMT RDRMG RDRMM RCHDP",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI RDRMT RDRMG RDRMM RCHDP",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -45,7 +42,7 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
 
 test_that("@ECO#     P1 P2FR1    P2    P3 P4FR1 P4FR2    P4  VEFF PARUE PARU2  PHL2  PHF3  LA1S  LAFV  LAFR  SLAS LSPHS LSPHE TIL#S TIPHE TIFAC TDPHS TDPHE TDFAC  RDGS HTSTD  AWNS  KCAN  RS%S  GN%S GN%MN  TKFH",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,     "ECO#",#"@ECO# ",
         6,   12,       "P1",#"    P1",
@@ -86,7 +83,7 @@ test_that("@ECO#     P1 P2FR1    P2    P3 P4FR1 P4FR2    P4  VEFF PARUE PARU2  P
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#     P1 P2FR1    P2    P3 P4FR1 P4FR2    P4  VEFF PARUE PARU2  PHL2  PHF3  LA1S  LAFV  LAFR  SLAS LSPHS LSPHE TIL#S TIPHE TIFAC TDPHS TDPHE TDFAC  RDGS HTSTD  AWNS  KCAN  RS%S  GN%S GN%MN  TKFH",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#     P1 P2FR1    P2    P3 P4FR1 P4FR2    P4  VEFF PARUE PARU2  PHL2  PHF3  LA1S  LAFV  LAFR  SLAS LSPHS LSPHE TIL#S TIPHE TIFAC TDPHS TDPHE TDFAC  RDGS HTSTD  AWNS  KCAN  RS%S  GN%S GN%MN  TKFH",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -96,7 +93,7 @@ test_that("@ECO#     P1 P2FR1    P2    P3 P4FR1 P4FR2    P4  VEFF PARUE PARU2  P
 
 test_that("@ECO#  ECONAME.......... PARUE PARU2  PHL2  PHF3  SLAS LSENI LSPHS LSPHE TIL#S TIPHE TIFAC TDPHS TDPHE TDFAC  TDSF  RDGS HTSTD  AWNS  KCAN  RS%A  GN%S GN%MN  GM%H  TKFH SSPHS SSPHE GWTAF GWTAT  G#RF RTNUP NUPNF NUPWF",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "ECO#",#           "@ECO#  ",
         7,   25,  "ECONAME",#"ECONAME.......... ",
@@ -138,7 +135,7 @@ test_that("@ECO#  ECONAME.......... PARUE PARU2  PHL2  PHF3  SLAS LSENI LSPHS LS
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#  ECONAME.......... PARUE PARU2  PHL2  PHF3  SLAS LSENI LSPHS LSPHE TIL#S TIPHE TIFAC TDPHS TDPHE TDFAC  TDSF  RDGS HTSTD  AWNS  KCAN  RS%A  GN%S GN%MN  GM%H  TKFH SSPHS SSPHE GWTAF GWTAT  G#RF RTNUP NUPNF NUPWF",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#  ECONAME.......... PARUE PARU2  PHL2  PHF3  SLAS LSENI LSPHS LSPHE TIL#S TIPHE TIFAC TDPHS TDPHE TDFAC  TDSF  RDGS HTSTD  AWNS  KCAN  RS%A  GN%S GN%MN  GM%H  TKFH SSPHS SSPHE GWTAF GWTAT  G#RF RTNUP NUPNF NUPWF",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -148,7 +145,7 @@ test_that("@ECO#  ECONAME.......... PARUE PARU2  PHL2  PHF3  SLAS LSENI LSPHS LS
 
 test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "ECO#",#           "@ECO#  ",
         7,   25,  "ECONAME",#"ECONAME.......... ",
@@ -176,7 +173,7 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -186,7 +183,7 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
 
 test_that("@ECO#  ECONAME.......... MG TM PP-SS PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNHSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "ECO#",#           "@ECO#  ",
         7,   25,  "ECONAME",#"ECONAME.......... ",
@@ -214,7 +211,7 @@ test_that("@ECO#  ECONAME.......... MG TM PP-SS PL-EM EM-V1 V1-JU JU-R0  PM06  P
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#  ECONAME.......... MG TM PP-SS PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNHSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#  ECONAME.......... MG TM PP-SS PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNHSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -224,7 +221,7 @@ test_that("@ECO#  ECONAME.......... MG TM PP-SS PL-EM EM-V1 V1-JU JU-R0  PM06  P
 
 test_that("@ECO   ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  RUE   KCAN  TSEN  CDAY",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,      "ECO",#           "@ECO   ",
         7,   25,  "ECONAME",#"ECONAME.........  ",
@@ -245,7 +242,7 @@ test_that("@ECO   ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  R
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO   ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  RUE   KCAN  TSEN  CDAY",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO   ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  RUE   KCAN  TSEN  CDAY",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -255,7 +252,7 @@ test_that("@ECO   ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  R
 
 test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI  KCAN",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "ECO#",#           "@ECO#  ",
         7,   25,  "ECONAME",#"ECONAME.......... ",
@@ -284,7 +281,7 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI  KCAN",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI  KCAN",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -294,7 +291,7 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
 
 test_that("@ECO#  ECONAME.......... PARUE HTSTD DUSRI SRN%S BR1FX BR2FX BR3FX BR4FX BR5FX BR6FX",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "ECO#",#           "@ECO#  ",
         7,   25,  "ECONAME",#"ECONAME.......... ",
@@ -314,7 +311,7 @@ test_that("@ECO#  ECONAME.......... PARUE HTSTD DUSRI SRN%S BR1FX BR2FX BR3FX BR
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#  ECONAME.......... PARUE HTSTD DUSRI SRN%S BR1FX BR2FX BR3FX BR4FX BR5FX BR6FX",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#  ECONAME.......... PARUE HTSTD DUSRI SRN%S BR1FX BR2FX BR3FX BR4FX BR5FX BR6FX",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -324,7 +321,7 @@ test_that("@ECO#  ECONAME.......... PARUE HTSTD DUSRI SRN%S BR1FX BR2FX BR3FX BR
 
 test_that("@ECO#  ECONAME.......... PARUE TBLSZ SRN%S  KCAN PGERM  PPS1  PPS2  PPS3  PHTV  PHSV  RDGS  RLWR  WFSU RSUSE  HMPC",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "ECO#",#           "@ECO#  ",
         7,   25,  "ECONAME",#"ECONAME.......... ",
@@ -349,7 +346,7 @@ test_that("@ECO#  ECONAME.......... PARUE TBLSZ SRN%S  KCAN PGERM  PPS1  PPS2  P
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#  ECONAME.......... PARUE TBLSZ SRN%S  KCAN PGERM  PPS1  PPS2  PPS3  PHTV  PHSV  RDGS  RLWR  WFSU RSUSE  HMPC",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#  ECONAME.......... PARUE TBLSZ SRN%S  KCAN PGERM  PPS1  PPS2  PPS3  PHTV  PHSV  RDGS  RLWR  WFSU RSUSE  HMPC",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -359,7 +356,7 @@ test_that("@ECO#  ECONAME.......... PARUE TBLSZ SRN%S  KCAN PGERM  PPS1  PPS2  P
 
 test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT THRSH SDPRO SDLIP R1PPO OPTBI SLOBI",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "ECO#",#           "@ECO#  ",
         7,   25,  "ECONAME",#"ECONAME.......... ",
@@ -390,7 +387,7 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT THRSH SDPRO SDLIP R1PPO OPTBI SLOBI",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT THRSH SDPRO SDLIP R1PPO OPTBI SLOBI",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -400,7 +397,7 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
 
 test_that("@ECO#  ECONAME.........  TBASE TOPT  ROPT  DJTI  GDDE   RUE  KCAN",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "ECO#",#           "@ECO#  ",
         7,   25,  "ECONAME",#"ECONAME.........  ",
@@ -417,7 +414,7 @@ test_that("@ECO#  ECONAME.........  TBASE TOPT  ROPT  DJTI  GDDE   RUE  KCAN",{
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#  ECONAME.........  TBASE TOPT  ROPT  DJTI  GDDE   RUE  KCAN",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#  ECONAME.........  TBASE TOPT  ROPT  DJTI  GDDE   RUE  KCAN",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -427,7 +424,7 @@ test_that("@ECO#  ECONAME.........  TBASE TOPT  ROPT  DJTI  GDDE   RUE  KCAN",{
 
 test_that("@ECO#  ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  RUE   KCAN  TSEN  CDAY",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "ECO#",#           "@ECO#  ",
         7,   25,  "ECONAME",#"ECONAME.........  ",
@@ -448,7 +445,7 @@ test_that("@ECO#  ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  R
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#  ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  RUE   KCAN  TSEN  CDAY",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#  ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  RUE   KCAN  TSEN  CDAY",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -458,7 +455,7 @@ test_that("@ECO#  ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  R
 
 test_that("@ECO#  ECONAME.........  TBASE TOPT  ROPT  P20   DJTI  GDDE  DSGFT  RUE   KCAN  PSTM  PEAR  TSEN  CDAY",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "ECO#",#           "@ECO#  ",
         7,   25,  "ECONAME",#"ECONAME.........  ",
@@ -481,7 +478,7 @@ test_that("@ECO#  ECONAME.........  TBASE TOPT  ROPT  P20   DJTI  GDDE  DSGFT  R
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#  ECONAME.........  TBASE TOPT  ROPT  P20   DJTI  GDDE  DSGFT  RUE   KCAN  PSTM  PEAR  TSEN  CDAY",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#  ECONAME.........  TBASE TOPT  ROPT  P20   DJTI  GDDE  DSGFT  RUE   KCAN  PSTM  PEAR  TSEN  CDAY",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -491,7 +488,7 @@ test_that("@ECO#  ECONAME.........  TBASE TOPT  ROPT  P20   DJTI  GDDE  DSGFT  R
 
 test_that("@ECO#  ECONAME..........  RUE1  RUE2",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#               ~check,
         0,    7,     "ECO#",#            "@ECO#  ",
         7,   26,  "ECONAME",#"ECONAME..........  ",
@@ -503,7 +500,7 @@ test_that("@ECO#  ECONAME..........  RUE1  RUE2",{
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#  ECONAME..........  RUE1  RUE2",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#  ECONAME..........  RUE1  RUE2",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -513,7 +510,7 @@ test_that("@ECO#  ECONAME..........  RUE1  RUE2",{
 
 test_that("@ECO#  ECO-NAME.........        DELTTMAX       SWDF2AMP         EXTCFN        EXTCFST       LFNMXEXT   AREAMX_CF(2)   AREAMX_CF(3)         WIDCOR     WMAX_CF(1)     WMAX_CF(2)     WMAX_CF(3)       POPDECAY       TTBASEEM     TTBASELFEX     LG_AMRANGE    LG_GP_REDUC   LDG_FI_REDUC     LMAX_CF(1)     LMAX_CF(2)     LMAX_CF(3)    MAXLFLENGTH     MAXLFWIDTH    TBASE_GE_EM    TOPT_GE_EM      TFin_GE_EM     TBASE_LFEM      TOPT_LFEM      TFin_LFEM    TBASE_TLREM     TOPT_TLREM     TFin_TLREM    TBASE_LFSEN     TOPT_LFSEN     TFin_LFSEN    TBASE_STKEX     TOPT_STKEX     TFin_STKEX     TBASE_LFEX      TOPT_LFEX      TFin_LFEX      TBASE_REX       TOPT_REX       TFin_REX      TOPT_PHOT      TOPT_PHO2      TFin_PHOT     TBASE_RESP      TOPT_RESP      TFin_RESP ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end,    ~col_names,#                     ~check,
         0,    7,        "ECO#",#                  "@ECO#  ",
         7,   32,    "ECO-NAME",#"ECO-NAME.........        ",
@@ -572,7 +569,7 @@ test_that("@ECO#  ECO-NAME.........        DELTTMAX       SWDF2AMP         EXTCF
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#  ECO-NAME.........        DELTTMAX       SWDF2AMP         EXTCFN        EXTCFST       LFNMXEXT   AREAMX_CF(2)   AREAMX_CF(3)         WIDCOR     WMAX_CF(1)     WMAX_CF(2)     WMAX_CF(3)       POPDECAY       TTBASEEM     TTBASELFEX     LG_AMRANGE    LG_GP_REDUC   LDG_FI_REDUC     LMAX_CF(1)     LMAX_CF(2)     LMAX_CF(3)    MAXLFLENGTH     MAXLFWIDTH    TBASE_GE_EM    TOPT_GE_EM      TFin_GE_EM     TBASE_LFEM      TOPT_LFEM      TFin_LFEM    TBASE_TLREM     TOPT_TLREM     TFin_TLREM    TBASE_LFSEN     TOPT_LFSEN     TFin_LFSEN    TBASE_STKEX     TOPT_STKEX     TFin_STKEX     TBASE_LFEX      TOPT_LFEX      TFin_LFEX      TBASE_REX       TOPT_REX       TFin_REX      TOPT_PHOT      TOPT_PHO2      TFin_PHOT     TBASE_RESP      TOPT_RESP      TFin_RESP ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#  ECO-NAME.........        DELTTMAX       SWDF2AMP         EXTCFN        EXTCFST       LFNMXEXT   AREAMX_CF(2)   AREAMX_CF(3)         WIDCOR     WMAX_CF(1)     WMAX_CF(2)     WMAX_CF(3)       POPDECAY       TTBASEEM     TTBASELFEX     LG_AMRANGE    LG_GP_REDUC   LDG_FI_REDUC     LMAX_CF(1)     LMAX_CF(2)     LMAX_CF(3)    MAXLFLENGTH     MAXLFWIDTH    TBASE_GE_EM    TOPT_GE_EM      TFin_GE_EM     TBASE_LFEM      TOPT_LFEM      TFin_LFEM    TBASE_TLREM     TOPT_TLREM     TFin_TLREM    TBASE_LFSEN     TOPT_LFSEN     TFin_LFSEN    TBASE_STKEX     TOPT_STKEX     TFin_STKEX     TBASE_LFEX      TOPT_LFEX      TFin_LFEX      TBASE_REX       TOPT_REX       TFin_REX      TOPT_PHOT      TOPT_PHO2      TFin_PHOT     TBASE_RESP      TOPT_RESP      TFin_RESP ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -582,7 +579,7 @@ test_that("@ECO#  ECO-NAME.........        DELTTMAX       SWDF2AMP         EXTCF
 
 test_that("@ECO#  ECO-NAME.........       NS_LF_TIL   N_LF_MAX_ILA         TB0PHO         TB1PHO         TB2PHO         TBFPHO          TBPER      TBMAX_PER    LTTHRESHOLD        FDEADLF            RDM      DPERCOEFF         RWUEP1         RWUEP2   T_MAX_WS_PHO   T_MID_WS_PHO   T_MIN_WS_PHO   T_MAX_WS_EXP   T_MID_WS_EXP   T_MIN_WS_EXP    FRAC_SUC_BG    FRAC_HEX_BG    INIT_PD_RAT  IT_STR_TB_INI     IT_STR_TO1     IT_STR_TO2  IT_STR_TB_END  IT_STR_PF_MAX  IT_STR_PF_MIN   IT_STR_PF_TB   IT_STR_PF_TM   IT_STR_PF_TE    IT_STR_PF_D   IT_STR_T_RED   IT_STR_W_RED     MAX_PER_IT     DSWAT_DDWS     DSWAT_DSUC        HEX_MIN    SUC_ACC_INI   DSUC_FRAC_TS   TT_CHUMAT_LT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end,     ~col_names,#                    ~check,
         0,    7,         "ECO#",#                 "@ECO#  ",
         7,   31,     "ECO-NAME",#"ECO-NAME.........       ",
@@ -634,7 +631,7 @@ test_that("@ECO#  ECO-NAME.........       NS_LF_TIL   N_LF_MAX_ILA         TB0PH
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#  ECO-NAME.........       NS_LF_TIL   N_LF_MAX_ILA         TB0PHO         TB1PHO         TB2PHO         TBFPHO          TBPER      TBMAX_PER    LTTHRESHOLD        FDEADLF            RDM      DPERCOEFF         RWUEP1         RWUEP2   T_MAX_WS_PHO   T_MID_WS_PHO   T_MIN_WS_PHO   T_MAX_WS_EXP   T_MID_WS_EXP   T_MIN_WS_EXP    FRAC_SUC_BG    FRAC_HEX_BG    INIT_PD_RAT  IT_STR_TB_INI     IT_STR_TO1     IT_STR_TO2  IT_STR_TB_END  IT_STR_PF_MAX  IT_STR_PF_MIN   IT_STR_PF_TB   IT_STR_PF_TM   IT_STR_PF_TE    IT_STR_PF_D   IT_STR_T_RED   IT_STR_W_RED     MAX_PER_IT     DSWAT_DDWS     DSWAT_DSUC        HEX_MIN    SUC_ACC_INI   DSUC_FRAC_TS   TT_CHUMAT_LT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#  ECO-NAME.........       NS_LF_TIL   N_LF_MAX_ILA         TB0PHO         TB1PHO         TB2PHO         TBFPHO          TBPER      TBMAX_PER    LTTHRESHOLD        FDEADLF            RDM      DPERCOEFF         RWUEP1         RWUEP2   T_MAX_WS_PHO   T_MID_WS_PHO   T_MIN_WS_PHO   T_MAX_WS_EXP   T_MID_WS_EXP   T_MIN_WS_EXP    FRAC_SUC_BG    FRAC_HEX_BG    INIT_PD_RAT  IT_STR_TB_INI     IT_STR_TO1     IT_STR_TO2  IT_STR_TB_END  IT_STR_PF_MAX  IT_STR_PF_MIN   IT_STR_PF_TB   IT_STR_PF_TM   IT_STR_PF_TE    IT_STR_PF_D   IT_STR_T_RED   IT_STR_W_RED     MAX_PER_IT     DSWAT_DDWS     DSWAT_DSUC        HEX_MIN    SUC_ACC_INI   DSUC_FRAC_TS   TT_CHUMAT_LT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -644,7 +641,7 @@ test_that("@ECO#  ECO-NAME.........       NS_LF_TIL   N_LF_MAX_ILA         TB0PH
 
 test_that("@ECO#  ECONAME.........  TBASE  TOPT  ROPT  GDDE   RUE  KCAN  STPC  RTPC TILFC  PLAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "ECO#",#           "@ECO#  ",
         7,   25,  "ECONAME",#"ECONAME.........  ",
@@ -664,7 +661,7 @@ test_that("@ECO#  ECONAME.........  TBASE  TOPT  ROPT  GDDE   RUE  KCAN  STPC  R
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#  ECONAME.........  TBASE  TOPT  ROPT  GDDE   RUE  KCAN  STPC  RTPC TILFC  PLAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#  ECONAME.........  TBASE  TOPT  ROPT  GDDE   RUE  KCAN  STPC  RTPC TILFC  PLAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -674,7 +671,7 @@ test_that("@ECO#  ECONAME.........  TBASE  TOPT  ROPT  GDDE   RUE  KCAN  STPC  R
 
 test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI                                                                          ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "ECO#",#           "@ECO#  ",
         7,   25,  "ECONAME",#"ECONAME.......... ",
@@ -702,7 +699,7 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI                                                                          ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI                                                                          ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -712,7 +709,7 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
 
 test_that("@ECO#  ECONAME.........  TBASE  TOPT  ROPT   P20  DJTI  GDDE DSGFT   RUE  KCAN  TSEN  CDAY",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "ECO#",#           "@ECO#  ",
         7,   25,  "ECONAME",#"ECONAME.........  ",
@@ -733,7 +730,7 @@ test_that("@ECO#  ECONAME.........  TBASE  TOPT  ROPT   P20  DJTI  GDDE DSGFT   
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#  ECONAME.........  TBASE  TOPT  ROPT   P20  DJTI  GDDE DSGFT   RUE  KCAN  TSEN  CDAY",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#  ECONAME.........  TBASE  TOPT  ROPT   P20  DJTI  GDDE DSGFT   RUE  KCAN  TSEN  CDAY",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -743,7 +740,7 @@ test_that("@ECO#  ECONAME.........  TBASE  TOPT  ROPT   P20  DJTI  GDDE DSGFT   
 
 test_that("@ECO#  ECONAME.........  TBASE  TOPT  ROPT  TTOP   P20  VREQ  GDDE DSGFT  RUE1  RUE2 KVAL1 KVAL2 SLAP2 TC1P1 TC1P2 DTNP1 PLGP1 PLGP2  P2AF  P3AF  P4AF  P5AF  P6AF ADLAI ADTIL ADPHO STEMN MXNUP MXNCR  WFNU PNUPR EXNO3 MNNO3 EXNH4 MNNH4 INGWT INGNC FREAR MNNCR GPPSS GPPES MXGWT MNRTN NOMOB RTDP1 RTDP2  FOZ1  FOZ2 SFOZ1 SFOZ2  TSEN  CDAY",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "ECO#",#           "@ECO#  ",
         7,   25,  "ECONAME",#"ECONAME.........  ",
@@ -805,7 +802,7 @@ test_that("@ECO#  ECONAME.........  TBASE  TOPT  ROPT  TTOP   P20  VREQ  GDDE DS
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#  ECONAME.........  TBASE  TOPT  ROPT  TTOP   P20  VREQ  GDDE DSGFT  RUE1  RUE2 KVAL1 KVAL2 SLAP2 TC1P1 TC1P2 DTNP1 PLGP1 PLGP2  P2AF  P3AF  P4AF  P5AF  P6AF ADLAI ADTIL ADPHO STEMN MXNUP MXNCR  WFNU PNUPR EXNO3 MNNO3 EXNH4 MNNH4 INGWT INGNC FREAR MNNCR GPPSS GPPES MXGWT MNRTN NOMOB RTDP1 RTDP2  FOZ1  FOZ2 SFOZ1 SFOZ2  TSEN  CDAY",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#  ECONAME.........  TBASE  TOPT  ROPT  TTOP   P20  VREQ  GDDE DSGFT  RUE1  RUE2 KVAL1 KVAL2 SLAP2 TC1P1 TC1P2 DTNP1 PLGP1 PLGP2  P2AF  P3AF  P4AF  P5AF  P6AF ADLAI ADTIL ADPHO STEMN MXNUP MXNCR  WFNU PNUPR EXNO3 MNNO3 EXNH4 MNNH4 INGWT INGNC FREAR MNNCR GPPSS GPPES MXGWT MNRTN NOMOB RTDP1 RTDP2  FOZ1  FOZ2 SFOZ1 SFOZ2  TSEN  CDAY",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -815,7 +812,7 @@ test_that("@ECO#  ECONAME.........  TBASE  TOPT  ROPT  TTOP   P20  VREQ  GDDE DS
 
 test_that("@ECO#  ECONAME.......... PARUE PARU2  PHL2  PHF3  SLAS LSENI LSPHS LSPHE TIL#S TILPE TIFAC TDPHS TDPHE TDFAC  TDSF  RDGS HTSTD  AWNS  KCAN  RS%A  GN%S GN%MN  GM%H  TKFH SSPHS SSPHE",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "ECO#",#           "@ECO#  ",
         7,   25,  "ECONAME",#"ECONAME.......... ",
@@ -851,7 +848,7 @@ test_that("@ECO#  ECONAME.......... PARUE PARU2  PHL2  PHF3  SLAS LSENI LSPHS LS
 
   left_just <-   c("ECO   ", "ECO#", "ECONAME\\.*", "ECO-NAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@ECO#  ECONAME.......... PARUE PARU2  PHL2  PHF3  SLAS LSENI LSPHS LSPHE TIL#S TILPE TIFAC TDPHS TDPHE TDFAC  TDSF  RDGS HTSTD  AWNS  KCAN  RS%A  GN%S GN%MN  GM%H  TKFH SSPHS SSPHE",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ECO#  ECONAME.......... PARUE PARU2  PHL2  PHF3  SLAS LSENI LSPHS LSPHE TIL#S TILPE TIFAC TDPHS TDPHE TDFAC  TDSF  RDGS HTSTD  AWNS  KCAN  RS%A  GN%S GN%MN  GM%H  TKFH SSPHS SSPHE",
                                           col_names = col_names,
                                           left_justified = left_just)
 

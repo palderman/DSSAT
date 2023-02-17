@@ -5,7 +5,7 @@ v_fmt_filex <- function(sec_name){
   if(str_detect(sec_name,'CHEMICAL')){
 
     v_fmt <- c(C = "%2.0f", CDATE = "%6s", CHCOD = "%6s", CHAMT = "%6f", CHME = "%6s",
-               CHDEP = "%6f", CHT = " %-5s", CHNAME = "%-s")
+               CHDEP = "%6f", CHT = " %-5s", CHNAME = "  %-s")
 
   }else if(str_detect(sec_name,'CULTIVARS')){
 
@@ -28,10 +28,10 @@ v_fmt_filex <- function(sec_name){
 
     v_fmt <- c(L = "%2.0f", ID_FIELD = " %-8s", WSTA = " %-8s", FLSA = "%6s",
                FLOB = "%6.0f", FLDT = "%6s", FLDD = "%6.0f", FLDS = "%6.0f",
-               FLST = "%6s", SLTX = "%5s", SLDP = "%6.0f", ID_SOIL = "  %-10s",
-               FLNAME = " %-s", XCRD = "%16.6f", YCRD = "%16.6f", ELEV = "%10.1f",
+               FLST = "%6s", SLTX = " %-6s", SLDP = "%4.0f", ID_SOIL = "  %-10s ",
+               FLNAME = "%-s", XCRD = "%16.6f", YCRD = "%16.6f", ELEV = "%10.1f",
                AREA = "%18.0f", SLEN = "%6.0f", FLWR = "%6.1f", SLAS = "%6.0f",
-               FLHST = "%6s", FHDUR = "%6s")
+               FLHST = "%6s", FHDUR = "%6.0f")
 
   }else if(str_detect(sec_name,'GENERAL')){
 
@@ -95,7 +95,10 @@ v_fmt_filex <- function(sec_name){
                NMDEP = "%6.0f", NMTHR = "%6.2f", NAMNT = "%6.0f", NCODE = "%6s",
                NAOFF = "%6s", RESIDUES = " %-11s", RIPCN = "%6.0f", RTIME = "%6.0f",
                RIDEP = "%6.0f", HARVEST = " %-11s", HFRST = "%6s", HLAST = "%6s",
-               HPCNP = "%6.0f", HPCNR = "%6.0f")
+               HPCNP = "%6.0f", HPCNR = "%6.0f",
+               SIMDATES = " %-11s",
+               ENDAT = "%6s", SDUR = "%8.0f", FODAT = "%8s", FSTRYR = "%8.0f",
+               FENDYR = "%8.0f", FWFILE = " %-15s", FONAME = "  %-s")
 
   }else if(str_detect(sec_name,'SOIL ANALYSIS')){
 

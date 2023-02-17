@@ -1,9 +1,6 @@
-library(DSSATcpp)
-library(tibble)
-
 test_that("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD-PM FL-LF LFMAX SLAVR SIZLF  XFRT WTPSD SFDUR SDPDV PODUR THRSH SDPRO SDLIP",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#             ~check,
         0,    7,     "VAR#",#          "@VAR#  ",
         7,   24,   "VRNAME",#"VRNAME.......... ",
@@ -35,9 +32,9 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD-PM FL-LF LFMAX SLAVR SIZLF  XFRT WTPSD SFDUR SDPDV PODUR THRSH SDPRO SDLIP",
-                                          col_names = col_names,
-                                          left_justified = left_just)
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD-PM FL-LF LFMAX SLAVR SIZLF  XFRT WTPSD SFDUR SDPDV PODUR THRSH SDPRO SDLIP",
+                                                  col_names = col_names,
+                                                  left_justified = left_just)
 
   expect_identical(check_fwf_pos, true_fwf_pos)
 
@@ -45,7 +42,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD
 
 test_that("@VAR#  VAR-NAME........  EXP#   ECO#   P1V   P1D    P5    G1    G2    G3 PHINT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "VAR#",#           "@VAR#  ",
         7,   25, "VAR-NAME",#"VAR-NAME........  ",
@@ -66,7 +63,7 @@ test_that("@VAR#  VAR-NAME........  EXP#   ECO#   P1V   P1D    P5    G1    G2   
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VAR-NAME........  EXP#   ECO#   P1V   P1D    P5    G1    G2    G3 PHINT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VAR-NAME........  EXP#   ECO#   P1V   P1D    P5    G1    G2    G3 PHINT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -76,7 +73,7 @@ test_that("@VAR#  VAR-NAME........  EXP#   ECO#   P1V   P1D    P5    G1    G2   
 
 test_that("@VAR#  VAR-NAME........  EXP#   ECO#    P1    P2    P3    P4    P5    P6    P7    P8  VREQ VBASE  VEFF  PPS1  PPS2 PHINT  LA1S  LAFV  LAFR SHWTS G#WTS  GWTS",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "VAR#",#           "@VAR#  ",
         7,   25, "VAR-NAME",#"VAR-NAME........  ",
@@ -110,7 +107,7 @@ test_that("@VAR#  VAR-NAME........  EXP#   ECO#    P1    P2    P3    P4    P5   
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VAR-NAME........  EXP#   ECO#    P1    P2    P3    P4    P5    P6    P7    P8  VREQ VBASE  VEFF  PPS1  PPS2 PHINT  LA1S  LAFV  LAFR SHWTS G#WTS  GWTS",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VAR-NAME........  EXP#   ECO#    P1    P2    P3    P4    P5    P6    P7    P8  VREQ VBASE  VEFF  PPS1  PPS2 PHINT  LA1S  LAFV  LAFR SHWTS G#WTS  GWTS",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -120,7 +117,7 @@ test_that("@VAR#  VAR-NAME........  EXP#   ECO#    P1    P2    P3    P4    P5   
 
 test_that("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD-PM FL-LF LFMAX SLAVR SIZLF  XFRT WTPSD SFDUR SDPDV PODUR THRSH SDPRO SDLIP  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#             ~check,
         0,    7,     "VAR#",#          "@VAR#  ",
         7,   24,   "VRNAME",#"VRNAME.......... ",
@@ -152,7 +149,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD-PM FL-LF LFMAX SLAVR SIZLF  XFRT WTPSD SFDUR SDPDV PODUR THRSH SDPRO SDLIP  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD-PM FL-LF LFMAX SLAVR SIZLF  XFRT WTPSD SFDUR SDPDV PODUR THRSH SDPRO SDLIP  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -162,7 +159,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD
 
 test_that("@VAR#  VRNAME.......... EXPNO   ECO#    P1    P2    P5    G2    G3 PHINT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#             ~check,
         0,    7,     "VAR#",#          "@VAR#  ",
         7,   24,   "VRNAME",#"VRNAME.......... ",
@@ -182,7 +179,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#    P1    P2    P5    G2    G3 PH
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VRNAME.......... EXPNO   ECO#    P1    P2    P5    G2    G3 PHINT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VRNAME.......... EXPNO   ECO#    P1    P2    P5    G2    G3 PHINT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -192,7 +189,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#    P1    P2    P5    G2    G3 PH
 
 test_that("@VAR#  VAR-NAME........ EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD-PM FL-LF LFMAX SLAVR SIZLF  XFRT WTPSD SFDUR SDPDV PODUR THRSH SDPRO SDLIP",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#             ~check,
         0,    7,     "VAR#",#          "@VAR#  ",
         7,   24, "VAR-NAME",#"VAR-NAME........ ",
@@ -224,7 +221,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD-PM FL-LF LFMAX SLAVR SIZLF  XFRT WTPSD SFDUR SDPDV PODUR THRSH SDPRO SDLIP",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD-PM FL-LF LFMAX SLAVR SIZLF  XFRT WTPSD SFDUR SDPDV PODUR THRSH SDPRO SDLIP",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -234,7 +231,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD
 
 test_that("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD-PM FL-LF LFMAX SLAVR SIZLF  XFRT WTPSD SFDUR SDPDV PODUR THRSH SDPRO SDLIP ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#             ~check,
         0,    7,     "VAR#",#          "@VAR#  ",
         7,   24,   "VRNAME",#"VRNAME.......... ",
@@ -266,7 +263,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD-PM FL-LF LFMAX SLAVR SIZLF  XFRT WTPSD SFDUR SDPDV PODUR THRSH SDPRO SDLIP ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD-PM FL-LF LFMAX SLAVR SIZLF  XFRT WTPSD SFDUR SDPDV PODUR THRSH SDPRO SDLIP ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -276,7 +273,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD
 
 test_that("@VAR#  VAR-NAME........  EXP#   ECO#  PPS1 B01ND B12ND B23ND B34ND B45ND B56ND SR#WT  SRFR  HMPC PHINT  LA1S  LAXS LAXND LAXN2  LAFS LAFND  SLAS LLIFA LPEFR  STFR",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "VAR#",#           "@VAR#  ",
         7,   25, "VAR-NAME",#"VAR-NAME........  ",
@@ -311,7 +308,7 @@ test_that("@VAR#  VAR-NAME........  EXP#   ECO#  PPS1 B01ND B12ND B23ND B34ND B4
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VAR-NAME........  EXP#   ECO#  PPS1 B01ND B12ND B23ND B34ND B45ND B56ND SR#WT  SRFR  HMPC PHINT  LA1S  LAXS LAXND LAXN2  LAFS LAFND  SLAS LLIFA LPEFR  STFR",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VAR-NAME........  EXP#   ECO#  PPS1 B01ND B12ND B23ND B34ND B45ND B56ND SR#WT  SRFR  HMPC PHINT  LA1S  LAXS LAXND LAXN2  LAFS LAFND  SLAS LLIFA LPEFR  STFR",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -321,7 +318,7 @@ test_that("@VAR#  VAR-NAME........  EXP#   ECO#  PPS1 B01ND B12ND B23ND B34ND B4
 
 test_that("@VAR#  VAR-NAME........  EXP#   ECO# B01ND B12ND B23ND B34ND BR1FX BR2FX BR3FX BR4FX  LAXS  SLAS LLIFA LPEFR LNSLP NODWT NODLT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    7,     "VAR#",#           "@VAR#  ",
         7,   25, "VAR-NAME",#"VAR-NAME........  ",
@@ -350,7 +347,7 @@ test_that("@VAR#  VAR-NAME........  EXP#   ECO# B01ND B12ND B23ND B34ND BR1FX BR
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VAR-NAME........  EXP#   ECO# B01ND B12ND B23ND B34ND BR1FX BR2FX BR3FX BR4FX  LAXS  SLAS LLIFA LPEFR LNSLP NODWT NODLT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VAR-NAME........  EXP#   ECO# B01ND B12ND B23ND B34ND BR1FX BR2FX BR3FX BR4FX  LAXS  SLAS LLIFA LPEFR LNSLP NODWT NODLT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -360,7 +357,7 @@ test_that("@VAR#  VAR-NAME........  EXP#   ECO# B01ND B12ND B23ND B34ND BR1FX BR
 
 test_that("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD-PM FL-LF LFMAX SLAVR SIZLF  XFRT WTPSD SFDUR SDPDV PODUR",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#             ~check,
         0,    7,     "VAR#",#          "@VAR#  ",
         7,   24,   "VRNAME",#"VRNAME.......... ",
@@ -389,7 +386,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD-PM FL-LF LFMAX SLAVR SIZLF  XFRT WTPSD SFDUR SDPDV PODUR",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD-PM FL-LF LFMAX SLAVR SIZLF  XFRT WTPSD SFDUR SDPDV PODUR",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -399,7 +396,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD
 
 test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    P1   P2O   P2R    P5    G1    G4 PHINT    GT    G5",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#             ~check,
         0,    7,     "VAR#",#          "@VAR#  ",
         7,   24, "VAR-NAME",#"VAR-NAME........ ",
@@ -422,7 +419,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    P1   P2O   P2R    P5    G1   
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#    P1   P2O   P2R    P5    G1    G4 PHINT    GT    G5",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#    P1   P2O   P2R    P5    G1    G4 PHINT    GT    G5",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -432,7 +429,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    P1   P2O   P2R    P5    G1   
 
 test_that("@VAR#  VRNAME.......... EXPNO   ECO#    P1    P2    P5    G2    G3 PHINT    AX   ALL",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#             ~check,
         0,    7,     "VAR#",#          "@VAR#  ",
         7,   24,   "VRNAME",#"VRNAME.......... ",
@@ -454,7 +451,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#    P1    P2    P5    G2    G3 PH
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VRNAME.......... EXPNO   ECO#    P1    P2    P5    G2    G3 PHINT    AX   ALL",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VRNAME.......... EXPNO   ECO#    P1    P2    P5    G2    G3 PHINT    AX   ALL",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -464,7 +461,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#    P1    P2    P5    G2    G3 PH
 
 test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    TC    P1    P2    P3    P4    P5    P6    P7    P8    G1    G2    G3 PHINT    ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#             ~check,
         0,    7,     "VAR#",#          "@VAR#  ",
         7,   24, "VAR-NAME",#"VAR-NAME........ ",
@@ -491,7 +488,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    TC    P1    P2    P3    P4   
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#    TC    P1    P2    P3    P4    P5    P6    P7    P8    G1    G2    G3 PHINT    ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#    TC    P1    P2    P3    P4    P5    P6    P7    P8    G1    G2    G3 PHINT    ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -501,7 +498,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    TC    P1    P2    P3    P4   
 
 test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    G2    G3    PD    P2    TC",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#             ~check,
         0,    7,     "VAR#",#          "@VAR#  ",
         7,   24, "VAR-NAME",#"VAR-NAME........ ",
@@ -520,7 +517,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    G2    G3    PD    P2    TC",{
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#    G2    G3    PD    P2    TC",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#    G2    G3    PD    P2    TC",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -530,7 +527,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    G2    G3    PD    P2    TC",{
 
 test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    P1   P2R    P5   P2O    G1    G2    G3 PHINT  THOT TCLDP TCLDF  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#             ~check,
         0,    7,     "VAR#",#          "@VAR#  ",
         7,   24, "VAR-NAME",#"VAR-NAME........ ",
@@ -555,7 +552,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    P1   P2R    P5   P2O    G1   
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#    P1   P2R    P5   P2O    G1    G2    G3 PHINT  THOT TCLDP TCLDF  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#    P1   P2R    P5   P2O    G1    G2    G3 PHINT  THOT TCLDP TCLDF  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -565,7 +562,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    P1   P2R    P5   P2O    G1   
 
 test_that("@VAR#  VAR-NAME........ EXPNO   ECO#       MaxPARCE          APFMX       STKPFMAX           SUCA           TBFT          LFMAX       MXLFAREA       MXLFARNO            PI1            PI2        PSWITCH       TTPLNTEM       TTRATNEM      CHUPIBASE   TT_POPGROWTH        POPTT16           TAR0         TDELAY           LER0           SER0      LG_AMBASE        AQP_UP5",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end,    ~col_names,#             ~check,
         0,    7,        "VAR#",#          "@VAR#  ",
         7,   24,    "VAR-NAME",#"VAR-NAME........ ",
@@ -601,7 +598,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#       MaxPARCE          APFMX   
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#       MaxPARCE          APFMX       STKPFMAX           SUCA           TBFT          LFMAX       MXLFAREA       MXLFARNO            PI1            PI2        PSWITCH       TTPLNTEM       TTRATNEM      CHUPIBASE   TT_POPGROWTH        POPTT16           TAR0         TDELAY           LER0           SER0      LG_AMBASE        AQP_UP5",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#       MaxPARCE          APFMX       STKPFMAX           SUCA           TBFT          LFMAX       MXLFAREA       MXLFARNO            PI1            PI2        PSWITCH       TTPLNTEM       TTRATNEM      CHUPIBASE   TT_POPGROWTH        POPTT16           TAR0         TDELAY           LER0           SER0      LG_AMBASE        AQP_UP5",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -611,7 +608,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#       MaxPARCE          APFMX   
 
 test_that("@VAR#  VAR-NAME........ EXPNO   ECO# LFMAX PHTMX Stalk Sucro Null1  PLF1  PLF2 Gamma  StkB  StkM Null3 SIZLF LIsun LIshd Null4  TB_1 TO1_1 TO2_1  TM_1   PI1   PI2  DTPI LSFAC Null5   LI1 TELOM  TB_2 TO1_2 TO2_2  TM_2  Ph1P  Ph1R   Ph2   Ph3   Ph4 StHrv RTNFC MinGr Null7 RE30C RL30C R30C2            ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#             ~check,
         0,    7,     "VAR#",#          "@VAR#  ",
         7,   24, "VAR-NAME",#"VAR-NAME........ ",
@@ -667,7 +664,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO# LFMAX PHTMX Stalk Sucro Null1  P
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO# LFMAX PHTMX Stalk Sucro Null1  PLF1  PLF2 Gamma  StkB  StkM Null3 SIZLF LIsun LIshd Null4  TB_1 TO1_1 TO2_1  TM_1   PI1   PI2  DTPI LSFAC Null5   LI1 TELOM  TB_2 TO1_2 TO2_2  TM_2  Ph1P  Ph1R   Ph2   Ph3   Ph4 StHrv RTNFC MinGr Null7 RE30C RL30C R30C2            ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO# LFMAX PHTMX Stalk Sucro Null1  PLF1  PLF2 Gamma  StkB  StkM Null3 SIZLF LIsun LIshd Null4  TB_1 TO1_1 TO2_1  TM_1   PI1   PI2  DTPI LSFAC Null5   LI1 TELOM  TB_2 TO1_2 TO2_2  TM_2  Ph1P  Ph1R   Ph2   Ph3   Ph4 StHrv RTNFC MinGr Null7 RE30C RL30C R30C2            ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -677,7 +674,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO# LFMAX PHTMX Stalk Sucro Null1  P
 
 test_that("@VAR#  VAR-NAME........ EXPNO   ECO#          MAXGL    N_LF_STK_EM   N_LF_IT_FORM         MAXDGL           AMAX            EFF         CHUSTK        CHUPEAK         CHUDEC         CHUMAT         POPMAT        POPPEAK     TILLOCHRON    PHYLLOCHRON            SLA            MLA    PLASTOCHRON   INIT_LF_AREA     MAX_INI_LA      MAX_IT_DW  MID_TT_IT_GRO  END_TT_IT_GRO  MID_TT_LF_GRO  END_TT_LF_GRO",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end,     ~col_names,#             ~check,
         0,    7,         "VAR#",#          "@VAR#  ",
         7,   24,     "VAR-NAME",#"VAR-NAME........ ",
@@ -715,7 +712,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#          MAXGL    N_LF_STK_EM   
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#          MAXGL    N_LF_STK_EM   N_LF_IT_FORM         MAXDGL           AMAX            EFF         CHUSTK        CHUPEAK         CHUDEC         CHUMAT         POPMAT        POPPEAK     TILLOCHRON    PHYLLOCHRON            SLA            MLA    PLASTOCHRON   INIT_LF_AREA     MAX_INI_LA      MAX_IT_DW  MID_TT_IT_GRO  END_TT_IT_GRO  MID_TT_LF_GRO  END_TT_LF_GRO",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#          MAXGL    N_LF_STK_EM   N_LF_IT_FORM         MAXDGL           AMAX            EFF         CHUSTK        CHUPEAK         CHUDEC         CHUMAT         POPMAT        POPPEAK     TILLOCHRON    PHYLLOCHRON            SLA            MLA    PLASTOCHRON   INIT_LF_AREA     MAX_INI_LA      MAX_IT_DW  MID_TT_IT_GRO  END_TT_IT_GRO  MID_TT_LF_GRO  END_TT_LF_GRO",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -725,7 +722,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#          MAXGL    N_LF_STK_EM   
 
 test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    P1    P2   P2O   P2R PANTH    P3    P4    P5 PHINT    G1    G2 PBASE  PSAT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#             ~check,
         0,    7,     "VAR#",#          "@VAR#  ",
         7,   24, "VAR-NAME",#"VAR-NAME........ ",
@@ -752,7 +749,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    P1    P2   P2O   P2R PANTH   
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#    P1    P2   P2O   P2R PANTH    P3    P4    P5 PHINT    G1    G2 PBASE  PSAT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#    P1    P2   P2O   P2R PANTH    P3    P4    P5 PHINT    G1    G2 PBASE  PSAT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -762,7 +759,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    P1    P2   P2O   P2R PANTH   
 
 test_that("@VAR#  VAR-NAME........ EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD-PM FL-LF LFMAX SLAVR SIZLF  XFRT WTPSD SFDUR SDPDV PODUR THRSH SDPRO SDLIP                                                        ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#             ~check,
         0,    7,     "VAR#",#          "@VAR#  ",
         7,   24, "VAR-NAME",#"VAR-NAME........ ",
@@ -794,7 +791,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD-PM FL-LF LFMAX SLAVR SIZLF  XFRT WTPSD SFDUR SDPDV PODUR THRSH SDPRO SDLIP                                                        ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD-PM FL-LF LFMAX SLAVR SIZLF  XFRT WTPSD SFDUR SDPDV PODUR THRSH SDPRO SDLIP                                                        ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -804,7 +801,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#  CSDL PPSEN EM-FL FL-SH FL-SD SD
 
 test_that("@VAR#  VRNAME.......... EXPNO   ECO#  VSEN PPSEN    P1    P5 PHINT  GRNO MXFIL STMMX SLAP1",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#             ~check,
         0,    7,     "VAR#",#          "@VAR#  ",
         7,   24,   "VRNAME",#"VRNAME.......... ",
@@ -827,7 +824,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#  VSEN PPSEN    P1    P5 PHINT  G
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VRNAME.......... EXPNO   ECO#  VSEN PPSEN    P1    P5 PHINT  GRNO MXFIL STMMX SLAP1",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VRNAME.......... EXPNO   ECO#  VSEN PPSEN    P1    P5 PHINT  GRNO MXFIL STMMX SLAP1",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -837,7 +834,7 @@ test_that("@VAR#  VRNAME.......... EXPNO   ECO#  VSEN PPSEN    P1    P5 PHINT  G
 
 test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    P1    P3    P4    P5    G2    G3    G4 PHINT PCINT PCGRD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#             ~check,
         0,    7,     "VAR#",#          "@VAR#  ",
         7,   24, "VAR-NAME",#"VAR-NAME........ ",
@@ -861,7 +858,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    P1    P3    P4    P5    G2   
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#    P1    P3    P4    P5    G2    G3    G4 PHINT PCINT PCGRD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#    P1    P3    P4    P5    G2    G3    G4 PHINT PCINT PCGRD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -871,7 +868,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    P1    P3    P4    P5    G2   
 
 test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    P1    P3    P4    P5    G2    G3    G4 PHINT PCINT  PCGRD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#             ~check,
         0,    7,     "VAR#",#          "@VAR#  ",
         7,   24, "VAR-NAME",#"VAR-NAME........ ",
@@ -895,7 +892,7 @@ test_that("@VAR#  VAR-NAME........ EXPNO   ECO#    P1    P3    P4    P5    G2   
 
   left_just <-   c("VAR#", "VARNAME\\.*", "VAR-NAME\\.*", "VRNAME\\.*")
 
-  check_fwf_pos <- header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#    P1    P3    P4    P5    G2    G3    G4 PHINT PCINT  PCGRD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@VAR#  VAR-NAME........ EXPNO   ECO#    P1    P3    P4    P5    G2    G3    G4 PHINT PCINT  PCGRD",
                                           col_names = col_names,
                                           left_justified = left_just)
 

@@ -1,4 +1,4 @@
-test_that("GENERAL",{
+test_that("GENERAL use_std_fmt",{
 
   withr::with_file("TEST0000.CRX",{
     write(
@@ -18,7 +18,7 @@ test_that("GENERAL",{
       "TEST0000.CRX"
     )
 
-    filex <- DSSAT::read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
 
   })
 
@@ -47,7 +47,7 @@ test_that("GENERAL",{
 
 })
 
-test_that("TREATMENTS single",{
+test_that("TREATMENTS single use_std_fmt",{
 
   withr::with_file("TEST0000.CRX",{
     write(
@@ -56,7 +56,7 @@ test_that("TREATMENTS single",{
         " 1 0 0 0 Control - 350 ppm          1  1  0  1  1  1  1  0  1  0  1  0  1"),
       "TEST0000.CRX")
 
-    filex <- DSSAT::read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
 
   })
 
@@ -84,7 +84,7 @@ test_that("TREATMENTS single",{
 
 })
 
-test_that("TREATMENTS two",{
+test_that("TREATMENTS two use_std_fmt",{
 
   withr::with_file("TEST0000.CRX",{
     write(
@@ -94,7 +94,7 @@ test_that("TREATMENTS two",{
         " 2 0 0 0 CO2 Enrichment - 550 ppm   1  1  0  1  1  1  1  0  1  0  2  0  1"),
       "TEST0000.CRX")
 
-    filex <- DSSAT::read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
 
   })
 
@@ -123,7 +123,7 @@ test_that("TREATMENTS two",{
 
 })
 
-test_that("CULTIVARS single",{
+test_that("CULTIVARS single use_std_fmt",{
   withr::with_file("TEST0000.CRX",{
     write(
       c("*CULTIVARS",
@@ -131,7 +131,7 @@ test_that("CULTIVARS single",{
         " 1 CO IB0001 Deltapine 77"),
       "TEST0000.CRX")
 
-    filex <- DSSAT::read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
 
   })
 
@@ -146,7 +146,7 @@ test_that("CULTIVARS single",{
 
 })
 
-test_that("CULTIVARS multiple",{
+test_that("CULTIVARS multiple use_std_fmt",{
   withr::with_file("TEST0000.CRX",{
     write(
       c("*CULTIVARS",
@@ -157,7 +157,7 @@ test_that("CULTIVARS multiple",{
         " 4 PN IB0032 MA72x94-12,LS-RE"),
       "TEST0000.CRX")
 
-    filex <- DSSAT::read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
 
   })
 
@@ -176,7 +176,7 @@ test_that("CULTIVARS multiple",{
 
 })
 
-test_that("FIELDS single",{
+test_that("FIELDS single use_std_fmt",{
   withr::with_file("TEST0000.CRX",{
     write(
       c("*FIELDS",
@@ -186,7 +186,7 @@ test_that("FIELDS single",{
         " 1             -99             -99       -99               -99   -99   -99   -99   -99   -99"),
       "TEST0000.CRX")
 
-    filex <- DSSAT::read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
 
   })
 
@@ -211,7 +211,7 @@ test_that("FIELDS single",{
 
 })
 
-test_that("FIELDS multiple",{
+test_that("FIELDS multiple use_std_fmt",{
   withr::with_file("TEST0000.CRX",{
     write(
       c("*FIELDS",
@@ -227,7 +227,7 @@ test_that("FIELDS multiple",{
         " 4             -99             -99       -99               -99   -99   -99   -99   -99   -99"),
       "TEST0000.CRX")
 
-    filex <- DSSAT::read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
 
   })
 
@@ -257,7 +257,7 @@ test_that("FIELDS multiple",{
 
 })
 
-test_that("SOIL ANALYSIS single",{
+test_that("SOIL ANALYSIS single use_std_fmt",{
 
   withr::with_file("TEST0000.CRX",{
     write(
@@ -269,7 +269,7 @@ test_that("SOIL ANALYSIS single",{
       ),
       "TEST0000.CRX")
 
-    filex <- DSSAT::read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
 
   })
 
@@ -291,7 +291,7 @@ test_that("SOIL ANALYSIS single",{
 
 })
 
-test_that("SOIL ANALYSIS single - missing",{
+test_that("SOIL ANALYSIS single - missing use_std_fmt",{
 
   withr::with_file("TEST0000.CRX",{
     write(
@@ -303,7 +303,7 @@ test_that("SOIL ANALYSIS single - missing",{
       ),
     "TEST0000.CRX")
 
-    filex <- DSSAT::read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
 
   })
 
@@ -319,7 +319,7 @@ test_that("SOIL ANALYSIS single - missing",{
 
 })
 
-test_that("SOIL ANALYSIS multiple",{
+test_that("SOIL ANALYSIS multiple use_std_fmt",{
 
   withr::with_file("TEST0000.CRX",{
     write(
@@ -359,7 +359,7 @@ test_that("SOIL ANALYSIS multiple",{
       ),
       "TEST0000.CRX")
 
-    filex <- DSSAT::read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
 
   })
 
@@ -399,7 +399,7 @@ test_that("SOIL ANALYSIS multiple",{
 
 })
 
-test_that("INITIAL CONDITIONS one level - no missing",{
+test_that("INITIAL CONDITIONS one level - no missing use_std_fmt",{
 
   withr::with_file("TEST0000.CRX",{
     write(
@@ -415,7 +415,7 @@ test_that("INITIAL CONDITIONS one level - no missing",{
         " 1   180  .406   .24   2.4"),
       "TEST0000.CRX")
 
-    filex <- DSSAT::read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
 
   })
 
@@ -451,7 +451,7 @@ test_that("INITIAL CONDITIONS one level - no missing",{
 
 })
 
-test_that("INITIAL CONDITIONS one level - missing",{
+test_that("INITIAL CONDITIONS one level - missing use_std_fmt",{
 
   withr::with_file("TEST0000.CRX",{
     write(
@@ -467,7 +467,7 @@ test_that("INITIAL CONDITIONS one level - missing",{
         " 1   180   -99   -99   -99"),
       "TEST0000.CRX")
 
-    filex <- DSSAT::read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
 
   })
 
@@ -487,7 +487,7 @@ test_that("INITIAL CONDITIONS one level - missing",{
                                        120, 150, 180))))
   })
 
-test_that("Two levels - no missing data",{
+test_that("Two levels - no missing data use_std_fmt",{
 
   withr::with_file("TEST0000.CRX",{
     write(
@@ -511,7 +511,7 @@ test_that("Two levels - no missing data",{
         " 2   150  .406   .24   2.4"),
       "TEST0000.CRX")
 
-    filex <- DSSAT::read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
 
   })
 
@@ -555,7 +555,7 @@ test_that("Two levels - no missing data",{
 
 })
 
-test_that("INITIAL CONDITIONS two levels - missing",{
+test_that("INITIAL CONDITIONS two levels - missing use_std_fmt",{
 
   withr::with_file("TEST0000.CRX",{
     write(
@@ -579,7 +579,7 @@ test_that("INITIAL CONDITIONS two levels - missing",{
         " 2   150   -99   -99   -99"),
       "TEST0000.CRX")
 
-    filex <- DSSAT::read_filex("TEST0000.CRX")
+    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
 
   })
 
@@ -602,14 +602,14 @@ test_that("INITIAL CONDITIONS two levels - missing",{
 })
 
 
-# test_that("PLANTING DETAILS - single",{
+# test_that("PLANTING DETAILS - single use_std_fmt",{
 #
 #   withr::with_file("TEST0000.CRX",{
 #     write(
 #       ,
 #       "TEST0000.CRX")
 #
-#     filex <- DSSAT::read_filex("TEST0000.CRX")
+#     filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
 #
 #   })
 #

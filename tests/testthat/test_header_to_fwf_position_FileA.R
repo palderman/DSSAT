@@ -1,9 +1,6 @@
-library(DSSATcpp)
-library(tibble)
-
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  ADAT  MDAT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -20,7 +17,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  ADAT  MDAT",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  ADAT  MDAT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  ADAT  MDAT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -30,7 +27,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  ADAT  MDAT",{
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  CWAM  BWAH  ADAT  MDAT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -47,7 +44,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  CWAM  BWAH  ADAT  MDAT",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  CWAM  BWAH  ADAT  MDAT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  CWAM  BWAH  ADAT  MDAT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -57,7 +54,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  CWAM  BWAH  ADAT  MDAT",{
 
 test_that("@TRNO   DATE  PWAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "DATE",#"   DATE",
@@ -68,7 +65,7 @@ test_that("@TRNO   DATE  PWAM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   DATE  PWAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   DATE  PWAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -78,7 +75,7 @@ test_that("@TRNO   DATE  PWAM",{
 
 test_that("@TRNO   ADAT  CHTA  HDAT  HIAM  HWAH  LAIX  PD1T  PDFT  R8AT  CWAA  DWAP  GL%M  CWAM  GN%M  H#UM  HWUM  MDAT  H#AM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "ADAT",#"   ADAT",
@@ -105,7 +102,7 @@ test_that("@TRNO   ADAT  CHTA  HDAT  HIAM  HWAH  LAIX  PD1T  PDFT  R8AT  CWAA  D
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   ADAT  CHTA  HDAT  HIAM  HWAH  LAIX  PD1T  PDFT  R8AT  CWAA  DWAP  GL%M  CWAM  GN%M  H#UM  HWUM  MDAT  H#AM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   ADAT  CHTA  HDAT  HIAM  HWAH  LAIX  PD1T  PDFT  R8AT  CWAA  DWAP  GL%M  CWAM  GN%M  H#UM  HWUM  MDAT  H#AM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -115,7 +112,7 @@ test_that("@TRNO   ADAT  CHTA  HDAT  HIAM  HWAH  LAIX  PD1T  PDFT  R8AT  CWAA  D
 
 test_that("@TRNO   ADAT  CHTA  HDAT  HIAM  HWAH  LAIX  PD1T  PDFT  R8AT  CWAA  CWAM  DWAP  GL%M  GN%M  H#UM  HWUM  MDAT  H#AM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "ADAT",#"   ADAT",
@@ -142,7 +139,7 @@ test_that("@TRNO   ADAT  CHTA  HDAT  HIAM  HWAH  LAIX  PD1T  PDFT  R8AT  CWAA  C
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   ADAT  CHTA  HDAT  HIAM  HWAH  LAIX  PD1T  PDFT  R8AT  CWAA  CWAM  DWAP  GL%M  GN%M  H#UM  HWUM  MDAT  H#AM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   ADAT  CHTA  HDAT  HIAM  HWAH  LAIX  PD1T  PDFT  R8AT  CWAA  CWAM  DWAP  GL%M  GN%M  H#UM  HWUM  MDAT  H#AM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -152,7 +149,7 @@ test_that("@TRNO   ADAT  CHTA  HDAT  HIAM  HWAH  LAIX  PD1T  PDFT  R8AT  CWAA  C
 
 test_that("@TRNO  B1DAT B2DAT B3DAT B4DAT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,    "B1DAT",#"  B1DAT",
@@ -165,7 +162,7 @@ test_that("@TRNO  B1DAT B2DAT B3DAT B4DAT",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO  B1DAT B2DAT B3DAT B4DAT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO  B1DAT B2DAT B3DAT B4DAT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -175,7 +172,7 @@ test_that("@TRNO  B1DAT B2DAT B3DAT B4DAT",{
 
 test_that("@TRNO   LAIX  LAIH  HWAH  TWAH  CWAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "LAIX",#"   LAIX",
@@ -189,7 +186,7 @@ test_that("@TRNO   LAIX  LAIH  HWAH  TWAH  CWAM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   LAIX  LAIH  HWAH  TWAH  CWAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   LAIX  LAIH  HWAH  TWAH  CWAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -199,7 +196,7 @@ test_that("@TRNO   LAIX  LAIH  HWAH  TWAH  CWAM",{
 
 test_that("@TRNO  PDATE",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,    "PDATE" #"  PDATE"
@@ -209,7 +206,7 @@ test_that("@TRNO  PDATE",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO  PDATE",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO  PDATE",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -219,7 +216,7 @@ test_that("@TRNO  PDATE",{
 
 test_that("@TRNO   SWAH  LWAH  HWAH  CWAH  VWAH  CGRH  LAIX  H#AM  H#GM  LAWM  BR1D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "SWAH",#"   SWAH",
@@ -239,7 +236,7 @@ test_that("@TRNO   SWAH  LWAH  HWAH  CWAH  VWAH  CGRH  LAIX  H#AM  H#GM  LAWM  B
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   SWAH  LWAH  HWAH  CWAH  VWAH  CGRH  LAIX  H#AM  H#GM  LAWM  BR1D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   SWAH  LWAH  HWAH  CWAH  VWAH  CGRH  LAIX  H#AM  H#GM  LAWM  BR1D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -249,7 +246,7 @@ test_that("@TRNO   SWAH  LWAH  HWAH  CWAH  VWAH  CGRH  LAIX  H#AM  H#GM  LAWM  B
 
 test_that("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  SWAM  CWAM  HWAD  PWAM  HIAM  PIAM  LN%D  SN%D  GN%D  PN%D  GWGD  SH%D",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HDAT",#"   HDAT",
@@ -277,7 +274,7 @@ test_that("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  SWAM  CWAM  HWAD  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  SWAM  CWAM  HWAD  PWAM  HIAM  PIAM  LN%D  SN%D  GN%D  PN%D  GWGD  SH%D",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  SWAM  CWAM  HWAD  PWAM  HIAM  PIAM  LN%D  SN%D  GN%D  PN%D  GWGD  SH%D",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -287,7 +284,7 @@ test_that("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  SWAM  CWAM  HWAD  P
 
 test_that("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  L#SD  LWAM  SWAM  CWAM  HWAM  PWAM  HIAM  PIAM  LN%D  SN%D  GN%D   PRO  PN%D  GWGD  THAM DAYLA   WDH",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HDAT",#"   HDAT",
@@ -320,7 +317,7 @@ test_that("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  L#SD  LWAM  SWAM  C
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  L#SD  LWAM  SWAM  CWAM  HWAM  PWAM  HIAM  PIAM  LN%D  SN%D  GN%D   PRO  PN%D  GWGD  THAM DAYLA   WDH",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  L#SD  LWAM  SWAM  CWAM  HWAM  PWAM  HIAM  PIAM  LN%D  SN%D  GN%D   PRO  PN%D  GWGD  THAM DAYLA   WDH",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -330,7 +327,7 @@ test_that("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  L#SD  LWAM  SWAM  C
 
 test_that("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  L#SD  LWAM  SWAM  CWAM  HWAM  PWAM  HIAM  PIAM  GWGD  THAM  GN%D   PRO",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HDAT",#"   HDAT",
@@ -358,7 +355,7 @@ test_that("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  L#SD  LWAM  SWAM  C
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  L#SD  LWAM  SWAM  CWAM  HWAM  PWAM  HIAM  PIAM  GWGD  THAM  GN%D   PRO",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  L#SD  LWAM  SWAM  CWAM  HWAM  PWAM  HIAM  PIAM  GWGD  THAM  GN%D   PRO",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -368,7 +365,7 @@ test_that("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  L#SD  LWAM  SWAM  C
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  PM%M  ADAT  R2AT  PD1T  R4AT  PDFT  R6AT  MDAT  R8AT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -394,7 +391,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  PM%M  ADAT  R
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  PM%M  ADAT  R2AT  PD1T  R4AT  PDFT  R6AT  MDAT  R8AT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  PM%M  ADAT  R2AT  PD1T  R4AT  PDFT  R6AT  MDAT  R8AT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -404,7 +401,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  PM%M  ADAT  R
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  PM%M  HIAM  L#SM  ADAT  R2AT  PD1T  R4AT  PDFT  R6AT  MDAT  R8AT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -432,7 +429,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  PM%M  HIAM  L
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  PM%M  HIAM  L#SM  ADAT  R2AT  PD1T  R4AT  PDFT  R6AT  MDAT  R8AT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  PM%M  HIAM  L#SM  ADAT  R2AT  PD1T  R4AT  PDFT  R6AT  MDAT  R8AT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -442,7 +439,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  PM%M  HIAM  L
 
 test_that("@TRNO LIWAM  HWAM  P#AM  LAIX  CWAM  BWAM  PWAM  EDAT SQDAT  ADAT  HDAT  MDAT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "TRNO",# "@TRNO",
         5,   11,    "LIWAM",#" LIWAM",
@@ -463,7 +460,7 @@ test_that("@TRNO LIWAM  HWAM  P#AM  LAIX  CWAM  BWAM  PWAM  EDAT SQDAT  ADAT  HD
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO LIWAM  HWAM  P#AM  LAIX  CWAM  BWAM  PWAM  EDAT SQDAT  ADAT  HDAT  MDAT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO LIWAM  HWAM  P#AM  LAIX  CWAM  BWAM  PWAM  EDAT SQDAT  ADAT  HDAT  MDAT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -473,7 +470,7 @@ test_that("@TRNO LIWAM  HWAM  P#AM  LAIX  CWAM  BWAM  PWAM  EDAT SQDAT  ADAT  HD
 
 test_that("@TRNO   HDAT  HWAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HDAT",#"   HDAT",
@@ -484,7 +481,7 @@ test_that("@TRNO   HDAT  HWAM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HDAT  HWAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HDAT  HWAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -494,7 +491,7 @@ test_that("@TRNO   HDAT  HWAM",{
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  HIAM  THAM  ADAT  PD1T  PDFT  MDAT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -517,7 +514,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  HIAM  THAM  A
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  HIAM  THAM  ADAT  PD1T  PDFT  MDAT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  HIAM  THAM  ADAT  PD1T  PDFT  MDAT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -527,7 +524,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  HIAM  THAM  A
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PWAM  HIAM  THAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -548,7 +545,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PWAM  H
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PWAM  HIAM  THAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PWAM  HIAM  THAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -558,7 +555,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PWAM  H
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -581,7 +578,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -591,7 +588,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PWAM  HIAM  THAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -613,7 +610,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PWAM  HIAM  THAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PWAM  HIAM  THAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -623,7 +620,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM  R5AT  GN%M  GNAM  CN%M  CNAM CANHT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -655,7 +652,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM  R5AT  GN%M  GNAM  CN%M  CNAM CANHT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM  R5AT  GN%M  GNAM  CN%M  CNAM CANHT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -665,7 +662,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM  R5AT  GN%M  GNAM  CN%M  CNAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -696,7 +693,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM  R5AT  GN%M  GNAM  CN%M  CNAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM  R5AT  GN%M  GNAM  CN%M  CNAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -706,7 +703,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
 test_that("@TRNO   HDAP  ADAT  MDAT  CHTA  THAM  CWAM  PWAM  HWAM  HIPM  HIAM  LAIX",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HDAP",#"   HDAP",
@@ -726,7 +723,7 @@ test_that("@TRNO   HDAP  ADAT  MDAT  CHTA  THAM  CWAM  PWAM  HWAM  HIPM  HIAM  L
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HDAP  ADAT  MDAT  CHTA  THAM  CWAM  PWAM  HWAM  HIPM  HIAM  LAIX",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HDAP  ADAT  MDAT  CHTA  THAM  CWAM  PWAM  HWAM  HIPM  HIAM  LAIX",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -736,7 +733,7 @@ test_that("@TRNO   HDAP  ADAT  MDAT  CHTA  THAM  CWAM  PWAM  HWAM  HIPM  HIAM  L
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  L#SM  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  L#SD  SNAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -758,7 +755,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  L#SM  CWAM  BWAH  ADAT  MDAT  GN%M  C
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  L#SM  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  L#SD  SNAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  L#SM  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  L#SD  SNAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -768,7 +765,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  L#SM  CWAM  BWAH  ADAT  MDAT  GN%M  C
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  SNAM  GNAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -790,7 +787,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  GN%M  C
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  SNAM  GNAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  SNAM  GNAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -800,7 +797,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  GN%M  C
 
 test_that("@TRNO   CHTA",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "CHTA" #"   CHTA"
@@ -810,7 +807,7 @@ test_that("@TRNO   CHTA",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   CHTA",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   CHTA",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -820,7 +817,7 @@ test_that("@TRNO   CHTA",{
 
 test_that("@TRNO   HWAH  CWAM  ADAT   -99   -99   -99   -99   -99   -99",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAH",#"   HWAH",
@@ -832,7 +829,7 @@ test_that("@TRNO   HWAH  CWAM  ADAT   -99   -99   -99   -99   -99   -99",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAH  CWAM  ADAT   -99   -99   -99   -99   -99   -99",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAH  CWAM  ADAT   -99   -99   -99   -99   -99   -99",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -842,7 +839,7 @@ test_that("@TRNO   HWAH  CWAM  ADAT   -99   -99   -99   -99   -99   -99",{
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAA  CNAA  CWAM  BWAH  HIAM  L#SM  GNAM  CNAM  SNAM  GN%M",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -866,7 +863,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAA  CNAA  CWAM  BWAH  HIAM  L
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAA  CNAA  CWAM  BWAH  HIAM  L#SM  GNAM  CNAM  SNAM  GN%M",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAA  CNAA  CWAM  BWAH  HIAM  L#SM  GNAM  CNAM  SNAM  GN%M",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -876,7 +873,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAA  CNAA  CWAM  BWAH  HIAM  L
 
 test_that("@TRNO   TNAM  HWAM  HWUM  H#UM  LAIX  CWAM  HIAM  ADAT  MDAT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "TNAM",#"   TNAM",
@@ -894,7 +891,7 @@ test_that("@TRNO   TNAM  HWAM  HWUM  H#UM  LAIX  CWAM  HIAM  ADAT  MDAT",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   TNAM  HWAM  HWUM  H#UM  LAIX  CWAM  HIAM  ADAT  MDAT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   TNAM  HWAM  HWUM  H#UM  LAIX  CWAM  HIAM  ADAT  MDAT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -904,7 +901,7 @@ test_that("@TRNO   TNAM  HWAM  HWUM  H#UM  LAIX  CWAM  HIAM  ADAT  MDAT",{
 
 test_that("@TRNO   PWAM  SWAM  HWAM  THAM  ADAT  R2AT  MDAT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "PWAM",#"   PWAM",
@@ -920,7 +917,7 @@ test_that("@TRNO   PWAM  SWAM  HWAM  THAM  ADAT  R2AT  MDAT",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   PWAM  SWAM  HWAM  THAM  ADAT  R2AT  MDAT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   PWAM  SWAM  HWAM  THAM  ADAT  R2AT  MDAT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -930,7 +927,7 @@ test_that("@TRNO   PWAM  SWAM  HWAM  THAM  ADAT  R2AT  MDAT",{
 
 test_that("@TRNO   PWAM  HWAM CWAM  SHAD  THAM   ADAT  R2AT MMDAT  MDAT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "PWAM",#"   PWAM",
@@ -948,7 +945,7 @@ test_that("@TRNO   PWAM  HWAM CWAM  SHAD  THAM   ADAT  R2AT MMDAT  MDAT",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   PWAM  HWAM CWAM  SHAD  THAM   ADAT  R2AT MMDAT  MDAT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   PWAM  HWAM CWAM  SHAD  THAM   ADAT  R2AT MMDAT  MDAT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -958,7 +955,7 @@ test_that("@TRNO   PWAM  HWAM CWAM  SHAD  THAM   ADAT  R2AT MMDAT  MDAT",{
 
 test_that("@TRNO  PWAM   CWAM  HWAM  SHAD  THAM  ADAT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   11,     "PWAM",# "  PWAM",
@@ -980,7 +977,7 @@ test_that("@TRNO  PWAM   CWAM  HWAM  SHAD  THAM  ADAT  R2AT  R3AT  R4AT  R5AT  R
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO  PWAM   CWAM  HWAM  SHAD  THAM  ADAT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO  PWAM   CWAM  HWAM  SHAD  THAM  ADAT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -990,7 +987,7 @@ test_that("@TRNO  PWAM   CWAM  HWAM  SHAD  THAM  ADAT  R2AT  R3AT  R4AT  R5AT  R
 
 test_that("@TRNO  CWAM  PWAM  HWAM  SHAD  THAM  ADAT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "TRNO",# "@TRNO",
         5,   11,     "CWAM",#"  CWAM",
@@ -1012,7 +1009,7 @@ test_that("@TRNO  CWAM  PWAM  HWAM  SHAD  THAM  ADAT  R2AT  R3AT  R4AT  R5AT  R6
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO  CWAM  PWAM  HWAM  SHAD  THAM  ADAT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO  CWAM  PWAM  HWAM  SHAD  THAM  ADAT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1022,7 +1019,7 @@ test_that("@TRNO  CWAM  PWAM  HWAM  SHAD  THAM  ADAT  R2AT  R3AT  R4AT  R5AT  R6
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M  HIAM  THAM  R1AT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT  R9AT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -1055,7 +1052,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M  HIAM  THAM  R1AT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT  R9AT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M  HIAM  THAM  R1AT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT  R9AT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1065,7 +1062,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
 test_that("@TRNO   PWAM  H#AM  H#UM  HWAM  CWAM  BWAH  HWUM  THAM  HIAM  ADAT  PD1T  PDFT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "PWAM",#"   PWAM",
@@ -1086,7 +1083,7 @@ test_that("@TRNO   PWAM  H#AM  H#UM  HWAM  CWAM  BWAH  HWUM  THAM  HIAM  ADAT  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   PWAM  H#AM  H#UM  HWAM  CWAM  BWAH  HWUM  THAM  HIAM  ADAT  PD1T  PDFT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   PWAM  H#AM  H#UM  HWAM  CWAM  BWAH  HWUM  THAM  HIAM  ADAT  PD1T  PDFT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1096,7 +1093,7 @@ test_that("@TRNO   PWAM  H#AM  H#UM  HWAM  CWAM  BWAH  HWUM  THAM  HIAM  ADAT  P
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -1118,7 +1115,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1128,7 +1125,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
 test_that("@TRNO   HWAM  HWUM  H#AM  LAIX  CWAM  PWAM  HIAM  HIPM  THAM  CNAM  GNAM  GN%M",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -1149,7 +1146,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  LAIX  CWAM  PWAM  HIAM  HIPM  THAM  CNAM  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  LAIX  CWAM  PWAM  HIAM  HIPM  THAM  CNAM  GNAM  GN%M",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  LAIX  CWAM  PWAM  HIAM  HIPM  THAM  CNAM  GNAM  GN%M",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1159,7 +1156,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  LAIX  CWAM  PWAM  HIAM  HIPM  THAM  CNAM  G
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M  HIAM  THAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -1183,7 +1180,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M  HIAM  THAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M  HIAM  THAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1193,7 +1190,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M  R1AT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT  R9AT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -1224,7 +1221,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M  R1AT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT  R9AT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M  R1AT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT  R9AT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1234,7 +1231,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  PWAM  ADAT  PD1T  PDFT  MDAT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -1252,7 +1249,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  PWAM  ADAT  PD1T  PDFT  MDAT",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  PWAM  ADAT  PD1T  PDFT  MDAT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  PWAM  ADAT  PD1T  PDFT  MDAT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1262,7 +1259,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  PWAM  ADAT  PD1T  PDFT  MDAT",{
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  HIAM  THAM  ADAT  MDAT  PD1T  PDFT  PWAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -1285,7 +1282,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  HIAM  THAM  ADAT  M
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  HIAM  THAM  ADAT  MDAT  PD1T  PDFT  PWAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  HIAM  THAM  ADAT  MDAT  PD1T  PDFT  PWAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1295,7 +1292,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  HIAM  THAM  ADAT  M
 
 test_that("@TRNO   EDAP  ADAP  PD1P  PDFP  MDAP  R8AP  HWAM  HWUM  H#UM  CWAM  HIAM  H#AM  P#AM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "EDAP",#"   EDAP",
@@ -1317,7 +1314,7 @@ test_that("@TRNO   EDAP  ADAP  PD1P  PDFP  MDAP  R8AP  HWAM  HWUM  H#UM  CWAM  H
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   EDAP  ADAP  PD1P  PDFP  MDAP  R8AP  HWAM  HWUM  H#UM  CWAM  HIAM  H#AM  P#AM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   EDAP  ADAP  PD1P  PDFP  MDAP  R8AP  HWAM  HWUM  H#UM  CWAM  HIAM  H#AM  P#AM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1327,7 +1324,7 @@ test_that("@TRNO   EDAP  ADAP  PD1P  PDFP  MDAP  R8AP  HWAM  HWUM  H#UM  CWAM  H
 
 test_that("@TRNO   ADAP  PD1P  PDFP  MDAP  HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  EDAP  PWAM  HIAM  THAM  L#SM  R8AP",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "ADAP",#"   ADAP",
@@ -1353,7 +1350,7 @@ test_that("@TRNO   ADAP  PD1P  PDFP  MDAP  HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  B
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   ADAP  PD1P  PDFP  MDAP  HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  EDAP  PWAM  HIAM  THAM  L#SM  R8AP",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   ADAP  PD1P  PDFP  MDAP  HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  EDAP  PWAM  HIAM  THAM  L#SM  R8AP",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1363,7 +1360,7 @@ test_that("@TRNO   ADAP  PD1P  PDFP  MDAP  HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  B
 
 test_that("@TRNO   FWAH  EWUM  E#AM  E#UM  LAIX BADMF BADMH VWATM  FDAT  HDAT  MDAT  LWAH  CWAM  SWAH  L#SM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "FWAH",#"   FWAH",
@@ -1387,7 +1384,7 @@ test_that("@TRNO   FWAH  EWUM  E#AM  E#UM  LAIX BADMF BADMH VWATM  FDAT  HDAT  M
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   FWAH  EWUM  E#AM  E#UM  LAIX BADMF BADMH VWATM  FDAT  HDAT  MDAT  LWAH  CWAM  SWAH  L#SM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   FWAH  EWUM  E#AM  E#UM  LAIX BADMF BADMH VWATM  FDAT  HDAT  MDAT  LWAH  CWAM  SWAH  L#SM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1397,7 +1394,7 @@ test_that("@TRNO   FWAH  EWUM  E#AM  E#UM  LAIX BADMF BADMH VWATM  FDAT  HDAT  M
 
 test_that("@TRNO   FWAH  EWUM  E#AM  E#UM  LAIX BADMF BADMH VWATM  FDAT  HDAT  MDAT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "FWAH",#"   FWAH",
@@ -1417,7 +1414,7 @@ test_that("@TRNO   FWAH  EWUM  E#AM  E#UM  LAIX BADMF BADMH VWATM  FDAT  HDAT  M
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   FWAH  EWUM  E#AM  E#UM  LAIX BADMF BADMH VWATM  FDAT  HDAT  MDAT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   FWAH  EWUM  E#AM  E#UM  LAIX BADMF BADMH VWATM  FDAT  HDAT  MDAT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1427,7 +1424,7 @@ test_that("@TRNO   FWAH  EWUM  E#AM  E#UM  LAIX BADMF BADMH VWATM  FDAT  HDAT  M
 
 test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  TWAH  BWAH  TDAT  HDAT  UN%H  TNAH  CNAM  UNAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "UWAH",#"   UWAH",
@@ -1449,7 +1446,7 @@ test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  TWAH  BWAH  TDAT  HDAT  UN%H  T
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  TWAH  BWAH  TDAT  HDAT  UN%H  TNAH  CNAM  UNAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  TWAH  BWAH  TDAT  HDAT  UN%H  TNAH  CNAM  UNAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1459,7 +1456,7 @@ test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  TWAH  BWAH  TDAT  HDAT  UN%H  T
 
 test_that("@TRNO   UWAH  UYAH HDATE PLDAE",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "UWAH",#"   UWAH",
@@ -1472,7 +1469,7 @@ test_that("@TRNO   UWAH  UYAH HDATE PLDAE",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   UWAH  UYAH HDATE PLDAE",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   UWAH  UYAH HDATE PLDAE",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1482,7 +1479,7 @@ test_that("@TRNO   UWAH  UYAH HDATE PLDAE",{
 
 test_that("@TRNO   UNAM  UN%H  RNAH  TDAT  UWAH HDATE PLDAE",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "UNAM",#"   UNAM",
@@ -1498,7 +1495,7 @@ test_that("@TRNO   UNAM  UN%H  RNAH  TDAT  UWAH HDATE PLDAE",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   UNAM  UN%H  RNAH  TDAT  UWAH HDATE PLDAE",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   UNAM  UN%H  RNAH  TDAT  UWAH HDATE PLDAE",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1508,7 +1505,7 @@ test_that("@TRNO   UNAM  UN%H  RNAH  TDAT  UWAH HDATE PLDAE",{
 
 test_that("@TRNO   UWAH  H#UM  TDAT  HDAT  UYAH",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "UWAH",#"   UWAH",
@@ -1522,7 +1519,7 @@ test_that("@TRNO   UWAH  H#UM  TDAT  HDAT  UYAH",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   UWAH  H#UM  TDAT  HDAT  UYAH",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   UWAH  H#UM  TDAT  HDAT  UYAH",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1532,7 +1529,7 @@ test_that("@TRNO   UWAH  H#UM  TDAT  HDAT  UYAH",{
 
 test_that("@TRNO   UWAH HDATE  LAIX PLDAE",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "UWAH",#"   UWAH",
@@ -1545,7 +1542,7 @@ test_that("@TRNO   UWAH HDATE  LAIX PLDAE",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   UWAH HDATE  LAIX PLDAE",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   UWAH HDATE  LAIX PLDAE",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1555,7 +1552,7 @@ test_that("@TRNO   UWAH HDATE  LAIX PLDAE",{
 
 test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  EDAT  HDAT  UN%H  TNAH  SNAM  UNAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "UWAH",#"   UWAH",
@@ -1577,7 +1574,7 @@ test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  EDAT  HDAT  UN%H  T
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  EDAT  HDAT  UN%H  TNAH  SNAM  UNAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  EDAT  HDAT  UN%H  TNAH  SNAM  UNAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1587,7 +1584,7 @@ test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  EDAT  HDAT  UN%H  T
 
 test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  HDAT  EDAT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "UWAH",#"   UWAH",
@@ -1605,7 +1602,7 @@ test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  HDAT  EDAT",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  HDAT  EDAT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  HDAT  EDAT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1615,7 +1612,7 @@ test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  HDAT  EDAT",{
 
 test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  EDAT  HDAT  UN%H  TNAM  SNAM  UNAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "UWAH",#"   UWAH",
@@ -1637,7 +1634,7 @@ test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  EDAT  HDAT  UN%H  T
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  EDAT  HDAT  UN%H  TNAM  SNAM  UNAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  EDAT  HDAT  UN%H  TNAM  SNAM  UNAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1647,7 +1644,7 @@ test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  EDAT  HDAT  UN%H  T
 
 test_that("@TRNO   UWAH  UYAH  LAIX  CWAM  TDAT  EDAT  HDAT   -99   -99",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "UWAH",#"   UWAH",
@@ -1663,7 +1660,7 @@ test_that("@TRNO   UWAH  UYAH  LAIX  CWAM  TDAT  EDAT  HDAT   -99   -99",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   UWAH  UYAH  LAIX  CWAM  TDAT  EDAT  HDAT   -99   -99",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   UWAH  UYAH  LAIX  CWAM  TDAT  EDAT  HDAT   -99   -99",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1673,7 +1670,7 @@ test_that("@TRNO   UWAH  UYAH  LAIX  CWAM  TDAT  EDAT  HDAT   -99   -99",{
 
 test_that("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT  CHTA  CWAM  HIAM  HWAM  L#SM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "EDAT",#"   EDAT",
@@ -1692,7 +1689,7 @@ test_that("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT  CHTA  CWAM  HIAM  HWAM  L#SM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT  CHTA  CWAM  HIAM  HWAM  L#SM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT  CHTA  CWAM  HIAM  HWAM  L#SM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1702,7 +1699,7 @@ test_that("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT  CHTA  CWAM  HIAM  HWAM  L#SM",{
 
 test_that("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "EDAT",#"   EDAT",
@@ -1716,7 +1713,7 @@ test_that("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1726,7 +1723,7 @@ test_that("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT ",{
 
 test_that("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT HWAM  CWAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "EDAT",#"   EDAT",
@@ -1742,7 +1739,7 @@ test_that("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT HWAM  CWAM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT HWAM  CWAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT HWAM  CWAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1752,7 +1749,7 @@ test_that("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT HWAM  CWAM",{
 
 test_that("@TRNO   HWAM  CWAM  LAIX  ADAT  MDAT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -1766,7 +1763,7 @@ test_that("@TRNO   HWAM  CWAM  LAIX  ADAT  MDAT",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  CWAM  LAIX  ADAT  MDAT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  CWAM  LAIX  ADAT  MDAT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1776,7 +1773,7 @@ test_that("@TRNO   HWAM  CWAM  LAIX  ADAT  MDAT",{
 
 test_that("@TRNO   HWAM  LAIX  CWAM  ADAT  MDAT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -1790,7 +1787,7 @@ test_that("@TRNO   HWAM  LAIX  CWAM  ADAT  MDAT",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  LAIX  CWAM  ADAT  MDAT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  LAIX  CWAM  ADAT  MDAT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1800,7 +1797,7 @@ test_that("@TRNO   HWAM  LAIX  CWAM  ADAT  MDAT",{
 
 test_that("@TRNO   ADAT  PDFT  MDAT  CWAM  HWAM  HIAM  HIPM  EDAT  CHTA",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "ADAT",#"   ADAT",
@@ -1818,7 +1815,7 @@ test_that("@TRNO   ADAT  PDFT  MDAT  CWAM  HWAM  HIAM  HIPM  EDAT  CHTA",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   ADAT  PDFT  MDAT  CWAM  HWAM  HIAM  HIPM  EDAT  CHTA",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   ADAT  PDFT  MDAT  CWAM  HWAM  HIAM  HIPM  EDAT  CHTA",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1828,7 +1825,7 @@ test_that("@TRNO   ADAT  PDFT  MDAT  CWAM  HWAM  HIAM  HIPM  EDAT  CHTA",{
 
 test_that("@TRNO   EDAT  PD1T  PDFT  MDAT  PWAM  HWAM  CWAM  HIAM  P#AM  HWUM  VN%M  GN%M  THAM  CNAM  HIPM  GNAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "EDAT",#"   EDAT",
@@ -1853,7 +1850,7 @@ test_that("@TRNO   EDAT  PD1T  PDFT  MDAT  PWAM  HWAM  CWAM  HIAM  P#AM  HWUM  V
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   EDAT  PD1T  PDFT  MDAT  PWAM  HWAM  CWAM  HIAM  P#AM  HWUM  VN%M  GN%M  THAM  CNAM  HIPM  GNAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   EDAT  PD1T  PDFT  MDAT  PWAM  HWAM  CWAM  HIAM  P#AM  HWUM  VN%M  GN%M  THAM  CNAM  HIPM  GNAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1863,7 +1860,7 @@ test_that("@TRNO   EDAT  PD1T  PDFT  MDAT  PWAM  HWAM  CWAM  HIAM  P#AM  HWUM  V
 
 test_that("@TRNO   EDAT  PD1T  PDFT  MDAT  PWAM  HWAM  CWAM  HIAM  HWUM  VN%M  GN%M  THAM  CNAM  HIPM  GNAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "EDAT",#"   EDAT",
@@ -1887,7 +1884,7 @@ test_that("@TRNO   EDAT  PD1T  PDFT  MDAT  PWAM  HWAM  CWAM  HIAM  HWUM  VN%M  G
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   EDAT  PD1T  PDFT  MDAT  PWAM  HWAM  CWAM  HIAM  HWUM  VN%M  GN%M  THAM  CNAM  HIPM  GNAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   EDAT  PD1T  PDFT  MDAT  PWAM  HWAM  CWAM  HIAM  HWUM  VN%M  GN%M  THAM  CNAM  HIPM  GNAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1897,7 +1894,7 @@ test_that("@TRNO   EDAT  PD1T  PDFT  MDAT  PWAM  HWAM  CWAM  HIAM  HWUM  VN%M  G
 
 test_that("@TRNO   HWUM  MDAT  HWAM  ADAT  CWAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWUM",#"   HWUM",
@@ -1911,7 +1908,7 @@ test_that("@TRNO   HWUM  MDAT  HWAM  ADAT  CWAM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWUM  MDAT  HWAM  ADAT  CWAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWUM  MDAT  HWAM  ADAT  CWAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1921,7 +1918,7 @@ test_that("@TRNO   HWUM  MDAT  HWAM  ADAT  CWAM",{
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  L#SM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -1945,7 +1942,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  L#SM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  L#SM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1955,7 +1952,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
 test_that("@TRNO   LAIX  CHTA",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "LAIX",#"   LAIX",
@@ -1966,7 +1963,7 @@ test_that("@TRNO   LAIX  CHTA",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   LAIX  CHTA",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   LAIX  CHTA",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1976,7 +1973,7 @@ test_that("@TRNO   LAIX  CHTA",{
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  GN%M  GL%M  L#SM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -2002,7 +1999,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  GN%M  GL%M  L#SM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  GN%M  GL%M  L#SM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2012,7 +2009,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
 test_that("@TRNO   HDAT  MDAT  PDFT  PD1T  HWAM  CWAM  ADAT  PWAM  HIAM  THAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HDAT",#"   HDAT",
@@ -2031,7 +2028,7 @@ test_that("@TRNO   HDAT  MDAT  PDFT  PD1T  HWAM  CWAM  ADAT  PWAM  HIAM  THAM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HDAT  MDAT  PDFT  PD1T  HWAM  CWAM  ADAT  PWAM  HIAM  THAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HDAT  MDAT  PDFT  PD1T  HWAM  CWAM  ADAT  PWAM  HIAM  THAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2041,7 +2038,7 @@ test_that("@TRNO   HDAT  MDAT  PDFT  PD1T  HWAM  CWAM  ADAT  PWAM  HIAM  THAM",{
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM  R5AT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -2068,7 +2065,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM  R5AT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM  R5AT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2078,7 +2075,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
 test_that("@TRNO   HWAM  ADAT  MDAT  PD1T  PDFT  GN%M  GNAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -2094,7 +2091,7 @@ test_that("@TRNO   HWAM  ADAT  MDAT  PD1T  PDFT  GN%M  GNAM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  ADAT  MDAT  PD1T  PDFT  GN%M  GNAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  ADAT  MDAT  PD1T  PDFT  GN%M  GNAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2104,7 +2101,7 @@ test_that("@TRNO   HWAM  ADAT  MDAT  PD1T  PDFT  GN%M  GNAM",{
 
 test_that("@TRNO   HWAM  CWAM  ADAT  MDAT  LAIX  HIAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -2119,7 +2116,7 @@ test_that("@TRNO   HWAM  CWAM  ADAT  MDAT  LAIX  HIAM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  CWAM  ADAT  MDAT  LAIX  HIAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  CWAM  ADAT  MDAT  LAIX  HIAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2129,7 +2126,7 @@ test_that("@TRNO   HWAM  CWAM  ADAT  MDAT  LAIX  HIAM",{
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -2155,7 +2152,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2165,7 +2162,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -2186,7 +2183,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2196,7 +2193,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  HIAM  THAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -2216,7 +2213,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  HIAM  T
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  HIAM  THAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  HIAM  THAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2226,7 +2223,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  HIAM  T
 
 test_that("@TRNO   HWAM  HWUM  H#AM  PWAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -2239,7 +2236,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  PWAM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  PWAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  PWAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2249,7 +2246,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  PWAM",{
 
 test_that("@TRNO   HWAH  BWAH  LAID  SWAD  CHTD  L#SD  HIAM  CWAD  LI%D  LT#D  CWAM  SDAH",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAH",#"   HWAH",
@@ -2270,7 +2267,7 @@ test_that("@TRNO   HWAH  BWAH  LAID  SWAD  CHTD  L#SD  HIAM  CWAD  LI%D  LT#D  C
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAH  BWAH  LAID  SWAD  CHTD  L#SD  HIAM  CWAD  LI%D  LT#D  CWAM  SDAH",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAH  BWAH  LAID  SWAD  CHTD  L#SD  HIAM  CWAD  LI%D  LT#D  CWAM  SDAH",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2280,7 +2277,7 @@ test_that("@TRNO   HWAH  BWAH  LAID  SWAD  CHTD  L#SD  HIAM  CWAD  LI%D  LT#D  C
 
 test_that("@TRNO  CULTI  T#SD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,    "CULTI",#"  CULTI",
@@ -2291,7 +2288,7 @@ test_that("@TRNO  CULTI  T#SD",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO  CULTI  T#SD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO  CULTI  T#SD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2301,7 +2298,7 @@ test_that("@TRNO  CULTI  T#SD",{
 
 test_that("@TRNO  SMFMH  SUCH  STKH SSTKH BADMH  TRSH  LAIX LAIXD  LAIH LAASH LWASH  L#SM NAPSH SPDAT EDAT0 EDAT1 EDAT2  T#MX T#MXD TDECD  S#AH  SHTH  CHTA  HIAM  SDAH",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,    "SMFMH",#"  SMFMH",
@@ -2335,7 +2332,7 @@ test_that("@TRNO  SMFMH  SUCH  STKH SSTKH BADMH  TRSH  LAIX LAIXD  LAIH LAASH LW
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO  SMFMH  SUCH  STKH SSTKH BADMH  TRSH  LAIX LAIXD  LAIH LAASH LWASH  L#SM NAPSH SPDAT EDAT0 EDAT1 EDAT2  T#MX T#MXD TDECD  S#AH  SHTH  CHTA  HIAM  SDAH",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO  SMFMH  SUCH  STKH SSTKH BADMH  TRSH  LAIX LAIXD  LAIH LAASH LWASH  L#SM NAPSH SPDAT EDAT0 EDAT1 EDAT2  T#MX T#MXD TDECD  S#AH  SHTH  CHTA  HIAM  SDAH",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2345,7 +2342,7 @@ test_that("@TRNO  SMFMH  SUCH  STKH SSTKH BADMH  TRSH  LAIX LAIXD  LAIH LAASH LW
 
 test_that("@TRNO   EDAT  CWAM  HIAM  HSAM  ADAT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "EDAT",#"   EDAT",
@@ -2359,7 +2356,7 @@ test_that("@TRNO   EDAT  CWAM  HIAM  HSAM  ADAT",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   EDAT  CWAM  HIAM  HSAM  ADAT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   EDAT  CWAM  HIAM  HSAM  ADAT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2369,7 +2366,7 @@ test_that("@TRNO   EDAT  CWAM  HIAM  HSAM  ADAT",{
 
 test_that("@TRNO   ADAT  GL%M  HSAM  EDAT  LAIX  CWAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "ADAT",#"   ADAT",
@@ -2384,7 +2381,7 @@ test_that("@TRNO   ADAT  GL%M  HSAM  EDAT  LAIX  CWAM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   ADAT  GL%M  HSAM  EDAT  LAIX  CWAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   ADAT  GL%M  HSAM  EDAT  LAIX  CWAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2394,7 +2391,7 @@ test_that("@TRNO   ADAT  GL%M  HSAM  EDAT  LAIX  CWAM",{
 
 test_that("@TRNO   ADAT  HWAM  TWAH  LAIX",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "ADAT",#"   ADAT",
@@ -2407,7 +2404,7 @@ test_that("@TRNO   ADAT  HWAM  TWAH  LAIX",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   ADAT  HWAM  TWAH  LAIX",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   ADAT  HWAM  TWAH  LAIX",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2417,7 +2414,7 @@ test_that("@TRNO   ADAT  HWAM  TWAH  LAIX",{
 
 test_that("@TRNO   ADAT  MDAT  HWUM  HWAM  CWAM  HIAM  GL%M  LAIX  H#AM  H#UM  L#SM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "ADAT",#"   ADAT",
@@ -2437,7 +2434,7 @@ test_that("@TRNO   ADAT  MDAT  HWUM  HWAM  CWAM  HIAM  GL%M  LAIX  H#AM  H#UM  L
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   ADAT  MDAT  HWUM  HWAM  CWAM  HIAM  GL%M  LAIX  H#AM  H#UM  L#SM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   ADAT  MDAT  HWUM  HWAM  CWAM  HIAM  GL%M  LAIX  H#AM  H#UM  L#SM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2447,7 +2444,7 @@ test_that("@TRNO   ADAT  MDAT  HWUM  HWAM  CWAM  HIAM  GL%M  LAIX  H#AM  H#UM  L
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  ADAT  MDAT  GL%M  PDFT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -2466,7 +2463,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  ADAT  MDAT  GL%M  PDFT",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  ADAT  MDAT  GL%M  PDFT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  ADAT  MDAT  GL%M  PDFT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2476,7 +2473,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  ADAT  MDAT  GL%M  PDFT",{
 
 test_that("@TRNO   HSAM  CWAM ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HSAM",#"   HSAM",
@@ -2487,7 +2484,7 @@ test_that("@TRNO   HSAM  CWAM ",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HSAM  CWAM ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HSAM  CWAM ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2497,7 +2494,7 @@ test_that("@TRNO   HSAM  CWAM ",{
 
 test_that("@TRNO   HWAM  LAIX  CWAM  MDAT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -2510,7 +2507,7 @@ test_that("@TRNO   HWAM  LAIX  CWAM  MDAT",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  LAIX  CWAM  MDAT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  LAIX  CWAM  MDAT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2520,7 +2517,7 @@ test_that("@TRNO   HWAM  LAIX  CWAM  MDAT",{
 
 test_that("@TRNO   HWAM  LAIX  CWAA  ADAT  CWAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -2534,7 +2531,7 @@ test_that("@TRNO   HWAM  LAIX  CWAA  ADAT  CWAM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  LAIX  CWAA  ADAT  CWAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  LAIX  CWAA  ADAT  CWAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2544,7 +2541,7 @@ test_that("@TRNO   HWAM  LAIX  CWAA  ADAT  CWAM",{
 
 test_that("@TRNO   UYAH  HWUM  H#AM  LAIX  TWAH  BWAH  ADAT  MDAT  UN%H  TNAH  CNAM  UNAM  UWAH",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "UYAH",#"   UYAH",
@@ -2566,7 +2563,7 @@ test_that("@TRNO   UYAH  HWUM  H#AM  LAIX  TWAH  BWAH  ADAT  MDAT  UN%H  TNAH  C
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   UYAH  HWUM  H#AM  LAIX  TWAH  BWAH  ADAT  MDAT  UN%H  TNAH  CNAM  UNAM  UWAH",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   UYAH  HWUM  H#AM  LAIX  TWAH  BWAH  ADAT  MDAT  UN%H  TNAH  CNAM  UNAM  UWAH",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2576,7 +2573,7 @@ test_that("@TRNO   UYAH  HWUM  H#AM  LAIX  TWAH  BWAH  ADAT  MDAT  UN%H  TNAH  C
 
 test_that("@TRNO   HWAM  HWUM  H#AM  LAIX  CWAM  BWAH  ADAT  MDAT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -2593,7 +2590,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  LAIX  CWAM  BWAH  ADAT  MDAT",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  LAIX  CWAM  BWAH  ADAT  MDAT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  LAIX  CWAM  BWAH  ADAT  MDAT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2603,7 +2600,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  LAIX  CWAM  BWAH  ADAT  MDAT",{
 
 test_that("@TRNO   ADAT  CWAM  HWAM  HIAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "ADAT",#"   ADAT",
@@ -2616,7 +2613,7 @@ test_that("@TRNO   ADAT  CWAM  HWAM  HIAM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   ADAT  CWAM  HWAM  HIAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   ADAT  CWAM  HWAM  HIAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2626,7 +2623,7 @@ test_that("@TRNO   ADAT  CWAM  HWAM  HIAM",{
 
 test_that("@TRNO   ADAT  CWAM  HWAM  HIAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "ADAT",#"   ADAT",
@@ -2639,7 +2636,7 @@ test_that("@TRNO   ADAT  CWAM  HWAM  HIAM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   ADAT  CWAM  HWAM  HIAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   ADAT  CWAM  HWAM  HIAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2649,7 +2646,7 @@ test_that("@TRNO   ADAT  CWAM  HWAM  HIAM",{
 
 test_that("@TRNO   ADAT  MDAT  CWAM  HWAM  HIAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "ADAT",#"   ADAT",
@@ -2663,7 +2660,7 @@ test_that("@TRNO   ADAT  MDAT  CWAM  HWAM  HIAM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   ADAT  MDAT  CWAM  HWAM  HIAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   ADAT  MDAT  CWAM  HWAM  HIAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2673,7 +2670,7 @@ test_that("@TRNO   ADAT  MDAT  CWAM  HWAM  HIAM",{
 
 test_that("@TRNO   ADAT  MDAT  CWAM  HWAM  HIAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "ADAT",#"   ADAT",
@@ -2687,7 +2684,7 @@ test_that("@TRNO   ADAT  MDAT  CWAM  HWAM  HIAM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   ADAT  MDAT  CWAM  HWAM  HIAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   ADAT  MDAT  CWAM  HWAM  HIAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2697,7 +2694,7 @@ test_that("@TRNO   ADAT  MDAT  CWAM  HWAM  HIAM",{
 
 test_that("@TRNO   EDAT  ADAT  MDAT  CWAM  HWAM  HIAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "EDAT",#"   EDAT",
@@ -2712,7 +2709,7 @@ test_that("@TRNO   EDAT  ADAT  MDAT  CWAM  HWAM  HIAM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   EDAT  ADAT  MDAT  CWAM  HWAM  HIAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   EDAT  ADAT  MDAT  CWAM  HWAM  HIAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2722,7 +2719,7 @@ test_that("@TRNO   EDAT  ADAT  MDAT  CWAM  HWAM  HIAM",{
 
 test_that("@TRNO   ADAT  MDAT  HWAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "ADAT",#"   ADAT",
@@ -2734,7 +2731,7 @@ test_that("@TRNO   ADAT  MDAT  HWAM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   ADAT  MDAT  HWAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   ADAT  MDAT  HWAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2744,7 +2741,7 @@ test_that("@TRNO   ADAT  MDAT  HWAM",{
 
 test_that("@TRNO   PDAT  HDAT  CWAM  LWAM  SWAM  PWAM  CNAM  LAIX",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "PDAT",#"   PDAT",
@@ -2761,7 +2758,7 @@ test_that("@TRNO   PDAT  HDAT  CWAM  LWAM  SWAM  PWAM  CNAM  LAIX",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   PDAT  HDAT  CWAM  LWAM  SWAM  PWAM  CNAM  LAIX",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   PDAT  HDAT  CWAM  LWAM  SWAM  PWAM  CNAM  LAIX",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2771,7 +2768,7 @@ test_that("@TRNO   PDAT  HDAT  CWAM  LWAM  SWAM  PWAM  CNAM  LAIX",{
 
 test_that("@TRNO   PWAM  CWAM  LAIX",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "PWAM",#"   PWAM",
@@ -2783,7 +2780,7 @@ test_that("@TRNO   PWAM  CWAM  LAIX",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   PWAM  CWAM  LAIX",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   PWAM  CWAM  LAIX",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2793,7 +2790,7 @@ test_that("@TRNO   PWAM  CWAM  LAIX",{
 
 test_that("@TRNO   HDAT  CWAM  FWAH  LAIX  PWAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HDAT",#"   HDAT",
@@ -2807,7 +2804,7 @@ test_that("@TRNO   HDAT  CWAM  FWAH  LAIX  PWAM",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HDAT  CWAM  FWAH  LAIX  PWAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HDAT  CWAM  FWAH  LAIX  PWAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2817,7 +2814,7 @@ test_that("@TRNO   HDAT  CWAM  FWAH  LAIX  PWAM",{
 
 test_that("@TRNO   HDAT  LAIX  CWAM  PWAM  FWAH",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HDAT",#"   HDAT",
@@ -2831,7 +2828,7 @@ test_that("@TRNO   HDAT  LAIX  CWAM  PWAM  FWAH",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HDAT  LAIX  CWAM  PWAM  FWAH",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HDAT  LAIX  CWAM  PWAM  FWAH",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2841,7 +2838,7 @@ test_that("@TRNO   HDAT  LAIX  CWAM  PWAM  FWAH",{
 
 test_that("@TRNO   XDAT  HDAT  CWAM  LWAM  SWAM  PWAM  CNAM  LAIX",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "XDAT",#"   XDAT",
@@ -2858,7 +2855,7 @@ test_that("@TRNO   XDAT  HDAT  CWAM  LWAM  SWAM  PWAM  CNAM  LAIX",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   XDAT  HDAT  CWAM  LWAM  SWAM  PWAM  CNAM  LAIX",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   XDAT  HDAT  CWAM  LWAM  SWAM  PWAM  CNAM  LAIX",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2868,7 +2865,7 @@ test_that("@TRNO   XDAT  HDAT  CWAM  LWAM  SWAM  PWAM  CNAM  LAIX",{
 
 test_that("@TRNO   ADAT  MDAT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "ADAT",#"   ADAT",
@@ -2879,7 +2876,7 @@ test_that("@TRNO   ADAT  MDAT",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   ADAT  MDAT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   ADAT  MDAT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2889,7 +2886,7 @@ test_that("@TRNO   ADAT  MDAT",{
 
 test_that("@TRNO   HWUM  THAM  H#UM  ADAT  MDAT  PD1T  R8AT  HDAT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWUM",#"   HWUM",
@@ -2906,7 +2903,7 @@ test_that("@TRNO   HWUM  THAM  H#UM  ADAT  MDAT  PD1T  R8AT  HDAT",{
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWUM  THAM  H#UM  ADAT  MDAT  PD1T  R8AT  HDAT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWUM  THAM  H#UM  ADAT  MDAT  PD1T  R8AT  HDAT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2916,7 +2913,7 @@ test_that("@TRNO   HWUM  THAM  H#UM  ADAT  MDAT  PD1T  R8AT  HDAT",{
 
 test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  SNAM  GNAM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -2937,7 +2934,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  S
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  SNAM  GNAM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  H#UM  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  SNAM  GNAM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -2947,7 +2944,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  S
 
 test_that("@TRNO   HWAM  HWUM  H#AM  LAI?  LAIX  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  SNAM  GNAM  T#AM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "TRNO",#  "@TRNO",
         5,   12,     "HWAM",#"   HWAM",
@@ -2970,7 +2967,7 @@ test_that("@TRNO   HWAM  HWUM  H#AM  LAI?  LAIX  CWAM  BWAH  ADAT  MDAT  GN%M  C
 
   left_just <-   NULL
 
-  check_fwf_pos <- header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  LAI?  LAIX  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  SNAM  GNAM  T#AM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   HWAM  HWUM  H#AM  LAI?  LAIX  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  SNAM  GNAM  T#AM",
                                           col_names = col_names,
                                           left_justified = left_just)
 

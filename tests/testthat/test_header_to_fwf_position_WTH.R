@@ -1,9 +1,6 @@
-library(DSSATcpp)
-library(tibble)
-
 test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
         0,    6,     "INSI",#   "@ INSI",
         6,   15,      "LAT",#"      LAT",
@@ -17,10 +14,10 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -30,7 +27,7 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT",{
 
 test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  RHUM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "DATE",# "@DATE",
         5,   11,     "SRAD",#"  SRAD",
@@ -46,10 +43,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  RHUM",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  RHUM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  RHUM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -59,7 +56,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  RHUM",{
 
 test_that("@DATE  SRAD  TMAX  TMIN  RAIN ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "DATE",# "@DATE",
         5,   11,     "SRAD",#"  SRAD",
@@ -70,10 +67,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN ",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -83,7 +80,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN ",{
 
 test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "DATE",# "@DATE",
         5,   11,     "SRAD",#"  SRAD",
@@ -97,10 +94,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -110,7 +107,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",{
 
 test_that("@DATE SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "DATE",# "@DATE",
         5,   10,     "SRAD",# " SRAD",
@@ -124,10 +121,10 @@ test_that("@DATE SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -137,7 +134,7 @@ test_that("@DATE SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",{
 
 test_that("@DATE  SRAD  TMAX  TMIN  RAIN",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "DATE",# "@DATE",
         5,   11,     "SRAD",#"  SRAD",
@@ -148,10 +145,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -161,7 +158,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN",{
 
 test_that("@  INSI      LAT     LONG    ELEV     TAV     AMP   REFHT   WNDHT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
         0,    7,     "INSI",#  "@  INSI",
         7,   16,      "LAT",#"      LAT",
@@ -175,10 +172,10 @@ test_that("@  INSI      LAT     LONG    ELEV     TAV     AMP   REFHT   WNDHT",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@  INSI      LAT     LONG    ELEV     TAV     AMP   REFHT   WNDHT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  INSI      LAT     LONG    ELEV     TAV     AMP   REFHT   WNDHT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -188,7 +185,7 @@ test_that("@  INSI      LAT     LONG    ELEV     TAV     AMP   REFHT   WNDHT",{
 
 test_that("@  DATE    SRAD    TMAX    TMIN    RAIN    DEWP    WIND     AVP",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#    ~check,
         0,    7,     "DATE",# "@  DATE",
         7,   15,     "SRAD",#"    SRAD",
@@ -202,10 +199,10 @@ test_that("@  DATE    SRAD    TMAX    TMIN    RAIN    DEWP    WIND     AVP",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@  DATE    SRAD    TMAX    TMIN    RAIN    DEWP    WIND     AVP",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  DATE    SRAD    TMAX    TMIN    RAIN    DEWP    WIND     AVP",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -215,7 +212,7 @@ test_that("@  DATE    SRAD    TMAX    TMIN    RAIN    DEWP    WIND     AVP",{
 
 test_that("@ INSI      LAT     LONG    ELEV   TAV   AMP REFHT WNDHT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
         0,    6,     "INSI",#   "@ INSI",
         6,   15,      "LAT",#"      LAT",
@@ -229,10 +226,10 @@ test_that("@ INSI      LAT     LONG    ELEV   TAV   AMP REFHT WNDHT",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@ INSI      LAT     LONG    ELEV   TAV   AMP REFHT WNDHT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ INSI      LAT     LONG    ELEV   TAV   AMP REFHT WNDHT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -242,7 +239,7 @@ test_that("@ INSI      LAT     LONG    ELEV   TAV   AMP REFHT WNDHT",{
 
 test_that("@DATE  SRAD  TMAX  TMIN  RAIN  RHUM   WIND  TDEW",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "DATE",#  "@DATE",
         5,   11,     "SRAD",# "  SRAD",
@@ -256,10 +253,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  RHUM   WIND  TDEW",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  RHUM   WIND  TDEW",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  RHUM   WIND  TDEW",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -269,7 +266,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  RHUM   WIND  TDEW",{
 
 test_that("@DATE SRAD  TMAX  TMIN  RAIN",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "DATE",# "@DATE",
         5,   10,     "SRAD",# " SRAD",
@@ -280,10 +277,10 @@ test_that("@DATE SRAD  TMAX  TMIN  RAIN",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE SRAD  TMAX  TMIN  RAIN",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE SRAD  TMAX  TMIN  RAIN",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -293,7 +290,7 @@ test_that("@DATE SRAD  TMAX  TMIN  RAIN",{
 
 test_that("@DATE   TMAX  TMIN  RAIN   SUNH",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "DATE",#  "@DATE",
         5,   12,     "TMAX",#"   TMAX",
@@ -304,10 +301,10 @@ test_that("@DATE   TMAX  TMIN  RAIN   SUNH",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE   TMAX  TMIN  RAIN   SUNH",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE   TMAX  TMIN  RAIN   SUNH",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -317,7 +314,7 @@ test_that("@DATE   TMAX  TMIN  RAIN   SUNH",{
 
 test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "DATE",# "@DATE",
         5,   11,     "SRAD",#"  SRAD",
@@ -330,10 +327,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -343,7 +340,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND",{
 
 test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CCO2",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
         0,    6,     "INSI",#   "@ INSI",
         6,   15,      "LAT",#"      LAT",
@@ -358,10 +355,10 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CCO2",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CCO2",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CCO2",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -371,7 +368,7 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CCO2",{
 
 test_that("@YRDAY SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    6,    "YRDAY",#"@YRDAY",
         6,   11,     "SRAD",# " SRAD",
@@ -385,10 +382,10 @@ test_that("@YRDAY SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@YRDAY SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@YRDAY SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -398,7 +395,7 @@ test_that("@YRDAY SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",{
 
 test_that("@Latitude Longitud  Elev Zone    TAV  TAMP REFHT WNDHT SITE",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#     ~check,
         0,       9, "Latitude",#"@Latitude",
         9,      18, "Longitud",#" Longitud",
@@ -413,10 +410,10 @@ test_that("@Latitude Longitud  Elev Zone    TAV  TAMP REFHT WNDHT SITE",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@Latitude Longitud  Elev Zone    TAV  TAMP REFHT WNDHT SITE",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@Latitude Longitud  Elev Zone    TAV  TAMP REFHT WNDHT SITE",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -426,7 +423,7 @@ test_that("@Latitude Longitud  Elev Zone    TAV  TAMP REFHT WNDHT SITE",{
 
 test_that("@WYR  WFIRST   WLAST",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#    ~check,
         0,    4,      "WYR",#    "@WYR",
         4,   12,   "WFIRST",#"  WFIRST",
@@ -435,10 +432,10 @@ test_that("@WYR  WFIRST   WLAST",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@WYR  WFIRST   WLAST",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@WYR  WFIRST   WLAST",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -448,17 +445,17 @@ test_that("@WYR  WFIRST   WLAST",{
 
 test_that("@PEOPLE",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#   ~check,
         0,NA_real_,   "PEOPLE" #"@PEOPLE"
   )
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@PEOPLE",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@PEOPLE",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -468,17 +465,17 @@ test_that("@PEOPLE",{
 
 test_that("@ADDRESS",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#    ~check,
         0,NA_real_,  "ADDRESS" #"@ADDRESS"
   )
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@ADDRESS",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ADDRESS",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -488,17 +485,17 @@ test_that("@ADDRESS",{
 
 test_that("@METHODS",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#    ~check,
         0,NA_real_,  "METHODS" #"@METHODS"
   )
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@METHODS",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@METHODS",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -508,17 +505,17 @@ test_that("@METHODS",{
 
 test_that("@INSTRUMENTS",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,   ~col_names,#        ~check,
         0,NA_real_,"INSTRUMENTS" #"@INSTRUMENTS"
   )
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@INSTRUMENTS",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@INSTRUMENTS",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -528,17 +525,17 @@ test_that("@INSTRUMENTS",{
 
 test_that("@PROBLEMS",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#     ~check,
         0,NA_real_, "PROBLEMS" #"@PROBLEMS"
   )
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@PROBLEMS",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@PROBLEMS",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -548,17 +545,17 @@ test_that("@PROBLEMS",{
 
 test_that("@PUBLICATIONS",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,    ~col_names,#         ~check,
         0,NA_real_,"PUBLICATIONS" #"@PUBLICATIONS"
   )
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@PUBLICATIONS",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@PUBLICATIONS",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -568,17 +565,17 @@ test_that("@PUBLICATIONS",{
 
 test_that("@DISTRIBUTION",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,    ~col_names,#         ~check,
         0,NA_real_,"DISTRIBUTION" #"@DISTRIBUTION"
   )
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DISTRIBUTION",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DISTRIBUTION",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -588,17 +585,17 @@ test_that("@DISTRIBUTION",{
 
 test_that("@NOTES",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#  ~check,
         0,NA_real_,    "NOTES" #"@NOTES"
   )
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@NOTES",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@NOTES",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -608,7 +605,7 @@ test_that("@NOTES",{
 
 test_that("@  DATE  RAIN  TMAX  TMIN  SRAD",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    7,     "DATE",#"@  DATE",
         7,   13,     "RAIN",# "  RAIN",
@@ -619,10 +616,10 @@ test_that("@  DATE  RAIN  TMAX  TMIN  SRAD",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@  DATE  RAIN  TMAX  TMIN  SRAD",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  DATE  RAIN  TMAX  TMIN  SRAD",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -632,7 +629,7 @@ test_that("@  DATE  RAIN  TMAX  TMIN  SRAD",{
 
 test_that("@  DATE  SRAD  TMAX  TMIN  RAIN",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    7,     "DATE",#"@  DATE",
         7,   13,     "SRAD",# "  SRAD",
@@ -643,10 +640,10 @@ test_that("@  DATE  SRAD  TMAX  TMIN  RAIN",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@  DATE  SRAD  TMAX  TMIN  RAIN",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  DATE  SRAD  TMAX  TMIN  RAIN",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -656,7 +653,7 @@ test_that("@  DATE  SRAD  TMAX  TMIN  RAIN",{
 
 test_that("@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "DATE",# "@DATE",
         5,   11,     "SRAD",#"  SRAD",
@@ -669,10 +666,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -682,7 +679,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM",{
 
 test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
         0,    6,     "INSI",#   "@ INSI",
         6,   15,      "LAT",#"      LAT",
@@ -694,10 +691,10 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@ INSI      LAT     LONG  ELEV   TAV   AMP",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ INSI      LAT     LONG  ELEV   TAV   AMP",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -707,7 +704,7 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP",{
 
 test_that("@DATE  SRAD  RAIN  TMAX  TMIN  WIND  RHUM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "DATE",# "@DATE",
         5,   11,     "SRAD",#"  SRAD",
@@ -720,10 +717,10 @@ test_that("@DATE  SRAD  RAIN  TMAX  TMIN  WIND  RHUM",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE  SRAD  RAIN  TMAX  TMIN  WIND  RHUM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE  SRAD  RAIN  TMAX  TMIN  WIND  RHUM",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -733,7 +730,7 @@ test_that("@DATE  SRAD  RAIN  TMAX  TMIN  WIND  RHUM",{
 
 test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  VAPR",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "DATE",# "@DATE",
         5,   11,     "SRAD",#"  SRAD",
@@ -749,10 +746,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  VAPR",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  VAPR",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  VAPR",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -762,7 +759,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  VAPR",{
 
 test_that("@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM  VAPR",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "DATE",# "@DATE",
         5,   11,     "SRAD",#"  SRAD",
@@ -776,10 +773,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM  VAPR",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM  VAPR",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM  VAPR",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -789,7 +786,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM  VAPR",{
 
 test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CO2",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
         0,    6,     "INSI",#   "@ INSI",
         6,   15,      "LAT",#"      LAT",
@@ -804,10 +801,10 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CO2",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CO2",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CO2",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -817,7 +814,7 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CO2",{
 
 test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
         0,    6,     "INSI",#   "@ INSI",
         6,   15,      "LAT",#"      LAT",
@@ -831,10 +828,10 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT ",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -844,7 +841,7 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT ",{
 
 test_that("@DATE  SRAD  TMAX  TMIN  RAIN  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "DATE",# "@DATE",
         5,   11,     "SRAD",#"  SRAD",
@@ -855,10 +852,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  ",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -868,7 +865,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  ",{
 
 test_that("@ INSI     LAT      LONG  ELEV   TAV  AMP REFHT  WNDHT",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#      ~check,
         0,    6,     "INSI",#    "@ INSI",
         6,   14,      "LAT",#  "     LAT",
@@ -882,10 +879,10 @@ test_that("@ INSI     LAT      LONG  ELEV   TAV  AMP REFHT  WNDHT",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@ INSI     LAT      LONG  ELEV   TAV  AMP REFHT  WNDHT",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ INSI     LAT      LONG  ELEV   TAV  AMP REFHT  WNDHT",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -895,7 +892,7 @@ test_that("@ INSI     LAT      LONG  ELEV   TAV  AMP REFHT  WNDHT",{
 
 test_that("@ INSI      LAT     LONG  ELEV   TAV  TAMP",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
         0,    6,     "INSI",#   "@ INSI",
         6,   15,      "LAT",#"      LAT",
@@ -907,10 +904,10 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV  TAMP",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@ INSI      LAT     LONG  ELEV   TAV  TAMP",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ INSI      LAT     LONG  ELEV   TAV  TAMP",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -920,7 +917,7 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV  TAMP",{
 
 test_that("@DATE  SRAD  TMAX  TMIN  RAIN  RHUM  WIND",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "DATE",# "@DATE",
         5,   11,     "SRAD",#"  SRAD",
@@ -933,10 +930,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  RHUM  WIND",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  RHUM  WIND",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  RHUM  WIND",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -946,7 +943,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  RHUM  WIND",{
 
 test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP   WIND  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    5,     "DATE",#  "@DATE",
         5,   11,     "SRAD",# "  SRAD",
@@ -959,10 +956,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP   WIND  ",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP   WIND  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP   WIND  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -972,7 +969,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP   WIND  ",{
 
 test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "DATE",# "@DATE",
         5,   11,     "SRAD",#"  SRAD",
@@ -985,10 +982,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  ",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -998,7 +995,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  ",{
 
 test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT   CO2",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
         0,    6,     "INSI",#   "@ INSI",
         6,   15,      "LAT",#"      LAT",
@@ -1013,10 +1010,10 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT   CO2",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT   CO2",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT   CO2",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1026,7 +1023,7 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT   CO2",{
 
 test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  PAR",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "DATE",# "@DATE",
         5,   11,     "SRAD",#"  SRAD",
@@ -1040,10 +1037,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  PAR",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  PAR",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  PAR",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1053,7 +1050,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  PAR",{
 
 test_that("@DATE  SRAD  TMAX  TMIN  RAIN            ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "DATE",# "@DATE",
         5,   11,     "SRAD",#"  SRAD",
@@ -1064,10 +1061,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN            ",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN            ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN            ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1077,7 +1074,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN            ",{
 
 test_that("@DATE    SRAD    RAIN     TMAX     TMIN    ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
         0,    5,     "DATE",#    "@DATE",
         5,   13,     "SRAD",# "    SRAD",
@@ -1088,10 +1085,10 @@ test_that("@DATE    SRAD    RAIN     TMAX     TMIN    ",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE    SRAD    RAIN     TMAX     TMIN    ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE    SRAD    RAIN     TMAX     TMIN    ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1101,7 +1098,7 @@ test_that("@DATE    SRAD    RAIN     TMAX     TMIN    ",{
 
 test_that("@DATE  SRAD  TMAX  TMIN  RAIN               PAR ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    5,     "DATE",#             "@DATE",
         5,   11,     "SRAD",#            "  SRAD",
@@ -1113,10 +1110,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN               PAR ",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN               PAR ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN               PAR ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1126,7 +1123,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN               PAR ",{
 
 test_that("@DATE  SRAD  TMAX  TMIN  RAIN               PAR",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
         0,    5,     "DATE",#             "@DATE",
         5,   11,     "SRAD",#            "  SRAD",
@@ -1138,10 +1135,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN               PAR",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN               PAR",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN               PAR",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1151,7 +1148,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN               PAR",{
 
 test_that("@DATE  SRAD  TMAX  TMIN  RAIN             ",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
         0,    5,     "DATE",# "@DATE",
         5,   11,     "SRAD",#"  SRAD",
@@ -1162,10 +1159,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN             ",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN             ",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@DATE  SRAD  TMAX  TMIN  RAIN             ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
@@ -1175,7 +1172,7 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN             ",{
 
 test_that("@  DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  RHUM",{
 
-  true_fwf_pos <- tribble(
+  true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
         0,    7,     "DATE",#"@  DATE",
         7,   13,     "SRAD",# "  SRAD",
@@ -1189,10 +1186,10 @@ test_that("@  DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  RHUM",{
 
   col_names <-   NULL
 
-  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS", 
+  left_just <-   c(" SITE", "PEOPLE", "ADDRESS", "METHODS", "INSTRUMENTS", "PROBLEMS",
   "PUBLICATIONS", "DISTRIBUTION", "NOTES")
 
-  check_fwf_pos <- header_to_fwf_position("@  DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  RHUM",
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@  DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  RHUM",
                                           col_names = col_names,
                                           left_justified = left_just)
 

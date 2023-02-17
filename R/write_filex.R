@@ -19,7 +19,7 @@
 #' @return NULL
 #'
 
-write_filex <- function(filex,file_name,drop_duplicate_rows=TRUE,force_std_fmt=TRUE){
+write_filex <- function(filex, file_name, drop_duplicate_rows=TRUE, force_std_fmt=TRUE){
 
   experiment <- attr(filex,'experiment') %>%
     c('*EXP.DETAILS: ',.) %>%

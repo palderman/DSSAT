@@ -2,7 +2,7 @@
 #' @importFrom purrr map_lgl reduce
 #' @importFrom stringr str_detect
 #'
-combine_multi_section <- function(tiers_in,info_vars){
+combine_multi_section <- function(tiers_in, info_vars){
 
   if(!is.data.frame(tiers_in)){
 
@@ -14,7 +14,7 @@ combine_multi_section <- function(tiers_in,info_vars){
       }) %>%
       which() %>%
       {tiers_in[.]} %>%
-      {if(!is.data.frame(.)) . <- reduce(.,combine_tiers)
+      {if(!is.data.frame(.)) . <- reduce(., combine_tiers)
       .}
     attr(first_tier,'tier_info') <- attr(first_tier,'tier_info')[1]
 
@@ -31,7 +31,7 @@ combine_multi_section <- function(tiers_in,info_vars){
       .}
     attr(second_tier,'tier_info') <- attr(second_tier,'tier_info')[1]
 
-    tier_out <- combine_tiers(first_tier,second_tier,use_collapse_rows = TRUE)
+    tier_out <- combine_tiers(first_tier, second_tier, use_collapse_rows = TRUE)
   }else{
     tier_out <- tiers_in
   }
