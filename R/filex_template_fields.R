@@ -7,11 +7,12 @@
 #' @importFrom tibble tibble
 #' @importFrom dplyr mutate select n
 #'
-filex_template_fields <- function(ID_FIELD = NA_character_, WSTA, FLSA = NA_character_,
-                                  FLOB = NA_real_, FLDT = NA_character_, FLDD = NA_real_,
+filex_template_fields <- function(ID_FIELD = NA_character_, WSTA = NA_character_,
+                                  FLSA = NA_character_, FLOB = NA_real_,
+                                  FLDT = NA_character_, FLDD = NA_real_,
                                   FLDS = NA_real_, FLST = NA_character_,
-                                  SLTX = NA_character_, SLDP = NA_real_, ID_SOIL,
-                                  FLNAME = NA_character_,
+                                  SLTX = NA_character_, SLDP = NA_real_,
+                                  ID_SOIL = NA_character_, FLNAME = NA_character_,
                                   XCRD = NA_real_, YCRD = NA_real_, ELEV = NA_real_,
                                   AREA = NA_real_, SLEN = NA_real_, FLWR = NA_real_,
                                   SLAS = NA_real_, FLHST = NA_character_,
