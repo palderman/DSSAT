@@ -125,7 +125,7 @@ read_tier_data <- function(raw_lines, col_types=NULL, col_names=NULL, na_strings
       }
       # Convert DATE column if DATE is not already POSIXct
       potential_date_cols <- colnames(one_df) %>%
-        str_subset('(DATE)|(AT$)|(PFRST)|(PLAST)|(HFRST)|(HLAST)')
+        str_subset('(DATE)|((?<!XL)AT$)|(PFRST)|(PLAST)|(HFRST)|(HLAST)')
       date_cols <- col_types %>%
         {map(.,~names(.$cols)) %>%
             unlist()} %>%
