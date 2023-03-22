@@ -23,6 +23,8 @@
 #'
 #' @examples
 #'
+#' \dontrun{
+#'
 #' # Extract file path for sample soil file
 #' sample_sol <- system.file('extdata','SAMPLE.SOL',package='DSSAT')
 #'
@@ -34,6 +36,8 @@
 #'
 #' # Write example soil file
 #' write_sol(sol,sample_sol2)
+#'
+#' }
 #'
 
 write_sol <- function(sol,file_name,title=NULL,append=TRUE,force_std_fmt=TRUE){

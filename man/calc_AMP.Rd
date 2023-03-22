@@ -6,6 +6,11 @@
 \usage{
 calc_AMP(wth)
 }
+\arguments{
+\item{wth}{a data frame that contains weather data formatted
+as would be generated using \link{read_wth}, namely
+including columns DATE, TMAX and TMIN.}
+}
 \description{
 Calculate long-term temperature amplitude (AMP)
 }

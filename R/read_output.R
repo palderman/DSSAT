@@ -15,11 +15,14 @@
 #'
 #' @examples
 #'
+#' \dontrun{
+#'
 #' # Extract file path for sample output file path
 #' sample_output <- system.file('extdata','SAMPLE.OUT',package='DSSAT')
 #'
 #' out <- read_output(sample_output)
 #'
+#' }
 
 read_output <- function(file_name, col_types = NULL, col_names = NULL,
                         left_justified = NULL, read_only = NULL,

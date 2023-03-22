@@ -6,6 +6,10 @@
 #'
 #' @inheritParams read_tier_data
 #'
+#' @param use_std_fmt logical value indicating whether to read
+#'   FileX using the standard column formats. If FALSE, column
+#'   formats will be inferred from tier headers
+#'
 #' @return a tibble containing the data from the raw DSSAT file
 #'
 #' @importFrom readr cols col_character

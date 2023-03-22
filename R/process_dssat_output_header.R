@@ -31,7 +31,7 @@
 #' " 2006 002     2   8.40   0.849   0.263   0.064   0.104   0.086   0.113   0.101   0.036",
 #' " 2006 003     3  13.10   1.148   0.549   0.091   0.132   0.108   0.144   0.128   0.046")
 #'
-#' process_dssat_output_header(sample_data_tier)
+#' DSSAT:::process_dssat_output_header(sample_data_tier)
 
 process_dssat_output_header <- function(raw_lines){
 

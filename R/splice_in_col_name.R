@@ -22,7 +22,7 @@
 #' cnames <-
 #'   c("@VAR#","VAR-NAME........","EXPNO","ECO#","TB(1)TO1(1)TO2(1)","TM(1)")
 #'
-#' splice_in_col_name(cnames,"TB(1)")
+#' DSSAT:::splice_in_col_name(cnames,"TB(1)")
 
 splice_in_col_name <- function(col_names,new_name){
 

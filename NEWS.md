@@ -1,4 +1,6 @@
-# DSSAT 0.0.6.9002
+# DSSAT 0.0.7
+
+- Bugfix in read_tier_data() that prevents column XLAT from being converted to date-time format
 
 - Implementing arguments for write_wth() that allow overriding/adding to values stored in wth argument
 
