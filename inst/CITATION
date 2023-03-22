@@ -26,13 +26,13 @@ bibentry(bibtype = "Article",
          pages = "105325",
          year = "2020",
          doi = "10.1016/j.compag.2020.105325",
-         url = "https://www.sciencedirect.com/science/article/pii/S0168169919323075",
+#         url = "https://www.sciencedirect.com/science/article/pii/S0168169919323075",
          textVersion = paste("Alderman, P.D. 2020.",
          "\"A Comprehensive R Interface for the DSSAT Cropping",
          "Systems Model.\"",
          "Computers and Electronics in Agriculture",
          "172: 105325.",
-         "DOI: 10.1016/j.compag.2020.105325. URL: https://www.sciencedirect.com/science/article/pii/S0168169919323075.")
+         "DOI: 10.1016/j.compag.2020.105325.")
 )
 
 bibentry(bibtype = "Article",
