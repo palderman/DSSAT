@@ -16,6 +16,8 @@
 #'
 #' @examples
 #'
+#' \donttest{
+#'
 #' # Extract FileT path for sample file
 #' sample_filet <- system.file('extdata','SAMPLE.CRT',package='DSSAT')
 #'
@@ -26,6 +28,8 @@
 #'
 #' # Write out sample FileA
 #' write_filet(filet,sample_filet2)
+#'
+#' }
 #'
 
 write_filet <- function(filet,file_name,drop_duplicate_rows=TRUE){

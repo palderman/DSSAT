@@ -23,7 +23,7 @@
 #'
 #' @examples
 #'
-#' \dontrun{
+#' \donttest{
 #'
 #' # Extract file path for sample soil file
 #' sample_sol <- system.file('extdata','SAMPLE.SOL',package='DSSAT')

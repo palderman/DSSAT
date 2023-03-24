@@ -29,7 +29,7 @@
 #'
 #' @examples
 #'
-#' \dontrun{
+#' \donttest{
 #' # Extract file path for sample output file path
 #' sample_output <- system.file('extdata','SAMPLE.OUT',package='DSSAT')
 #'

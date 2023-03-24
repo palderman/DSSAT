@@ -38,9 +38,12 @@ Reads soil parameters from a single DSSAT soil parameter file (*.SOL)
 }
 \examples{
 
+\donttest{
+
 # Extract file path for sample soil file
 sample_sol <- system.file('extdata','SAMPLE.SOL',package='DSSAT')
 
 sol <- read_sol(sample_sol)
 
+}
 }

@@ -20,6 +20,8 @@ Writes data to a single DSSAT file T
 }
 \examples{
 
+\donttest{
+
 # Extract FileT path for sample file
 sample_filet <- system.file('extdata','SAMPLE.CRT',package='DSSAT')
 
@@ -30,5 +32,7 @@ sample_filet2 <- paste0(tempdir(),'/SAMPLE.CRT')
 
 # Write out sample FileA
 write_filet(filet,sample_filet2)
+
+}
 
 }
