@@ -29,12 +29,10 @@
 #'
 #' @examples
 #'
-#' \donttest{
 #' # Extract file path for sample output file path
 #' sample_output <- system.file('extdata','SAMPLE.OUT',package='DSSAT')
 #'
 #' read_dssat(sample_output)
-#' }
 #'
 
 read_dssat <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL,

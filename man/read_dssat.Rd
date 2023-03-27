@@ -42,11 +42,9 @@ Reads data from a single DSSAT file
 }
 \examples{
 
-\donttest{
 # Extract file path for sample output file path
 sample_output <- system.file('extdata','SAMPLE.OUT',package='DSSAT')
 
 read_dssat(sample_output)
-}
 
 }

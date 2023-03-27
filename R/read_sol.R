@@ -15,14 +15,11 @@
 #'
 #' @examples
 #'
-#' \donttest{
-#'
 #' # Extract file path for sample soil file
 #' sample_sol <- system.file('extdata','SAMPLE.SOL',package='DSSAT')
 #'
 #' sol <- read_sol(sample_sol)
 #'
-#' }
 
 read_sol <- function(file_name,id_soil=NULL,left_justified=NULL,col_types=NULL,col_names=NULL){
 

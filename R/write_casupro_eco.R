@@ -11,8 +11,6 @@
 #'
 #' @examples
 #'
-#' \donttest{
-#'
 #' sample_eco <- c('CA0001  (CP 80-1743; CP 88-1762)',
 #' '!-------------------',
 #' '  KCAN_ECO      0.80    Superseeds KCAN from .SPE file',
@@ -30,7 +28,6 @@
 #'
 #' write_casupro_eco(eco)
 #'
-#' }
 
 write_casupro_eco <- function(eco){
 

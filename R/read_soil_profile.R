@@ -14,8 +14,6 @@
 #'
 #' @examples
 #'
-#' \donttest{
-#'
 #' sample_sol <- c(
 #' "*IB00000001  IBSNAT      SIC     210 DEFAULT - DEEP SILTY CLAY",
 #' "@SITE        COUNTRY          LAT     LONG SCS FAMILY",
@@ -36,7 +34,6 @@
 #'
 #' read_soil_profile(sample_sol)
 #'
-#' }
 
 read_soil_profile <- function(raw_lines,left_justified=NULL,
                               col_types=NULL,col_names=NULL){

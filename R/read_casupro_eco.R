@@ -14,8 +14,6 @@
 #'
 #' @examples
 #'
-#' \donttest{
-#'
 #' sample_eco <- c('CA0001  (CP 80-1743; CP 88-1762)',
 #' '!-------------------',
 #' '  KCAN_ECO      0.80    Superseeds KCAN from .SPE file',
@@ -30,7 +28,7 @@
 #' '  SENDAY        0.05    Maximum fraction of existing leaf weight which can be senesced on')
 #'
 #' read_casupro_eco(sample_eco)
-#' }
+#'
 
 read_casupro_eco <- function(raw_lines){
 
