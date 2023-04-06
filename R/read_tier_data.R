@@ -61,7 +61,6 @@ read_tier_data <- function(raw_lines, col_types=NULL, col_names=NULL, na_strings
                    ~header_to_fwf_position(.,left_justified, col_types, col_names, read_only))
 
   }else{
-    # Add code here to convert tier_fmt into fwf_pos
     fwf_pos <- map(headline,
                    ~v_fmt_to_fwf_pos(tier_fmt, header = .))
 

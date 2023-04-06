@@ -15,7 +15,7 @@ find_pedon <- function(raw, pedons = NULL){
   if(!is.null(pedons)){
     # Subset to list of profiles in `pedons`
     pedon_subset <- pedon %in% pedons
-    start <- start[pedon_subset]
+    start <- start[pedon_subset] + 1
     end <- end[pedon_subset]
     pedon <- pedon[pedon_subset]
   }

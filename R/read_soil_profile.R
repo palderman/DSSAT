@@ -35,8 +35,8 @@
 #' read_soil_profile(sample_sol)
 #'
 
-read_soil_profile <- function(raw_lines,left_justified=NULL,
-                              col_types=NULL,col_names=NULL){
+read_soil_profile <- function(raw_lines, left_justified=NULL,
+                              col_types=NULL, col_names=NULL){
 
   left_justified <- left_justified %>%
     c('SITE','COUNTRY',' SCS FAMILY',

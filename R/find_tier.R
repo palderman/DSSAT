@@ -20,7 +20,7 @@ find_tier <- function(df_in, headers = NULL){
 
   pedon <- pedon[header_subset]
   header <- header[header_subset]
-  start <- start[header_subset] + 1
+  start <- start[header_subset]
   end <- end[header_subset]
 
   return(data.frame(PEDON = pedon, header = header, start = start, end = end))
