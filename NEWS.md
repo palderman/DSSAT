@@ -1,4 +1,6 @@
-# DSSAT 0.0.7.9000
+# DSSAT 0.0.7.9001
+
+- New function for creating FileX template: filex_template()
 
 # DSSAT 0.0.7
 
