@@ -30,6 +30,6 @@ Converts header line into a vector of column names
 
 header_line <-
   "@YEAR DOY   DAS   SRAA    ES1D    ES2D    ES3D    ES4D    ES5D    ES6D    ES7D    ES8D"
-header_to_fwf_position(header_line)
+DSSAT:::header_to_fwf_position(header_line)
 }
 \keyword{internal}

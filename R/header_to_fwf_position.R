@@ -20,7 +20,7 @@
 #'
 #' header_line <-
 #'   "@YEAR DOY   DAS   SRAA    ES1D    ES2D    ES3D    ES4D    ES5D    ES6D    ES7D    ES8D"
-#' header_to_fwf_position(header_line)
+#' DSSAT:::header_to_fwf_position(header_line)
 
 header_to_fwf_position <- function(header, left_justified='EXCODE',
                                    col_types=NULL, col_names=NULL,

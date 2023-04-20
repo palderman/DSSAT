@@ -11,3 +11,4 @@ vignettes
 tests/*
 ^.*.png$
 ^.*.jpg$
+^CRAN-SUBMISSION$

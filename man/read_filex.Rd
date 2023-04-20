@@ -30,6 +30,10 @@ missing values}
 
 \item{store_v_fmt}{a logical value indicating whether or not to store the
 format for variables being read}
+
+\item{use_std_fmt}{logical value indicating whether to read
+FileX using the standard column formats. If FALSE, column
+formats will be inferred from tier headers}
 }
 \value{
 a tibble containing the data from the raw DSSAT file

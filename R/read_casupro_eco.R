@@ -28,6 +28,7 @@
 #' '  SENDAY        0.05    Maximum fraction of existing leaf weight which can be senesced on')
 #'
 #' read_casupro_eco(sample_eco)
+#'
 
 read_casupro_eco <- function(raw_lines){
 

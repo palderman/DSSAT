@@ -29,6 +29,6 @@ Splice column name into vector of column names
 cnames <-
   c("@VAR#","VAR-NAME........","EXPNO","ECO#","TB(1)TO1(1)TO2(1)","TM(1)")
 
-splice_in_col_name(cnames,"TB(1)")
+DSSAT:::splice_in_col_name(cnames,"TB(1)")
 }
 \keyword{internal}

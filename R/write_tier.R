@@ -15,6 +15,7 @@
 #' @importFrom tidyr unnest replace_na
 #' @importFrom stringr str_c str_replace_all str_extract str_remove str_detect str_which str_replace str_subset str_sub
 #' @importFrom purrr pmap
+#' @importFrom tidyselect all_of
 #'
 #' @examples
 #'

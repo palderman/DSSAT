@@ -28,5 +28,6 @@ sample_eco <- c('CA0001  (CP 80-1743; CP 88-1762)',
 '  SENDAY        0.05    Maximum fraction of existing leaf weight which can be senesced on')
 
 read_casupro_eco(sample_eco)
+
 }
 \keyword{internal}

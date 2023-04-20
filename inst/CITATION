@@ -3,7 +3,7 @@ citHeader("When using the 'DSSAT' package for publications please cite all of th
 year <- sub("-.*","",meta$Date)
 note <- sprintf("R package version %s.", meta$Version)
 
-citEntry(entry = "Manual",
+bibentry(bibtype = "Manual",
          title = "{DSSAT}: {A }Comprehensive {R }Interface for the {DSSAT Cropping Systems Model}",
          author = c(person(c("Phillip","D"),"Alderman")),
          year = year,
@@ -18,7 +18,7 @@ citEntry(entry = "Manual",
          "https://CRAN.R-project.org/package=DSSAT.")
 )
 
-citEntry(entry = "Article",
+bibentry(bibtype = "Article",
          title = "A comprehensive {R }interface for the {DSSAT Cropping Systems Model}",
          author = c(person(c("Phillip","D"),"Alderman")),
          journal = "Computers and Electronics in Agriculture",
@@ -26,16 +26,16 @@ citEntry(entry = "Article",
          pages = "105325",
          year = "2020",
          doi = "10.1016/j.compag.2020.105325",
-         url = "https://www.sciencedirect.com/science/article/pii/S0168169919323075",
+#         url = "https://www.sciencedirect.com/science/article/pii/S0168169919323075",
          textVersion = paste("Alderman, P.D. 2020.",
          "\"A Comprehensive R Interface for the DSSAT Cropping",
          "Systems Model.\"",
          "Computers and Electronics in Agriculture",
          "172: 105325.",
-         "DOI: 10.1016/j.compag.2020.105325. URL: https://www.sciencedirect.com/science/article/pii/S0168169919323075.")
+         "DOI: 10.1016/j.compag.2020.105325.")
 )
 
-citEntry(entry = "Article",
+bibentry(bibtype = "Article",
          title = "The DSSAT Cropping System Model",
          author = c(
                     person(given = c("James","W"), family = "Jones"),
@@ -62,7 +62,7 @@ citEntry(entry = "Article",
          "European Journal of Agronomy 18 (3-4): 235-265.")
 )
 
-citEntry(entry = "InCollection",
+bibentry(bibtype = "InCollection",
          title = "The {DSSAT} crop modeling ecosystem",
          booktitle = "Advances in crop modeling for a sustainable agriculture",
          author = c(
@@ -101,7 +101,7 @@ citEntry(entry = "InCollection",
          "Burleigh Dodds Science Publishing.")
 )
 
-citEntry(entry = "Manual",
+bibentry(bibtype = "Manual",
          title = "Decision Support System for Agrotechnology Transfer (DSSAT) Version <VERSION>",
          author = c(
                     person("Gerrit","Hoogenboom"),
