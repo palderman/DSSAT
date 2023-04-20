@@ -31,6 +31,7 @@ write_filex <- function(filex, file_name, drop_duplicate_rows=TRUE, force_std_fm
     map(function(sec_name){
       if(force_std_fmt){
         attr(filex[[sec_name]],'v_fmt') <- v_fmt_filex(sec_name)
+        attr(filex[[sec_name]],'tier_info') <- tier_info_filex(sec_name)
       }
       if(str_detect(sec_name,'(IRRIGATION)|(INITIAL)|(SOIL)')){
         tier_out <- write_dual_tier_section(filex[[sec_name]],

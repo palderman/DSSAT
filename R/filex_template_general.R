@@ -1,3 +1,6 @@
+#' Generate a template GENERAL section of File X
+#'
+#' @export
 #'
 #' @importFrom tibble tibble
 #'

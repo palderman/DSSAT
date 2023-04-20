@@ -1,3 +1,6 @@
+#' Generate a template TREATMENTS section of File X
+#'
+#' @export
 #'
 #' @param expand a logical value indicating whether or not to use [tidyr::expand_grid()]
 #' to generate combinations of any input values supplied as a vector
