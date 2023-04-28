@@ -1,0 +1,23 @@
+structure(list(`ECO#` = c("IB0001", "IB0002", "DFAULT"), ECONAME = c("GENERIC", 
+"West Africa", "DEFAULT"), TBASE = c(8, 11, 8), TOPT = c(34, 
+34, 34), ROPT = c(34, 34, 34), GDDE = c(6, 6, 6), RUE = c(3.2, 
+3.8, 3.2), KCAN = c(0.85, 0.85, 0.85), STPC = c(0.1, 3, 0.1), 
+    RTPC = c(0.25, 0.2, 0.25), TILFC = c(0, 1, 1), PLAM = c(6000, 
+    6000, 6000)), class = c("DSSAT_tbl", "tbl_df", "tbl", "data.frame"
+), row.names = c(NA, -3L), v_fmt = c(`ECO#` = "%-7s", ECONAME = "%-18s", 
+TBASE = "%5.0f", TOPT = "%6.0f", ROPT = "%6.0f", GDDE = "%6.0f", 
+RUE = "%6.1f", KCAN = "%6.2f", STPC = "%6.1f", RTPC = "%6.2f", 
+TILFC = "%6.0f", PLAM = "%6.0f"), first_line = "*SORGHUM ECOTYPE COEFFICIENTS: SGCER048 MODEL", comments = c("", 
+" COEFF   DEFINITIONS", " =====   ===========", " ECO#    Code for the ecotype to which a cultivar belongs (see *.cul file)", 
+" ECONAME Name of the ecotype, which is referenced from the cultivar file", 
+" TBASE   Base temperature below which no development occurs (oC)", 
+" TOPT    Temperature at which maximum development occurs for vegetative stages (oC)", 
+" ROPT    Temperature at which maximum development occurs for reproductive stages (oC)", 
+" GDDE    Growing degree days per cm seed depth required for emergence (degree days/cm)", 
+" RUE     Radiation use efficiency (g plant dry matter/MJ PAR)", 
+" KCAN    Canopy light extinction coefficient for daily PAR", 
+" STPC    Partitioning to stem growth as a fraction of potential leaf growth", 
+" RTPC    Partitioning to root growth as a fraction of available carbohydrates", 
+" TILFC   Tillering factor (0.0 no tillering; 1.0 full tillering)", 
+" PLAM    Plant leaf area maximun (Initial leaf area)", "", "                            1     2     3     4     5     6     7     8     9    10"
+))

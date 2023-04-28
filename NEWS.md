@@ -1,4 +1,8 @@
-# DSSAT 0.0.7.9001
+# DSSAT 0.0.7.9002
+
+- Bugfix to properly prefix comments with "!" when writing files
+
+- Overhaul of read_sol() that greatly speeds up reading of large SOL files
 
 - New function for creating FileX template: filex_template()
 

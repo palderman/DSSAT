@@ -17,10 +17,6 @@
 #'
 #' @return Invisibly returns NULL
 #'
-#' @importFrom dplyr "%>%"
-#' @importFrom purrr map
-#' @importFrom stringr str_c
-#'
 #' @examples
 #'
 #' # Extract file path for sample soil file
@@ -41,28 +37,37 @@ write_sol <- function(sol,file_name,title=NULL,append=TRUE,force_std_fmt=TRUE){
   if(is.null(title))  title <- attr(sol,'title')
   if(is.null(title))  title <- 'General DSSAT Soil Input File'
 
-  comments <- attr(sol,'comments')
+  comments <- fmt_comments(sol)
 
   if(force_std_fmt | is.null(attr(sol,'v_fmt'))){
     attr(sol,'v_fmt') <- v_fmt_sol()
   }
   if(is.null(attr(sol,'tier_info'))){
-    attr(sol,'tier_info') <- tier_info_sol() %>%
-      {.[map_lgl(.,~{any(. != "SLB" & . %in% names(sol))})]}
+    tier_info <- tier_info_sol()
+    info_index <- unlist(
+      lapply(tier_info,
+             function(.x){
+               any(.x != "SLB" & .x %in% names(sol))
+             })
+    )
+    attr(sol,'tier_info') <- tier_info[info_index]
   }
 
-  sol_out <- 1:nrow(sol) %>%
-    map(~{sol[.,]}) %>%
-    map(write_soil_profile) %>%
-    unlist()
+  sol_out <- unlist(
+    lapply(1:nrow(sol),
+           function(.x){
+             write_soil_profile(sol[.x,])
+             })
+    )
 
   if(!append){
-    sol_out <- title %>%
-      str_c('*SOILS: ',.) %>%
-      c(.,comments,sol_out)
+    sol_out <- c(
+      paste0('*SOILS: ', title),
+      comments,
+      sol_out)
   }
 
-  write(sol_out,file_name,append = append)
+  write(sol_out, file_name, append = append)
 
   return(invisible())
 }

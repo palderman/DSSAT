@@ -39,7 +39,7 @@ read_dssat <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL,
                        left_justified='EXCODE',guess_max=10){
 
   # Read in raw data from file
-  raw_lines <- readLines(file_name) %>%
+  raw_lines <- readLines(file_name, warn = FALSE) %>%
     str_subset('^(?!\032) *([^ ]+)') # exclude lines that are all spaces or lines with EOF in initial position
 
   # Find beginning of each section

@@ -8,8 +8,6 @@
 #'
 #' @return a tibble containing the data from the raw DSSAT output
 #'
-#' @importFrom dplyr "%>%"
-#'
 #' @examples
 #'
 #' # Extract file path for sample cultivar file path
@@ -25,15 +23,19 @@
 #' write_cul(cul,sample_cul_file2)
 #'
 
-write_cul <- function(cul,file_name){
+write_cul <- function(cul, file_name){
 
   first_line <- attr(cul,'first_line')
 
-  comments <- attr(cul,'comments')
+  comments <- fmt_comments(cul)
 
-  tier_output <- write_tier(cul,
-                            pad_name = c('VAR-NAME','VRNAME')) %>%
-    c(first_line,'',comments,.)
+  tier_output <- c(
+    first_line,
+    '',
+    comments,
+    "",
+    write_tier(cul,
+               pad_name = c('VAR-NAME','VRNAME')))
 
   write(tier_output,file_name)
 

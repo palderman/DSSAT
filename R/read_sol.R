@@ -20,60 +20,102 @@
 #'
 #' sol <- read_sol(sample_sol)
 #'
-
-read_sol <- function(file_name,id_soil=NULL,left_justified=NULL,col_types=NULL,col_names=NULL){
+read_sol <- function(file_name, id_soil=NULL, left_justified=NULL,
+                     col_types=NULL, col_names=NULL){
 
   # Read in raw data from file
-  raw_lines <- readLines(file_name) %>%
-    str_subset('^(?!\032) *([^ ]+)') # exclude lines that are all spaces or lines with EOF in initial position
+  # exclude lines that are all spaces or lines with EOF in initial position
+  raw_lines <- grep("^(?!\032) *([^ ]+)",
+                    readLines(file_name, warn = FALSE),
+                    perl = TRUE,
+                    value = TRUE)
 
-  # Extract title from file
-  title <- raw_lines %>%
-    str_subset('^\\*[Ss][Oo][Ii][Ll][Ss]') %>%
-    str_replace('^\\*[Ss][Oo][Ii][Ll][Ss]:* *','')
+  # Specify left-justified columns
+  left_justified <- left_justified %>%
+    c('SITE','COUNTRY',' SCS FAMILY',
+      ' SCS Family')
 
-  # Extract comments from file
-  comments <- extract_comments(raw_lines)
+  # Specify column types
+  col_types <- cols(`      LAT`=col_double(),
+                    `     LONG`=col_double(),
+                    SSAT=col_double(),
+                    ` SCS FAMILY`=col_character(),
+                    ` SCS Family`=col_character(),
+                    SCOM=col_character(),
+                    COUNTRY=col_character(),
+                    SITE=col_character(),
+                    SMHB=col_character(),
+                    SMPX=col_character(),
+                    SMKE=col_character(),
+                    SLMH=col_character(),
+                    SLB=col_double()) %>%
+    {.$cols <- c(.$cols,col_types$cols);.}
 
-  # Find beginning of each soil profile
-  begin <- raw_lines %>%
-    str_which('^\\*(?![Ss][Oo][Ii][Ll][Ss])')
-  if(length(begin)==0) begin <- 1
+  # Drop comments and empty lines
+  clean_lines <- drop_empty_lines( drop_comments(raw_lines) )
 
-  if(is.null(id_soil)){
-    # Calculate end of each section based on beginning of next section
-    end <- c(begin[-1]-1,length(raw_lines))
-  }else{
+  # Find start/end positions for each soil profile (PEDON)
+  pedon_start_end <- find_pedon(clean_lines)
 
-    # Find index for profile id_soil
-    id_soil_ind <- str_c('^\\*',id_soil) %>%
-      str_which(raw_lines,.)
-
-    # Find start of next soil profile
-    end <- begin[begin>id_soil_ind] %>%
-      {first(.)-1}
-
-    # Handle case where id_soil is last profile in file
-    if(is.null(end)||is.na(end)){
-      end <- length(raw_lines)
-    }
-
-    begin <- id_soil_ind
+  # Filter profiles based on id_soil
+  if(!is.null(id_soil)){
+    pedon_start_end <- pedon_start_end[pedon_start_end$PEDON %in% id_soil, ]
   }
 
-  # Extract and combine all profiles
-  all_profiles <- map(1:length(begin),
-                      ~read_soil_profile(raw_lines[begin[.]:end[.]],
-                                     left_justified = left_justified,
-                                     col_types = col_types,
-                                     col_names = col_names)
-    ) %>%
-    reduce(combine_tiers,force_bind_rows=TRUE)
+  # Extract general information for each PEDON
+  gen_info <- read_sol_gen_info(clean_lines[pedon_start_end$start])
 
-  attr(all_profiles,'title') <- title
-  attr(all_profiles,'comments') <- comments
+  # Strip out and concatenate the lines for each PEDON
+  pedon_lines <- concat_lines(clean_lines, pedon_start_end)
 
-  all_profiles <- as_DSSAT_tbl(all_profiles)
+  # Find start/end positions for each soil data tier within each PEDON
+  tier_start_end <- find_tier(pedon_lines)
 
-  return(all_profiles)
+  # Strip out and concatenate the lines for each soil data tier
+  tier_lines <- concat_lines(pedon_lines$lines, tier_start_end)
+
+  # Remove empty lines
+  tier_lines <- with(tier_lines,
+                     tier_lines[lines != "", ])
+
+  # Read all lines by the same header
+  tiers_out <- lapply(unique(tier_lines$header),
+         function(h){
+           raw_lines <- c(h,
+                          with(tier_lines, lines[header == h]))
+
+           pedon <- with(tier_lines, PEDON[header == h])
+
+           tier_data <- read_tier_data(raw_lines,
+                                       left_justified = left_justified,
+                                       col_types = col_types,
+                                       tier_fmt = v_fmt_sol(),
+                                       convert_date_cols = FALSE)
+
+           tier_data$PEDON <- pedon
+
+           return(tier_data)
+         })
+
+  layer_ind <- sapply(tiers_out, is_sol_layer)
+
+  # Create layer-specific data frame with rows nested by PEDON
+  layer_data <- nest_rows(
+    # Recursively merge layer-specific data
+    recursive_merge(
+      # Subset for list elements with layer-specific data
+      tiers_out[layer_ind],
+      by = c("PEDON", "SLB")),
+    by = "PEDON")
+
+  # Create whole profile data frame with one row per PEDON
+  profile_data <- recursive_merge(
+    c(list(gen_info),
+      tiers_out[!layer_ind]),
+    by = c("PEDON"))
+
+  # Merge whole-profile and layer-specific data
+  tiers_out <- coalesce_merge(profile_data, layer_data)
+
+  return(tiers_out)
 }

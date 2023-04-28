@@ -11,9 +11,6 @@
 #'
 #' @return NULL
 #'
-#' @importFrom dplyr "%>%"
-#' @importFrom stringr str_c
-#'
 #' @examples
 #'
 #' # Extract FileA path for sample file
@@ -28,18 +25,21 @@
 #' write_filea(filea,sample_filea2)
 #'
 
-write_filea <- function(filea,file_name,drop_duplicate_rows=TRUE){
+write_filea <- function(filea, file_name, drop_duplicate_rows=TRUE){
 
-  experiment <- attr(filea,'experiment') %>%
-    c('*EXP. DATA (A): ',.) %>%
-    str_c(collapse='')
+  experiment <- paste0('*EXP. DATA (A): ', attr(filea,'experiment'))
 
-  comments <- attr(filea,'comments')
+  comments <- fmt_comments(filea)
 
-  tier_output <- write_tier(filea,drop_duplicate_rows = drop_duplicate_rows) %>%
-    c(experiment,'',comments,.)
+  tier_output <- c(
+    experiment,
+    "",
+    comments,
+    "",
+    write_tier(filea,
+               drop_duplicate_rows = drop_duplicate_rows))
 
-  write(tier_output,file_name)
+  write(tier_output, file_name)
 
   return(invisible(NULL))
 }

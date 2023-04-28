@@ -14,7 +14,8 @@ read_tier_data(
   join_tiers = TRUE,
   store_v_fmt = TRUE,
   read_only = NULL,
-  tier_fmt = NULL
+  tier_fmt = NULL,
+  convert_date_cols = TRUE
 )
 }
 \arguments{
@@ -46,6 +47,11 @@ format for variables being read}
 
 \item{read_only}{NULL or a character vector of column names that should be read in;
 If non-NULL only the columns listed will be read in.}
+
+\item{convert_date_cols}{A logical value indicating whether to convert
+columns expected to be dates into date-time format. If TRUE, any column that
+matches the following regular expression will be converted:
+"(DATE)|((?<!(L)|(SS))AT$)|(PFRST)|(PLAST)|(HFRST)|(HLAST)"}
 }
 \value{
 a tibble or list of tibbles containing the data from the raw DSSAT output

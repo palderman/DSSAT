@@ -1,5 +1,5 @@
 fix_sol_fmt <- function(path){
-  sol <- readLines(path)
+  sol <- readLines(path, warn = FALSE)
 
   latLines <- str_which(sol,"LAT")
 

@@ -8,9 +8,6 @@
 #'
 #' @return a tibble containing the data from the raw DSSAT output
 #'
-#' @importFrom stringr str_detect
-#' @importFrom dplyr "%>%"
-#'
 #' @examples
 #'
 #' # Extract file path for sample ecotype file path
@@ -26,22 +23,27 @@
 #' write_eco(eco,sample_eco_file2)
 #'
 
-write_eco <- function(eco,file_name){
+write_eco <- function(eco, file_name){
 
   first_line <- attr(eco,'first_line')
 
-  comments <- attr(eco,'comments')
+  comments <- fmt_comments(eco)
 
-  if(str_detect(file_name,'SCCSP')){
-    tier_output <- write_casupro_eco(eco) %>%
-      c(first_line,'',comments,.)
+  if(any(grepl('SCCSP', file_name))){
+    prm_section <- write_casupro_eco(eco)
   }else{
-    tier_output <- write_tier(eco,
-                            pad_name = c('ECONAME','ECO-NAME')) %>%
-      c(first_line,'',comments,.)
+    prm_section <- write_tier(eco,
+                              pad_name = c('ECONAME','ECO-NAME'))
   }
 
-  write(tier_output,file_name)
+  tier_output <- c(
+    first_line,
+    "",
+    comments,
+    "",
+    prm_section)
+
+  write(tier_output, file_name)
 
   return(invisible(NULL))
 }

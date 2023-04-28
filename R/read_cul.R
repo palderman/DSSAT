@@ -50,7 +50,7 @@ read_cul <- function(file_name,col_types=NULL,col_names=NULL,
   }
 
   # Read in raw data from file
-  raw_lines <- readLines(file_name)
+  raw_lines <- readLines(file_name, warn = FALSE)
 
   first_line <- raw_lines %>%
     head(1)
@@ -69,7 +69,8 @@ read_cul <- function(file_name,col_types=NULL,col_names=NULL,
              ~read_tier_data(raw_lines[begin[.]:end[.]],
                         col_types = cul_col_types,
                         col_names = col_names,
-                        left_justified = left_justified)) %>%
+                        left_justified = left_justified,
+                        convert_date_cols = FALSE)) %>%
     reduce(combine_tiers)
 
   attr(cul,'first_line') <- first_line

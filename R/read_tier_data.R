@@ -14,6 +14,11 @@
 #' @param join_tiers A logical indicating whether the multiple tiers should be
 #' combined into a single tibble
 #'
+#' @param convert_date_cols A logical value indicating whether to convert
+#'  columns expected to be dates into date-time format. If TRUE, any column that
+#'  matches the following regular expression will be converted:
+#'  "(DATE)|((?<!(L)|(SS))AT$)|(PFRST)|(PLAST)|(HFRST)|(HLAST)"
+#'
 #' @return a tibble or list of tibbles containing the data from the raw DSSAT output
 #'
 #' @importFrom stringr str_which str_replace_all str_detect str_subset
@@ -33,7 +38,8 @@
 
 read_tier_data <- function(raw_lines, col_types=NULL, col_names=NULL, na_strings=NULL,
                            left_justified='EXCODE', guess_max=1000, join_tiers=TRUE,
-                           store_v_fmt=TRUE, read_only = NULL, tier_fmt = NULL){
+                           store_v_fmt=TRUE, read_only = NULL, tier_fmt = NULL,
+                           convert_date_cols = TRUE){
 
   raw_lines <- sanitize_raw_lines(raw_lines)
 
@@ -62,7 +68,7 @@ read_tier_data <- function(raw_lines, col_types=NULL, col_names=NULL, na_strings
 
   }else{
     fwf_pos <- map(headline,
-                   ~v_fmt_to_fwf_pos(tier_fmt, header = .))
+                   ~v_fmt_to_fwf_pos(tier_fmt, header = toupper(.)))
 
     col_types <- map(fwf_pos,
                      ~v_fmt_to_col_types(tier_fmt[.$col_names]))
@@ -79,6 +85,8 @@ read_tier_data <- function(raw_lines, col_types=NULL, col_names=NULL, na_strings
   na_strings <- c(na_strings,'-99','-99.','-99.0','-99.00','-99.000',
                   '*','**','***','****','*****','******','*******','********')
 
+  na_regex <- paste0(paste0("(^", gsub("\\*", "\\\\*", na_strings), "$)"), collapse = "|")
+
   # Read data from tier
   tier_data <- map(1:length(skip),function(i){
         if(skip[i]==end[i]){
@@ -93,17 +101,13 @@ read_tier_data <- function(raw_lines, col_types=NULL, col_names=NULL, na_strings
           }else{
             cmnt <- '!'
           }
-          tdata <- read_fwf(I(raw_lines[skip[i]:end[i]]),
-                            fwf_pos[[i]],
-                            comment = cmnt,
-                            skip = 1,
-                              na = na_strings,
-                            skip_empty_rows = TRUE,
-                            guess_max = guess_max,
-                            col_types = col_types[[i]])
+          tdata <- read_fixed_width(text = raw_lines[(skip[i]+1):end[i]],
+                                    fwf_pos = fwf_pos[[i]],
+                                    ctypes = col_types_to_vec(col_types[[i]]),
+                                    na_regex = na_regex)
         }
         return(tdata)
-      }) %>%
+    }) %>%
     # add_col_widths(fwf_pos) %>%
     map(function(one_df){
       colnames(one_df) <- colnames(one_df) %>%
@@ -122,19 +126,21 @@ read_tier_data <- function(raw_lines, col_types=NULL, col_names=NULL, na_strings
                        as.POSIXct(format='%Y%j',tz='UTC')}) %>%
           select(-YEAR,-DOY)
       }
-      # Convert DATE column if DATE is not already POSIXct
-      potential_date_cols <- colnames(one_df) %>%
-        str_subset('(DATE)|((?<!XL)AT$)|(PFRST)|(PLAST)|(HFRST)|(HLAST)')
-      date_cols <- col_types %>%
-        {map(.,~names(.$cols)) %>%
-            unlist()} %>%
-        str_replace_all(c('^ +'='',
-                          ' +$'='')) %>%
-        { potential_date_cols[(! potential_date_cols %in% .) |
-                               potential_date_cols == 'DATE' |
-                                !is.null(tier_fmt)]}
-      one_df <- one_df %>%
-        mutate_at(.,date_cols,~convert_to_date(.))
+      if(convert_date_cols){
+        # Convert DATE column if DATE is not already POSIXct
+        potential_date_cols <- colnames(one_df) %>%
+          str_subset('(DATE)|((?<!(L)|(SS))AT$)|(PFRST)|(PLAST)|(HFRST)|(HLAST)')
+        date_cols <- col_types %>%
+          {map(.,~names(.$cols)) %>%
+              unlist()} %>%
+          str_replace_all(c('^ +'='',
+                            ' +$'='')) %>%
+          { potential_date_cols[(! potential_date_cols %in% .) |
+                                 potential_date_cols == 'DATE' |
+                                  !is.null(tier_fmt)]}
+        one_df <- one_df %>%
+          mutate_at(.,date_cols,~convert_to_date(.))
+      }
       return(one_df)
     }) %>%
     map(~mutate_if(.,

@@ -54,6 +54,7 @@ read_soil_profile <- function(raw_lines, left_justified=NULL,
                     SMPX=col_character(),
                     SMKE=col_character(),
                     SLMH=col_character(),
+                    SLBS=col_double(),
                     SLB=col_double()) %>%
     {.$cols <- c(.$cols,col_types$cols);.}
 
@@ -82,7 +83,8 @@ read_soil_profile <- function(raw_lines, left_justified=NULL,
   tier_data <- map(1:length(tier_begin),
                    ~read_tier_data(raw_lines[tier_begin[.]:tier_end[.]],
                                    left_justified = left_justified,
-                                   col_types = col_types)) %>%
+                                   col_types = col_types,
+                                   col_names = col_names)) %>%
     c(list(gen_info),.) %>%
     reduce(combine_tiers) %>%
     rename_all(toupper) %>%

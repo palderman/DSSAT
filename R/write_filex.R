@@ -12,33 +12,28 @@
 #' @param force_std_fmt a logical value indicating whether to override the
 #' variable format stored within the FileX object with standard DSSAT formatting
 #'
-#' @importFrom dplyr "%>%"
-#' @importFrom stringr str_c str_detect
-#' @importFrom purrr map
-#'
 #' @return NULL
 #'
 
 write_filex <- function(filex, file_name, drop_duplicate_rows=TRUE, force_std_fmt=TRUE){
 
-  experiment <- attr(filex,'experiment') %>%
-    c('*EXP.DETAILS: ',.) %>%
-    str_c(collapse='')
+  experiment <- paste0('*EXP.DETAILS: ', attr(filex,'experiment'))
 
-  comments <- attr(filex,'comments')
+  comments <- fmt_comments(filex)
 
-  tier_output <- names(filex) %>%
-    map(function(sec_name){
+  file_body <- unlist(
+    lapply( names(filex),
+    function(sec_name){
       if(force_std_fmt){
         attr(filex[[sec_name]],'v_fmt') <- v_fmt_filex(sec_name)
         attr(filex[[sec_name]],'tier_info') <- tier_info_filex(sec_name)
       }
-      if(str_detect(sec_name,'(IRRIGATION)|(INITIAL)|(SOIL)')){
+      if(any(grepl('(IRRIGATION)|(INITIAL)|(SOIL)', sec_name))){
         tier_out <- write_dual_tier_section(filex[[sec_name]],
                                drop_duplicate_rows=drop_duplicate_rows)
-      }else if(str_detect(sec_name,'SIMULATION CONTROLS')){
+      }else if(any(grepl('SIMULATION CONTROLS', sec_name))){
         tier_out <- write_sim_ctrl_section(filex[[sec_name]])
-      }else if(str_detect(sec_name,'GENERAL')){
+      }else if(any(grepl('GENERAL', sec_name))){
         tier_out <- write_tier(filex[[sec_name]],
                                pad_name=c('HARM'),
                                drop_duplicate_rows=drop_duplicate_rows,
@@ -48,14 +43,21 @@ write_filex <- function(filex, file_name, drop_duplicate_rows=TRUE, force_std_fm
                                pad_name=c('TNAME','XCRD','YCRD','ELEV','AREA','SLEN','FLWR','SLAS','WSTA','CHT'),
                                drop_duplicate_rows=drop_duplicate_rows)
       }
-      tier_out <- tier_out %>%
-        c(str_c('*',sec_name),.,'')
+      tier_out <- c(
+        paste0('*', sec_name),
+        tier_out,
+        '')
       return(tier_out)
-    }) %>%
-    unlist() %>%
-    c(experiment,'',comments,.)
+    })
+    )
 
-  write(tier_output,file_name)
+  tier_output <- c(
+    experiment,
+    '',
+    comments,
+    file_body)
+
+  write(tier_output, file_name)
 
   return(invisible(NULL))
 }

@@ -204,7 +204,7 @@ test_that("FIELDS single",{
                          FLDT = "DR000",
                          FLDD = 0,
                          FLDS = 0,
-                         FLST = "0000",
+                         FLST = 0,
                          SLTX = "SL",
                          SLDP = 180,
                          ID_SOIL = "IBTM910017"))
@@ -246,7 +246,7 @@ test_that("FIELDS multiple",{
                          FLDT = rep("DR000", 4),
                          FLDD = rep(0, 4),
                          FLDS = rep(0, 4),
-                         FLST = rep("0000", 4),
+                         FLST = rep(0, 4),
                          SLTX = c("SL", "SA", "SA", "SA"),
                          SLDP = rep(180, 4),
                          ID_SOIL = c("IBTM910017",

@@ -44,7 +44,7 @@ read_output <- function(file_name, col_types = NULL, col_names = NULL,
       ' +S(?= |$)',' +O(?= |$)',' +C(?= |$)',' +CR(?= |$)',' TNAM(?= |$)','  TRNO')
 
   # Read in raw data from file
-  raw_lines <- readLines(file_name) %>%
+  raw_lines <- readLines(file_name, warn = FALSE) %>%
     str_subset('^(?!\032) *([^ ]+)') # exclude lines that are all spaces or lines with EOF in initial position
 
   # Find beginning of each section

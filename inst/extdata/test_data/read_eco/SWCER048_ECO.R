@@ -1,0 +1,23 @@
+structure(list(`ECO#` = c("IB0001", "DFAULT"), ECONAME = c("GENERIC", 
+"DEFAULT"), TBASE = c(8, 8), TOPT = c(34, 34), ROPT = c(34, 34
+), P20 = c(12.5, 12.5), DJTI = c(4, 4), GDDE = c(6, 6), DSGFT = c(170, 
+170), RUE = c(4.2, 4.2), KCAN = c(0.85, 0.85), TSEN = c(NA_real_, 
+NA_real_), CDAY = c(NA_real_, NA_real_)), class = c("DSSAT_tbl", 
+"tbl_df", "tbl", "data.frame"), row.names = c(NA, -2L), v_fmt = c(`ECO#` = "%-7s", 
+ECONAME = "%-18s", TBASE = "%5.0f", TOPT = "%6.0f", ROPT = "%6.0f", 
+P20 = "%6.1f", DJTI = "%6.0f", GDDE = "%6.0f", DSGFT = "%6.0f", 
+RUE = "%6.1f", KCAN = "%6.2f", TSEN = "%6f", CDAY = "%6f"), first_line = "*SWEET CORN ECOTYPE COEFFICIENTS: SWCER048 MODEL", comments = c("", 
+" COEFF   DEFINITIONS", " =====   ===========", " ECO#    Code for the ecotype to which a cultivar belongs (see *.cul", 
+"         file)", " ECONAME Name of the ecotype, which is referenced from *.CUL file", 
+" TBASE   Base temperature below which no development occurs, C", 
+" TOPT    Temperature at which maximum development rate occurs during vegetative stages, C", 
+" ROPT    Temperature at which maximum development rate occurs for reproductive stages, C", 
+" P2O     Daylength below which daylength does not affect development rate, hours", 
+" DJTI    Minimum days from end of juvenile stage to tassel initiation if the cultivar", 
+"\t         is not photoperiod sensitive, days", " GDDE    Growing degree days per cm seed depth required for emergence, GDD/cm", 
+" DSGFT   GDD from silking to effective grain filling period, C", 
+" RUE     Radiation use efficiency, g plant dry matter/MJ PAR", 
+" KCAN    Canopy light extinction coefficient for daily PAR.", 
+" TSEN    Critical temperature below which leaf damage occurs (default 6C)", 
+" CDAY    Number of cold days parameter (default 15.0 )", "                            1     2     3     4     5     6     7     8     9    10    11"
+))

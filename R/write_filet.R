@@ -11,9 +11,6 @@
 #'
 #' @return NULL
 #'
-#' @importFrom dplyr "%>%"
-#' @importFrom stringr str_c
-#'
 #' @examples
 #'
 #' # Extract FileT path for sample file
@@ -28,18 +25,21 @@
 #' write_filet(filet,sample_filet2)
 #'
 
-write_filet <- function(filet,file_name,drop_duplicate_rows=TRUE){
+write_filet <- function(filet, file_name, drop_duplicate_rows=TRUE){
 
-  experiment <- attr(filet,'experiment') %>%
-    c('*EXP. DATA (T): ',.) %>%
-    str_c(collapse='')
+  experiment <- paste0('*EXP. DATA (T): ', attr(filet,'experiment'))
 
-  comments <- attr(filet,'comments')
+  comments <- fmt_comments(filet)
 
-  tier_output <- write_tier(filet,drop_duplicate_rows=drop_duplicate_rows) %>%
-    c(experiment,'',comments,.)
+  tier_output <- c(
+    experiment,
+    "",
+    comments,
+    "",
+    write_tier(filet,
+               drop_duplicate_rows=drop_duplicate_rows))
 
-  write(tier_output,file_name)
+  write(tier_output, file_name)
 
   return(invisible(NULL))
 }

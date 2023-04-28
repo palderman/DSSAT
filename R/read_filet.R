@@ -22,7 +22,7 @@
 
 read_filet <- function(file_name,col_types=NULL,col_names=NULL,na_strings=NULL){
 
-  raw_lines <- readLines(file_name)
+  raw_lines <- readLines(file_name, warn = FALSE)
 
   experiment <- raw_lines %>%
     str_subset('\\*EXP\\. *DATA *\\([AT]\\): *') %>%

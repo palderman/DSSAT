@@ -1,0 +1,53 @@
+*COTTON ECOTYPE COEFFICIENTS - CRGRO048 MODEL
+
+!
+! COEFF   DEFINITIONS
+! =====   ===========
+! ECO#    Code for the ecotype to which a cultivar belongs (see *.cul
+!         file)
+! ECONAME Name of the ecotype, which is referenced from *.CUL file
+! MG      Maturity group number for this ecotype, such as maturity
+!         group in soybean
+! TM      Indicator of temperature adaptation
+! THVAR   Minimum rate of reproductive development under short days
+!         and optimal temperature
+! PL-EM   Time between planting and emergence (V0) (thermal days)
+! EM-V1   Time required from emergence to first true leaf (V1), thermal
+!         days
+! V1-JU   Time required from first true leaf to end of juvenile phase,
+!         thermal days
+! JU-R0   Time required for floral induction, equal to the minimum
+!         number of days for floral induction under optimal temperature and
+!         daylengths, photothermal days
+! PM06    Proportion of time between first flower and first pod for
+!         first peg (peanut only)
+! PM09    Proportion of time between first seed and physiological
+!         maturity that the last seed can be formed
+! LNGSH   Time required for growth of individual shells (photothermal
+!         days)
+! R7-R8   Time between physiological (R7) and harvest maturity (R8) (days)
+! FL-VS   Time from first flower to last leaf on main stem (photothermal
+!         days)
+! TRIFL   Rate of appearance of leaves on the mainstem (leaves per
+!         thermal day)
+! RWDTH   Relative width of this ecotype in comparison to the standard
+!         width per node (YVSWH) defined in the species file (*.SPE)
+! RHGHT   Relative height of this ecotype in comparison to the
+!         standard height per node (YVSHT) defined in the species file
+!         (*.SPE)
+! R1PPO   Increase in daylength sensitivity after R1 (CSDVAR and CLDVAR
+!         both decrease with the same amount) (h)
+! OPTBI   Minimum daily temperature above which there is no effect on
+!         slowing normal development toward flowering (oC)
+! SLOBI   Slope of relationship reducing progress toward flowering if
+!         TMIN for the day is less than OPTBI
+! KCAN
+! Note from K. Boote.  I did nothing with KCAN and don't understand what it is doing in ECO.  I hope "missing" value is OK.
+!                                  1     2     3     4     5     6     7     8    9     10    11    12    13    14    15    16    17
+
+@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI  KCAN
+CO0001 DP 77              2  1     0     4     4     0     0     0   0.9    10    10    75  0.20  0.80  0.85 0.001    20 0.001   -99
+CO0003 DP 458             2  1     0     4     4     0     0     0   0.9    12    10    65  0.25  1.00  0.90 0.001    20 0.001   -99
+CO0005 DP 555             2  1     0     4     4     0     0     0   0.9     6    10    75  0.20  1.00  1.00 0.001    20 0.001   -99
+CO0006 DP 1219            2  1     0     4     4     0     0     0   0.9     8    10    40  0.20  1.00  0.90 0.001    20 0.001   -99
+CO0021 GP 3774            2  1     0     4     4     0     0     0   0.9     8    10    75  0.20  0.85  0.95 0.001    20 0.001   -99
