@@ -21,8 +21,9 @@
 #'
 #'
 
-read_cul <- function(file_name,col_types=NULL,col_names=NULL,
-                     left_justified=c('VAR#','VARNAME\\.*','VAR-NAME\\.*','VRNAME\\.*')){
+read_cul <- function(file_name, col_types=NULL, col_names=NULL,
+                     left_justified=c('VAR#', 'VARNAME\\.*', 'VAR-NAME\\.*','VRNAME\\.*'),
+                     use_std_fmt = TRUE){
 
   cul_col_types <- cols(`VAR#`=col_character(),
                         `VARNAME\\.*`=col_character(),
@@ -65,11 +66,18 @@ read_cul <- function(file_name,col_types=NULL,col_names=NULL,
     {. - 1} %>%
     c(.,length(raw_lines))
 
+  if(use_std_fmt){
+    tier_fmt <- v_fmt_cul(file_name)
+  }else{
+    tier_fmt <- NULL
+  }
+
   cul <- map(1:length(begin),
              ~read_tier_data(raw_lines[begin[.]:end[.]],
                         col_types = cul_col_types,
                         col_names = col_names,
                         left_justified = left_justified,
+                        tier_fmt = tier_fmt,
                         convert_date_cols = FALSE)) %>%
     reduce(combine_tiers)
 

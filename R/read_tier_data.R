@@ -68,7 +68,7 @@ read_tier_data <- function(raw_lines, col_types=NULL, col_names=NULL, na_strings
 
   }else{
     fwf_pos <- map(headline,
-                   ~v_fmt_to_fwf_pos(tier_fmt, header = toupper(.)))
+                   ~v_fmt_to_fwf_pos(tier_fmt, header = .))
 
     col_types <- map(fwf_pos,
                      ~v_fmt_to_col_types(tier_fmt[.$col_names]))
