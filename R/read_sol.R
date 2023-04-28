@@ -94,6 +94,8 @@ read_sol <- function(file_name, id_soil=NULL, left_justified=NULL,
 
            tier_data$PEDON <- pedon
 
+           colnames(tier_data) <- toupper(colnames(tier_data))
+
            return(tier_data)
          })
 

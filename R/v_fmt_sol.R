@@ -15,7 +15,8 @@ v_fmt_sol <- function(){
              SLFE = "%6f", SLMN = "%6f", SLBS = "%6f", SLPA = "%6f", SLPB = "%6f",
              SLKE = "%6.2f", SLMG = "%6.2f", SLNA = "%6.2f", SLSU = "%6f",
              SLEC = "%6f", SLCA = "%6.2f",
-             ALFVG = "%6.3f", MVG = "%6.3f", NVG = "%6.3f", WCRES = "%6.3f")
+             ALFVG = "%6.3f", MVG = "%6.3f", NVG = "%6.3f", WCRES = "%6.3f",
+             `SCS Family` = " %-s")
 
   return(v_fmt)
 }
