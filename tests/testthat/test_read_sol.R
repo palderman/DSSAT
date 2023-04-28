@@ -358,7 +358,8 @@ test_that("read_sol() Three profiles",{
 
 test_that("read_sol() TEST.SOL",{
 
-  sol <- DSSAT::read_sol(system.file("extdata/TEST.SOL", package = "DSSAT"))
+  sol <- DSSAT::read_sol(system.file("extdata/test_data/SOL/TEST.SOL",
+                                     package = "DSSAT"))
 
   DSSAT:::test_cols_check(
     sol,
@@ -2711,7 +2712,7 @@ test_that("read_sol() TEST.SOL",{
 
 test_that("read_sol() TEST.SOL UFGA950002",{
 
-  sol <- DSSAT:::read_sol(system.file("extdata/TEST.SOL", package = "DSSAT"),
+  sol <- DSSAT:::read_sol(system.file("extdata/test_data/SOL/TEST.SOL", package = "DSSAT"),
                           id_soil = "UFGA950002")
 
   DSSAT:::test_cols_check(
