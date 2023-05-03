@@ -1,4 +1,6 @@
-# DSSAT 0.0.7.9002
+# DSSAT 0.0.7.9003
+
+- Adding function clear_output() to clear \*.OUT, \*.LST, \*.INP and \*.INH files
 
 - Bugfix to properly prefix comments with "!" when writing files
 
