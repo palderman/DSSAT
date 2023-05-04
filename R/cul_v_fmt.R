@@ -31,7 +31,7 @@
 #   }) %>%
 #   unlist() %>%
 #   clipr::write_clip()
-v_fmt_cul <- function(cul_file){
+cul_v_fmt <- function(cul_file){
 
   model_code <- substr(basename(cul_file), 1, 5)
 

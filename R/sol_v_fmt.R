@@ -1,4 +1,4 @@
-v_fmt_sol <- function(){
+sol_v_fmt <- function(){
 
   v_fmt <- c(PEDON = "*%-10s", SOURCE = "  %-11s", TEXTURE = " %-5s", DEPTH = "%6.0f",
              DESCRIPTION = " %-s", SITE = "%-13s", COUNTRY = "%-11s", LAT = "%9.3f",

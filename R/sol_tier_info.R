@@ -1,4 +1,5 @@
-tier_info_sol <- function(){
+sol_tier_info <- function(){
+
   tier_info <- list(
     c("PEDON", "SOURCE", "TEXTURE", "DEPTH", "DESCRIPTION"),
     c("SITE", "COUNTRY", "LAT", "LONG", "SCS FAMILY"),
@@ -11,5 +12,6 @@ tier_info_sol <- function(){
       "SLFE", "SLMN", "S", "SLPA", "SLPB", "SLKE",
       "SLMG", "SLNA", "SLSU", "SLEC", "SLCA"),
     c("SLB", "ALFVG", "MVG", "NVG", "WCRES"))
+
   return(tier_info)
 }

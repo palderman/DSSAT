@@ -40,10 +40,10 @@ write_sol <- function(sol,file_name,title=NULL,append=TRUE,force_std_fmt=TRUE){
   comments <- fmt_comments(sol)
 
   if(force_std_fmt | is.null(attr(sol,'v_fmt'))){
-    attr(sol,'v_fmt') <- v_fmt_sol()
+    attr(sol,'v_fmt') <- sol_v_fmt()
   }
   if(is.null(attr(sol,'tier_info'))){
-    tier_info <- tier_info_sol()
+    tier_info <- sol_tier_info()
     info_index <- unlist(
       lapply(tier_info,
              function(.x){

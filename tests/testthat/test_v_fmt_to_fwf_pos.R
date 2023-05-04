@@ -5,7 +5,7 @@ test_that("@PEOPLE",{
         0,NA_real_,   "PEOPLE" #"@PEOPLE"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("GENERAL")
+  v_fmt <- DSSAT:::filex_v_fmt("GENERAL")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@PEOPLE",
                                             v_fmt = v_fmt)
@@ -21,7 +21,7 @@ test_that("@ADDRESS",{
         0,NA_real_,  "ADDRESS" #"@ADDRESS"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("GENERAL")
+  v_fmt <- DSSAT:::filex_v_fmt("GENERAL")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@ADDRESS",
                                             v_fmt = v_fmt)
@@ -37,7 +37,7 @@ test_that("@SITE",{
         0,NA_real_,     "SITE" #"@SITE"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("GENERAL")
+  v_fmt <- DSSAT:::filex_v_fmt("GENERAL")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@SITE",
                                             v_fmt = v_fmt)
@@ -62,7 +62,7 @@ test_that("@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN  HARM........
        55,      70,     "HARM" #"  HARM........."
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("GENERAL")
+  v_fmt <- DSSAT:::filex_v_fmt("GENERAL")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN  HARM.........",
                                             v_fmt = v_fmt)
@@ -95,7 +95,7 @@ test_that("@N R O C TNAME.................... CU FL SA IC MP MI MF MR MC MT ME M
        70,   73,       "SM" #                       " SM"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("TREATMENTS")
+  v_fmt <- DSSAT:::filex_v_fmt("TREATMENTS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@N R O C TNAME.................... CU FL SA IC MP MI MF MR MC MT ME MH SM",
                                             v_fmt = v_fmt)
@@ -114,7 +114,7 @@ test_that("@C CR INGENO CNAME",{
        12,NA_real_,    "CNAME" # " CNAME"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("CULTIVARS")
+  v_fmt <- DSSAT:::filex_v_fmt("CULTIVARS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@C CR INGENO CNAME",
                                             v_fmt = v_fmt)
@@ -142,7 +142,7 @@ test_that("@L ID_FIELD WSTA....  FLSA  FLOB  FLDT  FLDD  FLDS  FLST SLTX  SLDP  
        80,NA_real_,   "FLNAME" #       "FLNAME"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("FIELDS")
+  v_fmt <- DSSAT:::filex_v_fmt("FIELDS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@L ID_FIELD WSTA....  FLSA  FLOB  FLDT  FLDD  FLDS  FLST SLTX  SLDP  ID_SOIL    FLNAME",
                                             v_fmt = v_fmt)
@@ -167,7 +167,7 @@ test_that("@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN 
        86,   92,    "FHDUR" #            " FHDUR"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("FIELDS")
+  v_fmt <- DSSAT:::filex_v_fmt("FIELDS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN .FLWR .SLAS FLHST FHDUR",
                                             v_fmt = v_fmt)
@@ -198,7 +198,7 @@ test_that("@P PDATE EDATE  PPOP  PPOE  PLME  PLDS  PLRS  PLRD  PLDP  PLWT  PAGE 
        86,NA_real_,   "PLNAME" #"                        PLNAME"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("PLANTING DETAILS")
+  v_fmt <- DSSAT:::filex_v_fmt("PLANTING DETAILS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@P PDATE EDATE  PPOP  PPOE  PLME  PLDS  PLRS  PLRD  PLDP  PLWT  PAGE  PENV  PLPH  SPRL                        PLNAME",
                                             v_fmt = v_fmt)
@@ -222,7 +222,7 @@ test_that("@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",{
        44,NA_real_,   "IRNAME" #" IRNAME"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("IRRIGATION")
+  v_fmt <- DSSAT:::filex_v_fmt("IRRIGATION")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",
                                             v_fmt = v_fmt)
@@ -241,7 +241,7 @@ test_that("@I IDATE  IROP IRVAL",{
        14,   20,    "IRVAL" #" IRVAL"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("IRRIGATION")
+  v_fmt <- DSSAT:::filex_v_fmt("IRRIGATION")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@I IDATE  IROP IRVAL",
                                             v_fmt = v_fmt)
@@ -268,7 +268,7 @@ test_that("@F FDATE  FMCD  FACD  FDEP  FAMN  FAMP  FAMK  FAMC  FAMO  FOCD FERNAM
        62,NA_real_,  "FERNAME" #" FERNAME"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("FERTILIZERS")
+  v_fmt <- DSSAT:::filex_v_fmt("FERTILIZERS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@F FDATE  FMCD  FACD  FDEP  FAMN  FAMP  FAMK  FAMC  FAMO  FOCD FERNAME",
                                             v_fmt = v_fmt)
@@ -288,7 +288,7 @@ test_that("@T TDATE TIMPL  TDEP TNAME",{
        20,NA_real_,    "TNAME" #" TNAME"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("TILLAGE")
+  v_fmt <- DSSAT:::filex_v_fmt("TILLAGE")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@T TDATE TIMPL  TDEP TNAME",
                                             v_fmt = v_fmt)
@@ -311,7 +311,7 @@ test_that("@H HDATE  HSTG  HCOM HSIZE   HPC  HBPC HNAME",{
        38,NA_real_,    "HNAME" #" HNAME"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("HARVEST")
+  v_fmt <- DSSAT:::filex_v_fmt("HARVEST")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@H HDATE  HSTG  HCOM HSIZE   HPC  HBPC HNAME",
                                             v_fmt = v_fmt)
@@ -335,7 +335,7 @@ test_that("@N GENERAL     NYERS NREPS START SDATE RSEED SNAME...................
        70,      79,   "SMODEL" #                    " SMODEL"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("SIMULATION CONTROLS")
+  v_fmt <- DSSAT:::filex_v_fmt("SIMULATION CONTROLS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@N GENERAL     NYERS NREPS START SDATE RSEED SNAME.................... SMODEL",
                                             v_fmt = v_fmt)
@@ -361,7 +361,7 @@ test_that("@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL   CO2"
        62,   68,      "CO2" #       "   CO2"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("SIMULATION CONTROLS")
+  v_fmt <- DSSAT:::filex_v_fmt("SIMULATION CONTROLS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL   CO2",
                                             v_fmt = v_fmt)
@@ -389,7 +389,7 @@ test_that("@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM 
        74,   80,    "MESOL" #       " MESOL"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("SIMULATION CONTROLS")
+  v_fmt <- DSSAT:::filex_v_fmt("SIMULATION CONTROLS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM MESEV MESOL",
                                             v_fmt = v_fmt)
@@ -411,7 +411,7 @@ test_that("@N MANAGEMENT  PLANT IRRIG FERTI RESID HARVS",{
        38,   44,     "HARVS" #       " HARVS"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("SIMULATION CONTROLS")
+  v_fmt <- DSSAT:::filex_v_fmt("SIMULATION CONTROLS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@N MANAGEMENT  PLANT IRRIG FERTI RESID HARVS",
                                             v_fmt = v_fmt)
@@ -442,7 +442,7 @@ test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT 
        92,   98,    "FMOPT" #       " FMOPT"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("SIMULATION CONTROLS")
+  v_fmt <- DSSAT:::filex_v_fmt("SIMULATION CONTROLS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT VBOSE CHOUT OPOUT FMOPT",
                                             v_fmt = v_fmt)
@@ -466,7 +466,7 @@ test_that("@N PLANTING    PFRST PLAST PH2OL PH2OU PH2OD PSTMX PSTMN",{
        50,   56,    "PSTMN" #       " PSTMN"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("SIMULATION CONTROLS")
+  v_fmt <- DSSAT:::filex_v_fmt("SIMULATION CONTROLS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@N PLANTING    PFRST PLAST PH2OL PH2OU PH2OD PSTMX PSTMN",
                                             v_fmt = v_fmt)
@@ -490,7 +490,7 @@ test_that("@N IRRIGATION  IMDEP ITHRL ITHRU IROFF IMETH IRAMT IREFF",{
        50,   56,     "IREFF" #       " IREFF"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("SIMULATION CONTROLS")
+  v_fmt <- DSSAT:::filex_v_fmt("SIMULATION CONTROLS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@N IRRIGATION  IMDEP ITHRL ITHRU IROFF IMETH IRAMT IREFF",
                                             v_fmt = v_fmt)
@@ -512,7 +512,7 @@ test_that("@N NITROGEN    NMDEP NMTHR NAMNT NCODE NAOFF",{
        38,   44,    "NAOFF" #       " NAOFF"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("SIMULATION CONTROLS")
+  v_fmt <- DSSAT:::filex_v_fmt("SIMULATION CONTROLS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@N NITROGEN    NMDEP NMTHR NAMNT NCODE NAOFF",
                                             v_fmt = v_fmt)
@@ -532,7 +532,7 @@ test_that("@N RESIDUES    RIPCN RTIME RIDEP",{
        26,   32,    "RIDEP" #       " RIDEP"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("SIMULATION CONTROLS")
+  v_fmt <- DSSAT:::filex_v_fmt("SIMULATION CONTROLS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@N RESIDUES    RIPCN RTIME RIDEP",
                                             v_fmt = v_fmt)
@@ -553,7 +553,7 @@ test_that("@N HARVEST     HFRST HLAST HPCNP HPCNR",{
        32,   38,    "HPCNR" #       " HPCNR"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("SIMULATION CONTROLS")
+  v_fmt <- DSSAT:::filex_v_fmt("SIMULATION CONTROLS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@N HARVEST     HFRST HLAST HPCNP HPCNR",
                                             v_fmt = v_fmt)
@@ -582,7 +582,7 @@ test_that("@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP 
        74,NA_real_,   "ICNAME" #" ICNAME"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("INITIAL CONDITIONS")
+  v_fmt <- DSSAT:::filex_v_fmt("INITIAL CONDITIONS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME",
                                             v_fmt = v_fmt)
@@ -602,7 +602,7 @@ test_that("@C  ICBL  SH2O  SNH4  SNO3",{
        20,   26,     "SNO3" #"  SNO3"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("INITIAL CONDITIONS")
+  v_fmt <- DSSAT:::filex_v_fmt("INITIAL CONDITIONS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@C  ICBL  SH2O  SNH4  SNO3",
                                             v_fmt = v_fmt)
@@ -618,7 +618,7 @@ test_that("@NOTES",{
         0,NA_real_,    "NOTES" #"@NOTES"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("GENERAL")
+  v_fmt <- DSSAT:::filex_v_fmt("GENERAL")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@NOTES",
                                             v_fmt = v_fmt)
@@ -644,7 +644,7 @@ test_that("@E ODATE EDAY  ERAD  EMAX  EMIN  ERAIN ECO2  EDEW  EWIND ENVNAME  ",{
        57,NA_real_,  "ENVNAME" #"ENVNAME  "
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("ENVIRONMENT")
+  v_fmt <- DSSAT:::filex_v_fmt("ENVIRONMENT")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@E ODATE EDAY  ERAD  EMAX  EMIN  ERAIN ECO2  EDEW  EWIND ENVNAME  ",
                                             v_fmt = v_fmt)
@@ -665,7 +665,7 @@ test_that("@A SADAT  SMHB  SMPX  SMKE  SANAME",{
        26,   NA,   "SANAME" #"  SANAME"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("SOIL ANALYSIS")
+  v_fmt <- DSSAT:::filex_v_fmt("SOIL ANALYSIS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@A SADAT  SMHB  SMPX  SMKE  SANAME",
                                             v_fmt = v_fmt)
@@ -690,7 +690,7 @@ test_that("@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC",{
        50,   56,     "SASC" #"  SASC"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("SOIL ANALYSIS")
+  v_fmt <- DSSAT:::filex_v_fmt("SOIL ANALYSIS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC",
                                             v_fmt = v_fmt)
@@ -720,7 +720,7 @@ test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT 
        86,   92,    "OPOUT" #       " OPOUT"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("SIMULATION CONTROLS")
+  v_fmt <- DSSAT:::filex_v_fmt("SIMULATION CONTROLS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT VBOSE CHOUT OPOUT",
                                             v_fmt = v_fmt)
@@ -743,7 +743,7 @@ test_that("@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN 
        74,   80,     "SLAS" #            " .SLAS"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("FIELDS")
+  v_fmt <- DSSAT:::filex_v_fmt("FIELDS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN .FLWR .SLAS",
                                             v_fmt = v_fmt)
@@ -768,7 +768,7 @@ test_that("@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL",{
        56,   62,     "TILL" #       "  TILL"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("SIMULATION CONTROLS")
+  v_fmt <- DSSAT:::filex_v_fmt("SIMULATION CONTROLS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL",
                                             v_fmt = v_fmt)
@@ -794,7 +794,7 @@ test_that("@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM"
        62,   68,    "MESOM" #       " MESOM"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("SIMULATION CONTROLS")
+  v_fmt <- DSSAT:::filex_v_fmt("SIMULATION CONTROLS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM",
                                             v_fmt = v_fmt)
@@ -824,7 +824,7 @@ test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT 
        86,   92,    "OPOUT" #       " OPOUT"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("SIMULATION CONTROLS")
+  v_fmt <- DSSAT:::filex_v_fmt("SIMULATION CONTROLS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT  LONG CHOUT OPOUT",
                                             v_fmt = v_fmt)
@@ -849,7 +849,7 @@ test_that("@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN HARM.........
        55,   70,     "HARM" #" HARM........."
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("GENERAL")
+  v_fmt <- DSSAT:::filex_v_fmt("GENERAL")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN HARM.........",
                                             v_fmt = v_fmt)
@@ -873,7 +873,7 @@ test_that("@N GENERAL     NYERS NREPS START SDATE RSEED SNAME...................
        70,      79,    "MODEL" #                    " MODEL"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("SIMULATION CONTROLS")
+  v_fmt <- DSSAT:::filex_v_fmt("SIMULATION CONTROLS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@N GENERAL     NYERS NREPS START SDATE RSEED SNAME.................... MODEL",
                                             v_fmt = v_fmt)
@@ -899,7 +899,7 @@ test_that("@R RDATE  RCOD  RAMT  RESN  RESP  RESK  RINP  RDEP  RMET RENAME",{
        56,NA_real_,   "RENAME" #" RENAME"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("RESIDUES")
+  v_fmt <- DSSAT:::filex_v_fmt("RESIDUES")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@R RDATE  RCOD  RAMT  RESN  RESP  RESK  RINP  RDEP  RMET RENAME",
                                             v_fmt = v_fmt)
@@ -922,7 +922,7 @@ test_that("@C CDATE CHCOD CHAMT  CHME CHDEP   CHT..CHNAME",{
        38,NA_real_,   "CHNAME" #  "CHNAME"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("CHEMICALS")
+  v_fmt <- DSSAT:::filex_v_fmt("CHEMICALS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@C CDATE CHCOD CHAMT  CHME CHDEP   CHT..CHNAME",
                                             v_fmt = v_fmt)
@@ -946,7 +946,7 @@ test_that("@N SIMDATES    ENDAT    SDUR   FODAT  FSTRYR  FENDYR FWFILE          
        68,   NA,   "FONAME" #"           FONAME"
   )
 
-  v_fmt <- DSSAT:::v_fmt_filex("SIMULATION CONTROLS")
+  v_fmt <- DSSAT:::filex_v_fmt("SIMULATION CONTROLS")
 
   check_fwf_pos <- DSSAT:::v_fmt_to_fwf_pos(header = "@N SIMDATES    ENDAT    SDUR   FODAT  FSTRYR  FENDYR FWFILE           FONAME",
                                             v_fmt = v_fmt)

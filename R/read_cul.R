@@ -45,7 +45,7 @@ read_cul <- function(file_name, col_types=NULL, col_names=NULL,
   }
 
   if(!is.null(col_types)){
-    col_types$cols <- c(cul_col_types$cols,col_types$cols)
+    col_types$cols <- c(cul_col_types$cols, col_types$cols)
   }else{
     col_types <- cul_col_types
   }
@@ -67,7 +67,7 @@ read_cul <- function(file_name, col_types=NULL, col_names=NULL,
     c(.,length(raw_lines))
 
   if(use_std_fmt){
-    tier_fmt <- v_fmt_cul(file_name)
+    tier_fmt <- cul_v_fmt(file_name)
   }else{
     tier_fmt <- NULL
   }

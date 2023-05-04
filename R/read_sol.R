@@ -89,7 +89,7 @@ read_sol <- function(file_name, id_soil=NULL, left_justified=NULL,
            tier_data <- read_tier_data(raw_lines,
                                        left_justified = left_justified,
                                        col_types = col_types,
-                                       tier_fmt = v_fmt_sol(),
+                                       tier_fmt = sol_v_fmt(),
                                        convert_date_cols = FALSE)
 
            tier_data$PEDON <- pedon
