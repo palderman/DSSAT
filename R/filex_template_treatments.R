@@ -16,14 +16,14 @@ filex_template_treatments <- function(R = 0, O = 0, C = 0, TNAME = "",
                                       ME = 0, MH = 0, SM = 1, expand = FALSE){
   if(expand){
     treatments <- expand_grid(
-      R = R, O = O, TNAME = TNAME,
+      R = R, O = O, C = C, TNAME = TNAME,
       CU = CU, FL = FL, SA = SA, IC = IC, MP = MP,
       MI = MI, MF = MF, MR = MR, MC = MC, MT = MT,
       ME = ME, MH = MH, SM = SM
     )
   }else{
     treatments <- tibble(
-      R = R, O = O, TNAME = TNAME,
+      R = R, O = O, C = C, TNAME = TNAME,
       CU = CU, FL = FL, SA = SA, IC = IC, MP = MP,
       MI = MI, MF = MF, MR = MR, MC = MC, MT = MT,
       ME = ME, MH = MH, SM = SM

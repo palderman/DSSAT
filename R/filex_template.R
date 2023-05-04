@@ -15,8 +15,7 @@ filex_template <- function(...){
   flx_args <- list(...)
 
   general_args <- c("PEOPLE", "ADDRESS", "SITE", "PAREA", "PRNO", "PLEN", "PLDR",
-                    "PLSP", "PLAY", "HAREA", "HRNO", "HLEN", "HARM", "NOTES",
-                    "expand")
+                    "PLSP", "PLAY", "HAREA", "HRNO", "HLEN", "HARM", "NOTES")
 
   treatments_args <- c("R", "O", "C", "TNAME", "CU", "FL", "SA", "IC", "MP",
                        "MI", "MF", "MR", "MC", "MT", "ME", "MH", "SM",

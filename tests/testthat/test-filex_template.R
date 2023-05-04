@@ -21,7 +21,7 @@ test_that("filex_template_treatments()", {
 
   expected <-
     tibble::tibble(
-      N = 1, R = 0, O = 0, TNAME = "",
+      N = 1, R = 0, O = 0, C = 0, TNAME = "",
       CU = 1, FL = 1, SA = 0, IC = 0, MP = 0,
       MI = 0, MF = 0, MR = 0, MC = 0, MT = 0,
       ME = 0, MH = 0, SM = 1
@@ -147,7 +147,7 @@ test_that("filex_template()", {
       HARM = NA_character_, NOTES = list(NA_character_)
     ),
     TREATMENTS = tibble::tibble(
-      N = 1, R = 0, O = 0, TNAME = "",
+      N = 1, R = 0, O = 0, C = 0, TNAME = "",
       CU = 1, FL = 1, SA = 0, IC = 0, MP = 0,
       MI = 0, MF = 0, MR = 0, MC = 0, MT = 0,
       ME = 0, MH = 0, SM = 1
@@ -231,7 +231,7 @@ test_that("filex_template(F = 1)", {
       HARM = NA_character_, NOTES = list(NA_character_)
     ),
     TREATMENTS = tibble::tibble(
-      N = 1, R = 0, O = 0, TNAME = "",
+      N = 1, R = 0, O = 0, C = 0, TNAME = "",
       CU = 1, FL = 1, SA = 0, IC = 0, MP = 0,
       MI = 0, MF = 0, MR = 0, MC = 0, MT = 0,
       ME = 0, MH = 0, SM = 1
