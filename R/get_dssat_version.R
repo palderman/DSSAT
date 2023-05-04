@@ -20,10 +20,10 @@ get_dssat_version <- function(){
       }
     }
 
-    version <- '47'
+    version <- '48'
 
     warning("Missing value for DSSAT.CSM within options().\n",
-            "DSSAT version is assumed to be 4.7. Please use\n\n",
+            "DSSAT version is assumed to be 4.8. Please use\n\n",
             "  options(DSSAT.CSM=\"",root_dir,
             "path/to/executable.exe\")\n\n",
             " to set the proper location and file name for DSSAT-CSM.\n")
