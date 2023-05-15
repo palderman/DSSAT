@@ -2,13 +2,8 @@
 #'
 #' @export
 #'
-#' @param expand a logical value indicating whether or not to use [tidyr::expand_grid()]
-#' to generate combinations of any input values supplied as a vector
-#'
-#' @importFrom magrittr "%>%"
-#' @importFrom tidyr expand_grid
-#' @importFrom tibble tibble
-#' @importFrom dplyr mutate select n
+#' @param expand a logical value indicating whether or not to generate expanded
+#' combinations of any input values supplied as a vector
 #'
 filex_template <- function(...){
 
@@ -27,6 +22,10 @@ filex_template <- function(...){
                    "expand")
 
   cultivars_args <- c("CR", "INGENO", "CNAME", "expand")
+
+  planting_args <- c("P", "PDATE", "EDATE", "PPOP", "PPOE", "PLME", "PLDS",
+                     "PLRS", "PLRD", "PLDP", "PLWT", "PAGE", "PENV", "PLPH",
+                     "SPRL", "PLNAME", "expand")
 
   sim_control_args <- c("GENERAL", "NYERS", "NREPS", "START", "SDATE", "RSEED",
                         "SNAME", "SMODEL", "OPTIONS", "WATER", "NITRO", "SYMBI",
@@ -57,6 +56,9 @@ filex_template <- function(...){
 
     FIELDS = do.call(filex_template_fields,
                      flx_args[names(flx_args) %in% fields_args]),
+
+    `PLANTING DETAILS` = do.call(filex_template_planting_details,
+                                 flx_args[names(flx_args) %in% planting_args]),
 
     `SIMULATION CONTROLS` = do.call(filex_template_simulation_controls,
                                     flx_args[names(flx_args) %in% sim_control_args])

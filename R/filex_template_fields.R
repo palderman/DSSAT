@@ -2,13 +2,7 @@
 #'
 #' @export
 #'
-#' @param expand a logical value indicating whether or not to use [tidyr::expand_grid()]
-#' to generate combinations of any input values supplied as a vector
-#'
-#' @importFrom magrittr "%>%"
-#' @importFrom tidyr expand_grid
-#' @importFrom tibble tibble
-#' @importFrom dplyr mutate select n
+#' @inheritParams filex_template
 #'
 filex_template_fields <- function(ID_FIELD = NA_character_, WSTA = NA_character_,
                                   FLSA = NA_character_, FLOB = NA_real_,
@@ -29,7 +23,7 @@ filex_template_fields <- function(ID_FIELD = NA_character_, WSTA = NA_character_
       FLWR = FLWR, SLAS = SLAS, FLHST = FLHST, FHDUR = FHDUR
     )
   }else{
-    fields <- tibble(
+    fields <- data.frame(
       ID_FIELD = ID_FIELD, WSTA = WSTA, FLSA = FLSA, FLOB = FLOB, FLDT = FLDT,
       FLDD = FLDD, FLDS = FLDS, FLST = FLST, SLTX = SLTX, SLDP = SLDP,
       ID_SOIL = ID_SOIL, FLNAME = FLNAME,
@@ -38,9 +32,7 @@ filex_template_fields <- function(ID_FIELD = NA_character_, WSTA = NA_character_
     )
   }
 
-  fields <- fields %>%
-    mutate(L = as.numeric(1:n())) %>%
-    select(L, everything())
+  fields <- add_level_column(fields, "L")
 
   return(fields)
 }

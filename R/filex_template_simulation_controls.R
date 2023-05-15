@@ -2,13 +2,7 @@
 #'
 #' @export
 #'
-#' @param expand a logical value indicating whether or not to use [tidyr::expand_grid()]
-#' to generate combinations of any input values supplied as a vector
-#'
-#' @importFrom magrittr "%>%"
-#' @importFrom tidyr expand_grid
-#' @importFrom tibble tibble
-#' @importFrom dplyr mutate select n
+#' @inheritParams filex_template
 #'
 filex_template_simulation_controls <-
   function(GENERAL = "GE",
@@ -16,8 +10,8 @@ filex_template_simulation_controls <-
            SDATE = NA_character_, RSEED = 2150,
            SNAME = NA_character_, SMODEL = NA_character_,
            OPTIONS = "OP",
-           WATER = "Y", NITRO = "Y", SYMBI = "N", PHOSP = "N",
-           POTAS = "Y", DISES = "N", CHEM = "N", TILL = "N",
+           WATER = "N", NITRO = "N", SYMBI = "N", PHOSP = "N",
+           POTAS = "N", DISES = "N", CHEM = "N", TILL = "N",
            CO2 = "M",
            METHODS = "ME",
            WTHER = "M", INCON = "M", LIGHT = "E", EVAPO = "R",
@@ -93,7 +87,7 @@ filex_template_simulation_controls <-
       FENDYR = FENDYR, FWFILE = FWFILE, FONAME = FONAME
     )
   }else{
-    sim_controls <- tibble(
+    sim_controls <- data.frame(
       GENERAL = GENERAL,
       NYERS = NYERS, NREPS = NREPS, START = START, SDATE = SDATE,
       RSEED = RSEED, SNAME = SNAME, SMODEL = SMODEL,
@@ -132,9 +126,7 @@ filex_template_simulation_controls <-
     )
   }
 
-  sim_controls <- sim_controls %>%
-    mutate(N = as.numeric(1:n())) %>%
-    select(N, everything())
+  sim_controls <- add_level_column(sim_controls, "N")
 
   return(sim_controls)
 }

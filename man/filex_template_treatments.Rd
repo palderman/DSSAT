@@ -13,7 +13,7 @@ filex_template_treatments(
   FL = 1,
   SA = 0,
   IC = 0,
-  MP = 0,
+  MP = 1,
   MI = 0,
   MF = 0,
   MR = 0,
@@ -26,8 +26,8 @@ filex_template_treatments(
 )
 }
 \arguments{
-\item{expand}{a logical value indicating whether or not to use [tidyr::expand_grid()]
-to generate combinations of any input values supplied as a vector}
+\item{expand}{a logical value indicating whether or not to generate expanded
+combinations of any input values supplied as a vector}
 }
 \description{
 Generate a template TREATMENTS section of File X

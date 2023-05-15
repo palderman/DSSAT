@@ -14,11 +14,11 @@ filex_template_simulation_controls(
   SNAME = NA_character_,
   SMODEL = NA_character_,
   OPTIONS = "OP",
-  WATER = "Y",
-  NITRO = "Y",
+  WATER = "N",
+  NITRO = "N",
   SYMBI = "N",
   PHOSP = "N",
-  POTAS = "Y",
+  POTAS = "N",
   DISES = "N",
   CHEM = "N",
   TILL = "N",
@@ -99,8 +99,8 @@ filex_template_simulation_controls(
 )
 }
 \arguments{
-\item{expand}{a logical value indicating whether or not to use [tidyr::expand_grid()]
-to generate combinations of any input values supplied as a vector}
+\item{expand}{a logical value indicating whether or not to generate expanded
+combinations of any input values supplied as a vector}
 }
 \description{
 Generate a template SIMULATION CONTROLS section of File X

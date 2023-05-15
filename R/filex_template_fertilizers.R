@@ -2,13 +2,7 @@
 #'
 #' @export
 #'
-#' @param expand a logical value indicating whether or not to use [tidyr::expand_grid()]
-#' to generate combinations of any input values supplied as a vector
-#'
-#' @importFrom magrittr "%>%"
-#' @importFrom tidyr expand_grid
-#' @importFrom tibble tibble
-#' @importFrom dplyr mutate select n
+#' @inheritParams filex_template
 #'
 filex_template_fertilizers <-
   function(F = NA_real_, FDATE = as.POSIXct(NA), FMCD = NA_character_,
@@ -26,7 +20,7 @@ filex_template_fertilizers <-
       FOCD = FOCD, FERNAME = FERNAME
     )
   }else{
-    fertilizers <- tibble(
+    fertilizers <- data.frame(
       F = F, FDATE = FDATE, FMCD = FMCD, FACD = FACD, FDEP = FDEP,
       FAMN = FAMN, FAMP = FAMP, FAMK = FAMK, FAMC = FAMC, FAMO = FAMO,
       FOCD = FOCD, FERNAME = FERNAME

@@ -2,16 +2,10 @@
 #'
 #' @export
 #'
-#' @param expand a logical value indicating whether or not to use [tidyr::expand_grid()]
-#' to generate combinations of any input values supplied as a vector
-#'
-#' @importFrom magrittr "%>%"
-#' @importFrom tidyr expand_grid
-#' @importFrom tibble tibble
-#' @importFrom dplyr mutate select n
+#' @inheritParams filex_template
 #'
 filex_template_treatments <- function(R = 0, O = 0, C = 0, TNAME = "",
-                                      CU = 1, FL = 1, SA = 0, IC = 0, MP = 0,
+                                      CU = 1, FL = 1, SA = 0, IC = 0, MP = 1,
                                       MI = 0, MF = 0, MR = 0, MC = 0, MT = 0,
                                       ME = 0, MH = 0, SM = 1, expand = FALSE){
   if(expand){
@@ -22,7 +16,7 @@ filex_template_treatments <- function(R = 0, O = 0, C = 0, TNAME = "",
       ME = ME, MH = MH, SM = SM
     )
   }else{
-    treatments <- tibble(
+    treatments <- data.frame(
       R = R, O = O, C = C, TNAME = TNAME,
       CU = CU, FL = FL, SA = SA, IC = IC, MP = MP,
       MI = MI, MF = MF, MR = MR, MC = MC, MT = MT,
@@ -30,9 +24,7 @@ filex_template_treatments <- function(R = 0, O = 0, C = 0, TNAME = "",
     )
   }
 
-  treatments <- treatments %>%
-    mutate(N = as.numeric(1:n())) %>%
-    select(N, everything())
+  treatments <- add_level_column(treatments, "N")
 
   return(treatments)
 }

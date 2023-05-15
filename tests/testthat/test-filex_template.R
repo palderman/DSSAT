@@ -2,7 +2,7 @@
 test_that("filex_template_general()", {
 
   expected <-
-    tibble::tibble(
+    data.frame(
       PEOPLE = NA_character_, ADDRESS = NA_character_,
       SITE = NA_character_,
       PAREA = NA_real_, PRNO = NA_real_, PLEN = NA_real_,
@@ -20,9 +20,9 @@ test_that("filex_template_general()", {
 test_that("filex_template_treatments()", {
 
   expected <-
-    tibble::tibble(
+    data.frame(
       N = 1, R = 0, O = 0, C = 0, TNAME = "",
-      CU = 1, FL = 1, SA = 0, IC = 0, MP = 0,
+      CU = 1, FL = 1, SA = 0, IC = 0, MP = 1,
       MI = 0, MF = 0, MR = 0, MC = 0, MT = 0,
       ME = 0, MH = 0, SM = 1
     )
@@ -35,7 +35,7 @@ test_that("filex_template_treatments()", {
 test_that("filex_template_cultivars()", {
 
   expected <-
-    tibble::tibble(
+    data.frame(
       C = 1, CR = "FA", INGENO = "IB0001", CNAME = ""
     )
 
@@ -47,7 +47,7 @@ test_that("filex_template_cultivars()", {
 test_that("filex_template_fields()", {
 
   expected <-
-    tibble::tibble(
+    data.frame(
       L = 1,
       ID_FIELD = NA_character_, WSTA = NA_character_, FLSA = NA_character_,
       FLOB = NA_real_, FLDT = NA_character_, FLDD = NA_real_,
@@ -68,15 +68,15 @@ test_that("filex_template_fields()", {
 test_that("filex_template_simulation_controls()", {
 
   expected <-
-    tibble::tibble(
+    data.frame(
       N = 1,
       GENERAL = "GE",
       NYERS = 1, NREPS = 1, START = "S",
       SDATE = NA_character_, RSEED = 2150,
       SNAME = NA_character_, SMODEL = NA_character_,
       OPTIONS = "OP",
-      WATER = "Y", NITRO = "Y", SYMBI = "N", PHOSP = "N",
-      POTAS = "Y", DISES = "N", CHEM = "N", TILL = "N",
+      WATER = "N", NITRO = "N", SYMBI = "N", PHOSP = "N",
+      POTAS = "N", DISES = "N", CHEM = "N", TILL = "N",
       CO2 = "M",
       METHODS = "ME",
       WTHER = "M", INCON = "M", LIGHT = "E", EVAPO = "R",
@@ -122,7 +122,7 @@ test_that("filex_template_simulation_controls()", {
 test_that("filex_template_fertilizers()", {
 
   expected <-
-    tibble::tibble(
+    data.frame(
       F = 1, FDATE = as.POSIXct(NA), FMCD = NA_character_, FACD = NA_character_,
       FDEP = NA_real_, FAMN = NA_real_, FAMP = NA_real_, FAMK = NA_real_,
       FAMC = NA_real_, FAMO = NA_real_, FOCD = NA_character_,
@@ -134,10 +134,35 @@ test_that("filex_template_fertilizers()", {
     expected)
 })
 
+test_that("filex_template_planting_details()",{
+
+  expected <- data.frame(P = 1,
+                         PDATE = as.POSIXct(NA),
+                         EDATE = as.POSIXct(NA),
+                         PPOP = NA_real_,
+                         PPOE = NA_real_,
+                         PLME = NA_character_,
+                         PLDS = NA_character_,
+                         PLRS = NA_real_,
+                         PLRD = NA_real_,
+                         PLDP = NA_real_,
+                         PLWT = NA_real_,
+                         PAGE = NA_real_,
+                         PENV = NA_real_,
+                         PLPH = NA_real_,
+                         SPRL = NA_real_,
+                         PLNAME = NA_character_)
+
+  expect_identical(
+    DSSAT:::filex_template_planting_details(),
+    expected)
+
+})
+
 test_that("filex_template()", {
 
   expected <- list(
-    GENERAL = tibble::tibble(
+    GENERAL = data.frame(
       PEOPLE = NA_character_, ADDRESS = NA_character_,
       SITE = NA_character_,
       PAREA = NA_real_, PRNO = NA_real_, PLEN = NA_real_,
@@ -146,16 +171,16 @@ test_that("filex_template()", {
       HRNO = NA_real_, HLEN = NA_real_,
       HARM = NA_character_, NOTES = list(NA_character_)
     ),
-    TREATMENTS = tibble::tibble(
+    TREATMENTS = data.frame(
       N = 1, R = 0, O = 0, C = 0, TNAME = "",
-      CU = 1, FL = 1, SA = 0, IC = 0, MP = 0,
+      CU = 1, FL = 1, SA = 0, IC = 0, MP = 1,
       MI = 0, MF = 0, MR = 0, MC = 0, MT = 0,
       ME = 0, MH = 0, SM = 1
     ),
-    CULTIVARS = tibble::tibble(
+    CULTIVARS = data.frame(
       C = 1, CR = "FA", INGENO = "IB0001", CNAME = ""
     ),
-    FIELDS = tibble::tibble(
+    FIELDS = data.frame(
       L = 1,
       ID_FIELD = NA_character_, WSTA = NA_character_, FLSA = NA_character_,
       FLOB = NA_real_, FLDT = NA_character_, FLDD = NA_real_,
@@ -167,15 +192,22 @@ test_that("filex_template()", {
       SLAS = NA_real_, FLHST = NA_character_,
       FHDUR = NA_real_
     ),
-    `SIMULATION CONTROLS` = tibble::tibble(
+    `PLANTING DETAILS` = data.frame(
+      P = 1, PDATE = as.POSIXct(NA), EDATE = as.POSIXct(NA), PPOP = NA_real_,
+      PPOE = NA_real_, PLME = NA_character_, PLDS = NA_character_,
+      PLRS = NA_real_, PLRD = NA_real_, PLDP = NA_real_, PLWT = NA_real_,
+      PAGE = NA_real_, PENV = NA_real_, PLPH = NA_real_, SPRL = NA_real_,
+      PLNAME = NA_character_
+      ),
+    `SIMULATION CONTROLS` = data.frame(
         N = 1,
         GENERAL = "GE",
         NYERS = 1, NREPS = 1, START = "S",
         SDATE = NA_character_, RSEED = 2150,
         SNAME = NA_character_, SMODEL = NA_character_,
         OPTIONS = "OP",
-        WATER = "Y", NITRO = "Y", SYMBI = "N", PHOSP = "N",
-        POTAS = "Y", DISES = "N", CHEM = "N", TILL = "N",
+        WATER = "N", NITRO = "N", SYMBI = "N", PHOSP = "N",
+        POTAS = "N", DISES = "N", CHEM = "N", TILL = "N",
         CO2 = "M",
         METHODS = "ME",
         WTHER = "M", INCON = "M", LIGHT = "E", EVAPO = "R",
@@ -221,7 +253,7 @@ test_that("filex_template()", {
 test_that("filex_template(F = 1)", {
 
   expected <- list(
-    GENERAL = tibble::tibble(
+    GENERAL = data.frame(
       PEOPLE = NA_character_, ADDRESS = NA_character_,
       SITE = NA_character_,
       PAREA = NA_real_, PRNO = NA_real_, PLEN = NA_real_,
@@ -230,16 +262,16 @@ test_that("filex_template(F = 1)", {
       HRNO = NA_real_, HLEN = NA_real_,
       HARM = NA_character_, NOTES = list(NA_character_)
     ),
-    TREATMENTS = tibble::tibble(
+    TREATMENTS = data.frame(
       N = 1, R = 0, O = 0, C = 0, TNAME = "",
-      CU = 1, FL = 1, SA = 0, IC = 0, MP = 0,
+      CU = 1, FL = 1, SA = 0, IC = 0, MP = 1,
       MI = 0, MF = 0, MR = 0, MC = 0, MT = 0,
       ME = 0, MH = 0, SM = 1
     ),
-    CULTIVARS = tibble::tibble(
+    CULTIVARS = data.frame(
       C = 1, CR = "FA", INGENO = "IB0001", CNAME = ""
     ),
-    FIELDS = tibble::tibble(
+    FIELDS = data.frame(
       L = 1,
       ID_FIELD = NA_character_, WSTA = NA_character_, FLSA = NA_character_,
       FLOB = NA_real_, FLDT = NA_character_, FLDD = NA_real_,
@@ -251,21 +283,28 @@ test_that("filex_template(F = 1)", {
       SLAS = NA_real_, FLHST = NA_character_,
       FHDUR = NA_real_
     ),
-    FERTILIZERS = tibble::tibble(
+    `PLANTING DETAILS` = data.frame(
+      P = 1, PDATE = as.POSIXct(NA), EDATE = as.POSIXct(NA), PPOP = NA_real_,
+      PPOE = NA_real_, PLME = NA_character_, PLDS = NA_character_,
+      PLRS = NA_real_, PLRD = NA_real_, PLDP = NA_real_, PLWT = NA_real_,
+      PAGE = NA_real_, PENV = NA_real_, PLPH = NA_real_, SPRL = NA_real_,
+      PLNAME = NA_character_
+    ),
+    FERTILIZERS = data.frame(
       F = 1, FDATE = as.POSIXct(NA), FMCD = NA_character_, FACD = NA_character_,
       FDEP = NA_real_, FAMN = NA_real_, FAMP = NA_real_, FAMK = NA_real_,
       FAMC = NA_real_, FAMO = NA_real_, FOCD = NA_character_,
       FERNAME = NA_character_
     ),
-    `SIMULATION CONTROLS` = tibble::tibble(
+    `SIMULATION CONTROLS` = data.frame(
       N = 1,
       GENERAL = "GE",
       NYERS = 1, NREPS = 1, START = "S",
       SDATE = NA_character_, RSEED = 2150,
       SNAME = NA_character_, SMODEL = NA_character_,
       OPTIONS = "OP",
-      WATER = "Y", NITRO = "Y", SYMBI = "N", PHOSP = "N",
-      POTAS = "Y", DISES = "N", CHEM = "N", TILL = "N",
+      WATER = "N", NITRO = "N", SYMBI = "N", PHOSP = "N",
+      POTAS = "N", DISES = "N", CHEM = "N", TILL = "N",
       CO2 = "M",
       METHODS = "ME",
       WTHER = "M", INCON = "M", LIGHT = "E", EVAPO = "R",

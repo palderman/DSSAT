@@ -7,8 +7,8 @@
 filex_template(...)
 }
 \arguments{
-\item{expand}{a logical value indicating whether or not to use [tidyr::expand_grid()]
-to generate combinations of any input values supplied as a vector}
+\item{expand}{a logical value indicating whether or not to generate expanded
+combinations of any input values supplied as a vector}
 }
 \description{
 Generate File X template
