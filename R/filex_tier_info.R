@@ -64,7 +64,7 @@ filex_tier_info <- function(sec_name){
   }else if(any(grepl('IRRIGATION', sec_name))){
 
     tier_info <- list(
-      c("I", "EFIR", "IEFF", "IDEP", "ITHR", "IEPT",
+      c("I", "EFIR", "IDEP", "ITHR", "IEPT",
         "IOFF", "IAME", "IAMT", "IRNAME"),
       c("I", "IDATE", "IROP", "IRVAL")
     )
