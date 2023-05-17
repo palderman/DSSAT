@@ -8,7 +8,7 @@
 #'
 #' @return a tibble containing the data from the raw DSSAT output
 #'
-#' @importFrom readr cols col_character
+#' @importFrom readr cols col_character read_csv
 #' @importFrom stringr str_subset str_which
 #' @importFrom dplyr "%>%"
 #' @importFrom purrr map reduce
@@ -25,47 +25,59 @@ read_output <- function(file_name, col_types = NULL, col_names = NULL,
                         left_justified = NULL, read_only = NULL,
                         store_v_fmt = FALSE){
 
-  col_types <- cols(` TNAME\\.*`=col_character(),
-                    ` TNAM\\.+`=col_character(),
-                    ` EXNAME\\.*`=col_character(),
-                    `EXCODE  `=col_character(),
-                    ` FNAM\\.*(?= |$)`=col_character(),
-                    ` WSTA\\.*`=col_character(),
-                    ` SOIL_ID\\.*`=col_character(),
-                    ` MODEL\\.*`=col_character()) %>%
-    {.$cols <- c(.$cols,col_types$cols);.}
+  # Add if statement for csv output files
 
-  left_justified <- left_justified %>%
-    c(.,' TNAME\\.*',' TNAM\\.+',' EXNAME\\.*',' FNAM\\.*(?= |$)',' WSTA\\.*',
-      ' SOIL_ID\\.*',' MODEL\\.*','EXCODE  ')
+  if(any(grepl("\\.csv", file_name))){
 
-  col_names <- col_names %>%
-    c(.,
-      ' +S(?= |$)',' +O(?= |$)',' +C(?= |$)',' +CR(?= |$)',' TNAM(?= |$)','  TRNO')
+    if(is.null(col_names)) col_names <- TRUE
 
-  # Read in raw data from file
-  raw_lines <- readLines(file_name, warn = FALSE) %>%
-    str_subset('^(?!\032) *([^ ]+)') # exclude lines that are all spaces or lines with EOF in initial position
+    output <- read.csv(file_name)
 
-  # Find beginning of each section
-  begin <- raw_lines %>%
-    str_which('^\\*DSSAT')
+  }else{
 
-  if(length(begin)==0) begin <- 1
+    col_types <- cols(` TNAME\\.*`=col_character(),
+                      ` TNAM\\.+`=col_character(),
+                      ` EXNAME\\.*`=col_character(),
+                      `EXCODE  `=col_character(),
+                      ` FNAM\\.*(?= |$)`=col_character(),
+                      ` WSTA\\.*`=col_character(),
+                      ` SOIL_ID\\.*`=col_character(),
+                      ` MODEL\\.*`=col_character()) %>%
+      {.$cols <- c(.$cols,col_types$cols);.}
 
-  # Calculate end of each section based on beginning of next section
-  end <- c(begin[-1]-1,length(raw_lines))
+    left_justified <- left_justified %>%
+      c(.,' TNAME\\.*',' TNAM\\.+',' EXNAME\\.*',' FNAM\\.*(?= |$)',' WSTA\\.*',
+        ' SOIL_ID\\.*',' MODEL\\.*','EXCODE  ')
 
-  # Read each section of output file
-  output <- map(1:length(begin),
-                   ~read_tier(raw_lines[begin[.]:end[.]],
-                              col_types = col_types,
-                              col_names = col_names,
-                              left_justified = left_justified,
-                              store_v_fmt = store_v_fmt,
-                              read_only = read_only)) %>%
-    reduce(combine_tiers) %>%
-    as_DSSAT_tbl()
+    col_names <- col_names %>%
+      c(.,
+        ' +S(?= |$)',' +O(?= |$)',' +C(?= |$)',' +CR(?= |$)',' TNAM(?= |$)','  TRNO')
+
+    # Read in raw data from file
+    raw_lines <- readLines(file_name, warn = FALSE) %>%
+      str_subset('^(?!\032) *([^ ]+)') # exclude lines that are all spaces or lines with EOF in initial position
+
+    # Find beginning of each section
+    begin <- raw_lines %>%
+      str_which('^\\*DSSAT')
+
+    if(length(begin)==0) begin <- 1
+
+    # Calculate end of each section based on beginning of next section
+    end <- c(begin[-1]-1,length(raw_lines))
+
+    # Read each section of output file
+    output <- map(1:length(begin),
+                     ~read_tier(raw_lines[begin[.]:end[.]],
+                                col_types = col_types,
+                                col_names = col_names,
+                                left_justified = left_justified,
+                                store_v_fmt = store_v_fmt,
+                                read_only = read_only)) %>%
+      reduce(combine_tiers) %>%
+      as_DSSAT_tbl()
+
+  }
 
   return(output)
 }
