@@ -29,9 +29,25 @@ read_output <- function(file_name, col_types = NULL, col_names = NULL,
 
   if(any(grepl("\\.csv", file_name))){
 
-    if(is.null(col_names)) col_names <- TRUE
+    output <- read.csv(file_name,
+                       check.names = FALSE)
 
-    output <- read.csv(file_name)
+    if("YEAR" %in% colnames(output) & "DOY" %in% colnames(output)){
+      output$DATE <- with(output,
+           as.POSIXct(
+             sprintf("%4i%3.3i", YEAR, DOY),
+             format = "%Y%j")
+      )
+      output$YEAR <- NULL
+      output$DOY <- NULL
+    }
+
+    cnames <- colnames(output)
+
+    cnames[cnames == "EXP"] <- "EXPERMIENT"
+    cnames[cnames == "TRTNUM"] <- "TRNO"
+
+    colnames(output) <- cnames
 
   }else{
 
