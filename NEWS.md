@@ -1,4 +1,6 @@
-# DSSAT 0.0.7.9003
+# DSSAT 0.0.7.9004
+
+- read_output() now handles comma separated value (csv) output from DSSAT-CSM
 
 - Adding function clear_output() to clear \*.OUT, \*.LST, \*.INP and \*.INH files
 
