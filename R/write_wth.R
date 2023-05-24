@@ -56,7 +56,7 @@ write_wth <- function(wth, file_name, force_std_fmt = TRUE,
   }
 
   location <- location %>%
-    c('*WEATHER: ',.) %>%
+    c('$WEATHER: ',.) %>%
     str_c(collapse='')
 
   if(is.null(comments)) comments <- attr(wth,'comments')
@@ -130,13 +130,10 @@ write_wth <- function(wth, file_name, force_std_fmt = TRUE,
   d_v_fmt <- attr(wth,"v_fmt")
 
   if(force_std_fmt | is.null(d_v_fmt)){
-      d_v_fmt <- c(DATE = "%5s", SRAD = "%6.1f", TMAX = "%6.1f",
+      d_v_fmt <- c(DATE = "%7s", SRAD = "%6.1f", TMAX = "%6.1f",
                    TMIN = "%6.1f", RAIN = "%6.1f", WIND = "%6.0f",
                    RHUM = "%6.1f", DEWP = "%6.1f", PAR = "%6.1f",
                    EVAP = "%6.1f", VAPR = "%6.2f", SUNH = "%6.1f")
-    if(!old_format){
-      d_v_fmt["DATE"] <- "%7s"
-    }
   }
 
   if(!is.null(comments)){
