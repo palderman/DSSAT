@@ -29,11 +29,22 @@ read_output <- function(file_name, col_types = NULL, col_names = NULL,
 
   if(any(grepl("\\.csv", file_name))){
 
-    output <- read.csv(file_name,
-                       check.names = FALSE)
+    raw_lines <- readLines(file_name, warn = FALSE)
 
-    if("YEAR" %in% colnames(output) & "DOY" %in% colnames(output)){
-      output$DATE <- with(output,
+    cnames <- unlist(
+      strsplit(raw_lines[1], split = ",")
+    )
+
+    output <- read.csv(text = raw_lines[-1], header = FALSE)
+
+    if(ncol(output) > length(cnames)){
+      output <- output[, 1:length(cnames)]
+    }
+
+    colnames(output) <- cnames
+
+    if("YEAR" %in% cnames & "DOY" %in% colnames(output)){
+      DATE <- with(output,
            as.POSIXct(
              sprintf("%4i%3.3i", YEAR, DOY),
              format = "%Y%j")
