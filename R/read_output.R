@@ -35,7 +35,11 @@ read_output <- function(file_name, col_types = NULL, col_names = NULL,
       strsplit(raw_lines[1], split = ",")
     )
 
-    output <- read.csv(text = raw_lines[-1], header = FALSE)
+    na_strings <- c(na_strings,'-99','-99.','-99.0','-99.00','-99.000',
+                    '-99.0000','-99.00000','-99.000000','-99.0000000',
+                    '*','**','***','****','*****','******','*******','********')
+
+    output <- read.csv(text = raw_lines[-1], header = FALSE, na.strings = na_strings)
 
     if(ncol(output) > length(cnames)){
       output <- output[, 1:length(cnames)]
