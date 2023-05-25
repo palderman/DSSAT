@@ -51,7 +51,8 @@ read_output <- function(file_name, col_types = NULL, col_names = NULL,
       output$DATE <- with(output,
            as.POSIXct(
              sprintf("%4i%3.3i", YEAR, DOY),
-             format = "%Y%j")
+             format = "%Y%j",
+             tz = "UTC")
       )
       output$YEAR <- NULL
       output$DOY <- NULL
