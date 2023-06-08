@@ -135,10 +135,7 @@ write_tier <- function(tier_data, pad_name=NULL, drop_duplicate_rows=FALSE,
             str_extract('(?<=%)[-0-9]+') %>%
             str_replace('-','') %>%
             as.numeric()
-          spaces <- fmt %>%
-            str_extract('^.*(?=%)') %>%
-            nchar() %>%
-            replace_na(0)
+          spaces <- string_count(fmt, " ")
           width <- width + spaces
           if(!str_detect(fmt,'-')) fmt <- str_remove(fmt,'^ *')
           if(is.POSIXct(vr_val)){
@@ -166,7 +163,7 @@ write_tier <- function(tier_data, pad_name=NULL, drop_duplicate_rows=FALSE,
             warning(msg)
             if(str_detect(fmt,'-')){
               vr_out[nchar(vr_out)>width] <- vr_out[nchar(vr_out)>width] %>%
-                str_sub(start=width)
+                str_sub(end=width)
             }else{
               vr_out[nchar(vr_out)>width] <- vr_out[nchar(vr_out)>width] %>%
                 str_sub(start=-width)
