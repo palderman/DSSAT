@@ -4,7 +4,7 @@
 \alias{run_dssat}
 \title{Writes data from a single DSSAT data tier}
 \usage{
-run_dssat(run_mode = "B", file_name = NULL, suppress_output = FALSE)
+run_dssat(run_mode = "B", file_name = NULL, suppress_output = FALSE, wd = NULL)
 }
 \arguments{
 \item{run_mode}{a length-one character vector that specifies the run
@@ -33,9 +33,13 @@ name to be used for simulation. Usually the name of a batch file or file X.}
 
 \item{suppress_output}{a logical value indicating whether to suppress DSSAT-CSM
 output from being printed to the console}
+
+\item{wd}{an optional character string that specifies the working directory
+within which to run DSSAT-CSM. If left NULL, DSSAT-CSM will be run in the
+current working directory}
 }
 \value{
-Invisibly returns NULL
+Invisibly returns the console output from running DSSAT-CSM
 }
 \description{
 Writes data from a single DSSAT data tier

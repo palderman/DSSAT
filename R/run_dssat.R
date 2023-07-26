@@ -29,9 +29,11 @@
 #' @param suppress_output a logical value indicating whether to suppress DSSAT-CSM
 #' output from being printed to the console
 #'
-#' @importFrom stringr str_c
+#' @param wd an optional character string that specifies the working directory
+#'   within which to run DSSAT-CSM. If left NULL, DSSAT-CSM will be run in the
+#'   current working directory
 #'
-#' @return Invisibly returns NULL
+#' @return Invisibly returns the console output from running DSSAT-CSM
 #'
 #' @examples
 #'
@@ -39,7 +41,13 @@
 #'   run_dssat()
 #' }
 #'
-run_dssat <- function(run_mode='B',file_name=NULL,suppress_output=FALSE){
+run_dssat <- function(run_mode='B', file_name=NULL, suppress_output=FALSE,
+                      wd = NULL){
+  if(!is.null(wd)){
+    orig_wd <- getwd()
+    on.exit({setwd(orig_wd)})
+    setwd(wd)
+  }
   dssat_csm <- options()$DSSAT.CSM
   if(is.null(dssat_csm)){
     sys_info <- Sys.info()
@@ -66,7 +74,7 @@ run_dssat <- function(run_mode='B',file_name=NULL,suppress_output=FALSE){
     version <- get_dssat_version()
     file_name <- str_c('DSSBatch.V',version)
   }
-  system_call <- str_c(dssat_csm,run_mode,file_name,sep=' ')
-  output <- system(system_call,intern=suppress_output)
-  return(invisible())
+  system_call <- paste(dssat_csm, run_mode, file_name, sep=' ')
+  output <- system(system_call, intern=suppress_output)
+  return(invisible(output))
 }
