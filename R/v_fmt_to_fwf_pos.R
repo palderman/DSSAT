@@ -1,23 +1,19 @@
-#'
-#' @importFrom magrittr "%>%"
-#' @importFrom tibble as_tibble
-#' @importFrom dplyr mutate
-#' @importFrom stringr str_c str_locate
-#'
 v_fmt_to_fwf_pos <- function(v_fmt, header = NULL){
 
   if(!is.null(header)){
-    v_name_regex <- names(v_fmt) %>%
-      str_c("(^|@| |\\.)", ., "($| |\\.)")
 
-    loc <- str_locate(header, v_name_regex) %>%
-      {.[,1]}
+    # Construct regular expression with names in v_fmt
+    v_name_regex <- paste0("(^|@| |\\.)",
+                           names(v_fmt),
+                           "($| |\\.)")
 
-    v_fmt <- v_fmt[!is.na(loc)]
+    # Find positions of names within header
+    loc <- sapply(v_name_regex, regexpr, text = header)
 
-    v_fmt <- loc[!is.na(loc)] %>%
-      order() %>%
-      {v_fmt[.]}
+    v_fmt <- v_fmt[loc > 0]
+
+    v_fmt <- v_fmt[order(loc[loc > 0])]
+
   }
 
   fwf_pos <- v_fmt_to_fwf_widths(v_fmt)

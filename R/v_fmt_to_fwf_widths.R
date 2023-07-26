@@ -1,18 +1,19 @@
-#'
-#' @importFrom magrittr "%>%"
-#' @importFrom stringr str_extract str_remove_all str_length
-#' @importFrom readr fwf_widths
-#'
 v_fmt_to_fwf_widths <- function(v_fmt){
-  width <- v_fmt %>%
-    str_extract("(?<=%)-*[[:digit:]]+") %>%
-    as.numeric() %>%
-    abs()
 
-  nspaces <- v_fmt %>%
-    str_remove_all("[^ ]") %>%
-    str_length()
+    fwf_pos <- vector(mode = "list", length = 3)
 
-  {width + nspaces} %>%
-    fwf_widths(col_names = names(v_fmt))
+    names(fwf_pos) <- c("begin", "end", "col_names")
+
+    widths <- v_fmt_to_width(v_fmt)
+
+    fwf_pos$end <- cumsum(widths)
+
+    fwf_pos$begin <- c(0, head(fwf_pos$end, -1))
+
+    fwf_pos$col_names <- names(v_fmt)
+
+    attr(fwf_pos, "row.names") <- 1L:length(v_fmt)
+    attr(fwf_pos, "class") <- "data.frame"
+
+    return(fwf_pos)
 }
