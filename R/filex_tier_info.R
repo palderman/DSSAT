@@ -1,33 +1,33 @@
 filex_tier_info <- function(sec_name){
 
-  if(any(grepl('CHEMICAL', sec_name))){
+  if(any(grepl('^CHEMICAL', sec_name))){
 
     tier_info <- list(
       c("C", "CDATE", "CHCOD", "CHAMT", "CHME",
         "CHDEP", "CHT", "CHNAME")
     )
 
-  }else if(any(grepl('CULTIVARS', sec_name))){
+  }else if(any(grepl('^CULTIVARS', sec_name))){
 
     tier_info <- list(
       c("C", "CR", "INGENO", "CNAME")
     )
 
-  }else if(any(grepl('ENVIRONMENT', sec_name))){
+  }else if(any(grepl('^ENVIRONMENT', sec_name))){
 
     tier_info <- list(
       c("E", "ODATE", "EDAY", "ERAD", "EMAX", "EMIN",
         "ERAIN", "ECO2", "EDEW", "EWIND", "ENVNAME")
     )
 
-  }else if(any(grepl('FERTILIZERS', sec_name))){
+  }else if(any(grepl('^FERTILIZERS', sec_name))){
 
     tier_info <- list(
       c("F", "FDATE", "FMCD", "FACD", "FDEP", "FAMN",
         "FAMP", "FAMK", "FAMC", "FAMO", "FOCD", "FERNAME")
     )
 
-  }else if(any(grepl('FIELDS', sec_name))){
+  }else if(any(grepl('^FIELDS', sec_name))){
 
     tier_info <- list(
       c("L", "ID_FIELD", "WSTA", "FLSA", "FLOB", "FLDT",
@@ -36,7 +36,7 @@ filex_tier_info <- function(sec_name){
       c("L", "XCRD", "YCRD", "ELEV", "AREA", "SLEN", "FLWR",
         "SLAS", "FLHST", "FHDUR"))
 
-  }else if(any(grepl('GENERAL', sec_name))){
+  }else if(any(grepl('^GENERAL', sec_name))){
 
     tier_info <- list(
       "PEOPLE", "ADDRESS", "SITE",
@@ -45,14 +45,14 @@ filex_tier_info <- function(sec_name){
       "NOTES"
       )
 
-  }else if(any(grepl('HARVEST', sec_name))){
+  }else if(any(grepl('^HARVEST', sec_name))){
 
     tier_info <- list(
       c("H", "HDATE", "HSTG", "HCOM", "HSIZE",
         "HPC", "HBPC", "HNAME")
     )
 
-  }else if(any(grepl('INITIAL CONDITIONS', sec_name))){
+  }else if(any(grepl('^INITIAL', sec_name))){
 
     tier_info <- list(
       c("C", "PCR", "ICDAT", "ICRT", "ICND",
@@ -61,7 +61,7 @@ filex_tier_info <- function(sec_name){
       c("C", "ICBL", "SH2O", "SNH4", "SNO3")
       )
 
-  }else if(any(grepl('IRRIGATION', sec_name))){
+  }else if(any(grepl('^IRRIGATION', sec_name))){
 
     tier_info <- list(
       c("I", "EFIR", "IDEP", "ITHR", "IEPT",
@@ -69,7 +69,7 @@ filex_tier_info <- function(sec_name){
       c("I", "IDATE", "IROP", "IRVAL")
     )
 
-  }else if(any(grepl('PLANTING DETAILS', sec_name))){
+  }else if(any(grepl('^PLANTING', sec_name))){
 
     tier_info <- list(
       c("P", "PDATE", "EDATE", "PPOP", "PPOE",
@@ -78,7 +78,7 @@ filex_tier_info <- function(sec_name){
         "PLNAME")
     )
 
-  }else if(any(grepl('RESIDUES', sec_name))){
+  }else if(any(grepl('^RESIDUES', sec_name))){
 
     tier_info <- list(
       c("R", "RDATE", "RCOD", "RAMT", "RESN",
@@ -86,7 +86,7 @@ filex_tier_info <- function(sec_name){
         "RENAME")
     )
 
-  }else if(any(grepl('SIMULATION CONTROLS', sec_name))){
+  }else if(any(grepl('^SIMULATION', sec_name))){
 
     tier_info <- list(
       c("N", "GENERAL", "NYERS", "NREPS", "START", "SDATE",
@@ -113,7 +113,7 @@ filex_tier_info <- function(sec_name){
         "FENDYR", "FWFILE", "FONAME")
     )
 
-  }else if(any(grepl('SOIL ANALYSIS', sec_name))){
+  }else if(any(grepl('^SOIL', sec_name))){
 
     tier_info <- list(
       c("A", "SADAT", "SMHB", "SMPX", "SMKE", "SANAME"),
@@ -121,19 +121,23 @@ filex_tier_info <- function(sec_name){
         "SAPHB", "SAPX", "SAKE", "SASC")
     )
 
-  }else if(any(grepl('TILLAGE', sec_name))){
+  }else if(any(grepl('^TILLAGE', sec_name))){
 
     tier_info <- list(
       c("T", "TDATE", "TIMPL", "TDEP", "TNAME")
     )
 
-  }else if(any(grepl('TREATMENTS', sec_name))){
+  }else if(any(grepl('^TREATMENTS', sec_name))){
 
     tier_info <- list(
       c("N", "R", "O", "C", "TNAME", "CU", "FL", "SA",
         "IC", "MP", "MI", "MF", "MR", "MC", "MT",
         "ME", "MH", "SM")
     )
+
+  }else{
+
+    tier_info <- NULL
 
   }
 

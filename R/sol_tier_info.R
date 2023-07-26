@@ -9,7 +9,7 @@ sol_tier_info <- function(){
       "SSKS", "SBDM", "SLOC", "SLCL", "SLSI", "SLCF",
       "SLNI", "SLHW", "SLHB", "SCEC", "SADC"),
     c("SLB", "SLPX", "SLPT", "SLPO", "CACO3", "SLAL",
-      "SLFE", "SLMN", "S", "SLPA", "SLPB", "SLKE",
+      "SLFE", "SLMN", "SLPA", "SLPB", "SLKE",
       "SLMG", "SLNA", "SLSU", "SLEC", "SLCA"),
     c("SLB", "ALFVG", "MVG", "NVG", "WCRES"))
 
