@@ -127,62 +127,21 @@ write_tier <- function(tier_data, pad_name=NULL, drop_duplicate_rows=FALSE,
                      any_vars(!is.na(.)))}
       }
 
-      tier_output <- tier_data_tmp %>%
-        as.list() %>%
-        list(v_format,.,tier_names) %>%
-        pmap(function(fmt,vr_val,cname){
-          width <- fmt %>%
-            str_extract('(?<=%)[-0-9]+') %>%
-            str_replace('-','') %>%
-            as.numeric()
-          spaces <- fmt %>%
-            str_extract('^.*(?=%)') %>%
-            nchar() %>%
-            replace_na(0)
-          width <- width + spaces
-          if(!str_detect(fmt,'-')) fmt <- str_remove(fmt,'^ *')
-          if(is.POSIXct(vr_val)){
-            if(width<7){
-              vr_val <- format(vr_val,'%y%j')
-            }else{
-              vr_val <- format(vr_val,'%Y%j')
-            }
-          }
-         # In future, throw error if value is too large to fit within column width?
-         # else if(is.numeric(vr_val)){
-         #  if(any(vr_val >= 10^width-0.5)) stop()
-         # }
-          if(str_detect(fmt, "%.*f") & !is.numeric(vr_val)){
-            msg <- cname %>%
-              str_c('Column ',.,' is not numeric even though the format indicates it should be. It will be treated as character. Please check output for introduced errors.')
-            warning(msg)
-            fmt <- str_replace(fmt, "\\.[0-9]f", "s")
-          }
-          vr_out <- sprintf(fmt,vr_val)
-          if(!is.na(width)) vr_out <- check_numerical_column_width(vr_out,vr_val,width)
-          if(any(nchar(vr_out)>width,na.rm=TRUE)){
-            msg <- cname %>%
-              str_c('Column ',.,' values were trimmed to fit specified column width. Please check output for introduced errors.')
-            warning(msg)
-            if(str_detect(fmt,'-')){
-              vr_out[nchar(vr_out)>width] <- vr_out[nchar(vr_out)>width] %>%
-                str_sub(start=width)
-            }else{
-              vr_out[nchar(vr_out)>width] <- vr_out[nchar(vr_out)>width] %>%
-                str_sub(start=-width)
-            }
-          }
-          if(str_detect(fmt,'-')){
-            vr_out <- vr_out %>%
-              str_replace_all(c('(?<=(^| ))NA( |$)'='-99'))
-          }else{
-            vr_out <- vr_out %>%
-              str_replace_all(c(' NA(?=( |$))'='-99'))
-          }
-          return(vr_out)
-        }) %>%
-        do.call(str_c,.) %>%
-        c(header_output,.)
+      # Drop class to convert to list
+      attr(tier_data_tmp, "class") <- NULL
+
+      # Iterate over columns to write each column
+      for(i in 1:length(tier_data_tmp)){
+        tier_data_tmp[[i]] <- write_column(v_format[i],
+                                           tier_data_tmp[[i]],
+                                           tier_names[i])
+      }
+
+      # Combine with header and paste columns together
+      tier_output <- c(
+        header_output,
+        do.call(paste0, tier_data_tmp)
+      )
 
       return(tier_output)
     }) %>%
