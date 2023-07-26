@@ -11,7 +11,7 @@ filex_template_fertilizers <-
            FAMO = NA_real_, FOCD = NA_character_, FERNAME = NA_character_,
            expand = FALSE){
 
-  if(is.na(F)) F <- 1
+  F[is.na(F)] <- 1
 
   if(expand){
     fertilizers <- expand_grid(

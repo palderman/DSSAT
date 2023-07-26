@@ -13,8 +13,14 @@ filex_template_general <- function(PEOPLE = NA_character_, ADDRESS = NA_characte
     PEOPLE = PEOPLE, ADDRESS = ADDRESS, SITE = SITE,
     PAREA = PAREA, PRNO = PRNO, PLEN = PLEN, PLDR = PLDR,
     PLSP = PLSP, PLAY = PLAY, HAREA = HAREA, HRNO = HRNO,
-    HLEN = HLEN, HARM = HARM, NOTES = if(is.list(NOTES)) NOTES else list(NOTES)
+    HLEN = HLEN, HARM = HARM
   )
+
+  if(is.list(NOTES)){
+    general$NOTES <- NOTES
+  }else{
+    general$NOTES <- list(NOTES)
+  }
 
   return(general)
 }
