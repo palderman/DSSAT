@@ -44,7 +44,7 @@ write_filex <- function(filex, file_name, drop_duplicate_rows=TRUE, force_std_fm
                                drop_duplicate_rows=drop_duplicate_rows)
       }
       tier_out <- c(
-        paste0('*', sec_name),
+        paste0('*', filex_expand_section(sec_name)),
         tier_out,
         '')
       return(tier_out)
