@@ -1,0 +1,743 @@
+test_that("GENERAL",{
+
+  filex_input <- list(GENERAL = structure(list(
+      PEOPLE = "First Contributor; Second Contributor",
+      ADDRESS = "Agricultural Research Institute",
+      SITE = "Somewhere, Someplace",
+      PAREA = 2L, PRNO = 2L, PLEN = 2L, PLDR = 2L, PLSP = 2L, PLAY = "RCBD",
+      HAREA = 1L, HRNO = 1L, HLEN = 0.5, HARM = "Clipping",
+      NOTES = list(c("Additional notes", "go on these", "lines"))
+    ),
+    class = "data.frame",
+    row.names = c(NA, -1L),
+    tier_info = list(
+      "PEOPLE",
+      "ADDRESS",
+      "SITE",
+      c("PAREA", "PRNO", "PLEN", "PLDR", "PLSP", "PLAY", "HAREA", "HRNO",
+        "HLEN", "HARM"),
+      "NOTES")))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*GENERAL",
+                "@PEOPLE",
+                "First Contributor; Second Contributor",
+                "@ADDRESS",
+                "Agricultural Research Institute",
+                "@SITE",
+                "Somewhere, Someplace",
+                "@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN  HARM.........",
+                "      2     2     2     2     2  RCBD     1     1   0.5  Clipping     ",
+                "@NOTES",
+                "Additional notes",
+                "go on these",
+                "lines",
+                "")
+
+  expect_equal(actual, expected)
+
+})
+
+test_that("TREATMENTS single",{
+
+  filex_input <- list("TREATMENTS" = structure(list(
+    N = 1L, R = 0L, O = 0L, C = 0L, TNAME = "Control - 350 ppm",
+    CU = 1L, FL = 1L, SA = 0L, IC = 1L, MP = 1L, MI = 1L, MF = 1L,
+    MR = 0L, MC = 1L, MT = 0L, ME = 1L, MH = 0L, SM = 1L),
+    class = c("DSSAT_tbl", "data.frame"), row.names = c(NA, -1L)))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*TREATMENTS                        -------------FACTOR LEVELS------------",
+                "@N R O C TNAME.................... CU FL SA IC MP MI MF MR MC MT ME MH SM",
+                " 1 0 0 0 Control - 350 ppm          1  1  0  1  1  1  1  0  1  0  1  0  1",
+                ""
+  )
+
+  expect_equal(actual, expected)
+
+})
+
+test_that("TREATMENTS two",{
+
+  filex_input <- list("TREATMENTS" = structure(list(
+    N = 1:2,
+    R = c(0L, 0L),
+    O = c(0L, 0L),
+    C = c(0L, 0L),
+    TNAME = c("Control - 350 ppm", "CO2 Enrichment - 550 ppm"),
+    CU = c(1L, 1L),
+    FL = c(1L, 1L),
+    SA = c(0L, 0L),
+    IC = c(1L, 1L),
+    MP = c(1L, 1L),
+    MI = c(1L, 1L),
+    MF = c(1L, 1L),
+    MR = c(0L, 0L),
+    MC = c(1L, 1L),
+    MT = c(0L, 0L),
+    ME = 1:2,
+    MH = c(0L, 0L),
+    SM = c(1L, 1L)), class = c("DSSAT_tbl", "data.frame"),
+    row.names = c(NA, -2L)))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*TREATMENTS                        -------------FACTOR LEVELS------------",
+                "@N R O C TNAME.................... CU FL SA IC MP MI MF MR MC MT ME MH SM",
+                " 1 0 0 0 Control - 350 ppm          1  1  0  1  1  1  1  0  1  0  1  0  1",
+                " 2 0 0 0 CO2 Enrichment - 550 ppm   1  1  0  1  1  1  1  0  1  0  2  0  1",
+                ""
+  )
+
+  expect_equal(actual, expected)
+
+})
+
+test_that("CULTIVARS single",{
+
+  filex_input <- list(CULTIVARS = structure(list(
+    C = 1L,
+    CR = "CO",
+    INGENO = "IB0001",
+    CNAME = "Deltapine 77"), class = c("DSSAT_tbl", "data.frame"),
+    row.names = c(NA, -1L)))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*CULTIVARS",
+                "@C CR INGENO CNAME",
+                " 1 CO IB0001 Deltapine 77",
+                "")
+
+  expect_equal(actual, expected)
+
+
+})
+
+test_that("CULTIVARS multiple",{
+
+  filex_input <- list(CULTIVARS = structure(list(
+    C = 1:4,
+    CR = c("PN", "PN", "PN", "PN"),
+    INGENO = c("IB0002", "IB0031", "IB0015", "IB0032"),
+    CNAME = c("FLORUNNER, STD", "F81206,LS-RES RU",
+              "SOUTHERN RUNNER", "MA72x94-12,LS-RE")),
+    class = c("DSSAT_tbl", "data.frame"),
+    row.names = c(NA, -4L)))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*CULTIVARS",
+                "@C CR INGENO CNAME",
+                " 1 PN IB0002 FLORUNNER, STD",
+                " 2 PN IB0031 F81206,LS-RES RU",
+                " 3 PN IB0015 SOUTHERN RUNNER",
+                " 4 PN IB0032 MA72x94-12,LS-RE",
+                "")
+
+  expect_equal(actual, expected)
+
+})
+
+test_that("FIELDS single",{
+
+  filex_input <- list(FIELDS = structure(list(
+    L = 1L, ID_FIELD = "UFQU0001", WSTA = "UFQU9501",
+    FLSA = NA_character_, FLOB = 0L, FLDT = "DR000", FLDD = 0L,
+    FLDS = 0L, FLST = 0L, SLTX = "SL", SLDP = 180L, ID_SOIL = "IBTM910017",
+    FLNAME = NA_character_, XCRD = NA_real_, YCRD = NA_real_,
+    ELEV = NA_real_, AREA = NA_real_, SLEN = NA_real_, FLWR = NA_real_,
+    SLAS = NA_real_, FLHST = NA_character_, FHDUR = NA_real_),
+    class = c("DSSAT_tbl", "data.frame"),
+    row.names = c(NA, -1L),
+    tier_info = list(
+      c("L", "ID_FIELD", "WSTA", "FLSA", "FLOB", "FLDT", "FLDD",
+        "FLDS", "FLST", "SLTX", "SLDP", "ID_SOIL", "FLNAME"),
+      c("L", "XCRD", "YCRD", "ELEV", "AREA", "SLEN", "FLWR", "SLAS",
+        "FLHST", "FHDUR"))))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*FIELDS",
+                "@L ID_FIELD WSTA....  FLSA  FLOB  FLDT  FLDD  FLDS  FLST SLTX  SLDP  ID_SOIL    FLNAME",
+                " 1 UFQU0001 UFQU9501   -99     0 DR000     0     0     0 SL     180  IBTM910017 -99",
+                "@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN .FLWR .SLAS FLHST FHDUR",
+                " 1             -99             -99       -99               -99   -99   -99   -99   -99   -99",
+                "")
+
+  expect_equal(actual, expected)
+
+})
+
+test_that("FIELDS multiple",{
+
+  filex_input <- list(FIELDS = structure(list(
+    L = 1:4,
+    ID_FIELD = c("UFQU0001", "UFQU0002", "UFQU0003", "UFQU0004"),
+    WSTA = c("UFQU9501", "UFQU9501", "UFQU9501", "UFQU9501"),
+    FLSA = c(NA_character_, NA_character_, NA_character_, NA_character_),
+    FLOB = c(0L, 0L, 0L, 0L),
+    FLDT = c("DR000", "DR000", "DR000", "DR000"),
+    FLDD = c(0L, 0L, 0L, 0L),
+    FLDS = c(0L, 0L, 0L, 0L),
+    FLST = c(0L, 0L, 0L, 0L),
+    SLTX = c("SL", "SA", "SA", "SA"),
+    SLDP = c(180L, 180L, 180L, 180L),
+    ID_SOIL = c("IBTM910017", "UFQU950002", "UFQU950003", "UFQU950004"),
+    FLNAME = c(NA_character_, NA_character_, NA_character_, NA_character_),
+    XCRD = c(NA_real_, NA_real_, NA_real_, NA_real_),
+    YCRD = c(NA_real_, NA_real_, NA_real_, NA_real_),
+    ELEV = c(NA_real_, NA_real_, NA_real_, NA_real_),
+    AREA = c(NA_real_, NA_real_, NA_real_, NA_real_),
+    SLEN = c(NA_real_, NA_real_, NA_real_, NA_real_),
+    FLWR = c(NA_real_, NA_real_, NA_real_, NA_real_),
+    SLAS = c(NA_real_, NA_real_, NA_real_, NA_real_),
+    FLHST = c(NA_character_, NA_character_, NA_character_, NA_character_),
+    FHDUR = c(NA_real_, NA_real_, NA_real_, NA_real_)),
+    class = c("DSSAT_tbl", "data.frame"),
+    row.names = c(NA, -4L),
+    tier_info = list(c("L", "ID_FIELD", "WSTA", "FLSA", "FLOB",
+                       "FLDT", "FLDD", "FLDS", "FLST", "SLTX",
+                       "SLDP", "ID_SOIL", "FLNAME"),
+                     c("L", "XCRD", "YCRD", "ELEV", "AREA", "SLEN",
+                       "FLWR", "SLAS", "FLHST", "FHDUR"))))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*FIELDS",
+                "@L ID_FIELD WSTA....  FLSA  FLOB  FLDT  FLDD  FLDS  FLST SLTX  SLDP  ID_SOIL    FLNAME",
+                " 1 UFQU0001 UFQU9501   -99     0 DR000     0     0  0000 SL     180  IBTM910017 -99",
+                " 2 UFQU0002 UFQU9501   -99     0 DR000     0     0  0000 SA     180  UFQU950002 -99",
+                " 3 UFQU0003 UFQU9501   -99     0 DR000     0     0  0000 SA     180  UFQU950003 -99",
+                " 4 UFQU0004 UFQU9501   -99     0 DR000     0     0  0000 SA     180  UFQU950004 -99",
+                "@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN .FLWR .SLAS FLHST FHDUR",
+                " 1             -99             -99       -99               -99   -99   -99   -99   -99   -99",
+                " 2             -99             -99       -99               -99   -99   -99   -99   -99   -99",
+                " 3             -99             -99       -99               -99   -99   -99   -99   -99   -99",
+                " 4             -99             -99       -99               -99   -99   -99   -99   -99   -99",
+                "")
+
+  expect_equal(actual, expected)
+
+})
+
+test_that("SOIL ANALYSIS single",{
+
+  filex_input <- list("SOIL ANALYSIS" = structure(list(
+    A = 1L,
+    SADAT = structure(1065744000, tzone = "UTC", class = c("POSIXct", "POSIXt")),
+    SMHB = NA_character_, SMPX = "SA002", SMKE = NA_character_,
+    SANAME = NA_character_, SABL = 5L, SADM = NA_real_, SAOC = 0.48,
+    SANI = NA_real_, SAPHW = NA_real_, SAPHB = NA_real_, SAPX = 2.2,
+    SAKE = NA_real_, SASC = 0.47),
+    class = c("DSSAT_tbl", "data.frame"),
+    row.names = c(NA, -1L),
+    tier_info = list(
+      c("A", "SADAT", "SMHB", "SMPX", "SMKE", "SANAME"),
+      c("A", "SABL", "SADM", "SAOC", "SANI", "SAPHW", "SAPHB", "SAPX",
+        "SAKE", "SASC"))))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*SOIL ANALYSIS",
+                "@A SADAT  SMHB  SMPX  SMKE  SANAME",
+                " 1 03283   -99 SA002   -99  -99",
+                "@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC",
+                " 1     5   -99   .48   -99   -99   -99   2.2   -99   .47",
+                "")
+
+  expect_equal(actual, expected)
+
+})
+
+test_that("SOIL ANALYSIS single - missing",{
+
+  filex_input <- list("SOIL ANALYSIS" = structure(list(
+    A = 1L,
+    SADAT = structure(NA_real_, tzone = "UTC", class = c("POSIXct", "POSIXt")),
+    SMHB = NA_character_, SMPX = NA_character_, SMKE = NA_character_,
+    SANAME = NA_character_, SABL = 15L, SADM = NA_real_, SAOC = NA_real_,
+    SANI = NA_real_, SAPHW = NA_real_, SAPHB = NA_real_, SAPX = NA_real_,
+    SAKE = NA_real_, SASC = NA_real_),
+    class = c("DSSAT_tbl", "data.frame"),
+    row.names = c(NA, -1L),
+    tier_info = list(
+      c("A", "SADAT", "SMHB", "SMPX", "SMKE", "SANAME"),
+      c("A", "SABL", "SADM", "SAOC", "SANI", "SAPHW", "SAPHB", "SAPX",
+        "SAKE", "SASC"))))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*SOIL ANALYSIS",
+                "@A SADAT  SMHB  SMPX  SMKE  SANAME",
+                " 1   -99   -99   -99   -99  -99",
+                "@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC",
+                " 1    15   -99   -99   -99   -99   -99   -99   -99   -99",
+                "")
+
+  expect_equal(actual, expected)
+
+})
+
+test_that("SOIL ANALYSIS multiple",{
+
+  filex_input <- list("SOIL ANALYSIS" = structure(list(
+    A = 1:4,
+    SADAT = structure(c(1065744000, 1065744000, 1065744000, 1065744000),
+                      tzone = "UTC", class = c("POSIXct", "POSIXt")),
+    SMHB = c(NA_character_, NA_character_, NA_character_, NA_character_),
+    SMPX = c("SA002", "SA002", "SA002", "SA002"),
+    SMKE = c(NA_character_, NA_character_, NA_character_, NA_character_),
+    SANAME = c(NA_character_, NA_character_, NA_character_, NA_character_),
+    SABL = list(c(5L, 20L, 40L, 60L, 90L),
+                c(5L, 20L, 40L, 60L, 90L),
+                c(5L, 20L, 40L, 60L, 90L),
+                c(5L, 20L, 40L, 60L, 90L)),
+    SADM = list(c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_),
+                c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_),
+                c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_),
+                c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_)),
+    SAOC = list(c(0.48, 0.44, 0.35, 0.35, 0.34),
+                c(0.49, 0.44, 0.35, 0.35, 0.34),
+                c(0.49, 0.44, 0.35, 0.35, 0.34),
+                c(0.48, 0.44, 0.35, 0.35, 0.34)),
+    SANI = list(c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_),
+                c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_),
+                c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_),
+                c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_)),
+    SAPHW = list(c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_),
+                 c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_),
+                 c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_),
+                 c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_)),
+    SAPHB = list(c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_),
+                 c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_),
+                 c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_),
+                 c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_)),
+    SAPX = list(c(2.2, 2.3, 2.3, 2.3, 2.3),
+                c(6.7, 3.8, 2.4, 2.3, 2.3),
+                c(7.4, 4.6, 2.4, 2.3, 2.3),
+                c(2.3, 1.9, 2.4, 2.3, 2.3)),
+    SAKE = list(c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_),
+                c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_),
+                c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_),
+                c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_)),
+    SASC = list(c(0.47, 0.43, 0.34, 0.34, 0.33),
+                c(0.47, 0.43, 0.34, 0.34, 0.33),
+                c(0.47, 0.43, 0.34, 0.34, 0.33),
+                c(0.47, 0.43, 0.34, 0.34, 0.33))),
+    class = c("DSSAT_tbl", "data.frame"),
+    row.names = c(NA, -4L),
+    tier_info = list(
+      c("A", "SADAT", "SMHB", "SMPX", "SMKE", "SANAME"),
+      c("A", "SABL", "SADM", "SAOC", "SANI", "SAPHW", "SAPHB", "SAPX",
+        "SAKE", "SASC"))))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*SOIL ANALYSIS",
+                "@A SADAT  SMHB  SMPX  SMKE  SANAME",
+                " 1 03283   -99 SA002   -99  -99",
+                "@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC",
+                " 1     5   -99   .48   -99   -99   -99   2.2   -99   .47",
+                " 1    20   -99   .44   -99   -99   -99   2.3   -99   .43",
+                " 1    40   -99   .35   -99   -99   -99   2.3   -99   .34",
+                " 1    60   -99   .35   -99   -99   -99   2.3   -99   .34",
+                " 1    90   -99   .34   -99   -99   -99   2.3   -99   .33",
+                "@A SADAT  SMHB  SMPX  SMKE  SANAME",
+                " 2 03283   -99 SA002   -99  -99",
+                "@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC",
+                " 2     5   -99   .49   -99   -99   -99   6.7   -99   .47",
+                " 2    20   -99   .44   -99   -99   -99   3.8   -99   .43",
+                " 2    40   -99   .35   -99   -99   -99   2.4   -99   .34",
+                " 2    60   -99   .35   -99   -99   -99   2.3   -99   .34",
+                " 2    90   -99   .34   -99   -99   -99   2.3   -99   .33",
+                "@A SADAT  SMHB  SMPX  SMKE  SANAME",
+                " 3 03283   -99 SA002   -99  -99",
+                "@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC",
+                " 3     5   -99   .49   -99   -99   -99   7.4   -99   .47",
+                " 3    20   -99   .44   -99   -99   -99   4.6   -99   .43",
+                " 3    40   -99   .35   -99   -99   -99   2.4   -99   .34",
+                " 3    60   -99   .35   -99   -99   -99   2.3   -99   .34",
+                " 3    90   -99   .34   -99   -99   -99   2.3   -99   .33",
+                "@A SADAT  SMHB  SMPX  SMKE  SANAME",
+                " 4 03283   -99 SA002   -99  -99",
+                "@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC",
+                " 4     5   -99   .48   -99   -99   -99   2.3   -99   .47",
+                " 4    20   -99   .44   -99   -99   -99   1.9   -99   .43",
+                " 4    40   -99   .35   -99   -99   -99   2.4   -99   .34",
+                " 4    60   -99   .35   -99   -99   -99   2.3   -99   .34",
+                " 4    90   -99   .34   -99   -99   -99   2.3   -99   .33",
+                "")
+
+  expect_equal(actual, expected)
+
+})
+
+test_that("INITIAL CONDITIONS one level - no missing",{
+
+  filex_input <- list("INITIAL CONDITIONS" = structure(list(
+    C = 1L, PCR = "SB",
+    ICDAT = structure(-435888000, tzone = "UTC", class = c("POSIXct", "POSIXt")),
+    ICRT = 1200L, ICND = 0L, ICRN = 1L, ICRE = 1L,
+    ICWD = 3, ICRES = 1000L, ICREN = 0.8, ICREP = 0L, ICRIP = 100L,
+    ICRID = 15L, ICNAME = "TEST",
+    ICBL = list(c(30L, 60L, 90L, 120L, 150L, 180L)),
+    SH2O = list(c(0.406, 0.406, 0.406, 0.406, 0.406, 0.406)),
+    SNH4 = list(c(1.78, 0.82, 0.24, 0.24, 0.24, 0.24)),
+    SNO3 = list(c(17.8, 8.2, 2.4, 2.4, 2.4, 2.4))),
+    class = c("DSSAT_tbl", "data.frame"),
+    row.names = c(NA, -1L),
+    tier_info = list(
+      c("C", "PCR", "ICDAT", "ICRT", "ICND", "ICRN", "ICRE", "ICWD",
+        "ICRES", "ICREN", "ICREP", "ICRIP", "ICRID", "ICNAME"),
+      c("C", "ICBL", "SH2O", "SNH4", "SNO3"))))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*INITIAL CONDITIONS",
+                "@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME",
+                " 1    SB 56070  1200     0     1     1    3.  1000    .8     0   100    15 TEST",
+                "@C  ICBL  SH2O  SNH4  SNO3",
+                " 1    30  .406  1.78  17.8",
+                " 1    60  .406   .82   8.2",
+                " 1    90  .406   .24   2.4",
+                " 1   120  .406   .24   2.4",
+                " 1   150  .406   .24   2.4",
+                " 1   180  .406   .24   2.4",
+                "")
+
+  expect_equal(actual, expected)
+
+})
+
+test_that("INITIAL CONDITIONS one level - missing",{
+
+  filex_input <- list("INITIAL CONDITIONS" = structure(list(
+    C = 1L, PCR = NA_character_,
+    ICDAT = structure(NA_real_, tzone = "UTC", class = c("POSIXct", "POSIXt")),
+    ICRT = NA_real_, ICND = NA_real_, ICRN = NA_real_,
+    ICRE = NA_real_, ICWD = NA_real_, ICRES = NA_real_, ICREN = NA_real_,
+    ICREP = NA_real_, ICRIP = NA_real_, ICRID = NA_real_,
+    ICNAME = NA_character_,
+    ICBL = list(c(30L, 60L, 90L, 120L, 150L, 180L)),
+    SH2O = list(c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_, NA_real_)),
+    SNH4 = list(c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_, NA_real_)),
+    SNO3 = list(c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_, NA_real_))),
+    class = c("DSSAT_tbl", "data.frame"),
+    row.names = c(NA, -1L),
+    tier_info = list(
+      c("C", "PCR", "ICDAT", "ICRT", "ICND", "ICRN", "ICRE", "ICWD",
+        "ICRES", "ICREN", "ICREP", "ICRIP", "ICRID", "ICNAME"),
+      c("C", "ICBL", "SH2O", "SNH4", "SNO3"))))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*INITIAL CONDITIONS",
+                "@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME",
+                " 1   -99   -99   -99   -99   -99   -99   -99   -99   -99   -99   -99   -99 -99",
+                "@C  ICBL  SH2O  SNH4  SNO3",
+                " 1    30   -99   -99   -99",
+                " 1    60   -99   -99   -99",
+                " 1    90   -99   -99   -99",
+                " 1   120   -99   -99   -99",
+                " 1   150   -99   -99   -99",
+                " 1   180   -99   -99   -99",
+                "")
+
+  expect_equal(actual, expected)
+
+})
+
+test_that("Two levels - no missing data",{
+
+  filex_input <- list("INITIAL CONDITIONS" = structure(list(
+    C = 1:2,
+    PCR = c("SB", "SB"),
+    ICDAT = structure(c(-435888000, -435888000), tzone = "UTC",
+                      class = c("POSIXct", "POSIXt")),
+    ICRT = c(1200L, 1200L),
+    ICND = c(0L, 0L),
+    ICRN = c(1L, 1L),
+    ICRE = c(1L, 1L),
+    ICWD = c(3, 3),
+    ICRES = c(1000L, 1000L),
+    ICREN = c(0.8, 0.8),
+    ICREP = c(0L, 0L),
+    ICRIP = c(100L, 100L),
+    ICRID = c(15L, 15L),
+    ICNAME = c("TEST1", "TEST2"),
+    ICBL = list(
+      c(30L, 60L, 90L, 120L, 150L, 180L),
+      c(30L, 60L, 90L, 120L, 150L)),
+    SH2O = list(
+      c(0.406, 0.406, 0.406, 0.406, 0.406, 0.406),
+      c(0.406, 0.406, 0.406, 0.406, 0.406)),
+    SNH4 = list(c(1.78, 0.82, 0.24, 0.24, 0.24, 0.24),
+                c(1.78, 0.82, 0.24, 0.24, 0.24)),
+    SNO3 = list(c(17.8, 8.2, 2.4, 2.4, 2.4, 2.4),
+                c(17.8, 8.2, 2.4, 2.4, 2.4))),
+    class = c("DSSAT_tbl", "data.frame"),
+    row.names = c(NA, -2L),
+    tier_info = list(
+      c("C", "PCR", "ICDAT", "ICRT", "ICND", "ICRN", "ICRE", "ICWD", "ICRES",
+        "ICREN", "ICREP", "ICRIP", "ICRID", "ICNAME"),
+      c("C", "ICBL", "SH2O", "SNH4", "SNO3"))))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*INITIAL CONDITIONS",
+                "@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME",
+                " 1    SB 56070  1200     0     1     1    3.  1000    .8     0   100    15 TEST1",
+                "@C  ICBL  SH2O  SNH4  SNO3",
+                " 1    30  .406  1.78  17.8",
+                " 1    60  .406   .82   8.2",
+                " 1    90  .406   .24   2.4",
+                " 1   120  .406   .24   2.4",
+                " 1   150  .406   .24   2.4",
+                " 1   180  .406   .24   2.4",
+                "@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME",
+                " 2    SB 56070  1200     0     1     1    3.  1000    .8     0   100    15 TEST2",
+                "@C  ICBL  SH2O  SNH4  SNO3",
+                " 2    30  .406  1.78  17.8",
+                " 2    60  .406   .82   8.2",
+                " 2    90  .406   .24   2.4",
+                " 2   120  .406   .24   2.4",
+                " 2   150  .406   .24   2.4",
+                "")
+
+  expect_equal(actual, expected)
+
+})
+
+test_that("INITIAL CONDITIONS two levels - missing",{
+
+  filex_input <- list("INITIAL CONDITIONS" = structure(list(
+    C = 1:2,
+    PCR = c(NA_character_, NA_character_),
+    ICDAT = structure(c(NA_real_, NA_real_),
+                      tzone = "UTC", class = c("POSIXct", "POSIXt")),
+    ICRT = c(NA_real_, NA_real_),
+    ICND = c(NA_real_, NA_real_),
+    ICRN = c(NA_real_, NA_real_),
+    ICRE = c(NA_real_, NA_real_),
+    ICWD = c(NA_real_, NA_real_),
+    ICRES = c(NA_real_, NA_real_),
+    ICREN = c(NA_real_, NA_real_),
+    ICREP = c(NA_real_, NA_real_),
+    ICRIP = c(NA_real_, NA_real_),
+    ICRID = c(NA_real_, NA_real_),
+    ICNAME = c(NA_character_, NA_character_),
+    ICBL = list(
+      c(30L, 60L, 90L, 120L, 150L, 180L),
+      c(30L, 60L, 90L, 120L, 150L)),
+    SH2O = list(
+      c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_, NA_real_),
+      c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_)),
+    SNH4 = list(
+      c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_, NA_real_),
+      c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_)),
+    SNO3 = list(
+      c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_, NA_real_),
+      c(NA_real_, NA_real_, NA_real_, NA_real_, NA_real_))),
+    class = c("DSSAT_tbl", "data.frame"),
+    row.names = c(NA, -2L),
+    tier_info = list(
+      c("C", "PCR", "ICDAT", "ICRT", "ICND", "ICRN", "ICRE", "ICWD", "ICRES",
+        "ICREN", "ICREP", "ICRIP", "ICRID", "ICNAME"),
+      c("C", "ICBL", "SH2O", "SNH4", "SNO3"))))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*INITIAL CONDITIONS",
+                "@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME",
+                " 1   -99   -99   -99   -99   -99   -99   -99   -99   -99   -99   -99   -99 -99",
+                "@C  ICBL  SH2O  SNH4  SNO3",
+                " 1    30   -99   -99   -99",
+                " 1    60   -99   -99   -99",
+                " 1    90   -99   -99   -99",
+                " 1   120   -99   -99   -99",
+                " 1   150   -99   -99   -99",
+                " 1   180   -99   -99   -99",
+                "@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME",
+                " 2   -99   -99   -99   -99   -99   -99   -99   -99   -99   -99   -99   -99 -99",
+                "@C  ICBL  SH2O  SNH4  SNO3",
+                " 2    30   -99   -99   -99",
+                " 2    60   -99   -99   -99",
+                " 2    90   -99   -99   -99",
+                " 2   120   -99   -99   -99",
+                " 2   150   -99   -99   -99",
+                "")
+
+  expect_equal(actual, expected)
+
+})
+
+
+# test_that("PLANTING DETAILS - single",{
+#
+#   withr::with_file("TEST0000.CRX",{
+#     write(
+#       ,
+#       "TEST0000.CRX")
+#
+#     filex <- DSSAT::read_filex("TEST0000.CRX")
+#
+#   })
+#
+#   DSSAT:::test_cols_check(
+#     filex$`PLANTING DETAILS`,
+#     char_cols = c(),
+#     list_cols = c(),
+#     date_cols = "",
+#     missing = c(),
+#     list_col_length = c(6, 5),
+#     list_col_groups = list(c()),
+#     expected_vals = list(P = ,))
+# })
+
+if(FALSE){
+
+  library(tidyverse)
+
+  # code to create write_filex() tests
+  create_write_filex_test <- function(){
+
+    clip_in <- clipr::read_clip()
+
+    eval(parse(text = clip_in))
+
+    test_out <- deparse(eval(parse(text = gsub("\\) *",
+                                               ", \"\")",
+                                               gsub("c\\(",
+                                                    "c(\"*EXP.DETAILS: \", \"\",",
+                                                    gsub("^.*write\\( +(.*), +\"TEST0000.CRX\".*$",
+                                                         "\\1",
+                                                         paste0(clip_in, collapse = "")))))))
+
+    filex_input <- deparse(filex)
+
+    filex_input[1] <- paste0("filex_input <- ", filex_input[1])
+
+    test_out[1] <- paste0("expected <- ", test_out[1])
+
+    clipr::write_clip(c(filex_input,
+                        "",
+                        "actual_file <- tempfile(pattern = \"TEST0001\", fileext = \"CRX\")",
+                        "",
+                        "DSSAT::write_filex(filex_input, file_name = actual_file)",
+                        "",
+                        "actual <- readLines(actual_file)",
+                        "",
+                        test_out,
+                        "",
+                        "expect_equal(actual, expected)",
+                        ""
+                        ))
+
+    return(invisible())
+  }
+
+  # list.files("~/active/dssat-csm-data/",
+  #            recursive = TRUE,
+  #            pattern = "X$",
+  #            full.names = TRUE) %>%
+  #   {file.copy(from = .,
+  #              to = file.path("inst/extdata/test_data/FileX/", basename(.)))}
+
+  list.files(path = "inst/extdata/test_data/FileX",
+             full.names = TRUE) %>%
+    head(3) %>%
+    DSSAT:::read_filex_multiple()
+
+
+        lapply(readLines) %>%
+    unlist()
+
+  head(all_x)
+}
