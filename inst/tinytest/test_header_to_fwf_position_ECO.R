@@ -1,4 +1,4 @@
-test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI RDRMT RDRMG RDRMM RCHDP",{
+# "@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI RDRMT RDRMG RDRMM RCHDP"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -36,11 +36,10 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI RDRMT RDRMG RDRMM RCHDP")
 
-})
-
-test_that("@ECO#     P1 P2FR1    P2    P3 P4FR1 P4FR2    P4  VEFF PARUE PARU2  PHL2  PHF3  LA1S  LAFV  LAFR  SLAS LSPHS LSPHE TIL#S TIPHE TIFAC TDPHS TDPHE TDFAC  RDGS HTSTD  AWNS  KCAN  RS%S  GN%S GN%MN  TKFH",{
+# "@ECO#     P1 P2FR1    P2    P3 P4FR1 P4FR2    P4  VEFF PARUE PARU2  PHL2  PHF3  LA1S  LAFV  LAFR  SLAS LSPHS LSPHE TIL#S TIPHE TIFAC TDPHS TDPHE TDFAC  RDGS HTSTD  AWNS  KCAN  RS%S  GN%S GN%MN  TKFH"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -87,11 +86,10 @@ test_that("@ECO#     P1 P2FR1    P2    P3 P4FR1 P4FR2    P4  VEFF PARUE PARU2  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#     P1 P2FR1    P2    P3 P4FR1 P4FR2    P4  VEFF PARUE PARU2  PHL2  PHF3  LA1S  LAFV  LAFR  SLAS LSPHS LSPHE TIL#S TIPHE TIFAC TDPHS TDPHE TDFAC  RDGS HTSTD  AWNS  KCAN  RS%S  GN%S GN%MN  TKFH")
 
-})
-
-test_that("@ECO#  ECONAME.......... PARUE PARU2  PHL2  PHF3  SLAS LSENI LSPHS LSPHE TIL#S TIPHE TIFAC TDPHS TDPHE TDFAC  TDSF  RDGS HTSTD  AWNS  KCAN  RS%A  GN%S GN%MN  GM%H  TKFH SSPHS SSPHE GWTAF GWTAT  G#RF RTNUP NUPNF NUPWF",{
+# "@ECO#  ECONAME.......... PARUE PARU2  PHL2  PHF3  SLAS LSENI LSPHS LSPHE TIL#S TIPHE TIFAC TDPHS TDPHE TDFAC  TDSF  RDGS HTSTD  AWNS  KCAN  RS%A  GN%S GN%MN  GM%H  TKFH SSPHS SSPHE GWTAF GWTAT  G#RF RTNUP NUPNF NUPWF"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -139,11 +137,10 @@ test_that("@ECO#  ECONAME.......... PARUE PARU2  PHL2  PHF3  SLAS LSENI LSPHS LS
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#  ECONAME.......... PARUE PARU2  PHL2  PHF3  SLAS LSENI LSPHS LSPHE TIL#S TIPHE TIFAC TDPHS TDPHE TDFAC  TDSF  RDGS HTSTD  AWNS  KCAN  RS%A  GN%S GN%MN  GM%H  TKFH SSPHS SSPHE GWTAF GWTAT  G#RF RTNUP NUPNF NUPWF")
 
-})
-
-test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI",{
+# "@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -177,11 +174,10 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI")
 
-})
-
-test_that("@ECO#  ECONAME.......... MG TM PP-SS PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNHSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI",{
+# "@ECO#  ECONAME.......... MG TM PP-SS PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNHSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -215,11 +211,10 @@ test_that("@ECO#  ECONAME.......... MG TM PP-SS PL-EM EM-V1 V1-JU JU-R0  PM06  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#  ECONAME.......... MG TM PP-SS PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNHSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI")
 
-})
-
-test_that("@ECO   ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  RUE   KCAN  TSEN  CDAY",{
+# "@ECO   ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  RUE   KCAN  TSEN  CDAY"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -246,11 +241,10 @@ test_that("@ECO   ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  R
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO   ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  RUE   KCAN  TSEN  CDAY")
 
-})
-
-test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI  KCAN",{
+# "@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI  KCAN"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -285,11 +279,10 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI  KCAN")
 
-})
-
-test_that("@ECO#  ECONAME.......... PARUE HTSTD DUSRI SRN%S BR1FX BR2FX BR3FX BR4FX BR5FX BR6FX",{
+# "@ECO#  ECONAME.......... PARUE HTSTD DUSRI SRN%S BR1FX BR2FX BR3FX BR4FX BR5FX BR6FX"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -315,11 +308,10 @@ test_that("@ECO#  ECONAME.......... PARUE HTSTD DUSRI SRN%S BR1FX BR2FX BR3FX BR
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#  ECONAME.......... PARUE HTSTD DUSRI SRN%S BR1FX BR2FX BR3FX BR4FX BR5FX BR6FX")
 
-})
-
-test_that("@ECO#  ECONAME.......... PARUE TBLSZ SRN%S  KCAN PGERM  PPS1  PPS2  PPS3  PHTV  PHSV  RDGS  RLWR  WFSU RSUSE  HMPC",{
+# "@ECO#  ECONAME.......... PARUE TBLSZ SRN%S  KCAN PGERM  PPS1  PPS2  PPS3  PHTV  PHSV  RDGS  RLWR  WFSU RSUSE  HMPC"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -350,11 +342,10 @@ test_that("@ECO#  ECONAME.......... PARUE TBLSZ SRN%S  KCAN PGERM  PPS1  PPS2  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#  ECONAME.......... PARUE TBLSZ SRN%S  KCAN PGERM  PPS1  PPS2  PPS3  PHTV  PHSV  RDGS  RLWR  WFSU RSUSE  HMPC")
 
-})
-
-test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT THRSH SDPRO SDLIP R1PPO OPTBI SLOBI",{
+# "@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT THRSH SDPRO SDLIP R1PPO OPTBI SLOBI"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -391,11 +382,10 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT THRSH SDPRO SDLIP R1PPO OPTBI SLOBI")
 
-})
-
-test_that("@ECO#  ECONAME.........  TBASE TOPT  ROPT  DJTI  GDDE   RUE  KCAN",{
+# "@ECO#  ECONAME.........  TBASE TOPT  ROPT  DJTI  GDDE   RUE  KCAN"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -418,11 +408,10 @@ test_that("@ECO#  ECONAME.........  TBASE TOPT  ROPT  DJTI  GDDE   RUE  KCAN",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#  ECONAME.........  TBASE TOPT  ROPT  DJTI  GDDE   RUE  KCAN")
 
-})
-
-test_that("@ECO#  ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  RUE   KCAN  TSEN  CDAY",{
+# "@ECO#  ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  RUE   KCAN  TSEN  CDAY"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -449,11 +438,10 @@ test_that("@ECO#  ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  R
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#  ECONAME.........  TBASE  TOPT ROPT   P20  DJTI  GDDE  DSGFT  RUE   KCAN  TSEN  CDAY")
 
-})
-
-test_that("@ECO#  ECONAME.........  TBASE TOPT  ROPT  P20   DJTI  GDDE  DSGFT  RUE   KCAN  PSTM  PEAR  TSEN  CDAY",{
+# "@ECO#  ECONAME.........  TBASE TOPT  ROPT  P20   DJTI  GDDE  DSGFT  RUE   KCAN  PSTM  PEAR  TSEN  CDAY"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -482,11 +470,10 @@ test_that("@ECO#  ECONAME.........  TBASE TOPT  ROPT  P20   DJTI  GDDE  DSGFT  R
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#  ECONAME.........  TBASE TOPT  ROPT  P20   DJTI  GDDE  DSGFT  RUE   KCAN  PSTM  PEAR  TSEN  CDAY")
 
-})
-
-test_that("@ECO#  ECONAME..........  RUE1  RUE2",{
+# "@ECO#  ECONAME..........  RUE1  RUE2"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#               ~check,
@@ -504,11 +491,10 @@ test_that("@ECO#  ECONAME..........  RUE1  RUE2",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#  ECONAME..........  RUE1  RUE2")
 
-})
-
-test_that("@ECO#  ECO-NAME.........        DELTTMAX       SWDF2AMP         EXTCFN        EXTCFST       LFNMXEXT   AREAMX_CF(2)   AREAMX_CF(3)         WIDCOR     WMAX_CF(1)     WMAX_CF(2)     WMAX_CF(3)       POPDECAY       TTBASEEM     TTBASELFEX     LG_AMRANGE    LG_GP_REDUC   LDG_FI_REDUC     LMAX_CF(1)     LMAX_CF(2)     LMAX_CF(3)    MAXLFLENGTH     MAXLFWIDTH    TBASE_GE_EM    TOPT_GE_EM      TFin_GE_EM     TBASE_LFEM      TOPT_LFEM      TFin_LFEM    TBASE_TLREM     TOPT_TLREM     TFin_TLREM    TBASE_LFSEN     TOPT_LFSEN     TFin_LFSEN    TBASE_STKEX     TOPT_STKEX     TFin_STKEX     TBASE_LFEX      TOPT_LFEX      TFin_LFEX      TBASE_REX       TOPT_REX       TFin_REX      TOPT_PHOT      TOPT_PHO2      TFin_PHOT     TBASE_RESP      TOPT_RESP      TFin_RESP ",{
+# "@ECO#  ECO-NAME.........        DELTTMAX       SWDF2AMP         EXTCFN        EXTCFST       LFNMXEXT   AREAMX_CF(2)   AREAMX_CF(3)         WIDCOR     WMAX_CF(1)     WMAX_CF(2)     WMAX_CF(3)       POPDECAY       TTBASEEM     TTBASELFEX     LG_AMRANGE    LG_GP_REDUC   LDG_FI_REDUC     LMAX_CF(1)     LMAX_CF(2)     LMAX_CF(3)    MAXLFLENGTH     MAXLFWIDTH    TBASE_GE_EM    TOPT_GE_EM      TFin_GE_EM     TBASE_LFEM      TOPT_LFEM      TFin_LFEM    TBASE_TLREM     TOPT_TLREM     TFin_TLREM    TBASE_LFSEN     TOPT_LFSEN     TFin_LFSEN    TBASE_STKEX     TOPT_STKEX     TFin_STKEX     TBASE_LFEX      TOPT_LFEX      TFin_LFEX      TBASE_REX       TOPT_REX       TFin_REX      TOPT_PHOT      TOPT_PHO2      TFin_PHOT     TBASE_RESP      TOPT_RESP      TFin_RESP "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end,    ~col_names,#                     ~check,
@@ -573,11 +559,10 @@ test_that("@ECO#  ECO-NAME.........        DELTTMAX       SWDF2AMP         EXTCF
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#  ECO-NAME.........        DELTTMAX       SWDF2AMP         EXTCFN        EXTCFST       LFNMXEXT   AREAMX_CF(2)   AREAMX_CF(3)         WIDCOR     WMAX_CF(1)     WMAX_CF(2)     WMAX_CF(3)       POPDECAY       TTBASEEM     TTBASELFEX     LG_AMRANGE    LG_GP_REDUC   LDG_FI_REDUC     LMAX_CF(1)     LMAX_CF(2)     LMAX_CF(3)    MAXLFLENGTH     MAXLFWIDTH    TBASE_GE_EM    TOPT_GE_EM      TFin_GE_EM     TBASE_LFEM      TOPT_LFEM      TFin_LFEM    TBASE_TLREM     TOPT_TLREM     TFin_TLREM    TBASE_LFSEN     TOPT_LFSEN     TFin_LFSEN    TBASE_STKEX     TOPT_STKEX     TFin_STKEX     TBASE_LFEX      TOPT_LFEX      TFin_LFEX      TBASE_REX       TOPT_REX       TFin_REX      TOPT_PHOT      TOPT_PHO2      TFin_PHOT     TBASE_RESP      TOPT_RESP      TFin_RESP ")
 
-})
-
-test_that("@ECO#  ECO-NAME.........       NS_LF_TIL   N_LF_MAX_ILA         TB0PHO         TB1PHO         TB2PHO         TBFPHO          TBPER      TBMAX_PER    LTTHRESHOLD        FDEADLF            RDM      DPERCOEFF         RWUEP1         RWUEP2   T_MAX_WS_PHO   T_MID_WS_PHO   T_MIN_WS_PHO   T_MAX_WS_EXP   T_MID_WS_EXP   T_MIN_WS_EXP    FRAC_SUC_BG    FRAC_HEX_BG    INIT_PD_RAT  IT_STR_TB_INI     IT_STR_TO1     IT_STR_TO2  IT_STR_TB_END  IT_STR_PF_MAX  IT_STR_PF_MIN   IT_STR_PF_TB   IT_STR_PF_TM   IT_STR_PF_TE    IT_STR_PF_D   IT_STR_T_RED   IT_STR_W_RED     MAX_PER_IT     DSWAT_DDWS     DSWAT_DSUC        HEX_MIN    SUC_ACC_INI   DSUC_FRAC_TS   TT_CHUMAT_LT",{
+# "@ECO#  ECO-NAME.........       NS_LF_TIL   N_LF_MAX_ILA         TB0PHO         TB1PHO         TB2PHO         TBFPHO          TBPER      TBMAX_PER    LTTHRESHOLD        FDEADLF            RDM      DPERCOEFF         RWUEP1         RWUEP2   T_MAX_WS_PHO   T_MID_WS_PHO   T_MIN_WS_PHO   T_MAX_WS_EXP   T_MID_WS_EXP   T_MIN_WS_EXP    FRAC_SUC_BG    FRAC_HEX_BG    INIT_PD_RAT  IT_STR_TB_INI     IT_STR_TO1     IT_STR_TO2  IT_STR_TB_END  IT_STR_PF_MAX  IT_STR_PF_MIN   IT_STR_PF_TB   IT_STR_PF_TM   IT_STR_PF_TE    IT_STR_PF_D   IT_STR_T_RED   IT_STR_W_RED     MAX_PER_IT     DSWAT_DDWS     DSWAT_DSUC        HEX_MIN    SUC_ACC_INI   DSUC_FRAC_TS   TT_CHUMAT_LT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end,     ~col_names,#                    ~check,
@@ -635,11 +620,10 @@ test_that("@ECO#  ECO-NAME.........       NS_LF_TIL   N_LF_MAX_ILA         TB0PH
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#  ECO-NAME.........       NS_LF_TIL   N_LF_MAX_ILA         TB0PHO         TB1PHO         TB2PHO         TBFPHO          TBPER      TBMAX_PER    LTTHRESHOLD        FDEADLF            RDM      DPERCOEFF         RWUEP1         RWUEP2   T_MAX_WS_PHO   T_MID_WS_PHO   T_MIN_WS_PHO   T_MAX_WS_EXP   T_MID_WS_EXP   T_MIN_WS_EXP    FRAC_SUC_BG    FRAC_HEX_BG    INIT_PD_RAT  IT_STR_TB_INI     IT_STR_TO1     IT_STR_TO2  IT_STR_TB_END  IT_STR_PF_MAX  IT_STR_PF_MIN   IT_STR_PF_TB   IT_STR_PF_TM   IT_STR_PF_TE    IT_STR_PF_D   IT_STR_T_RED   IT_STR_W_RED     MAX_PER_IT     DSWAT_DDWS     DSWAT_DSUC        HEX_MIN    SUC_ACC_INI   DSUC_FRAC_TS   TT_CHUMAT_LT")
 
-})
-
-test_that("@ECO#  ECONAME.........  TBASE  TOPT  ROPT  GDDE   RUE  KCAN  STPC  RTPC TILFC  PLAM",{
+# "@ECO#  ECONAME.........  TBASE  TOPT  ROPT  GDDE   RUE  KCAN  STPC  RTPC TILFC  PLAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -665,11 +649,10 @@ test_that("@ECO#  ECONAME.........  TBASE  TOPT  ROPT  GDDE   RUE  KCAN  STPC  R
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#  ECONAME.........  TBASE  TOPT  ROPT  GDDE   RUE  KCAN  STPC  RTPC TILFC  PLAM")
 
-})
-
-test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI                                                                          ",{
+# "@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI                                                                          "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -703,11 +686,10 @@ test_that("@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#  ECONAME.......... MG TM THVAR PL-EM EM-V1 V1-JU JU-R0  PM06  PM09 LNGSH R7-R8 FL-VS TRIFL RWDTH RHGHT R1PPO OPTBI SLOBI                                                                          ")
 
-})
-
-test_that("@ECO#  ECONAME.........  TBASE  TOPT  ROPT   P20  DJTI  GDDE DSGFT   RUE  KCAN  TSEN  CDAY",{
+# "@ECO#  ECONAME.........  TBASE  TOPT  ROPT   P20  DJTI  GDDE DSGFT   RUE  KCAN  TSEN  CDAY"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -734,11 +716,10 @@ test_that("@ECO#  ECONAME.........  TBASE  TOPT  ROPT   P20  DJTI  GDDE DSGFT   
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#  ECONAME.........  TBASE  TOPT  ROPT   P20  DJTI  GDDE DSGFT   RUE  KCAN  TSEN  CDAY")
 
-})
-
-test_that("@ECO#  ECONAME.........  TBASE  TOPT  ROPT  TTOP   P20  VREQ  GDDE DSGFT  RUE1  RUE2 KVAL1 KVAL2 SLAP2 TC1P1 TC1P2 DTNP1 PLGP1 PLGP2  P2AF  P3AF  P4AF  P5AF  P6AF ADLAI ADTIL ADPHO STEMN MXNUP MXNCR  WFNU PNUPR EXNO3 MNNO3 EXNH4 MNNH4 INGWT INGNC FREAR MNNCR GPPSS GPPES MXGWT MNRTN NOMOB RTDP1 RTDP2  FOZ1  FOZ2 SFOZ1 SFOZ2  TSEN  CDAY",{
+# "@ECO#  ECONAME.........  TBASE  TOPT  ROPT  TTOP   P20  VREQ  GDDE DSGFT  RUE1  RUE2 KVAL1 KVAL2 SLAP2 TC1P1 TC1P2 DTNP1 PLGP1 PLGP2  P2AF  P3AF  P4AF  P5AF  P6AF ADLAI ADTIL ADPHO STEMN MXNUP MXNCR  WFNU PNUPR EXNO3 MNNO3 EXNH4 MNNH4 INGWT INGNC FREAR MNNCR GPPSS GPPES MXGWT MNRTN NOMOB RTDP1 RTDP2  FOZ1  FOZ2 SFOZ1 SFOZ2  TSEN  CDAY"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -806,11 +787,10 @@ test_that("@ECO#  ECONAME.........  TBASE  TOPT  ROPT  TTOP   P20  VREQ  GDDE DS
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#  ECONAME.........  TBASE  TOPT  ROPT  TTOP   P20  VREQ  GDDE DSGFT  RUE1  RUE2 KVAL1 KVAL2 SLAP2 TC1P1 TC1P2 DTNP1 PLGP1 PLGP2  P2AF  P3AF  P4AF  P5AF  P6AF ADLAI ADTIL ADPHO STEMN MXNUP MXNCR  WFNU PNUPR EXNO3 MNNO3 EXNH4 MNNH4 INGWT INGNC FREAR MNNCR GPPSS GPPES MXGWT MNRTN NOMOB RTDP1 RTDP2  FOZ1  FOZ2 SFOZ1 SFOZ2  TSEN  CDAY")
 
-})
-
-test_that("@ECO#  ECONAME.......... PARUE PARU2  PHL2  PHF3  SLAS LSENI LSPHS LSPHE TIL#S TILPE TIFAC TDPHS TDPHE TDFAC  TDSF  RDGS HTSTD  AWNS  KCAN  RS%A  GN%S GN%MN  GM%H  TKFH SSPHS SSPHE",{
+# "@ECO#  ECONAME.......... PARUE PARU2  PHL2  PHF3  SLAS LSENI LSPHS LSPHE TIL#S TILPE TIFAC TDPHS TDPHE TDFAC  TDSF  RDGS HTSTD  AWNS  KCAN  RS%A  GN%S GN%MN  GM%H  TKFH SSPHS SSPHE"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -852,7 +832,6 @@ test_that("@ECO#  ECONAME.......... PARUE PARU2  PHL2  PHF3  SLAS LSENI LSPHS LS
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
-
-})
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ECO#  ECONAME.......... PARUE PARU2  PHL2  PHF3  SLAS LSENI LSPHS LSPHE TIL#S TILPE TIFAC TDPHS TDPHE TDFAC  TDSF  RDGS HTSTD  AWNS  KCAN  RS%A  GN%S GN%MN  GM%H  TKFH SSPHS SSPHE")
 

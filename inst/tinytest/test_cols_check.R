@@ -18,11 +18,11 @@ test_cols_check <- function(data,
         na_val <- NA_real_
       }
       if(!is.null(list_cols) && nm %in% list_cols){
-        tinytest::expect_equal(unlist(data[[nm]]),
+        expect_equal(unlist(data[[nm]]),
                                rep(na_val, length(unlist(data[[nm]]))),
                                label = nm)
       }else{
-        tinytest::expect_equal(data[[nm]], rep(na_val, nrow(data)), info = nm)
+        expect_equal(data[[nm]], rep(na_val, nrow(data)), info = nm)
       }
     }
   }
@@ -30,20 +30,20 @@ test_cols_check <- function(data,
   # Check for specific expected values
   if(!is.null(expected_vals)){
     for(nm in names(expected_vals)){
-      tinytest::expect_equal(data[[nm]], expected_vals[[nm]], info = nm)
+      expect_equal(data[[nm]], expected_vals[[nm]], info = nm)
     }
   }
 
   # Check list column type and dimensions
   if(!is.null(list_cols)){
     for(nm in list_cols){
-      tinytest::expect_true(is.list(data[[nm]]), info = nm)
+      expect_true(is.list(data[[nm]]), info = nm)
       if(!is.null(list_col_length)){
         if(length(list_col_length) == 1){
           list_col_length <- rep(list_col_length, length(data[[nm]]))
         }
         for(i in 1:length(data[[nm]])){
-          tinytest::expect_equal(length(unlist(data[[nm]][i])), list_col_length[i], info = nm)
+          expect_equal(length(unlist(data[[nm]][i])), list_col_length[i], info = nm)
         }
       }
       if(!is.null(list_col_groups)){
@@ -54,7 +54,7 @@ test_cols_check <- function(data,
                      function(x)length(unlist(x)))
               )
             lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
-            tinytest::expect_equal(length_range[1], length_range[2], info = lbl)
+            expect_equal(length_range[1], length_range[2], info = lbl)
           }
         }
       }
