@@ -1,3 +1,5 @@
+source(system.file("tinytest/test_cols_check.R", package = "DSSAT"))
+
 test_that("read_cul() ALFRM048.CUL", {
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
@@ -17,7 +19,7 @@ test_that("read_cul() ALFRM048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("AL0001", "AL0002", "AL0003",
@@ -90,7 +92,7 @@ test_that("read_cul() BACER048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXP#", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "DFAULT",
@@ -139,7 +141,7 @@ test_that("read_cul() BACRP048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXP#", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "DFAULT",
@@ -211,7 +213,7 @@ test_that("read_cul() BHGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "UF0001"
@@ -266,7 +268,7 @@ test_that("read_cul() BMFRM048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "UF0001"
@@ -321,7 +323,7 @@ test_that("read_cul() BNGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "990001",
@@ -496,7 +498,7 @@ test_that("read_cul() BRFRM048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "SP0001"
@@ -551,7 +553,7 @@ test_that("read_cul() BRGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("CC0001", "CC0002", "CN0003",
@@ -624,7 +626,7 @@ test_that("read_cul() BSCER048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("CR0001", "BU0003", "IH0001"
@@ -667,7 +669,7 @@ test_that("read_cul() CBGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "990001",
@@ -727,7 +729,7 @@ test_that("read_cul() CHGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "990001",
@@ -919,7 +921,7 @@ test_that("read_cul() CIGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "CI0001"
@@ -974,7 +976,7 @@ test_that("read_cul() CNGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "000001",
@@ -1034,7 +1036,7 @@ test_that("read_cul() COGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "IB0001",
@@ -1115,7 +1117,7 @@ test_that("read_cul() CPGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "CP0001",
@@ -1221,7 +1223,7 @@ test_that("read_cul() CSCAS048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXP#", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "DFAULT",
@@ -1384,7 +1386,7 @@ test_that("read_cul() CSYCA048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXP#", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "DFAULT",
@@ -1498,7 +1500,7 @@ test_that("read_cul() FBGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "CORD01",
@@ -1554,7 +1556,7 @@ test_that("read_cul() G0GRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "UF0001"
@@ -1606,7 +1608,7 @@ test_that("read_cul() GBGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "GB0001"
@@ -1661,7 +1663,7 @@ test_that("read_cul() GGFRM048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("SP0009", "SP0009"),
@@ -1709,7 +1711,7 @@ test_that("read_cul() MLCER048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "990001",
@@ -1897,7 +1899,7 @@ test_that("read_cul() MZCER048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "PC0001",
@@ -2287,7 +2289,7 @@ test_that("read_cul() MZIXM048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "PC0001",
@@ -2642,7 +2644,7 @@ test_that("read_cul() PIALO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "IB0066",
@@ -2694,7 +2696,7 @@ test_that("read_cul() PNGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "990001",
@@ -2911,7 +2913,7 @@ test_that("read_cul() PPGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "PP0001",
@@ -2975,7 +2977,7 @@ test_that("read_cul() PRGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "PR0001",
@@ -3046,7 +3048,7 @@ test_that("read_cul() PTSUB048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "IB0001",
@@ -3118,7 +3120,7 @@ test_that("read_cul() QUGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "UH0001",
@@ -3170,7 +3172,7 @@ test_that("read_cul() RICER048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "990001",
@@ -3372,7 +3374,7 @@ test_that("read_cul() SBGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "990011",
@@ -3659,7 +3661,7 @@ test_that("read_cul() SCCAN048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "IB0001",
@@ -3761,7 +3763,7 @@ test_that("read_cul() SCCSP048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "CP1743",
@@ -3913,7 +3915,7 @@ test_that("read_cul() SCSAM048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "RB7515",
@@ -4009,7 +4011,7 @@ test_that("read_cul() SFGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "IB0001",
@@ -4083,7 +4085,7 @@ test_that("read_cul() SGCER048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "990001",
@@ -4325,7 +4327,7 @@ test_that("read_cul() SUGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "IB0009",
@@ -4414,7 +4416,7 @@ test_that("read_cul() SUOIL048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "IB0003",
@@ -4486,7 +4488,7 @@ test_that("read_cul() SWCER048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "SW0001",
@@ -4526,7 +4528,7 @@ test_that("read_cul() TFAPS048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "IB0135",
@@ -4614,7 +4616,7 @@ test_that("read_cul() TFCER048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "IB0304",
@@ -4741,7 +4743,7 @@ test_that("read_cul() TMGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "TM0001",
@@ -4808,7 +4810,7 @@ test_that("read_cul() TNARO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "IB0005",
@@ -4856,7 +4858,7 @@ test_that("read_cul() TRARO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "IB0001",
@@ -4916,7 +4918,7 @@ test_that("read_cul() VBGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "CC0001",
@@ -5047,7 +5049,7 @@ test_that("read_cul() WHAPS048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "AW0071",
@@ -5123,7 +5125,7 @@ test_that("read_cul() WHCER048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXP#", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "DFAULT",
@@ -5185,7 +5187,7 @@ test_that("read_cul() WHCRP048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("VAR#", "VAR-NAME", "EXP#", "ECO#"),
     expected_vals = list(`VAR#` = c("999991", "999992", "DFAULT",

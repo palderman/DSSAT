@@ -1,3 +1,5 @@
+source(system.file("tinytest/test_cols_check.R", package = "DSSAT"))
+
 test_that("Summary.OUT",{
 
   withr::with_file("Summary.OUT",{
@@ -14,7 +16,7 @@ test_that("Summary.OUT",{
 
   })
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     smry,
     char_cols = c("CR", "MODEL", "EXNAME", "TNAM", "FNAM", "WSTA", "SOIL_ID"),
     expected_vals = list(RUNNO = 1,

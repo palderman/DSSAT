@@ -1,3 +1,5 @@
+source(system.file("tinytest/test_cols_check.R", package = "DSSAT"))
+
 test_that("GENERAL use_std_fmt",{
 
   withr::with_file("TEST0000.CRX",{
@@ -22,7 +24,7 @@ test_that("GENERAL use_std_fmt",{
 
   })
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     filex$GENERAL,
     char_cols = c("PEOPLE", "ADDRESS", "SITE", "PLAY", "HARM", "NOTES"),
     list_cols = c("NOTES"),
@@ -60,7 +62,7 @@ test_that("TREATMENTS single use_std_fmt",{
 
   })
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     filex$TREATMENTS,
     char_cols = c("TNAME"),
     expected_vals = list(N = 1,
@@ -98,7 +100,7 @@ test_that("TREATMENTS two use_std_fmt",{
 
   })
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     filex$TREATMENTS,
     char_cols = c("TNAME"),
     expected_vals = list(N = 1:2,
@@ -135,7 +137,7 @@ test_that("CULTIVARS single use_std_fmt",{
 
   })
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     filex$CULTIVARS,
     char_cols = c("CR", "INGENO", "CNAME"),
     expected_vals = list(C = 1,
@@ -161,7 +163,7 @@ test_that("CULTIVARS multiple use_std_fmt",{
 
   })
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     filex$CULTIVARS,
     char_cols = c("CR", "INGENO", "CNAME"),
     expected_vals = list(C = 1:4,
@@ -190,7 +192,7 @@ test_that("FIELDS single use_std_fmt",{
 
   })
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     filex$FIELDS,
     char_cols = c("ID_FIELD", "WSTA", "FLSA", "FLDT", "FLST",
                   "SLTX", "ID_SOIL", "FLNAME", "FLHST"),
@@ -231,7 +233,7 @@ test_that("FIELDS multiple use_std_fmt",{
 
   })
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     filex$FIELDS,
     char_cols = c("ID_FIELD", "WSTA", "FLSA", "FLDT", "FLST",
                   "SLTX", "ID_SOIL", "FLNAME", "FLHST"),
@@ -273,7 +275,7 @@ test_that("SOIL ANALYSIS single use_std_fmt",{
 
   })
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     filex$`SOIL ANALYSIS`,
     char_cols = c("SMHB", "SMPX", "SMKE", "SANAME"),
     missing = c("SMHB", "SMKE", "SANAME", "SADM", "SANI",
@@ -307,7 +309,7 @@ test_that("SOIL ANALYSIS single - missing use_std_fmt",{
 
   })
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     filex$`SOIL ANALYSIS`,
     char_cols = c("SMHB", "SMPX", "SMKE", "SANAME"),
     missing = c("SADAT", "SMHB", "SMPX", "SMKE", "SANAME",
@@ -363,7 +365,7 @@ test_that("SOIL ANALYSIS multiple use_std_fmt",{
 
   })
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     filex$`SOIL ANALYSIS`,
     char_cols = c("SMHB", "SMPX", "SMKE", "SANAME"),
     missing = c("SMHB", "SMKE", "SANAME", "SADM", "SANI",
@@ -419,7 +421,7 @@ test_that("INITIAL CONDITIONS one level - no missing use_std_fmt",{
 
   })
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
              filex$`INITIAL CONDITIONS`,
              char_cols = c("PCR", "ICNAME"),
              list_cols = c("ICBL","SH2O","SNH4","SNO3"),
@@ -471,7 +473,7 @@ test_that("INITIAL CONDITIONS one level - missing use_std_fmt",{
 
   })
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     filex$`INITIAL CONDITIONS`,
     char_cols = c("PCR", "ICNAME"),
     list_cols = c("ICBL","SH2O","SNH4","SNO3"),
@@ -515,7 +517,7 @@ test_that("Two levels - no missing data use_std_fmt",{
 
   })
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     filex$`INITIAL CONDITIONS`,
     char_cols = c("PCR", "ICNAME"),
     list_cols = c("ICBL","SH2O","SNH4","SNO3"),
@@ -583,7 +585,7 @@ test_that("INITIAL CONDITIONS two levels - missing use_std_fmt",{
 
   })
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     filex$`INITIAL CONDITIONS`,
     char_cols = c("PCR", "ICNAME"),
     list_cols = c("ICBL","SH2O","SNH4","SNO3"),
@@ -613,7 +615,7 @@ test_that("INITIAL CONDITIONS two levels - missing use_std_fmt",{
 #
 #   })
 #
-#   DSSAT:::test_cols_check(
+#   test_cols_check(
 #     filex$`PLANTING DETAILS`,
 #     char_cols = c(),
 #     list_cols = c(),

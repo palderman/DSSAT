@@ -1,3 +1,5 @@
+source(system.file("tinytest/test_cols_check.R", package = "DSSAT"))
+
 test_that("read_eco() ALFRM048.ECO", {
 
   `v_fmt_expected` = c("ECO#" = "%-7s", ECONAME = "%-18s",
@@ -18,7 +20,7 @@ test_that("read_eco() ALFRM048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM"),
     expected_vals = list(`ECO#` = c("G00001", "G00002", "G00003",
@@ -90,7 +92,7 @@ test_that("read_eco() BACER048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = "ECO#",
     expected_vals = list(`ECO#` = c("999991", "999992", "DFAULT",
@@ -167,7 +169,7 @@ test_that("read_eco() BACRP048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME"),
     expected_vals = list(`ECO#` = c("999991", "999992", "DFAULT",
@@ -243,7 +245,7 @@ test_that("read_eco() BHGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM"),
     expected_vals = list(`ECO#` = "BH0001",
@@ -294,7 +296,7 @@ test_that("read_eco() BMFRM048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM"),
     expected_vals = list(`ECO#` = "G00002",
@@ -348,7 +350,7 @@ test_that("read_eco() BNGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM"),
     expected_vals = list(`ECO#` = c("MESIND", "MESDET", "ANDIND",
@@ -408,7 +410,7 @@ test_that("read_eco() BRFRM048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM"),
     expected_vals = list(`ECO#` = "G00001",
@@ -462,7 +464,7 @@ test_that("read_eco() BRGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM"),
     expected_vals = list(`ECO#` = c("BR0001", "DFAULT"),
@@ -509,7 +511,7 @@ test_that("read_eco() BSCER048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO", "ECONAME"),
     expected_vals = list(`ECO` = c("IB0001", "IB0002", "DFAULT",
@@ -556,7 +558,7 @@ test_that("read_eco() CBGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM", "JU-R0"),
     expected_vals = list(`ECO#` = c("CB0401", "CB0402", "CB0403",
@@ -610,7 +612,7 @@ test_that("read_eco() CHGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM", "JU-R0"),
     expected_vals = list(`ECO#` = c("DESI", "KABULI", "DFAULT"),
@@ -660,7 +662,7 @@ test_that("read_eco() CIGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM", "JU-R0"),
     expected_vals = list(`ECO#` = c("CI1111", "CI2222", "DFAULT"
@@ -711,7 +713,7 @@ test_that("read_eco() CNGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM", "JU-R0", "R7-R8",
                     "OPTBI"),
@@ -763,7 +765,7 @@ test_that("read_eco() COGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM"),
     expected_vals = list(`ECO#` = c("CO0001", "CO0003", "CO0005",
@@ -818,7 +820,7 @@ test_that("read_eco() CPGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM", "JU-R0", "FL-VS"
     ),
@@ -881,7 +883,7 @@ test_that("read_eco() CSCAS048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME"),
     expected_vals = list(`ECO#` = c("999991", "999992", "DFAULT",
@@ -929,7 +931,7 @@ test_that("read_eco() CSYCA048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME"),
     expected_vals = list(`ECO#` = c("999991", "999992", "DFAULT",
@@ -1021,7 +1023,7 @@ test_that("read_eco() FBGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM"),
     expected_vals = list(`ECO#` = c("FABSHO", "FABMED", "FABLON",
@@ -1077,7 +1079,7 @@ test_that("read_eco() G0GRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM"),
     expected_vals = list(`ECO#` = "G00001",
@@ -1130,7 +1132,7 @@ test_that("read_eco() GBGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM"),
     expected_vals = list(`ECO#` = "SNAPBN",
@@ -1181,7 +1183,7 @@ test_that("read_eco() GGFRM048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM"),
     expected_vals = list(`ECO#` = "GG0009",
@@ -1230,7 +1232,7 @@ test_that("read_eco() MLCER048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME"),
     expected_vals = list(`ECO#` = c("IB0001", "DFAULT", "IB0101",
@@ -1268,7 +1270,7 @@ test_that("read_eco() MZCER048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME"),
     expected_vals = list(`ECO#` = c("IB0001", "IB0002", "IB0003",
@@ -1315,7 +1317,7 @@ test_that("read_eco() MZIXM048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "DJTI"),
     expected_vals = list(`ECO#` = c("IB0001", "IB0002", "IB0003",
@@ -1365,7 +1367,7 @@ test_that("read_eco() PNGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM"),
     expected_vals = list(`ECO#` = c("RUNNER", "VIRGIN", "SPANIS",
@@ -1497,7 +1499,7 @@ test_that("read_eco() PPGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM", "JU-R0"),
     expected_vals = list(`ECO#` = c("DFAULT", "PP0001", "PP0002"
@@ -1548,7 +1550,7 @@ test_that("read_eco() PRGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM", "JU-R0", "OPTBI"
     ),
@@ -1597,7 +1599,7 @@ test_that("read_eco() PTSUB048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME"),
     expected_vals = list(`ECO#` = c("IB0001", "IB0002", "DFAULT"
@@ -1632,7 +1634,7 @@ test_that("read_eco() QUGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM", "JU-R0"),
     expected_vals = list(`ECO#` = c("QU0001", "QU0002", "DFAULT"
@@ -1683,7 +1685,7 @@ test_that("read_eco() SBGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM", "JU-R0"),
     expected_vals = list(`ECO#` = c("DETERM", "INDETE", "SB1000",
@@ -1854,7 +1856,7 @@ test_that("read_eco() SCCAN048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECO-NAME"),
     expected_vals = list(`ECO#` = c("DFAULT", "SC0001", "SC0013",
@@ -2026,7 +2028,7 @@ test_that("read_eco() SCCSP048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME"),
     `list_cols` = c("XDAY", "YSLA", "XLI", "YVTR", "XVSHT", "YVSHT",
@@ -2248,7 +2250,7 @@ test_that("read_eco() SCSAM048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECO-NAME"),
     expected_vals = list(`ECO#` = "SC0001",
@@ -2321,7 +2323,7 @@ test_that("read_eco() SFGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM", "JU-R0"),
     expected_vals = list(`ECO#` = c("SF0401", "DFAULT", "BW0001",
@@ -2373,7 +2375,7 @@ test_that("read_eco() SGCER048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME"),
     expected_vals = list(`ECO#` = c("IB0001", "IB0002", "DFAULT"
@@ -2416,7 +2418,7 @@ test_that("read_eco() SUGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM", "JU-R0"),
     expected_vals = list(`ECO#` = c("SU0702", "DFAULT"),
@@ -2463,7 +2465,7 @@ test_that("read_eco() SUOIL048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME"),
     expected_vals = list(`ECO#` = "DFAULT",
@@ -2502,7 +2504,7 @@ test_that("read_eco() SWCER048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME"),
     expected_vals = list(`ECO#` = c("IB0001", "DFAULT"),
@@ -2554,7 +2556,7 @@ test_that("read_eco() TFAPS048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME"),
     expected_vals = list(`ECO#` = c("IB0001", "IB0002", "IB0003",
@@ -2669,7 +2671,7 @@ test_that("read_eco() TMGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM", "JU-R0", "OPTBI"
     ),
@@ -2720,7 +2722,7 @@ test_that("read_eco() VBGRO048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME", "MG", "TM", "JU-R0"),
     expected_vals = list(`ECO#` = c("VB0001", "VB0002", "DFAULT"
@@ -2781,7 +2783,7 @@ test_that("read_eco() WHAPS048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME"),
     expected_vals = list(`ECO#` = c("IB0001", "IB0002", "IB0003",
@@ -2937,7 +2939,7 @@ test_that("read_eco() WHCER048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = "ECO#",
     expected_vals = list(`ECO#` = c("999991", "999992", "DFAULT",
@@ -3038,7 +3040,7 @@ test_that("read_eco() WHCRP048.ECO", {
 
   actual <- DSSAT::read_eco(input_file)
 
-  DSSAT:::test_cols_check(
+  test_cols_check(
     actual,
     `char_cols` = c("ECO#", "ECONAME"),
     expected_vals = list(`ECO#` = c("999991", "999992", "DFAULT",
