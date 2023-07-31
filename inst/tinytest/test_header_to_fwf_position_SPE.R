@@ -1,4 +1,4 @@
-test_that("@PGERM PEMRG    P0    P6  ! Germination,emrgence/cm,juvenile,post-maturity",{
+# "@PGERM PEMRG    P0    P6  ! Germination,emrgence/cm,juvenile,post-maturity"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -16,11 +16,10 @@ test_that("@PGERM PEMRG    P0    P6  ! Germination,emrgence/cm,juvenile,post-mat
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@PGERM PEMRG    P0    P6  ! Germination,emrgence/cm,juvenile,post-maturity")
 
-})
-
-test_that("@PPFPE PPTHR PPEND  ! Photoperiod factor pre-emerge,threshold,end sensitivity",{
+# "@PPFPE PPTHR PPEND  ! Photoperiod factor pre-emerge,threshold,end sensitivity"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -37,11 +36,10 @@ test_that("@PPFPE PPTHR PPEND  ! Photoperiod factor pre-emerge,threshold,end sen
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@PPFPE PPTHR PPEND  ! Photoperiod factor pre-emerge,threshold,end sensitivity")
 
-})
-
-test_that("@RLIG%  RLWR  RSEN RRESP RLDGR !Lignin%,length/wt,senescence,resp.",{
+# "@RLIG%  RLWR  RSEN RRESP RLDGR !Lignin%,length/wt,senescence,resp."
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -60,11 +58,10 @@ test_that("@RLIG%  RLWR  RSEN RRESP RLDGR !Lignin%,length/wt,senescence,resp.",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@RLIG%  RLWR  RSEN RRESP RLDGR !Lignin%,length/wt,senescence,resp.")
 
-})
-
-test_that("@LLIG%  LAXS LSHFR LSHAW  PHL1  PHF1 SLAMN SLACF",{
+# "@LLIG%  LAXS LSHFR LSHAW  PHL1  PHF1 SLAMN SLACF"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -86,11 +83,10 @@ test_that("@LLIG%  LAXS LSHFR LSHAW  PHL1  PHF1 SLAMN SLACF",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@LLIG%  LAXS LSHFR LSHAW  PHL1  PHF1 SLAMN SLACF")
 
-})
-
-test_that("@LLIFE LWLOS LRPHS                  ",{
+# "@LLIFE LWLOS LRPHS                  "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -107,11 +103,10 @@ test_that("@LLIFE LWLOS LRPHS                  ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@LLIFE LWLOS LRPHS                  ")
 
-})
-
-test_that("@ LASF",{
+# "@ LASF"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -126,11 +121,10 @@ test_that("@ LASF",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ LASF")
 
-})
-
-test_that("@ CHT%  CLA%",{
+# "@ CHT%  CLA%"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -146,11 +140,10 @@ test_that("@ CHT%  CLA%",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ CHT%  CLA%")
 
-})
-
-test_that("@ TPAR TSRAD",{
+# "@ TPAR TSRAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -166,11 +159,10 @@ test_that("@ TPAR TSRAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ TPAR TSRAD")
 
-})
-
-test_that("@TGR02   ",{
+# "@TGR02   "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -185,11 +177,10 @@ test_that("@TGR02   ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TGR02   ")
 
-})
-
-test_that("@ RS%X ! Max concentration",{
+# "@ RS%X ! Max concentration"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -204,11 +195,10 @@ test_that("@ RS%X ! Max concentration",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ RS%X ! Max concentration")
 
-})
-
-test_that("@SLIG%  SAWS SGPHE SSPHS SSEN%",{
+# "@SLIG%  SAWS SGPHE SSPHS SSEN%"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -227,11 +217,10 @@ test_that("@SLIG%  SAWS SGPHE SSPHS SSEN%",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SLIG%  SAWS SGPHE SSPHS SSEN%")
 
-})
-
-test_that("@ CHFR CHSTG",{
+# "@ CHFR CHSTG"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -247,11 +236,10 @@ test_that("@ CHFR CHSTG",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ CHFR CHSTG")
 
-})
-
-test_that("@GLIG%",{
+# "@GLIG%"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -266,11 +254,10 @@ test_that("@GLIG%",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@GLIG%")
 
-})
-
-test_that("@ SDWT SDAFR",{
+# "@ SDWT SDAFR"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -286,11 +273,10 @@ test_that("@ SDWT SDAFR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SDWT SDAFR")
 
-})
-
-test_that("@CO2RF  CO2F",{
+# "@CO2RF  CO2F"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -306,11 +292,10 @@ test_that("@CO2RF  CO2F",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@CO2RF  CO2F")
 
-})
-
-test_that("@PTFMX",{
+# "@PTFMX"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -325,11 +310,10 @@ test_that("@PTFMX",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@PTFMX")
 
-})
-
-test_that("@ PTFS  PTFA  STFR",{
+# "@ PTFS  PTFA  STFR"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -346,11 +330,10 @@ test_that("@ PTFS  PTFA  STFR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ PTFS  PTFA  STFR")
 
-})
-
-test_that("@ TKUH  HDUR  TKLF",{
+# "@ TKUH  HDUR  TKLF"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -367,11 +350,10 @@ test_that("@ TKUH  HDUR  TKLF",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ TKUH  HDUR  TKLF")
 
-})
-
-test_that("@TRGEM TRDV1 TRDV2 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN    ",{
+# "@TRGEM TRDV1 TRDV2 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN    "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -394,11 +376,10 @@ test_that("@TRGEM TRDV1 TRDV2 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN    ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRGEM TRDV1 TRDV2 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN    ")
 
-})
-
-test_that("@EORATIO",{
+# "@EORATIO"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#    ~check,
@@ -413,11 +394,10 @@ test_that("@EORATIO",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@EORATIO")
 
-})
-
-test_that("@RWUPM RWUMX",{
+# "@RWUPM RWUMX"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -433,11 +413,10 @@ test_that("@RWUPM RWUMX",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@RWUPM RWUMX")
 
-})
-
-test_that("@ WFPU WFPGF  WFGU  WFTU  WFTL  WFSU",{
+# "@ WFPU WFPGF  WFGU  WFTU  WFTL  WFSU"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -457,11 +436,10 @@ test_that("@ WFPU WFPGF  WFGU  WFTU  WFTL  WFSU",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ WFPU WFPGF  WFGU  WFTU  WFTL  WFSU")
 
-})
-
-test_that("@WFGEU WFRGU",{
+# "@WFGEU WFRGU"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -477,11 +455,10 @@ test_that("@WFGEU WFRGU",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@WFGEU WFRGU")
 
-})
-
-test_that("@LLOSW ! Fr/d",{
+# "@LLOSW ! Fr/d"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -496,11 +473,10 @@ test_that("@LLOSW ! Fr/d",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@LLOSW ! Fr/d")
 
-})
-
-test_that("@NH4MN NO3MN RTNO3 RTNH4",{
+# "@NH4MN NO3MN RTNO3 RTNH4"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -518,11 +494,10 @@ test_that("@NH4MN NO3MN RTNO3 RTNH4",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@NH4MN NO3MN RTNO3 RTNH4")
 
-})
-
-test_that("@ NTUPF  ! Fraction of deficit that can be filled per day",{
+# "@ NTUPF  ! Fraction of deficit that can be filled per day"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -537,11 +512,10 @@ test_that("@ NTUPF  ! Fraction of deficit that can be filled per day",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ NTUPF  ! Fraction of deficit that can be filled per day")
 
-})
-
-test_that("@GN%MX  SDN% ",{
+# "@GN%MX  SDN% "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -557,11 +531,10 @@ test_that("@GN%MX  SDN% ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@GN%MX  SDN% ")
 
-})
-
-test_that("@ LN%S  SN%S  RN%S LN%MN SN%MN RN%MN",{
+# "@ LN%S  SN%S  RN%S LN%MN SN%MN RN%MN"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -581,11 +554,10 @@ test_that("@ LN%S  SN%S  RN%S LN%MN SN%MN RN%MN",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ LN%S  SN%S  RN%S LN%MN SN%MN RN%MN")
 
-})
-
-test_that("@NLAB%",{
+# "@NLAB%"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -600,11 +572,10 @@ test_that("@NLAB%",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@NLAB%")
 
-})
-
-test_that("@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,tillering,senecence",{
+# "@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,tillering,senecence"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -626,11 +597,10 @@ test_that("@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,tillering,sene
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,tillering,senecence")
 
-})
-
-test_that("@ NCRG",{
+# "@ NCRG"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -645,11 +615,10 @@ test_that("@ NCRG",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ NCRG")
 
-})
-
-test_that("@LLOSN ! Fr/d",{
+# "@LLOSN ! Fr/d"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -664,11 +633,10 @@ test_that("@LLOSN ! Fr/d",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@LLOSN ! Fr/d")
 
-})
-
-test_that("@ PSNO PSTYP PSABV PSNAME",{
+# "@ PSNO PSTYP PSABV PSNAME"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -686,11 +654,10 @@ test_that("@ PSNO PSTYP PSABV PSNAME",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ PSNO PSTYP PSABV PSNAME")
 
-})
-
-test_that("@ SSNO SSTYP  SSTG SSABV SSNAME",{
+# "@ SSNO SSTYP  SSTG SSABV SSNAME"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -709,11 +676,10 @@ test_that("@ SSNO SSTYP  SSTG SSABV SSNAME",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SSNO SSTYP  SSTG SSABV SSNAME")
 
-})
-
-test_that("@PGERM PEMRG    P0    P9 ",{
+# "@PGERM PEMRG    P0    P9 "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -731,11 +697,10 @@ test_that("@PGERM PEMRG    P0    P9 ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@PGERM PEMRG    P0    P9 ")
 
-})
-
-test_that("@PPFPE PPTHR PPSEN PPEXP VPEND VEEND VLOSS VLOST VLOSF ! Photoperiod,vern",{
+# "@PPFPE PPTHR PPSEN PPEXP VPEND VEEND VLOSS VLOST VLOSF ! Photoperiod,vern"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -758,11 +723,10 @@ test_that("@PPFPE PPTHR PPSEN PPEXP VPEND VEEND VLOSS VLOST VLOSF ! Photoperiod,
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@PPFPE PPTHR PPSEN PPEXP VPEND VEEND VLOSS VLOST VLOSF ! Photoperiod,vern")
 
-})
-
-test_that("@RLIG%  RLWR  RSEN RRESP RDGAF ! Lignin%,length/wt;sen,resp;depth gr adj fac",{
+# "@RLIG%  RLWR  RSEN RRESP RDGAF ! Lignin%,length/wt;sen,resp;depth gr adj fac"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -781,11 +745,10 @@ test_that("@RLIG%  RLWR  RSEN RRESP RDGAF ! Lignin%,length/wt;sen,resp;depth gr 
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@RLIG%  RLWR  RSEN RRESP RDGAF ! Lignin%,length/wt;sen,resp;depth gr adj fac")
 
-})
-
-test_that("@RTUFR ! Fraction useable to re-establish tops after winter-kill, etc..",{
+# "@RTUFR ! Fraction useable to re-establish tops after winter-kill, etc.."
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -800,11 +763,10 @@ test_that("@RTUFR ! Fraction useable to re-establish tops after winter-kill, etc
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@RTUFR ! Fraction useable to re-establish tops after winter-kill, etc..")
 
-})
-
-test_that("@LLIG%  LAXS SLACF SLAFF LSHFR LSHAV LSHAR  PHL1  PHF1",{
+# "@LLIG%  LAXS SLACF SLAFF LSHFR LSHAV LSHAR  PHL1  PHF1"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -827,11 +789,10 @@ test_that("@LLIG%  LAXS SLACF SLAFF LSHFR LSHAV LSHAR  PHL1  PHF1",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@LLIG%  LAXS SLACF SLAFF LSHFR LSHAV LSHAR  PHL1  PHF1")
 
-})
-
-test_that("@LLIFA LLIFG LLIFS LWLOS",{
+# "@LLIFA LLIFG LLIFS LWLOS"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -849,11 +810,10 @@ test_that("@LLIFA LLIFG LLIFS LWLOS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@LLIFA LLIFG LLIFS LWLOS")
 
-})
-
-test_that("@LAIXX ! LAI maximum    ",{
+# "@LAIXX ! LAI maximum    "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -868,11 +828,10 @@ test_that("@LAIXX ! LAI maximum    ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@LAIXX ! LAI maximum    ")
 
-})
-
-test_that("@ CHT%  CLA% ! Height%, cumulative leaf area %",{
+# "@ CHT%  CLA% ! Height%, cumulative leaf area %"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -888,11 +847,10 @@ test_that("@ CHT%  CLA% ! Height%, cumulative leaf area %",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ CHT%  CLA% ! Height%, cumulative leaf area %")
 
-})
-
-test_that("@ TPAR TSRAD ! Leaf transmission PAR,solar                                     ",{
+# "@ TPAR TSRAD ! Leaf transmission PAR,solar                                     "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -908,11 +866,10 @@ test_that("@ TPAR TSRAD ! Leaf transmission PAR,solar                           
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ TPAR TSRAD ! Leaf transmission PAR,solar                                     ")
 
-})
-
-test_that("@TGR02 TGR20 TILIP TIL#X ! Size,phase,maximum",{
+# "@TGR02 TGR20 TILIP TIL#X ! Size,phase,maximum"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -930,11 +887,10 @@ test_that("@TGR02 TGR20 TILIP TIL#X ! Size,phase,maximum",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TGR02 TGR20 TILIP TIL#X ! Size,phase,maximum")
 
-})
-
-test_that("@ RS%X RS%LX RSUSE ! Max concentrations,fraction utilizeable/day",{
+# "@ RS%X RS%LX RSUSE ! Max concentrations,fraction utilizeable/day"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -951,11 +907,10 @@ test_that("@ RS%X RS%LX RSUSE ! Max concentrations,fraction utilizeable/day",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ RS%X RS%LX RSUSE ! Max concentrations,fraction utilizeable/day")
 
-})
-
-test_that("@SLIG%  SAWS ! Lignin,area/weight",{
+# "@SLIG%  SAWS ! Lignin,area/weight"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -971,11 +926,10 @@ test_that("@SLIG%  SAWS ! Lignin,area/weight",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SLIG%  SAWS ! Lignin,area/weight")
 
-})
-
-test_that("@ CHFR ! Fraction of stem growth",{
+# "@ CHFR ! Fraction of stem growth"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -990,11 +944,10 @@ test_that("@ CHFR ! Fraction of stem growth",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ CHFR ! Fraction of stem growth")
 
-})
-
-test_that("@GLIG% GWLAG GWLIN ! Lignin;wt.endlag,endlinear",{
+# "@GLIG% GWLAG GWLIN ! Lignin;wt.endlag,endlinear"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1011,11 +964,10 @@ test_that("@GLIG% GWLAG GWLIN ! Lignin;wt.endlag,endlinear",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@GLIG% GWLAG GWLIN ! Lignin;wt.endlag,endlinear")
 
-})
-
-test_that("@ SDWT SDDUR SDRS% ! Weight,duration,reserves (% whole seed)",{
+# "@ SDWT SDDUR SDRS% ! Weight,duration,reserves (% whole seed)"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1032,11 +984,10 @@ test_that("@ SDWT SDDUR SDRS% ! Weight,duration,reserves (% whole seed)",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SDWT SDDUR SDRS% ! Weight,duration,reserves (% whole seed)")
 
-})
-
-test_that("@PARFC CO2CC CO2EX ! CO2 response (only for comparison)",{
+# "@PARFC CO2CC CO2EX ! CO2 response (only for comparison)"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1053,11 +1004,10 @@ test_that("@PARFC CO2CC CO2EX ! CO2 response (only for comparison)",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@PARFC CO2CC CO2EX ! CO2 response (only for comparison)")
 
-})
-
-test_that("@RSFPU RSFPL ! Reserves effect thresholds (as set->no reserves effect)",{
+# "@RSFPU RSFPL ! Reserves effect thresholds (as set->no reserves effect)"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1073,11 +1023,10 @@ test_that("@RSFPU RSFPL ! Reserves effect thresholds (as set->no reserves effect
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@RSFPU RSFPL ! Reserves effect thresholds (as set->no reserves effect)")
 
-})
-
-test_that("@PTFMN PTFMX  PTFXS  PTFA ! Partition to tops (max,min,max.adjustment)",{
+# "@PTFMN PTFMX  PTFXS  PTFA ! Partition to tops (max,min,max.adjustment)"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1095,11 +1044,10 @@ test_that("@PTFMN PTFMX  PTFXS  PTFA ! Partition to tops (max,min,max.adjustment
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@PTFMN PTFMX  PTFXS  PTFA ! Partition to tops (max,min,max.adjustment)")
 
-})
-
-test_that("@ TKUH TKDTI TKDLF TKSPN  HDUR HLOST HLOSF ! Kill temps,span,time->harden,loss",{
+# "@ TKUH TKDTI TKDLF TKSPN  HDUR HLOST HLOSF ! Kill temps,span,time->harden,loss"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1120,11 +1068,10 @@ test_that("@ TKUH TKDTI TKDLF TKSPN  HDUR HLOST HLOSF ! Kill temps,span,time->ha
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ TKUH TKDTI TKDLF TKSPN  HDUR HLOST HLOSF ! Kill temps,span,time->harden,loss")
 
-})
-
-test_that("@ TKGF",{
+# "@ TKGF"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1139,11 +1086,10 @@ test_that("@ TKGF",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ TKGF")
 
-})
-
-test_that("@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR TRGFW xRGFW TRGFN xRGFN  ",{
+# "@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR TRGFW xRGFW TRGFN xRGFN  "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1171,11 +1117,10 @@ test_that("@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR TRGFW xR
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR TRGFW xRGFW TRGFN xRGFN  ")
 
-})
-
-test_that("@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR XRGFW TRGFN  ",{
+# "@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR XRGFW TRGFN  "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1201,11 +1146,10 @@ test_that("@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR XRGFW TR
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@RRATE TRGEM TRDV1 TRDV4 TRDV8  TRLA TRLFG TRPHS TRVRN TRHAR XRGFW TRGFN  ")
 
-})
-
-test_that("@ RATM RCROP EORATIO ! Atmospheric,canopy resistances;FAO formula factor",{
+# "@ RATM RCROP EORATIO ! Atmospheric,canopy resistances;FAO formula factor"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#    ~check,
@@ -1222,11 +1166,10 @@ test_that("@ RATM RCROP EORATIO ! Atmospheric,canopy resistances;FAO formula fac
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ RATM RCROP EORATIO ! Atmospheric,canopy resistances;FAO formula factor")
 
-})
-
-test_that("@RWUPM RWUMX ! Min.pore size for max.uptake,Max uptake rate",{
+# "@RWUPM RWUMX ! Min.pore size for max.uptake,Max uptake rate"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1242,11 +1185,10 @@ test_that("@RWUPM RWUMX ! Min.pore size for max.uptake,Max uptake rate",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@RWUPM RWUMX ! Min.pore size for max.uptake,Max uptake rate")
 
-})
-
-test_that("@ WFPU  WFPL  WFGU  WFGL  WFTU  WFTL  WFSU  WFSF  WFEU !Gr,phs,till,sen,evap",{
+# "@ WFPU  WFPL  WFGU  WFGL  WFTU  WFTL  WFSU  WFSF  WFEU !Gr,phs,till,sen,evap"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1269,11 +1211,10 @@ test_that("@ WFPU  WFPL  WFGU  WFGL  WFTU  WFTL  WFSU  WFSF  WFEU !Gr,phs,till,s
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ WFPU  WFPL  WFGU  WFGL  WFTU  WFTL  WFSU  WFSF  WFEU !Gr,phs,till,sen,evap")
 
-})
-
-test_that("@LLOSA",{
+# "@LLOSA"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1288,11 +1229,10 @@ test_that("@LLOSA",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@LLOSA")
 
-})
-
-test_that("@WFGEU WFRGU  ! Germination/emergence,root growth",{
+# "@WFGEU WFRGU  ! Germination/emergence,root growth"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1308,11 +1248,10 @@ test_that("@WFGEU WFRGU  ! Germination/emergence,root growth",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@WFGEU WFRGU  ! Germination/emergence,root growth")
 
-})
-
-test_that("@NH4MN NO3MN",{
+# "@NH4MN NO3MN"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1328,11 +1267,10 @@ test_that("@NH4MN NO3MN",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@NH4MN NO3MN")
 
-})
-
-test_that("@NTUPF  ! Fraction of deficit that can be filled per day",{
+# "@NTUPF  ! Fraction of deficit that can be filled per day"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1347,11 +1285,10 @@ test_that("@NTUPF  ! Fraction of deficit that can be filled per day",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@NTUPF  ! Fraction of deficit that can be filled per day")
 
-})
-
-test_that("@GN%MX  SDN% ! Grain,seed             ",{
+# "@GN%MX  SDN% ! Grain,seed             "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1367,11 +1304,10 @@ test_that("@GN%MX  SDN% ! Grain,seed             ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@GN%MX  SDN% ! Grain,seed             ")
 
-})
-
-test_that("@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN ! Standard,minima N% for lves,stems,rts  ",{
+# "@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN ! Standard,minima N% for lves,stems,rts  "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1391,11 +1327,10 @@ test_that("@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN ! Standard,minima N% for lves,st
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN ! Standard,minima N% for lves,stems,rts  ")
 
-})
-
-test_that("@NLAB% ! %N that labile ",{
+# "@NLAB% ! %N that labile "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1410,11 +1345,10 @@ test_that("@NLAB% ! %N that labile ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@NLAB% ! %N that labile ")
 
-})
-
-test_that("@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,gr,tillering,senesnce",{
+# "@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,gr,tillering,senesnce"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1436,11 +1370,10 @@ test_that("@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,gr,tillering,s
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ NFPU  NFPL  NFGU  NFGL  NFTU  NFTL  NFSU  NFSF ! Phs,gr,tillering,senesnce")
 
-})
-
-test_that("@ NCRG  ! Root growth ",{
+# "@ NCRG  ! Root growth "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1455,11 +1388,10 @@ test_that("@ NCRG  ! Root growth ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ NCRG  ! Root growth ")
 
-})
-
-test_that("@ DI_NAME    DI_ABV",{
+# "@ DI_NAME    DI_ABV"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#      ~check,
@@ -1475,11 +1407,10 @@ test_that("@ DI_NAME    DI_ABV",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ DI_NAME    DI_ABV")
 
-})
-
-test_that("@ DAPX DLDUR DSDUR DDEWN DINMX DITYP TBASE TOPT1 TOPT2  TTOP TKILL DINCO DIFFR",{
+# "@ DAPX DLDUR DSDUR DDEWN DINMX DITYP TBASE TOPT1 TOPT2  TTOP TKILL DINCO DIFFR"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1506,11 +1437,10 @@ test_that("@ DAPX DLDUR DSDUR DDEWN DINMX DITYP TBASE TOPT1 TOPT2  TTOP TKILL DI
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ DAPX DLDUR DSDUR DDEWN DINMX DITYP TBASE TOPT1 TOPT2  TTOP TKILL DINCO DIFFR")
 
-})
-
-test_that("@HPROD",{
+# "@HPROD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1525,11 +1455,10 @@ test_that("@HPROD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@HPROD")
 
-})
-
-test_that("@PGERM PEMRG  ! Germination,gr thru soil(/cm)                             ",{
+# "@PGERM PEMRG  ! Germination,gr thru soil(/cm)                             "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1545,11 +1474,10 @@ test_that("@PGERM PEMRG  ! Germination,gr thru soil(/cm)                        
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@PGERM PEMRG  ! Germination,gr thru soil(/cm)                             ")
 
-})
-
-test_that("@PPFPE PPTHR PPSEN ! Photoperiod threshold,sensitivity type  ",{
+# "@PPFPE PPTHR PPSEN ! Photoperiod threshold,sensitivity type  "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1566,11 +1494,10 @@ test_that("@PPFPE PPTHR PPSEN ! Photoperiod threshold,sensitivity type  ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@PPFPE PPTHR PPSEN ! Photoperiod threshold,sensitivity type  ")
 
-})
-
-test_that("@RLIG%  RLWR  RSEN RRESP RDGS RDGAF  ! Lignin%,length/wt;sen,resp;dpth growth",{
+# "@RLIG%  RLWR  RSEN RRESP RDGS RDGAF  ! Lignin%,length/wt;sen,resp;dpth growth"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1590,11 +1517,10 @@ test_that("@RLIG%  RLWR  RSEN RRESP RDGS RDGAF  ! Lignin%,length/wt;sen,resp;dpt
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@RLIG%  RLWR  RSEN RRESP RDGS RDGAF  ! Lignin%,length/wt;sen,resp;dpth growth")
 
-})
-
-test_that("@PHNTF  ! Phint change with growth stage factor",{
+# "@PHNTF  ! Phint change with growth stage factor"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1609,11 +1535,10 @@ test_that("@PHNTF  ! Phint change with growth stage factor",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@PHNTF  ! Phint change with growth stage factor")
 
-})
-
-test_that("@LLIG% LPEAW ! Lignin%",{
+# "@LLIG% LPEAW ! Lignin%"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1629,11 +1554,10 @@ test_that("@LLIG% LPEAW ! Lignin%",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@LLIG% LPEAW ! Lignin%")
 
-})
-
-test_that("@LLIFG LLIFS LLIFX  ! Growing,senescence durations;max.acceleration in shade ",{
+# "@LLIFG LLIFS LLIFX  ! Growing,senescence durations;max.acceleration in shade "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1650,11 +1574,10 @@ test_that("@LLIFG LLIFS LLIFX  ! Growing,senescence durations;max.acceleration i
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@LLIFG LLIFS LLIFX  ! Growing,senescence durations;max.acceleration in shade ")
 
-})
-
-test_that("@LLOSA LWLOS  ! Loss when accelerated,normal senescence   ",{
+# "@LLOSA LWLOS  ! Loss when accelerated,normal senescence   "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1670,11 +1593,10 @@ test_that("@LLOSA LWLOS  ! Loss when accelerated,normal senescence   ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@LLOSA LWLOS  ! Loss when accelerated,normal senescence   ")
 
-})
-
-test_that("@SLACF SLAFF SLAMN  ! Specific leaf area change,flexibility,minimum  ",{
+# "@SLACF SLAFF SLAMN  ! Specific leaf area change,flexibility,minimum  "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1691,11 +1613,10 @@ test_that("@SLACF SLAFF SLAMN  ! Specific leaf area change,flexibility,minimum  
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SLACF SLAFF SLAMN  ! Specific leaf area change,flexibility,minimum  ")
 
-})
-
-test_that("@SLATS SLATR SLAWR  ! Specific leaf area temperature and h2o effect parameters",{
+# "@SLATS SLATR SLAWR  ! Specific leaf area temperature and h2o effect parameters"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1712,11 +1633,10 @@ test_that("@SLATS SLATR SLAWR  ! Specific leaf area temperature and h2o effect p
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SLATS SLATR SLAWR  ! Specific leaf area temperature and h2o effect parameters")
 
-})
-
-test_that("@ CHT%  CLA%   ! Canopy height%, leaf area %",{
+# "@ CHT%  CLA%   ! Canopy height%, leaf area %"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1732,11 +1652,10 @@ test_that("@ CHT%  CLA%   ! Canopy height%, leaf area %",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ CHT%  CLA%   ! Canopy height%, leaf area %")
 
-})
-
-test_that("@ TPAR TSRAD  ! Individual leaf transmission PAR, solar radiation  ",{
+# "@ TPAR TSRAD  ! Individual leaf transmission PAR, solar radiation  "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1752,11 +1671,10 @@ test_that("@ TPAR TSRAD  ! Individual leaf transmission PAR, solar radiation  ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ TPAR TSRAD  ! Individual leaf transmission PAR, solar radiation  ")
 
-})
-
-test_that("@ KCAN  ! Canopy extinction coefficient PAR",{
+# "@ KCAN  ! Canopy extinction coefficient PAR"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1771,11 +1689,10 @@ test_that("@ KCAN  ! Canopy extinction coefficient PAR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ KCAN  ! Canopy extinction coefficient PAR")
 
-})
-
-test_that("@PARIX  ! PAR interception beyond which accelerated ageing    ",{
+# "@PARIX  ! PAR interception beyond which accelerated ageing    "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1790,11 +1707,10 @@ test_that("@PARIX  ! PAR interception beyond which accelerated ageing    ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@PARIX  ! PAR interception beyond which accelerated ageing    ")
 
-})
-
-test_that("@SGRO2  ! Relative size of 2nd shoot",{
+# "@SGRO2  ! Relative size of 2nd shoot"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1809,11 +1725,10 @@ test_that("@SGRO2  ! Relative size of 2nd shoot",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SGRO2  ! Relative size of 2nd shoot")
 
-})
-
-test_that("@RSFRS RS%O RS%LX RSUSE  ! Standard concs (overall,leaves), fr utilizeable/day",{
+# "@RSFRS RS%O RS%LX RSUSE  ! Standard concs (overall,leaves), fr utilizeable/day"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1831,11 +1746,10 @@ test_that("@RSFRS RS%O RS%LX RSUSE  ! Standard concs (overall,leaves), fr utiliz
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@RSFRS RS%O RS%LX RSUSE  ! Standard concs (overall,leaves), fr utilizeable/day")
 
-})
-
-test_that("@SLIG%  SAWS  SERX  ! Lignin%, area/weight, elongation rate",{
+# "@SLIG%  SAWS  SERX  ! Lignin%, area/weight, elongation rate"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1852,11 +1766,10 @@ test_that("@SLIG%  SAWS  SERX  ! Lignin%, area/weight, elongation rate",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SLIG%  SAWS  SERX  ! Lignin%, area/weight, elongation rate")
 
-})
-
-test_that("@ CRFR ! Fraction of stem growth",{
+# "@ CRFR ! Fraction of stem growth"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1871,11 +1784,10 @@ test_that("@ CRFR ! Fraction of stem growth",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ CRFR ! Fraction of stem growth")
 
-})
-
-test_that("@ SDWT SDDUR SDRS% ! Weight, duration, reserves (% whole seed)",{
+# "@ SDWT SDDUR SDRS% ! Weight, duration, reserves (% whole seed)"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1892,11 +1804,10 @@ test_that("@ SDWT SDDUR SDRS% ! Weight, duration, reserves (% whole seed)",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SDWT SDDUR SDRS% ! Weight, duration, reserves (% whole seed)")
 
-})
-
-test_that("@ PHTV  PHSV  ! VPD sensitivity aspects",{
+# "@ PHTV  PHSV  ! VPD sensitivity aspects"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1912,11 +1823,10 @@ test_that("@ PHTV  PHSV  ! VPD sensitivity aspects",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ PHTV  PHSV  ! VPD sensitivity aspects")
 
-})
-
-test_that("@CO2RF  CO2F  ! CO2 response",{
+# "@CO2RF  CO2F  ! CO2 response"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1932,11 +1842,10 @@ test_that("@CO2RF  CO2F  ! CO2 response",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@CO2RF  CO2F  ! CO2 response")
 
-})
-
-test_that("@PTFMN PTFMX  PTFA  ! Partition to tops (max,min,adjustment)",{
+# "@PTFMN PTFMX  PTFA  ! Partition to tops (max,min,adjustment)"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1953,11 +1862,10 @@ test_that("@PTFMN PTFMX  PTFA  ! Partition to tops (max,min,adjustment)",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@PTFMN PTFMX  PTFA  ! Partition to tops (max,min,adjustment)")
 
-})
-
-test_that("@RRATE TRGEM TRDV1 TRLFG TRPHS  ! Germination/emergence,development,leaf growth,phsis",{
+# "@RRATE TRGEM TRDV1 TRLFG TRPHS  ! Germination/emergence,development,leaf growth,phsis"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1976,11 +1884,10 @@ test_that("@RRATE TRGEM TRDV1 TRLFG TRPHS  ! Germination/emergence,development,l
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@RRATE TRGEM TRDV1 TRLFG TRPHS  ! Germination/emergence,development,leaf growth,phsis")
 
-})
-
-test_that("@EORATIO  ! FAO formula factor",{
+# "@EORATIO  ! FAO formula factor"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#    ~check,
@@ -1995,11 +1902,10 @@ test_that("@EORATIO  ! FAO formula factor",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@EORATIO  ! FAO formula factor")
 
-})
-
-test_that("@RWUPM RWUMX ! Min pore size,max.uptake rate",{
+# "@RWUPM RWUMX ! Min pore size,max.uptake rate"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2015,11 +1921,10 @@ test_that("@RWUPM RWUMX ! Min pore size,max.uptake rate",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@RWUPM RWUMX ! Min pore size,max.uptake rate")
 
-})
-
-test_that("@ WFGU  WFGL  WFPU  WFPL  WFSU  WFEU  ! Growth,phs,senescence,evap",{
+# "@ WFGU  WFGL  WFPU  WFPL  WFSU  WFEU  ! Growth,phs,senescence,evap"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2039,11 +1944,10 @@ test_that("@ WFGU  WFGL  WFPU  WFPL  WFSU  WFEU  ! Growth,phs,senescence,evap",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ WFGU  WFGL  WFPU  WFPL  WFSU  WFEU  ! Growth,phs,senescence,evap")
 
-})
-
-test_that("@WFGEU WFRGU  ! Germination/emergence, root growth",{
+# "@WFGEU WFRGU  ! Germination/emergence, root growth"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2059,11 +1963,10 @@ test_that("@WFGEU WFRGU  ! Germination/emergence, root growth",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@WFGEU WFRGU  ! Germination/emergence, root growth")
 
-})
-
-test_that("@RTNO3 RTNH4 NH4MN NO3MN",{
+# "@RTNO3 RTNH4 NH4MN NO3MN"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2081,11 +1984,10 @@ test_that("@RTNO3 RTNH4 NH4MN NO3MN",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@RTNO3 RTNH4 NH4MN NO3MN")
 
-})
-
-test_that("@ SDN% ! Seed",{
+# "@ SDN% ! Seed"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2100,11 +2002,10 @@ test_that("@ SDN% ! Seed",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SDN% ! Seed")
 
-})
-
-test_that("@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN  ! Standard,minima N% leaves,stems,roots",{
+# "@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN  ! Standard,minima N% leaves,stems,roots"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2124,11 +2025,10 @@ test_that("@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN  ! Standard,minima N% leaves,ste
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ LN%S LN%MN  SN%S SN%MN  RN%S RN%MN  ! Standard,minima N% leaves,stems,roots")
 
-})
-
-test_that("@NLAB% ! Labile nitrogen",{
+# "@NLAB% ! Labile nitrogen"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2143,11 +2043,10 @@ test_that("@NLAB% ! Labile nitrogen",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@NLAB% ! Labile nitrogen")
 
-})
-
-test_that("@ NFPU  NFPL  NFGU  NFGL  NFSU ! Photosynthesis,growth,senescence",{
+# "@ NFPU  NFPL  NFGU  NFGL  NFSU ! Photosynthesis,growth,senescence"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2166,11 +2065,10 @@ test_that("@ NFPU  NFPL  NFGU  NFGL  NFSU ! Photosynthesis,growth,senescence",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ NFPU  NFPL  NFGU  NFGL  NFSU ! Photosynthesis,growth,senescence")
 
-})
-
-test_that("@ NLLG",{
+# "@ NLLG"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2185,11 +2083,10 @@ test_that("@ NLLG",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ NLLG")
 
-})
-
-test_that("@ NCRG   ! Root growth",{
+# "@ NCRG   ! Root growth"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2204,11 +2101,10 @@ test_that("@ NCRG   ! Root growth",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ NCRG   ! Root growth")
 
-})
-
-test_that("@PARFC CO2CC CO2EX  ! CO2 response function parameters ",{
+# "@PARFC CO2CC CO2EX  ! CO2 response function parameters "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2225,11 +2121,10 @@ test_that("@PARFC CO2CC CO2EX  ! CO2 response function parameters ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@PARFC CO2CC CO2EX  ! CO2 response function parameters ")
 
-})
-
-test_that("@ RATM RCROP  ! Atmospheric,canopy resistances ",{
+# "@ RATM RCROP  ! Atmospheric,canopy resistances "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2245,11 +2140,10 @@ test_that("@ RATM RCROP  ! Atmospheric,canopy resistances ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ RATM RCROP  ! Atmospheric,canopy resistances ")
 
-})
-
-test_that("@RWULF ! Length factor",{
+# "@RWULF ! Length factor"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2264,11 +2158,10 @@ test_that("@RWULF ! Length factor",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@RWULF ! Length factor")
 
-})
-
-test_that("@PEMRG  ! gr by cum. soil temperature                              ",{
+# "@PEMRG  ! gr by cum. soil temperature                              "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2283,11 +2176,10 @@ test_that("@PEMRG  ! gr by cum. soil temperature                              ",
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@PEMRG  ! gr by cum. soil temperature                              ")
 
-})
-
-test_that("@RLIG%  RSEN RRESP   ! Lignin%,sen,resp",{
+# "@RLIG%  RSEN RRESP   ! Lignin%,sen,resp"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2304,11 +2196,10 @@ test_that("@RLIG%  RSEN RRESP   ! Lignin%,sen,resp",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@RLIG%  RSEN RRESP   ! Lignin%,sen,resp")
 
-})
-
-test_that("@LLIG% LPEAW ! Lignin%, petiole area/wt",{
+# "@LLIG% LPEAW ! Lignin%, petiole area/wt"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2324,11 +2215,10 @@ test_that("@LLIG% LPEAW ! Lignin%, petiole area/wt",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@LLIG% LPEAW ! Lignin%, petiole area/wt")
 
-})
-
-test_that("@LLIFG LLIFS  ! Growing,senescence durations",{
+# "@LLIFG LLIFS  ! Growing,senescence durations"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2344,11 +2234,10 @@ test_that("@LLIFG LLIFS  ! Growing,senescence durations",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@LLIFG LLIFS  ! Growing,senescence durations")
 
-})
-
-test_that("@LWLOS  ! Loss when normal senescence   ",{
+# "@LWLOS  ! Loss when normal senescence   "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2363,11 +2252,10 @@ test_that("@LWLOS  ! Loss when normal senescence   ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@LWLOS  ! Loss when normal senescence   ")
 
-})
-
-test_that("@SLATS SLATR   ! Specific leaf area temperature effect parameters",{
+# "@SLATS SLATR   ! Specific leaf area temperature effect parameters"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2383,11 +2271,10 @@ test_that("@SLATS SLATR   ! Specific leaf area temperature effect parameters",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SLATS SLATR   ! Specific leaf area temperature effect parameters")
 
-})
-
-test_that("@SLIG%  SESR ! Lignin%, elongation rate (shoot)",{
+# "@SLIG%  SESR ! Lignin%, elongation rate (shoot)"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2403,11 +2290,10 @@ test_that("@SLIG%  SESR ! Lignin%, elongation rate (shoot)",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SLIG%  SESR ! Lignin%, elongation rate (shoot)")
 
-})
-
-test_that("@ SDSZ SDDUR SDRS% ! Reserves by unit of length (stake), duration, reserves (% whole stake)",{
+# "@ SDSZ SDDUR SDRS% ! Reserves by unit of length (stake), duration, reserves (% whole stake)"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2424,11 +2310,10 @@ test_that("@ SDSZ SDDUR SDRS% ! Reserves by unit of length (stake), duration, re
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SDSZ SDDUR SDRS% ! Reserves by unit of length (stake), duration, reserves (% whole stake)")
 
-})
-
-test_that("@ PDTV  PDSV  ! VPD sensitivity aspects (daily effect)",{
+# "@ PDTV  PDSV  ! VPD sensitivity aspects (daily effect)"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2444,11 +2329,10 @@ test_that("@ PDTV  PDSV  ! VPD sensitivity aspects (daily effect)",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ PDTV  PDSV  ! VPD sensitivity aspects (daily effect)")
 
-})
-
-test_that("@PTFA  ! Partition to feeder roots",{
+# "@PTFA  ! Partition to feeder roots"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,# ~check,
@@ -2463,11 +2347,10 @@ test_that("@PTFA  ! Partition to feeder roots",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@PTFA  ! Partition to feeder roots")
 
-})
-
-test_that("@RRATE TRGEM TRDV1 TRLFG TRLFL TRPHS TRBRG TRDMC  ! Germination/emergence,development,leaf growth,leaf life,phsis, branching, dry matter",{
+# "@RRATE TRGEM TRDV1 TRLFG TRLFL TRPHS TRBRG TRDMC  ! Germination/emergence,development,leaf growth,leaf life,phsis, branching, dry matter"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2489,11 +2372,10 @@ test_that("@RRATE TRGEM TRDV1 TRLFG TRLFL TRPHS TRBRG TRDMC  ! Germination/emerg
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@RRATE TRGEM TRDV1 TRLFG TRLFL TRPHS TRBRG TRDMC  ! Germination/emergence,development,leaf growth,leaf life,phsis, branching, dry matter")
 
-})
-
-test_that("@ DMIC  DMAG  DMRD",{
+# "@ DMIC  DMAG  DMRD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2510,11 +2392,10 @@ test_that("@ DMIC  DMAG  DMRD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ DMIC  DMAG  DMRD")
 
-})
-
-test_that("@ WFGU  WFGL  WFPU  WFPL  ! Growth,phs",{
+# "@ WFGU  WFGL  WFPU  WFPL  ! Growth,phs"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2532,11 +2413,10 @@ test_that("@ WFGU  WFGL  WFPU  WFPL  ! Growth,phs",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ WFGU  WFGL  WFPU  WFPL  ! Growth,phs")
 
-})
-
-test_that("@WFGEM WFRGU  ! Germination/emergence, root growth",{
+# "@WFGEM WFRGU  ! Germination/emergence, root growth"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2552,11 +2432,10 @@ test_that("@WFGEM WFRGU  ! Germination/emergence, root growth",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@WFGEM WFRGU  ! Germination/emergence, root growth")
 
-})
-
-test_that("@ SDN% LN%SC ! Planting stick, N% fallen leaves",{
+# "@ SDN% LN%SC ! Planting stick, N% fallen leaves"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2572,11 +2451,10 @@ test_that("@ SDN% LN%SC ! Planting stick, N% fallen leaves",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SDN% LN%SC ! Planting stick, N% fallen leaves")
 
-})
-
-test_that("@ NFPU  NFPL  NFGU  NFGL ! Photosynthesis,growth",{
+# "@ NFPU  NFPL  NFGU  NFGL ! Photosynthesis,growth"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2594,11 +2472,10 @@ test_that("@ NFPU  NFPL  NFGU  NFGL ! Photosynthesis,growth",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ NFPU  NFPL  NFGU  NFGL ! Photosynthesis,growth")
 
-})
-
-test_that("@  CONV   FDMC",{
+# "@  CONV   FDMC"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2614,11 +2491,10 @@ test_that("@  CONV   FDMC",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  CONV   FDMC")
 
-})
-
-test_that("@ TBASV  TOPTV  TTOPV",{
+# "@ TBASV  TOPTV  TTOPV"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2635,11 +2511,10 @@ test_that("@ TBASV  TOPTV  TTOPV",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ TBASV  TOPTV  TTOPV")
 
-})
-
-test_that("@ TBASR  TOPTR  TTOPR",{
+# "@ TBASR  TOPTR  TTOPR"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2656,11 +2531,10 @@ test_that("@ TBASR  TOPTR  TTOPR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ TBASR  TOPTR  TTOPR")
 
-})
-
-test_that("@ LIFAC",{
+# "@ LIFAC"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2675,11 +2549,10 @@ test_that("@ LIFAC",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ LIFAC")
 
-})
-
-test_that("@  RWEP   PORM   RWMX   RLWR",{
+# "@  RWEP   PORM   RWMX   RLWR"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2697,11 +2570,10 @@ test_that("@  RWEP   PORM   RWMX   RLWR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  RWEP   PORM   RWMX   RLWR")
 
-})
-
-test_that("@  CMFC",{
+# "@  CMFC"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2716,11 +2588,10 @@ test_that("@  CMFC",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  CMFC")
 
-})
-
-test_that("@  CO2X   CO2Y",{
+# "@  CO2X   CO2Y"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2736,11 +2607,10 @@ test_that("@  CO2X   CO2Y",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  CO2X   CO2Y")
 
-})
-
-test_that("@C X(EN) Y(CH)  YSTD",{
+# "@C X(EN) Y(CH)  YSTD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2758,11 +2628,10 @@ test_that("@C X(EN) Y(CH)  YSTD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@C X(EN) Y(CH)  YSTD")
 
-})
-
-test_that("@ RS%X RSUSE ! Max concentration,fraction utilizeable/day",{
+# "@ RS%X RSUSE ! Max concentration,fraction utilizeable/day"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2778,11 +2647,10 @@ test_that("@ RS%X RSUSE ! Max concentration,fraction utilizeable/day",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ RS%X RSUSE ! Max concentration,fraction utilizeable/day")
 
-})
-
-test_that("@RRATE TRGEM TRDV1 TRDV2 TRDV7 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN  ",{
+# "@RRATE TRGEM TRDV1 TRDV2 TRDV7 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN  "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2807,11 +2675,10 @@ test_that("@RRATE TRGEM TRDV1 TRDV2 TRDV7 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN  "
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@RRATE TRGEM TRDV1 TRDV2 TRDV7 TRLFG TRPHS TRVRN TRHAR TRGFW TRGFN  ")
 
-})
-
-test_that("@ RATM RCROP EORAT ! Atmospheric,canopy res.;FAO-PenM formula factor",{
+# "@ RATM RCROP EORAT ! Atmospheric,canopy res.;FAO-PenM formula factor"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2828,11 +2695,10 @@ test_that("@ RATM RCROP EORAT ! Atmospheric,canopy res.;FAO-PenM formula factor"
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ RATM RCROP EORAT ! Atmospheric,canopy res.;FAO-PenM formula factor")
 
-})
-
-test_that("@NH4MN NO3MN RTNUP",{
+# "@NH4MN NO3MN RTNUP"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2849,7 +2715,6 @@ test_that("@NH4MN NO3MN RTNUP",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
-
-})
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@NH4MN NO3MN RTNUP")
 

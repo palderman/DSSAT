@@ -1,4 +1,4 @@
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  ADAT  MDAT",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  ADAT  MDAT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -21,11 +21,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  ADAT  MDAT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  ADAT  MDAT")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  CWAM  BWAH  ADAT  MDAT",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  CWAM  BWAH  ADAT  MDAT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -48,11 +47,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  CWAM  BWAH  ADAT  MDAT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  CWAM  BWAH  ADAT  MDAT")
 
-})
-
-test_that("@TRNO   DATE  PWAM",{
+# "@TRNO   DATE  PWAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -69,11 +67,10 @@ test_that("@TRNO   DATE  PWAM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  PWAM")
 
-})
-
-test_that("@TRNO   ADAT  CHTA  HDAT  HIAM  HWAH  LAIX  PD1T  PDFT  R8AT  CWAA  DWAP  GL%M  CWAM  GN%M  H#UM  HWUM  MDAT  H#AM",{
+# "@TRNO   ADAT  CHTA  HDAT  HIAM  HWAH  LAIX  PD1T  PDFT  R8AT  CWAA  DWAP  GL%M  CWAM  GN%M  H#UM  HWUM  MDAT  H#AM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -106,11 +103,10 @@ test_that("@TRNO   ADAT  CHTA  HDAT  HIAM  HWAH  LAIX  PD1T  PDFT  R8AT  CWAA  D
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   ADAT  CHTA  HDAT  HIAM  HWAH  LAIX  PD1T  PDFT  R8AT  CWAA  DWAP  GL%M  CWAM  GN%M  H#UM  HWUM  MDAT  H#AM")
 
-})
-
-test_that("@TRNO   ADAT  CHTA  HDAT  HIAM  HWAH  LAIX  PD1T  PDFT  R8AT  CWAA  CWAM  DWAP  GL%M  GN%M  H#UM  HWUM  MDAT  H#AM",{
+# "@TRNO   ADAT  CHTA  HDAT  HIAM  HWAH  LAIX  PD1T  PDFT  R8AT  CWAA  CWAM  DWAP  GL%M  GN%M  H#UM  HWUM  MDAT  H#AM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -143,11 +139,10 @@ test_that("@TRNO   ADAT  CHTA  HDAT  HIAM  HWAH  LAIX  PD1T  PDFT  R8AT  CWAA  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   ADAT  CHTA  HDAT  HIAM  HWAH  LAIX  PD1T  PDFT  R8AT  CWAA  CWAM  DWAP  GL%M  GN%M  H#UM  HWUM  MDAT  H#AM")
 
-})
-
-test_that("@TRNO  B1DAT B2DAT B3DAT B4DAT",{
+# "@TRNO  B1DAT B2DAT B3DAT B4DAT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -166,11 +161,10 @@ test_that("@TRNO  B1DAT B2DAT B3DAT B4DAT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO  B1DAT B2DAT B3DAT B4DAT")
 
-})
-
-test_that("@TRNO   LAIX  LAIH  HWAH  TWAH  CWAM",{
+# "@TRNO   LAIX  LAIH  HWAH  TWAH  CWAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -190,11 +184,10 @@ test_that("@TRNO   LAIX  LAIH  HWAH  TWAH  CWAM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   LAIX  LAIH  HWAH  TWAH  CWAM")
 
-})
-
-test_that("@TRNO  PDATE",{
+# "@TRNO  PDATE"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -210,11 +203,10 @@ test_that("@TRNO  PDATE",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO  PDATE")
 
-})
-
-test_that("@TRNO   SWAH  LWAH  HWAH  CWAH  VWAH  CGRH  LAIX  H#AM  H#GM  LAWM  BR1D",{
+# "@TRNO   SWAH  LWAH  HWAH  CWAH  VWAH  CGRH  LAIX  H#AM  H#GM  LAWM  BR1D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -240,11 +232,10 @@ test_that("@TRNO   SWAH  LWAH  HWAH  CWAH  VWAH  CGRH  LAIX  H#AM  H#GM  LAWM  B
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   SWAH  LWAH  HWAH  CWAH  VWAH  CGRH  LAIX  H#AM  H#GM  LAWM  BR1D")
 
-})
-
-test_that("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  SWAM  CWAM  HWAD  PWAM  HIAM  PIAM  LN%D  SN%D  GN%D  PN%D  GWGD  SH%D",{
+# "@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  SWAM  CWAM  HWAD  PWAM  HIAM  PIAM  LN%D  SN%D  GN%D  PN%D  GWGD  SH%D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -278,11 +269,10 @@ test_that("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  SWAM  CWAM  HWAD  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  SWAM  CWAM  HWAD  PWAM  HIAM  PIAM  LN%D  SN%D  GN%D  PN%D  GWGD  SH%D")
 
-})
-
-test_that("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  L#SD  LWAM  SWAM  CWAM  HWAM  PWAM  HIAM  PIAM  LN%D  SN%D  GN%D   PRO  PN%D  GWGD  THAM DAYLA   WDH",{
+# "@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  L#SD  LWAM  SWAM  CWAM  HWAM  PWAM  HIAM  PIAM  LN%D  SN%D  GN%D   PRO  PN%D  GWGD  THAM DAYLA   WDH"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -321,11 +311,10 @@ test_that("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  L#SD  LWAM  SWAM  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  L#SD  LWAM  SWAM  CWAM  HWAM  PWAM  HIAM  PIAM  LN%D  SN%D  GN%D   PRO  PN%D  GWGD  THAM DAYLA   WDH")
 
-})
-
-test_that("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  L#SD  LWAM  SWAM  CWAM  HWAM  PWAM  HIAM  PIAM  GWGD  THAM  GN%D   PRO",{
+# "@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  L#SD  LWAM  SWAM  CWAM  HWAM  PWAM  HIAM  PIAM  GWGD  THAM  GN%D   PRO"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -359,11 +348,10 @@ test_that("@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  L#SD  LWAM  SWAM  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HDAT  PDFT  PD1T  ADAT B1DAT  EDAT  MDAT  L#SD  LWAM  SWAM  CWAM  HWAM  PWAM  HIAM  PIAM  GWGD  THAM  GN%D   PRO")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  PM%M  ADAT  R2AT  PD1T  R4AT  PDFT  R6AT  MDAT  R8AT",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  PM%M  ADAT  R2AT  PD1T  R4AT  PDFT  R6AT  MDAT  R8AT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -395,11 +383,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  PM%M  ADAT  R
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  PM%M  ADAT  R2AT  PD1T  R4AT  PDFT  R6AT  MDAT  R8AT")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  PM%M  HIAM  L#SM  ADAT  R2AT  PD1T  R4AT  PDFT  R6AT  MDAT  R8AT",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  PM%M  HIAM  L#SM  ADAT  R2AT  PD1T  R4AT  PDFT  R6AT  MDAT  R8AT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -433,11 +420,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  PM%M  HIAM  L
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  PM%M  HIAM  L#SM  ADAT  R2AT  PD1T  R4AT  PDFT  R6AT  MDAT  R8AT")
 
-})
-
-test_that("@TRNO LIWAM  HWAM  P#AM  LAIX  CWAM  BWAM  PWAM  EDAT SQDAT  ADAT  HDAT  MDAT",{
+# "@TRNO LIWAM  HWAM  P#AM  LAIX  CWAM  BWAM  PWAM  EDAT SQDAT  ADAT  HDAT  MDAT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -464,11 +450,10 @@ test_that("@TRNO LIWAM  HWAM  P#AM  LAIX  CWAM  BWAM  PWAM  EDAT SQDAT  ADAT  HD
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO LIWAM  HWAM  P#AM  LAIX  CWAM  BWAM  PWAM  EDAT SQDAT  ADAT  HDAT  MDAT")
 
-})
-
-test_that("@TRNO   HDAT  HWAM",{
+# "@TRNO   HDAT  HWAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -485,11 +470,10 @@ test_that("@TRNO   HDAT  HWAM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HDAT  HWAM")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  HIAM  THAM  ADAT  PD1T  PDFT  MDAT",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  HIAM  THAM  ADAT  PD1T  PDFT  MDAT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -518,11 +502,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  HIAM  THAM  A
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  PWAM  HIAM  THAM  ADAT  PD1T  PDFT  MDAT")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PWAM  HIAM  THAM",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PWAM  HIAM  THAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -549,11 +532,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PWAM  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PWAM  HIAM  THAM")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -582,11 +564,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PWAM  HIAM  THAM",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PWAM  HIAM  THAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -614,11 +595,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PWAM  HIAM  THAM")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM  R5AT  GN%M  GNAM  CN%M  CNAM CANHT",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM  R5AT  GN%M  GNAM  CN%M  CNAM CANHT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -656,11 +636,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM  R5AT  GN%M  GNAM  CN%M  CNAM CANHT")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM  R5AT  GN%M  GNAM  CN%M  CNAM",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM  R5AT  GN%M  GNAM  CN%M  CNAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -697,11 +676,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM  R5AT  GN%M  GNAM  CN%M  CNAM")
 
-})
-
-test_that("@TRNO   HDAP  ADAT  MDAT  CHTA  THAM  CWAM  PWAM  HWAM  HIPM  HIAM  LAIX",{
+# "@TRNO   HDAP  ADAT  MDAT  CHTA  THAM  CWAM  PWAM  HWAM  HIPM  HIAM  LAIX"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -727,11 +705,10 @@ test_that("@TRNO   HDAP  ADAT  MDAT  CHTA  THAM  CWAM  PWAM  HWAM  HIPM  HIAM  L
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HDAP  ADAT  MDAT  CHTA  THAM  CWAM  PWAM  HWAM  HIPM  HIAM  LAIX")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  L#SM  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  L#SD  SNAM",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  L#SM  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  L#SD  SNAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -759,11 +736,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  L#SM  CWAM  BWAH  ADAT  MDAT  GN%M  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  L#SM  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  L#SD  SNAM")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  SNAM  GNAM",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  SNAM  GNAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -791,11 +767,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  GN%M  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  SNAM  GNAM")
 
-})
-
-test_that("@TRNO   CHTA",{
+# "@TRNO   CHTA"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -811,11 +786,10 @@ test_that("@TRNO   CHTA",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   CHTA")
 
-})
-
-test_that("@TRNO   HWAH  CWAM  ADAT   -99   -99   -99   -99   -99   -99",{
+# "@TRNO   HWAH  CWAM  ADAT   -99   -99   -99   -99   -99   -99"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -833,11 +807,10 @@ test_that("@TRNO   HWAH  CWAM  ADAT   -99   -99   -99   -99   -99   -99",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAH  CWAM  ADAT   -99   -99   -99   -99   -99   -99")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAA  CNAA  CWAM  BWAH  HIAM  L#SM  GNAM  CNAM  SNAM  GN%M",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAA  CNAA  CWAM  BWAH  HIAM  L#SM  GNAM  CNAM  SNAM  GN%M"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -867,11 +840,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAA  CNAA  CWAM  BWAH  HIAM  L
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAA  CNAA  CWAM  BWAH  HIAM  L#SM  GNAM  CNAM  SNAM  GN%M")
 
-})
-
-test_that("@TRNO   TNAM  HWAM  HWUM  H#UM  LAIX  CWAM  HIAM  ADAT  MDAT",{
+# "@TRNO   TNAM  HWAM  HWUM  H#UM  LAIX  CWAM  HIAM  ADAT  MDAT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -895,11 +867,10 @@ test_that("@TRNO   TNAM  HWAM  HWUM  H#UM  LAIX  CWAM  HIAM  ADAT  MDAT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   TNAM  HWAM  HWUM  H#UM  LAIX  CWAM  HIAM  ADAT  MDAT")
 
-})
-
-test_that("@TRNO   PWAM  SWAM  HWAM  THAM  ADAT  R2AT  MDAT",{
+# "@TRNO   PWAM  SWAM  HWAM  THAM  ADAT  R2AT  MDAT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -921,11 +892,10 @@ test_that("@TRNO   PWAM  SWAM  HWAM  THAM  ADAT  R2AT  MDAT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   PWAM  SWAM  HWAM  THAM  ADAT  R2AT  MDAT")
 
-})
-
-test_that("@TRNO   PWAM  HWAM CWAM  SHAD  THAM   ADAT  R2AT MMDAT  MDAT",{
+# "@TRNO   PWAM  HWAM CWAM  SHAD  THAM   ADAT  R2AT MMDAT  MDAT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -949,11 +919,10 @@ test_that("@TRNO   PWAM  HWAM CWAM  SHAD  THAM   ADAT  R2AT MMDAT  MDAT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   PWAM  HWAM CWAM  SHAD  THAM   ADAT  R2AT MMDAT  MDAT")
 
-})
-
-test_that("@TRNO  PWAM   CWAM  HWAM  SHAD  THAM  ADAT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT",{
+# "@TRNO  PWAM   CWAM  HWAM  SHAD  THAM  ADAT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -981,11 +950,10 @@ test_that("@TRNO  PWAM   CWAM  HWAM  SHAD  THAM  ADAT  R2AT  R3AT  R4AT  R5AT  R
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO  PWAM   CWAM  HWAM  SHAD  THAM  ADAT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT")
 
-})
-
-test_that("@TRNO  CWAM  PWAM  HWAM  SHAD  THAM  ADAT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT",{
+# "@TRNO  CWAM  PWAM  HWAM  SHAD  THAM  ADAT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1013,11 +981,10 @@ test_that("@TRNO  CWAM  PWAM  HWAM  SHAD  THAM  ADAT  R2AT  R3AT  R4AT  R5AT  R6
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO  CWAM  PWAM  HWAM  SHAD  THAM  ADAT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M  HIAM  THAM  R1AT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT  R9AT",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M  HIAM  THAM  R1AT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT  R9AT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1056,11 +1023,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M  HIAM  THAM  R1AT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT  R9AT")
 
-})
-
-test_that("@TRNO   PWAM  H#AM  H#UM  HWAM  CWAM  BWAH  HWUM  THAM  HIAM  ADAT  PD1T  PDFT",{
+# "@TRNO   PWAM  H#AM  H#UM  HWAM  CWAM  BWAH  HWUM  THAM  HIAM  ADAT  PD1T  PDFT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1087,11 +1053,10 @@ test_that("@TRNO   PWAM  H#AM  H#UM  HWAM  CWAM  BWAH  HWUM  THAM  HIAM  ADAT  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   PWAM  H#AM  H#UM  HWAM  CWAM  BWAH  HWUM  THAM  HIAM  ADAT  PD1T  PDFT")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1119,11 +1084,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  LAIX  CWAM  PWAM  HIAM  HIPM  THAM  CNAM  GNAM  GN%M",{
+# "@TRNO   HWAM  HWUM  H#AM  LAIX  CWAM  PWAM  HIAM  HIPM  THAM  CNAM  GNAM  GN%M"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1150,11 +1114,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  LAIX  CWAM  PWAM  HIAM  HIPM  THAM  CNAM  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  LAIX  CWAM  PWAM  HIAM  HIPM  THAM  CNAM  GNAM  GN%M")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M  HIAM  THAM",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M  HIAM  THAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1184,11 +1147,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M  HIAM  THAM")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M  R1AT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT  R9AT",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M  R1AT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT  R9AT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1225,11 +1187,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  PM%M  R1AT  R2AT  R3AT  R4AT  R5AT  R6AT  R7AT  R8AT  R9AT")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  PWAM  ADAT  PD1T  PDFT  MDAT",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  PWAM  ADAT  PD1T  PDFT  MDAT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1253,11 +1214,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  PWAM  ADAT  PD1T  PDFT  MDAT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  PWAM  ADAT  PD1T  PDFT  MDAT")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  HIAM  THAM  ADAT  MDAT  PD1T  PDFT  PWAM",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  HIAM  THAM  ADAT  MDAT  PD1T  PDFT  PWAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1286,11 +1246,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  HIAM  THAM  ADAT  M
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  HIAM  THAM  ADAT  MDAT  PD1T  PDFT  PWAM")
 
-})
-
-test_that("@TRNO   EDAP  ADAP  PD1P  PDFP  MDAP  R8AP  HWAM  HWUM  H#UM  CWAM  HIAM  H#AM  P#AM",{
+# "@TRNO   EDAP  ADAP  PD1P  PDFP  MDAP  R8AP  HWAM  HWUM  H#UM  CWAM  HIAM  H#AM  P#AM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1318,11 +1277,10 @@ test_that("@TRNO   EDAP  ADAP  PD1P  PDFP  MDAP  R8AP  HWAM  HWUM  H#UM  CWAM  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   EDAP  ADAP  PD1P  PDFP  MDAP  R8AP  HWAM  HWUM  H#UM  CWAM  HIAM  H#AM  P#AM")
 
-})
-
-test_that("@TRNO   ADAP  PD1P  PDFP  MDAP  HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  EDAP  PWAM  HIAM  THAM  L#SM  R8AP",{
+# "@TRNO   ADAP  PD1P  PDFP  MDAP  HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  EDAP  PWAM  HIAM  THAM  L#SM  R8AP"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1354,11 +1312,10 @@ test_that("@TRNO   ADAP  PD1P  PDFP  MDAP  HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  B
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   ADAP  PD1P  PDFP  MDAP  HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  EDAP  PWAM  HIAM  THAM  L#SM  R8AP")
 
-})
-
-test_that("@TRNO   FWAH  EWUM  E#AM  E#UM  LAIX BADMF BADMH VWATM  FDAT  HDAT  MDAT  LWAH  CWAM  SWAH  L#SM",{
+# "@TRNO   FWAH  EWUM  E#AM  E#UM  LAIX BADMF BADMH VWATM  FDAT  HDAT  MDAT  LWAH  CWAM  SWAH  L#SM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1388,11 +1345,10 @@ test_that("@TRNO   FWAH  EWUM  E#AM  E#UM  LAIX BADMF BADMH VWATM  FDAT  HDAT  M
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   FWAH  EWUM  E#AM  E#UM  LAIX BADMF BADMH VWATM  FDAT  HDAT  MDAT  LWAH  CWAM  SWAH  L#SM")
 
-})
-
-test_that("@TRNO   FWAH  EWUM  E#AM  E#UM  LAIX BADMF BADMH VWATM  FDAT  HDAT  MDAT",{
+# "@TRNO   FWAH  EWUM  E#AM  E#UM  LAIX BADMF BADMH VWATM  FDAT  HDAT  MDAT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1418,11 +1374,10 @@ test_that("@TRNO   FWAH  EWUM  E#AM  E#UM  LAIX BADMF BADMH VWATM  FDAT  HDAT  M
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   FWAH  EWUM  E#AM  E#UM  LAIX BADMF BADMH VWATM  FDAT  HDAT  MDAT")
 
-})
-
-test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  TWAH  BWAH  TDAT  HDAT  UN%H  TNAH  CNAM  UNAM",{
+# "@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  TWAH  BWAH  TDAT  HDAT  UN%H  TNAH  CNAM  UNAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1450,11 +1405,10 @@ test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  TWAH  BWAH  TDAT  HDAT  UN%H  T
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  TWAH  BWAH  TDAT  HDAT  UN%H  TNAH  CNAM  UNAM")
 
-})
-
-test_that("@TRNO   UWAH  UYAH HDATE PLDAE",{
+# "@TRNO   UWAH  UYAH HDATE PLDAE"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1473,11 +1427,10 @@ test_that("@TRNO   UWAH  UYAH HDATE PLDAE",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   UWAH  UYAH HDATE PLDAE")
 
-})
-
-test_that("@TRNO   UNAM  UN%H  RNAH  TDAT  UWAH HDATE PLDAE",{
+# "@TRNO   UNAM  UN%H  RNAH  TDAT  UWAH HDATE PLDAE"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1499,11 +1452,10 @@ test_that("@TRNO   UNAM  UN%H  RNAH  TDAT  UWAH HDATE PLDAE",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   UNAM  UN%H  RNAH  TDAT  UWAH HDATE PLDAE")
 
-})
-
-test_that("@TRNO   UWAH  H#UM  TDAT  HDAT  UYAH",{
+# "@TRNO   UWAH  H#UM  TDAT  HDAT  UYAH"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1523,11 +1475,10 @@ test_that("@TRNO   UWAH  H#UM  TDAT  HDAT  UYAH",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   UWAH  H#UM  TDAT  HDAT  UYAH")
 
-})
-
-test_that("@TRNO   UWAH HDATE  LAIX PLDAE",{
+# "@TRNO   UWAH HDATE  LAIX PLDAE"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1546,11 +1497,10 @@ test_that("@TRNO   UWAH HDATE  LAIX PLDAE",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   UWAH HDATE  LAIX PLDAE")
 
-})
-
-test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  EDAT  HDAT  UN%H  TNAH  SNAM  UNAM",{
+# "@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  EDAT  HDAT  UN%H  TNAH  SNAM  UNAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1578,11 +1528,10 @@ test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  EDAT  HDAT  UN%H  T
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  EDAT  HDAT  UN%H  TNAH  SNAM  UNAM")
 
-})
-
-test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  HDAT  EDAT",{
+# "@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  HDAT  EDAT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1606,11 +1555,10 @@ test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  HDAT  EDAT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  HDAT  EDAT")
 
-})
-
-test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  EDAT  HDAT  UN%H  TNAM  SNAM  UNAM",{
+# "@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  EDAT  HDAT  UN%H  TNAM  SNAM  UNAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1638,11 +1586,10 @@ test_that("@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  EDAT  HDAT  UN%H  T
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   UWAH  UYAH  H#AM  H#UM  LAIX  CWAM  TDAT  EDAT  HDAT  UN%H  TNAM  SNAM  UNAM")
 
-})
-
-test_that("@TRNO   UWAH  UYAH  LAIX  CWAM  TDAT  EDAT  HDAT   -99   -99",{
+# "@TRNO   UWAH  UYAH  LAIX  CWAM  TDAT  EDAT  HDAT   -99   -99"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1664,11 +1611,10 @@ test_that("@TRNO   UWAH  UYAH  LAIX  CWAM  TDAT  EDAT  HDAT   -99   -99",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   UWAH  UYAH  LAIX  CWAM  TDAT  EDAT  HDAT   -99   -99")
 
-})
-
-test_that("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT  CHTA  CWAM  HIAM  HWAM  L#SM",{
+# "@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT  CHTA  CWAM  HIAM  HWAM  L#SM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1693,11 +1639,10 @@ test_that("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT  CHTA  CWAM  HIAM  HWAM  L#SM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT  CHTA  CWAM  HIAM  HWAM  L#SM")
 
-})
-
-test_that("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT ",{
+# "@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1717,11 +1662,10 @@ test_that("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT ")
 
-})
-
-test_that("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT HWAM  CWAM",{
+# "@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT HWAM  CWAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1743,11 +1687,10 @@ test_that("@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT HWAM  CWAM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   EDAT  PD1T  ADAT  PDFT  R8AT HWAM  CWAM")
 
-})
-
-test_that("@TRNO   HWAM  CWAM  LAIX  ADAT  MDAT",{
+# "@TRNO   HWAM  CWAM  LAIX  ADAT  MDAT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1767,11 +1710,10 @@ test_that("@TRNO   HWAM  CWAM  LAIX  ADAT  MDAT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  CWAM  LAIX  ADAT  MDAT")
 
-})
-
-test_that("@TRNO   HWAM  LAIX  CWAM  ADAT  MDAT",{
+# "@TRNO   HWAM  LAIX  CWAM  ADAT  MDAT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1791,11 +1733,10 @@ test_that("@TRNO   HWAM  LAIX  CWAM  ADAT  MDAT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  LAIX  CWAM  ADAT  MDAT")
 
-})
-
-test_that("@TRNO   ADAT  PDFT  MDAT  CWAM  HWAM  HIAM  HIPM  EDAT  CHTA",{
+# "@TRNO   ADAT  PDFT  MDAT  CWAM  HWAM  HIAM  HIPM  EDAT  CHTA"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1819,11 +1760,10 @@ test_that("@TRNO   ADAT  PDFT  MDAT  CWAM  HWAM  HIAM  HIPM  EDAT  CHTA",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   ADAT  PDFT  MDAT  CWAM  HWAM  HIAM  HIPM  EDAT  CHTA")
 
-})
-
-test_that("@TRNO   EDAT  PD1T  PDFT  MDAT  PWAM  HWAM  CWAM  HIAM  P#AM  HWUM  VN%M  GN%M  THAM  CNAM  HIPM  GNAM",{
+# "@TRNO   EDAT  PD1T  PDFT  MDAT  PWAM  HWAM  CWAM  HIAM  P#AM  HWUM  VN%M  GN%M  THAM  CNAM  HIPM  GNAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1854,11 +1794,10 @@ test_that("@TRNO   EDAT  PD1T  PDFT  MDAT  PWAM  HWAM  CWAM  HIAM  P#AM  HWUM  V
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   EDAT  PD1T  PDFT  MDAT  PWAM  HWAM  CWAM  HIAM  P#AM  HWUM  VN%M  GN%M  THAM  CNAM  HIPM  GNAM")
 
-})
-
-test_that("@TRNO   EDAT  PD1T  PDFT  MDAT  PWAM  HWAM  CWAM  HIAM  HWUM  VN%M  GN%M  THAM  CNAM  HIPM  GNAM",{
+# "@TRNO   EDAT  PD1T  PDFT  MDAT  PWAM  HWAM  CWAM  HIAM  HWUM  VN%M  GN%M  THAM  CNAM  HIPM  GNAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1888,11 +1827,10 @@ test_that("@TRNO   EDAT  PD1T  PDFT  MDAT  PWAM  HWAM  CWAM  HIAM  HWUM  VN%M  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   EDAT  PD1T  PDFT  MDAT  PWAM  HWAM  CWAM  HIAM  HWUM  VN%M  GN%M  THAM  CNAM  HIPM  GNAM")
 
-})
-
-test_that("@TRNO   HWUM  MDAT  HWAM  ADAT  CWAM",{
+# "@TRNO   HWUM  MDAT  HWAM  ADAT  CWAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1912,11 +1850,10 @@ test_that("@TRNO   HWUM  MDAT  HWAM  ADAT  CWAM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWUM  MDAT  HWAM  ADAT  CWAM")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  L#SM",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  L#SM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1946,11 +1883,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  L#SM")
 
-})
-
-test_that("@TRNO   LAIX  CHTA",{
+# "@TRNO   LAIX  CHTA"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1967,11 +1903,10 @@ test_that("@TRNO   LAIX  CHTA",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   LAIX  CHTA")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  GN%M  GL%M  L#SM",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  GN%M  GL%M  L#SM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2003,11 +1938,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  GN%M  GL%M  L#SM")
 
-})
-
-test_that("@TRNO   HDAT  MDAT  PDFT  PD1T  HWAM  CWAM  ADAT  PWAM  HIAM  THAM",{
+# "@TRNO   HDAT  MDAT  PDFT  PD1T  HWAM  CWAM  ADAT  PWAM  HIAM  THAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2032,11 +1966,10 @@ test_that("@TRNO   HDAT  MDAT  PDFT  PD1T  HWAM  CWAM  ADAT  PWAM  HIAM  THAM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HDAT  MDAT  PDFT  PD1T  HWAM  CWAM  ADAT  PWAM  HIAM  THAM")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM  R5AT",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM  R5AT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2069,11 +2002,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM  R5AT")
 
-})
-
-test_that("@TRNO   HWAM  ADAT  MDAT  PD1T  PDFT  GN%M  GNAM",{
+# "@TRNO   HWAM  ADAT  MDAT  PD1T  PDFT  GN%M  GNAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2095,11 +2027,10 @@ test_that("@TRNO   HWAM  ADAT  MDAT  PD1T  PDFT  GN%M  GNAM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  ADAT  MDAT  PD1T  PDFT  GN%M  GNAM")
 
-})
-
-test_that("@TRNO   HWAM  CWAM  ADAT  MDAT  LAIX  HIAM",{
+# "@TRNO   HWAM  CWAM  ADAT  MDAT  LAIX  HIAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2120,11 +2051,10 @@ test_that("@TRNO   HWAM  CWAM  ADAT  MDAT  LAIX  HIAM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  CWAM  ADAT  MDAT  LAIX  HIAM")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2156,11 +2086,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM  HIAM  THAM  CWAA  CNAA  L#SM")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2187,11 +2116,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  PD1T  PDFT  PWAM")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  HIAM  THAM",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  HIAM  THAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2217,11 +2145,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  HIAM  T
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  BWAH  ADAT  MDAT  HIAM  THAM")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  PWAM",{
+# "@TRNO   HWAM  HWUM  H#AM  PWAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2240,11 +2167,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  PWAM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  PWAM")
 
-})
-
-test_that("@TRNO   HWAH  BWAH  LAID  SWAD  CHTD  L#SD  HIAM  CWAD  LI%D  LT#D  CWAM  SDAH",{
+# "@TRNO   HWAH  BWAH  LAID  SWAD  CHTD  L#SD  HIAM  CWAD  LI%D  LT#D  CWAM  SDAH"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2271,11 +2197,10 @@ test_that("@TRNO   HWAH  BWAH  LAID  SWAD  CHTD  L#SD  HIAM  CWAD  LI%D  LT#D  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAH  BWAH  LAID  SWAD  CHTD  L#SD  HIAM  CWAD  LI%D  LT#D  CWAM  SDAH")
 
-})
-
-test_that("@TRNO  CULTI  T#SD",{
+# "@TRNO  CULTI  T#SD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2292,11 +2217,10 @@ test_that("@TRNO  CULTI  T#SD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO  CULTI  T#SD")
 
-})
-
-test_that("@TRNO  SMFMH  SUCH  STKH SSTKH BADMH  TRSH  LAIX LAIXD  LAIH LAASH LWASH  L#SM NAPSH SPDAT EDAT0 EDAT1 EDAT2  T#MX T#MXD TDECD  S#AH  SHTH  CHTA  HIAM  SDAH",{
+# "@TRNO  SMFMH  SUCH  STKH SSTKH BADMH  TRSH  LAIX LAIXD  LAIH LAASH LWASH  L#SM NAPSH SPDAT EDAT0 EDAT1 EDAT2  T#MX T#MXD TDECD  S#AH  SHTH  CHTA  HIAM  SDAH"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2336,11 +2260,10 @@ test_that("@TRNO  SMFMH  SUCH  STKH SSTKH BADMH  TRSH  LAIX LAIXD  LAIH LAASH LW
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO  SMFMH  SUCH  STKH SSTKH BADMH  TRSH  LAIX LAIXD  LAIH LAASH LWASH  L#SM NAPSH SPDAT EDAT0 EDAT1 EDAT2  T#MX T#MXD TDECD  S#AH  SHTH  CHTA  HIAM  SDAH")
 
-})
-
-test_that("@TRNO   EDAT  CWAM  HIAM  HSAM  ADAT",{
+# "@TRNO   EDAT  CWAM  HIAM  HSAM  ADAT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2360,11 +2283,10 @@ test_that("@TRNO   EDAT  CWAM  HIAM  HSAM  ADAT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   EDAT  CWAM  HIAM  HSAM  ADAT")
 
-})
-
-test_that("@TRNO   ADAT  GL%M  HSAM  EDAT  LAIX  CWAM",{
+# "@TRNO   ADAT  GL%M  HSAM  EDAT  LAIX  CWAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2385,11 +2307,10 @@ test_that("@TRNO   ADAT  GL%M  HSAM  EDAT  LAIX  CWAM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   ADAT  GL%M  HSAM  EDAT  LAIX  CWAM")
 
-})
-
-test_that("@TRNO   ADAT  HWAM  TWAH  LAIX",{
+# "@TRNO   ADAT  HWAM  TWAH  LAIX"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2408,11 +2329,10 @@ test_that("@TRNO   ADAT  HWAM  TWAH  LAIX",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   ADAT  HWAM  TWAH  LAIX")
 
-})
-
-test_that("@TRNO   ADAT  MDAT  HWUM  HWAM  CWAM  HIAM  GL%M  LAIX  H#AM  H#UM  L#SM",{
+# "@TRNO   ADAT  MDAT  HWUM  HWAM  CWAM  HIAM  GL%M  LAIX  H#AM  H#UM  L#SM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2438,11 +2358,10 @@ test_that("@TRNO   ADAT  MDAT  HWUM  HWAM  CWAM  HIAM  GL%M  LAIX  H#AM  H#UM  L
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   ADAT  MDAT  HWUM  HWAM  CWAM  HIAM  GL%M  LAIX  H#AM  H#UM  L#SM")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  ADAT  MDAT  GL%M  PDFT",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  ADAT  MDAT  GL%M  PDFT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2467,11 +2386,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  ADAT  MDAT  GL%M  PDFT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  LAIX  CWAM  ADAT  MDAT  GL%M  PDFT")
 
-})
-
-test_that("@TRNO   HSAM  CWAM ",{
+# "@TRNO   HSAM  CWAM "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2488,11 +2406,10 @@ test_that("@TRNO   HSAM  CWAM ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HSAM  CWAM ")
 
-})
-
-test_that("@TRNO   HWAM  LAIX  CWAM  MDAT",{
+# "@TRNO   HWAM  LAIX  CWAM  MDAT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2511,11 +2428,10 @@ test_that("@TRNO   HWAM  LAIX  CWAM  MDAT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  LAIX  CWAM  MDAT")
 
-})
-
-test_that("@TRNO   HWAM  LAIX  CWAA  ADAT  CWAM",{
+# "@TRNO   HWAM  LAIX  CWAA  ADAT  CWAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2535,11 +2451,10 @@ test_that("@TRNO   HWAM  LAIX  CWAA  ADAT  CWAM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  LAIX  CWAA  ADAT  CWAM")
 
-})
-
-test_that("@TRNO   UYAH  HWUM  H#AM  LAIX  TWAH  BWAH  ADAT  MDAT  UN%H  TNAH  CNAM  UNAM  UWAH",{
+# "@TRNO   UYAH  HWUM  H#AM  LAIX  TWAH  BWAH  ADAT  MDAT  UN%H  TNAH  CNAM  UNAM  UWAH"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2567,11 +2482,10 @@ test_that("@TRNO   UYAH  HWUM  H#AM  LAIX  TWAH  BWAH  ADAT  MDAT  UN%H  TNAH  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   UYAH  HWUM  H#AM  LAIX  TWAH  BWAH  ADAT  MDAT  UN%H  TNAH  CNAM  UNAM  UWAH")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  LAIX  CWAM  BWAH  ADAT  MDAT",{
+# "@TRNO   HWAM  HWUM  H#AM  LAIX  CWAM  BWAH  ADAT  MDAT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2594,34 +2508,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  LAIX  CWAM  BWAH  ADAT  MDAT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  LAIX  CWAM  BWAH  ADAT  MDAT")
 
-})
-
-test_that("@TRNO   ADAT  CWAM  HWAM  HIAM",{
-
-  true_fwf_pos <- tibble::tribble(
-   ~begin, ~end, ~col_names,#   ~check,
-        0,    5,     "TRNO",#  "@TRNO",
-        5,   12,     "ADAT",#"   ADAT",
-       12,   18,     "CWAM",# "  CWAM",
-       18,   24,     "HWAM",# "  HWAM",
-       24,   30,     "HIAM" # "  HIAM"
-  )
-
-  col_names <-   NULL
-
-  left_just <-   NULL
-
-  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   ADAT  CWAM  HWAM  HIAM",
-                                          col_names = col_names,
-                                          left_justified = left_just)
-
-  expect_identical(check_fwf_pos, true_fwf_pos)
-
-})
-
-test_that("@TRNO   ADAT  CWAM  HWAM  HIAM",{
+# "@TRNO   ADAT  CWAM  HWAM  HIAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2640,11 +2530,32 @@ test_that("@TRNO   ADAT  CWAM  HWAM  HIAM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   ADAT  CWAM  HWAM  HIAM")
 
-})
+# "@TRNO   ADAT  CWAM  HWAM  HIAM"
 
-test_that("@TRNO   ADAT  MDAT  CWAM  HWAM  HIAM",{
+  true_fwf_pos <- tibble::tribble(
+   ~begin, ~end, ~col_names,#   ~check,
+        0,    5,     "TRNO",#  "@TRNO",
+        5,   12,     "ADAT",#"   ADAT",
+       12,   18,     "CWAM",# "  CWAM",
+       18,   24,     "HWAM",# "  HWAM",
+       24,   30,     "HIAM" # "  HIAM"
+  )
+
+  col_names <-   NULL
+
+  left_just <-   NULL
+
+  check_fwf_pos <- DSSAT:::header_to_fwf_position("@TRNO   ADAT  CWAM  HWAM  HIAM",
+                                          col_names = col_names,
+                                          left_justified = left_just)
+
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   ADAT  CWAM  HWAM  HIAM")
+
+# "@TRNO   ADAT  MDAT  CWAM  HWAM  HIAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2664,11 +2575,10 @@ test_that("@TRNO   ADAT  MDAT  CWAM  HWAM  HIAM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   ADAT  MDAT  CWAM  HWAM  HIAM")
 
-})
-
-test_that("@TRNO   ADAT  MDAT  CWAM  HWAM  HIAM",{
+# "@TRNO   ADAT  MDAT  CWAM  HWAM  HIAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2688,11 +2598,10 @@ test_that("@TRNO   ADAT  MDAT  CWAM  HWAM  HIAM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   ADAT  MDAT  CWAM  HWAM  HIAM")
 
-})
-
-test_that("@TRNO   EDAT  ADAT  MDAT  CWAM  HWAM  HIAM",{
+# "@TRNO   EDAT  ADAT  MDAT  CWAM  HWAM  HIAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2713,11 +2622,10 @@ test_that("@TRNO   EDAT  ADAT  MDAT  CWAM  HWAM  HIAM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   EDAT  ADAT  MDAT  CWAM  HWAM  HIAM")
 
-})
-
-test_that("@TRNO   ADAT  MDAT  HWAM",{
+# "@TRNO   ADAT  MDAT  HWAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2735,11 +2643,10 @@ test_that("@TRNO   ADAT  MDAT  HWAM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   ADAT  MDAT  HWAM")
 
-})
-
-test_that("@TRNO   PDAT  HDAT  CWAM  LWAM  SWAM  PWAM  CNAM  LAIX",{
+# "@TRNO   PDAT  HDAT  CWAM  LWAM  SWAM  PWAM  CNAM  LAIX"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2762,11 +2669,10 @@ test_that("@TRNO   PDAT  HDAT  CWAM  LWAM  SWAM  PWAM  CNAM  LAIX",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   PDAT  HDAT  CWAM  LWAM  SWAM  PWAM  CNAM  LAIX")
 
-})
-
-test_that("@TRNO   PWAM  CWAM  LAIX",{
+# "@TRNO   PWAM  CWAM  LAIX"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2784,11 +2690,10 @@ test_that("@TRNO   PWAM  CWAM  LAIX",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   PWAM  CWAM  LAIX")
 
-})
-
-test_that("@TRNO   HDAT  CWAM  FWAH  LAIX  PWAM",{
+# "@TRNO   HDAT  CWAM  FWAH  LAIX  PWAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2808,11 +2713,10 @@ test_that("@TRNO   HDAT  CWAM  FWAH  LAIX  PWAM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HDAT  CWAM  FWAH  LAIX  PWAM")
 
-})
-
-test_that("@TRNO   HDAT  LAIX  CWAM  PWAM  FWAH",{
+# "@TRNO   HDAT  LAIX  CWAM  PWAM  FWAH"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2832,11 +2736,10 @@ test_that("@TRNO   HDAT  LAIX  CWAM  PWAM  FWAH",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HDAT  LAIX  CWAM  PWAM  FWAH")
 
-})
-
-test_that("@TRNO   XDAT  HDAT  CWAM  LWAM  SWAM  PWAM  CNAM  LAIX",{
+# "@TRNO   XDAT  HDAT  CWAM  LWAM  SWAM  PWAM  CNAM  LAIX"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2859,11 +2762,10 @@ test_that("@TRNO   XDAT  HDAT  CWAM  LWAM  SWAM  PWAM  CNAM  LAIX",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   XDAT  HDAT  CWAM  LWAM  SWAM  PWAM  CNAM  LAIX")
 
-})
-
-test_that("@TRNO   ADAT  MDAT",{
+# "@TRNO   ADAT  MDAT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2880,11 +2782,10 @@ test_that("@TRNO   ADAT  MDAT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   ADAT  MDAT")
 
-})
-
-test_that("@TRNO   HWUM  THAM  H#UM  ADAT  MDAT  PD1T  R8AT  HDAT",{
+# "@TRNO   HWUM  THAM  H#UM  ADAT  MDAT  PD1T  R8AT  HDAT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2907,11 +2808,10 @@ test_that("@TRNO   HWUM  THAM  H#UM  ADAT  MDAT  PD1T  R8AT  HDAT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWUM  THAM  H#UM  ADAT  MDAT  PD1T  R8AT  HDAT")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  SNAM  GNAM",{
+# "@TRNO   HWAM  HWUM  H#AM  H#UM  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  SNAM  GNAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2938,11 +2838,10 @@ test_that("@TRNO   HWAM  HWUM  H#AM  H#UM  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  H#UM  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  SNAM  GNAM")
 
-})
-
-test_that("@TRNO   HWAM  HWUM  H#AM  LAI?  LAIX  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  SNAM  GNAM  T#AM",{
+# "@TRNO   HWAM  HWUM  H#AM  LAI?  LAIX  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  SNAM  GNAM  T#AM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2971,7 +2870,6 @@ test_that("@TRNO   HWAM  HWUM  H#AM  LAI?  LAIX  CWAM  BWAH  ADAT  MDAT  GN%M  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
-
-})
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   HWAM  HWUM  H#AM  LAI?  LAIX  CWAM  BWAH  ADAT  MDAT  GN%M  CNAM  SNAM  GNAM  T#AM")
 

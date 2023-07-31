@@ -1,4 +1,4 @@
-test_that("@TRNO   DATE  HERB  VN%D  LAID  CWAD CPROT  CHTD  LWAD  SWAD  FHL%",{
+# "@TRNO   DATE  HERB  VN%D  LAID  CWAD CPROT  CHTD  LWAD  SWAD  FHL%"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -23,11 +23,10 @@ test_that("@TRNO   DATE  HERB  VN%D  LAID  CWAD CPROT  CHTD  LWAD  SWAD  FHL%",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  HERB  VN%D  LAID  CWAD CPROT  CHTD  LWAD  SWAD  FHL%")
 
-})
-
-test_that("@TRNO   DATE  HARV  HRVS",{
+# "@TRNO   DATE  HARV  HRVS"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -45,11 +44,10 @@ test_that("@TRNO   DATE  HARV  HRVS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  HARV  HRVS")
 
-})
-
-test_that("@TRNO   DATE  HRVL  HRVS",{
+# "@TRNO   DATE  HRVL  HRVS"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -67,11 +65,10 @@ test_that("@TRNO   DATE  HRVL  HRVS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  HRVL  HRVS")
 
-})
-
-test_that("@TRNO   DATE   MOW  VN%D  CNAD  CWAD   PRP",{
+# "@TRNO   DATE   MOW  VN%D  CNAD  CWAD   PRP"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -92,11 +89,10 @@ test_that("@TRNO   DATE   MOW  VN%D  CNAD  CWAD   PRP",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE   MOW  VN%D  CNAD  CWAD   PRP")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  SLAD  CHTD  LN%D",{
+# "@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  SLAD  CHTD  LN%D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -124,11 +120,10 @@ test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  SLAD  CHTD  LN%D")
 
-})
-
-test_that("@TRNO   DATE  CWAD  LAIX  LI%D  VN%D  LMLN  LWAD  SWAD  SLAD  LAID  HERB CPROT   NDF IVOMD",{
+# "@TRNO   DATE  CWAD  LAIX  LI%D  VN%D  LMLN  LWAD  SWAD  SLAD  LAID  HERB CPROT   NDF IVOMD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -157,11 +152,10 @@ test_that("@TRNO   DATE  CWAD  LAIX  LI%D  VN%D  LMLN  LWAD  SWAD  SLAD  LAID  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  LAIX  LI%D  VN%D  LMLN  LWAD  SWAD  SLAD  LAID  HERB CPROT   NDF IVOMD")
 
-})
-
-test_that("@TRNO   DATE   MOW  CWAD",{
+# "@TRNO   DATE   MOW  CWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -179,11 +173,10 @@ test_that("@TRNO   DATE   MOW  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE   MOW  CWAD")
 
-})
-
-test_that("@TRNO   DATE  CWAD   MOW",{
+# "@TRNO   DATE  CWAD   MOW"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -201,11 +194,10 @@ test_that("@TRNO   DATE  CWAD   MOW",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD   MOW")
 
-})
-
-test_that("@TRNO   DATE  LAID  LWAD  SWAD  RWAD  CWAD  LAWD  L#SD  SLAD  PWAD  HIPD",{
+# "@TRNO   DATE  LAID  LWAD  SWAD  RWAD  CWAD  LAWD  L#SD  SLAD  PWAD  HIPD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -231,11 +223,10 @@ test_that("@TRNO   DATE  LAID  LWAD  SWAD  RWAD  CWAD  LAWD  L#SD  SLAD  PWAD  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  LWAD  SWAD  RWAD  CWAD  LAWD  L#SD  SLAD  PWAD  HIPD")
 
-})
-
-test_that("@TRNO   DATE  LAID  CWAD  PWAD",{
+# "@TRNO   DATE  LAID  CWAD  PWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -254,11 +245,10 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  CWAD  PWAD")
 
-})
-
-test_that("@TRNO   DATE  LWAD  SWAD  GWAD  CWAD  LAID  CHTD  VN%D  LN%D  SN%D  GN%D  CNAD  LNAD  SNAD  VNAD  GNAD",{
+# "@TRNO   DATE  LWAD  SWAD  GWAD  CWAD  LAID  CHTD  VN%D  LN%D  SN%D  GN%D  CNAD  LNAD  SNAD  VNAD  GNAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -289,11 +279,10 @@ test_that("@TRNO   DATE  LWAD  SWAD  GWAD  CWAD  LAID  CHTD  VN%D  LN%D  SN%D  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LWAD  SWAD  GWAD  CWAD  LAID  CHTD  VN%D  LN%D  SN%D  GN%D  CNAD  LNAD  SNAD  VNAD  GNAD")
 
-})
-
-test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  GWAD  LAID  CHTD  VWAD",{
+# "@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  GWAD  LAID  CHTD  VWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -317,11 +306,10 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  GWAD  LAID  CHTD  VWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  GWAD  LAID  CHTD  VWAD")
 
-})
-
-test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  LAID",{
+# "@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  LAID"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -342,11 +330,10 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  LAID",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  LAID")
 
-})
-
-test_that("@TRNO   DATE  GSTD  CHTD  CWAD  LWAD  SWAD  PWAD  WLVG  LWPD  LAID  SLAD  LAPD  G#AD  G#PD  GWGD  P#AD  GW%M  HIAD  GWAD  GL%D  GN%D",{
+# "@TRNO   DATE  GSTD  CHTD  CWAD  LWAD  SWAD  PWAD  WLVG  LWPD  LAID  SLAD  LAPD  G#AD  G#PD  GWGD  P#AD  GW%M  HIAD  GWAD  GL%D  GN%D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -382,11 +369,10 @@ test_that("@TRNO   DATE  GSTD  CHTD  CWAD  LWAD  SWAD  PWAD  WLVG  LWPD  LAID  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  GSTD  CHTD  CWAD  LWAD  SWAD  PWAD  WLVG  LWPD  LAID  SLAD  LAPD  G#AD  G#PD  GWGD  P#AD  GW%M  HIAD  GWAD  GL%D  GN%D")
 
-})
-
-test_that("@TRNO   DATE   DAP  TDWA  TWAD  SWAD  DWAD  LWAD  HWAD  LAID  LALN  CDWA",{
+# "@TRNO   DATE   DAP  TDWA  TWAD  SWAD  DWAD  LWAD  HWAD  LAID  LALN  CDWA"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -412,11 +398,10 @@ test_that("@TRNO   DATE   DAP  TDWA  TWAD  SWAD  DWAD  LWAD  HWAD  LAID  LALN  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE   DAP  TDWA  TWAD  SWAD  DWAD  LWAD  HWAD  LAID  LALN  CDWA")
 
-})
-
-test_that("@TRNO   DATE  DAP1  S#AD  L#SD  L#IR",{
+# "@TRNO   DATE  DAP1  S#AD  L#SD  L#IR"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -436,11 +421,10 @@ test_that("@TRNO   DATE  DAP1  S#AD  L#SD  L#IR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  DAP1  S#AD  L#SD  L#IR")
 
-})
-
-test_that("@TRNO   DATE  GSTD",{
+# "@TRNO   DATE  GSTD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -457,11 +441,10 @@ test_that("@TRNO   DATE  GSTD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  GSTD")
 
-})
-
-test_that("@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  S#AD  L#SD  L#IR  LALD",{
+# "@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  S#AD  L#SD  L#IR  LALD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -486,11 +469,10 @@ test_that("@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  S#AD  L#SD  L#IR  LALD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  S#AD  L#SD  L#IR  LALD")
 
-})
-
-test_that("@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  LALD  S#AD  L#SD  L#IR",{
+# "@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  LALD  S#AD  L#SD  L#IR"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -515,11 +497,10 @@ test_that("@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  LALD  S#AD  L#SD  L#IR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE   DAP  TWAD  HWAD  CWAD  LAID  LALD  S#AD  L#SD  L#IR")
 
-})
-
-test_that("@TRNO   DATE   DAP  SWAD  LWAD  HWAD  RWAD  CWAD  TWAD  CGRD  LAID  H#AD  RLAD  RLWD  LAWD",{
+# "@TRNO   DATE   DAP  SWAD  LWAD  HWAD  RWAD  CWAD  TWAD  CGRD  LAID  H#AD  RLAD  RLWD  LAWD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -548,11 +529,10 @@ test_that("@TRNO   DATE   DAP  SWAD  LWAD  HWAD  RWAD  CWAD  TWAD  CGRD  LAID  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE   DAP  SWAD  LWAD  HWAD  RWAD  CWAD  TWAD  CGRD  LAID  H#AD  RLAD  RLWD  LAWD")
 
-})
-
-test_that("@TRNO   DATE  DAP1  S#PD  LALD  L#IR  L#SD",{
+# "@TRNO   DATE  DAP1  S#PD  LALD  L#IR  L#SD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -573,11 +553,10 @@ test_that("@TRNO   DATE  DAP1  S#PD  LALD  L#IR  L#SD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  DAP1  S#PD  LALD  L#IR  L#SD")
 
-})
-
-test_that("@TRNO   DATE  SWTD",{
+# "@TRNO   DATE  SWTD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -594,11 +573,10 @@ test_that("@TRNO   DATE  SWTD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  SWTD")
 
-})
-
-test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  HIPD  LN%D  SN%D  GN%D  PN%D  GWGD  SH%D",{
+# "@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  HIPD  LN%D  SN%D  GN%D  PN%D  GWGD  SH%D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -633,11 +611,10 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  HIPD  LN%D  SN%D  GN%D  PN%D  GWGD  SH%D")
 
-})
-
-test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  HIPD  SH%D  LN%D  SN%D  GN%D  PN%D  G#PD  GWGD Spike  LALD",{
+# "@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  HIPD  SH%D  LN%D  SN%D  GN%D  PN%D  G#PD  GWGD Spike  LALD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -675,11 +652,10 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  HIPD  SH%D  LN%D  SN%D  GN%D  PN%D  G#PD  GWGD Spike  LALD")
 
-})
-
-test_that("@TRNO   DATE  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  HIPD  SH%D ",{
+# "@TRNO   DATE  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  HIPD  SH%D "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -706,11 +682,10 @@ test_that("@TRNO   DATE  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  SLAD  LWAD  SWAD  VWAD  CWAD  GWAD  PWAD  HIAD  HIPD  SH%D ")
 
-})
-
-test_that("@TRNO   DATE  CHTD  CWID  L#SD",{
+# "@TRNO   DATE  CHTD  CWID  L#SD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -729,11 +704,10 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CHTD  CWID  L#SD")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIPD  SH%D  SLAD  GWGD",{
+# "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIPD  SH%D  SLAD  GWGD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -763,11 +737,10 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIPD  SH%D  SLAD  GWGD")
 
-})
-
-test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW0D  SWTD  SWXD",{
+# "@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW0D  SWTD  SWXD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -795,11 +768,10 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW0D  SWTD  SWXD")
 
-})
-
-test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW0D  SWTD SWXD  ",{
+# "@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW0D  SWTD SWXD  "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -827,11 +799,10 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW0D  SWTD SWXD  ")
 
-})
-
-test_that("@TRNO  DATE   L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIPD  SH%D  SLAD  GWGD",{
+# "@TRNO  DATE   L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIPD  SH%D  SLAD  GWGD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -861,11 +832,10 @@ test_that("@TRNO  DATE   L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO  DATE   L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIPD  SH%D  SLAD  GWGD")
 
-})
-
-test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW0D SWTD  SWXD",{
+# "@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW0D SWTD  SWXD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -893,11 +863,10 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW0D SWTD  SWXD")
 
-})
-
-test_that("@TRNO   DATE    R#  CHTD  LAID  P#AD  LWAD  SWAD  RWAD  PWAD  SLAD  CWAD",{
+# "@TRNO   DATE    R#  CHTD  LAID  P#AD  LWAD  SWAD  RWAD  PWAD  SLAD  CWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -923,11 +892,10 @@ test_that("@TRNO   DATE    R#  CHTD  LAID  P#AD  LWAD  SWAD  RWAD  PWAD  SLAD  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE    R#  CHTD  LAID  P#AD  LWAD  SWAD  RWAD  PWAD  SLAD  CWAD")
 
-})
-
-test_that("@TRNO   DATE  LWAD  SWAD  CWAD  PWAD  GWAD  CHTD  LAID",{
+# "@TRNO   DATE  LWAD  SWAD  CWAD  PWAD  GWAD  CHTD  LAID"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -950,11 +918,10 @@ test_that("@TRNO   DATE  LWAD  SWAD  CWAD  PWAD  GWAD  CHTD  LAID",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LWAD  SWAD  CWAD  PWAD  GWAD  CHTD  LAID")
 
-})
-
-test_that("@TRNO   DATE  LAID",{
+# "@TRNO   DATE  LAID"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -971,11 +938,10 @@ test_that("@TRNO   DATE  LAID",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID")
 
-})
-
-test_that("@TRNO   DATE  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW10",{
+# "@TRNO   DATE  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW10"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1000,11 +966,10 @@ test_that("@TRNO   DATE  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW10",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D  SW10")
 
-})
-
-test_that("@TRNO   DATE  RL4D  RL5D  RL6D  RL7D  RL8D  RL9D  RL10",{
+# "@TRNO   DATE  RL4D  RL5D  RL6D  RL7D  RL8D  RL9D  RL10"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1027,11 +992,10 @@ test_that("@TRNO   DATE  RL4D  RL5D  RL6D  RL7D  RL8D  RL9D  RL10",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  RL4D  RL5D  RL6D  RL7D  RL8D  RL9D  RL10")
 
-})
-
-test_that("@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G#AD  GWGD  SH%D  SLAD  SHAD  L#SD  CHTD",{
+# "@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G#AD  GWGD  SH%D  SLAD  SHAD  L#SD  CHTD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1063,11 +1027,10 @@ test_that("@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G#AD  GWGD  SH%D  SLAD  SHAD  L#SD  CHTD")
 
-})
-
-test_that("@TRNO   DATE  L#SD",{
+# "@TRNO   DATE  L#SD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1084,11 +1047,10 @@ test_that("@TRNO   DATE  L#SD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD")
 
-})
-
-test_that("@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G#AD  GWGD  SH%D  SLAD  L#SD",{
+# "@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G#AD  GWGD  SH%D  SLAD  L#SD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1118,11 +1080,10 @@ test_that("@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  SWAD  LWAD  PWAD  GWAD  CWAD  HIPD  HIAD  P#AD  G#AD  GWGD  SH%D  SLAD  L#SD")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD",{
+# "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1149,11 +1110,10 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  SH%D  SLAD  GWGD",{
+# "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  SH%D  SLAD  GWGD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1183,11 +1143,10 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  SH%D  SLAD  GWGD")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  G#AD  SH%D  SLAD  GWGD",{
+# "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  G#AD  SH%D  SLAD  GWGD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1217,11 +1176,10 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  R
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  G#AD  SH%D  SLAD  GWGD")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  SH%D  SLAD  GWGD  CHTD  CWID",{
+# "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  SH%D  SLAD  GWGD  CHTD  CWID"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1253,11 +1211,10 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  SH%D  SLAD  GWGD  CHTD  CWID")
 
-})
-
-test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  HIPD",{
+# "@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  HIPD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1280,11 +1237,10 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  HIPD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  HIPD")
 
-})
-
-test_that("@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D                    ",{
+# "@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D                    "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1308,11 +1264,10 @@ test_that("@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D                    ")
 
-})
-
-test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC              ",{
+# "@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC              "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1337,11 +1292,10 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC   
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC              ")
 
-})
-
-test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  NWAD  HIPD",{
+# "@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  NWAD  HIPD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1365,11 +1319,10 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  NWAD  HIPD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  NWAD  HIPD")
 
-})
-
-test_that("@TRNO   DATE  CHTD  CWID  L#SD  SN%D  LN%D  GN%D",{
+# "@TRNO   DATE  CHTD  CWID  L#SD  SN%D  LN%D  GN%D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1391,11 +1344,10 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  SN%D  LN%D  GN%D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CHTD  CWID  L#SD  SN%D  LN%D  GN%D")
 
-})
-
-test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC",{
+# "@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1420,11 +1372,10 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  ETAC")
 
-})
-
-test_that("@TRNO   DATE  NH1D  NH2D  NH3D  NH4D  NH5D  NI1D  NI2D  NI3D  NI4D NI5DD        ",{
+# "@TRNO   DATE  NH1D  NH2D  NH3D  NH4D  NH5D  NI1D  NI2D  NI3D  NI4D NI5DD        "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1450,11 +1401,10 @@ test_that("@TRNO   DATE  NH1D  NH2D  NH3D  NH4D  NH5D  NI1D  NI2D  NI3D  NI4D NI
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  NH1D  NH2D  NH3D  NH4D  NH5D  NI1D  NI2D  NI3D  NI4D NI5DD        ")
 
-})
-
-test_that("@TRNO   DATE  TS1D  TS2D  TS3D  SW1D",{
+# "@TRNO   DATE  TS1D  TS2D  TS3D  SW1D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1474,11 +1424,10 @@ test_that("@TRNO   DATE  TS1D  TS2D  TS3D  SW1D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  TS1D  TS2D  TS3D  SW1D")
 
-})
-
-test_that("@TRNO   DATE  TS1D  TS2D  TS3D  TS5D  TS7D",{
+# "@TRNO   DATE  TS1D  TS2D  TS3D  TS5D  TS7D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1499,11 +1448,10 @@ test_that("@TRNO   DATE  TS1D  TS2D  TS3D  TS5D  TS7D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  TS1D  TS2D  TS3D  TS5D  TS7D")
 
-})
-
-test_that("@TRNO   DATE SCS20D",{
+# "@TRNO   DATE SCS20D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1520,11 +1468,10 @@ test_that("@TRNO   DATE SCS20D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE SCS20D")
 
-})
-
-test_that("@TRNO   DATE  CHTD  CWID  L#SD  SH%D  GWGD  CWAD  LWAD  SWAD  PWAD  GWAD  SLAD  LAID  P#AD  G#AD  HIAD  HIPD  NUPC  NIAD  NLCC ",{
+# "@TRNO   DATE  CHTD  CWID  L#SD  SH%D  GWGD  CWAD  LWAD  SWAD  PWAD  GWAD  SLAD  LAID  P#AD  G#AD  HIAD  HIPD  NUPC  NIAD  NLCC "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1559,11 +1506,10 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  SH%D  GWGD  CWAD  LWAD  SWAD  PWAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CHTD  CWID  L#SD  SH%D  GWGD  CWAD  LWAD  SWAD  PWAD  GWAD  SLAD  LAID  P#AD  G#AD  HIAD  HIPD  NUPC  NIAD  NLCC ")
 
-})
-
-test_that("@TRNO   DATE  CWAD",{
+# "@TRNO   DATE  CWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1580,11 +1526,10 @@ test_that("@TRNO   DATE  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD")
 
-})
-
-test_that("@TRNO   DATE  SW2D  SW4D  SW6D",{
+# "@TRNO   DATE  SW2D  SW4D  SW6D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1603,11 +1548,10 @@ test_that("@TRNO   DATE  SW2D  SW4D  SW6D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  SW2D  SW4D  SW6D")
 
-})
-
-test_that("@TRNO   DATE  CWAD  CNAD  GWAD  GN%D",{
+# "@TRNO   DATE  CWAD  CNAD  GWAD  GN%D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1627,11 +1571,10 @@ test_that("@TRNO   DATE  CWAD  CNAD  GWAD  GN%D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  CNAD  GWAD  GN%D")
 
-})
-
-test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D",{
+# "@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1655,11 +1598,10 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D")
 
-})
-
-test_that("@TRNO   DATE  NI1D  NI2D  NI3D  NI4D  NI5D  NI6D  NIAD",{
+# "@TRNO   DATE  NI1D  NI2D  NI3D  NI4D  NI5D  NI6D  NIAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1682,11 +1624,10 @@ test_that("@TRNO   DATE  NI1D  NI2D  NI3D  NI4D  NI5D  NI6D  NIAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  NI1D  NI2D  NI3D  NI4D  NI5D  NI6D  NIAD")
 
-})
-
-test_that("@TRNO   DATE  GWAD  GWGD  G#AD  LAID  CWAD  GN%D  CNAD  SNAD  GNAD",{
+# "@TRNO   DATE  GWAD  GWGD  G#AD  LAID  CWAD  GN%D  CNAD  SNAD  GNAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1711,11 +1652,10 @@ test_that("@TRNO   DATE  GWAD  GWGD  G#AD  LAID  CWAD  GN%D  CNAD  SNAD  GNAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  GWAD  GWGD  G#AD  LAID  CWAD  GN%D  CNAD  SNAD  GNAD")
 
-})
-
-test_that("@TRNO   DATE  L#SD  CHTD  LWAD  CWAD",{
+# "@TRNO   DATE  L#SD  CHTD  LWAD  CWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1735,11 +1675,10 @@ test_that("@TRNO   DATE  L#SD  CHTD  LWAD  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  CHTD  LWAD  CWAD")
 
-})
-
-test_that("@TRNO   DATE  CWAD  VN%D  GWAD",{
+# "@TRNO   DATE  CWAD  VN%D  GWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1758,11 +1697,10 @@ test_that("@TRNO   DATE  CWAD  VN%D  GWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  VN%D  GWAD")
 
-})
-
-test_that("@TRNO   DATE  CWAD  LAID  SWAD  GWAD  LWAD",{
+# "@TRNO   DATE  CWAD  LAID  SWAD  GWAD  LWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1783,11 +1721,10 @@ test_that("@TRNO   DATE  CWAD  LAID  SWAD  GWAD  LWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  LAID  SWAD  GWAD  LWAD")
 
-})
-
-test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D",{
+# "@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1808,11 +1745,10 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D")
 
-})
-
-test_that("@TRNO   DATE  CNAD",{
+# "@TRNO   DATE  CNAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1829,11 +1765,10 @@ test_that("@TRNO   DATE  CNAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CNAD")
 
-})
-
-test_that("@TRNO   DATE  LAID  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIAD  G#AD  GWGD  CNAD  GNAD  LNAD  SNAD  GN%D  LN%D  SN%D",{
+# "@TRNO   DATE  LAID  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIAD  G#AD  GWGD  CNAD  GNAD  LNAD  SNAD  GN%D  LN%D  SN%D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1866,11 +1801,10 @@ test_that("@TRNO   DATE  LAID  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIAD  G#AD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIAD  G#AD  GWGD  CNAD  GNAD  LNAD  SNAD  GN%D  LN%D  SN%D")
 
-})
-
-test_that("@TRNO   DATE  PSMD  PLAD  PRTD  PSDD  PASM  PWPD",{
+# "@TRNO   DATE  PSMD  PLAD  PRTD  PSDD  PASM  PWPD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1892,11 +1826,10 @@ test_that("@TRNO   DATE  PSMD  PLAD  PRTD  PSDD  PASM  PWPD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  PSMD  PLAD  PRTD  PSDD  PASM  PWPD")
 
-})
-
-test_that("@TRNO   DATE  PLAD  ",{
+# "@TRNO   DATE  PLAD  "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1913,11 +1846,10 @@ test_that("@TRNO   DATE  PLAD  ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  PLAD  ")
 
-})
-
-test_that("@TRNO   DATE  CWAD  LAID  GWAD  LWAD  SWAD  VN%D  SLAD  FRLF  FRST  HIAD  CNAD  NUPC  LN%D  SN%D  GN%D  LP%D  SP%D  GP%D  LK%D  SK%D  GK%D  LNAD  SNAD  GNAD  LPAD  SPAD  GPAD  LKAD  SKAD  GKAD",{
+# "@TRNO   DATE  CWAD  LAID  GWAD  LWAD  SWAD  VN%D  SLAD  FRLF  FRST  HIAD  CNAD  NUPC  LN%D  SN%D  GN%D  LP%D  SP%D  GP%D  LK%D  SK%D  GK%D  LNAD  SNAD  GNAD  LPAD  SPAD  GPAD  LKAD  SKAD  GKAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1963,11 +1895,10 @@ test_that("@TRNO   DATE  CWAD  LAID  GWAD  LWAD  SWAD  VN%D  SLAD  FRLF  FRST  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  LAID  GWAD  LWAD  SWAD  VN%D  SLAD  FRLF  FRST  HIAD  CNAD  NUPC  LN%D  SN%D  GN%D  LP%D  SP%D  GP%D  LK%D  SK%D  GK%D  LNAD  SNAD  GNAD  LPAD  SPAD  GPAD  LKAD  SKAD  GKAD")
 
-})
-
-test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  GWAD  XCLA  XDLA  PCLA  PDLA",{
+# "@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  GWAD  XCLA  XDLA  PCLA  PDLA"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1993,11 +1924,10 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  GWAD  XCLA  XDLA  PCLA  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  GWAD  XCLA  XDLA  PCLA  PDLA")
 
-})
-
-test_that("@TRNO   DATE  CWID  CHTD  L#SD",{
+# "@TRNO   DATE  CWID  CHTD  L#SD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2016,11 +1946,10 @@ test_that("@TRNO   DATE  CWID  CHTD  L#SD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWID  CHTD  L#SD")
 
-})
-
-test_that("@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D",{
+# "@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2041,11 +1970,10 @@ test_that("@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  RL1D  RL2D  RL3D  RL4D  RL5D")
 
-})
-
-test_that("@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TW90   SWXD",{
+# "@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TW90   SWXD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2070,11 +1998,10 @@ test_that("@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TW90   SWXD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TW90   SWXD")
 
-})
-
-test_that("@TRNO   DATE  xCLA  xDLA  PCLA  PDLA",{
+# "@TRNO   DATE  xCLA  xDLA  PCLA  PDLA"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2094,11 +2021,10 @@ test_that("@TRNO   DATE  xCLA  xDLA  PCLA  PDLA",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  xCLA  xDLA  PCLA  PDLA")
 
-})
-
-test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  FRLF  FRST  GWAD",{
+# "@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  FRLF  FRST  GWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2122,11 +2048,10 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  FRLF  FRST  GWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  FRLF  FRST  GWAD")
 
-})
-
-test_that("@TRNO  DATE   CWID  CHTD  L#SD",{
+# "@TRNO  DATE   CWID  CHTD  L#SD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2145,11 +2070,10 @@ test_that("@TRNO  DATE   CWID  CHTD  L#SD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO  DATE   CWID  CHTD  L#SD")
 
-})
-
-test_that("@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TWAT90 SWXD",{
+# "@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TWAT90 SWXD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2174,11 +2098,10 @@ test_that("@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TWAT90 SWXD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  W105  W210  W315  W415  W515  W630  W723 TWAT90 SWXD")
 
-})
-
-test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD SHPPD SHPAD  PCLA  PDLA",{
+# "@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD SHPPD SHPAD  PCLA  PDLA"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2206,11 +2129,10 @@ test_that("@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD SHPPD SH
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD SHPPD SHPAD  PCLA  PDLA")
 
-})
-
-test_that("@TRNO   DATE  L#SD  CHTD  CWID",{
+# "@TRNO   DATE  L#SD  CHTD  CWID"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2229,11 +2151,10 @@ test_that("@TRNO   DATE  L#SD  CHTD  CWID",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  CHTD  CWID")
 
-})
-
-test_that("@TRNO   DATE LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD  SHPPD SHPAD PCLA  PDLA",{
+# "@TRNO   DATE LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD  SHPPD SHPAD PCLA  PDLA"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2261,11 +2182,10 @@ test_that("@TRNO   DATE LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD  SHPPD SH
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE LWAD  SWAD  PWAD  CWAD  HIPD  LFTM  STTM  GWAD  SHPPD SHPAD PCLA  PDLA")
 
-})
-
-test_that("@TRNO   DATE  CHTD  CWID  L#SD                             ",{
+# "@TRNO   DATE  CHTD  CWID  L#SD                             "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2284,11 +2204,10 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD                             ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CHTD  CWID  L#SD                             ")
 
-})
-
-test_that("@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  PCLA  PSTM  LN%D  CL%D  SN%D  CS%D",{
+# "@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  PCLA  PSTM  LN%D  CL%D  SN%D  CS%D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2325,11 +2244,10 @@ test_that("@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  F
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  PCLA  PSTM  LN%D  CL%D  SN%D  CS%D")
 
-})
-
-test_that("@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  HIPD  SH%D  SLAD  GWGD  LN%D  CL%D  SN%D  CS%D",{
+# "@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  HIPD  SH%D  SLAD  GWGD  LN%D  CL%D  SN%D  CS%D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2363,11 +2281,10 @@ test_that("@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  HIPD  SH%D  SLAD  GWGD  LN%D  CL%D  SN%D  CS%D")
 
-})
-
-test_that("@TRNO   DATE  RWAD  PWAD  G#AD  GWAD  P#AD  CWAD  GWGD  SHAD  SH%D  HIAD  HIPD",{
+# "@TRNO   DATE  RWAD  PWAD  G#AD  GWAD  P#AD  CWAD  GWGD  SHAD  SH%D  HIAD  HIPD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2394,11 +2311,10 @@ test_that("@TRNO   DATE  RWAD  PWAD  G#AD  GWAD  P#AD  CWAD  GWGD  SHAD  SH%D  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  RWAD  PWAD  G#AD  GWAD  P#AD  CWAD  GWGD  SHAD  SH%D  HIAD  HIPD")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  PHAN",{
+# "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  PHAN"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2431,11 +2347,10 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  F
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  PHAN")
 
-})
-
-test_that("@TRNO   DATE  LAID  CWAD  PWAD  GWAD  GWGD  H#AD  HIAD  HIPD  SH%D  CNAD  LNAD  GNAD  GN%D  LN%D  SN%D",{
+# "@TRNO   DATE  LAID  CWAD  PWAD  GWAD  GWGD  H#AD  HIAD  HIPD  SH%D  CNAD  LNAD  GNAD  GN%D  LN%D  SN%D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2466,11 +2381,10 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  GWAD  GWGD  H#AD  HIAD  HIPD  SH%D  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  CWAD  PWAD  GWAD  GWGD  H#AD  HIAD  HIPD  SH%D  CNAD  LNAD  GNAD  GN%D  LN%D  SN%D")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  RL1D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D",{
+# "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  RL1D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2510,11 +2424,10 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  RL1D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D")
 
-})
-
-test_that("@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  LN%D  PHAN  LMLN",{
+# "@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  LN%D  PHAN  LMLN"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2552,11 +2465,10 @@ test_that("@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  LN%D  PHAN  LMLN")
 
-})
-
-test_that("@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  ATPW  DTPW  SHAD  G#AD  HIPD  SH%D  SLAD  GWGD",{
+# "@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  ATPW  DTPW  SHAD  G#AD  HIPD  SH%D  SLAD  GWGD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2590,11 +2502,10 @@ test_that("@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  PCLA  PDLA  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  ATPW  DTPW  SHAD  G#AD  HIPD  SH%D  SLAD  GWGD")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  PDLA  PCLA  VNAD  PHAN  LMLN",{
+# "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  PDLA  PCLA  VNAD  PHAN  LMLN"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2632,11 +2543,10 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  PDLA  PCLA  VNAD  PHAN  LMLN")
 
-})
-
-test_that("@TRNO  DATE   L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  PHAN  LI%D  LMLN",{
+# "@TRNO  DATE   L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  PHAN  LI%D  LMLN"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2664,11 +2574,10 @@ test_that("@TRNO  DATE   L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO  DATE   L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  PHAN  LI%D  LMLN")
 
-})
-
-test_that("@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  G#AD  GWAD  P#AD  SHAD  SLAD  LAID  FRLF  FRST  HIAD  HIPD  SH%D  GWGD  VNAD  XSPD  RL1D  RL2D  RL3D  RL4D",{
+# "@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  G#AD  GWAD  P#AD  SHAD  SLAD  LAID  FRLF  FRST  HIAD  HIPD  SH%D  GWGD  VNAD  XSPD  RL1D  RL2D  RL3D  RL4D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2707,11 +2616,10 @@ test_that("@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  G#AD  GWAD  P#AD  SHAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  G#AD  GWAD  P#AD  SHAD  SLAD  LAID  FRLF  FRST  HIAD  HIPD  SH%D  GWGD  VNAD  XSPD  RL1D  RL2D  RL3D  RL4D")
 
-})
-
-test_that("@TRNO  DATE   CHTD  CWID  L#SD",{
+# "@TRNO  DATE   CHTD  CWID  L#SD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2730,11 +2638,10 @@ test_that("@TRNO  DATE   CHTD  CWID  L#SD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO  DATE   CHTD  CWID  L#SD")
 
-})
-
-test_that("@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  SHAD  L#SD  CHTD  CWID  LI%D  LMLN",{
+# "@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  SHAD  L#SD  CHTD  CWID  LI%D  LMLN"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2773,11 +2680,10 @@ test_that("@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  PCLA  PDLA  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  SHAD  L#SD  CHTD  CWID  LI%D  LMLN")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD",{
+# "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2808,11 +2714,10 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  F
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD")
 
-})
-
-test_that("@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  SHAD  CHTD  CWID  LI%D  LMLN",{
+# "@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  SHAD  CHTD  CWID  LI%D  LMLN"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2848,11 +2753,10 @@ test_that("@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G#AD  FRLF  F
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  G#AD  FRLF  FRST  HIAD  HIPD  SH%D  SLAD  GWGD  SHAD  CHTD  CWID  LI%D  LMLN")
 
-})
-
-test_that("@TRNO   DATE  LAID  CWAD  GWAD",{
+# "@TRNO   DATE  LAID  CWAD  GWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2871,11 +2775,10 @@ test_that("@TRNO   DATE  LAID  CWAD  GWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  CWAD  GWAD")
 
-})
-
-test_that("@TRNO   DATE  CWAD  GWAD  P#AD  G#AD  HIAD  G#PD  GWGD  SW6D  SW7D  SW8D  SW9D  GSTD",{
+# "@TRNO   DATE  CWAD  GWAD  P#AD  G#AD  HIAD  G#PD  GWGD  SW6D  SW7D  SW8D  SW9D  GSTD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2903,11 +2806,10 @@ test_that("@TRNO   DATE  CWAD  GWAD  P#AD  G#AD  HIAD  G#PD  GWGD  SW6D  SW7D  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  GWAD  P#AD  G#AD  HIAD  G#PD  GWGD  SW6D  SW7D  SW8D  SW9D  GSTD")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LWAD  LAID  SLAD  SWAD  CWAD  PWAD  SHAD  GWAD  SH%D  P#AD  G#AD  GWGD  HIAD  HIPD  LN%D  SN%D  SHND  LNAD  SNAD  GNAD  GN%D  G#PD  LFFD  STFD  RTFD",{
+# "@TRNO   DATE  L#SD  LWAD  LAID  SLAD  SWAD  CWAD  PWAD  SHAD  GWAD  SH%D  P#AD  G#AD  GWGD  HIAD  HIPD  LN%D  SN%D  SHND  LNAD  SNAD  GNAD  GN%D  G#PD  LFFD  STFD  RTFD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2949,11 +2851,10 @@ test_that("@TRNO   DATE  L#SD  LWAD  LAID  SLAD  SWAD  CWAD  PWAD  SHAD  GWAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LWAD  LAID  SLAD  SWAD  CWAD  PWAD  SHAD  GWAD  SH%D  P#AD  G#AD  GWGD  HIAD  HIPD  LN%D  SN%D  SHND  LNAD  SNAD  GNAD  GN%D  G#PD  LFFD  STFD  RTFD")
 
-})
-
-test_that("@TRNO  DATE   LAID  LWAD  SWAD  CWAD  L#SD",{
+# "@TRNO  DATE   LAID  LWAD  SWAD  CWAD  L#SD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -2974,11 +2875,10 @@ test_that("@TRNO  DATE   LAID  LWAD  SWAD  CWAD  L#SD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO  DATE   LAID  LWAD  SWAD  CWAD  L#SD")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  LWAD  SWAD  CWAD",{
+# "@TRNO   DATE  L#SD  LAID  LWAD  SWAD  CWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -2999,11 +2899,10 @@ test_that("@TRNO   DATE  L#SD  LAID  LWAD  SWAD  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  LWAD  SWAD  CWAD")
 
-})
-
-test_that("@TRNO   DATE  UYAD  LAID",{
+# "@TRNO   DATE  UYAD  LAID"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3021,11 +2920,10 @@ test_that("@TRNO   DATE  UYAD  LAID",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  UYAD  LAID")
 
-})
-
-test_that("@TRNO   DATE  SWAD  UWAD  CWAD  LWAD  UYAD",{
+# "@TRNO   DATE  SWAD  UWAD  CWAD  LWAD  UYAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3046,11 +2944,10 @@ test_that("@TRNO   DATE  SWAD  UWAD  CWAD  LWAD  UYAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  SWAD  UWAD  CWAD  LWAD  UYAD")
 
-})
-
-test_that("@TRNO   DATE  VNAD  SNAD  CN%D  UNAD  RN%D  UWAD  RWAD  RNAD  CWAD",{
+# "@TRNO   DATE  VNAD  SNAD  CN%D  UNAD  RN%D  UWAD  RWAD  RNAD  CWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3075,11 +2972,10 @@ test_that("@TRNO   DATE  VNAD  SNAD  CN%D  UNAD  RN%D  UWAD  RWAD  RNAD  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  VNAD  SNAD  CN%D  UNAD  RN%D  UWAD  RWAD  RNAD  CWAD")
 
-})
-
-test_that("@TRNO   DATE  TWAD  UYAD  UWAD  SWAD  LWAD  CWAD",{
+# "@TRNO   DATE  TWAD  UYAD  UWAD  SWAD  LWAD  CWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3101,11 +2997,10 @@ test_that("@TRNO   DATE  TWAD  UYAD  UWAD  SWAD  LWAD  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  TWAD  UYAD  UWAD  SWAD  LWAD  CWAD")
 
-})
-
-test_that("@TRNO   DATE  TWAD  UYAD  LAID  UWAD  SWAD  LWAD  CWAD",{
+# "@TRNO   DATE  TWAD  UYAD  LAID  UWAD  SWAD  LWAD  CWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3128,11 +3023,10 @@ test_that("@TRNO   DATE  TWAD  UYAD  LAID  UWAD  SWAD  LWAD  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  TWAD  UYAD  LAID  UWAD  SWAD  LWAD  CWAD")
 
-})
-
-test_that("@TRNO   DATE  SNAD  UNAD  LAID  UWAD  CWAD  LWAD  LNAD  SWAD",{
+# "@TRNO   DATE  SNAD  UNAD  LAID  UWAD  CWAD  LWAD  LNAD  SWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3156,11 +3050,10 @@ test_that("@TRNO   DATE  SNAD  UNAD  LAID  UWAD  CWAD  LWAD  LNAD  SWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  SNAD  UNAD  LAID  UWAD  CWAD  LWAD  LNAD  SWAD")
 
-})
-
-test_that("@TRNO   DATE  LAID  UYAD  UWAD  LWAD  SWAD  CWAD  TWAD  SLAD",{
+# "@TRNO   DATE  LAID  UYAD  UWAD  LWAD  SWAD  CWAD  TWAD  SLAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3184,11 +3077,10 @@ test_that("@TRNO   DATE  LAID  UYAD  UWAD  LWAD  SWAD  CWAD  TWAD  SLAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  UYAD  UWAD  LWAD  SWAD  CWAD  TWAD  SLAD")
 
-})
-
-test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  PWAD  GWAD  CWAD  GWGD  LDAD  HIAD  HIPD  SH%D  LN%D  SN%D  GN%D  SHND",{
+# "@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  PWAD  GWAD  CWAD  GWGD  LDAD  HIAD  HIPD  SH%D  LN%D  SN%D  GN%D  SHND"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3223,11 +3115,10 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  PWAD  GWAD  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  PWAD  GWAD  CWAD  GWGD  LDAD  HIAD  HIPD  SH%D  LN%D  SN%D  GN%D  SHND")
 
-})
-
-test_that("@TRNO   DATE  T#AD  LAID  RWAD  SWAD  GWAD  LWAD  CWAD",{
+# "@TRNO   DATE  T#AD  LAID  RWAD  SWAD  GWAD  LWAD  CWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3250,11 +3141,10 @@ test_that("@TRNO   DATE  T#AD  LAID  RWAD  SWAD  GWAD  LWAD  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  T#AD  LAID  RWAD  SWAD  GWAD  LWAD  CWAD")
 
-})
-
-test_that("@TRNO   DATE  T#AD  CWAD  SWAD  GWAD",{
+# "@TRNO   DATE  T#AD  CWAD  SWAD  GWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3274,11 +3164,10 @@ test_that("@TRNO   DATE  T#AD  CWAD  SWAD  GWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  T#AD  CWAD  SWAD  GWAD")
 
-})
-
-test_that("@TRNO   DATE  CWAD  LAID  GWAD",{
+# "@TRNO   DATE  CWAD  LAID  GWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3297,11 +3186,10 @@ test_that("@TRNO   DATE  CWAD  LAID  GWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  LAID  GWAD")
 
-})
-
-test_that("@TRNO   DATE  LWAD  SWAD  CWAD  LAID  G#AD  P#AD  GWAD  GWGD  HIAD  CHTD  SLAD  PWAD  HIPD",{
+# "@TRNO   DATE  LWAD  SWAD  CWAD  LAID  G#AD  P#AD  GWAD  GWGD  HIAD  CHTD  SLAD  PWAD  HIPD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3330,11 +3218,10 @@ test_that("@TRNO   DATE  LWAD  SWAD  CWAD  LAID  G#AD  P#AD  GWAD  GWGD  HIAD  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LWAD  SWAD  CWAD  LAID  G#AD  P#AD  GWAD  GWGD  HIAD  CHTD  SLAD  PWAD  HIPD")
 
-})
-
-test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VNAD  PWAD  HIPD  GWAD  SH%D  CWAD  CNAD  LI%N  G#AD  LDAD SNW0C  HIAD  P#AD  GWGD  VN%D  GN%D  SHND XFN%D PTAL1 PTAL2 FPTL1 FPTL2",{
+# "@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VNAD  PWAD  HIPD  GWAD  SH%D  CWAD  CNAD  LI%N  G#AD  LDAD SNW0C  HIAD  P#AD  GWGD  VN%D  GN%D  SHND XFN%D PTAL1 PTAL2 FPTL1 FPTL2"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3379,11 +3266,10 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VNAD  PWAD  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  SWAD  VNAD  PWAD  HIPD  GWAD  SH%D  CWAD  CNAD  LI%N  G#AD  LDAD SNW0C  HIAD  P#AD  GWGD  VN%D  GN%D  SHND XFN%D PTAL1 PTAL2 FPTL1 FPTL2")
 
-})
-
-test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  VNAD  SWAD  PWAD  HIPD  GWAD  SH%D  CWAD  CNAD  LI%N  G#AD  LDAD SNW0C  HIAD  P#AD  GWGD  VN%D  GN%D  SHND XFN%D PTAL1 PTAL2 FPTL1 FPTL2",{
+# "@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  VNAD  SWAD  PWAD  HIPD  GWAD  SH%D  CWAD  CNAD  LI%N  G#AD  LDAD SNW0C  HIAD  P#AD  GWGD  VN%D  GN%D  SHND XFN%D PTAL1 PTAL2 FPTL1 FPTL2"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3428,11 +3314,10 @@ test_that("@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  VNAD  SWAD  PWAD  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CHTD  CWID  L#SD  LAID  SLAD  LWAD  VNAD  SWAD  PWAD  HIPD  GWAD  SH%D  CWAD  CNAD  LI%N  G#AD  LDAD SNW0C  HIAD  P#AD  GWGD  VN%D  GN%D  SHND XFN%D PTAL1 PTAL2 FPTL1 FPTL2")
 
-})
-
-test_that("@TRNO   DATE  CWAD  GWAD  G#AD",{
+# "@TRNO   DATE  CWAD  GWAD  G#AD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3451,11 +3336,10 @@ test_that("@TRNO   DATE  CWAD  GWAD  G#AD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  GWAD  G#AD")
 
-})
-
-test_that("@TRNO   DATE  CWAD  GWAD",{
+# "@TRNO   DATE  CWAD  GWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3473,11 +3357,10 @@ test_that("@TRNO   DATE  CWAD  GWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  GWAD")
 
-})
-
-test_that("@TRNO   DATE  CNAD  GN%D  SNAD  GNAD",{
+# "@TRNO   DATE  CNAD  GN%D  SNAD  GNAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3497,11 +3380,10 @@ test_that("@TRNO   DATE  CNAD  GN%D  SNAD  GNAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CNAD  GN%D  SNAD  GNAD")
 
-})
-
-test_that("@TRNO    DOY   DAP  LAID  VWAD  L#SD  CHTD SHPPD",{
+# "@TRNO    DOY   DAP  LAID  VWAD  L#SD  CHTD SHPPD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3523,11 +3405,10 @@ test_that("@TRNO    DOY   DAP  LAID  VWAD  L#SD  CHTD SHPPD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO    DOY   DAP  LAID  VWAD  L#SD  CHTD SHPPD")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  CHTD  CWID  LI%N  HIAD  HIPD",{
+# "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  CHTD  CWID  LI%N  HIAD  HIPD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3559,11 +3440,10 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  CHTD  CWID  LI%N  HIAD  HIPD")
 
-})
-
-test_that("@TRNO   DATE  CHTD  L#SD  LAID  SWAD  LWAD  CWAD",{
+# "@TRNO   DATE  CHTD  L#SD  LAID  SWAD  LWAD  CWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3585,11 +3465,10 @@ test_that("@TRNO   DATE  CHTD  L#SD  LAID  SWAD  LWAD  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CHTD  L#SD  LAID  SWAD  LWAD  CWAD")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  G#AD  SH%D  SLAD  GWGD  HIAD  HIPD",{
+# "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  G#AD  SH%D  SLAD  GWGD  HIAD  HIPD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3621,11 +3500,10 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  R
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  G#AD  SH%D  SLAD  GWGD  HIAD  HIPD")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  SH%D  SLAD  HIAD  HIPD  GWGD  GN%D  GL%D",{
+# "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  SH%D  SLAD  HIAD  HIPD  GWGD  GN%D  GL%D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3658,11 +3536,10 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  SH%D  SLAD  HIAD  HIPD  GWGD  GN%D  GL%D")
 
-})
-
-test_that("@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIPD  HIAD  SH%D  GWGD  G#AD  SHAD  LAID  SWID  SW2D  SW3D  SW4D  SW5D  SW6D",{
+# "@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIPD  HIAD  SH%D  GWGD  G#AD  SHAD  LAID  SWID  SW2D  SW3D  SW4D  SW5D  SW6D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3698,11 +3575,10 @@ test_that("@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIPD  HIAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  CWAD  LWAD  SWAD  PWAD  GWAD  P#AD  HIPD  HIAD  SH%D  GWGD  G#AD  SHAD  LAID  SWID  SW2D  SW3D  SW4D  SW5D  SW6D")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  HIAD  HIPD",{
+# "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  HIAD  HIPD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3731,11 +3607,10 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  HIAD  HIPD")
 
-})
-
-test_that("@TRNO   DATE  SWXD  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D",{
+# "@TRNO   DATE  SWXD  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3761,11 +3636,10 @@ test_that("@TRNO   DATE  SWXD  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  SWXD  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D  SW8D  SW9D")
 
-})
-
-test_that("@TRNO   DATE  RWAD  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D  RL9D  RL10  RL11  RL12  RL13  RDPD",{
+# "@TRNO   DATE  RWAD  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D  RL9D  RL10  RL11  RL12  RL13  RDPD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3796,11 +3670,10 @@ test_that("@TRNO   DATE  RWAD  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D  R
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  RWAD  RL1D  RL2D  RL3D  RL4D  RL5D  RL6D  RL7D  RL8D  RL9D  RL10  RL11  RL12  RL13  RDPD")
 
-})
-
-test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  SHAD  L#SD",{
+# "@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  SHAD  L#SD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3827,11 +3700,10 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  SHAD  L#SD")
 
-})
-
-test_that("@TRNO   DATE  LMLN  WSGD",{
+# "@TRNO   DATE  LMLN  WSGD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3849,11 +3721,10 @@ test_that("@TRNO   DATE  LMLN  WSGD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LMLN  WSGD")
 
-})
-
-test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  SHAD  L#AD",{
+# "@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  SHAD  L#AD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3880,11 +3751,10 @@ test_that("@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  CWAD  PWAD  SWAD  LWAD  SLAD  GWAD  HIAD  SH%D  SHAD  L#AD")
 
-})
-
-test_that("@TRNO   DATE  W105  W210  W315  W415  W515  W615  W715",{
+# "@TRNO   DATE  W105  W210  W315  W415  W515  W615  W715"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3907,11 +3777,10 @@ test_that("@TRNO   DATE  W105  W210  W315  W415  W515  W615  W715",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  W105  W210  W315  W415  W515  W615  W715")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  HIPD  SH%D  SLAD  GWGD  CHTD",{
+# "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  HIPD  SH%D  SLAD  GWGD  CHTD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3943,11 +3812,10 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  HIPD  SH%D  SLAD  GWGD  CHTD")
 
-})
-
-test_that("@TRNO   DATE  CWAD  LAID  RWAD  GWAD",{
+# "@TRNO   DATE  CWAD  LAID  RWAD  GWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3967,11 +3835,10 @@ test_that("@TRNO   DATE  CWAD  LAID  RWAD  GWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  LAID  RWAD  GWAD")
 
-})
-
-test_that("@TRNO   DATE  CWAD  LAID  RWAD  GWAD  FNAD  SNAD  STRN  LNAD  PNAD  GNAD",{
+# "@TRNO   DATE  CWAD  LAID  RWAD  GWAD  FNAD  SNAD  STRN  LNAD  PNAD  GNAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -3997,11 +3864,10 @@ test_that("@TRNO   DATE  CWAD  LAID  RWAD  GWAD  FNAD  SNAD  STRN  LNAD  PNAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  LAID  RWAD  GWAD  FNAD  SNAD  STRN  LNAD  PNAD  GNAD")
 
-})
-
-test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  SH%D  SLAD  LN%D  CL%D  SN%D  CS%D  HIAD  HIPD  FRST  FRLF",{
+# "@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  SH%D  SLAD  LN%D  CL%D  SN%D  CS%D  HIAD  HIPD  FRST  FRLF"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4035,11 +3901,10 @@ test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  SH%D  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  RWAD  SH%D  SLAD  LN%D  CL%D  SN%D  CS%D  HIAD  HIPD  FRST  FRLF")
 
-})
-
-test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  HIAD  CEW6",{
+# "@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  HIAD  CEW6"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4066,11 +3931,10 @@ test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  H
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  HIAD  CEW6")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  SH%D  SLAD  GWGD  HIAD  LN%D  SN%D  SHND  GN%D  CHTD",{
+# "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  SH%D  SLAD  GWGD  HIAD  LN%D  SN%D  SHND  GN%D  CHTD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4105,11 +3969,10 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  SH%D  SLAD  GWGD  HIAD  LN%D  SN%D  SHND  GN%D  CHTD")
 
-})
-
-test_that("@TRNO   DATE  CWAD  LWAD  SLAD  LAID  SWAD  PWAD  SH%D  GWAD  SHAD  P#AD  G#AD  HIAD  HIPD  GWGD",{
+# "@TRNO   DATE  CWAD  LWAD  SLAD  LAID  SWAD  PWAD  SH%D  GWAD  SHAD  P#AD  G#AD  HIAD  HIPD  GWGD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4139,11 +4002,10 @@ test_that("@TRNO   DATE  CWAD  LWAD  SLAD  LAID  SWAD  PWAD  SH%D  GWAD  SHAD  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  LWAD  SLAD  LAID  SWAD  PWAD  SH%D  GWAD  SHAD  P#AD  G#AD  HIAD  HIPD  GWGD")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  HIPD  GWGD  SH%D  SLAD",{
+# "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  HIPD  GWGD  SH%D  SLAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4174,11 +4036,10 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  HIAD  HIPD  GWGD  SH%D  SLAD")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  SH%D  SLAD  GWGD  HIAD  HIPD  LN%D  SN%D  SHND  GN%D  NWAD  NFXD  CHTD  CWID  LI%N",{
+# "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  SH%D  SLAD  GWGD  HIAD  HIPD  LN%D  SN%D  SHND  GN%D  NWAD  NFXD  CHTD  CWID  LI%N"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4218,11 +4079,10 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  G#AD  SH%D  SLAD  GWGD  HIAD  HIPD  LN%D  SN%D  SHND  GN%D  NWAD  NFXD  CHTD  CWID  LI%N")
 
-})
-
-test_that("@TRNO   DATE  SNAD  GNAD  LNAD  SNHD  VNAD  CNAD",{
+# "@TRNO   DATE  SNAD  GNAD  LNAD  SNHD  VNAD  CNAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4244,11 +4104,10 @@ test_that("@TRNO   DATE  SNAD  GNAD  LNAD  SNHD  VNAD  CNAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  SNAD  GNAD  LNAD  SNHD  VNAD  CNAD")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  G#AD  SH%D  SLAD  HIAD  GWGD  RL3D  RL4D  RL5D  RL6D",{
+# "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  G#AD  SH%D  SLAD  HIAD  GWGD  RL3D  RL4D  RL5D  RL6D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4280,11 +4139,10 @@ test_that("@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  G#AD  SH%D  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  P#AD  SWAD  GWAD  LWAD  CWAD  G#AD  SH%D  SLAD  HIAD  GWGD  RL3D  RL4D  RL5D  RL6D")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  PHAN  LI%N  LMLN",{
+# "@TRNO   DATE  L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  PHAN  LI%N  LMLN"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4312,11 +4170,10 @@ test_that("@TRNO   DATE  L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CHTD  CWID  PHAN  LI%N  LMLN")
 
-})
-
-test_that("@TRNO   DATE  L#SD  SLAD  CWAD  LWAD  SWAD  LAID  P#AD  PWAD  G#AD  GWAD  SHAD  SH%D  HIAD  GWGD  CHTD  CWID",{
+# "@TRNO   DATE  L#SD  SLAD  CWAD  LWAD  SWAD  LAID  P#AD  PWAD  G#AD  GWAD  SHAD  SH%D  HIAD  GWGD  CHTD  CWID"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4348,11 +4205,10 @@ test_that("@TRNO   DATE  L#SD  SLAD  CWAD  LWAD  SWAD  LAID  P#AD  PWAD  G#AD  G
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  SLAD  CWAD  LWAD  SWAD  LAID  P#AD  PWAD  G#AD  GWAD  SHAD  SH%D  HIAD  GWGD  CHTD  CWID")
 
-})
-
-test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D",{
+# "@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4375,11 +4231,10 @@ test_that("@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  SW1D  SW2D  SW3D  SW4D  SW5D  SW6D  SW7D")
 
-})
-
-test_that("@TRNO   DATE  L#SD  SLAD  SH%D  LAID  LWAD  SWAD  SHAD  GWAD  PWAD  CWAD  P#AD  G#AD  HIAD  GWGD",{
+# "@TRNO   DATE  L#SD  SLAD  SH%D  LAID  LWAD  SWAD  SHAD  GWAD  PWAD  CWAD  P#AD  G#AD  HIAD  GWGD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4409,11 +4264,10 @@ test_that("@TRNO   DATE  L#SD  SLAD  SH%D  LAID  LWAD  SWAD  SHAD  GWAD  PWAD  C
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  SLAD  SH%D  LAID  LWAD  SWAD  SHAD  GWAD  PWAD  CWAD  P#AD  G#AD  HIAD  GWGD")
 
-})
-
-test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  PCLA",{
+# "@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  PCLA"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4439,11 +4293,10 @@ test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  P
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  PWAD  SHAD  SH%D  SLAD  PCLA")
 
-})
-
-test_that("@TRNO   DATE  LWAD  LAID  RWAD",{
+# "@TRNO   DATE  LWAD  LAID  RWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4462,11 +4315,10 @@ test_that("@TRNO   DATE  LWAD  LAID  RWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LWAD  LAID  RWAD")
 
-})
-
-test_that("@TRNO   DATE LWAD LAID   RWAD   ",{
+# "@TRNO   DATE LWAD LAID   RWAD   "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -4485,11 +4337,10 @@ test_that("@TRNO   DATE LWAD LAID   RWAD   ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE LWAD LAID   RWAD   ")
 
-})
-
-test_that("@TRNO   DATE  CWAD  LAID  RWAD  L#SD",{
+# "@TRNO   DATE  CWAD  LAID  RWAD  L#SD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4509,11 +4360,10 @@ test_that("@TRNO   DATE  CWAD  LAID  RWAD  L#SD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  LAID  RWAD  L#SD")
 
-})
-
-test_that("@TRNO   DATE  CWAD  RWAD  L#SD  LAID",{
+# "@TRNO   DATE  CWAD  RWAD  L#SD  LAID"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4533,11 +4383,10 @@ test_that("@TRNO   DATE  CWAD  RWAD  L#SD  LAID",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  RWAD  L#SD  LAID")
 
-})
-
-test_that("@TRNO   DATE  PCLA  LAID  RWAD  CWAD",{
+# "@TRNO   DATE  PCLA  LAID  RWAD  CWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4557,11 +4406,10 @@ test_that("@TRNO   DATE  PCLA  LAID  RWAD  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  PCLA  LAID  RWAD  CWAD")
 
-})
-
-test_that("@TRNO  DATE  SMDMD SMFMD  T#AD LAIGD  SHTD SUCMD",{
+# "@TRNO  DATE  SMDMD SMFMD  T#AD LAIGD  SHTD SUCMD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -4583,11 +4431,10 @@ test_that("@TRNO  DATE  SMDMD SMFMD  T#AD LAIGD  SHTD SUCMD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO  DATE  SMDMD SMFMD  T#AD LAIGD  SHTD SUCMD")
 
-})
-
-test_that("@TRNO   DATE LGDMD LAITD SUCMD SMDMD  L#SD  T#AD",{
+# "@TRNO   DATE LGDMD LAITD SUCMD SMDMD  L#SD  T#AD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4609,11 +4456,10 @@ test_that("@TRNO   DATE LGDMD LAITD SUCMD SMDMD  L#SD  T#AD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE LGDMD LAITD SUCMD SMDMD  L#SD  T#AD")
 
-})
-
-test_that("@TRNO   DATE SMDMD SMFMD SUCMD",{
+# "@TRNO   DATE SMDMD SMFMD SUCMD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4632,11 +4478,10 @@ test_that("@TRNO   DATE SMDMD SMFMD SUCMD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE SMDMD SMFMD SUCMD")
 
-})
-
-test_that("@TRNO   DATE CULTI  T#SD",{
+# "@TRNO   DATE CULTI  T#SD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4654,11 +4499,10 @@ test_that("@TRNO   DATE CULTI  T#SD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE CULTI  T#SD")
 
-})
-
-test_that("@TRNO   DATE  T#AD  S#AD",{
+# "@TRNO   DATE  T#AD  S#AD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4676,11 +4520,10 @@ test_that("@TRNO   DATE  T#AD  S#AD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  T#AD  S#AD")
 
-})
-
-test_that("@TRNO   DATE BADMD SMFMD SUCMD LAIGD  T#AD SMDMD L#S1D",{
+# "@TRNO   DATE BADMD SMFMD SUCMD LAIGD  T#AD SMDMD L#S1D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4703,11 +4546,10 @@ test_that("@TRNO   DATE BADMD SMFMD SUCMD LAIGD  T#AD SMDMD L#S1D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE BADMD SMFMD SUCMD LAIGD  T#AD SMDMD L#S1D")
 
-})
-
-test_that("@TRNO   DATE  LAID  XO%D",{
+# "@TRNO   DATE  LAID  XO%D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4725,11 +4567,10 @@ test_that("@TRNO   DATE  LAID  XO%D",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  XO%D")
 
-})
-
-test_that("@TRNO   DATE  LAID  CWAD  GWAD  HIAD  GL%D  L#SD  G#AD  GWGD",{
+# "@TRNO   DATE  LAID  CWAD  GWAD  HIAD  GL%D  L#SD  G#AD  GWGD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4753,11 +4594,10 @@ test_that("@TRNO   DATE  LAID  CWAD  GWAD  HIAD  GL%D  L#SD  G#AD  GWGD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  CWAD  GWAD  HIAD  GL%D  L#SD  G#AD  GWGD")
 
-})
-
-test_that("@TRNO  DATE   CWAD",{
+# "@TRNO  DATE   CWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -4774,11 +4614,10 @@ test_that("@TRNO  DATE   CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO  DATE   CWAD")
 
-})
-
-test_that("@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  RWAD  LN%D  CNAD PDMCD AFPWD ADPWD FPWAD",{
+# "@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  RWAD  LN%D  CNAD PDMCD AFPWD ADPWD FPWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4807,11 +4646,10 @@ test_that("@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  RWAD  LN%D  CNAD PD
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  RWAD  LN%D  CNAD PDMCD AFPWD ADPWD FPWAD")
 
-})
-
-test_that("@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  LN%D  CNAD  RWAD PDMCD AFPWD ADPWD FPWAD  RL1D  RL2D  RL3D  RL4D  RL5D",{
+# "@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  LN%D  CNAD  RWAD PDMCD AFPWD ADPWD FPWAD  RL1D  RL2D  RL3D  RL4D  RL5D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4845,11 +4683,10 @@ test_that("@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  LN%D  CNAD  RWAD PD
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  LAID  PWAD  LWAD  SWAD  SLAD  LN%D  CNAD  RWAD PDMCD AFPWD ADPWD FPWAD  RL1D  RL2D  RL3D  RL4D  RL5D")
 
-})
-
-test_that("@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD PDMCD AFPWD ADPWD FPWAD MFWAD NFWAD",{
+# "@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD PDMCD AFPWD ADPWD FPWAD MFWAD NFWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4876,11 +4713,10 @@ test_that("@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD PDMCD AFPWD ADPWD FPWAD MF
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD PDMCD AFPWD ADPWD FPWAD MFWAD NFWAD")
 
-})
-
-test_that("@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD  GWAD PDMCD AFPWD ADPWD FPWAD MFWAD NFWAD",{
+# "@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD  GWAD PDMCD AFPWD ADPWD FPWAD MFWAD NFWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4908,11 +4744,10 @@ test_that("@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD  GWAD PDMCD AFPWD ADPWD FP
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  LAID  SWAD  LWAD  PWAD  GWAD PDMCD AFPWD ADPWD FPWAD MFWAD NFWAD")
 
-})
-
-test_that("@TRNO  DATE   L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD",{
+# "@TRNO  DATE   L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -4937,11 +4772,10 @@ test_that("@TRNO  DATE   L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO  DATE   L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD")
 
-})
-
-test_that("@TRNO   DATE  T#AD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  SLAD  L#SD  RLWD",{
+# "@TRNO   DATE  T#AD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  SLAD  L#SD  RLWD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4967,11 +4801,10 @@ test_that("@TRNO   DATE  T#AD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  SLAD  L#SD  R
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  T#AD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  SLAD  L#SD  RLWD")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD",{
+# "@TRNO   DATE  L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -4996,11 +4829,10 @@ test_that("@TRNO   DATE  L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  RWAD  SWAD  UWAD  LWAD  TWAD  RDPD  PRSD")
 
-})
-
-test_that("@TRNO   MDAT  CWAD  GWAD  HIAM",{
+# "@TRNO   MDAT  CWAD  GWAD  HIAM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -5019,11 +4851,10 @@ test_that("@TRNO   MDAT  CWAD  GWAD  HIAM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   MDAT  CWAD  GWAD  HIAM")
 
-})
-
-test_that("@TRNO   DATE  CWAD  GWAD",{
+# "@TRNO   DATE  CWAD  GWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -5041,11 +4872,10 @@ test_that("@TRNO   DATE  CWAD  GWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  GWAD")
 
-})
-
-test_that("@TRNO   DATE  CWAD  GWAD  HIAD",{
+# "@TRNO   DATE  CWAD  GWAD  HIAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -5064,11 +4894,10 @@ test_that("@TRNO   DATE  CWAD  GWAD  HIAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  GWAD  HIAD")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  M#AD  SLAD  CHTD  CWID",{
+# "@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  M#AD  SLAD  CHTD  CWID"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -5097,11 +4926,10 @@ test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  M
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  M#AD  SLAD  CHTD  CWID")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  SLAD  CHTD  CWID",{
+# "@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  SLAD  CHTD  CWID"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -5129,11 +4957,10 @@ test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  SLAD  CHTD  CWID")
 
-})
-
-test_that("@TRNO   DATE  LAID  CWAD  SLAD  PWAD FPWAD  DIC1  FWC1  DWC1  DFC1  DIC2  FWC2  DWC2  DFC2  DIC3  FWC3  DWC3  DFC3  LN%D  SHND  SN%D",{
+# "@TRNO   DATE  LAID  CWAD  SLAD  PWAD FPWAD  DIC1  FWC1  DWC1  DFC1  DIC2  FWC2  DWC2  DFC2  DIC3  FWC3  DWC3  DFC3  LN%D  SHND  SN%D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -5169,11 +4996,10 @@ test_that("@TRNO   DATE  LAID  CWAD  SLAD  PWAD FPWAD  DIC1  FWC1  DWC1  DFC1  D
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  CWAD  SLAD  PWAD FPWAD  DIC1  FWC1  DWC1  DFC1  DIC2  FWC2  DWC2  DFC2  DIC3  FWC3  DWC3  DFC3  LN%D  SHND  SN%D")
 
-})
-
-test_that("@TRNO   DATE  LAID  SLAD  CWAD  PWAD FPWAD  HIPD  DIC1  FWC1  DWC1  DFC1  DIC2  FWC2  DWC2  DFC2  DIC3  FWC3  DWC3  DFC3  LN%D  SHND  SN%D",{
+# "@TRNO   DATE  LAID  SLAD  CWAD  PWAD FPWAD  HIPD  DIC1  FWC1  DWC1  DFC1  DIC2  FWC2  DWC2  DFC2  DIC3  FWC3  DWC3  DFC3  LN%D  SHND  SN%D"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -5210,11 +5036,10 @@ test_that("@TRNO   DATE  LAID  SLAD  CWAD  PWAD FPWAD  HIPD  DIC1  FWC1  DWC1  D
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  SLAD  CWAD  PWAD FPWAD  HIPD  DIC1  FWC1  DWC1  DFC1  DIC2  FWC2  DWC2  DFC2  DIC3  FWC3  DWC3  DFC3  LN%D  SHND  SN%D")
 
-})
-
-test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  SLAD  CHTD  CWTD",{
+# "@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  SLAD  CHTD  CWTD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -5242,11 +5067,10 @@ test_that("@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  L#SD  LAID  L#PA  LWAD  RWAD  SWAD  P#AD  PWAD  CWAD  SLAD  CHTD  CWTD")
 
-})
-
-test_that("@TRNO   DATE  LAID  PWAD  CWAD",{
+# "@TRNO   DATE  LAID  PWAD  CWAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -5265,11 +5089,10 @@ test_that("@TRNO   DATE  LAID  PWAD  CWAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  PWAD  CWAD")
 
-})
-
-test_that("@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  LDAD  CWID  CHTD  L#SD",{
+# "@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  LDAD  CWID  CHTD  L#SD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -5295,11 +5118,10 @@ test_that("@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  LDAD  CWID  CHTD  L
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  LDAD  CWID  CHTD  L#SD")
 
-})
-
-test_that("@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CDAD  CWID  CHTD  L#SD  LOSS",{
+# "@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CDAD  CWID  CHTD  L#SD  LOSS"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -5326,11 +5148,10 @@ test_that("@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CDAD  CWID  CHTD  L
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  SWAD  LWAD  CWAD  PWAD  SLAD  CDAD  CWID  CHTD  L#SD  LOSS")
 
-})
-
-test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  T#AD",{
+# "@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  T#AD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -5352,11 +5173,10 @@ test_that("@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  T#AD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  LAID  SWAD  GWAD  LWAD  CWAD  T#AD")
 
-})
-
-test_that("@TRNO   DATE  CWAD  T#AD  LAID",{
+# "@TRNO   DATE  CWAD  T#AD  LAID"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -5375,7 +5195,6 @@ test_that("@TRNO   DATE  CWAD  T#AD  LAID",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
-
-})
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@TRNO   DATE  CWAD  T#AD  LAID")
 

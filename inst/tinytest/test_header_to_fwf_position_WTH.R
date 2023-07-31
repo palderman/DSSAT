@@ -1,4 +1,4 @@
-test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT",{
+# "@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
@@ -21,11 +21,10 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT")
 
-})
-
-test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  RHUM",{
+# "@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  RHUM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -50,11 +49,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  RHUM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  RHUM")
 
-})
-
-test_that("@DATE  SRAD  TMAX  TMIN  RAIN ",{
+# "@DATE  SRAD  TMAX  TMIN  RAIN "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -74,11 +72,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE  SRAD  TMAX  TMIN  RAIN ")
 
-})
-
-test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",{
+# "@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -101,11 +98,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR")
 
-})
-
-test_that("@DATE SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",{
+# "@DATE SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -128,11 +124,10 @@ test_that("@DATE SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR")
 
-})
-
-test_that("@DATE  SRAD  TMAX  TMIN  RAIN",{
+# "@DATE  SRAD  TMAX  TMIN  RAIN"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -152,11 +147,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE  SRAD  TMAX  TMIN  RAIN")
 
-})
-
-test_that("@  INSI      LAT     LONG    ELEV     TAV     AMP   REFHT   WNDHT",{
+# "@  INSI      LAT     LONG    ELEV     TAV     AMP   REFHT   WNDHT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
@@ -179,11 +173,10 @@ test_that("@  INSI      LAT     LONG    ELEV     TAV     AMP   REFHT   WNDHT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  INSI      LAT     LONG    ELEV     TAV     AMP   REFHT   WNDHT")
 
-})
-
-test_that("@  DATE    SRAD    TMAX    TMIN    RAIN    DEWP    WIND     AVP",{
+# "@  DATE    SRAD    TMAX    TMIN    RAIN    DEWP    WIND     AVP"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#    ~check,
@@ -206,11 +199,10 @@ test_that("@  DATE    SRAD    TMAX    TMIN    RAIN    DEWP    WIND     AVP",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  DATE    SRAD    TMAX    TMIN    RAIN    DEWP    WIND     AVP")
 
-})
-
-test_that("@ INSI      LAT     LONG    ELEV   TAV   AMP REFHT WNDHT",{
+# "@ INSI      LAT     LONG    ELEV   TAV   AMP REFHT WNDHT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
@@ -233,11 +225,10 @@ test_that("@ INSI      LAT     LONG    ELEV   TAV   AMP REFHT WNDHT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ INSI      LAT     LONG    ELEV   TAV   AMP REFHT WNDHT")
 
-})
-
-test_that("@DATE  SRAD  TMAX  TMIN  RAIN  RHUM   WIND  TDEW",{
+# "@DATE  SRAD  TMAX  TMIN  RAIN  RHUM   WIND  TDEW"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -260,11 +251,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  RHUM   WIND  TDEW",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE  SRAD  TMAX  TMIN  RAIN  RHUM   WIND  TDEW")
 
-})
-
-test_that("@DATE SRAD  TMAX  TMIN  RAIN",{
+# "@DATE SRAD  TMAX  TMIN  RAIN"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -284,11 +274,10 @@ test_that("@DATE SRAD  TMAX  TMIN  RAIN",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE SRAD  TMAX  TMIN  RAIN")
 
-})
-
-test_that("@DATE   TMAX  TMIN  RAIN   SUNH",{
+# "@DATE   TMAX  TMIN  RAIN   SUNH"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -308,11 +297,10 @@ test_that("@DATE   TMAX  TMIN  RAIN   SUNH",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE   TMAX  TMIN  RAIN   SUNH")
 
-})
-
-test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND",{
+# "@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -334,11 +322,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND")
 
-})
-
-test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CCO2",{
+# "@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CCO2"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
@@ -362,11 +349,10 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CCO2",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CCO2")
 
-})
-
-test_that("@YRDAY SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",{
+# "@YRDAY SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -389,11 +375,10 @@ test_that("@YRDAY SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@YRDAY SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR")
 
-})
-
-test_that("@Latitude Longitud  Elev Zone    TAV  TAMP REFHT WNDHT SITE",{
+# "@Latitude Longitud  Elev Zone    TAV  TAMP REFHT WNDHT SITE"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#     ~check,
@@ -417,11 +402,10 @@ test_that("@Latitude Longitud  Elev Zone    TAV  TAMP REFHT WNDHT SITE",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@Latitude Longitud  Elev Zone    TAV  TAMP REFHT WNDHT SITE")
 
-})
-
-test_that("@WYR  WFIRST   WLAST",{
+# "@WYR  WFIRST   WLAST"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#    ~check,
@@ -439,11 +423,10 @@ test_that("@WYR  WFIRST   WLAST",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@WYR  WFIRST   WLAST")
 
-})
-
-test_that("@PEOPLE",{
+# "@PEOPLE"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#   ~check,
@@ -459,11 +442,10 @@ test_that("@PEOPLE",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@PEOPLE")
 
-})
-
-test_that("@ADDRESS",{
+# "@ADDRESS"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#    ~check,
@@ -479,11 +461,10 @@ test_that("@ADDRESS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ADDRESS")
 
-})
-
-test_that("@METHODS",{
+# "@METHODS"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#    ~check,
@@ -499,11 +480,10 @@ test_that("@METHODS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@METHODS")
 
-})
-
-test_that("@INSTRUMENTS",{
+# "@INSTRUMENTS"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,   ~col_names,#        ~check,
@@ -519,11 +499,10 @@ test_that("@INSTRUMENTS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@INSTRUMENTS")
 
-})
-
-test_that("@PROBLEMS",{
+# "@PROBLEMS"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#     ~check,
@@ -539,11 +518,10 @@ test_that("@PROBLEMS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@PROBLEMS")
 
-})
-
-test_that("@PUBLICATIONS",{
+# "@PUBLICATIONS"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,    ~col_names,#         ~check,
@@ -559,11 +537,10 @@ test_that("@PUBLICATIONS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@PUBLICATIONS")
 
-})
-
-test_that("@DISTRIBUTION",{
+# "@DISTRIBUTION"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,    ~col_names,#         ~check,
@@ -579,11 +556,10 @@ test_that("@DISTRIBUTION",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DISTRIBUTION")
 
-})
-
-test_that("@NOTES",{
+# "@NOTES"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#  ~check,
@@ -599,11 +575,10 @@ test_that("@NOTES",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@NOTES")
 
-})
-
-test_that("@  DATE  RAIN  TMAX  TMIN  SRAD",{
+# "@  DATE  RAIN  TMAX  TMIN  SRAD"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -623,11 +598,10 @@ test_that("@  DATE  RAIN  TMAX  TMIN  SRAD",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  DATE  RAIN  TMAX  TMIN  SRAD")
 
-})
-
-test_that("@  DATE  SRAD  TMAX  TMIN  RAIN",{
+# "@  DATE  SRAD  TMAX  TMIN  RAIN"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -647,11 +621,10 @@ test_that("@  DATE  SRAD  TMAX  TMIN  RAIN",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  DATE  SRAD  TMAX  TMIN  RAIN")
 
-})
-
-test_that("@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM",{
+# "@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -673,11 +646,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM")
 
-})
-
-test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP",{
+# "@ INSI      LAT     LONG  ELEV   TAV   AMP"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
@@ -698,11 +670,10 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ INSI      LAT     LONG  ELEV   TAV   AMP")
 
-})
-
-test_that("@DATE  SRAD  RAIN  TMAX  TMIN  WIND  RHUM",{
+# "@DATE  SRAD  RAIN  TMAX  TMIN  WIND  RHUM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -724,11 +695,10 @@ test_that("@DATE  SRAD  RAIN  TMAX  TMIN  WIND  RHUM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE  SRAD  RAIN  TMAX  TMIN  WIND  RHUM")
 
-})
-
-test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  VAPR",{
+# "@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  VAPR"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -753,11 +723,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  VAPR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  VAPR")
 
-})
-
-test_that("@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM  VAPR",{
+# "@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM  VAPR"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -780,11 +749,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM  VAPR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE  SRAD  TMAX  TMIN  RAIN  WIND  RHUM  VAPR")
 
-})
-
-test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CO2",{
+# "@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CO2"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
@@ -808,11 +776,10 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CO2",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT  CO2")
 
-})
-
-test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT ",{
+# "@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
@@ -835,11 +802,10 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT ")
 
-})
-
-test_that("@DATE  SRAD  TMAX  TMIN  RAIN  ",{
+# "@DATE  SRAD  TMAX  TMIN  RAIN  "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -859,11 +825,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE  SRAD  TMAX  TMIN  RAIN  ")
 
-})
-
-test_that("@ INSI     LAT      LONG  ELEV   TAV  AMP REFHT  WNDHT",{
+# "@ INSI     LAT      LONG  ELEV   TAV  AMP REFHT  WNDHT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#      ~check,
@@ -886,11 +851,10 @@ test_that("@ INSI     LAT      LONG  ELEV   TAV  AMP REFHT  WNDHT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ INSI     LAT      LONG  ELEV   TAV  AMP REFHT  WNDHT")
 
-})
-
-test_that("@ INSI      LAT     LONG  ELEV   TAV  TAMP",{
+# "@ INSI      LAT     LONG  ELEV   TAV  TAMP"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
@@ -911,11 +875,10 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV  TAMP",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ INSI      LAT     LONG  ELEV   TAV  TAMP")
 
-})
-
-test_that("@DATE  SRAD  TMAX  TMIN  RAIN  RHUM  WIND",{
+# "@DATE  SRAD  TMAX  TMIN  RAIN  RHUM  WIND"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -937,11 +900,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  RHUM  WIND",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE  SRAD  TMAX  TMIN  RAIN  RHUM  WIND")
 
-})
-
-test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP   WIND  ",{
+# "@DATE  SRAD  TMAX  TMIN  RAIN  DEWP   WIND  "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -963,11 +925,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP   WIND  ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE  SRAD  TMAX  TMIN  RAIN  DEWP   WIND  ")
 
-})
-
-test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  ",{
+# "@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -989,11 +950,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  ")
 
-})
-
-test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT   CO2",{
+# "@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT   CO2"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
@@ -1017,11 +977,10 @@ test_that("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT   CO2",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT   CO2")
 
-})
-
-test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  PAR",{
+# "@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  PAR"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1044,11 +1003,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  PAR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  PAR")
 
-})
-
-test_that("@DATE  SRAD  TMAX  TMIN  RAIN            ",{
+# "@DATE  SRAD  TMAX  TMIN  RAIN            "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1068,11 +1026,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN            ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE  SRAD  TMAX  TMIN  RAIN            ")
 
-})
-
-test_that("@DATE    SRAD    RAIN     TMAX     TMIN    ",{
+# "@DATE    SRAD    RAIN     TMAX     TMIN    "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#     ~check,
@@ -1092,11 +1049,10 @@ test_that("@DATE    SRAD    RAIN     TMAX     TMIN    ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE    SRAD    RAIN     TMAX     TMIN    ")
 
-})
-
-test_that("@DATE  SRAD  TMAX  TMIN  RAIN               PAR ",{
+# "@DATE  SRAD  TMAX  TMIN  RAIN               PAR "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -1117,11 +1073,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN               PAR ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE  SRAD  TMAX  TMIN  RAIN               PAR ")
 
-})
-
-test_that("@DATE  SRAD  TMAX  TMIN  RAIN               PAR",{
+# "@DATE  SRAD  TMAX  TMIN  RAIN               PAR"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -1142,11 +1097,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN               PAR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE  SRAD  TMAX  TMIN  RAIN               PAR")
 
-})
-
-test_that("@DATE  SRAD  TMAX  TMIN  RAIN             ",{
+# "@DATE  SRAD  TMAX  TMIN  RAIN             "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1166,11 +1120,10 @@ test_that("@DATE  SRAD  TMAX  TMIN  RAIN             ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@DATE  SRAD  TMAX  TMIN  RAIN             ")
 
-})
-
-test_that("@  DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  RHUM",{
+# "@  DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  RHUM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -1193,7 +1146,6 @@ test_that("@  DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  RHUM",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
-
-})
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND  RHUM")
 

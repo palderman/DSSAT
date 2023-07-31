@@ -1,4 +1,4 @@
-test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY",{
+# "@SITE        COUNTRY          LAT     LONG SCS FAMILY"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#             ~check,
@@ -17,11 +17,10 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SITE        COUNTRY          LAT     LONG SCS FAMILY")
 
-})
-
-test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE",{
+# "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -45,11 +44,10 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE")
 
-})
-
-test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC",{
+# "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -80,11 +78,10 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC")
 
-})
-
-test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA",{
+# "@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -115,11 +112,10 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA")
 
-})
-
-test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC",{
+# "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -149,11 +145,10 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC")
 
-})
-
-test_that("@SITE        COUNTRY          LAT     LONG SCS Family                                                                                                                                                  ",{
+# "@SITE        COUNTRY          LAT     LONG SCS Family                                                                                                                                                  "
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                                                                                                                                         ~check,
@@ -172,11 +167,10 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SITE        COUNTRY          LAT     LONG SCS Family                                                                                                                                                  ")
 
-})
-
-test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                                                                                                           ",{
+# "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                                                                                                           "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -200,11 +194,10 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                                                                                                           ")
 
-})
-
-test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                                                                                                 ",{
+# "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                                                                                                 "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -235,11 +228,10 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                                                                                                 ")
 
-})
-
-test_that("@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC ",{
+# "@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -269,11 +261,10 @@ test_that("@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC ")
 
-})
-
-test_that("@  SLB SLMH   SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC",{
+# "@  SLB SLMH   SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -303,11 +294,10 @@ test_that("@  SLB SLMH   SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB SLMH   SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC")
 
-})
-
-test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY                                                                                                      ",{
+# "@SITE        COUNTRY          LAT     LONG SCS FAMILY                                                                                                      "
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                                                                                             ~check,
@@ -326,11 +316,10 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SITE        COUNTRY          LAT     LONG SCS FAMILY                                                                                                      ")
 
-})
-
-test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                                                               ",{
+# "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                                                               "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -354,11 +343,10 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                                                               ")
 
-})
-
-test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                                                     ",{
+# "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                                                     "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -389,11 +377,10 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                                                     ")
 
-})
-
-test_that("@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC                                                           ",{
+# "@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC                                                           "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -423,11 +410,10 @@ test_that("@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLPX  SLPT  SLPO  SLCA  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC                                                           ")
 
-})
-
-test_that("@SITE        COUNTRY          LAT     LONG SCS Family",{
+# "@SITE        COUNTRY          LAT     LONG SCS Family"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#             ~check,
@@ -446,11 +432,10 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SITE        COUNTRY          LAT     LONG SCS Family")
 
-})
-
-test_that("@  SLB ALFVG   MVG   NVG WCRES",{
+# "@  SLB ALFVG   MVG   NVG WCRES"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -469,11 +454,10 @@ test_that("@  SLB ALFVG   MVG   NVG WCRES",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB ALFVG   MVG   NVG WCRES")
 
-})
-
-test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY                           ",{
+# "@SITE        COUNTRY          LAT     LONG SCS FAMILY                           "
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                  ~check,
@@ -492,11 +476,10 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SITE        COUNTRY          LAT     LONG SCS FAMILY                           ")
 
-})
-
-test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                    ",{
+# "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                    "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -520,11 +503,10 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                    ")
 
-})
-
-test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC    ",{
+# "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC    "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -554,11 +536,10 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC    ")
 
-})
-
-test_that("@SITE        COUNTRY          LAT     LONG SCS Family                                                 ",{
+# "@SITE        COUNTRY          LAT     LONG SCS Family                                                 "
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                                        ~check,
@@ -577,11 +558,10 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SITE        COUNTRY          LAT     LONG SCS Family                                                 ")
 
-})
-
-test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                          ",{
+# "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                          "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -605,11 +585,10 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                          ")
 
-})
-
-test_that("@SITE        COUNTRY          LAT     LONG SCS Family                                                                                                                                                   ",{
+# "@SITE        COUNTRY          LAT     LONG SCS Family                                                                                                                                                   "
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                                                                                                                                          ~check,
@@ -628,11 +607,10 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SITE        COUNTRY          LAT     LONG SCS Family                                                                                                                                                   ")
 
-})
-
-test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                                                                                                            ",{
+# "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                                                                                                            "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -656,11 +634,10 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                                                                                                            ")
 
-})
-
-test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                                                                                                  ",{
+# "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                                                                                                  "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -691,11 +668,10 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                                                                                                  ")
 
-})
-
-test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY ",{
+# "@SITE        COUNTRY          LAT     LONG SCS FAMILY "
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#             ~check,
@@ -714,11 +690,10 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SITE        COUNTRY          LAT     LONG SCS FAMILY ")
 
-})
-
-test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE ",{
+# "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -742,11 +717,10 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE ")
 
-})
-
-test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC ",{
+# "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -777,11 +751,10 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC ")
 
-})
-
-test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SGRP",{
+# "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SGRP"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -806,11 +779,10 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SGRP",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SGRP")
 
-})
-
-test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC   SLCA ",{
+# "@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC   SLCA "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#   ~check,
@@ -841,11 +813,10 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC   SLCA ")
 
-})
-
-test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY    ",{
+# "@SITE        COUNTRY          LAT     LONG SCS FAMILY    "
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#             ~check,
@@ -864,11 +835,10 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS FAMILY    ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SITE        COUNTRY          LAT     LONG SCS FAMILY    ")
 
-})
-
-test_that("@ SCOM  SALB  SLUI  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SRGP",{
+# "@ SCOM  SALB  SLUI  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SRGP"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -893,11 +863,10 @@ test_that("@ SCOM  SALB  SLUI  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SRGP",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SCOM  SALB  SLUI  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE  SRGP")
 
-})
-
-test_that("@SITE        COUNTRY          LAT     LONG SCS Family                                                     ",{
+# "@SITE        COUNTRY          LAT     LONG SCS Family                                                     "
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                                            ~check,
@@ -916,11 +885,10 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SITE        COUNTRY          LAT     LONG SCS Family                                                     ")
 
-})
-
-test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                              ",{
+# "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                              "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -944,11 +912,10 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                              ")
 
-})
-
-test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC    ",{
+# "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC    "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -979,11 +946,10 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC    ")
 
-})
-
-test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA    ",{
+# "@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA    "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1014,11 +980,10 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA    ")
 
-})
-
-test_that("@SITE        COUNTRY          LAT     LONG SCS Family                                                        ",{
+# "@SITE        COUNTRY          LAT     LONG SCS Family                                                        "
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                                               ~check,
@@ -1037,11 +1002,10 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SITE        COUNTRY          LAT     LONG SCS Family                                                        ")
 
-})
-
-test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                 ",{
+# "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                 "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1065,11 +1029,10 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                 ")
 
-})
-
-test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC       ",{
+# "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC       "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1100,11 +1063,10 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC       ")
 
-})
-
-test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA       ",{
+# "@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA       "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1135,11 +1097,10 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA       ")
 
-})
-
-test_that("@SITE        COUNTRY          LAT     LONG SCS Family                                                                 ",{
+# "@SITE        COUNTRY          LAT     LONG SCS Family                                                                 "
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                                                        ~check,
@@ -1158,11 +1119,10 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SITE        COUNTRY          LAT     LONG SCS Family                                                                 ")
 
-})
-
-test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                          ",{
+# "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                          "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1186,11 +1146,10 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                                          ")
 
-})
-
-test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                ",{
+# "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1221,11 +1180,10 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC                ")
 
-})
-
-test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA                ",{
+# "@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA                "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1256,11 +1214,10 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA                ")
 
-})
-
-test_that("@SITE        COUNTRY          LAT     LONG SCS Family                                                   ",{
+# "@SITE        COUNTRY          LAT     LONG SCS Family                                                   "
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                                          ~check,
@@ -1279,11 +1236,10 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SITE        COUNTRY          LAT     LONG SCS Family                                                   ")
 
-})
-
-test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                            ",{
+# "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                            "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1307,11 +1263,10 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                            ")
 
-})
-
-test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC  ",{
+# "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC  "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1342,11 +1297,10 @@ test_that("@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC  ")
 
-})
-
-test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA  ",{
+# "@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA  "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1377,11 +1331,10 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA  ")
 
-})
-
-test_that("@SITE        COUNTRY          LAT     LONG SCS Family                                                  ",{
+# "@SITE        COUNTRY          LAT     LONG SCS Family                                                  "
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#                                                         ~check,
@@ -1400,11 +1353,10 @@ test_that("@SITE        COUNTRY          LAT     LONG SCS Family                
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SITE        COUNTRY          LAT     LONG SCS Family                                                  ")
 
-})
-
-test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                           ",{
+# "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                           "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1428,11 +1380,10 @@ test_that("@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE         
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE                                           ")
 
-})
-
-test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA ",{
+# "@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA "
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1463,7 +1414,6 @@ test_that("@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  S
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
-
-})
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  SLB  SLPX  SLPT  SLPO CACO3  SLAL  SLFE  SLMN  SLBS  SLPA  SLPB  SLKE  SLMG  SLNA  SLSU  SLEC  SLCA ")
 

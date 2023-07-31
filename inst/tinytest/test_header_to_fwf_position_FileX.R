@@ -1,4 +1,4 @@
-test_that("@PEOPLE",{
+# "@PEOPLE"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#   ~check,
@@ -25,11 +25,10 @@ test_that("@PEOPLE",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@PEOPLE")
 
-})
-
-test_that("@ADDRESS",{
+# "@ADDRESS"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#    ~check,
@@ -56,11 +55,10 @@ test_that("@ADDRESS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ADDRESS")
 
-})
-
-test_that("@SITE",{
+# "@SITE"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,# ~check,
@@ -87,11 +85,10 @@ test_that("@SITE",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@SITE")
 
-})
-
-test_that("@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN  HARM.........",{
+# "@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN  HARM........."
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#           ~check,
@@ -127,11 +124,10 @@ test_that("@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN  HARM........
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN  HARM.........")
 
-})
-
-test_that("@N R O C TNAME.................... CU FL SA IC MP MI MF MR MC MT ME MH SM",{
+# "@N R O C TNAME.................... CU FL SA IC MP MI MF MR MC MT ME MH SM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#                      ~check,
@@ -175,11 +171,10 @@ test_that("@N R O C TNAME.................... CU FL SA IC MP MI MF MR MC MT ME M
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@N R O C TNAME.................... CU FL SA IC MP MI MF MR MC MT ME MH SM")
 
-})
-
-test_that("@C CR INGENO CNAME",{
+# "@C CR INGENO CNAME"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#   ~check,
@@ -209,11 +204,10 @@ test_that("@C CR INGENO CNAME",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@C CR INGENO CNAME")
 
-})
-
-test_that("@L ID_FIELD WSTA....  FLSA  FLOB  FLDT  FLDD  FLDS  FLST SLTX  SLDP  ID_SOIL    FLNAME",{
+# "@L ID_FIELD WSTA....  FLSA  FLOB  FLDT  FLDD  FLDS  FLST SLTX  SLDP  ID_SOIL    FLNAME"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#         ~check,
@@ -252,11 +246,10 @@ test_that("@L ID_FIELD WSTA....  FLSA  FLOB  FLDT  FLDD  FLDS  FLST SLTX  SLDP  
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@L ID_FIELD WSTA....  FLSA  FLOB  FLDT  FLDD  FLDS  FLST SLTX  SLDP  ID_SOIL    FLNAME")
 
-})
-
-test_that("@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN .FLWR .SLAS FLHST FHDUR",{
+# "@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN .FLWR .SLAS FLHST FHDUR"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -292,11 +285,10 @@ test_that("@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN 
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN .FLWR .SLAS FLHST FHDUR")
 
-})
-
-test_that("@P PDATE EDATE  PPOP  PPOE  PLME  PLDS  PLRS  PLRD  PLDP  PLWT  PAGE  PENV  PLPH  SPRL                        PLNAME",{
+# "@P PDATE EDATE  PPOP  PPOE  PLME  PLDS  PLRS  PLRD  PLDP  PLWT  PAGE  PENV  PLPH  SPRL                        PLNAME"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#                          ~check,
@@ -338,11 +330,10 @@ test_that("@P PDATE EDATE  PPOP  PPOE  PLME  PLDS  PLRS  PLRD  PLDP  PLWT  PAGE 
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@P PDATE EDATE  PPOP  PPOE  PLME  PLDS  PLRS  PLRD  PLDP  PLWT  PAGE  PENV  PLPH  SPRL                        PLNAME")
 
-})
-
-test_that("@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",{
+# "@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#   ~check,
@@ -377,11 +368,10 @@ test_that("@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME")
 
-})
-
-test_that("@I IDATE  IROP IRVAL",{
+# "@I IDATE  IROP IRVAL"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -411,11 +401,10 @@ test_that("@I IDATE  IROP IRVAL",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@I IDATE  IROP IRVAL")
 
-})
-
-test_that("@F FDATE  FMCD  FACD  FDEP  FAMN  FAMP  FAMK  FAMC  FAMO  FOCD FERNAME",{
+# "@F FDATE  FMCD  FACD  FDEP  FAMN  FAMP  FAMK  FAMC  FAMO  FOCD FERNAME"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#    ~check,
@@ -453,11 +442,10 @@ test_that("@F FDATE  FMCD  FACD  FDEP  FAMN  FAMP  FAMK  FAMC  FAMO  FOCD FERNAM
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@F FDATE  FMCD  FACD  FDEP  FAMN  FAMP  FAMK  FAMC  FAMO  FOCD FERNAME")
 
-})
-
-test_that("@T TDATE TIMPL  TDEP TNAME",{
+# "@T TDATE TIMPL  TDEP TNAME"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#  ~check,
@@ -488,11 +476,10 @@ test_that("@T TDATE TIMPL  TDEP TNAME",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@T TDATE TIMPL  TDEP TNAME")
 
-})
-
-test_that("@H HDATE  HSTG  HCOM HSIZE   HPC  HBPC HNAME",{
+# "@H HDATE  HSTG  HCOM HSIZE   HPC  HBPC HNAME"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#  ~check,
@@ -526,11 +513,10 @@ test_that("@H HDATE  HSTG  HCOM HSIZE   HPC  HBPC HNAME",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@H HDATE  HSTG  HCOM HSIZE   HPC  HBPC HNAME")
 
-})
-
-test_that("@N GENERAL     NYERS NREPS START SDATE RSEED SNAME.................... SMODEL",{
+# "@N GENERAL     NYERS NREPS START SDATE RSEED SNAME.................... SMODEL"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#                       ~check,
@@ -565,11 +551,10 @@ test_that("@N GENERAL     NYERS NREPS START SDATE RSEED SNAME...................
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@N GENERAL     NYERS NREPS START SDATE RSEED SNAME.................... SMODEL")
 
-})
-
-test_that("@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL   CO2",{
+# "@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL   CO2"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
@@ -606,11 +591,10 @@ test_that("@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL   CO2"
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL   CO2")
 
-})
-
-test_that("@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM MESEV MESOL",{
+# "@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM MESEV MESOL"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
@@ -649,11 +633,10 @@ test_that("@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM 
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM MESEV MESOL")
 
-})
-
-test_that("@N MANAGEMENT  PLANT IRRIG FERTI RESID HARVS",{
+# "@N MANAGEMENT  PLANT IRRIG FERTI RESID HARVS"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end,  ~col_names,#         ~check,
@@ -686,11 +669,10 @@ test_that("@N MANAGEMENT  PLANT IRRIG FERTI RESID HARVS",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@N MANAGEMENT  PLANT IRRIG FERTI RESID HARVS")
 
-})
-
-test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT VBOSE CHOUT OPOUT FMOPT",{
+# "@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT VBOSE CHOUT OPOUT FMOPT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
@@ -732,11 +714,10 @@ test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT 
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT VBOSE CHOUT OPOUT FMOPT")
 
-})
-
-test_that("@  AUTOMATIC MANAGEMENT",{
+# "@  AUTOMATIC MANAGEMENT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end,  ~col_names,#        ~check,
@@ -764,11 +745,10 @@ test_that("@  AUTOMATIC MANAGEMENT",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@  AUTOMATIC MANAGEMENT")
 
-})
-
-test_that("@N PLANTING    PFRST PLAST PH2OL PH2OU PH2OD PSTMX PSTMN",{
+# "@N PLANTING    PFRST PLAST PH2OL PH2OU PH2OD PSTMX PSTMN"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
@@ -803,11 +783,10 @@ test_that("@N PLANTING    PFRST PLAST PH2OL PH2OU PH2OD PSTMX PSTMN",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@N PLANTING    PFRST PLAST PH2OL PH2OU PH2OD PSTMX PSTMN")
 
-})
-
-test_that("@N IRRIGATION  IMDEP ITHRL ITHRU IROFF IMETH IRAMT IREFF",{
+# "@N IRRIGATION  IMDEP ITHRL ITHRU IROFF IMETH IRAMT IREFF"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end,  ~col_names,#         ~check,
@@ -842,11 +821,10 @@ test_that("@N IRRIGATION  IMDEP ITHRL ITHRU IROFF IMETH IRAMT IREFF",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@N IRRIGATION  IMDEP ITHRL ITHRU IROFF IMETH IRAMT IREFF")
 
-})
-
-test_that("@N NITROGEN    NMDEP NMTHR NAMNT NCODE NAOFF",{
+# "@N NITROGEN    NMDEP NMTHR NAMNT NCODE NAOFF"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
@@ -879,11 +857,10 @@ test_that("@N NITROGEN    NMDEP NMTHR NAMNT NCODE NAOFF",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@N NITROGEN    NMDEP NMTHR NAMNT NCODE NAOFF")
 
-})
-
-test_that("@N RESIDUES    RIPCN RTIME RIDEP",{
+# "@N RESIDUES    RIPCN RTIME RIDEP"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
@@ -914,11 +891,10 @@ test_that("@N RESIDUES    RIPCN RTIME RIDEP",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@N RESIDUES    RIPCN RTIME RIDEP")
 
-})
-
-test_that("@N HARVEST     HFRST HLAST HPCNP HPCNR",{
+# "@N HARVEST     HFRST HLAST HPCNP HPCNR"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
@@ -950,11 +926,10 @@ test_that("@N HARVEST     HFRST HLAST HPCNP HPCNR",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@N HARVEST     HFRST HLAST HPCNP HPCNR")
 
-})
-
-test_that("@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME",{
+# "@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#   ~check,
@@ -994,11 +969,10 @@ test_that("@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP 
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME")
 
-})
-
-test_that("@C  ICBL  SH2O  SNH4  SNO3",{
+# "@C  ICBL  SH2O  SNH4  SNO3"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1029,11 +1003,10 @@ test_that("@C  ICBL  SH2O  SNH4  SNO3",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@C  ICBL  SH2O  SNH4  SNO3")
 
-})
-
-test_that("@NOTES",{
+# "@NOTES"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#  ~check,
@@ -1060,11 +1033,10 @@ test_that("@NOTES",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@NOTES")
 
-})
-
-test_that("@E ODATE EDAY  ERAD  EMAX  EMIN  ERAIN ECO2  EDEW  EWIND ENVNAME  ",{
+# "@E ODATE EDAY  ERAD  EMAX  EMIN  ERAIN ECO2  EDEW  EWIND ENVNAME  "
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#     ~check,
@@ -1101,11 +1073,10 @@ test_that("@E ODATE EDAY  ERAD  EMAX  EMIN  ERAIN ECO2  EDEW  EWIND ENVNAME  ",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@E ODATE EDAY  ERAD  EMAX  EMIN  ERAIN ECO2  EDEW  EWIND ENVNAME  ")
 
-})
-
-test_that("@A SADAT  SMHB  SMPX  SMKE  SANAME",{
+# "@A SADAT  SMHB  SMPX  SMKE  SANAME"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#    ~check,
@@ -1137,11 +1108,10 @@ test_that("@A SADAT  SMHB  SMPX  SMKE  SANAME",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@A SADAT  SMHB  SMPX  SMKE  SANAME")
 
-})
-
-test_that("@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC",{
+# "@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#  ~check,
@@ -1177,11 +1147,10 @@ test_that("@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC")
 
-})
-
-test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT VBOSE CHOUT OPOUT",{
+# "@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT VBOSE CHOUT OPOUT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
@@ -1222,11 +1191,10 @@ test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT 
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT VBOSE CHOUT OPOUT")
 
-})
-
-test_that("@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN .FLWR .SLAS",{
+# "@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN .FLWR .SLAS"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#              ~check,
@@ -1260,11 +1228,10 @@ test_that("@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN 
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN .FLWR .SLAS")
 
-})
-
-test_that("@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL",{
+# "@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
@@ -1300,11 +1267,10 @@ test_that("@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL")
 
-})
-
-test_that("@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM",{
+# "@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
@@ -1341,11 +1307,10 @@ test_that("@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM"
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM")
 
-})
-
-test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT  LONG CHOUT OPOUT",{
+# "@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT  LONG CHOUT OPOUT"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#         ~check,
@@ -1386,11 +1351,10 @@ test_that("@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT 
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT  LONG CHOUT OPOUT")
 
-})
-
-test_that("@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN HARM.........",{
+# "@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN HARM........."
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#          ~check,
@@ -1426,11 +1390,10 @@ test_that("@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN HARM.........
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN HARM.........")
 
-})
-
-test_that("@N GENERAL     NYERS NREPS START SDATE RSEED SNAME.................... MODEL",{
+# "@N GENERAL     NYERS NREPS START SDATE RSEED SNAME.................... MODEL"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#                      ~check,
@@ -1465,11 +1428,10 @@ test_that("@N GENERAL     NYERS NREPS START SDATE RSEED SNAME...................
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@N GENERAL     NYERS NREPS START SDATE RSEED SNAME.................... MODEL")
 
-})
-
-test_that("@R RDATE  RCOD  RAMT  RESN  RESP  RESK  RINP  RDEP  RMET RENAME",{
+# "@R RDATE  RCOD  RAMT  RESN  RESP  RESK  RINP  RDEP  RMET RENAME"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#   ~check,
@@ -1506,11 +1468,10 @@ test_that("@R RDATE  RCOD  RAMT  RESN  RESP  RESK  RINP  RDEP  RMET RENAME",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@R RDATE  RCOD  RAMT  RESN  RESP  RESK  RINP  RDEP  RMET RENAME")
 
-})
-
-test_that("@C CDATE CHCOD CHAMT  CHME CHDEP   CHT..CHNAME",{
+# "@C CDATE CHCOD CHAMT  CHME CHDEP   CHT..CHNAME"
 
   true_fwf_pos <- tibble::tribble(
    ~begin,    ~end, ~col_names,#    ~check,
@@ -1544,11 +1505,10 @@ test_that("@C CDATE CHCOD CHAMT  CHME CHDEP   CHT..CHNAME",{
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@C CDATE CHCOD CHAMT  CHME CHDEP   CHT..CHNAME")
 
-})
-
-test_that("@N SIMDATES    ENDAT    SDUR   FODAT  FSTRYR  FENDYR FWFILE           FONAME",{
+# "@N SIMDATES    ENDAT    SDUR   FODAT  FSTRYR  FENDYR FWFILE           FONAME"
 
   true_fwf_pos <- tibble::tribble(
    ~begin, ~end, ~col_names,#             ~check,
@@ -1583,7 +1543,6 @@ test_that("@N SIMDATES    ENDAT    SDUR   FODAT  FSTRYR  FENDYR FWFILE          
                                           col_names = col_names,
                                           left_justified = left_just)
 
-  expect_identical(check_fwf_pos, true_fwf_pos)
-
-})
+  expect_identical(check_fwf_pos, true_fwf_pos,
+                   info = "@N SIMDATES    ENDAT    SDUR   FODAT  FSTRYR  FENDYR FWFILE           FONAME")
 
