@@ -1,6 +1,4 @@
-source(system.file("tinytest/test_cols_check.R", package = "DSSAT"))
-
-test_that("read_cul() ALFRM048.CUL", {
+# "read_cul() ALFRM048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", CSDL = "%6.1f", PPSEN = "%6.1f",
@@ -19,10 +17,10 @@ test_that("read_cul() ALFRM048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("AL0001", "AL0002", "AL0003",
+  info_prefix <- "read_cul() ALFRM048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("AL0001", "AL0002", "AL0003",
                                     "AL0004", "AL0005", "CA0001",
                                     "CA0002", "CA0003"),
                          `VRNAME` = c("Aragon  FD7", "Rugged  FD3",
@@ -69,15 +67,84 @@ test_that("read_cul() ALFRM048.CUL", {
                                      0.115, 0.115, 0.115, 0.115),
                          `SDLIP` = c(0.035, 0.035, 0.035, 0.035,
                                      0.035, 0.035, 0.035, 0.035))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() BACER048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() ALFRM048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() ALFRM048.CUL")
+
+
+# "read_cul() BACER048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        "EXP#" = "%6s", "ECO#" = "%7s", P1V = "%6.0f",
@@ -92,10 +159,10 @@ test_that("read_cul() BACER048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXP#", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "DFAULT",
+  info_prefix <- "read_cul() BACER048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXP#", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "DFAULT",
                                     "IB0101", "IB0102", "IB0030"),
                          `VAR-NAME` = c("MINIMA", "MAXIMA", "DEFAULT",
                                         "A.Abiad (2)", "Beecher (6)",
@@ -114,15 +181,84 @@ test_that("read_cul() BACER048.CUL", {
                          `G3` = c(0.5, 8, 1, 2.7, 2.7, 1.5),
                          `PHINT` = c(30, 150, 60, 89, 92,
                                      64))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() BACRP048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() BACER048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() BACER048.CUL")
+
+
+# "read_cul() BACRP048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        "EXP#" = "%6s", "ECO#" = "%7s", P1 = "%6.0f",
@@ -141,10 +277,10 @@ test_that("read_cul() BACRP048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXP#", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "DFAULT",
+  info_prefix <- "read_cul() BACRP048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXP#", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "DFAULT",
                                     "IB0101", "IB0102", "IB0030"),
                          `VAR-NAME` = c("MINIMA", "MAXIMA", "DEFAULTS",
                                         "A.Abiad(2row)", "Beecher(6row)",
@@ -186,15 +322,84 @@ test_that("read_cul() BACRP048.CUL", {
                          ),
                          `GWTS` = c(10L, 75L, 40L, 40L, 40L, 50L
                          ))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() BHGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() BACRP048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() BACRP048.CUL")
+
+
+# "read_cul() BHGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", CSDL = "%6.0f", PPSEN = "%6.2f",
@@ -213,10 +418,10 @@ test_that("read_cul() BHGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "UF0001"
+  info_prefix <- "read_cul() BHGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "UF0001"
     ),
     `VRNAME` = c("MINIMA", "MAXIMA", "PENSACOLA BAHIA"
     ),
@@ -241,15 +446,84 @@ test_that("read_cul() BHGRO048.CUL", {
     `THRSH` = c(78, 78, 78),
     `SDPRO` = c(0.115, 0.153, 0.115),
     `SDLIP` = c(0.035, 0.035, 0.035))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() BMFRM048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() BHGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() BHGRO048.CUL")
+
+
+# "read_cul() BMFRM048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", CSDL = "%6.1f", PPSEN = "%6.3f",
@@ -268,10 +542,10 @@ test_that("read_cul() BMFRM048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "UF0001"
+  info_prefix <- "read_cul() BMFRM048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "UF0001"
     ),
     `VRNAME` = c("MINIMA", "MAXIMA", "TIFTON 85 BERMUD"
     ),
@@ -296,15 +570,84 @@ test_that("read_cul() BMFRM048.CUL", {
     `THRSH` = c(78, 78, 78),
     `SDPRO` = c(0.115, 0.115, 0.115),
     `SDLIP` = c(0.035, 0.035, 0.035))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() BNGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() BMFRM048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() BMFRM048.CUL")
+
+
+# "read_cul() BNGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.3f",
@@ -323,10 +666,10 @@ test_that("read_cul() BNGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "990001",
+  info_prefix <- "read_cul() BNGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
                                     "990002", "990003", "990004",
                                     "990005", "990006", "990007",
                                     "IB0001", "IB0002", "IB0003",
@@ -471,15 +814,84 @@ test_that("read_cul() BNGRO048.CUL", {
                                      0.03, 0.03, 0.03, 0.03, 0.03,
                                      0.03, 0.03, 0.03, 0.03, 0.03,
                                      0.03, 0.03))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() BRFRM048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() BNGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() BNGRO048.CUL")
+
+
+# "read_cul() BRFRM048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", CSDL = "%6.1f", PPSEN = "%6.1f",
@@ -498,10 +910,10 @@ test_that("read_cul() BRFRM048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "SP0001"
+  info_prefix <- "read_cul() BRFRM048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "SP0001"
     ),
     `VRNAME` = c("MINIMA", "MAXIMA", "Marandu"
     ),
@@ -526,15 +938,84 @@ test_that("read_cul() BRFRM048.CUL", {
     `THRSH` = c(78, 78, 78),
     `SDPRO` = c(0.115, 0.115, 0.115),
     `SDLIP` = c(0.035, 0.035, 0.035))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() BRGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() BRFRM048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() BRFRM048.CUL")
+
+
+# "read_cul() BRGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", CSDL = "%6.0f", PPSEN = "%6.1f",
@@ -553,10 +1034,10 @@ test_that("read_cul() BRGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("CC0001", "CC0002", "CN0003",
+  info_prefix <- "read_cul() BRGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("CC0001", "CC0002", "CN0003",
                                     "CC0004", "CC0005", "CN0006",
                                     "SA0001", "BG0001"),
                          `VRNAME` = c("Brachiaria 1", "Brachiaria 2",
@@ -604,15 +1085,84 @@ test_that("read_cul() BRGRO048.CUL", {
                                      0.398, 0.398, 0.398, 0.398),
                          `SDLIP` = c(0.5, 0.5, 0.5, 0.5, 0.5, 0.5,
                                      0.5, 0.5))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() BSCER048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() BRGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() BRGRO048.CUL")
+
+
+# "read_cul() BSCER048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", P1 = "%6.0f", P2 = "%6.0f",
@@ -626,10 +1176,10 @@ test_that("read_cul() BSCER048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("CR0001", "BU0003", "IH0001"
+  info_prefix <- "read_cul() BSCER048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("CR0001", "BU0003", "IH0001"
     ),
     `VRNAME` = c("SVRR1142E", "Emma", "BTS940"
     ),
@@ -642,15 +1192,84 @@ test_that("read_cul() BSCER048.CUL", {
     `G2` = c(220, 160, 420),
     `G3` = c(37.5, 25.2, 27.5),
     `PHINT` = c(42, 43.4, 43))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() CBGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() BSCER048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() BSCER048.CUL")
+
+
+# "read_cul() CBGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.0f",
@@ -669,10 +1288,10 @@ test_that("read_cul() CBGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "990001",
+  info_prefix <- "read_cul() CBGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
                                     "990002", "990003"),
                          `VRNAME` = c("MINIMA", "MAXIMA", "Tastie    4",
                                       "CG        4", "Kalorama  4"
@@ -702,15 +1321,84 @@ test_that("read_cul() CBGRO048.CUL", {
                          ),
                          `SDLIP` = c(0.02, 0.02, 0.02, 0.02, 0.02
                          ))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() CHGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() CBGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() CBGRO048.CUL")
+
+
+# "read_cul() CHGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", CSDL = "%6.1f", PPSEN = "%6.3f",
@@ -729,10 +1417,10 @@ test_that("read_cul() CHGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "990001",
+  info_prefix <- "read_cul() CHGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
                                     "990002", "IB0001", "IB0002",
                                     "IB0003", "IB0004", "IB0005",
                                     "IB0006", "IB0007", "IB0008",
@@ -894,15 +1582,84 @@ test_that("read_cul() CHGRO048.CUL", {
                                      0.048, 0.048, 0.048, 0.048,
                                      0.048, 0.048, 0.048, 0.048,
                                      0.048, 0.048))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() CIGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() CHGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() CHGRO048.CUL")
+
+
+# "read_cul() CIGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        EXPNO = "%6s", "ECO#" = "%7s", CSDL = "%6.1f",
@@ -921,10 +1678,10 @@ test_that("read_cul() CIGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "CI0001"
+  info_prefix <- "read_cul() CIGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "CI0001"
     ),
     `VAR-NAME` = c("MINIMA", "MAXIMA", "Geotype G8"
     ),
@@ -949,15 +1706,84 @@ test_that("read_cul() CIGRO048.CUL", {
     `THRSH` = c(30, 45, 33.6),
     `SDPRO` = c(0.21, 0.21, 0.21),
     `SDLIP` = c(0.3, 0.41, 0.41))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() CNGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() CIGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() CIGRO048.CUL")
+
+
+# "read_cul() CNGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", CSDL = "%6.0f", PPSEN = "%6.3f",
@@ -976,10 +1802,10 @@ test_that("read_cul() CNGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "000001",
+  info_prefix <- "read_cul() CNGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "000001",
                                     "OT0001", "CA0001"),
                          `VRNAME` = c("MINIMA", "MAXIMA", "M GROUP  01",
                                       "KABEL (11)", "Invigor5440"
@@ -1009,15 +1835,84 @@ test_that("read_cul() CNGRO048.CUL", {
                          ),
                          `SDLIP` = c(0.48, 0.48, 0.48, 0.48, 0.48
                          ))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() COGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() CNGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() CNGRO048.CUL")
+
+
+# "read_cul() COGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", CSDL = "%6.0f", PPSEN = "%6.2f",
@@ -1036,10 +1931,10 @@ test_that("read_cul() COGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "IB0001",
+  info_prefix <- "read_cul() COGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0001",
                                     "IB0002", "IB0003", "IB0004",
                                     "IB0006", "GA0001", "TX0003"),
                          `VRNAME` = c("MINIMA", "MAXIMA", "Deltapine 77",
@@ -1090,15 +1985,84 @@ test_that("read_cul() COGRO048.CUL", {
                                      0.153),
                          `SDLIP` = c(0.12, 0.12, 0.12, 0.12, 0.12,
                                      0.12, 0.12, 0.12, 0.12))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() CPGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() COGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() COGRO048.CUL")
+
+
+# "read_cul() CPGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", CSDL = "%6.1f", PPSEN = "%6.4f",
@@ -1117,10 +2081,10 @@ test_that("read_cul() CPGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "CP0001",
+  info_prefix <- "read_cul() CPGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "CP0001",
                                     "CP0003", "CP0004", "CP0005",
                                     "CP0006", "CP0012", "CP0014",
                                     "II0001", "II0002", "II0003",
@@ -1190,15 +2154,84 @@ test_that("read_cul() CPGRO048.CUL", {
                                      0.065, 0.065, 0.065, 0.065,
                                      0.065, 0.065, 0.065, 0.065,
                                      0.065, 0.065))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() CSCAS048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() CPGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() CPGRO048.CUL")
+
+
+# "read_cul() CSCAS048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        "EXP#" = "%6s", "ECO#" = "%7s", PPS1 = "%6.0f",
@@ -1223,10 +2256,10 @@ test_that("read_cul() CSCAS048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXP#", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "DFAULT",
+  info_prefix <- "read_cul() CSCAS048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXP#", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "DFAULT",
                                     "UC0002", "UC0004", "UC0006",
                                     "UC0007", "UC0008", "UC0009",
                                     "TH0001", "TH0002", "TH0003",
@@ -1361,15 +2394,84 @@ test_that("read_cul() CSCAS048.CUL", {
                                     0.35, 0.45, 0.45, 0.35, 0.35,
                                     0.35, 0.45, 0.45, 0.35, 0.35,
                                     0.35, 0.35, 0.35, 0.35, 0.35))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() CSYCA048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() CSCAS048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() CSCAS048.CUL")
+
+
+# "read_cul() CSYCA048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        "EXP#" = "%6s", "ECO#" = "%7s", B01ND = "%6.1f",
@@ -1386,10 +2488,10 @@ test_that("read_cul() CSYCA048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXP#", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "DFAULT",
+  info_prefix <- "read_cul() CSYCA048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXP#", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "DFAULT",
                                     "UC0002", "UC0003", "UC0004",
                                     "UC0005", "UC0006", "UC0007",
                                     "UC0008", "UC0009", "UC0010",
@@ -1473,15 +2575,84 @@ test_that("read_cul() CSYCA048.CUL", {
                          `NODLT` = c(1, 4, 2, 2, 2, 2, 2, 2, 2,
                                      2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
                                      2, 2))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() FBGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() CSYCA048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() CSYCA048.CUL")
+
+
+# "read_cul() FBGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", CSDL = "%6.0f", PPSEN = "%6.3f",
@@ -1500,10 +2671,10 @@ test_that("read_cul() FBGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "CORD01",
+  info_prefix <- "read_cul() FBGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "CORD01",
                                     "CORD02"),
                          `VRNAME` = c("MINIMA", "MAXIMA", "ALAME LD170 1.2g",
                                       "BROCA LD170 1.2G"),
@@ -1530,15 +2701,84 @@ test_that("read_cul() FBGRO048.CUL", {
                          `SDPRO` = c(0.315, 0.315, 0.315, 0.315
                          ),
                          `SDLIP` = c(0.02, 0.02, 0.02, 0.02))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() G0GRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() FBGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() FBGRO048.CUL")
+
+
+# "read_cul() G0GRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", CSDL = "%6.0f", PPSEN = "%6.1f",
@@ -1556,10 +2796,10 @@ test_that("read_cul() G0GRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "UF0001"
+  info_prefix <- "read_cul() G0GRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "UF0001"
     ),
     `VRNAME` = c("MINIMA", "MAXIMA", "PENSACOLA BAHIA"
     ),
@@ -1581,15 +2821,84 @@ test_that("read_cul() G0GRO048.CUL", {
     `SFDUR` = c(15, 15, 15),
     `SDPDV` = c(2.05, 2.05, 2.05),
     `PODUR` = c(20, 20, 20))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() GBGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() G0GRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() G0GRO048.CUL")
+
+
+# "read_cul() GBGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.3f",
@@ -1608,10 +2917,10 @@ test_that("read_cul() GBGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "GB0001"
+  info_prefix <- "read_cul() GBGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "GB0001"
     ),
     `VRNAME` = c("MINIMA", "MAXIMA", "Bronco Habit 1"
     ),
@@ -1636,15 +2945,84 @@ test_that("read_cul() GBGRO048.CUL", {
     `THRSH` = c(77, 77, 77),
     `SDPRO` = c(0.255, 0.255, 0.255),
     `SDLIP` = c(0.03, 0.03, 0.03))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() GGFRM048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() GBGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() GBGRO048.CUL")
+
+
+# "read_cul() GGFRM048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", CSDL = "%6.0f", PPSEN = "%6.1f",
@@ -1663,10 +3041,10 @@ test_that("read_cul() GGFRM048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("SP0009", "SP0009"),
+  info_prefix <- "read_cul() GGFRM048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("SP0009", "SP0009"),
                          `VRNAME` = c("Mombaca", "Tanzania"),
                          `EXPNO` = c("", ""),
                          `ECO#` = c("GG0009", "GG0009"),
@@ -1688,15 +3066,84 @@ test_that("read_cul() GGFRM048.CUL", {
                          `THRSH` = c(78, 78),
                          `SDPRO` = c(0.115, 0.115),
                          `SDLIP` = c(0.035, 0.035))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() MLCER048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() GGFRM048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() GGFRM048.CUL")
+
+
+# "read_cul() MLCER048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        EXPNO = "%6s", "ECO#" = "%7s", P1 = "%6.0f",
@@ -1711,10 +3158,10 @@ test_that("read_cul() MLCER048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "990001",
+  info_prefix <- "read_cul() MLCER048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
                                     "990002", "990003", "IB0033",
                                     "IB0034", "IB0035", "IB0036",
                                     "IB0037", "IB0038", "IB0039",
@@ -1877,15 +3324,84 @@ test_that("read_cul() MLCER048.CUL", {
                                   11, 11, 11, 11, 11, 11, 11, 11,
                                   11, 11, 11, 10, 11, 11, 11, 11,
                                   11, 11, 11, 10, 11, 11))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() MZCER048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() MLCER048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() MLCER048.CUL")
+
+
+# "read_cul() MZCER048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", P1 = "%6.1f", P2 = "%6.3f",
@@ -1899,10 +3415,10 @@ test_that("read_cul() MZCER048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "PC0001",
+  info_prefix <- "read_cul() MZCER048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "PC0001",
                                     "PC0002", "PC0003", "PC0004",
                                     "PC0005", "990001", "990002",
                                     "990003", "990004", "IB0001",
@@ -2266,15 +3782,84 @@ test_that("read_cul() MZCER048.CUL", {
                                      75, 75, 40, 38.9, 38.9, 38.9,
                                      38.9, 38.9, 38.9, 38.9, 44.22,
                                      45.9))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() MZIXM048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() MZCER048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() MZCER048.CUL")
+
+
+# "read_cul() MZIXM048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", P1 = "%6.1f", P2 = "%6.2f",
@@ -2289,10 +3874,10 @@ test_that("read_cul() MZIXM048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "PC0001",
+  info_prefix <- "read_cul() MZIXM048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "PC0001",
                                     "PC0002", "PC0003", "PC0004",
                                     "PC0005", "990001", "990002",
                                     "990003", "990004", "IB0001",
@@ -2619,15 +4204,84 @@ test_that("read_cul() MZIXM048.CUL", {
                                    NA, NA, NA, NA, NA, NA, NA, NA,
                                    NA, NA, NA, NA, NA, NA, NA, NA,
                                    NA, NA, NA))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() PIALO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() MZIXM048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() MZIXM048.CUL")
+
+
+# "read_cul() PIALO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        EXPNO = "%6s", "ECO#" = "%7s", TC = "%6.0f",
@@ -2644,10 +4298,10 @@ test_that("read_cul() PIALO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "IB0066",
+  info_prefix <- "read_cul() PIALO048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0066",
                                     "IB0068", "IB0069"),
                          `VAR-NAME` = c("MINIMA", "MAXIMA", "SC-F153",
                                         "HB-MD2CR", "HB-MD2CRp"),
@@ -2669,15 +4323,84 @@ test_that("read_cul() PIALO048.CUL", {
                          `G2` = c(190L, 220L, 200L, 200L, 200L),
                          `G3` = c(12, 24, 14, 14, 14),
                          `PHINT` = c(35, 83, 40, 40, 83))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() PNGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() PIALO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() PIALO048.CUL")
+
+
+# "read_cul() PNGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.0f",
@@ -2696,10 +4419,10 @@ test_that("read_cul() PNGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "990001",
+  info_prefix <- "read_cul() PNGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
                                     "990002", "IB0001", "IB0002",
                                     "IB0003", "IB0004", "IB0005",
                                     "IB0006", "IB0007", "IB0008",
@@ -2886,15 +4609,84 @@ test_that("read_cul() PNGRO048.CUL", {
                                      0.51, 0.51, 0.51, 0.51, 0.51,
                                      0.51, 0.51, 0.51, 0.51, 0.51,
                                      NA))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() PPGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() PNGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() PNGRO048.CUL")
+
+
+# "read_cul() PPGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        EXPNO = "%6s", "ECO#" = "%7s", CSDL = "%6.2f",
@@ -2913,10 +4705,10 @@ test_that("read_cul() PPGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "PP0001",
+  info_prefix <- "read_cul() PPGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "PP0001",
                                     "I88039", "GH0001"),
                          `VAR-NAME` = c("MINIMA", "MAXIMA", "76W est",
                                         "ICRISAT ICPL8803", "KPATINGA"
@@ -2950,15 +4742,84 @@ test_that("read_cul() PPGRO048.CUL", {
                                      0.223),
                          `SDLIP` = c(0.015, 0.015, 0.015, 0.015,
                                      0.015))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() PRGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() PPGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() PPGRO048.CUL")
+
+
+# "read_cul() PRGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.0f",
@@ -2977,10 +4838,10 @@ test_that("read_cul() PRGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "PR0001",
+  info_prefix <- "read_cul() PRGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "PR0001",
                                     "PRX001", "PR0002", "PR0003",
                                     "PR0011"),
                          `VRNAME` = c("MINIMA", "MAXIMA", "CAPISTRANO",
@@ -3026,15 +4887,84 @@ test_that("read_cul() PRGRO048.CUL", {
                                      0.3),
                          `SDLIP` = c(0.05, 0.05, 0.05, 0.05, 0.05,
                                      0.05, 0.05))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() PTSUB048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() PRGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() PRGRO048.CUL")
+
+
+# "read_cul() PTSUB048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        EXPNO = "%6s", "ECO#" = "%7s", G2 = "%6.0f",
@@ -3048,10 +4978,10 @@ test_that("read_cul() PTSUB048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "IB0001",
+  info_prefix <- "read_cul() PTSUB048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0001",
                                     "IB0002", "IB0003", "IB0004",
                                     "IB0005", "CI0001", "CI0002",
                                     "AR0003", "DM0004", "IB0006",
@@ -3093,15 +5023,84 @@ test_that("read_cul() PTSUB048.CUL", {
                          `TC` = c(15, 22, 17, 19, 17, 20, 21, 21,
                                   21, 21, 18, 17, 17, 16, 17, 21,
                                   17, 19, 20, 19))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() QUGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() PTSUB048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() PTSUB048.CUL")
+
+
+# "read_cul() QUGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        EXPNO = "%6s", "ECO#" = "%7s", CSDL = "%6.2f",
@@ -3120,10 +5119,10 @@ test_that("read_cul() QUGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "UH0001",
+  info_prefix <- "read_cul() QUGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "UH0001",
                                     "UH0002"),
                          `VAR-NAME` = c("MINIMA", "MAXIMA", "Zeno (00)",
                                         "Jessie (00)"),
@@ -3148,15 +5147,84 @@ test_that("read_cul() QUGRO048.CUL", {
                          `THRSH` = c(70, 80, 77, 76),
                          `SDPRO` = c(0.13, 0.16, 0.135, 0.155),
                          `SDLIP` = c(0.05, 0.08, 0.06, 0.07))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() RICER048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() QUGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() QUGRO048.CUL")
+
+
+# "read_cul() RICER048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        EXPNO = "%6s", "ECO#" = "%7s", P1 = "%6.1f",
@@ -3172,10 +5240,10 @@ test_that("read_cul() RICER048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "990001",
+  info_prefix <- "read_cul() RICER048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
                                     "990002", "990003", "990004",
                                     "IB0003", "IB0012", "IB0020",
                                     "IB0050", "IB0055", "IB0118",
@@ -3347,15 +5415,84 @@ test_that("read_cul() RICER048.CUL", {
                                      15, 15, 15, 15, 15, 15, 15,
                                      15, 15, 15, 15, 15, 15, 15,
                                      15))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() SBGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() RICER048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() RICER048.CUL")
+
+
+# "read_cul() SBGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        EXPNO = "%6s", "ECO#" = "%7s", CSDL = "%6.2f",
@@ -3374,10 +5511,10 @@ test_that("read_cul() SBGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "990011",
+  info_prefix <- "read_cul() SBGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "990011",
                                     "990012", "990013", "990001",
                                     "990002", "990003", "990004",
                                     "990005", "990006", "990007",
@@ -3632,15 +5769,84 @@ test_that("read_cul() SBGRO048.CUL", {
                                      0.205, 0.205, 0.205, 0.2, 0.2,
                                      0.2, 0.205, 0.2, 0.205, 0.2,
                                      0.2))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() SCCAN048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() SBGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() SBGRO048.CUL")
+
+
+# "read_cul() SCCAN048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        EXPNO = "%6s", "ECO#" = "%7s", MaxPARCE = "%15.2f",
@@ -3661,10 +5867,10 @@ test_that("read_cul() SCCAN048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "IB0001",
+  info_prefix <- "read_cul() SCCAN048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0001",
                                     "HYP_HS", "HYP_HF", "RB7515",
                                     "CP1743", "CP1762", "CP2086",
                                     "CP2143"),
@@ -3729,15 +5935,84 @@ test_that("read_cul() SCCAN048.CUL", {
                          `AQP_UP5` = c(0.5, 0.7, 0.45, 0.45, 0.65,
                                        0.45, 0.45, 0.45, 0.45, 0.45
                          ))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() SCCSP048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() SCCAN048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() SCCAN048.CUL")
+
+
+# "read_cul() SCCSP048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        EXPNO = "%6s", "ECO#" = "%7s", LFMAX = "%6.1f",
@@ -3763,10 +6038,10 @@ test_that("read_cul() SCCSP048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "CP1743",
+  info_prefix <- "read_cul() SCCSP048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "CP1743",
                                     "CP1762", "CP2086", "CP2143",
                                     "IB0001", "HYP_HS", "HYP_HF",
                                     "RB7515"),
@@ -3884,15 +6159,84 @@ test_that("read_cul() SCCSP048.CUL", {
                          `R30C2` = c(3.602, 4.12, 4.096, 4.12,
                                      3.602, 4.071, 4.096, 4.096,
                                      4.096, 4.096))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() SCSAM048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() SCCSP048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() SCCSP048.CUL")
+
+
+# "read_cul() SCSAM048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        EXPNO = "%6s", "ECO#" = "%7s", MAXGL = "%15.0f",
@@ -3915,10 +6259,10 @@ test_that("read_cul() SCSAM048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "RB7515",
+  info_prefix <- "read_cul() SCSAM048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "RB7515",
                                     "IB0001", "HYP_HS", "HYP_HF",
                                     "CP1743", "CP1762", "CP2086",
                                     "CP2143"),
@@ -3984,15 +6328,84 @@ test_that("read_cul() SCSAM048.CUL", {
                          `END_TT_IT_GRO` = c(600, 1400, 1200, 1200, 1200, 1200, 1200, 1200, 1200, 1200),
                          `MID_TT_LF_GRO` = c(400, 800, 700, 700, 700, 700, 700, 700, 700, 700),
                          `END_TT_LF_GRO` = c(1100, 1500, 1300, 1300, 1300, 1300, 1300, 1300, 1300, 1300))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() SFGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() SCSAM048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() SCSAM048.CUL")
+
+
+# "read_cul() SFGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        EXPNO = "%6s", "ECO#" = "%7s", CSDL = "%6.0f",
@@ -4011,10 +6424,10 @@ test_that("read_cul() SFGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "IB0001",
+  info_prefix <- "read_cul() SFGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0001",
                                     "IB0002", "IB0003", "UH0001",
                                     "UH0002"),
                          `VAR-NAME` = c("MINIMA", "MAXIMA", "PI8311",
@@ -4060,15 +6473,84 @@ test_that("read_cul() SFGRO048.CUL", {
                                      0.14, 0.14),
                          `SDLIP` = c(0.33, 0.33, 0.33, 0.33, 0.33,
                                      0.33, 0.33))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() SGCER048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() SFGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() SFGRO048.CUL")
+
+
+# "read_cul() SGCER048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        EXPNO = "%6s", "ECO#" = "%7s", P1 = "%6.0f",
@@ -4085,10 +6567,10 @@ test_that("read_cul() SGCER048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "990001",
+  info_prefix <- "read_cul() SGCER048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
                                     "990002", "990003", "990004",
                                     "IB0001", "IB0002", "IB0003",
                                     "IB0004", "IB0005", "IB0006",
@@ -4300,15 +6782,84 @@ test_that("read_cul() SGCER048.CUL", {
                                     NA_real_, NA_real_, NA_real_,
                                     NA_real_, NA_real_, NA_real_,
                                     NA_real_, NA_real_, NA_real_))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() SUGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() SGCER048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() SGCER048.CUL")
+
+
+# "read_cul() SUGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        EXPNO = "%6s", "ECO#" = "%7s", CSDL = "%6.0f",
@@ -4327,10 +6878,10 @@ test_that("read_cul() SUGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "IB0009",
+  info_prefix <- "read_cul() SUGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0009",
                                     "IB0013", "IB0014", "IB0015",
                                     "IB0019", "IB0018", "IB0029",
                                     "IB0020", "IB0021", "IB0022"),
@@ -4394,15 +6945,84 @@ test_that("read_cul() SUGRO048.CUL", {
                          `SDLIP` = c(0.42, 0.49, 0.45, 0.48, 0.43,
                                      0.45, 0.48, 0.45, 0.45, 0.45,
                                      0.48, 0.48))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() SUOIL048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() SUGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() SUGRO048.CUL")
+
+
+# "read_cul() SUOIL048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", P1 = "%6.1f", P2 = "%6.2f",
@@ -4416,10 +7036,10 @@ test_that("read_cul() SUOIL048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "IB0003",
+  info_prefix <- "read_cul() SUOIL048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0003",
                                     "IB0005", "IB0008", "IB0009",
                                     "IB0011", "IB0013", "IB0014",
                                     "IB0015", "IB0016", "IB0017",
@@ -4466,15 +7086,84 @@ test_that("read_cul() SUOIL048.CUL", {
                          `O1` = c(60, 87, 65, 65, 65, 85, 65, 65,
                                   65, 65, 65, 65, 65, 65, 65, 54,
                                   56, 65, 85))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() SWCER048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() SUOIL048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() SUOIL048.CUL")
+
+
+# "read_cul() SWCER048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", P1 = "%6.0f", P2 = "%6.1f",
@@ -4488,10 +7177,10 @@ test_that("read_cul() SWCER048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "SW0001",
+  info_prefix <- "read_cul() SWCER048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "SW0001",
                                     "SW0002", "SW0003"),
                          `VRNAME` = c("MINIMA", "MAXIMA", "GSS0966 sh2",
                                       "Saturn sh2", "BSS0977 sh2"
@@ -4505,15 +7194,84 @@ test_that("read_cul() SWCER048.CUL", {
                          `G2` = c(600, 850, 600, 850, 500),
                          `G3` = c(5.5, 15, 5.5, 15, 5),
                          `PHINT` = c(35, 50, 43, 35, 50))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() TFAPS048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() SWCER048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() SWCER048.CUL")
+
+
+# "read_cul() TFAPS048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", VSEN = "%6.0f", PPSEN = "%6.1f",
@@ -4528,10 +7286,10 @@ test_that("read_cul() TFAPS048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "IB0135",
+  info_prefix <- "read_cul() TFAPS048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0135",
                                     "IB0136", "IB0157", "IB0161",
                                     "IB0221", "IB0244", "IB0245",
                                     "IB0246", "IB0247", "IB0248",
@@ -4592,15 +7350,84 @@ test_that("read_cul() TFAPS048.CUL", {
                                      400, 400, 400, 400, 400, 400,
                                      400, 400, 400, 400, 400, 400,
                                      400, 400, 400, 400))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() TFCER048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() TFAPS048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() TFAPS048.CUL")
+
+
+# "read_cul() TFCER048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        EXPNO = "%6s", "ECO#" = "%7s", P1 = "%6.1f",
@@ -4616,10 +7443,10 @@ test_that("read_cul() TFCER048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "IB0304",
+  info_prefix <- "read_cul() TFCER048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0304",
                                     "IB0306", "IB0135", "IB0136",
                                     "IB0156", "IB0157", "IB0158",
                                     "IB0161", "IB0162", "IB0163",
@@ -4716,15 +7543,84 @@ test_that("read_cul() TFCER048.CUL", {
                                      10, 10, 10, 10, 10, 10, 10,
                                      10, 10, 10, 10, 10, 10, 10,
                                      10, 10))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() TMGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() TFCER048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() TFCER048.CUL")
+
+
+# "read_cul() TMGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.0f",
@@ -4743,10 +7639,10 @@ test_that("read_cul() TMGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "TM0001",
+  info_prefix <- "read_cul() TMGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "TM0001",
                                     "TM0002", "TM0005", "TM0007"),
                          `VRNAME` = c("MINIMA", "MAXIMA", "Florida 47 2010",
                                       "Solarset 2010 Ca", "Agriset 761 10'",
@@ -4786,15 +7682,84 @@ test_that("read_cul() TMGRO048.CUL", {
                          ),
                          `SDLIP` = c(0.05, 0.05, 0.05, 0.05, 0.05,
                                      0.05))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() TNARO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() TMGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() TMGRO048.CUL")
+
+
+# "read_cul() TNARO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        EXPNO = "%6s", "ECO#" = "%7s", P1 = "%6.0f",
@@ -4810,10 +7775,10 @@ test_that("read_cul() TNARO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "IB0005",
+  info_prefix <- "read_cul() TNARO048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0005",
                                     "IB0006", "IB0007"),
                          `VAR-NAME` = c("MINIMA", "MAXIMA", "KELLY",
                                         "BLANCA", "MORANDA"),
@@ -4834,15 +7799,84 @@ test_that("read_cul() TNARO048.CUL", {
                          `PHINT` = c(150, 150, 150, 150, 150),
                          `PCINT` = c(122, 150, 150, 122, 120),
                          `PCGRD` = c(0, 2.03, 0, 1.75, 2.03))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() TRARO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() TNARO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() TNARO048.CUL")
+
+
+# "read_cul() TRARO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        EXPNO = "%6s", "ECO#" = "%7s", P1 = "%6.0f",
@@ -4858,10 +7892,10 @@ test_that("read_cul() TRARO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "IB0001",
+  info_prefix <- "read_cul() TRARO048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0001",
                                     "IB0002", "IB0003", "IB0004",
                                     "IB0008", "IB0009", "IB0010"),
                          `VAR-NAME` = c("MINIMA", "MAXIMA", "LEHUA",
@@ -4891,15 +7925,84 @@ test_that("read_cul() TRARO048.CUL", {
                          `PCINT` = c(120, 120, 120, 120, 120, 120,
                                      120, 120, 120),
                          `PCGRD` = c(1, 1, 1, 1, 1, 1, 1, 1, 1))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() VBGRO048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() TRARO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() TRARO048.CUL")
+
+
+# "read_cul() VBGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", CSDL = "%6.0f", PPSEN = "%6.4f",
@@ -4918,10 +8021,10 @@ test_that("read_cul() VBGRO048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "CC0001",
+  info_prefix <- "read_cul() VBGRO048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "CC0001",
                                     "CC0002", "CC0003", "CC0004",
                                     "CC0005", "CC0006", "CC0007",
                                     "CC0008", "CI0003", "CI0004",
@@ -5026,15 +8129,84 @@ test_that("read_cul() VBGRO048.CUL", {
                                      0.043, 0.043, 0.043, 0.043,
                                      0.043, 0.043, 0.043, 0.043,
                                      0.043, 0.043))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() WHAPS048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() VBGRO048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() VBGRO048.CUL")
+
+
+# "read_cul() WHAPS048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
                        "ECO#" = "%7s", VSEN = "%6.2f", PPSEN = "%6.2f",
@@ -5049,10 +8221,10 @@ test_that("read_cul() WHAPS048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VRNAME", "EXPNO", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "AW0071",
+  info_prefix <- "read_cul() WHAPS048.CUL"
+
+    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "AW0071",
                                     "IB0001", "IB0002", "IB0003",
                                     "IB0004", "AW0005", "AW0006",
                                     "SP0007", "WI0008", "IB0010",
@@ -5102,15 +8274,84 @@ test_that("read_cul() WHAPS048.CUL", {
                          `SLAP1` = c(200, 400, 300, 400, 280, 280,
                                      300, 300, 300, 300, 300, 280,
                                      280, 300, 280, 280, 300))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() WHCER048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() WHAPS048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() WHAPS048.CUL")
+
+
+# "read_cul() WHCER048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        "EXP#" = "%6s", "ECO#" = "%7s", P1V = "%6.0f",
@@ -5125,10 +8366,10 @@ test_that("read_cul() WHCER048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXP#", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "DFAULT",
+  info_prefix <- "read_cul() WHCER048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXP#", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "DFAULT",
                                     "IB1500", "IB0488", "IB1015",
                                     "AW0071", "CI0001", "KZ0001",
                                     "TX0001", "990015"),
@@ -5160,15 +8401,84 @@ test_that("read_cul() WHCER048.CUL", {
                          `PHINT` = c(30L, 150L, 60L, 86L, 95L,
                                      100L, 95L, 100L, 90L, 30L, 120L
                          ))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
-test_that("read_cul() WHCRP048.CUL", {
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() WHCER048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() WHCER048.CUL")
+
+
+# "read_cul() WHCRP048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
                        "EXP#" = "%6s", "ECO#" = "%7s", P1 = "%6.0f",
@@ -5187,10 +8497,10 @@ test_that("read_cul() WHCRP048.CUL", {
 
   actual <- DSSAT::read_cul(input_file)
 
-  test_cols_check(
-    actual,
-    `char_cols` = c("VAR#", "VAR-NAME", "EXP#", "ECO#"),
-    expected_vals = list(`VAR#` = c("999991", "999992", "DFAULT",
+  info_prefix <- "read_cul() WHCRP048.CUL"
+
+    `char_cols` <- c("VAR#", "VAR-NAME", "EXP#", "ECO#")
+    expected_vals <- list(`VAR#` = c("999991", "999992", "DFAULT",
                                     "IB1500", "IB0488", "IB1015",
                                     "IB0034", "AW0071", "CI0001"),
                          `VAR-NAME` = c("MINIMA", "MAXIMA", "DEFAULTS",
@@ -5242,13 +8552,82 @@ test_that("read_cul() WHCRP048.CUL", {
                                      12.5, 27),
                          `GWTS` = c(10L, 75L, 40L, 23L, 30L, 42L,
                                     44L, 55L, 45L))
-  )
 
-  expect_equal(attr(actual, "v_fmt"), v_fmt_expected)
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-  expect_equal(attr(actual, "tier_info"), tier_info_expected)
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-})
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
+
+
+  expect_equal(attr(actual, "v_fmt"), v_fmt_expected,
+               info = "read_cul() WHCRP048.CUL")
+
+  expect_equal(attr(actual, "tier_info"), tier_info_expected,
+               info = "read_cul() WHCRP048.CUL")
+
 
 # Code used to create tests (for posterity):
 if(FALSE){
