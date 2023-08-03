@@ -1,6 +1,7 @@
-test_that("read_sol() Single profile",{
+# "read_sol() Single profile"
 
-  withr::with_file("TEST.SOL",{
+  test_sol <- tempfile()
+
     write(
       c("*SOILS: General DSSAT Soil Input File",
         "",
@@ -21,23 +22,23 @@ test_that("read_sol() Single profile",{
         "   180   -99 0.259 0.361 0.457 0.037   -99  1.40  0.10  50.0  45.0   0.0 0.010   6.5   -99   -99   -99 ",
         "   210   -99 0.259 0.361 0.457 0.020   -99  1.40  0.01  50.0  45.0   0.0 0.000   6.5   -99   -99   -99 ",
         ""),
-      "TEST.SOL"
+      test_sol
       )
 
-    sol <- DSSAT::read_sol("TEST.SOL")
+    sol <- DSSAT::read_sol(test_sol)
 
-  })
+file.remove(test_sol)
 
-  DSSAT:::test_cols_check(
-    sol,
-    char_cols = c("PEDON", "SOURCE", "TEXTURE", "DESCRIPTION",
+  info_prefix <- "read_sol() Single profile"
+    actual <- sol
+    char_cols <- c("PEDON", "SOURCE", "TEXTURE", "DESCRIPTION",
                   "SITE", "COUNTRY", "SCS FAMILY", "SCOM",
-                  "SMHB", "SMPX", "SMKE", "SLMH"),
-    list_cols = c("SLB", "SLMH", "SLLL", "SDUL", "SSAT",
+                  "SMHB", "SMPX", "SMKE", "SLMH")
+    list_cols <- c("SLB", "SLMH", "SLLL", "SDUL", "SSAT",
                   "SRGF", "SSKS", "SBDM", "SLOC", "SLCL",
                   "SLSI", "SLCF", "SLNI", "SLHW", "SLHB",
-                  "SCEC", "SADC"),
-    expected_vals = list(PEDON = "IB00000001",
+                  "SCEC", "SADC")
+    expected_vals <- list(PEDON = "IB00000001",
                          SOURCE = "IBSNAT",
                          TEXTURE = "SIC",
                          DEPTH = 210,
@@ -114,14 +115,82 @@ test_that("read_sol() Single profile",{
                                        NA_real_, NA_real_,
                                        NA_real_, NA_real_,
                                        NA_real_, NA_real_)))
-  )
 
-})
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
+
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
+
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
 
 
-test_that("read_sol() Three profiles",{
 
-  withr::with_file("TEST.SOL",{
+
+# "read_sol() Three profiles"
+
+  test_sol <- tempfile()
+
     write(
       c("*SOILS: General DSSAT Soil Input File",
         "",
@@ -169,23 +238,23 @@ test_that("read_sol() Three profiles",{
         "    45   -99 0.249 0.406 0.461 0.472   -99  1.36  1.45  50.0  45.0   0.0 0.140   6.5   -99   -99   -99 ",
         "    60   -99 0.249 0.406 0.461 0.350   -99  1.36  1.45  50.0  45.0   0.0 0.140   6.5   -99   -99   -99 ",
         ""),
-      "TEST.SOL"
+      test_sol
       )
 
-    sol <- DSSAT::read_sol("TEST.SOL")
+    sol <- DSSAT::read_sol(test_sol)
 
-  })
+file.remove(test_sol)
 
-  DSSAT:::test_cols_check(
-    sol,
-    char_cols = c("PEDON", "SOURCE", "TEXTURE", "DESCRIPTION",
+  info_prefix <- "read_sol() Three profiles"
+    actual <- sol
+    char_cols <- c("PEDON", "SOURCE", "TEXTURE", "DESCRIPTION",
                   "SITE", "COUNTRY", "SCS FAMILY", "SCOM",
-                  "SMHB", "SMPX", "SMKE", "SLMH"),
-    list_cols = c("SLB", "SLMH", "SLLL", "SDUL", "SSAT",
+                  "SMHB", "SMPX", "SMKE", "SLMH")
+    list_cols <- c("SLB", "SLMH", "SLLL", "SDUL", "SSAT",
                   "SRGF", "SSKS", "SBDM", "SLOC", "SLCL",
                   "SLSI", "SLCF", "SLNI", "SLHW", "SLHB",
-                  "SCEC", "SADC"),
-    expected_vals = list(PEDON = c("IB00000001", "IB00000002",
+                  "SCEC", "SADC")
+    expected_vals <- list(PEDON = c("IB00000001", "IB00000002",
                                    "IB00000003"),
                          SOURCE = c("IBSNAT", "IBSNAT", "IBSNAT"),
                          TEXTURE = c("SIC", "SIC", "SIC"),
@@ -352,28 +421,93 @@ test_that("read_sol() Three profiles",{
                                      c(NA_real_, NA_real_,
                                        NA_real_, NA_real_,
                                        NA_real_)))
-  )
 
-})
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-test_that("read_sol() TEST.SOL",{
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
+
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
+
+# "read_sol() TEST.SOL"
 
   sol <- DSSAT::read_sol(system.file("extdata/test_data/SOL/TEST.SOL",
                                      package = "DSSAT"))
 
-  DSSAT:::test_cols_check(
-    sol,
-    `char_cols` = c("PEDON", "SOURCE", "TEXTURE", "DESCRIPTION",
+  info_prefix <- "read_sol() TEST.SOL"
+    actual <- sol
+    `char_cols` <- c("PEDON", "SOURCE", "TEXTURE", "DESCRIPTION",
                     "SITE", "COUNTRY", "SCS FAMILY", "SCOM", "SMHB",
-                    "SMPX", "SMKE", "SLMH"),
-    `list_cols` = c("SLB", "SLMH", "SLLL", "SDUL", "SSAT", "SRGF",
+                    "SMPX", "SMKE", "SLMH")
+    `list_cols` <- c("SLB", "SLMH", "SLLL", "SDUL", "SSAT", "SRGF",
                     "SSKS", "SBDM", "SLOC", "SLCL", "SLSI", "SLCF",
                     "SLNI", "SLHW", "SLHB", "SCEC", "SADC", "SLPX",
                     "SLPT", "SLPO", "CACO3", "SLAL", "SLFE", "SLMN",
                     "SLBS", "SLPA", "SLPB", "SLKE", "SLMG", "SLNA",
                     "SLSU", "SLEC", "SLCA", "ALFVG", "MVG", "NVG",
-                    "WCRES"),
-    expected_vals = list(`PEDON` = c("AGSP209115", "BRPA080004",
+                    "WCRES")
+    expected_vals <- list(`PEDON` = c("AGSP209115", "BRPA080004",
                                      "CORD860001", "ET04197341",
                                      "GAGI810014", "GH00970001",
                                      "GHWA040001", "HC_GEN0001",
@@ -2707,23 +2841,90 @@ test_that("read_sol() TEST.SOL",{
                                         c(NA_real_, NA_real_, NA_real_,
                                           NA_real_, NA_real_, NA_real_
                                         )))
-  )
-})
 
-test_that("read_sol() TEST.SOL UFGA950002",{
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
+
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
+
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
+
+
+# "read_sol() TEST.SOL UFGA950002"
 
   sol <- DSSAT:::read_sol(system.file("extdata/test_data/SOL/TEST.SOL", package = "DSSAT"),
                           id_soil = "UFGA950002")
 
-  DSSAT:::test_cols_check(
-    sol,
-    `char_cols` = c("PEDON", "SOURCE", "TEXTURE", "DESCRIPTION",
+  info_prefix <- "read_sol() TEST.SOL UFGA950002"
+    actual <- sol
+    `char_cols` <- c("PEDON", "SOURCE", "TEXTURE", "DESCRIPTION",
                     "SITE", "COUNTRY", "SCS FAMILY", "SCOM", "SMHB",
-                    "SMPX", "SMKE", "SLMH"),
-    `list_cols` = c("SLB", "SLMH", "SLLL", "SDUL", "SSAT", "SRGF",
+                    "SMPX", "SMKE", "SLMH")
+    `list_cols` <- c("SLB", "SLMH", "SLLL", "SDUL", "SSAT", "SRGF",
                     "SSKS", "SBDM", "SLOC", "SLCL", "SLSI", "SLCF",
-                    "SLNI", "SLHW", "SLHB", "SCEC", "SADC"),
-    expected_vals = list(`PEDON` = "UFGA950002",
+                    "SLNI", "SLHW", "SLHB", "SCEC", "SADC")
+    expected_vals <- list(`PEDON` = "UFGA950002",
                          `SOURCE` = "Alachua cou",
                          `TEXTURE` = "ty",
                          `DEPTH` = 20,
@@ -2781,9 +2982,76 @@ test_that("read_sol() TEST.SOL UFGA950002",{
                          `SADC` = list(c(NA_real_, NA_real_, NA_real_,
                                          NA_real_, NA_real_, NA_real_,
                                          NA_real_)))
-  )
 
-})
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
+
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
+
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
+
+
 
 if(FALSE){
   library(tidyverse)

@@ -1,4 +1,4 @@
-test_that("writing SAMPLE.WTH without v_fmt", {
+# "writing SAMPLE.WTH without v_fmt"
 
   expected <- c("*WEATHER: Weather Location",
                 "",
@@ -7,10 +7,10 @@ test_that("writing SAMPLE.WTH without v_fmt", {
                 "@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT",
                 "  SMPL    0.000    0.000     0   6.0   3.0   -99   -99",
                 "",
-                "@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  RHUM",
-                "95001   5.7  -0.6  -9.1   0.3   -99   -99   -99   -99   -99",
-                "95002   5.6  -0.7 -11.8   0.0   -99   -99   -99   -99   -99",
-                "95003   2.9  -4.6 -13.3   0.0   -99   -99   -99   -99   -99"
+                "@  DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  RHUM",
+                "1995001   5.7  -0.6  -9.1   0.3   -99   -99   -99   -99   -99",
+                "1995002   5.6  -0.7 -11.8   0.0   -99   -99   -99   -99   -99",
+                "1995003   2.9  -4.6 -13.3   0.0   -99   -99   -99   -99   -99"
   )
 
   orig_wth <- tibble::tibble(DATE = as.POSIXct(c("95001","95002", "95003"),
@@ -36,15 +36,18 @@ test_that("writing SAMPLE.WTH without v_fmt", {
                                               REFHT = NA_real_,
                                               WNDHT = NA_real_)
 
-  withr::with_file("SAMPLE.WTH",{
-                   DSSAT::write_wth(orig_wth, "SAMPLE.WTH")
-                   expect_identical(readLines("SAMPLE.WTH"),
-                                    expected)
-                   })
+  sample_wth <- tempfile()
 
-})
+  DSSAT::write_wth(orig_wth, sample_wth)
 
-test_that("writing SAMPLE.WTH without GENERAL", {
+  expect_identical(readLines(sample_wth),
+                   expected,
+                   info = "writing SAMPLE.WTH without v_fmt")
+
+file.remove(sample_wth)
+
+
+# "writing SAMPLE.WTH without GENERAL"
 
   expected <- c("*WEATHER: Weather Location",
                 "",
@@ -53,10 +56,10 @@ test_that("writing SAMPLE.WTH without GENERAL", {
                 "@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT",
                 "   -99      -99      -99   -99   -99   -99   -99   -99",
                 "",
-                "@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  RHUM",
-                "95001   5.7  -0.6  -9.1   0.3   -99   -99   -99   -99   -99",
-                "95002   5.6  -0.7 -11.8   0.0   -99   -99   -99   -99   -99",
-                "95003   2.9  -4.6 -13.3   0.0   -99   -99   -99   -99   -99"
+                "@  DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  RHUM",
+                "1995001   5.7  -0.6  -9.1   0.3   -99   -99   -99   -99   -99",
+                "1995002   5.6  -0.7 -11.8   0.0   -99   -99   -99   -99   -99",
+                "1995003   2.9  -4.6 -13.3   0.0   -99   -99   -99   -99   -99"
   )
 
   orig_wth <- tibble::tibble(DATE = as.POSIXct(c("95001","95002", "95003"),
@@ -74,15 +77,18 @@ test_that("writing SAMPLE.WTH without GENERAL", {
   attr(orig_wth, "location") <- "Weather Location"
   attr(orig_wth, "comments") <- "This is a test dataset"
 
-  withr::with_file("SAMPLE.WTH",{
-    DSSAT::write_wth(orig_wth, "SAMPLE.WTH")
-    expect_identical(readLines("SAMPLE.WTH"),
-                     expected)
-  })
+  sample_wth <- tempfile()
 
-})
+    DSSAT::write_wth(orig_wth, sample_wth)
 
-test_that("writing SAMPLE.WTH overriding GENERAL variables", {
+    expect_identical(readLines(sample_wth),
+                     expected,
+                     info = "writing SAMPLE.WTH without GENERAL")
+
+file.remove(sample_wth)
+
+
+# "writing SAMPLE.WTH overriding GENERAL variables"
 
   expected <- c("*WEATHER: Weather Location",
                 "",
@@ -91,10 +97,10 @@ test_that("writing SAMPLE.WTH overriding GENERAL variables", {
                 "@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT",
                 "  SAMP    5.000    5.000    10   6.0   3.0   2.0   2.0",
                 "",
-                "@DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  RHUM",
-                "95001   5.7  -0.6  -9.1   0.3   -99   -99   -99   -99   -99",
-                "95002   5.6  -0.7 -11.8   0.0   -99   -99   -99   -99   -99",
-                "95003   2.9  -4.6 -13.3   0.0   -99   -99   -99   -99   -99"
+                "@  DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  RHUM",
+                "1995001   5.7  -0.6  -9.1   0.3   -99   -99   -99   -99   -99",
+                "1995002   5.6  -0.7 -11.8   0.0   -99   -99   -99   -99   -99",
+                "1995003   2.9  -4.6 -13.3   0.0   -99   -99   -99   -99   -99"
   )
 
   orig_wth <- tibble::tibble(DATE = as.POSIXct(c("95001","95002", "95003"),
@@ -120,14 +126,16 @@ test_that("writing SAMPLE.WTH overriding GENERAL variables", {
                                               REFHT = NA_real_,
                                               WNDHT = NA_real_)
 
-  withr::with_file("SAMPLE.WTH",{
-    DSSAT::write_wth(orig_wth, "SAMPLE.WTH",
+  sample_wth <- tempfile()
+
+    DSSAT::write_wth(orig_wth, sample_wth,
               INSI = "SAMP",
               LAT = 5.0, LONG = 5.0, ELEV = 10,
               TAV = 6, AMP = 3,
               REFHT = 2, WNDHT = 2)
-    expect_identical(readLines("SAMPLE.WTH"),
-                     expected)
-  })
 
-})
+    expect_identical(readLines(sample_wth),
+                     expected,
+                     info = "writing SAMPLE.WTH overriding GENERAL variables")
+
+file.remove(sample_wth)
