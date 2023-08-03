@@ -1,8 +1,7 @@
-source(system.file("tinytest/test_cols_check.R", package = "DSSAT"))
+# "GENERAL use_std_fmt"
 
-test_that("GENERAL use_std_fmt",{
+  test0000_crx <- tempfile()
 
-  withr::with_file("TEST0000.CRX",{
     write(
       c("*GENERAL",
         "@PEOPLE",
@@ -17,18 +16,18 @@ test_that("GENERAL use_std_fmt",{
         "Additional notes ",
         "go on these   ",
         "lines   "),
-      "TEST0000.CRX"
+      test0000_crx
     )
 
-    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
+    filex <- DSSAT::read_filex(test0000_crx, use_std_fmt = TRUE)
 
-  })
+file.remove(test0000_crx)
 
-  test_cols_check(
-    filex$GENERAL,
-    char_cols = c("PEOPLE", "ADDRESS", "SITE", "PLAY", "HARM", "NOTES"),
-    list_cols = c("NOTES"),
-    expected_vals = list(PAREA = 2,
+  info_prefix <- "GENERAL use_std_fmt"
+    actual <- filex$GENERAL
+    char_cols <- c("PEOPLE", "ADDRESS", "SITE", "PLAY", "HARM", "NOTES")
+    list_cols <- c("NOTES")
+    expected_vals <- list(PAREA = 2,
                          PRNO = 2,
                          PLEN = 2,
                          PLDR = 2,
@@ -45,27 +44,93 @@ test_that("GENERAL use_std_fmt",{
                                         "go on these",
                                         "lines"))
                          )
-  )
 
-})
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-test_that("TREATMENTS single use_std_fmt",{
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-  withr::with_file("TEST0000.CRX",{
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
+
+# "TREATMENTS single use_std_fmt"
+
+  test0000_crx <- tempfile()
+
     write(
       c("*TREATMENTS                        -------------FACTOR LEVELS------------",
         "@N R O C TNAME.................... CU FL SA IC MP MI MF MR MC MT ME MH SM",
         " 1 0 0 0 Control - 350 ppm          1  1  0  1  1  1  1  0  1  0  1  0  1"),
-      "TEST0000.CRX")
+      test0000_crx)
 
-    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
+    filex <- DSSAT::read_filex(test0000_crx, use_std_fmt = TRUE)
 
-  })
+file.remove(test0000_crx)
 
-  test_cols_check(
-    filex$TREATMENTS,
-    char_cols = c("TNAME"),
-    expected_vals = list(N = 1,
+  info_prefix <- "TREATMENTS single use_std_fmt"
+    actual <- filex$TREATMENTS
+    char_cols <- c("TNAME")
+    expected_vals <- list(N = 1,
                          R = 0,
                          O = 0,
                          C = 0,
@@ -82,28 +147,96 @@ test_that("TREATMENTS single use_std_fmt",{
                          MT = 0,
                          ME = 1,
                          MH = 0,
-                         SM = 1))
+                         SM = 1)
 
-})
 
-test_that("TREATMENTS two use_std_fmt",{
+    # Check for all missing variables
+    for(nm in names(actual)){
+      if("missing" %in% objects() && nm %in% missing){
+        if(exists("char_cols") && nm %in% char_cols){
+          na_val <- NA_character_
+        }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+          na_val <- as.POSIXct(NA, tz="UTC")
+        }else{
+          na_val <- NA_real_
+        }
+        if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+          expect_equal(unlist(actual[[nm]]),
+                       rep(na_val, length(unlist(actual[[nm]]))),
+                       info = paste0(info_prefix, ": ", nm))
+        }else{
+          expect_equal(actual[[nm]],
+                       rep(na_val, nrow(actual)),
+                       info = paste0(info_prefix, ": ", nm))
+        }
+      }
+    }
 
-  withr::with_file("TEST0000.CRX",{
+    # Check for specific expected values
+    if("expected_vals" %in% objects() && !is.null(expected_vals)){
+      for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+
+    # Check list column type and dimensions
+    if("list_cols" %in% objects() && !is.null(list_cols)){
+      for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+        if(exists("list_col_length") && !is.null(list_col_length)){
+          if(length(list_col_length) == 1){
+            list_col_length <- rep(list_col_length, length(actual[[nm]]))
+          }
+          for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                         list_col_length[i],
+                         info = paste0(info_prefix, nm))
+          }
+        }
+        if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+          for(i in 1:nrow(actual)){
+            for(g in 1:length(list_col_groups)){
+              length_range <- range(
+                sapply(actual[i,][list_col_groups[[g]]],
+                       function(x)length(unlist(x)))
+              )
+              lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                           length_range[2],
+                           info = paste0(info_prefix, ": ", lbl))
+            }
+          }
+        }
+      }
+    }
+    for(arg in c("char_cols", "list_cols", "date_cols",
+                 "missing", "list_col_length",
+                 "list_col_groups", "expected_vals")){
+      if(arg %in% objects()) rm(list = arg)
+    }
+
+# "TREATMENTS two use_std_fmt"
+
+  test0000_crx <- tempfile()
+
     write(
       c("*TREATMENTS                        -------------FACTOR LEVELS------------",
         "@N R O C TNAME.................... CU FL SA IC MP MI MF MR MC MT ME MH SM",
         " 1 0 0 0 Control - 350 ppm          1  1  0  1  1  1  1  0  1  0  1  0  1",
         " 2 0 0 0 CO2 Enrichment - 550 ppm   1  1  0  1  1  1  1  0  1  0  2  0  1"),
-      "TEST0000.CRX")
+      test0000_crx)
 
-    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
+    filex <- DSSAT::read_filex(test0000_crx, use_std_fmt = TRUE)
 
-  })
+file.remove(test0000_crx)
 
-  test_cols_check(
-    filex$TREATMENTS,
-    char_cols = c("TNAME"),
-    expected_vals = list(N = 1:2,
+  info_prefix <- "TREATMENTS two use_std_fmt"
+    actual <- filex$TREATMENTS
+    char_cols <- c("TNAME")
+    expected_vals <- list(N = 1:2,
                          R = rep(0, 2),
                          O = rep(0, 2),
                          C = rep(0, 2),
@@ -121,35 +254,169 @@ test_that("TREATMENTS two use_std_fmt",{
                          MT = rep(0, 2),
                          ME = 1:2,
                          MH = rep(0, 2),
-                         SM = rep(1, 2)))
+                         SM = rep(1, 2))
 
-})
 
-test_that("CULTIVARS single use_std_fmt",{
-  withr::with_file("TEST0000.CRX",{
+    # Check for all missing variables
+    for(nm in names(actual)){
+      if("missing" %in% objects() && nm %in% missing){
+        if(exists("char_cols") && nm %in% char_cols){
+          na_val <- NA_character_
+        }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+          na_val <- as.POSIXct(NA, tz="UTC")
+        }else{
+          na_val <- NA_real_
+        }
+        if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+          expect_equal(unlist(actual[[nm]]),
+                       rep(na_val, length(unlist(actual[[nm]]))),
+                       info = paste0(info_prefix, ": ", nm))
+        }else{
+          expect_equal(actual[[nm]],
+                       rep(na_val, nrow(actual)),
+                       info = paste0(info_prefix, ": ", nm))
+        }
+      }
+    }
+
+    # Check for specific expected values
+    if("expected_vals" %in% objects() && !is.null(expected_vals)){
+      for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+
+    # Check list column type and dimensions
+    if("list_cols" %in% objects() && !is.null(list_cols)){
+      for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+        if(exists("list_col_length") && !is.null(list_col_length)){
+          if(length(list_col_length) == 1){
+            list_col_length <- rep(list_col_length, length(actual[[nm]]))
+          }
+          for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                         list_col_length[i],
+                         info = paste0(info_prefix, nm))
+          }
+        }
+        if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+          for(i in 1:nrow(actual)){
+            for(g in 1:length(list_col_groups)){
+              length_range <- range(
+                sapply(actual[i,][list_col_groups[[g]]],
+                       function(x)length(unlist(x)))
+              )
+              lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                           length_range[2],
+                           info = paste0(info_prefix, ": ", lbl))
+            }
+          }
+        }
+      }
+    }
+    for(arg in c("char_cols", "list_cols", "date_cols",
+                 "missing", "list_col_length",
+                 "list_col_groups", "expected_vals")){
+      if(arg %in% objects()) rm(list = arg)
+    }
+
+# "CULTIVARS single use_std_fmt"
+  test0000_crx <- tempfile()
+
     write(
       c("*CULTIVARS",
         "@C CR INGENO CNAME",
         " 1 CO IB0001 Deltapine 77"),
-      "TEST0000.CRX")
+      test0000_crx)
 
-    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
+    filex <- DSSAT::read_filex(test0000_crx, use_std_fmt = TRUE)
 
-  })
+file.remove(test0000_crx)
 
-  test_cols_check(
-    filex$CULTIVARS,
-    char_cols = c("CR", "INGENO", "CNAME"),
-    expected_vals = list(C = 1,
+  info_prefix <- "CULTIVARS single use_std_fmt"
+    actual <- filex$CULTIVARS
+    char_cols <- c("CR", "INGENO", "CNAME")
+    expected_vals <- list(C = 1,
                          CR = "CO",
                          INGENO = "IB0001",
                          CNAME = "Deltapine 77"
-                         ))
+                         )
+    # Check for all missing variables
+    for(nm in names(actual)){
+      if("missing" %in% objects() && nm %in% missing){
+        if(exists("char_cols") && nm %in% char_cols){
+          na_val <- NA_character_
+        }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+          na_val <- as.POSIXct(NA, tz="UTC")
+        }else{
+          na_val <- NA_real_
+        }
+        if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+          expect_equal(unlist(actual[[nm]]),
+                       rep(na_val, length(unlist(actual[[nm]]))),
+                       info = paste0(info_prefix, ": ", nm))
+        }else{
+          expect_equal(actual[[nm]],
+                       rep(na_val, nrow(actual)),
+                       info = paste0(info_prefix, ": ", nm))
+        }
+      }
+    }
 
-})
+    # Check for specific expected values
+    if("expected_vals" %in% objects() && !is.null(expected_vals)){
+      for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
 
-test_that("CULTIVARS multiple use_std_fmt",{
-  withr::with_file("TEST0000.CRX",{
+    # Check list column type and dimensions
+    if("list_cols" %in% objects() && !is.null(list_cols)){
+      for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+        if(exists("list_col_length") && !is.null(list_col_length)){
+          if(length(list_col_length) == 1){
+            list_col_length <- rep(list_col_length, length(actual[[nm]]))
+          }
+          for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                         list_col_length[i],
+                         info = paste0(info_prefix, nm))
+          }
+        }
+        if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+          for(i in 1:nrow(actual)){
+            for(g in 1:length(list_col_groups)){
+              length_range <- range(
+                sapply(actual[i,][list_col_groups[[g]]],
+                       function(x)length(unlist(x)))
+              )
+              lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                           length_range[2],
+                           info = paste0(info_prefix, ": ", lbl))
+            }
+          }
+        }
+      }
+    }
+    for(arg in c("char_cols", "list_cols", "date_cols",
+                 "missing", "list_col_length",
+                 "list_col_groups", "expected_vals")){
+      if(arg %in% objects()) rm(list = arg)
+    }
+
+# "CULTIVARS multiple use_std_fmt"
+  test0000_crx <- tempfile()
+
     write(
       c("*CULTIVARS",
         "@C CR INGENO CNAME",
@@ -157,16 +424,16 @@ test_that("CULTIVARS multiple use_std_fmt",{
         " 2 PN IB0031 F81206,LS-RES RU",
         " 3 PN IB0015 SOUTHERN RUNNER",
         " 4 PN IB0032 MA72x94-12,LS-RE"),
-      "TEST0000.CRX")
+      test0000_crx)
 
-    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
+    filex <- DSSAT::read_filex(test0000_crx, use_std_fmt = TRUE)
 
-  })
+file.remove(test0000_crx)
 
-  test_cols_check(
-    filex$CULTIVARS,
-    char_cols = c("CR", "INGENO", "CNAME"),
-    expected_vals = list(C = 1:4,
+  info_prefix <- "CULTIVARS multiple use_std_fmt"
+    actual <- filex$CULTIVARS
+    char_cols <- c("CR", "INGENO", "CNAME")
+    expected_vals <- list(C = 1:4,
                          CR = rep("PN",4),
                          INGENO = c("IB0002", "IB0031",
                                     "IB0015", "IB0032"),
@@ -174,32 +441,100 @@ test_that("CULTIVARS multiple use_std_fmt",{
                                    "F81206,LS-RES RU",
                                    "SOUTHERN RUNNER",
                                    "MA72x94-12,LS-RE")
-    ))
+    )
 
-})
 
-test_that("FIELDS single use_std_fmt",{
-  withr::with_file("TEST0000.CRX",{
+    # Check for all missing variables
+    for(nm in names(actual)){
+      if("missing" %in% objects() && nm %in% missing){
+        if(exists("char_cols") && nm %in% char_cols){
+          na_val <- NA_character_
+        }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+          na_val <- as.POSIXct(NA, tz="UTC")
+        }else{
+          na_val <- NA_real_
+        }
+        if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+          expect_equal(unlist(actual[[nm]]),
+                       rep(na_val, length(unlist(actual[[nm]]))),
+                       info = paste0(info_prefix, ": ", nm))
+        }else{
+          expect_equal(actual[[nm]],
+                       rep(na_val, nrow(actual)),
+                       info = paste0(info_prefix, ": ", nm))
+        }
+      }
+    }
+
+    # Check for specific expected values
+    if("expected_vals" %in% objects() && !is.null(expected_vals)){
+      for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+
+    # Check list column type and dimensions
+    if("list_cols" %in% objects() && !is.null(list_cols)){
+      for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+        if(exists("list_col_length") && !is.null(list_col_length)){
+          if(length(list_col_length) == 1){
+            list_col_length <- rep(list_col_length, length(actual[[nm]]))
+          }
+          for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                         list_col_length[i],
+                         info = paste0(info_prefix, nm))
+          }
+        }
+        if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+          for(i in 1:nrow(actual)){
+            for(g in 1:length(list_col_groups)){
+              length_range <- range(
+                sapply(actual[i,][list_col_groups[[g]]],
+                       function(x)length(unlist(x)))
+              )
+              lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                           length_range[2],
+                           info = paste0(info_prefix, ": ", lbl))
+            }
+          }
+        }
+      }
+    }
+    for(arg in c("char_cols", "list_cols", "date_cols",
+                 "missing", "list_col_length",
+                 "list_col_groups", "expected_vals")){
+      if(arg %in% objects()) rm(list = arg)
+    }
+
+# "FIELDS single use_std_fmt"
+  test0000_crx <- tempfile()
+
     write(
       c("*FIELDS",
         "@L ID_FIELD WSTA....  FLSA  FLOB  FLDT  FLDD  FLDS  FLST SLTX  SLDP  ID_SOIL    FLNAME",
         " 1 UFQU0001 UFQU9501   -99     0 DR000     0     0  0000 SL     180  IBTM910017 -99",
         "@L ...........XCRD ...........YCRD .....ELEV .............AREA .SLEN .FLWR .SLAS FLHST FHDUR",
         " 1             -99             -99       -99               -99   -99   -99   -99   -99   -99"),
-      "TEST0000.CRX")
+      test0000_crx)
 
-    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
+    filex <- DSSAT::read_filex(test0000_crx, use_std_fmt = TRUE)
 
-  })
+file.remove(test0000_crx)
 
-  test_cols_check(
-    filex$FIELDS,
-    char_cols = c("ID_FIELD", "WSTA", "FLSA", "FLDT", "FLST",
-                  "SLTX", "ID_SOIL", "FLNAME", "FLHST"),
-    missing = c("FLSA", "FLNAME", "XCRD", "YCRD", "ELEV",
+  info_prefix <- "FIELDS single use_std_fmt"
+    actual <- filex$FIELDS
+    char_cols <- c("ID_FIELD", "WSTA", "FLSA", "FLDT", "FLST",
+                  "SLTX", "ID_SOIL", "FLNAME", "FLHST")
+    missing <- c("FLSA", "FLNAME", "XCRD", "YCRD", "ELEV",
                 "AREA", "SLEN", "FLWR", "SLAS", "FLHST",
-                "FHDUR"),
-    expected_vals = list(L = 1,
+                "FHDUR")
+    expected_vals <- list(L = 1,
                          ID_FIELD = "UFQU0001",
                          WSTA = "UFQU9501",
                          FLOB = 0,
@@ -209,12 +544,80 @@ test_that("FIELDS single use_std_fmt",{
                          FLST = "0000",
                          SLTX = "SL",
                          SLDP = 180,
-                         ID_SOIL = "IBTM910017"))
+                         ID_SOIL = "IBTM910017")
 
-})
 
-test_that("FIELDS multiple use_std_fmt",{
-  withr::with_file("TEST0000.CRX",{
+    # Check for all missing variables
+    for(nm in names(actual)){
+      if("missing" %in% objects() && nm %in% missing){
+        if(exists("char_cols") && nm %in% char_cols){
+          na_val <- NA_character_
+        }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+          na_val <- as.POSIXct(NA, tz="UTC")
+        }else{
+          na_val <- NA_real_
+        }
+        if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+          expect_equal(unlist(actual[[nm]]),
+                       rep(na_val, length(unlist(actual[[nm]]))),
+                       info = paste0(info_prefix, ": ", nm))
+        }else{
+          expect_equal(actual[[nm]],
+                       rep(na_val, nrow(actual)),
+                       info = paste0(info_prefix, ": ", nm))
+        }
+      }
+    }
+
+    # Check for specific expected values
+    if("expected_vals" %in% objects() && !is.null(expected_vals)){
+      for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+
+    # Check list column type and dimensions
+    if("list_cols" %in% objects() && !is.null(list_cols)){
+      for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+        if(exists("list_col_length") && !is.null(list_col_length)){
+          if(length(list_col_length) == 1){
+            list_col_length <- rep(list_col_length, length(actual[[nm]]))
+          }
+          for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                         list_col_length[i],
+                         info = paste0(info_prefix, nm))
+          }
+        }
+        if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+          for(i in 1:nrow(actual)){
+            for(g in 1:length(list_col_groups)){
+              length_range <- range(
+                sapply(actual[i,][list_col_groups[[g]]],
+                       function(x)length(unlist(x)))
+              )
+              lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                           length_range[2],
+                           info = paste0(info_prefix, ": ", lbl))
+            }
+          }
+        }
+      }
+    }
+    for(arg in c("char_cols", "list_cols", "date_cols",
+                 "missing", "list_col_length",
+                 "list_col_groups", "expected_vals")){
+      if(arg %in% objects()) rm(list = arg)
+    }
+
+# "FIELDS multiple use_std_fmt"
+  test0000_crx <- tempfile()
+
     write(
       c("*FIELDS",
         "@L ID_FIELD WSTA....  FLSA  FLOB  FLDT  FLDD  FLDS  FLST SLTX  SLDP  ID_SOIL    FLNAME",
@@ -227,20 +630,20 @@ test_that("FIELDS multiple use_std_fmt",{
         " 2             -99             -99       -99               -99   -99   -99   -99   -99   -99",
         " 3             -99             -99       -99               -99   -99   -99   -99   -99   -99",
         " 4             -99             -99       -99               -99   -99   -99   -99   -99   -99"),
-      "TEST0000.CRX")
+      test0000_crx)
 
-    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
+    filex <- DSSAT::read_filex(test0000_crx, use_std_fmt = TRUE)
 
-  })
+file.remove(test0000_crx)
 
-  test_cols_check(
-    filex$FIELDS,
-    char_cols = c("ID_FIELD", "WSTA", "FLSA", "FLDT", "FLST",
-                  "SLTX", "ID_SOIL", "FLNAME", "FLHST"),
-    missing = c("FLSA", "FLNAME", "XCRD", "YCRD", "ELEV",
+  info_prefix <- "FIELDS multiple use_std_fmt"
+    actual <- filex$FIELDS
+    char_cols <- c("ID_FIELD", "WSTA", "FLSA", "FLDT", "FLST",
+                  "SLTX", "ID_SOIL", "FLNAME", "FLHST")
+    missing <- c("FLSA", "FLNAME", "XCRD", "YCRD", "ELEV",
                 "AREA", "SLEN", "FLWR", "SLAS", "FLHST",
-                "FHDUR"),
-    expected_vals = list(L = 1:4,
+                "FHDUR")
+    expected_vals <- list(L = 1:4,
                          ID_FIELD = c("UFQU0001", "UFQU0002",
                                       "UFQU0003", "UFQU0004"),
                          WSTA = rep("UFQU9501", 4),
@@ -255,13 +658,81 @@ test_that("FIELDS multiple use_std_fmt",{
                                      "UFQU950002",
                                      "UFQU950003",
                                      "UFQU950004")
-                         ))
+                         )
 
-})
 
-test_that("SOIL ANALYSIS single use_std_fmt",{
+    # Check for all missing variables
+    for(nm in names(actual)){
+      if("missing" %in% objects() && nm %in% missing){
+        if(exists("char_cols") && nm %in% char_cols){
+          na_val <- NA_character_
+        }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+          na_val <- as.POSIXct(NA, tz="UTC")
+        }else{
+          na_val <- NA_real_
+        }
+        if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+          expect_equal(unlist(actual[[nm]]),
+                       rep(na_val, length(unlist(actual[[nm]]))),
+                       info = paste0(info_prefix, ": ", nm))
+        }else{
+          expect_equal(actual[[nm]],
+                       rep(na_val, nrow(actual)),
+                       info = paste0(info_prefix, ": ", nm))
+        }
+      }
+    }
 
-  withr::with_file("TEST0000.CRX",{
+    # Check for specific expected values
+    if("expected_vals" %in% objects() && !is.null(expected_vals)){
+      for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+
+    # Check list column type and dimensions
+    if("list_cols" %in% objects() && !is.null(list_cols)){
+      for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+        if(exists("list_col_length") && !is.null(list_col_length)){
+          if(length(list_col_length) == 1){
+            list_col_length <- rep(list_col_length, length(actual[[nm]]))
+          }
+          for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                         list_col_length[i],
+                         info = paste0(info_prefix, nm))
+          }
+        }
+        if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+          for(i in 1:nrow(actual)){
+            for(g in 1:length(list_col_groups)){
+              length_range <- range(
+                sapply(actual[i,][list_col_groups[[g]]],
+                       function(x)length(unlist(x)))
+              )
+              lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                           length_range[2],
+                           info = paste0(info_prefix, ": ", lbl))
+            }
+          }
+        }
+      }
+    }
+    for(arg in c("char_cols", "list_cols", "date_cols",
+                 "missing", "list_col_length",
+                 "list_col_groups", "expected_vals")){
+      if(arg %in% objects()) rm(list = arg)
+    }
+
+# "SOIL ANALYSIS single use_std_fmt"
+
+  test0000_crx <- tempfile()
+
     write(
       c("*SOIL ANALYSIS",
         "@A SADAT  SMHB  SMPX  SMKE  SANAME",
@@ -269,19 +740,19 @@ test_that("SOIL ANALYSIS single use_std_fmt",{
         "@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC",
         " 1     5   -99   .48   -99   -99   -99   2.2   -99   .47"
       ),
-      "TEST0000.CRX")
+      test0000_crx)
 
-    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
+    filex <- DSSAT::read_filex(test0000_crx, use_std_fmt = TRUE)
 
-  })
+file.remove(test0000_crx)
 
-  test_cols_check(
-    filex$`SOIL ANALYSIS`,
-    char_cols = c("SMHB", "SMPX", "SMKE", "SANAME"),
-    missing = c("SMHB", "SMKE", "SANAME", "SADM", "SANI",
-                "SAPHW", "SAPHB", "SAKE"),
-    date_cols = "SADAT",
-    expected_vals = list(A = 1,
+  info_prefix <- "SOIL ANALYSIS single use_std_fmt"
+    actual <- filex[["SOIL ANALYSIS"]]
+    char_cols <- c("SMHB", "SMPX", "SMKE", "SANAME")
+    missing <- c("SMHB", "SMKE", "SANAME", "SADM", "SANI",
+                "SAPHW", "SAPHB", "SAKE")
+    date_cols <- "SADAT"
+    expected_vals <- list(A = 1,
                          SADAT = as.POSIXct("03283",
                                             format = "%y%j",
                                             tz = "UTC"),
@@ -289,13 +760,81 @@ test_that("SOIL ANALYSIS single use_std_fmt",{
                          SABL = 5,
                          SAOC = 0.48,
                          SAPX = 2.2,
-                         SASC = 0.47))
+                         SASC = 0.47)
 
-})
 
-test_that("SOIL ANALYSIS single - missing use_std_fmt",{
+    # Check for all missing variables
+    for(nm in names(actual)){
+      if("missing" %in% objects() && nm %in% missing){
+        if(exists("char_cols") && nm %in% char_cols){
+          na_val <- NA_character_
+        }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+          na_val <- as.POSIXct(NA, tz="UTC")
+        }else{
+          na_val <- NA_real_
+        }
+        if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+          expect_equal(unlist(actual[[nm]]),
+                       rep(na_val, length(unlist(actual[[nm]]))),
+                       info = paste0(info_prefix, ": ", nm))
+        }else{
+          expect_equal(actual[[nm]],
+                       rep(na_val, nrow(actual)),
+                       info = paste0(info_prefix, ": ", nm))
+        }
+      }
+    }
 
-  withr::with_file("TEST0000.CRX",{
+    # Check for specific expected values
+    if("expected_vals" %in% objects() && !is.null(expected_vals)){
+      for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+
+    # Check list column type and dimensions
+    if("list_cols" %in% objects() && !is.null(list_cols)){
+      for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+        if(exists("list_col_length") && !is.null(list_col_length)){
+          if(length(list_col_length) == 1){
+            list_col_length <- rep(list_col_length, length(actual[[nm]]))
+          }
+          for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                         list_col_length[i],
+                         info = paste0(info_prefix, nm))
+          }
+        }
+        if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+          for(i in 1:nrow(actual)){
+            for(g in 1:length(list_col_groups)){
+              length_range <- range(
+                sapply(actual[i,][list_col_groups[[g]]],
+                       function(x)length(unlist(x)))
+              )
+              lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                           length_range[2],
+                           info = paste0(info_prefix, ": ", lbl))
+            }
+          }
+        }
+      }
+    }
+    for(arg in c("char_cols", "list_cols", "date_cols",
+                 "missing", "list_col_length",
+                 "list_col_groups", "expected_vals")){
+      if(arg %in% objects()) rm(list = arg)
+    }
+
+# "SOIL ANALYSIS single - missing use_std_fmt"
+
+  test0000_crx <- tempfile()
+
     write(
       c("*SOIL ANALYSIS",
         "@A SADAT  SMHB  SMPX  SMKE  SANAME",
@@ -303,27 +842,95 @@ test_that("SOIL ANALYSIS single - missing use_std_fmt",{
         "@A  SABL  SADM  SAOC  SANI SAPHW SAPHB  SAPX  SAKE  SASC",
         " 1    15   -99   -99   -99   -99   -99   -99   -99   -99"
       ),
-    "TEST0000.CRX")
+    test0000_crx)
 
-    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
+    filex <- DSSAT::read_filex(test0000_crx, use_std_fmt = TRUE)
 
-  })
+file.remove(test0000_crx)
 
-  test_cols_check(
-    filex$`SOIL ANALYSIS`,
-    char_cols = c("SMHB", "SMPX", "SMKE", "SANAME"),
-    missing = c("SADAT", "SMHB", "SMPX", "SMKE", "SANAME",
+  info_prefix <- "SOIL ANALYSIS single - missing use_std_fmt"
+    actual <- filex[["SOIL ANALYSIS"]]
+    char_cols <- c("SMHB", "SMPX", "SMKE", "SANAME")
+    missing <- c("SADAT", "SMHB", "SMPX", "SMKE", "SANAME",
                 "SADM", "SAOC", "SANI", "SAPHW", "SAPHB",
-                "SAPX", "SAKE", "SASC"),
-    date_cols = "SADAT",
-    expected_vals = list(A = 1,
-                         SABL = 15))
+                "SAPX", "SAKE", "SASC")
+    date_cols <- "SADAT"
+    expected_vals <- list(A = 1,
+                         SABL = 15)
 
-})
 
-test_that("SOIL ANALYSIS multiple use_std_fmt",{
+    # Check for all missing variables
+    for(nm in names(actual)){
+      if("missing" %in% objects() && nm %in% missing){
+        if(exists("char_cols") && nm %in% char_cols){
+          na_val <- NA_character_
+        }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+          na_val <- as.POSIXct(NA, tz="UTC")
+        }else{
+          na_val <- NA_real_
+        }
+        if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+          expect_equal(unlist(actual[[nm]]),
+                       rep(na_val, length(unlist(actual[[nm]]))),
+                       info = paste0(info_prefix, ": ", nm))
+        }else{
+          expect_equal(actual[[nm]],
+                       rep(na_val, nrow(actual)),
+                       info = paste0(info_prefix, ": ", nm))
+        }
+      }
+    }
 
-  withr::with_file("TEST0000.CRX",{
+    # Check for specific expected values
+    if("expected_vals" %in% objects() && !is.null(expected_vals)){
+      for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+
+    # Check list column type and dimensions
+    if("list_cols" %in% objects() && !is.null(list_cols)){
+      for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+        if(exists("list_col_length") && !is.null(list_col_length)){
+          if(length(list_col_length) == 1){
+            list_col_length <- rep(list_col_length, length(actual[[nm]]))
+          }
+          for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                         list_col_length[i],
+                         info = paste0(info_prefix, nm))
+          }
+        }
+        if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+          for(i in 1:nrow(actual)){
+            for(g in 1:length(list_col_groups)){
+              length_range <- range(
+                sapply(actual[i,][list_col_groups[[g]]],
+                       function(x)length(unlist(x)))
+              )
+              lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                           length_range[2],
+                           info = paste0(info_prefix, ": ", lbl))
+            }
+          }
+        }
+      }
+    }
+    for(arg in c("char_cols", "list_cols", "date_cols",
+                 "missing", "list_col_length",
+                 "list_col_groups", "expected_vals")){
+      if(arg %in% objects()) rm(list = arg)
+    }
+
+# "SOIL ANALYSIS multiple use_std_fmt"
+
+  test0000_crx <- tempfile()
+
     write(
       c("*SOIL ANALYSIS",
         "@A SADAT  SMHB  SMPX  SMKE  SANAME",
@@ -359,24 +966,24 @@ test_that("SOIL ANALYSIS multiple use_std_fmt",{
         " 4    60   -99   .35   -99   -99   -99   2.3   -99   .34",
         " 4    90   -99   .34   -99   -99   -99   2.3   -99   .33"
       ),
-      "TEST0000.CRX")
+      test0000_crx)
 
-    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
+    filex <- DSSAT::read_filex(test0000_crx, use_std_fmt = TRUE)
 
-  })
+file.remove(test0000_crx)
 
-  test_cols_check(
-    filex$`SOIL ANALYSIS`,
-    char_cols = c("SMHB", "SMPX", "SMKE", "SANAME"),
-    missing = c("SMHB", "SMKE", "SANAME", "SADM", "SANI",
-                "SAPHW", "SAPHB", "SAKE"),
-    date_cols = "SADAT",
-    list_cols = c("SABL", "SADM", "SAOC", "SANI", "SAPHW",
-                  "SAPHB", "SAPX", "SAKE", "SASC"),
-    list_col_groups = list(c("SABL", "SADM", "SAOC", "SANI",
+  info_prefix <- "SOIL ANALYSIS multiple use_std_fmt"
+    actual <- filex[["SOIL ANALYSIS"]]
+    char_cols <- c("SMHB", "SMPX", "SMKE", "SANAME")
+    missing <- c("SMHB", "SMKE", "SANAME", "SADM", "SANI",
+                "SAPHW", "SAPHB", "SAKE")
+    date_cols <- "SADAT"
+    list_cols <- c("SABL", "SADM", "SAOC", "SANI", "SAPHW",
+                  "SAPHB", "SAPX", "SAKE", "SASC")
+    list_col_groups <- list(c("SABL", "SADM", "SAOC", "SANI",
                              "SAPHW", "SAPHB", "SAPX", "SAKE",
-                             "SASC")),
-    expected_vals = list(A = 1:4,
+                             "SASC"))
+    expected_vals <- list(A = 1:4,
                          SADAT = as.POSIXct(rep("03283", 4),
                                             format = "%y%j",
                                             tz = "UTC"),
@@ -397,13 +1004,81 @@ test_that("SOIL ANALYSIS multiple use_std_fmt",{
                                      c(.47, .43, .34, .34, .33),
                                      c(.47, .43, .34, .34, .33),
                                      c(.47, .43, .34, .34, .33))
-                         ))
+                         )
 
-})
 
-test_that("INITIAL CONDITIONS one level - no missing use_std_fmt",{
+    # Check for all missing variables
+    for(nm in names(actual)){
+      if("missing" %in% objects() && nm %in% missing){
+        if(exists("char_cols") && nm %in% char_cols){
+          na_val <- NA_character_
+        }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+          na_val <- as.POSIXct(NA, tz="UTC")
+        }else{
+          na_val <- NA_real_
+        }
+        if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+          expect_equal(unlist(actual[[nm]]),
+                       rep(na_val, length(unlist(actual[[nm]]))),
+                       info = paste0(info_prefix, ": ", nm))
+        }else{
+          expect_equal(actual[[nm]],
+                       rep(na_val, nrow(actual)),
+                       info = paste0(info_prefix, ": ", nm))
+        }
+      }
+    }
 
-  withr::with_file("TEST0000.CRX",{
+    # Check for specific expected values
+    if("expected_vals" %in% objects() && !is.null(expected_vals)){
+      for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+
+    # Check list column type and dimensions
+    if("list_cols" %in% objects() && !is.null(list_cols)){
+      for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+        if(exists("list_col_length") && !is.null(list_col_length)){
+          if(length(list_col_length) == 1){
+            list_col_length <- rep(list_col_length, length(actual[[nm]]))
+          }
+          for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                         list_col_length[i],
+                         info = paste0(info_prefix, nm))
+          }
+        }
+        if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+          for(i in 1:nrow(actual)){
+            for(g in 1:length(list_col_groups)){
+              length_range <- range(
+                sapply(actual[i,][list_col_groups[[g]]],
+                       function(x)length(unlist(x)))
+              )
+              lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                           length_range[2],
+                           info = paste0(info_prefix, ": ", lbl))
+            }
+          }
+        }
+      }
+    }
+    for(arg in c("char_cols", "list_cols", "date_cols",
+                 "missing", "list_col_length",
+                 "list_col_groups", "expected_vals")){
+      if(arg %in% objects()) rm(list = arg)
+    }
+
+# "INITIAL CONDITIONS one level - no missing use_std_fmt"
+
+  test0000_crx <- tempfile()
+
     write(
       c("*INITIAL CONDITIONS",
         "@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME",
@@ -415,47 +1090,114 @@ test_that("INITIAL CONDITIONS one level - no missing use_std_fmt",{
         " 1   120  .406   .24   2.4",
         " 1   150  .406   .24   2.4",
         " 1   180  .406   .24   2.4"),
-      "TEST0000.CRX")
+      test0000_crx)
 
-    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
+    filex <- DSSAT::read_filex(test0000_crx, use_std_fmt = TRUE)
 
-  })
+file.remove(test0000_crx)
 
-  test_cols_check(
-             filex$`INITIAL CONDITIONS`,
-             char_cols = c("PCR", "ICNAME"),
-             list_cols = c("ICBL","SH2O","SNH4","SNO3"),
-             date_cols = "ICDAT",
-             list_col_length = 6,
-             list_col_groups = list(c("ICBL","SH2O","SNH4","SNO3")),
-             expected_vals = list(C = 1,
-                                  PCR = "SB",
-                                  ICDAT = as.POSIXct("1956070", format = "%Y%j", tz="UTC"),
-                                  ICRT = 1200,
-                                  ICND = 0,
-                                  ICRN = 1,
-                                  ICRE = 1,
-                                  ICWD = 3,
-                                  ICRES = 1000,
-                                  ICREN = 0.8,
-                                  ICREP = 0,
-                                  ICRIP = 100,
-                                  ICRID = 15,
-                                  ICNAME = "TEST",
-                                  ICBL = list(c(30, 60, 90,
-                                                120, 150, 180)),
-                                  SH2O = list(c(0.406, 0.406, 0.406,
-                                                0.406, 0.406, 0.406)),
-                                  SNH4 = list(c(1.78, 0.82, 0.24,
-                                                0.24, 0.24, 0.24)),
-                                  SNO3 = list(c(17.8, 8.2, 2.4,
-                                                2.4, 2.4, 2.4))))
+  info_prefix <- "INITIAL CONDITIONS one level - no missing use_std_fmt"
+  actual <- filex[["INITIAL CONDITIONS"]]
+  char_cols <- c("PCR", "ICNAME")
+  list_cols <- c("ICBL","SH2O","SNH4","SNO3")
+  date_cols <- "ICDAT"
+  list_col_length <- 6
+  list_col_groups <- list(c("ICBL","SH2O","SNH4","SNO3"))
+  expected_vals <- list(C = 1,
+                        PCR = "SB",
+                        ICDAT = as.POSIXct("1956070", format = "%Y%j", tz="UTC"),
+                        ICRT = 1200,
+                        ICND = 0,
+                        ICRN = 1,
+                        ICRE = 1,
+                        ICWD = 3,
+                        ICRES = 1000,
+                        ICREN = 0.8,
+                        ICREP = 0,
+                        ICRIP = 100,
+                        ICRID = 15,
+                        ICNAME = "TEST",
+                        ICBL = list(c(30, 60, 90,
+                                      120, 150, 180)),
+                        SH2O = list(c(0.406, 0.406, 0.406,
+                                      0.406, 0.406, 0.406)),
+                        SNH4 = list(c(1.78, 0.82, 0.24,
+                                      0.24, 0.24, 0.24)),
+                        SNO3 = list(c(17.8, 8.2, 2.4,
+                                      2.4, 2.4, 2.4)))
 
-})
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                     rep(na_val, length(unlist(actual[[nm]]))),
+                     info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
 
-test_that("INITIAL CONDITIONS one level - missing use_std_fmt",{
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+      expect_equal(actual[[nm]],
+                   expected_vals[[nm]],
+                   info = paste0(info_prefix, ": ", nm))
+    }
+  }
 
-  withr::with_file("TEST0000.CRX",{
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+      expect_true(is.list(actual[[nm]]),
+                  info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+          expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+            )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+            expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
+
+# "INITIAL CONDITIONS one level - missing use_std_fmt"
+
+  test0000_crx <- tempfile()
+
     write(
       c("*INITIAL CONDITIONS",
         "@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME",
@@ -467,31 +1209,98 @@ test_that("INITIAL CONDITIONS one level - missing use_std_fmt",{
         " 1   120   -99   -99   -99",
         " 1   150   -99   -99   -99",
         " 1   180   -99   -99   -99"),
-      "TEST0000.CRX")
+      test0000_crx)
 
-    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
+    filex <- DSSAT::read_filex(test0000_crx, use_std_fmt = TRUE)
 
-  })
-
-  test_cols_check(
-    filex$`INITIAL CONDITIONS`,
-    char_cols = c("PCR", "ICNAME"),
-    list_cols = c("ICBL","SH2O","SNH4","SNO3"),
-    date_cols = "ICDAT",
-    missing = c("PCR", "ICDAT", "ICRT", "ICND",
+  info_prefix <- "INITIAL CONDITIONS one level - missing use_std_fmt"
+    actual <- filex[["INITIAL CONDITIONS"]]
+    char_cols <- c("PCR", "ICNAME")
+    list_cols <- c("ICBL","SH2O","SNH4","SNO3")
+    date_cols <- "ICDAT"
+    missing <- c("PCR", "ICDAT", "ICRT", "ICND",
                 "ICRN", "ICRE", "ICWD", "ICRES",
                 "ICREN", "ICREP", "ICRIP", "ICRID",
-                "ICNAME", "SH2O", "SNH4", "SNO3"),
-    list_col_length = 6,
-    list_col_groups = list(c("ICBL","SH2O","SNH4","SNO3")),
-    expected_vals = list(C = 1,
+                "ICNAME", "SH2O", "SNH4", "SNO3")
+    list_col_length <- 6
+    list_col_groups <- list(c("ICBL","SH2O","SNH4","SNO3"))
+    expected_vals <- list(C = 1,
                          ICBL = list(c(30, 60, 90,
-                                       120, 150, 180))))
-  })
+                                       120, 150, 180)))
+    # Check for all missing variables
+    for(nm in names(actual)){
+      if("missing" %in% objects() && nm %in% missing){
+        if(exists("char_cols") && nm %in% char_cols){
+          na_val <- NA_character_
+        }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+          na_val <- as.POSIXct(NA, tz="UTC")
+        }else{
+          na_val <- NA_real_
+        }
+        if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+          expect_equal(unlist(actual[[nm]]),
+                       rep(na_val, length(unlist(actual[[nm]]))),
+                       info = paste0(info_prefix, ": ", nm))
+        }else{
+          expect_equal(actual[[nm]],
+                       rep(na_val, nrow(actual)),
+                       info = paste0(info_prefix, ": ", nm))
+        }
+      }
+    }
 
-test_that("Two levels - no missing data use_std_fmt",{
+    # Check for specific expected values
+    if("expected_vals" %in% objects() && !is.null(expected_vals)){
+      for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
 
-  withr::with_file("TEST0000.CRX",{
+    # Check list column type and dimensions
+    if("list_cols" %in% objects() && !is.null(list_cols)){
+      for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+        if(exists("list_col_length") && !is.null(list_col_length)){
+          if(length(list_col_length) == 1){
+            list_col_length <- rep(list_col_length, length(actual[[nm]]))
+          }
+          for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                         list_col_length[i],
+                         info = paste0(info_prefix, nm))
+          }
+        }
+        if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+          for(i in 1:nrow(actual)){
+            for(g in 1:length(list_col_groups)){
+              length_range <- range(
+                sapply(actual[i,][list_col_groups[[g]]],
+                       function(x)length(unlist(x)))
+              )
+              lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                           length_range[2],
+                           info = paste0(info_prefix, ": ", lbl))
+            }
+          }
+        }
+      }
+    }
+    for(arg in c("char_cols", "list_cols", "date_cols",
+                 "missing", "list_col_length",
+                 "list_col_groups", "expected_vals")){
+      if(arg %in% objects()) rm(list = arg)
+    }
+
+file.remove(test0000_crx)
+
+# "Two levels - no missing data use_std_fmt"
+
+  test0000_crx <- tempfile()
+
     write(
       c("*INITIAL CONDITIONS",
         "@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME",
@@ -511,20 +1320,20 @@ test_that("Two levels - no missing data use_std_fmt",{
         " 2    90  .406   .24   2.4",
         " 2   120  .406   .24   2.4",
         " 2   150  .406   .24   2.4"),
-      "TEST0000.CRX")
+      test0000_crx)
 
-    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
+    filex <- DSSAT::read_filex(test0000_crx, use_std_fmt = TRUE)
 
-  })
+file.remove(test0000_crx)
 
-  test_cols_check(
-    filex$`INITIAL CONDITIONS`,
-    char_cols = c("PCR", "ICNAME"),
-    list_cols = c("ICBL","SH2O","SNH4","SNO3"),
-    date_cols = "ICDAT",
-    list_col_length = c(6,5),
-    list_col_groups = list(c("ICBL","SH2O","SNH4","SNO3")),
-    expected_vals = list(C = 1:2,
+  info_prefix <- "Two levels - no missing data use_std_fmt"
+    actual <- filex[["INITIAL CONDITIONS"]]
+    char_cols <- c("PCR", "ICNAME")
+    list_cols <- c("ICBL","SH2O","SNH4","SNO3")
+    date_cols <- "ICDAT"
+    list_col_length <- c(6,5)
+    list_col_groups <- list(c("ICBL","SH2O","SNH4","SNO3"))
+    expected_vals <- list(C = 1:2,
                          PCR = rep("SB",2),
                          ICDAT = rep(as.POSIXct("1956070", format = "%Y%j", tz="UTC"),2),
                          ICRT = rep(1200,2),
@@ -553,13 +1362,80 @@ test_that("Two levels - no missing data use_std_fmt",{
                          SNO3 = list(c(17.8, 8.2, 2.4,
                                        2.4, 2.4, 2.4),
                                      c(17.8, 8.2, 2.4,
-                                       2.4, 2.4))))
+                                       2.4, 2.4)))
 
-})
+    # Check for all missing variables
+    for(nm in names(actual)){
+      if("missing" %in% objects() && nm %in% missing){
+        if(exists("char_cols") && nm %in% char_cols){
+          na_val <- NA_character_
+        }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+          na_val <- as.POSIXct(NA, tz="UTC")
+        }else{
+          na_val <- NA_real_
+        }
+        if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+          expect_equal(unlist(actual[[nm]]),
+                       rep(na_val, length(unlist(actual[[nm]]))),
+                       info = paste0(info_prefix, ": ", nm))
+        }else{
+          expect_equal(actual[[nm]],
+                       rep(na_val, nrow(actual)),
+                       info = paste0(info_prefix, ": ", nm))
+        }
+      }
+    }
 
-test_that("INITIAL CONDITIONS two levels - missing use_std_fmt",{
+    # Check for specific expected values
+    if("expected_vals" %in% objects() && !is.null(expected_vals)){
+      for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
 
-  withr::with_file("TEST0000.CRX",{
+    # Check list column type and dimensions
+    if("list_cols" %in% objects() && !is.null(list_cols)){
+      for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+        if(exists("list_col_length") && !is.null(list_col_length)){
+          if(length(list_col_length) == 1){
+            list_col_length <- rep(list_col_length, length(actual[[nm]]))
+          }
+          for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                         list_col_length[i],
+                         info = paste0(info_prefix, nm))
+          }
+        }
+        if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+          for(i in 1:nrow(actual)){
+            for(g in 1:length(list_col_groups)){
+              length_range <- range(
+                sapply(actual[i,][list_col_groups[[g]]],
+                       function(x)length(unlist(x)))
+              )
+              lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                           length_range[2],
+                           info = paste0(info_prefix, ": ", lbl))
+            }
+          }
+        }
+      }
+    }
+    for(arg in c("char_cols", "list_cols", "date_cols",
+                 "missing", "list_col_length",
+                 "list_col_groups", "expected_vals")){
+      if(arg %in% objects()) rm(list = arg)
+    }
+
+# "INITIAL CONDITIONS two levels - missing use_std_fmt"
+
+  test0000_crx <- tempfile()
+
     write(
       c("*INITIAL CONDITIONS",
         "@C   PCR ICDAT  ICRT  ICND  ICRN  ICRE  ICWD ICRES ICREN ICREP ICRIP ICRID ICNAME",
@@ -579,30 +1455,96 @@ test_that("INITIAL CONDITIONS two levels - missing use_std_fmt",{
         " 2    90   -99   -99   -99",
         " 2   120   -99   -99   -99",
         " 2   150   -99   -99   -99"),
-      "TEST0000.CRX")
+      test0000_crx)
 
-    filex <- DSSAT::read_filex("TEST0000.CRX", use_std_fmt = TRUE)
+    filex <- DSSAT::read_filex(test0000_crx, use_std_fmt = TRUE)
 
-  })
+file.remove(test0000_crx)
 
-  test_cols_check(
-    filex$`INITIAL CONDITIONS`,
-    char_cols = c("PCR", "ICNAME"),
-    list_cols = c("ICBL","SH2O","SNH4","SNO3"),
-    date_cols = "ICDAT",
-    missing = c("PCR", "ICDAT", "ICRT", "ICND",
+  info_prefix <- "INITIAL CONDITIONS two levels - missing use_std_fmt"
+    actual <- filex[["INITIAL CONDITIONS"]]
+    char_cols <- c("PCR", "ICNAME")
+    list_cols <- c("ICBL","SH2O","SNH4","SNO3")
+    date_cols <- "ICDAT"
+    missing <- c("PCR", "ICDAT", "ICRT", "ICND",
                 "ICRN", "ICRE", "ICWD", "ICRES",
                 "ICREN", "ICREP", "ICRIP", "ICRID",
-                "ICNAME", "SH2O", "SNH4", "SNO3"),
-    list_col_length = c(6, 5),
-    list_col_groups = list(c("ICBL","SH2O","SNH4","SNO3")),
-    expected_vals = list(C = 1:2,
+                "ICNAME", "SH2O", "SNH4", "SNO3")
+    list_col_length <- c(6, 5)
+    list_col_groups <- list(c("ICBL","SH2O","SNH4","SNO3"))
+    expected_vals <- list(C = 1:2,
                          ICBL = list(c(30, 60, 90,
                                        120, 150, 180),
                                      c(30, 60, 90,
-                                       120, 150))))
-})
+                                       120, 150)))
 
+    # Check for all missing variables
+    for(nm in names(actual)){
+      if("missing" %in% objects() && nm %in% missing){
+        if(exists("char_cols") && nm %in% char_cols){
+          na_val <- NA_character_
+        }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+          na_val <- as.POSIXct(NA, tz="UTC")
+        }else{
+          na_val <- NA_real_
+        }
+        if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+          expect_equal(unlist(actual[[nm]]),
+                       rep(na_val, length(unlist(actual[[nm]]))),
+                       info = paste0(info_prefix, ": ", nm))
+        }else{
+          expect_equal(actual[[nm]],
+                       rep(na_val, nrow(actual)),
+                       info = paste0(info_prefix, ": ", nm))
+        }
+      }
+    }
+
+    # Check for specific expected values
+    if("expected_vals" %in% objects() && !is.null(expected_vals)){
+      for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+
+    # Check list column type and dimensions
+    if("list_cols" %in% objects() && !is.null(list_cols)){
+      for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+        if(exists("list_col_length") && !is.null(list_col_length)){
+          if(length(list_col_length) == 1){
+            list_col_length <- rep(list_col_length, length(actual[[nm]]))
+          }
+          for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                         list_col_length[i],
+                         info = paste0(info_prefix, nm))
+          }
+        }
+        if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+          for(i in 1:nrow(actual)){
+            for(g in 1:length(list_col_groups)){
+              length_range <- range(
+                sapply(actual[i,][list_col_groups[[g]]],
+                       function(x)length(unlist(x)))
+              )
+              lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                           length_range[2],
+                           info = paste0(info_prefix, ": ", lbl))
+            }
+          }
+        }
+      }
+    }
+    for(arg in c("char_cols", "list_cols", "date_cols",
+                 "missing", "list_col_length",
+                 "list_col_groups", "expected_vals")){
+      if(arg %in% objects()) rm(list = arg)
+    }
 
 # test_that("PLANTING DETAILS - single use_std_fmt",{
 #
@@ -615,8 +1557,8 @@ test_that("INITIAL CONDITIONS two levels - missing use_std_fmt",{
 #
 #   })
 #
-#   test_cols_check(
-#     filex$`PLANTING DETAILS`,
+# info_prefix <- "GENERAL use_std_fmt"
+#  actual <- filex$`PLANTING
 #     char_cols = c(),
 #     list_cols = c(),
 #     date_cols = "",

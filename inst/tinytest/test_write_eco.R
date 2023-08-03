@@ -1,4 +1,4 @@
-test_that("write_eco() ALFRM048.ECO", {
+# "write_eco() ALFRM048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/ALFRM048_ECO.R",
@@ -11,16 +11,18 @@ test_that("write_eco() ALFRM048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/ALFRM048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() ALFRM048.ECO")
 
-})
 
-test_that("write_eco() BACER048.ECO", {
+# "write_eco() BACER048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/BACER048_ECO.R",
@@ -33,16 +35,18 @@ test_that("write_eco() BACER048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/BACER048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() BACER048.ECO")
 
-})
 
-test_that("write_eco() BACRP048.ECO", {
+# "write_eco() BACRP048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/BACRP048_ECO.R",
@@ -55,16 +59,18 @@ test_that("write_eco() BACRP048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/BACRP048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() BACRP048.ECO")
 
-})
 
-test_that("write_eco() BHGRO048.ECO", {
+# "write_eco() BHGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/BHGRO048_ECO.R",
@@ -77,16 +83,18 @@ test_that("write_eco() BHGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/BHGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() BHGRO048.ECO")
 
-})
 
-test_that("write_eco() BMFRM048.ECO", {
+# "write_eco() BMFRM048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/BMFRM048_ECO.R",
@@ -99,16 +107,18 @@ test_that("write_eco() BMFRM048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/BMFRM048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() BMFRM048.ECO")
 
-})
 
-test_that("write_eco() BNGRO048.ECO", {
+# "write_eco() BNGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/BNGRO048_ECO.R",
@@ -121,16 +131,18 @@ test_that("write_eco() BNGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/BNGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() BNGRO048.ECO")
 
-})
 
-test_that("write_eco() BRFRM048.ECO", {
+# "write_eco() BRFRM048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/BRFRM048_ECO.R",
@@ -143,16 +155,18 @@ test_that("write_eco() BRFRM048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/BRFRM048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() BRFRM048.ECO")
 
-})
 
-test_that("write_eco() BRGRO048.ECO", {
+# "write_eco() BRGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/BRGRO048_ECO.R",
@@ -165,16 +179,18 @@ test_that("write_eco() BRGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/BRGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() BRGRO048.ECO")
 
-})
 
-test_that("write_eco() BSCER048.ECO", {
+# "write_eco() BSCER048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/BSCER048_ECO.R",
@@ -187,16 +203,18 @@ test_that("write_eco() BSCER048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/BSCER048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() BSCER048.ECO")
 
-})
 
-test_that("write_eco() CBGRO048.ECO", {
+# "write_eco() CBGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/CBGRO048_ECO.R",
@@ -209,16 +227,18 @@ test_that("write_eco() CBGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/CBGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() CBGRO048.ECO")
 
-})
 
-test_that("write_eco() CHGRO048.ECO", {
+# "write_eco() CHGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/CHGRO048_ECO.R",
@@ -231,16 +251,18 @@ test_that("write_eco() CHGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/CHGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() CHGRO048.ECO")
 
-})
 
-test_that("write_eco() CIGRO048.ECO", {
+# "write_eco() CIGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/CIGRO048_ECO.R",
@@ -253,16 +275,18 @@ test_that("write_eco() CIGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/CIGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() CIGRO048.ECO")
 
-})
 
-test_that("write_eco() CNGRO048.ECO", {
+# "write_eco() CNGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/CNGRO048_ECO.R",
@@ -275,16 +299,18 @@ test_that("write_eco() CNGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/CNGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() CNGRO048.ECO")
 
-})
 
-test_that("write_eco() COGRO048.ECO", {
+# "write_eco() COGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/COGRO048_ECO.R",
@@ -297,16 +323,18 @@ test_that("write_eco() COGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/COGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() COGRO048.ECO")
 
-})
 
-test_that("write_eco() CPGRO048.ECO", {
+# "write_eco() CPGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/CPGRO048_ECO.R",
@@ -319,16 +347,18 @@ test_that("write_eco() CPGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/CPGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() CPGRO048.ECO")
 
-})
 
-test_that("write_eco() CSCAS048.ECO", {
+# "write_eco() CSCAS048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/CSCAS048_ECO.R",
@@ -341,16 +371,18 @@ test_that("write_eco() CSCAS048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/CSCAS048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() CSCAS048.ECO")
 
-})
 
-test_that("write_eco() CSYCA048.ECO", {
+# "write_eco() CSYCA048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/CSYCA048_ECO.R",
@@ -363,16 +395,18 @@ test_that("write_eco() CSYCA048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/CSYCA048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() CSYCA048.ECO")
 
-})
 
-test_that("write_eco() FBGRO048.ECO", {
+# "write_eco() FBGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/FBGRO048_ECO.R",
@@ -385,16 +419,18 @@ test_that("write_eco() FBGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/FBGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() FBGRO048.ECO")
 
-})
 
-test_that("write_eco() G0GRO048.ECO", {
+# "write_eco() G0GRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/G0GRO048_ECO.R",
@@ -407,16 +443,18 @@ test_that("write_eco() G0GRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/G0GRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() G0GRO048.ECO")
 
-})
 
-test_that("write_eco() GBGRO048.ECO", {
+# "write_eco() GBGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/GBGRO048_ECO.R",
@@ -429,16 +467,18 @@ test_that("write_eco() GBGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/GBGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() GBGRO048.ECO")
 
-})
 
-test_that("write_eco() GGFRM048.ECO", {
+# "write_eco() GGFRM048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/GGFRM048_ECO.R",
@@ -451,16 +491,18 @@ test_that("write_eco() GGFRM048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/GGFRM048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() GGFRM048.ECO")
 
-})
 
-test_that("write_eco() MLCER048.ECO", {
+# "write_eco() MLCER048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/MLCER048_ECO.R",
@@ -473,16 +515,18 @@ test_that("write_eco() MLCER048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/MLCER048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() MLCER048.ECO")
 
-})
 
-test_that("write_eco() MZCER048.ECO", {
+# "write_eco() MZCER048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/MZCER048_ECO.R",
@@ -495,16 +539,18 @@ test_that("write_eco() MZCER048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/MZCER048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() MZCER048.ECO")
 
-})
 
-test_that("write_eco() MZIXM048.ECO", {
+# "write_eco() MZIXM048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/MZIXM048_ECO.R",
@@ -517,16 +563,18 @@ test_that("write_eco() MZIXM048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/MZIXM048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() MZIXM048.ECO")
 
-})
 
-test_that("write_eco() PNGRO048.ECO", {
+# "write_eco() PNGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/PNGRO048_ECO.R",
@@ -539,16 +587,18 @@ test_that("write_eco() PNGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/PNGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() PNGRO048.ECO")
 
-})
 
-test_that("write_eco() PPGRO048.ECO", {
+# "write_eco() PPGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/PPGRO048_ECO.R",
@@ -561,16 +611,18 @@ test_that("write_eco() PPGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/PPGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() PPGRO048.ECO")
 
-})
 
-test_that("write_eco() PRGRO048.ECO", {
+# "write_eco() PRGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/PRGRO048_ECO.R",
@@ -583,16 +635,18 @@ test_that("write_eco() PRGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/PRGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() PRGRO048.ECO")
 
-})
 
-test_that("write_eco() PTSUB048.ECO", {
+# "write_eco() PTSUB048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/PTSUB048_ECO.R",
@@ -605,16 +659,18 @@ test_that("write_eco() PTSUB048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/PTSUB048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() PTSUB048.ECO")
 
-})
 
-test_that("write_eco() QUGRO048.ECO", {
+# "write_eco() QUGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/QUGRO048_ECO.R",
@@ -627,16 +683,18 @@ test_that("write_eco() QUGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/QUGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() QUGRO048.ECO")
 
-})
 
-test_that("write_eco() SBGRO048.ECO", {
+# "write_eco() SBGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/SBGRO048_ECO.R",
@@ -649,16 +707,18 @@ test_that("write_eco() SBGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/SBGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() SBGRO048.ECO")
 
-})
 
-test_that("write_eco() SCCAN048.ECO", {
+# "write_eco() SCCAN048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/SCCAN048_ECO.R",
@@ -671,16 +731,18 @@ test_that("write_eco() SCCAN048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/SCCAN048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() SCCAN048.ECO")
 
-})
 
-test_that("write_eco() SCCSP048.ECO", {
+# "write_eco() SCCSP048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/SCCSP048_ECO.R",
@@ -693,16 +755,18 @@ test_that("write_eco() SCCSP048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/SCCSP048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() SCCSP048.ECO")
 
-})
 
-test_that("write_eco() SCSAM048.ECO", {
+# "write_eco() SCSAM048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/SCSAM048_ECO.R",
@@ -715,16 +779,18 @@ test_that("write_eco() SCSAM048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/SCSAM048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() SCSAM048.ECO")
 
-})
 
-test_that("write_eco() SFGRO048.ECO", {
+# "write_eco() SFGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/SFGRO048_ECO.R",
@@ -737,16 +803,18 @@ test_that("write_eco() SFGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/SFGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() SFGRO048.ECO")
 
-})
 
-test_that("write_eco() SGCER048.ECO", {
+# "write_eco() SGCER048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/SGCER048_ECO.R",
@@ -759,16 +827,18 @@ test_that("write_eco() SGCER048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/SGCER048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() SGCER048.ECO")
 
-})
 
-test_that("write_eco() SUGRO048.ECO", {
+# "write_eco() SUGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/SUGRO048_ECO.R",
@@ -781,16 +851,18 @@ test_that("write_eco() SUGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/SUGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() SUGRO048.ECO")
 
-})
 
-test_that("write_eco() SUOIL048.ECO", {
+# "write_eco() SUOIL048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/SUOIL048_ECO.R",
@@ -803,16 +875,18 @@ test_that("write_eco() SUOIL048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/SUOIL048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() SUOIL048.ECO")
 
-})
 
-test_that("write_eco() SWCER048.ECO", {
+# "write_eco() SWCER048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/SWCER048_ECO.R",
@@ -825,16 +899,18 @@ test_that("write_eco() SWCER048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/SWCER048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() SWCER048.ECO")
 
-})
 
-test_that("write_eco() TFAPS048.ECO", {
+# "write_eco() TFAPS048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/TFAPS048_ECO.R",
@@ -847,16 +923,18 @@ test_that("write_eco() TFAPS048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/TFAPS048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() TFAPS048.ECO")
 
-})
 
-test_that("write_eco() TMGRO048.ECO", {
+# "write_eco() TMGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/TMGRO048_ECO.R",
@@ -869,16 +947,18 @@ test_that("write_eco() TMGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/TMGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() TMGRO048.ECO")
 
-})
 
-test_that("write_eco() VBGRO048.ECO", {
+# "write_eco() VBGRO048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/VBGRO048_ECO.R",
@@ -891,16 +971,18 @@ test_that("write_eco() VBGRO048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/VBGRO048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() VBGRO048.ECO")
 
-})
 
-test_that("write_eco() WHAPS048.ECO", {
+# "write_eco() WHAPS048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/WHAPS048_ECO.R",
@@ -913,16 +995,18 @@ test_that("write_eco() WHAPS048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/WHAPS048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() WHAPS048.ECO")
 
-})
 
-test_that("write_eco() WHCER048.ECO", {
+# "write_eco() WHCER048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/WHCER048_ECO.R",
@@ -935,16 +1019,18 @@ test_that("write_eco() WHCER048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/WHCER048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() WHCER048.ECO")
 
-})
 
-test_that("write_eco() WHCRP048.ECO", {
+# "write_eco() WHCRP048.ECO"
 
   eco <- dget(
     system.file("extdata/test_data/write_eco/WHCRP048_ECO.R",
@@ -957,14 +1043,16 @@ test_that("write_eco() WHCRP048.ECO", {
 
   actual <- readLines(actual_file)
 
+  file.remove(actual_file)
+
   expected <- readLines(
     system.file("extdata/test_data/write_eco/WHCRP048.ECO",
                 package = "DSSAT")
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "write_eco() WHCRP048.ECO")
 
-})
 
 # Code used to create tests (for posterity):
 if(FALSE){
