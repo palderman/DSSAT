@@ -293,6 +293,10 @@ cul_v_fmt <- function(cul_file){
               LAFR = "%6.2f", SHWTS = "%6.1f", "G#WTS" = "%6.1f",
               GWTS = "%6.0f")
 
+  }else{
+    warning(paste0("v_fmt not found for model_code = ", model_code,
+                   "\n extracted from cul_file = ", cul_file))
+    v_fmt <- NULL
   }
   return(v_fmt)
 }

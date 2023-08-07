@@ -2,7 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
-test_data/*
+private_test_data/*
 *.OUT
 *.WTH
 *.*X

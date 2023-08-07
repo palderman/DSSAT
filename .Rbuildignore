@@ -1,7 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 manuscript
-test_data
+private_test_data
 prmest_r3FGoogY
 issues
 cran-comments.md
