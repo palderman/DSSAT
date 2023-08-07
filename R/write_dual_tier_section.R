@@ -1,7 +1,45 @@
-#' @importFrom dplyr "%>%" ungroup select_if select filter_at matches
-#' @importFrom tidyr unnest
-#' @importFrom purrr map pmap
-write_dual_tier_section <- function(section,pad_name=NULL,drop_duplicate_rows=TRUE){
+sub_test_func <- function(.x){
+  if(is.list(.x)){
+    test_out <- unlist(lapply(.x, function(.y) !is.null(.y) & any(!is.na(.y))))
+  }else{
+    test_out <- !is.na(.x)
+  }
+  return(test_out)
+}
+
+write_sub_tier <- function(section, sub_tier_info, sub_v_fmt,
+                           pad_name, drop_duplicate_rows){
+
+  sub_tier <- vector(mode = "list", length = nrow(section))
+
+  sub_names <- grep('^[A-Z]$', sub_tier_info, value = TRUE)
+  sub_filter <- do.call(
+    Reduce,
+    list(
+      lapply(section[, sub_names, drop = FALSE],
+             sub_test_func),
+      f = `&`
+    )
+  )
+
+  for(i in 1:nrow(section)){
+    if(sub_filter[i]){
+      sub_sec <- invert_collapse_rows(section[i, sub_tier_info, drop = FALSE])
+      attr(sub_sec, "tier_info") <- list(sub_tier_info)
+      attr(sub_sec, "v_fmt") <- sub_v_fmt
+      sub_tier[[i]] <- write_tier(sub_sec,
+                                  pad_name = pad_name,
+                                  drop_duplicate_rows = drop_duplicate_rows)
+    }else{
+      sub_tier[[i]] <- NULL
+    }
+  }
+
+  return(sub_tier)
+
+}
+
+write_dual_tier_section <- function(section, pad_name=NULL, drop_duplicate_rows=TRUE){
 
   tier_info <- attr(section,'tier_info')
 
@@ -11,26 +49,12 @@ write_dual_tier_section <- function(section,pad_name=NULL,drop_duplicate_rows=TR
 
   v_fmt <- attr(section,'v_fmt')
 
-  list_cols <- section %>%
-    ungroup %>%
-    select_if(is.list) %>%
-    colnames()
-
-  first_tier <- 1:nrow(section) %>%
-    map(function(i){
-      sub_sec <- section[i,] %>%
-        select(tier_info[[1]]) %>%
-        filter_at(vars(matches('^[A-Z]$')),~{!is.na(.)})
-      if(nrow(sub_sec) > 0){
-        tier_out <- sub_sec %>%
-        {attr(.,'tier_info') <- tier_info[1]
-         .} %>%
-        write_tier(.,pad_name=pad_name,drop_duplicate_rows=drop_duplicate_rows)
-      }else{
-        tier_out <- NULL
-      }
-      return(tier_out)
-    })
+  # Write first tier
+  first_tier <- write_sub_tier(section,
+                               sub_tier_info = tier_info[[1]],
+                               sub_v_fmt = v_fmt,
+                               pad_name,
+                               drop_duplicate_rows)
 
   if(length(tier_info) > 1){
 
@@ -48,35 +72,26 @@ write_dual_tier_section <- function(section,pad_name=NULL,drop_duplicate_rows=TR
     #     {.[[1]]}
     # }
 
-    second_tier <- 1:nrow(section) %>%
-      map(function(i){
-        sub_sec <- section[i,] %>%
-          filter_at(vars(matches('^[A-Z]$')),~{!is.na(.)})
-        if(length(list_cols>0)){
-          sub_sec <- sub_sec %>%
-          filter_at(list_cols,any_vars(map_lgl(.,function(x){!is.null(x)&any(!is.na(x))})))
-        }
-        if(nrow(sub_sec) > 0){
-        tier_out <- sub_sec %>%
-          select(tier_info[[2]]) %>%
-          unnest(cols=list_cols) %>%
-          {attr(.,'tier_info') <- tier_info[2]
-           attr(.,'v_fmt') <- v_fmt
-          .} %>%
-          write_tier(.,pad_name=pad_name,drop_duplicate_rows=drop_duplicate_rows)
-        }else{
-          tier_out <- NULL
-        }
-        return(tier_out)
-      })
+
+    # Write second tier
+    second_tier <- write_sub_tier(section,
+                                  sub_tier_info = tier_info[[2]],
+                                  sub_v_fmt = v_fmt,
+                                  pad_name,
+                                  drop_duplicate_rows)
+
   }else{
     second_tier <- ''
   }
 
-  sec_out <- list(first_tier,second_tier) %>%
-      pmap(c) %>%
-      unlist() %>%
-      {.[.!='']}
+  # Drop empty lines
+  sec_out <- grep("^$",
+    unlist(
+      mapply(c, first_tier, second_tier)
+    ),
+    invert = TRUE,
+    value = TRUE
+  )
 
   return(sec_out)
 }
