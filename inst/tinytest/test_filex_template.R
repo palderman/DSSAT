@@ -1,5 +1,5 @@
 
-test_that("filex_template_general()", {
+# "filex_template_general()"
 
   expected <-
     data.frame(
@@ -9,15 +9,16 @@ test_that("filex_template_general()", {
       PLDR = NA_real_, PLSP = NA_real_,
       PLAY = NA_character_, HAREA = NA_real_,
       HRNO = NA_real_, HLEN = NA_real_,
-      HARM = NA_character_, NOTES = list(NA_character_)
-    )
+      HARM = NA_character_)
+
+  expected$NOTES <- list(NA_character_)
 
   expect_identical(
+                   info = "filex_template_general()",
     DSSAT:::filex_template_general(),
     expected)
-})
 
-test_that("filex_template_treatments()", {
+# "filex_template_treatments()"
 
   expected <-
     data.frame(
@@ -28,11 +29,11 @@ test_that("filex_template_treatments()", {
     )
 
   expect_identical(
+                   info = "filex_template_treatments()",
     DSSAT:::filex_template_treatments(),
     expected)
-})
 
-test_that("filex_template_cultivars()", {
+# "filex_template_cultivars()"
 
   expected <-
     data.frame(
@@ -40,11 +41,11 @@ test_that("filex_template_cultivars()", {
     )
 
   expect_identical(
+                   info = "filex_template_cultivars()",
     DSSAT:::filex_template_cultivars(),
     expected)
-})
 
-test_that("filex_template_fields()", {
+# "filex_template_fields()"
 
   expected <-
     data.frame(
@@ -61,11 +62,11 @@ test_that("filex_template_fields()", {
     )
 
   expect_identical(
+                   info = "filex_template_fields()",
     DSSAT:::filex_template_fields(),
     expected)
-})
 
-test_that("filex_template_simulation_controls()", {
+# "filex_template_simulation_controls()"
 
   expected <-
     data.frame(
@@ -114,12 +115,12 @@ test_that("filex_template_simulation_controls()", {
     )
 
   expect_identical(
+                   info = "filex_template_simulation_controls()",
     DSSAT:::filex_template_simulation_controls(),
     expected)
 
-})
 
-test_that("filex_template_fertilizers()", {
+# "filex_template_fertilizers()"
 
   expected <-
     data.frame(
@@ -130,11 +131,11 @@ test_that("filex_template_fertilizers()", {
     )
 
   expect_identical(
+                   info = "filex_template_fertilizers()",
     DSSAT:::filex_template_fertilizers(),
     expected)
-})
 
-test_that("filex_template_planting_details()",{
+# "filex_template_planting_details()"
 
   expected <- data.frame(P = 1,
                          PDATE = as.POSIXct(NA),
@@ -154,12 +155,12 @@ test_that("filex_template_planting_details()",{
                          PLNAME = NA_character_)
 
   expect_identical(
+                   info = "filex_template_planting_details()",
     DSSAT:::filex_template_planting_details(),
     expected)
 
-})
 
-test_that("filex_template()", {
+# "filex_template()"
 
   expected <- list(
     GENERAL = data.frame(
@@ -169,7 +170,7 @@ test_that("filex_template()", {
       PLDR = NA_real_, PLSP = NA_real_,
       PLAY = NA_character_, HAREA = NA_real_,
       HRNO = NA_real_, HLEN = NA_real_,
-      HARM = NA_character_, NOTES = list(NA_character_)
+      HARM = NA_character_
     ),
     TREATMENTS = data.frame(
       N = 1, R = 0, O = 0, C = 0, TNAME = "",
@@ -244,13 +245,14 @@ test_that("filex_template()", {
         FONAME = NA_character_
       )
   )
+  expected$GENERAL$NOTES <- list(NA_character_)
 
   expect_identical(
+                   info = "filex_template()",
     DSSAT:::filex_template(),
     expected)
-})
 
-test_that("filex_template(F = 1)", {
+# "filex_template(F = 1)"
 
   expected <- list(
     GENERAL = data.frame(
@@ -260,7 +262,7 @@ test_that("filex_template(F = 1)", {
       PLDR = NA_real_, PLSP = NA_real_,
       PLAY = NA_character_, HAREA = NA_real_,
       HRNO = NA_real_, HLEN = NA_real_,
-      HARM = NA_character_, NOTES = list(NA_character_)
+      HARM = NA_character_
     ),
     TREATMENTS = data.frame(
       N = 1, R = 0, O = 0, C = 0, TNAME = "",
@@ -342,7 +344,10 @@ test_that("filex_template(F = 1)", {
     )
   )
 
+  expected$GENERAL$NOTES <- list(NA_character_)
+
   expect_identical(
+    info = "filex_template(F = 1)",
     DSSAT:::filex_template(F = 1),
     expected)
-})
+
