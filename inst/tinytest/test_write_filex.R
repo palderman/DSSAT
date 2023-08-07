@@ -1,4 +1,4 @@
-test_that("GENERAL",{
+# "GENERAL"
 
   filex_input <- list(GENERAL = structure(list(
       PEOPLE = "First Contributor; Second Contributor",
@@ -41,11 +41,11 @@ test_that("GENERAL",{
                 "lines",
                 "")
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "GENERAL")
 
-})
 
-test_that("TREATMENTS single",{
+# "TREATMENTS single"
 
   filex_input <- list("TREATMENTS" = structure(list(
     N = 1L, R = 0L, O = 0L, C = 0L, TNAME = "Control - 350 ppm",
@@ -67,11 +67,11 @@ test_that("TREATMENTS single",{
                 ""
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "TREATMENTS single")
 
-})
 
-test_that("TREATMENTS two",{
+# "TREATMENTS two"
 
   filex_input <- list("TREATMENTS" = structure(list(
     N = 1:2,
@@ -109,11 +109,11 @@ test_that("TREATMENTS two",{
                 ""
   )
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "TREATMENTS two")
 
-})
 
-test_that("CULTIVARS single",{
+# "CULTIVARS single"
 
   filex_input <- list(CULTIVARS = structure(list(
     C = 1L,
@@ -135,12 +135,12 @@ test_that("CULTIVARS single",{
                 " 1 CO IB0001 Deltapine 77",
                 "")
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "CULTIVARS single")
 
 
-})
 
-test_that("CULTIVARS multiple",{
+# "CULTIVARS multiple"
 
   filex_input <- list(CULTIVARS = structure(list(
     C = 1:4,
@@ -167,11 +167,11 @@ test_that("CULTIVARS multiple",{
                 " 4 PN IB0032 MA72x94-12,LS-RE",
                 "")
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "CULTIVARS multiple")
 
-})
 
-test_that("FIELDS single",{
+# "FIELDS single"
 
   filex_input <- list(FIELDS = structure(list(
     L = 1L, ID_FIELD = "UFQU0001", WSTA = "UFQU9501",
@@ -203,11 +203,11 @@ test_that("FIELDS single",{
                 " 1             -99             -99       -99               -99   -99   -99   -99   -99   -99",
                 "")
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "FIELDS single")
 
-})
 
-test_that("FIELDS multiple",{
+# "FIELDS multiple"
 
   filex_input <- list(FIELDS = structure(list(
     L = 1:4,
@@ -261,11 +261,11 @@ test_that("FIELDS multiple",{
                 " 4             -99             -99       -99               -99   -99   -99   -99   -99   -99",
                 "")
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "FIELDS multiple")
 
-})
 
-test_that("SOIL ANALYSIS single",{
+# "SOIL ANALYSIS single"
 
   filex_input <- list("SOIL ANALYSIS" = structure(list(
     A = 1L,
@@ -296,11 +296,11 @@ test_that("SOIL ANALYSIS single",{
                 " 1     5   -99  0.48   -99   -99   -99   2.2   -99 0.470",
                 "")
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "SOIL ANALYSIS single")
 
-})
 
-test_that("SOIL ANALYSIS single - missing",{
+# "SOIL ANALYSIS single - missing"
 
   filex_input <- list("SOIL ANALYSIS" = structure(list(
     A = 1L,
@@ -331,11 +331,11 @@ test_that("SOIL ANALYSIS single - missing",{
                 " 1    15   -99   -99   -99   -99   -99   -99   -99   -99",
                 "")
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "SOIL ANALYSIS single - missing")
 
-})
 
-test_that("SOIL ANALYSIS multiple",{
+# "SOIL ANALYSIS multiple"
 
   filex_input <- list("SOIL ANALYSIS" = structure(list(
     A = 1:4,
@@ -431,11 +431,11 @@ test_that("SOIL ANALYSIS multiple",{
                 " 4    90   -99  0.34   -99   -99   -99   2.3   -99 0.330",
                 "")
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "SOIL ANALYSIS multiple")
 
-})
 
-test_that("INITIAL CONDITIONS one level - no missing",{
+# "INITIAL CONDITIONS one level - no missing"
 
   filex_input <- list("INITIAL CONDITIONS" = structure(list(
     C = 1L, PCR = "SB",
@@ -474,11 +474,11 @@ test_that("INITIAL CONDITIONS one level - no missing",{
                 " 1   180 0.406  0.24  2.40",
                 "")
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "INITIAL CONDITIONS one level - no missing")
 
-})
 
-test_that("INITIAL CONDITIONS one level - missing",{
+# "INITIAL CONDITIONS one level - missing"
 
   filex_input <- list("INITIAL CONDITIONS" = structure(list(
     C = 1L, PCR = NA_character_,
@@ -518,11 +518,11 @@ test_that("INITIAL CONDITIONS one level - missing",{
                 " 1   180   -99   -99   -99",
                 "")
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "INITIAL CONDITIONS one level - missing")
 
-})
 
-test_that("Two levels - no missing data",{
+# "Two levels - no missing data"
 
   filex_input <- list("INITIAL CONDITIONS" = structure(list(
     C = 1:2,
@@ -585,11 +585,11 @@ test_that("Two levels - no missing data",{
                 " 2   150 0.406  0.24  2.40",
                 "")
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "Two levels - no missing data")
 
-})
 
-test_that("INITIAL CONDITIONS two levels - missing",{
+# "INITIAL CONDITIONS two levels - missing"
 
   filex_input <- list("INITIAL CONDITIONS" = structure(list(
     C = 1:2,
@@ -654,9 +654,9 @@ test_that("INITIAL CONDITIONS two levels - missing",{
                 " 2   150   -99   -99   -99",
                 "")
 
-  expect_equal(actual, expected)
+  expect_equal(actual, expected,
+               info = "INITIAL CONDITIONS two levels - missing")
 
-})
 
 
 # test_that("PLANTING DETAILS - single",{
@@ -670,7 +670,7 @@ test_that("INITIAL CONDITIONS two levels - missing",{
 #
 #   })
 #
-#   DSSAT:::test_cols_check(
+#   test_cols_check(
 #     filex$`PLANTING DETAILS`,
 #     char_cols = c(),
 #     list_cols = c(),
