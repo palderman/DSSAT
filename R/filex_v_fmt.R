@@ -47,8 +47,8 @@ filex_v_fmt <- function(sec_name){
     v_fmt <- c(C = "%2.0f", PCR = "%6s", ICDAT = "%6s", ICRT = "%6.0f", ICND = "%6.0f",
                ICRN = "%6.1f", ICRE = "%6.0f", ICWD = "%6.0f", ICRES = "%6.0f",
                ICREN = "%6.2f", ICREP = "%6.2f", ICRIP = "%6.0f", ICRID = "%6.0f",
-               ICNAME = " %-s", ICBL = "%6.0f", SH2O = "%6.3f", SNH4 = "%6.1f",
-               SNO3 = "%6.1f")
+               ICNAME = " %-s", ICBL = "%6.0f", SH2O = "%6.3f", SNH4 = "%6.2f",
+               SNO3 = "%6.2f")
 
   }else if(any(grepl('^IRRIGATION', sec_name))){
 
@@ -101,8 +101,8 @@ filex_v_fmt <- function(sec_name){
   }else if(any(grepl('^SOIL', sec_name))){
 
     v_fmt <- c(A = "%2.0f", SADAT = "%6s", SMHB = "%6s", SMPX = "%6s", SMKE = "%6s",
-               SANAME = " %-s", SABL = "%6.0f", SADM = "%6.1f", SAOC = "%6.2f",
-               SANI = "%6.2f", SAPHW = "%6.1f", SAPHB = "%6.0f", SAPX = "%6.0f",
+               SANAME = "  %-s", SABL = "%6.0f", SADM = "%6.1f", SAOC = "%6.2f",
+               SANI = "%6.2f", SAPHW = "%6.1f", SAPHB = "%6.0f", SAPX = "%6.1f",
                SAKE = "%6.1f", SASC = "%6.3f")
 
   }else if(any(grepl('^TILLAGE', sec_name))){
