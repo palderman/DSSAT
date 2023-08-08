@@ -1,25 +1,24 @@
-source(system.file("tinytest/test_cols_check.R", package = "DSSAT"))
+# "Summary.OUT"
 
-test_that("Summary.OUT",{
+  summary_out <- tempfile()
 
-  withr::with_file("Summary.OUT",{
     write(
       c("*SUMMARY : KSAS8101WH N RESPONSE,KANSAS STATE  3FE(N)*2IR  (DSSAT3)                DSSAT Cropping System Model Ver. 4.8.0.024      -HEAD    MAR 21, 2023; 15:27:06",
         "", "!IDENTIFIERS......................... EXPERIMENT AND TREATMENT.......... SITE INFORMATION............................................................. DATES..................................................  DRY WEIGHT, YIELD AND YIELD COMPONENTS........................................   FRESH WEIGHT.........................  WATER...............................................  NITROGEN..................................................  PHOSPHORUS............  POTASSIUM.............  ORGANIC MATTER.................................................    WATER PRODUCTIVITY..................................................    NITROGEN PRODUCTIVITY...........  SEASONAL ENVIRONMENTAL DATA (Planting to harvest)..............",
         "@   RUNNO   TRNO R# O# P# CR MODEL... EXNAME.. TNAM..................... FNAM.... WSTA.... WYEAR SOIL_ID...             XLAT            LONG      ELEV    SDAT    PDAT    EDAT    ADAT    MDAT    HDAT   HYEAR  DWAP    CWAM    HWAM    HWAH    BWAH  PWAM    HWUM    H#AM    H#UM  HIAM  LAIX   FCWAM   FHWAM   HWAHF   FBWAH   FPWAM  IR#M  IRCM  PRCM  ETCM  EPCM  ESCM  ROCM  DRCM  SWXM  NI#M  NICM  NFXM  NUCM  NLCM  NIAM NMINC  CNAM  GNAM N2OEC  PI#M  PICM  PUPC  SPAM  KI#M  KICM  KUPC  SKAM  RECM  ONTAM   ONAM  OPTAM   OPAM   OCTAM    OCAM   CO2EC  CH4EC    DMPPM    DMPEM    DMPTM    DMPIM     YPPM     YPEM     YPTM     YPIM    DPNAM    DPNUM    YPNAM    YPNUM  NDCH TMAXA TMINA SRADA DAYLA   CO2A   PRCP   ETCP   ESCP   EPCP",
         "        1      1  1  0  1 WH CSCER048 KSAS8101 DRYLAND  - 0 KG N/HA      KSAS0001 KSAS8101  1981 IBWH980018            37.18          -99.75       226 1981279 1981289 1981294 1982141 1982174 1982174    1982    46    7703    2819    2819       0  3279  0.0244   11556    22.2 0.366   2.0     -99     -99     -99     -99     -99     0     0   600   425   191   234    12   113   141     1     0   -99    75   124    54    80    66    54 0.328   -99   -99   -99   -99   -99   -99   -99   -99     0   7842   7841      0      0   78994   78951    2550   0.00     13.3     18.9     40.4      -99      4.9      6.9     14.8      -99      -99    102.2      -99     37.4   245  13.1   1.2  12.4  12.6  340.7  579.8  408.0    -99    -99"
       ),
-      "Summary.OUT"
+      summary_out
     )
 
-    smry <- DSSAT::read_dssat("Summary.OUT")
+    smry <- DSSAT::read_dssat(summary_out)
 
-  })
+file.remove(summary_out)
 
-  test_cols_check(
-    smry,
-    char_cols = c("CR", "MODEL", "EXNAME", "TNAM", "FNAM", "WSTA", "SOIL_ID"),
-    expected_vals = list(RUNNO = 1,
+  info_prefix <- "Summary.OUT"
+    actual <- smry
+    char_cols <- c("CR", "MODEL", "EXNAME", "TNAM", "FNAM", "WSTA", "SOIL_ID")
+    expected_vals <- list(RUNNO = 1,
                          TRNO = 1,
                          "R#" = 1,
                          "O#" = 0,
@@ -128,6 +127,74 @@ test_that("Summary.OUT",{
                          ETCP = 408,
                          ESCP = NA_real_,
                          EPCP = NA_real_)
-    )
 
-})
+  # Check for all missing variables
+  for(nm in names(actual)){
+    if("missing" %in% objects() && nm %in% missing){
+      if(exists("char_cols") && nm %in% char_cols){
+        na_val <- NA_character_
+      }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+        na_val <- as.POSIXct(NA, tz="UTC")
+      }else{
+        na_val <- NA_real_
+      }
+      if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+        expect_equal(unlist(actual[[nm]]),
+                               rep(na_val, length(unlist(actual[[nm]]))),
+                               info = paste0(info_prefix, ": ", nm))
+      }else{
+        expect_equal(actual[[nm]],
+                     rep(na_val, nrow(actual)),
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+  }
+
+  # Check for specific expected values
+  if("expected_vals" %in% objects() && !is.null(expected_vals)){
+    for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+    }
+  }
+
+  # Check list column type and dimensions
+  if("list_cols" %in% objects() && !is.null(list_cols)){
+    for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+      if(exists("list_col_length") && !is.null(list_col_length)){
+        if(length(list_col_length) == 1){
+          list_col_length <- rep(list_col_length, length(actual[[nm]]))
+        }
+        for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                       list_col_length[i],
+                       info = paste0(info_prefix, nm))
+        }
+      }
+      if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+        for(i in 1:nrow(actual)){
+          for(g in 1:length(list_col_groups)){
+            length_range <- range(
+              sapply(actual[i,][list_col_groups[[g]]],
+                     function(x)length(unlist(x)))
+              )
+            lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                         length_range[2],
+                         info = paste0(info_prefix, ": ", lbl))
+          }
+        }
+      }
+    }
+  }
+  for(arg in c("char_cols", "list_cols", "date_cols",
+               "missing", "list_col_length",
+               "list_col_groups", "expected_vals")){
+    if(arg %in% objects()) rm(list = arg)
+  }
+
+
+
