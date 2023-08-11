@@ -93,7 +93,7 @@ create_example_val_arg <- function(test_df){
 create_call_test_cols_check <- function(data_name, test_df){
 
   # Create list of character columns
-  char_cols <- sapply(test_df, \(.x) is.character(unlist(.x)))
+  char_cols <- sapply(test_df, function(.x) is.character(unlist(.x)))
 
   if(any(char_cols)){
     char_cols_arg <- create_test_arg("char_cols",
@@ -104,7 +104,7 @@ create_call_test_cols_check <- function(data_name, test_df){
   }
 
   # Create list of list columns
-  list_cols <- sapply(test_df, \(.x) is.list(.x))
+  list_cols <- sapply(test_df, function(.x) is.list(.x))
 
   if(any(list_cols)){
     list_cols_arg <- create_test_arg("list_cols",
@@ -115,8 +115,8 @@ create_call_test_cols_check <- function(data_name, test_df){
   }
 
   # Create list of date columns
-  date_cols <- sapply(test_df, \(.x) if(is.list(.x)){
-      any(sapply(.x, \(.y) "POSIXt" %in% class(.y)))
+  date_cols <- sapply(test_df, function(.x) if(is.list(.x)){
+      any(sapply(.x, function(.y) "POSIXt" %in% class(.y)))
     }else{
       "POSIXt" %in% class(.x)
     }
