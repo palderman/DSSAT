@@ -12,10 +12,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/ALFRM048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/ALFRM048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() ALFRM048.CUL"
 
@@ -154,10 +160,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/BACER048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/BACER048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() BACER048.CUL"
 
@@ -272,10 +284,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/BACRP048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/BACRP048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() BACRP048.CUL"
 
@@ -413,10 +431,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/BHGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/BHGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() BHGRO048.CUL"
 
@@ -537,10 +561,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/BMFRM048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/BMFRM048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() BMFRM048.CUL"
 
@@ -661,10 +691,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/BNGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/BNGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() BNGRO048.CUL"
 
@@ -905,10 +941,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/BRFRM048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/BRFRM048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() BRFRM048.CUL"
 
@@ -1029,10 +1071,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/BRGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/BRGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() BRGRO048.CUL"
 
@@ -1171,10 +1219,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/BSCER048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/BSCER048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() BSCER048.CUL"
 
@@ -1283,10 +1337,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/CBGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/CBGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() CBGRO048.CUL"
 
@@ -1412,10 +1472,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/CHGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/CHGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() CHGRO048.CUL"
 
@@ -1673,10 +1739,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/CIGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/CIGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() CIGRO048.CUL"
 
@@ -1797,10 +1869,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/CNGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/CNGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() CNGRO048.CUL"
 
@@ -1926,10 +2004,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/COGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/COGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() COGRO048.CUL"
 
@@ -2076,10 +2160,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/CPGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/CPGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() CPGRO048.CUL"
 
@@ -2251,10 +2341,16 @@
                                 "LAFS", "LAFND", "SLAS", "LLIFA",
                                 "LPEFR", "STFR"))
 
-  input_file <- system.file("extdata/test_data/CUL/CSCAS048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/CSCAS048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() CSCAS048.CUL"
 
@@ -2483,10 +2579,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/CSYCA048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/CSYCA048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() CSYCA048.CUL"
 
@@ -2666,10 +2768,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/FBGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/FBGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() FBGRO048.CUL"
 
@@ -2791,10 +2899,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/G0GRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/G0GRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() G0GRO048.CUL"
 
@@ -2912,10 +3026,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/GBGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/GBGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() GBGRO048.CUL"
 
@@ -3036,10 +3156,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/GGFRM048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/GGFRM048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() GGFRM048.CUL"
 
@@ -3153,10 +3279,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/MLCER048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/MLCER048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() MLCER048.CUL"
 
@@ -3410,10 +3542,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/MZCER048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/MZCER048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() MZCER048.CUL"
 
@@ -3869,10 +4007,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/MZIXM048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/MZIXM048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() MZIXM048.CUL"
 
@@ -4293,10 +4437,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/PIALO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/PIALO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() PIALO048.CUL"
 
@@ -4414,10 +4564,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/PNGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/PNGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() PNGRO048.CUL"
 
@@ -4700,10 +4856,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/PPGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/PPGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() PPGRO048.CUL"
 
@@ -4833,10 +4995,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/PRGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/PRGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() PRGRO048.CUL"
 
@@ -4973,10 +5141,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/PTSUB048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/PTSUB048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() PTSUB048.CUL"
 
@@ -5114,10 +5288,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/QUGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/QUGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() QUGRO048.CUL"
 
@@ -5235,10 +5415,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/RICER048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/RICER048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() RICER048.CUL"
 
@@ -5506,10 +5692,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/SBGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/SBGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() SBGRO048.CUL"
 
@@ -5862,10 +6054,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/SCCAN048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/SCCAN048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() SCCAN048.CUL"
 
@@ -6033,10 +6231,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/SCCSP048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/SCCSP048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() SCCSP048.CUL"
 
@@ -6254,10 +6458,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/SCSAM048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/SCSAM048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() SCSAM048.CUL"
 
@@ -6419,10 +6629,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/SFGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/SFGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() SFGRO048.CUL"
 
@@ -6562,10 +6778,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/SGCER048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/SGCER048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() SGCER048.CUL"
 
@@ -6873,10 +7095,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/SUGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/SUGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() SUGRO048.CUL"
 
@@ -7031,10 +7259,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/SUOIL048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/SUOIL048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() SUOIL048.CUL"
 
@@ -7172,10 +7406,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/SWCER048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/SWCER048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() SWCER048.CUL"
 
@@ -7281,10 +7521,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/TFAPS048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/TFAPS048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() TFAPS048.CUL"
 
@@ -7438,10 +7684,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/TFCER048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/TFCER048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() TFCER048.CUL"
 
@@ -7634,10 +7886,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/TMGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/TMGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() TMGRO048.CUL"
 
@@ -7770,10 +8028,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/TNARO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/TNARO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() TNARO048.CUL"
 
@@ -7887,10 +8151,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/TRARO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/TRARO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() TRARO048.CUL"
 
@@ -8016,10 +8286,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/VBGRO048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/VBGRO048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() VBGRO048.CUL"
 
@@ -8216,10 +8492,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/WHAPS048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/WHAPS048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() WHAPS048.CUL"
 
@@ -8361,10 +8643,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/WHCER048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/WHCER048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() WHCER048.CUL"
 
@@ -8492,10 +8780,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/CUL/WHCRP048.CUL",
+  rds_file <- system.file("tinytest/test_data/CUL/WHCRP048_CUL.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_([^_]+)\\.rds$", ".\\1", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_cul(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_cul() WHCRP048.CUL"
 
@@ -8653,7 +8947,7 @@ if(FALSE){
                   "",
                   tier_info,
                   "",
-                  paste0("  input_file <- system.file(\"extdata/test_data/CUL/", file_name, "\","),
+                  paste0("  input_file <- system.file(\"tinytest/test_data/CUL/", file_name, "\","),
                   "                            package = \"DSSAT\")",
                   "",
                   "  actual <- DSSAT::read_cul(input_file)",
@@ -8670,7 +8964,7 @@ if(FALSE){
     return(test_out)
   }
 
-  all_cul <- list.files("inst/extdata/test_data/CUL/", full.names = TRUE) %>%
+  all_cul <- list.files("inst/tinytest/test_data/CUL/", full.names = TRUE) %>%
     tibble(file_name = .) %>%
     mutate(contents = map(file_name, DSSAT::read_cul))
 

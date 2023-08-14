@@ -163,7 +163,7 @@ convert_from_test_that <- function(file_name,
                                    expect = TRUE,
                                    test_cols = FALSE,
                                    actual_name = "actual,"){
-  new_test <- readLines(file_name)
+  new_test <- readRDS(file_name)
   test_lines <- grep("^ *test_that", new_test)
   labels <- gsub("(test_that\\()|(, *\\{$)", "", new_test[test_lines])
   end_lines <- nearest_end(new_test, c(test_lines[-1], length(new_test)))

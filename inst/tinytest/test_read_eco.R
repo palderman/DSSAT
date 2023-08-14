@@ -13,10 +13,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/ALFRM048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/ALFRM048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() ALFRM048.ECO"
 
@@ -154,10 +160,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/BACER048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/BACER048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() BACER048.ECO"
 
@@ -300,10 +312,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/BACRP048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/BACRP048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() BACRP048.ECO"
 
@@ -445,10 +463,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/BHGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/BHGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() BHGRO048.ECO"
 
@@ -565,10 +589,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/BMFRM048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/BMFRM048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() BMFRM048.ECO"
 
@@ -688,10 +718,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/BNGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/BNGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() BNGRO048.ECO"
 
@@ -817,10 +853,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/BRFRM048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/BRFRM048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() BRFRM048.ECO"
 
@@ -940,10 +982,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/BRGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/BRGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() BRGRO048.ECO"
 
@@ -1056,10 +1104,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/BSCER048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/BSCER048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() BSCER048.ECO"
 
@@ -1172,10 +1226,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/CBGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/CBGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() CBGRO048.ECO"
 
@@ -1295,10 +1355,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/CHGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/CHGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() CHGRO048.ECO"
 
@@ -1414,10 +1480,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/CIGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/CIGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() CIGRO048.ECO"
 
@@ -1534,10 +1606,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/CNGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/CNGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() CNGRO048.ECO"
 
@@ -1655,10 +1733,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/COGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/COGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() COGRO048.ECO"
 
@@ -1779,10 +1863,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/CPGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/CPGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() CPGRO048.ECO"
 
@@ -1910,10 +2000,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/CSCAS048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/CSCAS048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() CSCAS048.ECO"
 
@@ -2027,10 +2123,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/CSYCA048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/CSYCA048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() CSYCA048.ECO"
 
@@ -2188,10 +2290,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/FBGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/FBGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() FBGRO048.ECO"
 
@@ -2313,10 +2421,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/G0GRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/G0GRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() G0GRO048.ECO"
 
@@ -2435,10 +2549,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/GBGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/GBGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() GBGRO048.ECO"
 
@@ -2555,10 +2675,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/GGFRM048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/GGFRM048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() GGFRM048.ECO"
 
@@ -2673,10 +2799,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/MLCER048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/MLCER048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() MLCER048.ECO"
 
@@ -2780,10 +2912,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/MZCER048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/MZCER048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() MZCER048.ECO"
 
@@ -2896,10 +3034,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/MZIXM048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/MZIXM048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() MZIXM048.ECO"
 
@@ -3015,10 +3159,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/PNGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/PNGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() PNGRO048.ECO"
 
@@ -3216,10 +3366,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/PPGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/PPGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() PPGRO048.ECO"
 
@@ -3336,10 +3492,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/PRGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/PRGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() PRGRO048.ECO"
 
@@ -3453,10 +3615,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/PTSUB048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/PTSUB048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() PTSUB048.ECO"
 
@@ -3557,10 +3725,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/QUGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/QUGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() QUGRO048.ECO"
 
@@ -3677,10 +3851,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/SBGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/SBGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() SBGRO048.ECO"
 
@@ -3917,10 +4097,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/SCCAN048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/SCCAN048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() SCCAN048.ECO"
 
@@ -4158,10 +4344,16 @@
                               "XSTAGE", "SENPOR", "XTMIN", "YLOSS",
                               c("ECO#", "ECONAME"))
 
-  input_file <- system.file("extdata/test_data/ECO/SCCSP048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/SCCSP048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() SCCSP048.ECO"
 
@@ -4449,10 +4641,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/SCSAM048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/SCSAM048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() SCSAM048.ECO"
 
@@ -4591,10 +4789,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/SFGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/SFGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() SFGRO048.ECO"
 
@@ -4712,10 +4916,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/SGCER048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/SGCER048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() SGCER048.ECO"
 
@@ -4824,10 +5034,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/SUGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/SUGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() SUGRO048.ECO"
 
@@ -4940,10 +5156,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/SUOIL048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/SUOIL048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() SUOIL048.ECO"
 
@@ -5048,10 +5270,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/SWCER048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/SWCER048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() SWCER048.ECO"
 
@@ -5169,10 +5397,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/TFAPS048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/TFAPS048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() TFAPS048.ECO"
 
@@ -5353,10 +5587,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/TMGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/TMGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() TMGRO048.ECO"
 
@@ -5472,10 +5712,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/VBGRO048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/VBGRO048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() VBGRO048.ECO"
 
@@ -5602,10 +5848,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/WHAPS048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/WHAPS048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() WHAPS048.ECO"
 
@@ -5827,10 +6079,16 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/WHCER048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/WHCER048_ECO.rds",
                             package = "DSSAT")
 
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
+
   actual <- DSSAT::read_eco(input_file)
+
+  file.remove(input_file)
 
   info_prefix <- "read_eco() WHCER048.ECO"
 
@@ -5997,8 +6255,12 @@
 
   `tier_info_expected` = NULL
 
-  input_file <- system.file("extdata/test_data/ECO/WHCRP048.ECO",
+  rds_file <- system.file("tinytest/test_data/ECO/WHCRP048_ECO.rds",
                             package = "DSSAT")
+
+  input_file <- file.path(tempdir(), gsub("_ECO\\.rds$", ".ECO", basename(rds_file)))
+
+  write(readRDS(rds_file), input_file)
 
   actual <- DSSAT::read_eco(input_file)
 
@@ -6143,7 +6405,7 @@ if(FALSE){
                   "",
                   tier_info,
                   "",
-                  paste0("  input_file <- system.file(\"extdata/test_data/ECO/", file_name, "\","),
+                  paste0("  input_file <- system.file(\"tinytest/test_data/ECO/", file_name, "\","),
                   "                            package = \"DSSAT\")",
                   "",
                   "  actual <- DSSAT::read_eco(input_file)",
@@ -6160,7 +6422,7 @@ if(FALSE){
     return(test_out)
   }
 
-  all_eco <- list.files("inst/extdata/test_data/ECO/", full.names = TRUE) %>%
+  all_eco <- list.files("inst/tinytest/test_data/ECO/", full.names = TRUE) %>%
     tibble(file_name = .) %>%
     mutate(contents = map(file_name, DSSAT::read_eco))
 

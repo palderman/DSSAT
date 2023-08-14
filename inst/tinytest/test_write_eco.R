@@ -1,7 +1,7 @@
 # "write_eco() ALFRM048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/ALFRM048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/ALFRM048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -13,8 +13,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/ALFRM048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/ALFRM048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -24,8 +24,8 @@
 
 # "write_eco() BACER048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/BACER048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/BACER048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -37,8 +37,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/BACER048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/BACER048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -48,8 +48,8 @@
 
 # "write_eco() BACRP048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/BACRP048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/BACRP048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -61,8 +61,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/BACRP048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/BACRP048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -72,8 +72,8 @@
 
 # "write_eco() BHGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/BHGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/BHGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -85,8 +85,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/BHGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/BHGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -96,8 +96,8 @@
 
 # "write_eco() BMFRM048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/BMFRM048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/BMFRM048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -109,8 +109,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/BMFRM048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/BMFRM048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -120,8 +120,8 @@
 
 # "write_eco() BNGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/BNGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/BNGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -133,8 +133,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/BNGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/BNGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -144,8 +144,8 @@
 
 # "write_eco() BRFRM048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/BRFRM048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/BRFRM048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -157,8 +157,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/BRFRM048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/BRFRM048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -168,8 +168,8 @@
 
 # "write_eco() BRGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/BRGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/BRGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -181,8 +181,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/BRGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/BRGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -192,8 +192,8 @@
 
 # "write_eco() BSCER048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/BSCER048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/BSCER048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -205,8 +205,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/BSCER048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/BSCER048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -216,8 +216,8 @@
 
 # "write_eco() CBGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/CBGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/CBGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -229,8 +229,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/CBGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/CBGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -240,8 +240,8 @@
 
 # "write_eco() CHGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/CHGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/CHGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -253,8 +253,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/CHGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/CHGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -264,8 +264,8 @@
 
 # "write_eco() CIGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/CIGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/CIGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -277,8 +277,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/CIGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/CIGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -288,8 +288,8 @@
 
 # "write_eco() CNGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/CNGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/CNGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -301,8 +301,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/CNGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/CNGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -312,8 +312,8 @@
 
 # "write_eco() COGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/COGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/COGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -325,8 +325,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/COGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/COGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -336,8 +336,8 @@
 
 # "write_eco() CPGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/CPGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/CPGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -349,8 +349,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/CPGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/CPGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -360,8 +360,8 @@
 
 # "write_eco() CSCAS048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/CSCAS048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/CSCAS048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -373,8 +373,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/CSCAS048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/CSCAS048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -384,8 +384,8 @@
 
 # "write_eco() CSYCA048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/CSYCA048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/CSYCA048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -397,8 +397,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/CSYCA048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/CSYCA048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -408,8 +408,8 @@
 
 # "write_eco() FBGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/FBGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/FBGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -421,8 +421,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/FBGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/FBGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -432,8 +432,8 @@
 
 # "write_eco() G0GRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/G0GRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/G0GRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -445,8 +445,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/G0GRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/G0GRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -456,8 +456,8 @@
 
 # "write_eco() GBGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/GBGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/GBGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -469,8 +469,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/GBGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/GBGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -480,8 +480,8 @@
 
 # "write_eco() GGFRM048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/GGFRM048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/GGFRM048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -493,8 +493,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/GGFRM048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/GGFRM048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -504,8 +504,8 @@
 
 # "write_eco() MLCER048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/MLCER048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/MLCER048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -517,8 +517,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/MLCER048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/MLCER048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -528,8 +528,8 @@
 
 # "write_eco() MZCER048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/MZCER048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/MZCER048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -541,8 +541,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/MZCER048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/MZCER048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -552,8 +552,8 @@
 
 # "write_eco() MZIXM048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/MZIXM048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/MZIXM048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -565,8 +565,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/MZIXM048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/MZIXM048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -576,8 +576,8 @@
 
 # "write_eco() PNGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/PNGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/PNGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -589,8 +589,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/PNGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/PNGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -600,8 +600,8 @@
 
 # "write_eco() PPGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/PPGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/PPGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -613,8 +613,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/PPGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/PPGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -624,8 +624,8 @@
 
 # "write_eco() PRGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/PRGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/PRGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -637,8 +637,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/PRGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/PRGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -648,8 +648,8 @@
 
 # "write_eco() PTSUB048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/PTSUB048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/PTSUB048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -661,8 +661,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/PTSUB048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/PTSUB048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -672,8 +672,8 @@
 
 # "write_eco() QUGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/QUGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/QUGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -685,8 +685,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/QUGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/QUGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -696,8 +696,8 @@
 
 # "write_eco() SBGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/SBGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/SBGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -709,8 +709,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/SBGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/SBGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -720,8 +720,8 @@
 
 # "write_eco() SCCAN048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/SCCAN048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/SCCAN048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -733,8 +733,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/SCCAN048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/SCCAN048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -744,8 +744,8 @@
 
 # "write_eco() SCCSP048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/SCCSP048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/SCCSP048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -757,8 +757,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/SCCSP048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/SCCSP048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -768,8 +768,8 @@
 
 # "write_eco() SCSAM048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/SCSAM048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/SCSAM048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -781,8 +781,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/SCSAM048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/SCSAM048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -792,8 +792,8 @@
 
 # "write_eco() SFGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/SFGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/SFGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -805,8 +805,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/SFGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/SFGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -816,8 +816,8 @@
 
 # "write_eco() SGCER048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/SGCER048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/SGCER048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -829,8 +829,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/SGCER048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/SGCER048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -840,8 +840,8 @@
 
 # "write_eco() SUGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/SUGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/SUGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -853,8 +853,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/SUGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/SUGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -864,8 +864,8 @@
 
 # "write_eco() SUOIL048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/SUOIL048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/SUOIL048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -877,8 +877,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/SUOIL048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/SUOIL048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -888,8 +888,8 @@
 
 # "write_eco() SWCER048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/SWCER048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/SWCER048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -901,8 +901,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/SWCER048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/SWCER048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -912,8 +912,8 @@
 
 # "write_eco() TFAPS048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/TFAPS048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/TFAPS048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -925,8 +925,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/TFAPS048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/TFAPS048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -936,8 +936,8 @@
 
 # "write_eco() TMGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/TMGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/TMGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -949,8 +949,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/TMGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/TMGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -960,8 +960,8 @@
 
 # "write_eco() VBGRO048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/VBGRO048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/VBGRO048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -973,8 +973,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/VBGRO048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/VBGRO048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -984,8 +984,8 @@
 
 # "write_eco() WHAPS048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/WHAPS048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/WHAPS048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -997,8 +997,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/WHAPS048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/WHAPS048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -1008,8 +1008,8 @@
 
 # "write_eco() WHCER048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/WHCER048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/WHCER048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -1021,8 +1021,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/WHCER048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/WHCER048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -1032,8 +1032,8 @@
 
 # "write_eco() WHCRP048.ECO"
 
-  eco <- dget(
-    system.file("extdata/test_data/write_eco/WHCRP048_ECO.R",
+  eco <- readRDS(
+    system.file("tinytest/test_data/write_eco/WHCRP048_ECO_R.rds",
                 package = "DSSAT")
   )
 
@@ -1045,8 +1045,8 @@
 
   file.remove(actual_file)
 
-  expected <- readLines(
-    system.file("extdata/test_data/write_eco/WHCRP048.ECO",
+  expected <- readRDS(
+    system.file("tinytest/test_data/write_eco/WHCRP048_ECO.rds",
                 package = "DSSAT")
   )
 
@@ -1062,12 +1062,12 @@ if(FALSE){
   #
   #   name_root <- gsub("\\.ECO", "", file_name)
   #
-  #   input_name <- gsub("\\.ECO", "_ECO.R", file_name)
+  #   input_name <- gsub("\\.ECO", "_ECO_R.rds", file_name)
   #
   #   test_out <- c(paste0("test_that(\"write_eco() ", file_name, "\", {"),
   #                 "",
-  #                 "  eco <- dget(",
-  #                 paste0("    system.file(\"extdata/test_data/write_eco/", input_name, "\","),
+  #                 "  eco <- readRDS(",
+  #                 paste0("    system.file(\"tinytest/test_data/write_eco/", input_name, "\","),
   #                 "                package = \"DSSAT\")", "    )",
   #                 "",
   #                 paste0("  actual_file <- tempfile(pattern = \"", name_root, "\", fileext = \"ECO\")"),
@@ -1077,7 +1077,7 @@ if(FALSE){
   #                 "  actual <- readLines(actual_file)",
   #                 "",
   #                 "  expected <- readLines(",
-  #                 paste0("    system.file(\"extdata/test_data/write_eco/", file_name, "\","),
+  #                 paste0("    system.file(\"tinytest/test_data/write_eco/", file_name, "\","),
   #                 "                package = \"DSSAT\")", "  )",
   #                 "",
   #                 "  expect_equal(actual, expected)",
@@ -1088,11 +1088,11 @@ if(FALSE){
   #   return(test_out)
   # }
   #
-  # all_eco <- list.files("inst/extdata/test_data/ECO/", full.names = TRUE) %>%
+  # all_eco <- list.files("inst/tinytest/test_data/ECO/", full.names = TRUE) %>%
   #   tibble(file_name = .) %>%
   #   mutate(contents = map(file_name, DSSAT::read_eco)) %>%
   #   mutate(new_file = str_replace_all(file_name,
-  #                                     c("/ECO//" = "/write_eco/", "\\.ECO" = "_ECO.R")))
+  #                                     c("/ECO//" = "/write_eco/", "\\.ECO" = "_ECO_R.rds")))
   #
   # # Create inputs for tests
   # all_eco %>%

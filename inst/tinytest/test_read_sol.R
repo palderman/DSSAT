@@ -492,8 +492,16 @@ file.remove(test_sol)
 
 # "read_sol() TEST.SOL"
 
-  sol <- DSSAT::read_sol(system.file("extdata/test_data/SOL/TEST.SOL",
-                                     package = "DSSAT"))
+  rds_file <- system.file("tinytest/test_data/SOL/TEST_SOL.rds",
+                          package = "DSSAT")
+
+  sol_file <- file.path(tempdir(), "TEST.SOL")
+
+  write(readRDS(rds_file), sol_file)
+
+  sol <- DSSAT::read_sol(sol_file)
+
+  file.remove(sol_file)
 
   info_prefix <- "read_sol() TEST.SOL"
     actual <- sol
@@ -2913,10 +2921,19 @@ file.remove(test_sol)
 
 # "read_sol() TEST.SOL UFGA950002"
 
-  sol <- DSSAT:::read_sol(system.file("extdata/test_data/SOL/TEST.SOL", package = "DSSAT"),
-                          id_soil = "UFGA950002")
+    rds_file <- system.file("tinytest/test_data/SOL/TEST_SOL.rds",
+                            package = "DSSAT")
 
-  info_prefix <- "read_sol() TEST.SOL UFGA950002"
+    sol_file <- file.path(tempdir(), "TEST.SOL")
+
+    write(readRDS(rds_file), sol_file)
+
+    sol <- DSSAT::read_sol(sol_file, id_soil = "UFGA950002")
+
+    file.remove(sol_file)
+
+    info_prefix <- "read_sol() TEST.SOL UFGA950002"
+
     actual <- sol
     `char_cols` <- c("PEDON", "SOURCE", "TEXTURE", "DESCRIPTION",
                     "SITE", "COUNTRY", "SCS FAMILY", "SCOM", "SMHB",
@@ -3081,9 +3098,9 @@ if(FALSE){
 
   sol_tests %>%
     c("*SOILS: General DSSAT Soil Input File", .) %>%
-    write("inst/extdata/TEST.SOL")
+    write("inst/tinytest/TEST.SOL")
 
-  sol_orig <- read_sol("inst/extdata/TEST.SOL")
+  sol_orig <- read_sol("inst/tinytest/TEST.SOL")
 
   DSSAT:::create_call_test_cols_check("sol", sol_orig) %>%
     clipr::write_clip()

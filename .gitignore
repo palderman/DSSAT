@@ -3,6 +3,7 @@
 .RData
 .Ruserdata
 private_test_data/*
+inst/tinytest/test_data/*
 *.OUT
 *.WTH
 *.*X
