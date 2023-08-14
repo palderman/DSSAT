@@ -1,4 +1,4 @@
-check_column_width <- function(vr_out, cname, width){
+check_column_width <- function(vr_out, cname, fmt, width){
 
   vr_nchar <- nchar(vr_out)
 

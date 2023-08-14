@@ -19,6 +19,7 @@ write_column <- function(fmt, vr_val, cname){
     vr_out <- check_column_width(
       check_numerical_column_width(vr_out, vr_val, width),
       cname,
+      fmt,
       width)
   }
 
