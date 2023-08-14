@@ -26,7 +26,11 @@ invert_collapse_rows <- function(df){
     # Unnest list columns and expand non-list columns
     for(i in 1:length(df_out)){
       if(is_list[i]){
-        df_out[[i]] <- unlist(df[[i]])
+        if(any(sapply(df[[i]], is_POSIXct))){
+          df_out[[i]] <- as.POSIXct(unlist(df[[i]]), tz = attr(df[[i]][[1]], "tzone"))
+        }else{
+          df_out[[i]] <- unlist(df[[i]])
+        }
       }else{
         df_out[[i]] <- rep(df[[i]], times = list_col_elem_lengths[[1]])
       }
