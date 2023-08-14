@@ -657,7 +657,170 @@
   expect_equal(actual, expected,
                info = "INITIAL CONDITIONS two levels - missing")
 
+# "IRRIGATION AND WATER MANAGEMENT one level - no missing"
 
+  filex_input <- list("IRRIGATION AND WATER MANAGEMENT" = structure(list(
+    I = 1, EFIR = 0, IDEP = 1, ITHR = 1,
+    IEPT = 1, IOFF = "TEST1", IAME = "TEST1", IAMT = 10,
+    IRNAME = "TEST",
+    IDATE = list(structure(c(386899200, 388108800, 388713600),
+                   tzone = "UTC", class = c("POSIXct", "POSIXt"))),
+    IROP = list(c("IR001", "IR001", "IR001")),
+    IRVAL = list(c(65L, 78L, 70L))),
+    class = c("DSSAT_tbl", "data.frame"),
+    row.names = c(NA, -1L),
+    tier_info = list(c("I", "EFIR", "IDEP", "ITHR", "IEPT",
+                       "IOFF", "IAME", "IAMT", "IRNAME"),
+                     c("I", "IDATE", "IROP", "IRVAL"))))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*IRRIGATION AND WATER MANAGEMENT",
+                "@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",
+                " 1     0     1     1     1 TEST1 TEST1    10 TEST",
+                "@I IDATE  IROP IRVAL",
+                " 1 82096 IR001    65",
+                " 1 82110 IR001    78",
+                " 1 82117 IR001    70",
+                "")
+
+  expect_equal(actual, expected,
+               info = "IRRIGATION AND WATER MANAGEMENT one level - no missing")
+
+
+  # "IRRIGATION AND WATER MANAGEMENT one level - missing"
+
+  filex_input <- list("IRRIGATION AND WATER MANAGEMENT" = structure(list(
+    I = 1, EFIR = NA_real_, IDEP = NA_real_, ITHR = NA_real_,
+    IEPT = NA_real_, IOFF = NA_character_,
+    IAME = NA_character_, IAMT = NA_real_,
+    IRNAME = NA_character_,
+    IDATE = list(structure(rep(NA_real_, 3),
+                           tzone = "UTC", class = c("POSIXct", "POSIXt"))),
+    IROP = list(rep(NA_character_, 3)),
+    IRVAL = list(rep(NA_real_, 3))),
+    class = c("DSSAT_tbl", "data.frame"),
+    row.names = c(NA, -1L),
+    tier_info = list(c("I", "EFIR", "IDEP", "ITHR", "IEPT",
+                       "IOFF", "IAME", "IAMT", "IRNAME"),
+                     c("I", "IDATE", "IROP", "IRVAL"))))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*IRRIGATION AND WATER MANAGEMENT",
+                "@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",
+                " 1   -99   -99   -99   -99   -99   -99   -99 -99",
+                "@I IDATE  IROP IRVAL",
+                " 1   -99   -99   -99",
+                " 1   -99   -99   -99",
+                " 1   -99   -99   -99",
+                "")
+
+  expect_equal(actual, expected,
+               info = "IRRIGATION AND WATER MANAGEMENT one level - missing")
+
+  # "IRRIGATION AND WATER MANAGEMENT two levels - no missing"
+
+  filex_input <- list("IRRIGATION AND WATER MANAGEMENT" = structure(list(
+    I = 1:2, EFIR = rep(0, 2), IDEP = rep(1, 2),
+    ITHR = rep(1, 2), IEPT = rep(1, 2),
+    IOFF = rep("TEST01", 2), IAME = rep("TEST01", 2),
+    IAMT = rep(10, 2), IRNAME = rep("TEST", 2),
+    IDATE = list(structure(c(386899200, 388108800, 388713600),
+                           tzone = "UTC", class = c("POSIXct", "POSIXt")),
+                 structure(c(386899200, 388108800, 388713600),
+                           tzone = "UTC", class = c("POSIXct", "POSIXt"))),
+    IROP = list(c("IR001", "IR001", "IR001"),
+                c("IR001", "IR001", "IR001")),
+    IRVAL = list(c(65L, 78L, 70L),
+                 c(65L, 78L, 70L))),
+    class = c("DSSAT_tbl", "data.frame"),
+    row.names = c(NA, -1L),
+    tier_info = list(c("I", "EFIR", "IDEP", "ITHR", "IEPT",
+                       "IOFF", "IAME", "IAMT", "IRNAME"),
+                     c("I", "IDATE", "IROP", "IRVAL"))))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*IRRIGATION AND WATER MANAGEMENT",
+                "@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",
+                " 1     0     1     1     1 TEST1 TEST1    10 TEST",
+                "@I IDATE  IROP IRVAL",
+                " 1 82096 IR001    65",
+                " 1 82110 IR001    78",
+                " 1 82117 IR001    70",
+                "@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",
+                " 2     0     1     1     1 TEST1 TEST1    10 TEST",
+                "@I IDATE  IROP IRVAL",
+                " 2 82096 IR001    65",
+                " 2 82110 IR001    78",
+                " 2 82117 IR001    70",
+                "")
+
+  expect_equal(actual, expected,
+               info = "IRRIGATION AND WATER MANAGEMENT two levels - no missing")
+
+
+  # "IRRIGATION AND WATER MANAGEMENT two levels - missing"
+
+  filex_input <- list("IRRIGATION AND WATER MANAGEMENT" = structure(list(
+    I = 1, EFIR = NA_real_, IDEP = NA_real_, ITHR = NA_real_,
+    IEPT = NA_real_, IOFF = NA_character_,
+    IAME = NA_character_, IAMT = NA_real_,
+    IRNAME = NA_character_,
+    IDATE = list(structure(rep(NA_real_, 3),
+                           tzone = "UTC", class = c("POSIXct", "POSIXt"))),
+    IROP = list(rep(NA_character_, 3)),
+    IRVAL = list(rep(NA_real_, 3))),
+    class = c("DSSAT_tbl", "data.frame"),
+    row.names = c(NA, -1L),
+    tier_info = list(c("I", "EFIR", "IDEP", "ITHR", "IEPT",
+                       "IOFF", "IAME", "IAMT", "IRNAME"),
+                     c("I", "IDATE", "IROP", "IRVAL"))))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*IRRIGATION AND WATER MANAGEMENT",
+                "@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",
+                " 1   -99   -99   -99   -99   -99   -99   -99 -99",
+                "@I IDATE  IROP IRVAL",
+                " 1   -99   -99   -99",
+                " 1   -99   -99   -99",
+                " 1   -99   -99   -99",
+                "@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",
+                " 2   -99   -99   -99   -99   -99   -99   -99 -99",
+                "@I IDATE  IROP IRVAL",
+                " 2   -99   -99   -99",
+                " 2   -99   -99   -99",
+                " 2   -99   -99   -99",
+                "")
+
+  expect_equal(actual, expected,
+               info = "IRRIGATION AND WATER MANAGEMENT two levels - missing")
 
 # test_that("PLANTING DETAILS - single",{
 #
