@@ -36,7 +36,8 @@ raw_to_rds <- function(src_rel_path, src_root, dest_dir){
     dir.create(dirname(rds_file_path), recursive = TRUE)
   }
   src_path <- file.path(src_root, src_rel_path)
-  if(file.mtime(src_path) > file.mtime(rds_file_path)){
+  if(!file.exists(rds_file_path) ||
+     file.mtime(src_path) > file.mtime(rds_file_path)){
     cat(paste0("Reading ", basename(src_path), "\n"))
     if(extr_regex("[^.]+$", src_path) == "R"){
       tmp_data <- dget(src_path)
