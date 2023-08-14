@@ -1,9 +1,9 @@
-#' Generate a template PLANTING DETAILS section of File X
-#'
-#' @export
-#'
-#' @inheritParams filex_template
-#'
+# Generate a template PLANTING DETAILS section of File X
+#
+# @export
+#
+# @inheritParams filex_template
+#
 filex_template_planting_details <- function(PDATE = as.POSIXct(NA),
                                             EDATE = as.POSIXct(NA),
                                             PPOP = NA_real_, PPOE = NA_real_,

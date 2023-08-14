@@ -1,9 +1,9 @@
-#' Generate a template CULTIVARS section of File X
-#'
-#' @export
-#'
-#' @inheritParams filex_template
-#'
+# Generate a template CULTIVARS section of File X
+#
+# @export
+#
+# @inheritParams filex_template
+#
 filex_template_cultivars <- function(CR = "FA", INGENO = "IB0001", CNAME = "",
                                      expand = FALSE){
   if(expand){

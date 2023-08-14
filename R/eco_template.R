@@ -1,12 +1,12 @@
-#' Generate template ecotype parameter data frame
-#'
-#' @export
-#'
-#' @param model_code a character value that contains the DSSAT-CSM model code
-#'
-#' @param title a character value of the first line header for the cultivar
-#'  file (optional)
-#'
+# Generate template ecotype parameter data frame
+#
+# @export - Still in development
+#
+# @param model_code a character value that contains the DSSAT-CSM model code
+#
+# @param title a character value of the first line header for the cultivar
+#  file (optional)
+#
 eco_template <- function(model_code, title = NULL, ...){
 
   if(is.null(title)) title <- eco_title(model_code)

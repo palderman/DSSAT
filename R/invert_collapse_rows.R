@@ -1,3 +1,4 @@
+#' @importFrom stats sd
 invert_collapse_rows <- function(df){
 
   is_list <- unlist(lapply(df, is.list))

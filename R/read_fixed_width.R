@@ -1,3 +1,5 @@
+#' @importFrom utils type.convert
+#' @importFrom methods as
 read_fixed_width <- function(text, fwf_pos, ctypes, na_regex){
 
   df <- vector(mode = "list", length = nrow(fwf_pos))

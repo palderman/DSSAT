@@ -61,12 +61,22 @@ combine_tiers <- function(tier1, tier2, use_collapse_rows=FALSE, force_bind_rows
           summarize_at(vars(cname), ~all(is.na(.))) %>%
           unlist()
         if(all_na_1 && ! all_na_2){
+          class(tier1) <- c("grouped_df",
+                            grep("grouped_df",
+                                 class(tier1),
+                                 invert = TRUE,
+                                 value = TRUE))
          tier1 <- tier1 %>%
-           dplyr:::ungroup.grouped_df(cname) %>%
+           ungroup(cname) %>%
            mutate_at(vars(cname), ~as(.,ctypes_2[cname]))
         }else if(all_na_2 && ! all_na_1){
+          class(tier2) <- c("grouped_df",
+                            grep("grouped_df",
+                                 class(tier2),
+                                 invert = TRUE,
+                                 value = TRUE))
           tier2 <- tier2 %>%
-            dplyr:::ungroup.grouped_df(cname) %>%
+            ungroup(cname) %>%
             mutate_at(vars(cname), ~as(.,ctypes_1[cname]))
         }
       }

@@ -4,6 +4,8 @@
 #'
 #' @inheritParams read_dssat
 #'
+#' @inheritParams read_filex
+#'
 #' @return a tibble containing the data from the raw DSSAT output
 #'
 #' @importFrom dplyr "%>%"

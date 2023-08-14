@@ -1,5 +1,7 @@
 #' Read multiple File X
 #'
+#' @inheritParams read_filex
+#'
 read_filex_multiple <- function(file_name, col_types=NULL, col_names=NULL,
                                 na_strings=NULL, store_v_fmt = FALSE,
                                 use_std_fmt = TRUE){
@@ -160,25 +162,5 @@ read_filex_multiple <- function(file_name, col_types=NULL, col_names=NULL,
   attr(filex_multi, "comments") <- comments
 
   return(filex_multi)
-
-  layer_ind <- sapply(tiers_out, is_sol_layer)
-
-  # Create layer-specific data frame with rows nested by PEDON
-  layer_data <- nest_rows(
-    # Recursively merge layer-specific data
-    recursive_merge(
-      # Subset for list elements with layer-specific data
-      tiers_out[layer_ind],
-      by = c("PEDON", "SLB")),
-    by = "PEDON")
-
-  # Create whole profile data frame with one row per PEDON
-  profile_data <- recursive_merge(
-    c(list(gen_info),
-      tiers_out[!layer_ind]),
-    by = c("PEDON"))
-
-  # Merge whole-profile and layer-specific data
-  tiers_out <- coalesce_merge(profile_data, layer_data)
 
 }

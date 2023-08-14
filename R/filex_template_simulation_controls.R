@@ -1,9 +1,9 @@
-#' Generate a template SIMULATION CONTROLS section of File X
-#'
-#' @export
-#'
-#' @inheritParams filex_template
-#'
+# Generate a template SIMULATION CONTROLS section of File X
+#
+# @export
+#
+# @inheritParams filex_template
+#
 filex_template_simulation_controls <-
   function(GENERAL = "GE",
            NYERS = 1, NREPS = 1, START = "S",

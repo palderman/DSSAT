@@ -1,12 +1,12 @@
-#' Generate template cultivar parameter data frame
-#'
-#' @export
-#'
-#' @param model_code a character value that contains the DSSAT-CSM model code
-#'
-#' @param title a character value of the first line header for the cultivar
-#'  file (optional)
-#'
+# Generate template cultivar parameter data frame
+#
+# @export - Still in development
+#
+# @param model_code a character value that contains the DSSAT-CSM model code
+#
+# @param title a character value of the first line header for the cultivar
+#  file (optional)
+#
 cul_template <- function(model_code, title = NULL, ...){
 
   if(is.null(title)) title <- cul_title(model_code)

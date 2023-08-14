@@ -1,10 +1,10 @@
-#' Generate File X template
-#'
-#' @export
-#'
-#' @param expand a logical value indicating whether or not to generate expanded
-#' combinations of any input values supplied as a vector
-#'
+# Generate File X template
+#
+# @export
+#
+# @param expand a logical value indicating whether or not to generate expanded
+# combinations of any input values supplied as a vector
+#
 filex_template <- function(...){
 
   flx_args <- list(...)

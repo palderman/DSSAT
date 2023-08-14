@@ -1,9 +1,9 @@
-#' Generate a template FEILDS section of File X
-#'
-#' @export
-#'
-#' @inheritParams filex_template
-#'
+# Generate a template FEILDS section of File X
+#
+# @export
+#
+# @inheritParams filex_template
+#
 filex_template_fields <- function(ID_FIELD = NA_character_, WSTA = NA_character_,
                                   FLSA = NA_character_, FLOB = NA_real_,
                                   FLDT = NA_character_, FLDD = NA_real_,

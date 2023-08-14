@@ -12,6 +12,7 @@
 #' @importFrom stringr str_subset str_which
 #' @importFrom dplyr "%>%"
 #' @importFrom purrr map reduce
+#' @importFrom utils read.csv
 #'
 #' @examples
 #'

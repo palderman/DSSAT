@@ -1,7 +1,7 @@
-#' Generate a template GENERAL section of File X
-#'
-#' @export
-#'
+# Generate a template GENERAL section of File X
+#
+# @export
+#
 filex_template_general <- function(PEOPLE = NA_character_, ADDRESS = NA_character_,
                                    SITE = NA_character_,
                                    PAREA = NA_real_, PRNO = NA_real_, PLEN = NA_real_,

@@ -1,9 +1,9 @@
-#' Generate a template FERTILIZERS section of File X
-#'
-#' @export
-#'
-#' @inheritParams filex_template
-#'
+# Generate a template FERTILIZERS section of File X
+#
+# @export
+#
+# @inheritParams filex_template
+#
 filex_template_fertilizers <-
   function(F = NA_real_, FDATE = as.POSIXct(NA), FMCD = NA_character_,
            FACD = NA_character_, FDEP = NA_real_, FAMN = NA_real_,
