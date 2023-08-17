@@ -24,8 +24,10 @@ write_filex <- function(filex, file_name, drop_duplicate_rows=TRUE, force_std_fm
   file_body <- unlist(
     lapply( names(filex),
     function(sec_name){
-      if(force_std_fmt){
+      if(force_std_fmt | is.null(attr(filex[[sec_name]],'v_fmt'))){
         attr(filex[[sec_name]],'v_fmt') <- filex_v_fmt(sec_name)
+      }
+      if(force_std_fmt | is.null(attr(filex[[sec_name]],'tier_info'))){
         attr(filex[[sec_name]],'tier_info') <- filex_tier_info(sec_name)
       }
       if(any(grepl('(IRRIGATION)|(INITIAL)|(SOIL)', sec_name))){
