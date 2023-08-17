@@ -825,6 +825,188 @@
   expect_equal(actual, expected,
                info = "IRRIGATION AND WATER MANAGEMENT two levels - missing")
 
+
+  # "SIMULATION CONTROLS one level - no missing"
+
+  filex_input <- list("SIMULATION CONTROLS" = structure(list(
+    N = 1L, GENERAL = "GE", NYERS = 1L, NREPS = 1L,
+    START = "S",
+    SDATE = structure(371174400, tzone = "UTC", class = c("POSIXct", "POSIXt")),
+    RSEED = 2150L, SNAME = "N x IR ASHLAND,KS", SMODEL = "",
+    OPTIONS = "OP", WATER = "Y", NITRO = "Y", SYMBI = "N", PHOSP = "N",
+    POTAS = "N", DISES = "N", CHEM = "N", TILL = "N", CO2 = "M",
+    METHODS = "ME", WTHER = "M", INCON = "M", LIGHT = "E", EVAPO = "R",
+    INFIL = "S", PHOTO = "C", HYDRO = "R", NSWIT = 1L, MESOM = "G",
+    MESEV = "S", MESOL = 2L, MANAGEMENT = "MA", PLANT = "R",
+    IRRIG = "R", FERTI = "R", RESID = "N", HARVS = "M", OUTPUTS = "OU",
+    FNAME = "N", OVVEW = "Y", SUMRY = "Y", FROPT = 1L, GROUT = "Y",
+    CAOUT = "N", WAOUT = "Y", NIOUT = "Y", MIOUT = "N", DIOUT = "N",
+    VBOSE = "Y", CHOUT = "N", OPOUT = "N", PLANTING = "PL",
+    PFRST = structure(371433600, tzone = "UTC", class = c("POSIXct","POSIXt")),
+    PLAST = structure(372643200, tzone = "UTC", class = c("POSIXct","POSIXt")),
+    PH2OL = 40L, PH2OU = 100L, PH2OD = 30L, PSTMX = 40L,
+    PSTMN = 10L, IRRIGATION = "IR", IMDEP = 30L, ITHRL = 50L,
+    ITHRU = 100L, IROFF = "GS000", IMETH = "IR001", IRAMT = 10L,
+    IREFF = 1L, NITROGEN = "NI", NMDEP = 30L, NMTHR = 50L, NAMNT = 25L,
+    NCODE = "FE001", NAOFF = "GS000", RESIDUES = "RE", RIPCN = 100L,
+    RTIME = 1L, RIDEP = 20L, HARVEST = "HA",
+    HFRST = structure(NA_real_, tzone = "UTC", class = c("POSIXct","POSIXt")),
+    HLAST = structure(403574400, tzone = "UTC", class = c("POSIXct","POSIXt")),
+    HPCNP = 100L, HPCNR = 0L),
+    class = c("DSSAT_tbl", "data.frame"), row.names = c(NA, -1L)))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*SIMULATION CONTROLS",
+                "@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",
+                " 1  0.00     1     1     1 TEST1 TEST1    10 TEST",
+                "@I IDATE  IROP IRVAL",
+                " 1 82096 IR001  65.0",
+                " 1 82110 IR001  78.0",
+                " 1 82117 IR001  70.0",
+                "")
+
+  expect_equal(actual, expected,
+               info = "SIMULATION CONTROLS one level - no missing")
+
+
+  # # "SIMULATION CONTROLS one level - missing"
+  #
+  # filex_input <- list("SIMULATION CONTROLS" = structure(list(
+  #   I = 1, EFIR = NA_real_, IDEP = NA_real_, ITHR = NA_real_,
+  #   IEPT = NA_real_, IOFF = NA_character_,
+  #   IAME = NA_character_, IAMT = NA_real_,
+  #   IRNAME = NA_character_,
+  #   IDATE = list(structure(rep(NA_real_, 3),
+  #                          tzone = "UTC", class = c("POSIXct", "POSIXt"))),
+  #   IROP = list(rep(NA_character_, 3)),
+  #   IRVAL = list(rep(NA_real_, 3))),
+  #   class = c("DSSAT_tbl", "data.frame"),
+  #   row.names = c(NA, -1L),
+  #   tier_info = list(c("I", "EFIR", "IDEP", "ITHR", "IEPT",
+  #                      "IOFF", "IAME", "IAMT", "IRNAME"),
+  #                    c("I", "IDATE", "IROP", "IRVAL"))))
+  #
+  # actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+  #
+  # DSSAT::write_filex(filex_input, file_name = actual_file)
+  #
+  # actual <- readLines(actual_file)
+  #
+  # expected <- c("*EXP.DETAILS: ",
+  #               "",
+  #               "*SIMULATION CONTROLS",
+  #               "@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",
+  #               " 1   -99   -99   -99   -99   -99   -99   -99 -99",
+  #               "@I IDATE  IROP IRVAL",
+  #               " 1   -99   -99   -99",
+  #               " 1   -99   -99   -99",
+  #               " 1   -99   -99   -99",
+  #               "")
+  #
+  # expect_equal(actual, expected,
+  #              info = "SIMULATION CONTROLS one level - missing")
+  #
+  # # "SIMULATION CONTROLS two levels - no missing"
+  #
+  # filex_input <- list("SIMULATION CONTROLS" = structure(list(
+  #   I = 1:2, EFIR = rep(0, 2), IDEP = rep(1, 2),
+  #   ITHR = rep(1, 2), IEPT = rep(1, 2),
+  #   IOFF = rep("TEST1", 2), IAME = rep("TEST1", 2),
+  #   IAMT = rep(10, 2), IRNAME = rep("TEST", 2),
+  #   IDATE = list(structure(c(386899200, 388108800, 388713600),
+  #                          tzone = "UTC", class = c("POSIXct", "POSIXt")),
+  #                structure(c(386899200, 388108800, 388713600),
+  #                          tzone = "UTC", class = c("POSIXct", "POSIXt"))),
+  #   IROP = list(c("IR001", "IR001", "IR001"),
+  #               c("IR001", "IR001", "IR001")),
+  #   IRVAL = list(c(65L, 78L, 70L),
+  #                c(65L, 78L, 70L))),
+  #   class = c("DSSAT_tbl", "data.frame"),
+  #   row.names = c(NA, -2L),
+  #   tier_info = list(c("I", "EFIR", "IDEP", "ITHR", "IEPT",
+  #                      "IOFF", "IAME", "IAMT", "IRNAME"),
+  #                    c("I", "IDATE", "IROP", "IRVAL"))))
+  #
+  # actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+  #
+  # DSSAT::write_filex(filex_input, file_name = actual_file)
+  #
+  # actual <- readLines(actual_file)
+  #
+  # expected <- c("*EXP.DETAILS: ",
+  #               "",
+  #               "*SIMULATION CONTROLS",
+  #               "@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",
+  #               " 1  0.00     1     1     1 TEST1 TEST1    10 TEST",
+  #               "@I IDATE  IROP IRVAL",
+  #               " 1 82096 IR001  65.0",
+  #               " 1 82110 IR001  78.0",
+  #               " 1 82117 IR001  70.0",
+  #               "@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",
+  #               " 2  0.00     1     1     1 TEST1 TEST1    10 TEST",
+  #               "@I IDATE  IROP IRVAL",
+  #               " 2 82096 IR001  65.0",
+  #               " 2 82110 IR001  78.0",
+  #               " 2 82117 IR001  70.0",
+  #               "")
+  #
+  # expect_equal(actual, expected,
+  #              info = "SIMULATION CONTROLS two levels - no missing")
+  #
+  #
+  # # "SIMULATION CONTROLS two levels - missing"
+  #
+  # filex_input <- list("SIMULATION CONTROLS" = structure(list(
+  #   I = 1:2, EFIR = rep(NA_real_, 2),
+  #   IDEP =  rep(NA_real_, 2), ITHR =  rep(NA_real_, 2),
+  #   IEPT =  rep(NA_real_, 2), IOFF =  rep(NA_character_, 2),
+  #   IAME =  rep(NA_character_, 2), IAMT =  rep(NA_real_, 2),
+  #   IRNAME =  rep(NA_character_, 2),
+  #   IDATE = list(structure(rep(NA_real_, 3),
+  #                          tzone = "UTC", class = c("POSIXct", "POSIXt")),
+  #                structure(rep(NA_real_, 3),
+  #                          tzone = "UTC", class = c("POSIXct", "POSIXt"))),
+  #   IROP = list(rep(NA_character_, 3), rep(NA_character_, 3)),
+  #   IRVAL = list(rep(NA_real_, 3), rep(NA_real_, 3))),
+  #   class = c("DSSAT_tbl", "data.frame"),
+  #   row.names = c(NA, -2L),
+  #   tier_info = list(c("I", "EFIR", "IDEP", "ITHR", "IEPT",
+  #                      "IOFF", "IAME", "IAMT", "IRNAME"),
+  #                    c("I", "IDATE", "IROP", "IRVAL"))))
+  #
+  # actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+  #
+  # DSSAT::write_filex(filex_input, file_name = actual_file)
+  #
+  # actual <- readLines(actual_file)
+  #
+  # expected <- c("*EXP.DETAILS: ",
+  #               "",
+  #               "*SIMULATION CONTROLS",
+  #               "@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",
+  #               " 1   -99   -99   -99   -99   -99   -99   -99 -99",
+  #               "@I IDATE  IROP IRVAL",
+  #               " 1   -99   -99   -99",
+  #               " 1   -99   -99   -99",
+  #               " 1   -99   -99   -99",
+  #               "@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",
+  #               " 2   -99   -99   -99   -99   -99   -99   -99 -99",
+  #               "@I IDATE  IROP IRVAL",
+  #               " 2   -99   -99   -99",
+  #               " 2   -99   -99   -99",
+  #               " 2   -99   -99   -99",
+  #               "")
+  #
+  # expect_equal(actual, expected,
+  #              info = "SIMULATION CONTROLS two levels - missing")
+
 # test_that("PLANTING DETAILS - single",{
 #
 #   withr::with_file("TEST0000.CRX",{

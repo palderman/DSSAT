@@ -29,6 +29,33 @@ write_filex <- function(filex, file_name, drop_duplicate_rows=TRUE, force_std_fm
       }
       if(force_std_fmt | is.null(attr(filex[[sec_name]],'tier_info'))){
         attr(filex[[sec_name]],'tier_info') <- filex_tier_info(sec_name)
+        if(sec_name == "SIMULATION CONTROLS" &&
+           (! "FONAME" %in% colnames(filex[[sec_name]]) |
+             ! "FMOPT" %in% colnames(filex[[sec_name]]))){
+            tier_info <- attr(filex[[sec_name]],'tier_info')
+            # handle case where new forecast section is missing from SIMULATION CONTROLS section:
+            foname_ind <- which(
+              unlist(lapply(
+                tier_info,
+                function(.x) "FONAME" %in% .x
+              )))
+            # Handle case where FMOPT is missing
+            fmopt_ind <- which(
+              unlist(lapply(
+                tier_info,
+                function(.x) "FMOPT" %in% .x
+              )))
+          if(length(fmopt_ind) != 0){
+            tier_info <- lapply(
+              tier_info,
+              function(.x) .x[.x != "FMOPT"]
+                )
+          }
+          if(length(foname_ind) != 0){
+            tier_info <- tier_info[-foname_ind]
+          }
+          attr(filex[[sec_name]],'tier_info') <- tier_info
+        }
       }
       if(any(grepl('(IRRIGATION)|(INITIAL)|(SOIL)', sec_name))){
         tier_out <- write_dual_tier_section(filex[[sec_name]],
