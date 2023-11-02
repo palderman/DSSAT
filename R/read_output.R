@@ -71,7 +71,6 @@ read_output <- function(file_name, col_types = NULL, col_names = NULL,
     col_types <- cols(` TNAME\\.*`=col_character(),
                       ` TNAM\\.+`=col_character(),
                       ` EXNAME\\.*`=col_character(),
-                      `EXCODE  `=col_character(),
                       ` FNAM\\.*(?= |$)`=col_character(),
                       ` WSTA\\.*`=col_character(),
                       ` SOIL_ID\\.*`=col_character(),
@@ -80,11 +79,27 @@ read_output <- function(file_name, col_types = NULL, col_names = NULL,
 
     left_justified <- left_justified %>%
       c(.,' TNAME\\.*',' TNAM\\.+',' EXNAME\\.*',' FNAM\\.*(?= |$)',' WSTA\\.*',
-        ' SOIL_ID\\.*',' MODEL\\.*','EXCODE  ')
+        ' SOIL_ID\\.*',' MODEL\\.*', '            XLAT', '            LONG')
 
     col_names <- col_names %>%
       c(.,
-        ' +S(?= |$)',' +O(?= |$)',' +C(?= |$)',' +CR(?= |$)',' TNAM(?= |$)','  TRNO')
+        ' +S(?= |$)',' +O(?= |$)',' +C(?= |$)',' +CR(?= |$)',' TNAM(?= |$)')
+
+    if(basename(file_name) == "Plantsum.OUT"){
+      col_types <- cols(`EXCODE    `=col_character()) %>%
+        {.$cols <- c(.$cols, col_types$cols);.}
+      left_justified <- left_justified %>%
+        c(., 'EXCODE    ')
+      col_names <- col_names %>%
+        c(., 'TRNO')
+    }else{
+      col_types <- cols(`EXCODE  `=col_character()) %>%
+        {.$cols <- c(.$cols, col_types$cols);.}
+      left_justified <- left_justified %>%
+        c(., 'EXCODE  ')
+      col_names <- col_names %>%
+        c(., '  TRNO')
+    }
 
     # Read in raw data from file
     raw_lines <- readLines(file_name, warn = FALSE) %>%
