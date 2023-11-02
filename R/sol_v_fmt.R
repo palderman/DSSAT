@@ -1,7 +1,7 @@
 sol_v_fmt <- function(){
 
   v_fmt <- c(PEDON = "*%-10s", SOURCE = "  %-11s", TEXTURE = " %-5s", DEPTH = "%6.0f",
-             DESCRIPTION = " %-s", SITE = "%-13s", COUNTRY = "%-11s", LAT = "%9.3f",
+             DESCRIPTION = " %-s", SITE = " %-12s", COUNTRY = "%-11s", LAT = "%9.3f",
              LONG = "%9.3f", `SCS FAMILY` = " %-s", SCOM = "%6s", SALB = "%6.2f",
              SLU1 = "%6.2f", SLDR = "%6.2f", SLRO = "%6.1f", SLNF = "%6.2f",
              SLPF = "%6.2f", SMHB = "%6s", SMPX = "%6s", SMKE = "%6s",
