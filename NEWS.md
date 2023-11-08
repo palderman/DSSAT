@@ -1,4 +1,4 @@
-# DSSAT 0.0.7.9004
+# DSSAT 0.0.8
 
 - read_output() now handles comma separated value (csv) output from DSSAT-CSM
 
