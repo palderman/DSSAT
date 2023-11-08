@@ -826,7 +826,7 @@
                info = "IRRIGATION AND WATER MANAGEMENT two levels - missing")
 
 
-  # "SIMULATION CONTROLS one level - no missing"
+  # "SIMULATION CONTROLS one level - no missing, no FMOPT"
 
   filex_input <- list("SIMULATION CONTROLS" = structure(list(
     N = 1L, GENERAL = "GE", NYERS = 1L, NREPS = 1L,
@@ -864,17 +864,97 @@
   expected <- c("*EXP.DETAILS: ",
                 "",
                 "*SIMULATION CONTROLS",
-                "@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME",
-                " 1  0.00     1     1     1 TEST1 TEST1    10 TEST",
-                "@I IDATE  IROP IRVAL",
-                " 1 82096 IR001  65.0",
-                " 1 82110 IR001  78.0",
-                " 1 82117 IR001  70.0",
+                "@N GENERAL     NYERS NREPS START SDATE RSEED SNAME.................... SMODEL  ",
+                " 1 GE              1     1     S 81279  2150 N x IR ASHLAND,KS                 ",
+                "@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL   CO2",
+                " 1 OP              Y     Y     N     N     N     N     N     N     M",
+                "@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM MESEV MESOL",
+                " 1 ME              M     M     E     R     S     C     R     1     G     S     2",
+                "@N MANAGEMENT  PLANT IRRIG FERTI RESID HARVS",
+                " 1 MA              R     R     R     N     M",
+                "@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT VBOSE CHOUT OPOUT",
+                " 1 OU              N     Y     Y     1     Y     N     Y     Y     N     N     Y     N     N",
+                "@  AUTOMATIC MANAGEMENT",
+                "@N PLANTING    PFRST PLAST PH2OL PH2OU PH2OD PSTMX PSTMN",
+                " 1 PL          81282 81296    40   100    30    40    10",
+                "@N IRRIGATION  IMDEP ITHRL ITHRU IROFF IMETH IRAMT IREFF",
+                " 1 IR             30    50   100 GS000 IR001    10  1.00",
+                "@N NITROGEN    NMDEP NMTHR NAMNT NCODE NAOFF",
+                " 1 NI             30 50.00    25 FE001 GS000",
+                "@N RESIDUES    RIPCN RTIME RIDEP",
+                " 1 RE            100     1    20",
+                "@N HARVEST     HFRST HLAST HPCNP HPCNR",
+                " 1 HA            -99 82289   100     0",
                 "")
 
   expect_equal(actual, expected,
-               info = "SIMULATION CONTROLS one level - no missing")
+               info = "SIMULATION CONTROLS one level - no missing, no FMOPT")
 
+
+  # "SIMULATION CONTROLS one level - no missing, with FMOPT"
+
+  filex_input <- list("SIMULATION CONTROLS" = structure(list(
+    N = 1L, GENERAL = "GE", NYERS = 1L, NREPS = 1L,
+    START = "S",
+    SDATE = structure(371174400, tzone = "UTC", class = c("POSIXct", "POSIXt")),
+    RSEED = 2150L, SNAME = "N x IR ASHLAND,KS", SMODEL = "",
+    OPTIONS = "OP", WATER = "Y", NITRO = "Y", SYMBI = "N", PHOSP = "N",
+    POTAS = "N", DISES = "N", CHEM = "N", TILL = "N", CO2 = "M",
+    METHODS = "ME", WTHER = "M", INCON = "M", LIGHT = "E", EVAPO = "R",
+    INFIL = "S", PHOTO = "C", HYDRO = "R", NSWIT = 1L, MESOM = "G",
+    MESEV = "S", MESOL = 2L, MANAGEMENT = "MA", PLANT = "R",
+    IRRIG = "R", FERTI = "R", RESID = "N", HARVS = "M", OUTPUTS = "OU",
+    FNAME = "N", OVVEW = "Y", SUMRY = "Y", FROPT = 1L, GROUT = "Y",
+    CAOUT = "N", WAOUT = "Y", NIOUT = "Y", MIOUT = "N", DIOUT = "N",
+    VBOSE = "Y", CHOUT = "N", OPOUT = "N", FMOPT = "A",
+    PLANTING = "PL",
+    PFRST = structure(371433600, tzone = "UTC", class = c("POSIXct","POSIXt")),
+    PLAST = structure(372643200, tzone = "UTC", class = c("POSIXct","POSIXt")),
+    PH2OL = 40L, PH2OU = 100L, PH2OD = 30L, PSTMX = 40L,
+    PSTMN = 10L, IRRIGATION = "IR", IMDEP = 30L, ITHRL = 50L,
+    ITHRU = 100L, IROFF = "GS000", IMETH = "IR001", IRAMT = 10L,
+    IREFF = 1L, NITROGEN = "NI", NMDEP = 30L, NMTHR = 50L, NAMNT = 25L,
+    NCODE = "FE001", NAOFF = "GS000", RESIDUES = "RE", RIPCN = 100L,
+    RTIME = 1L, RIDEP = 20L, HARVEST = "HA",
+    HFRST = structure(NA_real_, tzone = "UTC", class = c("POSIXct","POSIXt")),
+    HLAST = structure(403574400, tzone = "UTC", class = c("POSIXct","POSIXt")),
+    HPCNP = 100L, HPCNR = 0L),
+    class = c("DSSAT_tbl", "data.frame"), row.names = c(NA, -1L)))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*SIMULATION CONTROLS",
+                "@N GENERAL     NYERS NREPS START SDATE RSEED SNAME.................... SMODEL  ",
+                " 1 GE              1     1     S 81279  2150 N x IR ASHLAND,KS                 ",
+                "@N OPTIONS     WATER NITRO SYMBI PHOSP POTAS DISES  CHEM  TILL   CO2",
+                " 1 OP              Y     Y     N     N     N     N     N     N     M",
+                "@N METHODS     WTHER INCON LIGHT EVAPO INFIL PHOTO HYDRO NSWIT MESOM MESEV MESOL",
+                " 1 ME              M     M     E     R     S     C     R     1     G     S     2",
+                "@N MANAGEMENT  PLANT IRRIG FERTI RESID HARVS",
+                " 1 MA              R     R     R     N     M",
+                "@N OUTPUTS     FNAME OVVEW SUMRY FROPT GROUT CAOUT WAOUT NIOUT MIOUT DIOUT VBOSE CHOUT OPOUT",
+                " 1 OU              N     Y     Y     1     Y     N     Y     Y     N     N     Y     N     N",
+                "@  AUTOMATIC MANAGEMENT",
+                "@N PLANTING    PFRST PLAST PH2OL PH2OU PH2OD PSTMX PSTMN",
+                " 1 PL          81282 81296    40   100    30    40    10",
+                "@N IRRIGATION  IMDEP ITHRL ITHRU IROFF IMETH IRAMT IREFF",
+                " 1 IR             30    50   100 GS000 IR001    10  1.00",
+                "@N NITROGEN    NMDEP NMTHR NAMNT NCODE NAOFF",
+                " 1 NI             30 50.00    25 FE001 GS000",
+                "@N RESIDUES    RIPCN RTIME RIDEP",
+                " 1 RE            100     1    20",
+                "@N HARVEST     HFRST HLAST HPCNP HPCNR",
+                " 1 HA            -99 82289   100     0",
+                "")
+
+  expect_equal(actual, expected,
+               info = "SIMULATION CONTROLS one level - no missing, with FMOPT")
 
   # # "SIMULATION CONTROLS one level - missing"
   #
