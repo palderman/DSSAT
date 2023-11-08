@@ -79,11 +79,12 @@ read_output <- function(file_name, col_types = NULL, col_names = NULL,
 
     left_justified <- left_justified %>%
       c(.,' TNAME\\.*',' TNAM\\.+',' EXNAME\\.*',' FNAM\\.*(?= |$)',' WSTA\\.*',
-        ' SOIL_ID\\.*',' MODEL\\.*', '            XLAT', '            LONG')
+        ' SOIL_ID\\.*',' MODEL\\.*')
 
     col_names <- col_names %>%
       c(.,
-        ' +S(?= |$)',' +O(?= |$)',' +C(?= |$)',' +CR(?= |$)',' TNAM(?= |$)')
+        ' +S(?= |$)',' +O(?= |$)',' +C(?= |$)',' +CR(?= |$)',' TNAM(?= |$)',
+        '            XLAT', '            LONG')
 
     if(basename(file_name) == "Plantsum.OUT"){
       col_types <- cols(`EXCODE    `=col_character()) %>%
