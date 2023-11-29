@@ -63,6 +63,12 @@ write_filex <- function(filex, file_name, drop_duplicate_rows=TRUE, force_std_fm
       }else if(any(grepl('SIMULATION CONTROLS', sec_name))){
         tier_out <- write_sim_ctrl_section(filex[[sec_name]])
       }else if(any(grepl('GENERAL', sec_name))){
+        miss_cols <- missing_columns(filex[[sec_name]])
+        miss_type <- v_fmt_to_type(attr(filex[[sec_name]], "v_fmt"),
+                                   miss_cols)
+        for(i in seq_along(miss_cols)){
+          filex[[sec_name]][[miss_cols[i]]] <- as(NA, miss_type[i])
+        }
         tier_out <- write_tier(filex[[sec_name]],
                                pad_name=c('HARM'),
                                drop_duplicate_rows=drop_duplicate_rows,

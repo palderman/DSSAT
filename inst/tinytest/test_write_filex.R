@@ -44,6 +44,231 @@
   expect_equal(actual, expected,
                info = "GENERAL")
 
+# "GENERAL - no tier_info"
+
+  filex_input <- list(GENERAL = structure(list(
+    PEOPLE = "First Contributor; Second Contributor",
+    ADDRESS = "Agricultural Research Institute",
+    SITE = "Somewhere, Someplace",
+    PAREA = 2L, PRNO = 2L, PLEN = 2L, PLDR = 2L, PLSP = 2L, PLAY = "RCBD",
+    HAREA = 1L, HRNO = 1L, HLEN = 0.5, HARM = "Clipping",
+    NOTES = list(c("Additional notes", "go on these", "lines"))
+  ),
+  class = "data.frame",
+  row.names = c(NA, -1L)))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*GENERAL",
+                "@PEOPLE",
+                "First Contributor; Second Contributor",
+                "@ADDRESS",
+                "Agricultural Research Institute",
+                "@SITE",
+                "Somewhere, Someplace",
+                "@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN  HARM.........",
+                "      2     2     2     2     2  RCBD     1     1   0.5  Clipping     ",
+                "@NOTES",
+                "Additional notes",
+                "go on these",
+                "lines",
+                "")
+
+  expect_equal(actual, expected,
+               info = "GENERAL - no tier_info")
+
+# "GENERAL - NOTES missing, no tier_info"
+
+  filex_input <- list(GENERAL = structure(list(
+    PEOPLE = "First Contributor; Second Contributor",
+    ADDRESS = "Agricultural Research Institute",
+    SITE = "Somewhere, Someplace",
+    PAREA = 2L, PRNO = 2L, PLEN = 2L, PLDR = 2L, PLSP = 2L, PLAY = "RCBD",
+    HAREA = 1L, HRNO = 1L, HLEN = 0.5, HARM = "Clipping"
+  ),
+  class = "data.frame",
+  row.names = c(NA, -1L)))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*GENERAL",
+                "@PEOPLE",
+                "First Contributor; Second Contributor",
+                "@ADDRESS",
+                "Agricultural Research Institute",
+                "@SITE",
+                "Somewhere, Someplace",
+                "@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN  HARM.........",
+                "      2     2     2     2     2  RCBD     1     1   0.5  Clipping     ",
+                "@NOTES",
+                "-99",
+                "")
+
+  expect_equal(actual, expected,
+               info = "GENERAL - NOTES missing, no tier_info")
+
+# "GENERAL - PAREA, PRNO... missing, no tier_info"
+
+  filex_input <- list(GENERAL = structure(list(
+    PEOPLE = "First Contributor; Second Contributor",
+    ADDRESS = "Agricultural Research Institute",
+    SITE = "Somewhere, Someplace",
+    NOTES = list(c("Additional notes", "go on these", "lines"))
+  ),
+  class = "data.frame",
+  row.names = c(NA, -1L)))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*GENERAL",
+                "@PEOPLE",
+                "First Contributor; Second Contributor",
+                "@ADDRESS",
+                "Agricultural Research Institute",
+                "@SITE",
+                "Somewhere, Someplace",
+                "@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN  HARM.........",
+                "    -99   -99   -99   -99   -99   -99   -99   -99   -99  -99          ",
+                "@NOTES",
+                "Additional notes",
+                "go on these",
+                "lines",
+                "")
+
+  expect_equal(actual, expected,
+               info = "GENERAL - PAREA, PRNO... missing, no tier_info")
+
+# "GENERAL - PEOPLE missing, no tier_info"
+
+  filex_input <- list(GENERAL = structure(list(
+    ADDRESS = "Agricultural Research Institute",
+    SITE = "Somewhere, Someplace",
+    PAREA = 2L, PRNO = 2L, PLEN = 2L, PLDR = 2L, PLSP = 2L, PLAY = "RCBD",
+    HAREA = 1L, HRNO = 1L, HLEN = 0.5, HARM = "Clipping",
+    NOTES = list(c("Additional notes", "go on these", "lines"))
+  ),
+  class = "data.frame",
+  row.names = c(NA, -1L)))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*GENERAL",
+                "@PEOPLE",
+                "-99",
+                "@ADDRESS",
+                "Agricultural Research Institute",
+                "@SITE",
+                "Somewhere, Someplace",
+                "@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN  HARM.........",
+                "      2     2     2     2     2  RCBD     1     1   0.5  Clipping     ",
+                "@NOTES",
+                "Additional notes",
+                "go on these",
+                "lines",
+                "")
+
+  expect_equal(actual, expected,
+               info = "GENERAL - PEOPLE missing, no tier_info")
+
+  # "GENERAL - ADDRESS missing, no tier_info"
+
+  filex_input <- list(GENERAL = structure(list(
+    PEOPLE = "First Contributor; Second Contributor",
+    SITE = "Somewhere, Someplace",
+    PAREA = 2L, PRNO = 2L, PLEN = 2L, PLDR = 2L, PLSP = 2L, PLAY = "RCBD",
+    HAREA = 1L, HRNO = 1L, HLEN = 0.5, HARM = "Clipping",
+    NOTES = list(c("Additional notes", "go on these", "lines"))
+  ),
+  class = "data.frame",
+  row.names = c(NA, -1L)))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*GENERAL",
+                "@PEOPLE",
+                "First Contributor; Second Contributor",
+                "@ADDRESS",
+                "-99",
+                "@SITE",
+                "Somewhere, Someplace",
+                "@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN  HARM.........",
+                "      2     2     2     2     2  RCBD     1     1   0.5  Clipping     ",
+                "@NOTES",
+                "Additional notes",
+                "go on these",
+                "lines",
+                "")
+
+  expect_equal(actual, expected,
+               info = "GENERAL - ADDRESS missing, no tier_info")
+
+# "GENERAL - SITE missing, no tier_info"
+
+  filex_input <- list(GENERAL = structure(list(
+    PEOPLE = "First Contributor; Second Contributor",
+    ADDRESS = "Agricultural Research Institute",
+    PAREA = 2L, PRNO = 2L, PLEN = 2L, PLDR = 2L, PLSP = 2L, PLAY = "RCBD",
+    HAREA = 1L, HRNO = 1L, HLEN = 0.5, HARM = "Clipping",
+    NOTES = list(c("Additional notes", "go on these", "lines"))
+  ),
+  class = "data.frame",
+  row.names = c(NA, -1L)))
+
+  actual_file <- tempfile(pattern = "TEST0001", fileext = "CRX")
+
+  DSSAT::write_filex(filex_input, file_name = actual_file)
+
+  actual <- readLines(actual_file)
+
+  expected <- c("*EXP.DETAILS: ",
+                "",
+                "*GENERAL",
+                "@PEOPLE",
+                "First Contributor; Second Contributor",
+                "@ADDRESS",
+                "Agricultural Research Institute",
+                "@SITE",
+                "-99",
+                "@ PAREA  PRNO  PLEN  PLDR  PLSP  PLAY HAREA  HRNO  HLEN  HARM.........",
+                "      2     2     2     2     2  RCBD     1     1   0.5  Clipping     ",
+                "@NOTES",
+                "Additional notes",
+                "go on these",
+                "lines",
+                "")
+
+  expect_equal(actual, expected,
+               info = "GENERAL - SITE missing, no tier_info")
 
 # "TREATMENTS single"
 

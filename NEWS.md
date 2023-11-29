@@ -1,3 +1,7 @@
+# DSSAT 0.0.8.9000
+
+- Bugfix for write_filex() when missing NOTES, PAREA, PRNO, ...
+
 # DSSAT 0.0.8
 
 - read_output() now handles comma separated value (csv) output from DSSAT-CSM
