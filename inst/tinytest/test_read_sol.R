@@ -184,7 +184,378 @@ file.remove(test_sol)
     if(arg %in% objects()) rm(list = arg)
   }
 
+# "read_sol() Single profile 9-digit PEDON"
 
+    test_sol <- tempfile()
+
+    write(
+      c("*SOILS: General DSSAT Soil Input File",
+        "",
+        "*IB0000001   IBSNAT      SIC     210 DEFAULT - DEEP SILTY CLAY",
+        "@SITE        COUNTRY          LAT     LONG SCS FAMILY",
+        " Generic     Generic          -99      -99 Generic",
+        "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE",
+        "   -99  0.11   6.0  0.30  85.0  1.00  1.00 IB001 IB001 IB001",
+        "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC",
+        "     5   -99 0.228 0.385 0.481 1.000   -99  1.30  1.75  50.0  45.0   0.0 0.170   6.5   -99   -99   -99 ",
+        "    15   -99 0.228 0.385 0.481 1.000   -99  1.30  1.75  50.0  45.0   0.0 0.170   6.5   -99   -99   -99 ",
+        "    30   -99 0.249 0.406 0.482 0.638   -99  1.30  1.60  50.0  45.0   0.0 0.170   6.5   -99   -99   -99 ",
+        "    45   -99 0.249 0.406 0.465 0.472   -99  1.35  1.45  50.0  45.0   0.0 0.140   6.5   -99   -99   -99 ",
+        "    60   -99 0.249 0.406 0.465 0.350   -99  1.35  1.45  50.0  45.0   0.0 0.140   6.5   -99   -99   -99 ",
+        "    90   -99 0.308 0.456 0.468 0.223   -99  1.35  1.10  50.0  45.0   0.0 0.110   6.5   -99   -99   -99 ",
+        "   120   -99 0.207 0.341 0.452 0.122   -99  1.40  0.65  50.0  45.0   0.0 0.060   6.5   -99   -99   -99 ",
+        "   150   -99 0.243 0.365 0.455 0.067   -99  1.40  0.30  50.0  45.0   0.0 0.030   6.5   -99   -99   -99 ",
+        "   180   -99 0.259 0.361 0.457 0.037   -99  1.40  0.10  50.0  45.0   0.0 0.010   6.5   -99   -99   -99 ",
+        "   210   -99 0.259 0.361 0.457 0.020   -99  1.40  0.01  50.0  45.0   0.0 0.000   6.5   -99   -99   -99 ",
+        ""),
+      test_sol
+    )
+
+    sol <- DSSAT::read_sol(test_sol)
+
+    file.remove(test_sol)
+
+    info_prefix <- "read_sol() Single profile 9-digit PEDON"
+    actual <- sol
+    char_cols <- c("PEDON", "SOURCE", "TEXTURE", "DESCRIPTION",
+                   "SITE", "COUNTRY", "SCS FAMILY", "SCOM",
+                   "SMHB", "SMPX", "SMKE", "SLMH")
+    list_cols <- c("SLB", "SLMH", "SLLL", "SDUL", "SSAT",
+                   "SRGF", "SSKS", "SBDM", "SLOC", "SLCL",
+                   "SLSI", "SLCF", "SLNI", "SLHW", "SLHB",
+                   "SCEC", "SADC")
+    expected_vals <- list(PEDON = "IB0000001",
+                          SOURCE = "IBSNAT",
+                          TEXTURE = "SIC",
+                          DEPTH = 210,
+                          DESCRIPTION = "DEFAULT - DEEP SILTY CLAY",
+                          SITE = "Generic",
+                          COUNTRY = "Generic",
+                          LAT = NA_real_,
+                          LONG = NA_real_,
+                          "SCS FAMILY" = "Generic",
+                          SCOM = NA_character_,
+                          SALB = 0.11,
+                          SLU1 = 6,
+                          SLDR = 0.3,
+                          SLRO = 85,
+                          SLNF = 1,
+                          SLPF = 1,
+                          SMHB = "IB001",
+                          SMPX = "IB001",
+                          SMKE = "IB001",
+                          SLB = list(c(5, 15, 30, 45, 60, 90,
+                                       120, 150, 180, 210)),
+                          SLMH = list(c(NA_character_, NA_character_,
+                                        NA_character_, NA_character_,
+                                        NA_character_, NA_character_,
+                                        NA_character_, NA_character_,
+                                        NA_character_, NA_character_)),
+                          SLLL = list(c(0.228, 0.228, 0.249, 0.249,
+                                        0.249, 0.308, 0.207, 0.243,
+                                        0.259, 0.259)),
+                          SDUL = list(c(0.385, 0.385, 0.406, 0.406,
+                                        0.406, 0.456, 0.341, 0.365,
+                                        0.361, 0.361)),
+                          SSAT = list(c(0.481, 0.481, 0.482, 0.465,
+                                        0.465, 0.468, 0.452, 0.455,
+                                        0.457, 0.457)),
+                          SRGF = list(c(1, 1, 0.638, 0.472, 0.35,
+                                        0.223, 0.122, 0.067,
+                                        0.037, 0.02)),
+                          SSKS = list(c(NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_)),
+                          SBDM = list(c(1.3, 1.3, 1.3, 1.35,
+                                        1.35, 1.35, 1.4, 1.4,
+                                        1.4, 1.4)),
+                          SLOC = list(c(1.75, 1.75, 1.6, 1.45,
+                                        1.45, 1.1, 0.65, 0.3,
+                                        0.1, 0.01)),
+                          SLCL = list(c(50, 50, 50, 50, 50,
+                                        50, 50, 50, 50, 50)),
+                          SLSI = list(c(45, 45, 45, 45, 45,
+                                        45, 45, 45, 45, 45)),
+                          SLCF = list(c(0, 0, 0, 0, 0, 0,
+                                        0, 0, 0, 0)),
+                          SLNI = list(c(0.17, 0.17, 0.17, 0.14,
+                                        0.14, 0.11, 0.06, 0.03,
+                                        0.01, 0)),
+                          SLHW = list(c(6.5, 6.5, 6.5, 6.5,
+                                        6.5, 6.5, 6.5, 6.5,
+                                        6.5, 6.5)),
+                          SLHB = list(c(NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_)),
+                          SCEC = list(c(NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_)),
+                          SADC = list(c(NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_)))
+
+    # Check for all missing variables
+    for(nm in names(actual)){
+      if("missing" %in% objects() && nm %in% missing){
+        if(exists("char_cols") && nm %in% char_cols){
+          na_val <- NA_character_
+        }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+          na_val <- as.POSIXct(NA, tz="UTC")
+        }else{
+          na_val <- NA_real_
+        }
+        if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+          expect_equal(unlist(actual[[nm]]),
+                       rep(na_val, length(unlist(actual[[nm]]))),
+                       info = paste0(info_prefix, ": ", nm))
+        }else{
+          expect_equal(actual[[nm]],
+                       rep(na_val, nrow(actual)),
+                       info = paste0(info_prefix, ": ", nm))
+        }
+      }
+    }
+
+    # Check for specific expected values
+    if("expected_vals" %in% objects() && !is.null(expected_vals)){
+      for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+
+    # Check list column type and dimensions
+    if("list_cols" %in% objects() && !is.null(list_cols)){
+      for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+        if(exists("list_col_length") && !is.null(list_col_length)){
+          if(length(list_col_length) == 1){
+            list_col_length <- rep(list_col_length, length(actual[[nm]]))
+          }
+          for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                         list_col_length[i],
+                         info = paste0(info_prefix, nm))
+          }
+        }
+        if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+          for(i in 1:nrow(actual)){
+            for(g in 1:length(list_col_groups)){
+              length_range <- range(
+                sapply(actual[i,][list_col_groups[[g]]],
+                       function(x)length(unlist(x)))
+              )
+              lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                           length_range[2],
+                           info = paste0(info_prefix, ": ", lbl))
+            }
+          }
+        }
+      }
+    }
+    for(arg in c("char_cols", "list_cols", "date_cols",
+                 "missing", "list_col_length",
+                 "list_col_groups", "expected_vals")){
+      if(arg %in% objects()) rm(list = arg)
+    }
+
+
+# "read_sol() Single profile 9-digit PEDON id_soil specified"
+
+    test_sol <- tempfile()
+
+    write(
+      c("*SOILS: General DSSAT Soil Input File",
+        "",
+        "*IB0000001   IBSNAT      SIC     210 DEFAULT - DEEP SILTY CLAY",
+        "@SITE        COUNTRY          LAT     LONG SCS FAMILY",
+        " Generic     Generic          -99      -99 Generic",
+        "@ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE",
+        "   -99  0.11   6.0  0.30  85.0  1.00  1.00 IB001 IB001 IB001",
+        "@  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC",
+        "     5   -99 0.228 0.385 0.481 1.000   -99  1.30  1.75  50.0  45.0   0.0 0.170   6.5   -99   -99   -99 ",
+        "    15   -99 0.228 0.385 0.481 1.000   -99  1.30  1.75  50.0  45.0   0.0 0.170   6.5   -99   -99   -99 ",
+        "    30   -99 0.249 0.406 0.482 0.638   -99  1.30  1.60  50.0  45.0   0.0 0.170   6.5   -99   -99   -99 ",
+        "    45   -99 0.249 0.406 0.465 0.472   -99  1.35  1.45  50.0  45.0   0.0 0.140   6.5   -99   -99   -99 ",
+        "    60   -99 0.249 0.406 0.465 0.350   -99  1.35  1.45  50.0  45.0   0.0 0.140   6.5   -99   -99   -99 ",
+        "    90   -99 0.308 0.456 0.468 0.223   -99  1.35  1.10  50.0  45.0   0.0 0.110   6.5   -99   -99   -99 ",
+        "   120   -99 0.207 0.341 0.452 0.122   -99  1.40  0.65  50.0  45.0   0.0 0.060   6.5   -99   -99   -99 ",
+        "   150   -99 0.243 0.365 0.455 0.067   -99  1.40  0.30  50.0  45.0   0.0 0.030   6.5   -99   -99   -99 ",
+        "   180   -99 0.259 0.361 0.457 0.037   -99  1.40  0.10  50.0  45.0   0.0 0.010   6.5   -99   -99   -99 ",
+        "   210   -99 0.259 0.361 0.457 0.020   -99  1.40  0.01  50.0  45.0   0.0 0.000   6.5   -99   -99   -99 ",
+        ""),
+      test_sol
+    )
+
+    sol <- DSSAT::read_sol(test_sol, id_soil = "IB0000001")
+
+    file.remove(test_sol)
+
+    info_prefix <- "read_sol() Single profile 9-digit PEDON id_soil specified"
+    actual <- sol
+    char_cols <- c("PEDON", "SOURCE", "TEXTURE", "DESCRIPTION",
+                   "SITE", "COUNTRY", "SCS FAMILY", "SCOM",
+                   "SMHB", "SMPX", "SMKE", "SLMH")
+    list_cols <- c("SLB", "SLMH", "SLLL", "SDUL", "SSAT",
+                   "SRGF", "SSKS", "SBDM", "SLOC", "SLCL",
+                   "SLSI", "SLCF", "SLNI", "SLHW", "SLHB",
+                   "SCEC", "SADC")
+    expected_vals <- list(PEDON = "IB0000001",
+                          SOURCE = "IBSNAT",
+                          TEXTURE = "SIC",
+                          DEPTH = 210,
+                          DESCRIPTION = "DEFAULT - DEEP SILTY CLAY",
+                          SITE = "Generic",
+                          COUNTRY = "Generic",
+                          LAT = NA_real_,
+                          LONG = NA_real_,
+                          "SCS FAMILY" = "Generic",
+                          SCOM = NA_character_,
+                          SALB = 0.11,
+                          SLU1 = 6,
+                          SLDR = 0.3,
+                          SLRO = 85,
+                          SLNF = 1,
+                          SLPF = 1,
+                          SMHB = "IB001",
+                          SMPX = "IB001",
+                          SMKE = "IB001",
+                          SLB = list(c(5, 15, 30, 45, 60, 90,
+                                       120, 150, 180, 210)),
+                          SLMH = list(c(NA_character_, NA_character_,
+                                        NA_character_, NA_character_,
+                                        NA_character_, NA_character_,
+                                        NA_character_, NA_character_,
+                                        NA_character_, NA_character_)),
+                          SLLL = list(c(0.228, 0.228, 0.249, 0.249,
+                                        0.249, 0.308, 0.207, 0.243,
+                                        0.259, 0.259)),
+                          SDUL = list(c(0.385, 0.385, 0.406, 0.406,
+                                        0.406, 0.456, 0.341, 0.365,
+                                        0.361, 0.361)),
+                          SSAT = list(c(0.481, 0.481, 0.482, 0.465,
+                                        0.465, 0.468, 0.452, 0.455,
+                                        0.457, 0.457)),
+                          SRGF = list(c(1, 1, 0.638, 0.472, 0.35,
+                                        0.223, 0.122, 0.067,
+                                        0.037, 0.02)),
+                          SSKS = list(c(NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_)),
+                          SBDM = list(c(1.3, 1.3, 1.3, 1.35,
+                                        1.35, 1.35, 1.4, 1.4,
+                                        1.4, 1.4)),
+                          SLOC = list(c(1.75, 1.75, 1.6, 1.45,
+                                        1.45, 1.1, 0.65, 0.3,
+                                        0.1, 0.01)),
+                          SLCL = list(c(50, 50, 50, 50, 50,
+                                        50, 50, 50, 50, 50)),
+                          SLSI = list(c(45, 45, 45, 45, 45,
+                                        45, 45, 45, 45, 45)),
+                          SLCF = list(c(0, 0, 0, 0, 0, 0,
+                                        0, 0, 0, 0)),
+                          SLNI = list(c(0.17, 0.17, 0.17, 0.14,
+                                        0.14, 0.11, 0.06, 0.03,
+                                        0.01, 0)),
+                          SLHW = list(c(6.5, 6.5, 6.5, 6.5,
+                                        6.5, 6.5, 6.5, 6.5,
+                                        6.5, 6.5)),
+                          SLHB = list(c(NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_)),
+                          SCEC = list(c(NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_)),
+                          SADC = list(c(NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_,
+                                        NA_real_, NA_real_)))
+
+    # Check for all missing variables
+    for(nm in names(actual)){
+      if("missing" %in% objects() && nm %in% missing){
+        if(exists("char_cols") && nm %in% char_cols){
+          na_val <- NA_character_
+        }else if("date_cols" %in% objects() && !is.null(date_cols) && nm == date_cols){
+          na_val <- as.POSIXct(NA, tz="UTC")
+        }else{
+          na_val <- NA_real_
+        }
+        if("list_cols" %in% objects() && !is.null(list_cols) && nm %in% list_cols){
+          expect_equal(unlist(actual[[nm]]),
+                       rep(na_val, length(unlist(actual[[nm]]))),
+                       info = paste0(info_prefix, ": ", nm))
+        }else{
+          expect_equal(actual[[nm]],
+                       rep(na_val, nrow(actual)),
+                       info = paste0(info_prefix, ": ", nm))
+        }
+      }
+    }
+
+    # Check for specific expected values
+    if("expected_vals" %in% objects() && !is.null(expected_vals)){
+      for(nm in names(expected_vals)){
+        expect_equal(actual[[nm]],
+                     expected_vals[[nm]],
+                     info = paste0(info_prefix, ": ", nm))
+      }
+    }
+
+    # Check list column type and dimensions
+    if("list_cols" %in% objects() && !is.null(list_cols)){
+      for(nm in list_cols){
+        expect_true(is.list(actual[[nm]]),
+                    info = paste0(info_prefix, ": ", nm))
+        if(exists("list_col_length") && !is.null(list_col_length)){
+          if(length(list_col_length) == 1){
+            list_col_length <- rep(list_col_length, length(actual[[nm]]))
+          }
+          for(i in 1:length(actual[[nm]])){
+            expect_equal(length(unlist(actual[[nm]][i])),
+                         list_col_length[i],
+                         info = paste0(info_prefix, nm))
+          }
+        }
+        if("list_col_groups" %in% objects() && !is.null(list_col_groups)){
+          for(i in 1:nrow(actual)){
+            for(g in 1:length(list_col_groups)){
+              length_range <- range(
+                sapply(actual[i,][list_col_groups[[g]]],
+                       function(x)length(unlist(x)))
+              )
+              lbl = paste0(paste0(list_col_groups[[g]],collapse = ", ")," - row ", i)
+              expect_equal(length_range[1],
+                           length_range[2],
+                           info = paste0(info_prefix, ": ", lbl))
+            }
+          }
+        }
+      }
+    }
+    for(arg in c("char_cols", "list_cols", "date_cols",
+                 "missing", "list_col_length",
+                 "list_col_groups", "expected_vals")){
+      if(arg %in% objects()) rm(list = arg)
+    }
 
 
 # "read_sol() Three profiles"
