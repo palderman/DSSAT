@@ -10,7 +10,7 @@ find_pedon <- function(raw, pedons = NULL){
   )
 
   # Extract soil_id
-  pedon <- substr(raw[start], 2, 11)
+  pedon <- gsub(" ", "", substr(raw[start], 2, 11))
 
   if(!is.null(pedons)){
     # Subset to list of profiles in `pedons`

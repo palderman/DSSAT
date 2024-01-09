@@ -1,3 +1,7 @@
+# DSSAT 0.0.8.9001
+
+- Bugfix for read_sol() to handle case when PEDON is less than 10 digits
+
 # DSSAT 0.0.8.9000
 
 - Bugfix for write_filex() when missing NOTES, PAREA, PRNO, ...
