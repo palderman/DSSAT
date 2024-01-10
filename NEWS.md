@@ -1,3 +1,7 @@
+# DSSAT 0.0.8.9002
+
+- Bugfix for using $ instead of * for start of weather file header line in write_wth()
+
 # DSSAT 0.0.8.9001
 
 - Bugfix for read_sol() to handle case when PEDON is less than 10 digits
