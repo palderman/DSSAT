@@ -27,6 +27,9 @@ filex_template <- function(...){
                      "PLRS", "PLRD", "PLDP", "PLWT", "PAGE", "PENV", "PLPH",
                      "SPRL", "PLNAME", "expand")
 
+  harvest_args <- c("HDATE", "HSTG", "HCOM", "HSIZE", "HPC", "HBPC", "HNAME",
+                    "expand")
+
   sim_control_args <- c("GENERAL", "NYERS", "NREPS", "START", "SDATE", "RSEED",
                         "SNAME", "SMODEL", "OPTIONS", "WATER", "NITRO", "SYMBI",
                         "PHOSP", "POTAS", "DISES", "CHEM", "TILL", "CO2", "METHODS",
@@ -75,9 +78,15 @@ filex_template <- function(...){
 
   }
 
+  if(any(names(flx_args) %in% harvest_args)){
+    filex$`HARVEST DETAILS` <- do.call(filex_template_harvest_details,
+                                       flx_args[names(flx_args) %in% harvest_args])
+  }
+
   filex_sections <- c("GENERAL", "TREATMENTS", "CULTIVARS", "FIELDS",
                       "INITIAL CONDITIONS", "PLANTING DETAILS",
                       "IRRIGATION AND WATER MANAGEMENT", "FERTILIZERS",
+                      "HARVEST DETAILS",
                       "SIMULATION CONTROLS")
 
   filex_sections <- filex_sections[filex_sections %in% names(filex)]
@@ -87,3 +96,4 @@ filex_template <- function(...){
   return(filex)
 
 }
+
