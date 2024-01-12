@@ -61,7 +61,7 @@ read_output <- function(file_name, col_types = NULL, col_names = NULL,
 
     cnames <- colnames(output)
 
-    cnames[cnames == "EXP"] <- "EXPERMIENT"
+    cnames[cnames == "EXP"] <- "EXPERIMENT"
     cnames[cnames == "TRTNUM"] <- "TRNO"
 
     colnames(output) <- cnames

@@ -1,3 +1,7 @@
+# DSSAT 0.0.8.9004
+
+- Fixed spelling of EXPERIMENT column name in read_output()
+
 # DSSAT 0.0.8.9003
 
 - Adding new filex_template_harvest_details() function to generate a template HARVEST DETAILS section for File X
