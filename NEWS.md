@@ -1,20 +1,12 @@
-# DSSAT 0.0.8.9004
+# DSSAT 0.0.9
 
 - Fixed spelling of EXPERIMENT column name in read_output()
 
-# DSSAT 0.0.8.9003
-
 - Adding new filex_template_harvest_details() function to generate a template HARVEST DETAILS section for File X
-
-# DSSAT 0.0.8.9002
 
 - Bugfix for using $ instead of * for start of weather file header line in write_wth()
 
-# DSSAT 0.0.8.9001
-
 - Bugfix for read_sol() to handle case when PEDON is less than 10 digits
-
-# DSSAT 0.0.8.9000
 
 - Bugfix for write_filex() when missing NOTES, PAREA, PRNO, ...
 
