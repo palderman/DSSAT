@@ -13,3 +13,5 @@ tests/*
 ^.*.png$
 ^.*.jpg$
 ^CRAN-SUBMISSION$
+.github
+data-raw
