@@ -1,0 +1,12 @@
+{
+  "creators": [
+    {
+      "affiliation": "Department of Plant and Soil Sciences, Oklahoma State University",
+      "name": "Alderman, Phillip D.",
+      "orcid": "0000-0003-1467-2337"
+    }
+  ],
+  "title": "DSSAT: A Comprehensive R Interface for the DSSAT Cropping Systems Model",
+  "upload_type": "software",
+  "license": "GPL-3.0+"
+}
