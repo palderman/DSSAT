@@ -4,7 +4,7 @@ write_column <- function(fmt, vr_val, cname){
 
   if(!str_detect(fmt,'-')) fmt <- str_remove(fmt,'^ *')
 
-  if(is_POSIXct(vr_val)) vr_val <- write_POSIXct(vr_val, width)
+  if(is_date(vr_val)) vr_val <- write_date(vr_val, width)
 
   # In future, throw error if value is too large to fit within column width?
   # else if(is.numeric(vr_val)){

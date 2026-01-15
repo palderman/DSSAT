@@ -1,6 +1,6 @@
 # "writing SAMPLE.WTH without v_fmt"
 
-  expected <- c("*WEATHER: Weather Location",
+  expected <- c("$WEATHER: Weather Location",
                 "",
                 "! This is a test dataset",
                 "",
@@ -49,7 +49,7 @@ file.remove(sample_wth)
 
 # "writing SAMPLE.WTH without GENERAL"
 
-  expected <- c("*WEATHER: Weather Location",
+  expected <- c("$WEATHER: Weather Location",
                 "",
                 "! This is a test dataset",
                 "",
@@ -90,7 +90,7 @@ file.remove(sample_wth)
 
 # "writing SAMPLE.WTH overriding GENERAL variables"
 
-  expected <- c("*WEATHER: Weather Location",
+  expected <- c("$WEATHER: Weather Location",
                 "",
                 "! This is a test dataset",
                 "",

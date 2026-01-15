@@ -1,3 +1,7 @@
+# DSSAT 0.0.9.9001
+
+- Allow Date and POSIXt in write_wth()
+
 # DSSAT 0.0.9
 
 - Fixed spelling of EXPERIMENT column name in read_output()
