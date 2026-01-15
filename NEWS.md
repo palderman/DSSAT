@@ -1,3 +1,7 @@
+# DSSAT 0.0.9.9003
+
+- Remove reliance on *.rds files for test_read_cul.R validation data
+
 # DSSAT 0.0.9.9002
 
 - Remove most tidyverse dependencies from read_filex() except col() and
