@@ -13,8 +13,6 @@
 #' @return a tibble containing the data from the raw DSSAT file
 #'
 #' @importFrom readr cols col_character
-#' @importFrom dplyr "%>%"
-#' @importFrom stringr str_subset str_remove str_which str_detect
 #'
 read_filex <- function(file_name, col_types=NULL, col_names=NULL, na_strings=NULL,
                        store_v_fmt = FALSE, use_std_fmt = FALSE){
@@ -97,8 +95,9 @@ read_filex <- function(file_name, col_types=NULL, col_names=NULL, na_strings=NUL
                     SMPX = col_character(),
                     FLHST = col_character(),
                     `  FLSA` = col_character(),
-                    FLNAME = col_character()) %>%
-    {.$cols <- c(.$cols,col_types$cols);.}
+                    FLNAME = col_character()) |>
+    (\(.x){.x$cols <- c(.x$cols,col_types$cols);.x})()
+
 
   left_justified <- c('SITE','PEOPLE','ADDRESS','INSTRUMENTS',
                       'PROBLEMS','PUBLICATIONS','DISTRIBUTION','NOTES','  HARM\\.*',
@@ -113,9 +112,8 @@ read_filex <- function(file_name, col_types=NULL, col_names=NULL, na_strings=NUL
                       ' HNAME',' CHT\\.*',
                       ' RENAME',' +PLNAME','CHNAME', 'SANAME')
 
-  col_names <- col_names %>%
-    c(.,
-      ' +N(?= |$)',' +R(?= |$)',' +O(?= |$)',' +C(?= |$)',
+  col_names <- col_names |>
+    c(' +N(?= |$)',' +R(?= |$)',' +O(?= |$)',' +C(?= |$)',
       ' +L(?= |$)',' +P(?= |$)',' +F(?= |$)',' +T(?= |$)',
       ' +H(?= |$)',' +I(?= |$)',' +A(?= |$)',' +E(?= |$)',
       ' CU(?= |$)',' FL(?= |$)',' SA(?= |$)',' IC(?= |$)',
@@ -124,61 +122,63 @@ read_filex <- function(file_name, col_types=NULL, col_names=NULL, na_strings=NUL
       ' SM(?= |$)')
 
   # Read in raw data from file
-  raw_lines <- readLines(file_name, warn = FALSE) %>%
-    str_subset('^(?!\032) *([^ ]+)') # exclude lines that are all spaces or lines with EOF in initial position
+  raw_lines <- readLines(file_name, warn = FALSE) |>
+    # exclude lines that are all spaces or lines with EOF in initial position
+    grep('^(?!\032) *([^ ]+)', x = _, perl = TRUE, value = TRUE)
 
   # Get experiment name
-  experiment <- str_subset(raw_lines,'^\\*EXP\\.DETAILS: ') %>%
-    str_remove('^\\*EXP\\.DETAILS: ')
+  experiment <- grep('^\\*EXP\\.DETAILS: ', raw_lines, value = TRUE) |>
+    gsub('^\\*EXP\\.DETAILS: ', "", x = _)
 
   # Get comments
   comments <- extract_comments(raw_lines)
 
-  raw_lines <- str_subset(raw_lines,'^(?!\\*EXP\\.DETAILS: )')
-
-  # Remove AUTOMATIC MANAGEMENT header
-  raw_lines <- str_subset(raw_lines,'^(?!@ *AUTOMATIC MANAGEMENT)')
+  # Remove EXP.DETAILS and AUTOMATIC MANAGEMENT headers
+  raw_lines <- grep('^(?!\\*EXP\\.DETAILS: )(?!@ *AUTOMATIC MANAGEMENT)',
+                    raw_lines, perl = TRUE, value = TRUE)
 
   # Find section boundaries
-  sec_begin <- str_which(raw_lines,'^\\*')
+  sec_begin <- grep("^\\*", raw_lines)
   if(length(sec_begin)>0) sec_end <- c(sec_begin[-1]-1,length(raw_lines))
 
   # handle case with no section headers
   if(length(sec_begin)==0){
     sec_begin <- 1
     sec_end <- length(raw_lines)
-    raw_lines <- str_subset(raw_lines,'^\\*(?!EXP\\.DETAILS)')
+    raw_lines <- grep('^\\*(?!EXP\\.DETAILS)', raw_lines, value = TRUE)
   }
 
   # Extract section names
-  sec_names <- str_remove(raw_lines[sec_begin],'^\\*')
+  sec_names <- gsub("^\\*", "", raw_lines[sec_begin])
 
   # Extract all tiers
   if(use_std_fmt){
-    all_secs <- map(1:length(sec_begin),
-                    ~read_tier_data(raw_lines[sec_begin[.]:sec_end[.]],
-                                    left_justified = left_justified,
-                                    col_names = col_names,
-                                    col_types = col_types,
-                                    na_strings = na_strings,
-                                    join_tiers = FALSE,
-                                    store_v_fmt = store_v_fmt,
-                                    tier_fmt = filex_v_fmt(sec_names[.])))
+    all_secs <- lapply(1:length(sec_begin),
+                    \(.i) read_tier_data(
+                            raw_lines[sec_begin[.i]:sec_end[.i]],
+                            left_justified = left_justified,
+                            col_names = col_names,
+                            col_types = col_types,
+                            na_strings = na_strings,
+                            join_tiers = FALSE,
+                            store_v_fmt = store_v_fmt,
+                            tier_fmt = filex_v_fmt(sec_names[.i])))
   }else{
-    all_secs <- map(1:length(sec_begin),
-                    ~read_tier_data(raw_lines[sec_begin[.]:sec_end[.]],
-                                    left_justified = left_justified,
-                                    col_names = col_names,
-                                    col_types = col_types,
-                                    na_strings = na_strings,
-                                    join_tiers = FALSE,
-                                    store_v_fmt = store_v_fmt))
+    all_secs <- lapply(1:length(sec_begin),
+                    \(.i) read_tier_data(
+                            raw_lines[sec_begin[.i]:sec_end[.i]],
+                            left_justified = left_justified,
+                            col_names = col_names,
+                            col_types = col_types,
+                            na_strings = na_strings,
+                            join_tiers = FALSE,
+                            store_v_fmt = store_v_fmt))
   }
 
   names(all_secs) <- sec_names
 
-  if(any(str_detect(sec_names,'SIMULATION CONTROLS'))){
-    all_secs$`SIMULATION CONTROLS` <- all_secs$`SIMULATION CONTROLS` %>%
+  if(any(grepl("SIMULATION CONTROLS", sec_names))){
+    all_secs$`SIMULATION CONTROLS` <- all_secs$`SIMULATION CONTROLS` |>
       combine_simulation_controls()
   }
 
@@ -186,22 +186,22 @@ read_filex <- function(file_name, col_types=NULL, col_names=NULL, na_strings=NUL
                     'SOIL')
 
   for(sec in two_tier_sec){
-    sec_i <- str_which(sec_names,sec)
+    sec_i <- grep(sec, sec_names)
     if(length(sec_i)>0){
       if(sec == 'IRRIGATION'){
-        all_secs[[sec_i]] <- all_secs[[sec_i]] %>%
+        all_secs[[sec_i]] <- all_secs[[sec_i]] |>
           combine_multi_section(c('I','(EFIR)|(IEFF)'))
       }else if(sec == 'INITIAL'){
-        all_secs[[sec_i]] <- all_secs[[sec_i]] %>%
+        all_secs[[sec_i]] <- all_secs[[sec_i]] |>
           combine_multi_section(c('C','PCR'))
       }else if(sec == 'SOIL'){
-        all_secs[[sec_i]] <- all_secs[[sec_i]] %>%
+        all_secs[[sec_i]] <- all_secs[[sec_i]] |>
           combine_multi_section(c('A','SADAT'))
       }else if(sec == 'FIELDS'){
-        all_secs[[sec_i]] <- all_secs[[sec_i]] %>%
+        all_secs[[sec_i]] <- all_secs[[sec_i]] |>
           combine_multi_section(c('L','ID_FIELD'))
       }else if(!is.data.frame(all_secs[[sec_i]])){
-        all_secs[[sec_i]] <- all_secs[[sec_i]] %>%
+        all_secs[[sec_i]] <- all_secs[[sec_i]] |>
           reduce(combine_tiers,use_collapse_rows=TRUE)
       }
     }
@@ -209,7 +209,7 @@ read_filex <- function(file_name, col_types=NULL, col_names=NULL, na_strings=NUL
 
   attr(all_secs,'experiment') <- experiment
 
-  all_secs <- map(all_secs,as_DSSAT_tbl)
+  all_secs <- lapply(all_secs,as_DSSAT_tbl)
 
   return(all_secs)
 }

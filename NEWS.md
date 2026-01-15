@@ -1,3 +1,8 @@
+# DSSAT 0.0.9.9002
+
+- Remove most tidyverse dependencies from read_filex() except col() and
+  col_character() from readr
+
 # DSSAT 0.0.9.9001
 
 - Allow Date and POSIXt in write_wth()
