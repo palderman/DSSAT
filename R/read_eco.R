@@ -20,7 +20,8 @@
 #'
 
 read_eco <- function(file_name,col_types=NULL,col_names=NULL,
-                     left_justified=c('ECO   ','ECO#','ECONAME\\.*','ECO-NAME\\.*')){
+                     left_justified=c('ECO   ','ECO#','ECONAME\\.*','ECO-NAME\\.*'),
+                     use_std_fmt = TRUE){
 
   if(str_detect(basename(file_name),'^((BA)|(WH))CER')){
     col_names <- col_names %>%
@@ -56,6 +57,12 @@ read_eco <- function(file_name,col_types=NULL,col_names=NULL,
     {. - 1} %>%
     c(.,length(raw_lines))
 
+  if(use_std_fmt){
+    tier_fmt <- eco_v_fmt(file_name)
+  }else{
+    tier_fmt <- NULL
+  }
+
   if(str_detect(file_name,'SCCSP')){
     eco <- read_casupro_eco(raw_lines)
   }else{
@@ -64,6 +71,7 @@ read_eco <- function(file_name,col_types=NULL,col_names=NULL,
                                col_types = eco_col_types,
                                col_names = col_names,
                                left_justified = left_justified,
+                               tier_fmt = tier_fmt,
                                convert_date_cols = FALSE)) %>%
       reduce(combine_tiers)
   }

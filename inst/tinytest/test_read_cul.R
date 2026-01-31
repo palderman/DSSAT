@@ -1,7 +1,9 @@
+library(tinytest)
+
 # "read_cul() ALFRM048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
-                       "ECO#" = "%7s", CSDL = "%6.1f", PPSEN = "%6.1f",
+                       "ECO#" = "%7s", CSDL = "%6.1f", PPSEN = "%6.3f",
                        "EM-FL" = "%6.0f", "FL-SH" = "%6.0f",
                        "FL-SD" = "%6.0f", "SD-PM" = "%6.0f",
                        "FL-LF" = "%6.0f", LFMAX = "%6.2f", SLAVR = "%6.0f",
@@ -53,8 +55,8 @@
 
   info_prefix <- "read_cul() ALFRM048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("AL0001", "AL0002", "AL0003",
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("AL0001", "AL0002", "AL0003",
                                     "AL0004", "AL0005", "CA0001",
                                     "CA0002", "CA0003"),
                          `VRNAME` = c("Aragon  FD7", "Rugged  FD3",
@@ -230,8 +232,8 @@
 
   info_prefix <- "read_cul() BACER048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXP#", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "DFAULT",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXP#", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "DFAULT",
                                     "IB0101", "IB0102", "IB0030"),
                          `VAR-NAME` = c("MINIMA", "MAXIMA", "DEFAULT",
                                         "A.Abiad (2)", "Beecher (6)",
@@ -402,8 +404,8 @@
 
   info_prefix <- "read_cul() BACRP048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXP#", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "DFAULT",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXP#", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "DFAULT",
                                     "IB0101", "IB0102", "IB0030"),
                          `VAR-NAME` = c("MINIMA", "MAXIMA", "DEFAULTS",
                                         "A.Abiad(2row)", "Beecher(6row)",
@@ -525,13 +527,13 @@
 # "read_cul() BHGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
-                       "ECO#" = "%7s", CSDL = "%6.0f", PPSEN = "%6.2f",
-                       "EM-FL" = "%6.0f", "FL-SH" = "%6.0f",
-                       "FL-SD" = "%6.0f", "SD-PM" = "%6.0f",
-                       "FL-LF" = "%6.0f", LFMAX = "%6.2f", SLAVR = "%6.0f",
-                       SIZLF = "%6.0f", XFRT = "%6.2f", WTPSD = "%6.3f",
-                       SFDUR = "%6.0f", SDPDV = "%6.2f", PODUR = "%6.0f",
-                       THRSH = "%6.0f", SDPRO = "%6.3f", SDLIP = "%6.3f"
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -577,8 +579,8 @@
 
   info_prefix <- "read_cul() BHGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "UF0001"
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "UF0001"
     ),
     `VRNAME` = c("MINIMA", "MAXIMA", "PENSACOLA BAHIA"
     ),
@@ -730,8 +732,8 @@
 
   info_prefix <- "read_cul() BMFRM048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "UF0001"
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "UF0001"
     ),
     `VRNAME` = c("MINIMA", "MAXIMA", "TIFTON 85 BERMUD"
     ),
@@ -836,13 +838,13 @@
 # "read_cul() BNGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
-                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.3f",
-                       "EM-FL" = "%6.1f", "FL-SH" = "%6.1f",
-                       "FL-SD" = "%6.1f", "SD-PM" = "%6.1f",
-                       "FL-LF" = "%6.0f", LFMAX = "%6.2f", SLAVR = "%6.0f",
-                       SIZLF = "%6.0f", XFRT = "%6.0f", WTPSD = "%6.2f",
-                       SFDUR = "%6.1f", SDPDV = "%6.1f", PODUR = "%6.1f",
-                       THRSH = "%6.0f", SDPRO = "%6.3f", SDLIP = "%6.2f"
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -916,8 +918,8 @@
 
   info_prefix <- "read_cul() BNGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
                                     "990002", "990003", "990004",
                                     "990005", "990006", "990007",
                                     "IB0001", "IB0002", "IB0003",
@@ -1142,10 +1144,10 @@
 # "read_cul() BRFRM048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
-                       "ECO#" = "%7s", CSDL = "%6.1f", PPSEN = "%6.1f",
+                       "ECO#" = "%7s", CSDL = "%6.1f", PPSEN = "%6.3f",
                        "EM-FL" = "%6.0f", "FL-SH" = "%6.0f",
                        "FL-SD" = "%6.0f", "SD-PM" = "%6.0f",
-                       "FL-LF" = "%6.0f", LFMAX = "%6.1f", SLAVR = "%6.0f",
+                       "FL-LF" = "%6.0f", LFMAX = "%6.2f", SLAVR = "%6.0f",
                        SIZLF = "%6.0f", XFRT = "%6.2f", WTPSD = "%6.2f",
                        SFDUR = "%6.0f", SDPDV = "%6.2f", PODUR = "%6.0f",
                        THRSH = "%6.0f", SDPRO = "%6.3f", SDLIP = "%6.3f"
@@ -1189,8 +1191,8 @@
 
   info_prefix <- "read_cul() BRFRM048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "SP0001"
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "SP0001"
     ),
     `VRNAME` = c("MINIMA", "MAXIMA", "Marandu"
     ),
@@ -1295,13 +1297,13 @@
 # "read_cul() BRGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
-                       "ECO#" = "%7s", CSDL = "%6.0f", PPSEN = "%6.1f",
-                       "EM-FL" = "%6.0f", "FL-SH" = "%6.0f",
-                       "FL-SD" = "%6.0f", "SD-PM" = "%6.0f",
-                       "FL-LF" = "%6.0f", LFMAX = "%6.1f", SLAVR = "%6.0f",
-                       SIZLF = "%6.0f", XFRT = "%6.2f", WTPSD = "%6.4f",
-                       SFDUR = "%6.0f", SDPDV = "%6.2f", PODUR = "%6.0f",
-                       THRSH = "%6.0f", SDPRO = "%6.3f", SDLIP = "%6.1f"
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -1349,8 +1351,8 @@
 
   info_prefix <- "read_cul() BRGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("CC0001", "CC0002", "CN0003",
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("CC0001", "CC0002", "CN0003",
                                     "CC0004", "CC0005", "CN0006",
                                     "SA0001", "BG0001"),
                          `VRNAME` = c("Brachiaria 1", "Brachiaria 2",
@@ -1515,8 +1517,8 @@
 
   info_prefix <- "read_cul() BSCER048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("CR0001", "BU0003", "IH0001"
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("CR0001", "BU0003", "IH0001"
     ),
     `VRNAME` = c("SVRR1142E", "Emma", "BTS940"
     ),
@@ -1609,13 +1611,13 @@
 # "read_cul() CBGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
-                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.0f",
-                       "EM-FL" = "%6.0f", "FL-SH" = "%6.0f",
-                       "FL-SD" = "%6.0f", "SD-PM" = "%6.0f",
-                       "FL-LF" = "%6.0f", LFMAX = "%6.2f", SLAVR = "%6.0f",
-                       SIZLF = "%6.0f", XFRT = "%6.2f", WTPSD = "%6.2f",
-                       SFDUR = "%6.0f", SDPDV = "%6.1f", PODUR = "%6.0f",
-                       THRSH = "%6.0f", SDPRO = "%6.2f", SDLIP = "%6.2f"
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -1662,8 +1664,8 @@
 
   info_prefix <- "read_cul() CBGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
                                     "990002", "990003"),
                          `VRNAME` = c("MINIMA", "MAXIMA", "Tastie    4",
                                       "CG        4", "Kalorama  4"
@@ -1773,13 +1775,13 @@
 # "read_cul() CHGRO048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
-                       "ECO#" = "%7s", CSDL = "%6.1f", PPSEN = "%6.3f",
-                       "EM-FL" = "%6.1f", "FL-SH" = "%6.1f",
-                       "FL-SD" = "%6.1f", "SD-PM" = "%6.1f",
-                       "FL-LF" = "%6.0f", LFMAX = "%6.2f", SLAVR = "%6.0f",
-                       SIZLF = "%6.0f", XFRT = "%6.2f", WTPSD = "%6.3f",
-                       SFDUR = "%6.1f", SDPDV = "%6.1f", PODUR = "%6.0f",
-                       THRSH = "%6.0f", SDPRO = "%6.3f", SDLIP = "%6.3f"
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -1859,8 +1861,8 @@
 
   info_prefix <- "read_cul() CHGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
                                     "990002", "IB0001", "IB0002",
                                     "IB0003", "IB0004", "IB0005",
                                     "IB0006", "IB0007", "IB0008",
@@ -2101,14 +2103,14 @@
 
 # "read_cul() CIGRO048.CUL"
 
-  `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
-                       EXPNO = "%6s", "ECO#" = "%7s", CSDL = "%6.1f",
-                       PPSEN = "%6.3f", "EM-FL" = "%6.0f", "FL-SH" = "%6.0f",
-                       "FL-SD" = "%6.1f", "SD-PM" = "%6.1f",
-                       "FL-LF" = "%6.0f", LFMAX = "%6.2f", SLAVR = "%6.0f",
-                       SIZLF = "%6.1f", XFRT = "%6.2f", WTPSD = "%6.3f",
-                       SFDUR = "%6.0f", SDPDV = "%6.1f", PODUR = "%6.0f",
-                       THRSH = "%6.1f", SDPRO = "%6.2f", SDLIP = "%6.2f"
+  `v_fmt_expected` = c("VAR#" = "%-7s", `VAR-NAME` = "%-16s", EXPNO = "%6s",
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -2154,8 +2156,8 @@
 
   info_prefix <- "read_cul() CIGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "CI0001"
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "CI0001"
     ),
     `VAR-NAME` = c("MINIMA", "MAXIMA", "Geotype G8"
     ),
@@ -2259,14 +2261,14 @@
 
 # "read_cul() CNGRO048.CUL"
 
-  `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
-                       "ECO#" = "%7s", CSDL = "%6.0f", PPSEN = "%6.3f",
-                       "EM-FL" = "%6.1f", "FL-SH" = "%6.1f",
-                       "FL-SD" = "%6.1f", "SD-PM" = "%6.1f",
-                       "FL-LF" = "%6.0f", LFMAX = "%6.2f", SLAVR = "%6.0f",
-                       SIZLF = "%6.0f", XFRT = "%6.0f", WTPSD = "%6.3f",
-                       SFDUR = "%6.0f", SDPDV = "%6.0f", PODUR = "%6.0f",
-                       THRSH = "%6.0f", SDPRO = "%6.2f", SDLIP = "%6.2f"
+  `v_fmt_expected` = c("VAR#" = "%-7s", `VRNAME` = "%-16s", EXPNO = "%6s",
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -2308,8 +2310,8 @@
 
   info_prefix <- "read_cul() CNGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "000001",
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "000001",
                                     "OT0001", "CA0001"),
                          `VRNAME` = c("MINIMA", "MAXIMA", "M GROUP  01",
                                       "KABEL (11)", "Invigor5440"
@@ -2418,14 +2420,14 @@
 
 # "read_cul() COGRO048.CUL"
 
-  `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
-                       "ECO#" = "%7s", CSDL = "%6.0f", PPSEN = "%6.2f",
-                       "EM-FL" = "%6.0f", "FL-SH" = "%6.0f",
-                       "FL-SD" = "%6.0f", "SD-PM" = "%6.0f",
-                       "FL-LF" = "%6.0f", LFMAX = "%6.2f", SLAVR = "%6.0f",
-                       SIZLF = "%6.0f", XFRT = "%6.2f", WTPSD = "%6.2f",
-                       SFDUR = "%6.0f", SDPDV = "%6.0f", PODUR = "%6.0f",
-                       THRSH = "%6.0f", SDPRO = "%6.3f", SDLIP = "%6.2f"
+  `v_fmt_expected` = c("VAR#" = "%-7s", `VRNAME` = "%-16s", EXPNO = "%6s",
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -2479,8 +2481,8 @@
 
   info_prefix <- "read_cul() COGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0001",
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "IB0001",
                                     "IB0002", "IB0003", "IB0004",
                                     "IB0006", "GA0001", "TX0003"),
                          `VRNAME` = c("MINIMA", "MAXIMA", "Deltapine 77",
@@ -2610,14 +2612,14 @@
 
 # "read_cul() CPGRO048.CUL"
 
-  `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
-                       "ECO#" = "%7s", CSDL = "%6.1f", PPSEN = "%6.4f",
-                       "EM-FL" = "%6.2f", "FL-SH" = "%6.1f",
-                       "FL-SD" = "%6.1f", "SD-PM" = "%6.2f",
-                       "FL-LF" = "%6.0f", LFMAX = "%6.1f", SLAVR = "%6.0f",
-                       SIZLF = "%6.0f", XFRT = "%6.2f", WTPSD = "%6.4f",
-                       SFDUR = "%6.1f", SDPDV = "%6.1f", PODUR = "%6.1f",
-                       THRSH = "%6.1f", SDPRO = "%6.1f", SDLIP = "%6.3f"
+  `v_fmt_expected` = c("VAR#" = "%-7s", `VRNAME` = "%-16s", EXPNO = "%6s",
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -2675,8 +2677,8 @@
 
   info_prefix <- "read_cul() CPGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "CP0001",
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "CP0001",
                                     "CP0003", "CP0004", "CP0005",
                                     "CP0006", "CP0012", "CP0014",
                                     "II0001", "II0002", "II0003",
@@ -2922,8 +2924,8 @@
 
   info_prefix <- "read_cul() CSCAS048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXP#", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "DFAULT",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXP#", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "DFAULT",
                                     "UC0002", "UC0004", "UC0006",
                                     "UC0007", "UC0008", "UC0009",
                                     "TH0001", "TH0002", "TH0003",
@@ -3202,8 +3204,8 @@
 
   info_prefix <- "read_cul() CSYCA048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXP#", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "DFAULT",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXP#", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "DFAULT",
                                     "UC0002", "UC0003", "UC0004",
                                     "UC0005", "UC0006", "UC0007",
                                     "UC0008", "UC0009", "UC0010",
@@ -3366,14 +3368,14 @@
 
 # "read_cul() FBGRO048.CUL"
 
-  `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
-                       "ECO#" = "%7s", CSDL = "%6.0f", PPSEN = "%6.3f",
-                       "EM-FL" = "%6.0f", "FL-SH" = "%6.1f",
-                       "FL-SD" = "%6.1f", "SD-PM" = "%6.1f",
-                       "FL-LF" = "%6.0f", LFMAX = "%6.1f", SLAVR = "%6.0f",
-                       SIZLF = "%6.0f", XFRT = "%6.0f", WTPSD = "%6.1f",
-                       SFDUR = "%6.0f", SDPDV = "%6.1f", PODUR = "%6.0f",
-                       THRSH = "%6.0f", SDPRO = "%6.3f", SDLIP = "%6.2f"
+  `v_fmt_expected` = c("VAR#" = "%-7s", `VRNAME` = "%-16s", EXPNO = "%6s",
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -3418,8 +3420,8 @@
 
   info_prefix <- "read_cul() FBGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "CORD01",
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "CORD01",
                                     "CORD02"),
                          `VRNAME` = c("MINIMA", "MAXIMA", "ALAME LD170 1.2g",
                                       "BROCA LD170 1.2G"),
@@ -3525,13 +3527,13 @@
 
 # "read_cul() G0GRO048.CUL"
 
-  `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
-                       "ECO#" = "%7s", CSDL = "%6.0f", PPSEN = "%6.1f",
-                       "EM-FL" = "%6.0f", "FL-SH" = "%6.0f",
-                       "FL-SD" = "%6.0f", "SD-PM" = "%6.0f",
-                       "FL-LF" = "%6.0f", LFMAX = "%6.2f", SLAVR = "%6.0f",
-                       SIZLF = "%6.0f", XFRT = "%6.2f", WTPSD = "%6.2f",
-                       SFDUR = "%6.0f", SDPDV = "%6.2f", PODUR = "%6.0f"
+  `v_fmt_expected` = c("VAR#" = "%-7s", `VRNAME` = "%-16s", EXPNO = "%6s",
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f"
   )
 
   `tier_info_expected` = NULL
@@ -3572,8 +3574,8 @@
 
   info_prefix <- "read_cul() G0GRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "UF0001"
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "UF0001"
     ),
     `VRNAME` = c("MINIMA", "MAXIMA", "PENSACOLA BAHIA"
     ),
@@ -3674,14 +3676,14 @@
 
 # "read_cul() GBGRO048.CUL"
 
-  `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
-                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.3f",
-                       "EM-FL" = "%6.1f", "FL-SH" = "%6.1f",
-                       "FL-SD" = "%6.0f", "SD-PM" = "%6.0f",
-                       "FL-LF" = "%6.0f", LFMAX = "%6.2f", SLAVR = "%6.0f",
-                       SIZLF = "%6.0f", XFRT = "%6.2f", WTPSD = "%6.2f",
-                       SFDUR = "%6.0f", SDPDV = "%6.1f", PODUR = "%6.0f",
-                       THRSH = "%6.0f", SDPRO = "%6.3f", SDLIP = "%6.2f"
+  `v_fmt_expected` = c("VAR#" = "%-7s", `VRNAME` = "%-16s", EXPNO = "%6s",
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -3727,8 +3729,8 @@
 
   info_prefix <- "read_cul() GBGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "GB0001"
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "GB0001"
     ),
     `VRNAME` = c("MINIMA", "MAXIMA", "Bronco Habit 1"
     ),
@@ -3833,7 +3835,7 @@
 # "read_cul() GGFRM048.CUL"
 
   `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
-                       "ECO#" = "%7s", CSDL = "%6.0f", PPSEN = "%6.1f",
+                       "ECO#" = "%7s", CSDL = "%6.1f", PPSEN = "%6.3f",
                        "EM-FL" = "%6.0f", "FL-SH" = "%6.0f",
                        "FL-SD" = "%6.0f", "SD-PM" = "%6.0f",
                        "FL-LF" = "%6.0f", LFMAX = "%6.2f", SLAVR = "%6.0f",
@@ -3890,8 +3892,8 @@
 
   info_prefix <- "read_cul() GGFRM048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("SP0009", "SP0009"),
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("SP0009", "SP0009"),
                          `VRNAME` = c("Mombaca", "Tanzania"),
                          `EXPNO` = c("", ""),
                          `ECO#` = c("GG0009", "GG0009"),
@@ -4103,8 +4105,8 @@
 
   info_prefix <- "read_cul() MLCER048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
                                     "990002", "990003", "IB0033",
                                     "IB0034", "IB0035", "IB0036",
                                     "IB0037", "IB0038", "IB0039",
@@ -4572,8 +4574,8 @@
 
   info_prefix <- "read_cul() MZCER048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "PC0001",
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "PC0001",
                                     "PC0002", "PC0003", "PC0004",
                                     "PC0005", "990001", "990002",
                                     "990003", "990004", "IB0001",
@@ -5192,8 +5194,8 @@
 
   info_prefix <- "read_cul() MZIXM048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "PC0001",
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "PC0001",
                                     "PC0002", "PC0003", "PC0004",
                                     "PC0005", "990001", "990002",
                                     "990003", "990004", "IB0001",
@@ -5640,8 +5642,8 @@
 
   info_prefix <- "read_cul() PIALO048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0066",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "IB0066",
                                     "IB0068", "IB0069"),
                          `VAR-NAME` = c("MINIMA", "MAXIMA", "SC-F153",
                                         "HB-MD2CR", "HB-MD2CRp"),
@@ -5742,14 +5744,14 @@
 
 # "read_cul() PNGRO048.CUL"
 
-  `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
-                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.0f",
-                       "EM-FL" = "%6.1f", "FL-SH" = "%6.1f",
-                       "FL-SD" = "%6.1f", "SD-PM" = "%6.1f",
-                       "FL-LF" = "%6.0f", LFMAX = "%6.2f", SLAVR = "%6.0f",
-                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.3f",
-                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.0f",
-                       THRSH = "%6.1f", SDPRO = "%6.2f", SDLIP = "%6.2f"
+  `v_fmt_expected` = c("VAR#" = "%-7s", `VRNAME` = "%-16s", EXPNO = "%6s",
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -5841,8 +5843,8 @@
 
   info_prefix <- "read_cul() PNGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
                                     "990002", "IB0001", "IB0002",
                                     "IB0003", "IB0004", "IB0005",
                                     "IB0006", "IB0007", "IB0008",
@@ -6108,14 +6110,14 @@
 
 # "read_cul() PPGRO048.CUL"
 
-  `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
-                       EXPNO = "%6s", "ECO#" = "%7s", CSDL = "%6.2f",
-                       PPSEN = "%6.2f", "EM-FL" = "%6.1f", "FL-SH" = "%6.1f",
-                       "FL-SD" = "%6.1f", "SD-PM" = "%6.2f",
-                       "FL-LF" = "%6.2f", LFMAX = "%6.2f", SLAVR = "%6.0f",
-                       SIZLF = "%6.1f", XFRT = "%6.2f", WTPSD = "%6.2f",
-                       SFDUR = "%6.1f", SDPDV = "%6.2f", PODUR = "%6.1f",
-                       THRSH = "%6.0f", SDPRO = "%6.3f", SDLIP = "%6.3f"
+  `v_fmt_expected` = c("VAR#" = "%-7s", `VAR-NAME` = "%-16s", EXPNO = "%6s",
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -6165,8 +6167,8 @@
 
   info_prefix <- "read_cul() PPGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "PP0001",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "PP0001",
                                     "I88039", "GH0001"),
                          `VAR-NAME` = c("MINIMA", "MAXIMA", "76W est",
                                         "ICRISAT ICPL8803", "KPATINGA"
@@ -6279,14 +6281,14 @@
 
 # "read_cul() PRGRO048.CUL"
 
-  `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
-                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.0f",
+  `v_fmt_expected` = c("VAR#" = "%-7s", `VRNAME` = "%-16s", EXPNO = "%6s",
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
                        "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
-                       "FL-SD" = "%6.2f", "SD-PM" = "%6.1f",
-                       "FL-LF" = "%6.0f", LFMAX = "%6.3f", SLAVR = "%6.1f",
-                       SIZLF = "%6.0f", XFRT = "%6.2f", WTPSD = "%6.4f",
-                       SFDUR = "%6.0f", SDPDV = "%6.0f", PODUR = "%6.0f",
-                       THRSH = "%6.1f", SDPRO = "%6.1f", SDLIP = "%6.2f"
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -6334,8 +6336,8 @@
 
   info_prefix <- "read_cul() PRGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "PR0001",
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "PR0001",
                                     "PRX001", "PR0002", "PR0003",
                                     "PR0011"),
                          `VRNAME` = c("MINIMA", "MAXIMA", "CAPISTRANO",
@@ -6510,8 +6512,8 @@
 
   info_prefix <- "read_cul() PTSUB048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0001",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "IB0001",
                                     "IB0002", "IB0003", "IB0004",
                                     "IB0005", "CI0001", "CI0002",
                                     "AR0003", "DM0004", "IB0006",
@@ -6632,14 +6634,14 @@
 
 # "read_cul() QUGRO048.CUL"
 
-  `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
-                       EXPNO = "%6s", "ECO#" = "%7s", CSDL = "%6.2f",
-                       PPSEN = "%6.3f", "EM-FL" = "%6.1f", "FL-SH" = "%6.1f",
-                       "FL-SD" = "%6.1f", "SD-PM" = "%6.1f",
-                       "FL-LF" = "%6.0f", LFMAX = "%6.2f", SLAVR = "%6.0f",
-                       SIZLF = "%6.1f", XFRT = "%6.2f", WTPSD = "%6.3f",
-                       SFDUR = "%6.1f", SDPDV = "%6.1f", PODUR = "%6.1f",
-                       THRSH = "%6.0f", SDPRO = "%6.3f", SDLIP = "%6.2f"
+  `v_fmt_expected` = c("VAR#" = "%-7s", `VAR-NAME` = "%-16s", EXPNO = "%6s",
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -6689,8 +6691,8 @@
 
   info_prefix <- "read_cul() QUGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "UH0001",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "UH0001",
                                     "UH0002"),
                          `VAR-NAME` = c("MINIMA", "MAXIMA", "Zeno (00)",
                                         "Jessie (00)"),
@@ -6925,8 +6927,8 @@
 
   info_prefix <- "read_cul() RICER048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
                                     "990002", "990003", "990004",
                                     "IB0003", "IB0012", "IB0020",
                                     "IB0050", "IB0055", "IB0118",
@@ -7177,14 +7179,14 @@
 
 # "read_cul() SBGRO048.CUL"
 
-  `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
-                       EXPNO = "%6s", "ECO#" = "%7s", CSDL = "%6.2f",
-                       PPSEN = "%6.3f", "EM-FL" = "%6.2f", "FL-SH" = "%6.1f",
-                       "FL-SD" = "%6.2f", "SD-PM" = "%6.1f",
-                       "FL-LF" = "%6.1f", LFMAX = "%6.3f", SLAVR = "%6.0f",
-                       SIZLF = "%6.0f", XFRT = "%6.0f", WTPSD = "%6.3f",
-                       SFDUR = "%6.1f", SDPDV = "%6.2f", PODUR = "%6.1f",
-                       THRSH = "%6.0f", SDPRO = "%6.3f", SDLIP = "%6.3f"
+  `v_fmt_expected` = c("VAR#" = "%-7s", `VAR-NAME` = "%-16s", EXPNO = "%6s",
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -7292,8 +7294,8 @@
 
   info_prefix <- "read_cul() SBGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "990011",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "990011",
                                     "990012", "990013", "990001",
                                     "990002", "990003", "990004",
                                     "990005", "990006", "990007",
@@ -7721,8 +7723,8 @@
 
   info_prefix <- "read_cul() SCCAN048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0001",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "IB0001",
                                     "HYP_HS", "HYP_HF", "RB7515",
                                     "CP1743", "CP1762", "CP2086",
                                     "CP2143"),
@@ -7992,8 +7994,8 @@
 
   info_prefix <- "read_cul() SCCSP048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "CP1743",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "CP1743",
                                     "CP1762", "CP2086", "CP2143",
                                     "IB0001", "HYP_HS", "HYP_HF",
                                     "RB7515"),
@@ -8261,8 +8263,8 @@
 
   info_prefix <- "read_cul() SCSAM048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "RB7515",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "RB7515",
                                     "IB0001", "HYP_HS", "HYP_HF",
                                     "CP1743", "CP1762", "CP2086",
                                     "CP2143"),
@@ -8407,14 +8409,14 @@
 
 # "read_cul() SFGRO048.CUL"
 
-  `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
-                       EXPNO = "%6s", "ECO#" = "%7s", CSDL = "%6.0f",
-                       PPSEN = "%6.3f", "EM-FL" = "%6.1f", "FL-SH" = "%6.1f",
-                       "FL-SD" = "%6.1f", "SD-PM" = "%6.1f",
-                       "FL-LF" = "%6.2f", LFMAX = "%6.2f", SLAVR = "%6.0f",
-                       SIZLF = "%6.0f", XFRT = "%6.2f", WTPSD = "%6.3f",
-                       SFDUR = "%6.0f", SDPDV = "%6.2f", PODUR = "%6.0f",
-                       THRSH = "%6.1f", SDPRO = "%6.2f", SDLIP = "%6.2f"
+  `v_fmt_expected` = c("VAR#" = "%-7s", `VAR-NAME` = "%-16s", EXPNO = "%6s",
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -8469,8 +8471,8 @@
 
   info_prefix <- "read_cul() SFGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0001",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "IB0001",
                                     "IB0002", "IB0003", "UH0001",
                                     "UH0002"),
                          `VAR-NAME` = c("MINIMA", "MAXIMA", "PI8311",
@@ -8700,8 +8702,8 @@
 
   info_prefix <- "read_cul() SGCER048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "990001",
                                     "990002", "990003", "990004",
                                     "IB0001", "IB0002", "IB0003",
                                     "IB0004", "IB0005", "IB0006",
@@ -8992,14 +8994,14 @@
 
 # "read_cul() SUGRO048.CUL"
 
-  `v_fmt_expected` = c("VAR#" = "%-7s", "VAR-NAME" = "%-16s",
-                       EXPNO = "%6s", "ECO#" = "%7s", CSDL = "%6.0f",
-                       PPSEN = "%6.3f", "EM-FL" = "%6.1f", "FL-SH" = "%6.1f",
-                       "FL-SD" = "%6.1f", "SD-PM" = "%6.1f",
-                       "FL-LF" = "%6.1f", LFMAX = "%6.1f", SLAVR = "%6.0f",
-                       SIZLF = "%6.0f", XFRT = "%6.2f", WTPSD = "%6.2f",
-                       SFDUR = "%6.0f", SDPDV = "%6.1f", PODUR = "%6.1f",
-                       THRSH = "%6.0f", SDPRO = "%6.2f", SDLIP = "%6.2f"
+  `v_fmt_expected` = c("VAR#" = "%-7s", `VAR-NAME` = "%-16s", EXPNO = "%6s",
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -9074,8 +9076,8 @@
 
   info_prefix <- "read_cul() SUGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0009",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "IB0009",
                                     "IB0013", "IB0014", "IB0015",
                                     "IB0019", "IB0018", "IB0029",
                                     "IB0020", "IB0021", "IB0022"),
@@ -9275,8 +9277,8 @@
 
   info_prefix <- "read_cul() SUOIL048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0003",
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "IB0003",
                                     "IB0005", "IB0008", "IB0009",
                                     "IB0011", "IB0013", "IB0014",
                                     "IB0015", "IB0016", "IB0017",
@@ -9448,8 +9450,8 @@
 
   info_prefix <- "read_cul() SWCER048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "SW0001",
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "SW0001",
                                     "SW0002", "SW0003"),
                          `VRNAME` = c("MINIMA", "MAXIMA", "GSS0966 sh2",
                                       "Saturn sh2", "BSS0977 sh2"
@@ -9599,8 +9601,8 @@
 
   info_prefix <- "read_cul() TFAPS048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0135",
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "IB0135",
                                     "IB0136", "IB0157", "IB0161",
                                     "IB0221", "IB0244", "IB0245",
                                     "IB0246", "IB0247", "IB0248",
@@ -9840,8 +9842,8 @@
 
   info_prefix <- "read_cul() TFCER048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0304",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "IB0304",
                                     "IB0306", "IB0135", "IB0136",
                                     "IB0156", "IB0157", "IB0158",
                                     "IB0161", "IB0162", "IB0163",
@@ -10017,14 +10019,14 @@
 
 # "read_cul() TMGRO048.CUL"
 
-  `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
-                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.0f",
-                       "EM-FL" = "%6.1f", "FL-SH" = "%6.1f",
-                       "FL-SD" = "%6.0f", "SD-PM" = "%6.1f",
-                       "FL-LF" = "%6.0f", LFMAX = "%6.2f", SLAVR = "%6.0f",
-                       SIZLF = "%6.0f", XFRT = "%6.2f", WTPSD = "%6.3f",
-                       SFDUR = "%6.0f", SDPDV = "%6.0f", PODUR = "%6.0f",
-                       THRSH = "%6.1f", SDPRO = "%6.1f", SDLIP = "%6.2f"
+  `v_fmt_expected` = c("VAR#" = "%-7s", `VRNAME` = "%-16s", EXPNO = "%6s",
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -10072,8 +10074,8 @@
 
   info_prefix <- "read_cul() TMGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "TM0001",
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "TM0001",
                                     "TM0002", "TM0005", "TM0007"),
                          `VRNAME` = c("MINIMA", "MAXIMA", "Florida 47 2010",
                                       "Solarset 2010 Ca", "Agriset 761 10'",
@@ -10222,8 +10224,8 @@
 
   info_prefix <- "read_cul() TNARO048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0005",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "IB0005",
                                     "IB0006", "IB0007"),
                          `VAR-NAME` = c("MINIMA", "MAXIMA", "KELLY",
                                         "BLANCA", "MORANDA"),
@@ -10358,8 +10360,8 @@
 
   info_prefix <- "read_cul() TRARO048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "IB0001",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "IB0001",
                                     "IB0002", "IB0003", "IB0004",
                                     "IB0008", "IB0009", "IB0010"),
                          `VAR-NAME` = c("MINIMA", "MAXIMA", "LEHUA",
@@ -10468,14 +10470,14 @@
 
 # "read_cul() VBGRO048.CUL"
 
-  `v_fmt_expected` = c("VAR#" = "%-7s", VRNAME = "%-16s", EXPNO = "%6s",
-                       "ECO#" = "%7s", CSDL = "%6.0f", PPSEN = "%6.4f",
-                       "EM-FL" = "%6.2f", "FL-SH" = "%6.0f",
-                       "FL-SD" = "%6.0f", "SD-PM" = "%6.2f",
-                       "FL-LF" = "%6.0f", LFMAX = "%6.2f", SLAVR = "%6.0f",
-                       SIZLF = "%6.0f", XFRT = "%6.0f", WTPSD = "%6.1f",
-                       SFDUR = "%6.0f", SDPDV = "%6.1f", PODUR = "%6.0f",
-                       THRSH = "%6.0f", SDPRO = "%6.3f", SDLIP = "%6.3f"
+  `v_fmt_expected` = c("VAR#" = "%-7s", `VRNAME` = "%-16s", EXPNO = "%6s",
+                       "ECO#" = "%7s", CSDL = "%6.2f", PPSEN = "%6.4f",
+                       "EM-FL" = "%6.2f", "FL-SH" = "%6.2f",
+                       "FL-SD" = "%6.2f", "SD-PM" = "%6.2f",
+                       "FL-LF" = "%6.2f", LFMAX = "%6.3f", SLAVR = "%6.1f",
+                       SIZLF = "%6.2f", XFRT = "%6.2f", WTPSD = "%6.4f",
+                       SFDUR = "%6.2f", SDPDV = "%6.2f", PODUR = "%6.1f",
+                       THRSH = "%6.1f", SDPRO = "%6.3f", SDLIP = "%6.3f"
   )
 
   `tier_info_expected` = NULL
@@ -10539,8 +10541,8 @@
 
   info_prefix <- "read_cul() VBGRO048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "CC0001",
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "CC0001",
                                     "CC0002", "CC0003", "CC0004",
                                     "CC0005", "CC0006", "CC0007",
                                     "CC0008", "CI0003", "CI0004",
@@ -10778,8 +10780,8 @@
 
   info_prefix <- "read_cul() WHAPS048.CUL"
 
-    `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "AW0071",
+  `char_cols` <- c("VAR#", "VRNAME", "EXPNO", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "AW0071",
                                     "IB0001", "IB0002", "IB0003",
                                     "IB0004", "AW0005", "AW0006",
                                     "SP0007", "WI0008", "IB0010",
@@ -10963,8 +10965,8 @@
 
   info_prefix <- "read_cul() WHCER048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXP#", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "DFAULT",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXP#", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "DFAULT",
                                     "IB1500", "IB0488", "IB1015",
                                     "AW0071", "CI0001", "KZ0001",
                                     "TX0001", "990015"),
@@ -11152,8 +11154,8 @@
 
   info_prefix <- "read_cul() WHCRP048.CUL"
 
-    `char_cols` <- c("VAR#", "VAR-NAME", "EXP#", "ECO#")
-    expected_vals <- list(`VAR#` = c("999991", "999992", "DFAULT",
+  `char_cols` <- c("VAR#", "VAR-NAME", "EXP#", "ECO#")
+  expected_vals <- list(`VAR#` = c("999991", "999992", "DFAULT",
                                     "IB1500", "IB0488", "IB1015",
                                     "IB0034", "AW0071", "CI0001"),
                          `VAR-NAME` = c("MINIMA", "MAXIMA", "DEFAULTS",

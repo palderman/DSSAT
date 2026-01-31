@@ -3,9 +3,9 @@ v_fmt_to_fwf_pos <- function(v_fmt, header = NULL){
   if(!is.null(header)){
 
     # Construct regular expression with names in v_fmt
-    v_name_regex <- paste0("(^|@| |\\.)",
-                           names(v_fmt),
-                           "($| |\\.)")
+    v_name_regex <- names(v_fmt) |>
+      name_to_regex() |>
+      paste0("(^|@| |\\.)", x = _, "($| |\\.)")
 
     # Find positions of names within header
     loc <- sapply(v_name_regex, regexpr, text = header)

@@ -194,18 +194,27 @@ read_tier_data <- function(raw_lines, col_types=NULL, col_names=NULL, na_strings
 
   if(store_v_fmt){
     if(is.data.frame(tier_data)){
-      v_fmt <- construct_variable_format(tier_data,
-                                         fwf_pos,
-                                         left_justified)
-      tier_data <- as_DSSAT_tbl(tier_data,v_fmt = v_fmt)
-
+      if(is.null(tier_fmt)){
+        v_fmt <- construct_variable_format(tier_data,
+                                           fwf_pos,
+                                           left_justified)
+      }else{
+        v_fmt <- tier_fmt[names(tier_data)]
+      }
+      tier_data <- as_DSSAT_tbl(tier_data, v_fmt = v_fmt)
     }else{
-
-      tier_data <- list(tier_data,fwf_pos) %>%
-        pmap(function(td,fpos){
-          v_fmt <- construct_variable_format(td,
-                                             fpos,
-                                             left_justified)
+      if(!is.list(tier_fmt)){
+        tier_fmt <- lapply(tier_data, \(.x) tier_fmt[names(.x)])
+      }
+      tier_data <- list(tier_data, fwf_pos, tier_fmt) %>%
+        pmap(function(td, fpos, fmt){
+          if(is.null(fmt)){
+            v_fmt <- construct_variable_format(td,
+                                               fpos,
+                                               left_justified)
+          }else{
+            v_fmt <- fmt[names(td)]
+          }
           attr(td,'v_fmt') <- v_fmt
           return(td)
         }) %>%
