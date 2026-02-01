@@ -8,7 +8,8 @@ read_eco(
   file_name,
   col_types = NULL,
   col_names = NULL,
-  left_justified = c("ECO   ", "ECO#", "ECONAME\\\\.*", "ECO-NAME\\\\.*")
+  left_justified = c("ECO   ", "ECO#", "ECONAME\\\\.*", "ECO-NAME\\\\.*"),
+  use_std_fmt = TRUE
 )
 }
 \arguments{

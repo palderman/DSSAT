@@ -1,3 +1,7 @@
+# DSSAT 0.0.9.9004
+
+- Remove reliance on *.rds files for test_read_eco.R validation data
+
 # DSSAT 0.0.9.9003
 
 - Remove reliance on *.rds files for test_read_cul.R validation data

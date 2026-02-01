@@ -1,13 +1,13 @@
-eco_v_fmt <- function(cul_file){
+eco_v_fmt <- function(eco_file){
 
-  model_code <- substr(basename(cul_file), 1, 5)
+  model_code <- substr(basename(eco_file), 1, 5)
 
   if(model_code %in% c("ALFRM", "BMFRM", "BRFRM", "GGFRM")){
 
     v_fmt = c("ECO#" = "%-7s", ECONAME = "%-18s", MG = "%2.0f",
-              TM = "%3.0f", THVAR = "%6.0f", "PL-EM" = "%6.0f",
+              TM = "%3.0f", THVAR = "%6.0f", "PL-EM" = "%6.2f",
               "EM-V1" = "%6.0f", "V1-JU" = "%6.0f", "JU-R0" = "%6.0f",
-              PM06 = "%6.0f", PM09 = "%6.2f", LNGSH = "%6.0f",
+              PM06 = "%6.0f", PM09 = "%6.2f", LNGSH = "%6.1f",
               "R7-R8" = "%6.0f", "FL-VS" = "%6.0f", TRIFL = "%6.2f",
               RWDTH = "%6.0f", RHGHT = "%6.0f", R1PPO = "%6.0f",
               OPTBI = "%6.0f", SLOBI = "%6.0f", RDRMT = "%6.3f",
@@ -25,12 +25,12 @@ eco_v_fmt <- function(cul_file){
     v_fmt = c("ECO#" = "%-7s", ECONAME = "%-18s", MG = "%2.0f",
               TM = "%3.0f", THVAR = "%6.0f", "PL-EM" = "%6.2f",
               "EM-V1" = "%6.1f", "V1-JU" = "%6.0f", "JU-R0" = "%6.1f",
-              PM06 = "%6.2f", PM09 = "%6.2f", LNGSH = "%6.0f",
+              PM06 = "%6.2f", PM09 = "%6.2f", LNGSH = "%6.1f",
               "R7-R8" = "%6.2f", "FL-VS" = "%6.2f", TRIFL = "%6.2f",
               RWDTH = "%6.2f", RHGHT = "%6.2f", R1PPO = "%6.3f",
               OPTBI = "%6.0f", SLOBI = "%6.3f", "PP-SS" = "%6.0f",
               LNHSH = "%6.1f", KCAN = "%6f", THRSH = "%6.0f",
-              SDPRO = "%6.3f", SDLIP = "%6.3f")
+              SDPRO = "%6.3f", SDLIP = "%6.3f", XMAGE = "%6.1f")
 
   }else if(model_code == "BACER"){
 

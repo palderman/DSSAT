@@ -22,7 +22,7 @@ eco_tier_info <- function(cul_file){
                   "EM-V1", "V1-JU", "JU-R0", "PM06", "PM09", "LNGSH",
                   "R7-R8", "FL-VS", "TRIFL", "RWDTH", "RHGHT", "R1PPO",
                   "OPTBI", "SLOBI", "PP-SS", "LNHSH", "KCAN", "THRSH",
-                  "SDPRO", "SDLIP")
+                  "SDPRO", "SDLIP", "XMAGE")
 
   }else if(model_code == "BACER"){
 
